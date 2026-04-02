@@ -1,0 +1,21 @@
+{
+  "name": "Hello Texas Records",
+  "short_name": "HTR",
+  "description": "Independent Texas Music Label",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0d0c0b",
+  "theme_color": "#c8922a",
+  "icons": [
+    {
+      "src": "https://raw.githubusercontent.com/SteveP999/Hello-Texas-Records/main/htr-logo.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "https://raw.githubusercontent.com/SteveP999/Hello-Texas-Records/main/htr-logo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}
