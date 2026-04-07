@@ -478,6 +478,26 @@ input.radio-vol {
 </section>
 
 
+
+<!-- LATEST SINGLE - FEATURED -->
+<section id="latest-single-featured" style="background:var(--dark,#0d0c0b);padding:5rem 0;border-top:1px solid rgba(200,146,42,0.15);position:relative;z-index:1;">
+<div style="text-align:center;padding:0 2rem 3.5rem;">
+<div style="font-family:'Oswald',sans-serif;font-size:0.65rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--rust,#c8922a);margin-bottom:0.75rem;">Latest Single</div>
+<h2 id="latest-title" style="font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(2rem,5vw,3.5rem);letter-spacing:0.06em;text-transform:uppercase;color:var(--cream,#f2ede3);">LOADING...</h2>
+<div style="width:60px;height:2px;margin:1.2rem auto 0;background:var(--rust,#c8922a);"></div>
+</div>
+<div id="latest-htr" style="max-width:1040px;margin:0 auto;padding:0 2.5rem;display:grid;grid-template-columns:380px 1fr;gap:4rem;align-items:center;">
+<div><img src="https://raw.githubusercontent.com/SteveP999/Hello-Texas-Records/main/htr-latest-cover.png" alt="Latest Single" id="latest-cover" style="width:100%;aspect-ratio:1;object-fit:cover;display:block;box-shadow:0 0 60px rgba(200,146,42,0.25),0 24px 64px rgba(0,0,0,0.8);"></div>
+<div style="padding-top:0.5rem;">
+<div style="display:inline-block;font-family:'Oswald',sans-serif;font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--rust,#c8922a);border:1px solid rgba(200,146,42,0.4);padding:0.25rem 0.85rem;margin-bottom:1.2rem;">Latest Single</div>
+<h2 id="latest-title-2" style="font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(2rem,4vw,3rem);text-transform:uppercase;letter-spacing:0.06em;line-height:1.1;margin-bottom:0.5rem;color:var(--cream,#f2ede3);">LOADING...</h2>
+<div id="latest-artist" style="font-family:'Oswald',sans-serif;font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(242,237,227,0.5);margin-bottom:2rem;">HELLO TEXAS RECORDS</div>
+<button class="play-single-btn" onclick="htrPlayLatest()" style="display:inline-flex;align-items:center;gap:0.75rem;background:transparent;color:var(--rust,#c8922a);border:1px solid rgba(200,146,42,0.45);cursor:pointer;padding:0.85rem 2rem;font-family:'Oswald',sans-serif;font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;">&#9654;&nbsp; Play Now</button>
+</div>
+</div>
+</section>
+<!-- END LATEST SINGLE FEATURED -->
+
 <!-- ROSTER -->
 <section class="roster-section" id="roster">
   <div class="section-header">
@@ -891,6 +911,38 @@ if (t.image) elArt.src = t.image;
   load(0);
 }());
 
+</script>
+
+<script>
+var _htrLatestSrc = '';
+function htrPlayLatest() {
+  var aud = document.getElementById('aud-hello-texas');
+  if (!aud) { aud = document.querySelector('audio'); }
+  if (aud && _htrLatestSrc) {
+    if (aud.src !== _htrLatestSrc) { aud.src = _htrLatestSrc; aud.load(); }
+    aud.play().catch(function(){});
+    // Also try to call the HTR radio play() function if available
+    if (typeof play === 'function') { try { play(); } catch(e) {} }
+  } else if (aud) {
+    aud.play().catch(function(){});
+  }
+}
+(function(){
+  // Try artist-specific latest.json files to populate the featured section
+  // We'll load the latest single from the HTR_RADIO array if available
+  if (typeof HTR_RADIO !== 'undefined' && HTR_RADIO.length > 0) {
+    var latest = HTR_RADIO[0];
+    _htrLatestSrc = latest.src || '';
+    var cv = document.getElementById('latest-cover');
+    var tt = document.getElementById('latest-title');
+    var tt2 = document.getElementById('latest-title-2');
+    var ta = document.getElementById('latest-artist');
+    if (cv && latest.image) cv.src = latest.image;
+    if (tt && latest.title) tt.textContent = latest.title;
+    if (tt2 && latest.title) tt2.textContent = latest.title;
+    if (ta && latest.artist) ta.textContent = latest.artist;
+  }
+})();
 </script>
 </body>
 </html>
