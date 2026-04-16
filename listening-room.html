@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Texas Records — The Listening Room</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: #1a1008;
+            color: #e8d5b0;
+            font-family: 'Georgia', serif;
+            min-height: 100vh;
+        }
+
+        /* ── Preview Banner ── */
+        #preview-banner {
+            display: none;
+            background: #3a1a00;
+            border-bottom: 2px solid #d4af37;
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 0.82rem;
+            color: #d4af37;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        /* ── Email Gate ── */
+        #email-gate {
+            position: fixed;
+            inset: 0;
+            background: rgba(8, 4, 1, 0.97);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .gate-box {
+            background: #2d1a00;
+            border: 2px solid #8b6914;
+            border-radius: 10px;
+            padding: 44px 40px;
+            max-width: 420px;
+            width: 92%;
+            text-align: center;
+        }
+
+        .gate-logo { font-size: 2.2rem; margin-bottom: 6px; }
+
+        .gate-box h2 {
+            color: #d4af37;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .gate-box p {
+            color: #a08050;
+            margin-bottom: 28px;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .gate-box input[type="email"] {
+            width: 100%;
+            padding: 13px 16px;
+            background: #1a1008;
+            border: 1px solid #8b6914;
+            color: #e8d5b0;
+            border-radius: 5px;
+            font-size: 1rem;
+            margin-bottom: 14px;
+            font-family: 'Georgia', serif;
+        }
+
+        .gate-box input[type="email"]:focus {
+            outline: none;
+            border-color: #d4af37;
+        }
+
+        .btn-gold {
+            width: 100%;
+            padding: 13px;
+            background: #8b6914;
+            color: #1a1008;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: background 0.2s;
+            font-family: 'Georgia', serif;
+        }
+
+        .btn-gold:hover { background: #d4af37; }
+
+        .error-msg {
+            color: #cc5544;
+            font-size: 0.85rem;
+            margin-top: 10px;
+            min-height: 18px;
+        }
+
+        /* ── Header ── */
+        header {
+            background: linear-gradient(180deg, #2d1a00 0%, #1a1008 100%);
+            border-bottom: 2px solid #8b6914;
+            padding: 32px 20px 24px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            color: #d4af37;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+        }
+
+        header p {
+            color: #a08050;
+            margin-top: 8px;
+            font-style: italic;
+            font-size: 1rem;
+        }
+
+        /* ── Main content ── */
+        #main-content {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 44px 20px 60px;
+        }
+
+        .intro-text {
+            text-align: center;
+            margin-bottom: 44px;
+            color: #a08050;
+            font-style: italic;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        /* ── Loading ── */
+        #loading-songs {
+            text-align: center;
+            padding: 60px 20px;
+            color: #8b6914;
+            font-style: italic;
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        #loading-songs .spinner {
+            font-size: 1.6rem;
+            display: block;
+            margin-bottom: 14px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0%   { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* ── Song Card ── */
+        .song-card {
+            background: #2d1a00;
+            border: 1px solid #5c4010;
+            border-radius: 10px;
+            padding: 32px 28px;
+            margin-bottom: 32px;
+        }
+
+        .song-number {
+            font-size: 0.75rem;
+            color: #8b6914;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+            margin-bottom: 6px;
+        }
+
+        .song-title {
+            font-size: 1.5rem;
+            color: #d4af37;
+            text-align: center;
+            margin-bottom: 28px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .versions-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .version-box {
+            background: #1a1008;
+            border: 2px solid #3d2500;
+            border-radius: 8px;
+            padding: 22px 18px;
+            text-align: center;
+            transition: border-color 0.25s, background 0.25s;
+        }
+
+        .version-box.selected {
+            border-color: #d4af37;
+            background: #251200;
+        }
+
+        .version-label {
+            font-size: 0.85rem;
+            color: #a08050;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        audio {
+            width: 100%;
+            margin-bottom: 16px;
+            border-radius: 4px;
+        }
+
+        .vote-btn {
+            width: 100%;
+            padding: 10px 8px;
+            background: transparent;
+            border: 1px solid #8b6914;
+            color: #d4af37;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.2s;
+            font-family: 'Georgia', serif;
+        }
+
+        .vote-btn:hover { background: #3d2500; }
+
+        .vote-btn.voted {
+            background: #8b6914;
+            color: #1a1008;
+            font-weight: bold;
+            border-color: #d4af37;
+        }
+
+        /* Preview mode — voting disabled visually */
+        body.preview-mode .vote-btn {
+            opacity: 0.4;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        /* ── Progress bar ── */
+        .progress-bar-wrap {
+            background: #3d2500;
+            border-radius: 99px;
+            height: 6px;
+            margin: 0 0 36px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            background: #d4af37;
+            height: 100%;
+            border-radius: 99px;
+            transition: width 0.4s ease;
+            width: 0%;
+        }
+
+        .progress-label {
+            text-align: center;
+            color: #8b6914;
+            font-size: 0.82rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        /* ── Submit ── */
+        #submit-section {
+            text-align: center;
+            padding: 36px 28px;
+            background: #2d1a00;
+            border: 1px solid #5c4010;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        #submit-section p {
+            color: #a08050;
+            margin-bottom: 22px;
+            font-style: italic;
+        }
+
+        #submit-btn {
+            padding: 15px 48px;
+            font-size: 1.05rem;
+            width: auto;
+        }
+
+        #submit-btn:disabled {
+            background: #3d2500;
+            color: #5c4010;
+            cursor: not-allowed;
+        }
+
+        #submit-msg {
+            margin-top: 16px;
+            color: #a08050;
+            font-style: italic;
+            min-height: 22px;
+        }
+
+        /* ── Full-screen states ── */
+        .fullscreen-msg {
+            display: none;
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .fullscreen-msg h2 {
+            color: #d4af37;
+            font-size: 2rem;
+            margin-bottom: 18px;
+            letter-spacing: 2px;
+        }
+
+        .fullscreen-msg p {
+            color: #a08050;
+            font-style: italic;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        /* ── Footer ── */
+        footer {
+            text-align: center;
+            padding: 24px;
+            color: #5c4010;
+            font-size: 0.8rem;
+            border-top: 1px solid #2d1a00;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 580px) {
+            .versions-grid { grid-template-columns: 1fr; }
+            header h1 { font-size: 1.5rem; letter-spacing: 3px; }
+            .song-title { font-size: 1.2rem; }
+            .gate-box { padding: 32px 22px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ══ Preview Banner (admin only) ══ -->
+<div id="preview-banner">🎛️ Admin Preview Mode — Voting Disabled</div>
+
+<!-- ══ Email Gate ══ -->
+<div id="email-gate">
+    <div class="gate-box">
+        <div class="gate-logo">🎵</div>
+        <h2>The Listening Room</h2>
+        <p>You've been personally invited to help shape the sound of Hello Texas Records.<br><br>
+        Enter your email to begin. Each listener gets one vote per song.</p>
+        <input type="email" id="voter-email" placeholder="your@email.com" />
+        <button class="btn-gold" onclick="enterRoom()">Enter The Listening Room</button>
+        <div class="error-msg" id="gate-error"></div>
+    </div>
+</div>
+
+<!-- ══ Header ══ -->
+<header>
+    <h1>Hello Texas Records</h1>
+    <p>The Listening Room &mdash; Private Voting Session</p>
+</header>
+
+<!-- ══ Main Content ══ -->
+<div id="main-content">
+
+    <p class="intro-text">
+        Listen to both versions of each song, then cast your vote.<br>
+        Take your time &mdash; there are no wrong answers, only honest ears.
+    </p>
+
+    <!-- Already Voted -->
+    <div class="fullscreen-msg" id="already-voted">
+        <h2>You've Already Voted</h2>
+        <p>Thank you for lending your ears!<br>
+        Your votes have already been recorded.<br><br>
+        Each listener gets one vote per session.</p>
+    </div>
+
+    <!-- Thank You -->
+    <div class="fullscreen-msg" id="thank-you">
+        <h2>Thank You! 🤠</h2>
+        <p>Your votes have been recorded and sent.<br>
+        Hello Texas Records is grateful for your honest ears.<br><br>
+        <em>Keep listening &mdash; great music is coming.</em></p>
+    </div>
+
+    <!-- Loading -->
+    <div id="loading-songs">
+        <span class="spinner">♪</span>
+        Loading the listening room&hellip;
+    </div>
+
+    <!-- Progress -->
+    <div id="progress-wrap" style="display:none;">
+        <div class="progress-label" id="progress-label">0 of 0 songs voted</div>
+        <div class="progress-bar-wrap">
+            <div class="progress-bar-fill" id="progress-bar"></div>
+        </div>
+    </div>
+
+    <!-- Songs injected here -->
+    <div id="songs-container"></div>
+
+    <!-- Submit Section -->
+    <div id="submit-section" style="display:none;">
+        <p>When you've voted on every song, click below to send your choices.</p>
+        <button class="btn-gold" id="submit-btn" onclick="submitVotes()" disabled>Submit My Votes</button>
+        <div id="submit-msg"></div>
+    </div>
+
+</div>
+
+<footer>
+    Hello Texas Records &bull; Private Listening Room &bull; By invitation only
+</footer>
+
+<!-- ══ JavaScript ══ -->
+<script>
+    // ── Config ──────────────────────────────────────────────────
+    const FORMSPREE_ID = 'xojyjzay';
+    const JSONBIN_ID   = 'YOUR_BIN_ID_HERE';
+    const JSONBIN_KEY  = 'YOUR_MASTER_KEY_HERE';
+    // ────────────────────────────────────────────────────────────
+
+    // ── Preview mode: visit listening-room.html?preview ──────────
+    const IS_PREVIEW = new URLSearchParams(window.location.search).has('preview');
+
+    let voterEmail  = '';
+    let votes       = {};
+    let activeSongs = [];
+
+    // If preview mode, skip the gate entirely
+    if (IS_PREVIEW) {
+        document.body.classList.add('preview-mode');
+        document.getElementById('preview-banner').style.display = 'block';
+        document.getElementById('email-gate').style.display     = 'none';
+        loadAndRenderSongs();
+    }
+
+    // ── Enter the room ──
+    function enterRoom() {
+        const input = document.getElementById('voter-email');
+        const err   = document.getElementById('gate-error');
+        const email = input.value.trim().toLowerCase();
+
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            err.textContent = 'Please enter a valid email address.';
+            return;
+        }
+
+        voterEmail = email;
+        document.getElementById('email-gate').style.display = 'none';
+        input.value = '';
+        loadAndRenderSongs();
+    }
+
+    document.getElementById('voter-email').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') enterRoom();
+    });
+
+    // ── Load songs from JSONBin ──
+    async function loadAndRenderSongs() {
+        try {
+            let songs, sessionId;
+
+            if (JSONBIN_ID === 'YOUR_BIN_ID_HERE') {
+                // Not yet configured — use hardcoded fallback
+                songs     = FALLBACK_SONGS;
+                sessionId = 'fallback';
+            } else {
+                const res = await fetch(
+                    `https://api.jsonbin.io/v3/b/${JSONBIN_ID}/latest`,
+                    { headers: { 'X-Master-Key': JSONBIN_KEY } }
+                );
+                if (!res.ok) throw new Error('Load failed');
+                const data = await res.json();
+                songs     = data.record.songs     || [];
+                sessionId = data.record.sessionId || 'default';
+            }
+
+            // ── Voting round check (skipped in preview mode) ──
+            if (!IS_PREVIEW) {
+                const stored = JSON.parse(localStorage.getItem('htr_data') || '{}');
+
+                // New round started by admin — wipe old votes
+                if (stored.sessionId !== sessionId) {
+                    localStorage.setItem('htr_data', JSON.stringify({ sessionId, voted: [] }));
+                }
+
+                const current = JSON.parse(localStorage.getItem('htr_data') || '{}');
+                const voted   = current.voted || [];
+
+                if (voted.includes(voterEmail)) {
+                    document.getElementById('loading-songs').style.display = 'none';
+                    document.getElementById('already-voted').style.display = 'block';
+                    return;
+                }
+            }
+
+            // ── Filter to active songs and render ──
+            activeSongs = songs.filter(s => s.active !== false);
+            document.getElementById('loading-songs').style.display = 'none';
+
+            if (activeSongs.length === 0) {
+                document.getElementById('songs-container').innerHTML =
+                    '<p style="text-align:center;color:#8b6914;font-style:italic;padding:40px 0;">No songs available right now. Check back soon!</p>';
+                return;
+            }
+
+            renderSongs();
+
+            if (!IS_PREVIEW) {
+                document.getElementById('progress-wrap').style.display  = 'block';
+                document.getElementById('submit-section').style.display = 'block';
+                updateProgress();
+            }
+
+        } catch (err) {
+            document.getElementById('loading-songs').innerHTML =
+                '<p style="color:#cc5544;font-style:italic;">Could not load songs. Please refresh the page.</p>';
+        }
+    }
+
+    // ── Render song cards ──
+    function renderSongs() {
+        const container = document.getElementById('songs-container');
+        container.innerHTML = activeSongs.map((song, i) => {
+            const aType = song.versionAUrl.toLowerCase().includes('.wav') ? 'audio/wav' : 'audio/mpeg';
+            const bType = song.versionBUrl.toLowerCase().includes('.wav') ? 'audio/wav' : 'audio/mpeg';
+            return `
+            <div class="song-card" data-song="${escHtml(song.id)}">
+                <div class="song-number">Song ${i + 1}</div>
+                <div class="song-title">${escHtml(song.title)}</div>
+                <div class="versions-grid">
+                    <div class="version-box" id="${escHtml(song.id)}-A-box">
+                        <div class="version-label">${escHtml(song.versionALabel)}</div>
+                        <audio controls preload="none">
+                            <source src="${escHtml(song.versionAUrl)}" type="${aType}">
+                            Your browser does not support audio playback.
+                        </audio>
+                        <button class="vote-btn" onclick="castVote('${escHtml(song.id)}', 'A')">Vote for ${escHtml(song.versionALabel)}</button>
+                    </div>
+                    <div class="version-box" id="${escHtml(song.id)}-B-box">
+                        <div class="version-label">${escHtml(song.versionBLabel)}</div>
+                        <audio controls preload="none">
+                            <source src="${escHtml(song.versionBUrl)}" type="${bType}">
+                            Your browser does not support audio playback.
+                        </audio>
+                        <button class="vote-btn" onclick="castVote('${escHtml(song.id)}', 'B')">Vote for ${escHtml(song.versionBLabel)}</button>
+                    </div>
+                </div>
+            </div>`;
+        }).join('');
+    }
+
+    // ── Cast a vote ──
+    function castVote(song, version) {
+        if (IS_PREVIEW) return;
+        votes[song] = version;
+
+        const songObj = activeSongs.find(s => s.id === song);
+        const aLabel  = songObj ? songObj.versionALabel : 'Version A';
+        const bLabel  = songObj ? songObj.versionBLabel : 'Version B';
+
+        ['A', 'B'].forEach(v => {
+            const box = document.getElementById(song + '-' + v + '-box');
+            if (!box) return;
+            const btn   = box.querySelector('.vote-btn');
+            const label = v === 'A' ? aLabel : bLabel;
+            if (v === version) {
+                box.classList.add('selected');
+                btn.classList.add('voted');
+                btn.textContent = '✓ Your Vote';
+            } else {
+                box.classList.remove('selected');
+                btn.classList.remove('voted');
+                btn.textContent = 'Vote for ' + label;
+            }
+        });
+
+        updateProgress();
+    }
+
+    // ── Progress bar ──
+    function updateProgress() {
+        const total = activeSongs.length;
+        const count = Object.keys(votes).length;
+        const pct   = total > 0 ? Math.round((count / total) * 100) : 0;
+
+        document.getElementById('progress-bar').style.width = pct + '%';
+        document.getElementById('progress-label').textContent =
+            count + ' of ' + total + ' song' + (total === 1 ? '' : 's') + ' voted';
+
+        document.getElementById('submit-btn').disabled = (count < total);
+        if (count >= total) {
+            document.getElementById('submit-msg').textContent =
+                "You've voted on all songs — ready to submit!";
+        }
+    }
+
+    // ── Submit votes ──
+    function submitVotes() {
+        if (IS_PREVIEW) return;
+        const btn = document.getElementById('submit-btn');
+        const msg = document.getElementById('submit-msg');
+
+        btn.disabled    = true;
+        btn.textContent = 'Sending…';
+        msg.textContent = '';
+
+        const body = new FormData();
+        body.append('email', voterEmail);
+        body.append('_subject', 'Listening Room Vote — Hello Texas Records');
+        activeSongs.forEach(song => body.append(song.title, votes[song.id] || 'no vote'));
+
+        fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+            method:  'POST',
+            body:    body,
+            headers: { 'Accept': 'application/json' }
+        })
+        .then(r => {
+            if (r.ok) {
+                // Save vote under current session ID
+                const stored = JSON.parse(localStorage.getItem('htr_data') || '{}');
+                const voted  = stored.voted || [];
+                voted.push(voterEmail);
+                localStorage.setItem('htr_data', JSON.stringify({ sessionId: stored.sessionId, voted }));
+
+                document.getElementById('progress-wrap').style.display   = 'none';
+                document.getElementById('songs-container').style.display = 'none';
+                document.getElementById('submit-section').style.display  = 'none';
+                document.getElementById('thank-you').style.display       = 'block';
+            } else {
+                msg.textContent = 'Something went wrong. Please try again.';
+                btn.disabled    = false;
+                btn.textContent = 'Submit My Votes';
+            }
+        })
+        .catch(() => {
+            msg.textContent = 'Connection error. Please try again.';
+            btn.disabled    = false;
+            btn.textContent = 'Submit My Votes';
+        });
+    }
+
+    // ── HTML escape ──
+    function escHtml(str) {
+        return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    // ── Fallback songs (used only if JSONBin is not yet configured) ──
+    const FALLBACK_SONGS = [
+        {
+            id: 'all-my-life', title: 'All My Life', active: true,
+            versionALabel: 'Version A',
+            versionAUrl: 'https://www.dropbox.com/scl/fi/zhu66elqhot2u9nsxim0r/All-My-Life-PC-Version.mp3?rlkey=7lkcj7h8eqigmdcer0j5qqxvf&raw=1',
+            versionBLabel: 'Version B',
+            versionBUrl: 'https://www.dropbox.com/scl/fi/973hss7x224yjup8lxqvd/All-My-Life.mp3?rlkey=oq5eemeoak2vt9etdj8466kzt&raw=1'
+        },
+        {
+            id: 'text-from-god', title: 'Text From God', active: true,
+            versionALabel: 'Version A',
+            versionAUrl: 'https://www.dropbox.com/scl/fi/t1glm509kl9exztsxgdd5/Avery-Ivey-A-Soft-Place-to-Fall-08-Text-from-God-Master.wav?rlkey=4jome1y54pmmw61bz342ydg5o&raw=1',
+            versionBLabel: 'Version B',
+            versionBUrl: 'https://www.dropbox.com/scl/fi/3fitlseguukbyl321ifje/Avery-Ivey-A-Soft-Place-to-Fall-Non-Album-Cut-14-Text-from-God-Master-v11-Male-Version.wav?rlkey=fpooig4xpnytmmk32fkg0wzpx&raw=1'
+        }
+    ];
+</script>
+
+</body>
+</html>
