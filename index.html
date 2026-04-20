@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XC39X7LFRH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XC39X7LFRH');
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sawyer Price — Red Dirt Country</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --black:   #0C0A07;
+  --ink:     #131109;
+  --warm:    #1A1610;
+  --earth:   #241E14;
+  --gold:    #C4892A;
+  --gold-lt: #DCA84A;
+  --rust:    #9B4A1A;
+  --cream:   #F0E8D4;
+  --dust:    #9A8E78;
+  --white:   #F8F2E6;
+}
+html { scroll-behavior: smooth; }
+body {
+  background: var(--black);
+  color: var(--cream);
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.75;
+  overflow-x: hidden;
+}
+
+/* ── NAV ─────────────────────────────────────────────────────────────────── */
+#topnav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2.5rem; height: 64px;
+  background: transparent; border-bottom: 1px solid transparent;
+  transition: background 0.4s, border-color 0.4s;
+}
+#topnav.scrolled {
+  background: rgba(12,10,7,0.95);
+  border-color: rgba(196,137,42,0.18);
+  backdrop-filter: blur(12px);
+}
+.nav-wordmark {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem; font-weight: 400; letter-spacing: 0.08em;
+  color: var(--cream); text-decoration: none;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+}
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  color: var(--dust); text-decoration: none;
+  font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--gold-lt); }
+
+/* ── HERO ─────────────────────────────────────────────────────────────────── */
+.hero {
+  position: relative; height: 100vh; min-height: 620px;
+  display: flex; align-items: flex-end; overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background: url('https://raw.githubusercontent.com/SteveP999/Sawyer-Price/main/sawyer-hero-background.png') center 30% / cover no-repeat;
+}
+.hero-vignette {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(12,10,7,0.3) 0%, rgba(12,10,7,0.05) 40%, rgba(12,10,7,0.05) 55%, rgba(12,10,7,0.97) 100%),
+    linear-gradient(to right, rgba(12,10,7,0.55) 0%, transparent 55%);
+}
+.hero-content {
+  position: relative; z-index: 2;
+  padding: 0 3.5rem 5rem; max-width: 560px;
+}
+.hero-name {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 400; line-height: 1; letter-spacing: 0.02em;
+  color: var(--white); margin-bottom: 0.3rem;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.7);
+}
+.hero-sub {
+  font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1.8rem;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+}
+.hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+.cta-primary {
+  background: var(--gold); color: var(--black); border: none;
+  padding: 0.8rem 1.9rem;
+  font-family: 'Source Sans 3', sans-serif; font-size: 0.7rem; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+.cta-primary:hover { background: var(--gold-lt); transform: translateY(-1px); }
+.cta-secondary {
+  background: transparent; color: var(--cream);
+  border: 1px solid rgba(196,137,42,0.4);
+  padding: 0.8rem 1.9rem; text-decoration: none; display: inline-block;
+  font-family: 'Source Sans 3', sans-serif; font-size: 0.7rem; font-weight: 300;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  transition: border-color 0.2s, color 0.2s;
+}
+.cta-secondary:hover { border-color: var(--gold); color: var(--gold-lt); }
+
+/* ── SECTION CHROME ──────────────────────────────────────────────────────── */
+.section-header { text-align: center; padding: 5rem 2rem 3.5rem; }
+.section-eyebrow {
+  font-size: 0.62rem; letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 0.75rem;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 400;
+  color: var(--white); letter-spacing: 0.02em;
+}
+.dust-rule {
+  width: 44px; height: 1px; background: var(--gold);
+  margin: 1.2rem auto 0; opacity: 0.55;
+}
+
+/* ── BIO ──────────────────────────────────────────────────────────────────── */
+#bio { background: var(--ink); padding-bottom: 5rem; }
+.bio-inner {
+  max-width: 660px; margin: 0 auto; padding: 0 2rem; text-align: center;
+}
+.bio-inner p { color: var(--dust); line-height: 1.95; font-size: 0.95rem; margin-bottom: 1.2rem; }
+
+/* ── PHOTO STRIP ─────────────────────────────────────────────────────────── */
+.photo-strip {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  height: 340px; overflow: hidden;
+}
+.photo-strip-img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  filter: brightness(0.8) saturate(0.9);
+  transition: filter 0.4s, transform 0.5s;
+}
+.photo-strip-img:hover { filter: brightness(1) saturate(1.1); transform: scale(1.03); }
+
+/* ── SINGLES GRID ─────────────────────────────────────────────────────────── */
+#singles { background: var(--warm); padding: 5rem 0; border-top: 1px solid rgba(196,137,42,0.1); }
+.singles-grid {
+  max-width: 1040px; margin: 0 auto; padding: 0 2.5rem;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+}
+.single-card { cursor: pointer; }
+.single-img-wrap { position: relative; overflow: hidden; aspect-ratio: 1; }
+.single-img-wrap img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.45s, filter 0.4s; filter: brightness(0.82) saturate(0.95);
+}
+.single-card:hover .single-img-wrap img { transform: scale(1.04); filter: brightness(1) saturate(1.1); }
+.single-overlay {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  background: rgba(12,10,7,0); transition: background 0.3s;
+}
+.single-card:hover .single-overlay { background: rgba(12,10,7,0.35); }
+.single-play-btn {
+  width: 56px; height: 56px; border: 2px solid var(--gold);
+  background: rgba(12,10,7,0.55); color: var(--gold); font-size: 1.1rem;
+  display: flex; align-items: center; justify-content: center; cursor: pointer;
+  opacity: 0; transform: scale(0.8); transition: opacity 0.25s, transform 0.25s;
+}
+.single-card:hover .single-play-btn,
+.single-play-btn.playing { opacity: 1; transform: scale(1); }
+.single-info { padding: 1rem 0 0; }
+.single-title {
+  font-family: 'Playfair Display', serif; font-size: 1.2rem; font-style: italic;
+  color: var(--white); margin-bottom: 0.25rem; line-height: 1.3;
+}
+.single-sub {
+  font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--dust); opacity: 0.65;
+}
+.single-badge {
+  display: inline-block; font-size: 0.55rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--gold);
+  border: 1px solid rgba(196,137,42,0.4); padding: 0.18rem 0.6rem;
+  margin-left: 0.5rem; vertical-align: middle;
+}
+
+/* ── ALBUM ────────────────────────────────────────────────────────────────── */
+#album { background: var(--earth); padding: 5rem 0; border-top: 1px solid rgba(196,137,42,0.1); }
+.album-layout {
+  max-width: 1040px; margin: 0 auto; padding: 0 2.5rem;
+  display: grid; grid-template-columns: 380px 1fr; gap: 4.5rem; align-items: start;
+}
+.album-cover {
+  width: 100%; aspect-ratio: 1; object-fit: cover; display: block;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.7), 0 0 0 1px rgba(196,137,42,0.1);
+}
+.album-badge {
+  display: inline-block; font-size: 0.58rem; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--gold);
+  border: 1px solid rgba(196,137,42,0.4); padding: 0.25rem 0.75rem; margin-bottom: 1.2rem;
+}
+.album-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 400; font-style: italic;
+  color: var(--white); line-height: 1.15; margin-bottom: 0.4rem;
+}
+.album-artist {
+  font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--dust); margin-bottom: 1.2rem;
+}
+.album-desc { color: var(--dust); font-size: 0.92rem; line-height: 1.85; margin-bottom: 2rem; max-width: 460px; }
+.stream-row { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-bottom: 2.2rem; }
+.stream-btn {
+  font-size: 0.65rem; letter-spacing: 0.13em; text-transform: uppercase;
+  color: var(--cream); text-decoration: none;
+  border: 1px solid rgba(196,137,42,0.28); padding: 0.45rem 1.1rem;
+  transition: border-color 0.2s, color 0.2s;
+}
+.stream-btn:hover { border-color: var(--gold); color: var(--gold-lt); }
+.tracklist { border-top: 1px solid rgba(196,137,42,0.12); }
+.track-row {
+  display: grid; grid-template-columns: 2rem 1fr auto;
+  align-items: center; gap: 0.75rem; padding: 0.8rem 0;
+  border-bottom: 1px solid rgba(196,137,42,0.07); transition: background 0.2s;
+}
+.track-row:hover { background: rgba(196,137,42,0.04); }
+.track-num { font-size: 0.65rem; color: var(--dust); opacity: 0.4; text-align: right; font-family: 'Playfair Display', serif; }
+.track-title { font-size: 0.9rem; color: var(--cream); }
+.track-badge {
+  font-size: 0.55rem; letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 0.18rem 0.55rem; color: var(--gold); border: 1px solid rgba(196,137,42,0.38);
+}
+.track-play-btn {
+  background: transparent; border: 1px solid rgba(196,137,42,0.3);
+  color: var(--gold); width: 28px; height: 28px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-size: 0.6rem; flex-shrink: 0;
+  transition: background 0.2s, border-color 0.2s;
+}
+.track-play-btn:hover { background: rgba(196,137,42,0.12); border-color: var(--gold); }
+.track-play-btn.playing { background: rgba(196,137,42,0.18); border-color: var(--gold-lt); }
+.track-play-btn.disabled { opacity: 0.22; cursor: default; pointer-events: none; }
+
+/* ── FIXED PLAYER ─────────────────────────────────────────────────────────── */
+#player {
+  display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+  background: rgba(12,10,7,0.97); border-top: 1px solid rgba(196,137,42,0.22);
+  backdrop-filter: blur(16px);
+  grid-template-columns: auto 1fr auto; align-items: center;
+  gap: 1.5rem; padding: 0.8rem 2rem;
+  transform: translateY(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+}
+#player.visible { transform: translateY(0); }
+.p-info { display: flex; align-items: center; gap: 1rem; min-width: 0; }
+.p-thumb { width: 42px; height: 42px; object-fit: cover; border: 1px solid rgba(196,137,42,0.2); flex-shrink: 0; }
+.p-title { font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.95rem; color: var(--white); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.p-sub { font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dust); opacity: 0.55; }
+.p-controls { display: flex; align-items: center; flex-direction: column; flex: 1; gap: 0.5rem; min-width: 0; }
+.p-btn-row { display: flex; align-items: center; gap: 1.2rem; }
+.p-btn { background: transparent; border: none; color: var(--dust); cursor: pointer; font-size: 0.9rem; padding: 0.25rem; transition: color 0.2s; }
+.p-btn:hover { color: var(--gold-lt); }
+#p-playbtn {
+  width: 36px; height: 36px; border: 1px solid rgba(196,137,42,0.5);
+  background: transparent; color: var(--gold); cursor: pointer; font-size: 0.8rem;
+  display: flex; align-items: center; justify-content: center; transition: background 0.2s;
+}
+#p-playbtn:hover { background: rgba(196,137,42,0.12); }
+.p-progress { display: flex; align-items: center; gap: 0.75rem; width: 100%; }
+.p-time { font-size: 0.6rem; color: var(--dust); opacity: 0.55; white-space: nowrap; }
+#p-bar { flex: 1; height: 3px; background: rgba(196,137,42,0.15); cursor: pointer; position: relative; }
+#p-fill { height: 100%; width: 0%; background: linear-gradient(to right, var(--gold), var(--gold-lt)); pointer-events: none; }
+.p-right { display: flex; align-items: center; gap: 1rem; }
+#p-vol { width: 72px; accent-color: var(--gold); }
+#p-close { background: transparent; border: none; color: var(--dust); cursor: pointer; font-size: 1rem; opacity: 0.5; transition: opacity 0.2s; }
+#p-close:hover { opacity: 1; }
+
+/* ── FOOTER ──────────────────────────────────────────────────────────────── */
+footer {
+  background: var(--black); border-top: 1px solid rgba(196,137,42,0.1);
+  padding: 4rem 2rem 3rem; text-align: center;
+}
+.foot-name {
+  font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 400;
+  letter-spacing: 0.08em; color: var(--cream); margin-bottom: 0.4rem;
+}
+.foot-label {
+  font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--dust); opacity: 0.4; margin-bottom: 1.5rem;
+}
+.foot-links { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; }
+.foot-links a {
+  font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--dust); text-decoration: none; opacity: 0.42; transition: opacity 0.2s, color 0.2s;
+}
+.foot-links a:hover { opacity: 1; color: var(--gold-lt); }
+
+/* ── RESPONSIVE ──────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .album-layout { grid-template-columns: 1fr; gap: 2rem; }
+  .album-cover { max-width: 300px; margin: 0 auto; }
+  .singles-grid { grid-template-columns: 1fr; max-width: 420px; }
+  .photo-strip { grid-template-columns: 1fr; height: auto; }
+  .photo-strip-img { height: 260px; }
+  .hero-content { padding: 0 1.8rem 3.5rem; }
+  #player { grid-template-columns: 1fr; }
+  .p-info { display: none; }
+  #latest-single > div:last-child { grid-template-columns: 1fr !important; }
+  #latest-single #latest-cover { max-width: 280px; margin: 0 auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="topnav">
+  <a href="#" class="nav-wordmark">Sawyer Price</a>
+  <ul class="nav-links">
+    <li><a href="#bio">About</a></li>
+    <li><a href="#singles">Singles</a></li>
+    <li><a href="#album">Album</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-vignette"></div>
+  <div class="hero-content">
+    <h1 class="hero-name">Sawyer<br>Price</h1>
+    <div class="hero-sub">Red Dirt Country &nbsp;·&nbsp; Hello Texas Records</div>
+    <div class="hero-ctas">
+      <button class="cta-primary" onclick="playTrack('slow')">&#9654;&nbsp; Play Slow Like Sunday</button>
+      <a href="#album" class="cta-secondary">Discography</a>
+    </div>
+  </div>
+</section>
+
+<!-- BIO -->
+<section id="bio">
+  <div class="section-header">
+    <div class="section-eyebrow">About</div>
+    <h2 class="section-title">Sawyer Price</h2>
+    <div class="dust-rule"></div>
+  </div>
+  <div class="bio-inner">
+    <p>Sawyer Price makes country music the way country music used to get made — unhurried, honest, built around stories that actually happened to somebody.</p>
+    <p>His sound lives somewhere between Red Dirt Texas and front porch folk: acoustic at the root, full band when it earns it, lyrics that don't try too hard because they don't need to. He writes the kind of songs that sound like they've always existed.</p>
+    <p>Signed to Hello Texas Records, his debut album <em>Unrushed</em> is exactly what the title says — music made on its own time, in its own way, for people who've got somewhere to be but know the drive is the point.</p>
+  </div>
+</section>
+
+
+<!-- LATEST SINGLE (large featured) -->
+<section id="latest-single" style="background:var(--earth);padding:5rem 0;border-top:1px solid rgba(196,137,42,0.25);border-bottom:1px solid rgba(196,137,42,0.12);">
+  <div style="text-align:center;padding:0 2rem 3.5rem;">
+    <div style="font-size:0.62rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;">Latest Single</div>
+    <h2 id="latest-section-title" style="font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,2.8rem);font-weight:400;color:var(--white);letter-spacing:0.02em;">All My Life</h2>
+    <div style="width:48px;height:1px;background:var(--gold);margin:1.2rem auto 0;opacity:0.5;"></div>
+  </div>
+  <div style="max-width:1040px;margin:0 auto;padding:0 2.5rem;display:grid;grid-template-columns:360px 1fr;gap:4.5rem;align-items:center;">
+    <div>
+      <img id="latest-cover" src="https://raw.githubusercontent.com/SteveP999/Sawyer-Price/main/sawyer-price-all-my-life-cover.png" alt="All My Life" style="width:100%;aspect-ratio:1;object-fit:cover;display:block;box-shadow:0 0 50px rgba(196,137,42,0.15),0 24px 64px rgba(0,0,0,0.8);">
+    </div>
+    <div style="padding-top:0.5rem;">
+      <div style="display:inline-block;font-size:0.55rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(196,137,42,0.4);padding:0.35rem 0.9rem;margin-bottom:1.4rem;">Latest Single</div>
+      <h2 id="latest-title" style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.5rem);font-weight:400;color:var(--white);line-height:1.2;margin-bottom:0.4rem;">All My Life</h2>
+      <div style="font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--dust);margin-bottom:2rem;">Sawyer Price &nbsp;&middot;&nbsp; Unrushed</div>
+      <button onclick="playTrack('aml')" style="display:inline-flex;align-items:center;gap:0.75rem;background:transparent;color:var(--gold);border:1px solid rgba(196,137,42,0.5);cursor:pointer;padding:0.85rem 2rem;font-family:'Source Sans 3',sans-serif;font-size:0.7rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;transition:border-color 0.2s,color 0.2s;">&#9654;&nbsp; Play Now</button>
+    </div>
+  </div>
+</section>
+
+<!-- SINGLES -->
+<section id="singles">
+  <div class="section-header">
+    <div class="section-eyebrow">Singles</div>
+    <h2 class="section-title">Latest Releases</h2>
+    <div class="dust-rule"></div>
+  </div>
+  <div class="singles-grid">
+    <div class="single-card" onclick="playTrack('aml')">
+      <div class="single-img-wrap">
+        <img src="https://raw.githubusercontent.com/SteveP999/Sawyer-Price/main/sawyer-price-all-my-life-cover.png" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s,filter 0.4s;">
+        <div class="single-overlay"><button class="single-play-btn" id="splay_aml">&#9654;</button></div>
+      </div>
+      <div class="single-info">
+        <div class="single-title">All My Life</div>
+        <div class="single-sub">Unrushed <span class="single-badge">New</span></div>
+      </div>
+    </div>
+    <div class="single-card" onclick="playTrack('btw')">
+      <div class="single-img-wrap">
+        <img src="https://raw.githubusercontent.com/SteveP999/Sawyer-Price/main/sawyer-price-better-than-i-was-cover.png" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s,filter 0.4s;">
+        <div class="single-overlay"><button class="single-play-btn" id="splay_btw">&#9654;</button></div>
+      </div>
+      <div class="single-info">
+        <div class="single-title">Better Than I Was</div>
+        <div class="single-sub">Single</div>
+      </div>
+    </div>
+    <div class="single-card" onclick="playTrack('mbm')">
+      <div class="single-img-wrap">
+        <img src="https://raw.githubusercontent.com/SteveP999/Sawyer-Price/main/Sawyer%20Price%20-%20Miles%20Between%20Mistakes%20-%20Album%20Cover.png" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s,filter 0.4s;">
+        <div class="single-overlay"><button class="single-play-btn" id="splay_mbm">&#9654;</button></div>
+      </div>
+      <div class="single-info">
+        <div class="single-title">Miles Between Mistakes</div>
+        <div class="single-sub">Single</div>
+      </div>
+    </div>
+        <div class="single-card" onclick="playTrack('esiy')">
+      <div class="single-img-wrap">
+        <img src="https://raw.githubusercontent.com/SteveP999/Sawyer-Price/main/Every%20Song%20is%20you%20-%201x1%20-%20text.png" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s,filter 0.4s;">
+        <div class="single-overlay"><button class="single-play-btn" id="splay_esiy">&#9654;</button></div>
+      </div>
+      <div class="single-info">
+        <div class="single-title">Every Song is You</div>
+        <div class="single-sub">Single</div>
+      </div>
+    </div>
+        <div class="single-card" onclick="playTrack('slow')">
+      <div class="single-img-wrap">
+        <img src="https://raw.githubusercontent.com/SteveP999/Sawyer-Price/main/Sawyer%20Price%20-%20Slow%20Like%20Sunday%20%28Record%20Cover%29.png" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s,filter 0.4s;">
+        <div class="single-overlay"><button class="single-play-btn" id="splay_slow">&#9654;</button></div>
+      </div>
+      <div class="single-info">
+        <div class="single-title">Slow Like Sunday</div>
+        <div class="single-sub">Single</div>
+      </div>
+    </div>
+    <div class="single-card" onclick="playTrack('eotw')">
+      <div class="single-img-wrap">
+        <img src="https://raw.githubusercontent.com/SteveP999/Sawyer-Price/main/It%27s%20Not%20the%20End%20of%20the%20World%20-%20Record%20Cover.png" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s,filter 0.4s;">
+        <div class="single-overlay"><button class="single-play-btn" id="splay_eotw">&#9654;</button></div>
+      </div>
+      <div class="single-info">
+        <div class="single-title">It's Not the End of the World</div>
+        <div class="single-sub">Single</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ALBUM -->
+<section id="album">
+  <div class="section-header">
+    <div class="section-eyebrow">Debut Album</div>
+    <h2 class="section-title">Unrushed</h2>
+    <div class="dust-rule"></div>
+  </div>
+  <div class="album-layout">
+    <div>
+      <img src="https://raw.githubusercontent.com/SteveP999/Sawyer-Price/main/sawyer-album-cover.png" alt="Unrushed" class="album-cover">
+    </div>
+    <div style="padding-top: 0.5rem;">
+      <div class="album-badge">Debut Album</div>
+      <h2 class="album-title">Unrushed</h2>
+      <div class="album-artist">Sawyer Price</div>
+      <p class="album-desc">Music made at its own pace, on its own terms. Every track on <em>Unrushed</em> sounds like a Saturday afternoon that turned into something worth remembering.</p>
+      <div class="stream-row">
+        <a href="#" class="stream-btn">&#9654; Spotify</a>
+        <a href="#" class="stream-btn">&#9834; Apple Music</a>
+        <a href="#" class="stream-btn">&#9654; YouTube</a>
+      </div>
+      <div class="tracklist">
+        <div class="track-row">
+          <span class="track-num">01</span>
+          <span class="track-title">Every Song is You</span>
+          <button class="track-play-btn" onclick="playTrack('esiy')">&#9654;</button>
+        </div>
+        <div class="track-row">
+          <span class="track-num">02</span>
+          <span class="track-title">Slow Like Sunday</span>
+          <button class="track-play-btn" onclick="playTrack('slow')">&#9654;</button>
+        </div>
+        <div class="track-row">
+          <span class="track-num">03</span>
+          <span class="track-title">It's Not the End of the World</span>
+          <button class="track-play-btn" onclick="playTrack('eotw')">&#9654;</button>
+        </div>
+        <div class="track-row">
+          <span class="track-num">04</span>
+          <span class="track-title">Miles Between Mistakes</span>
+          <button class="track-play-btn" onclick="playTrack('mbm')">&#9654;</button>
+        </div>
+        <div class="track-row">
+          <span class="track-num">05</span>
+          <span class="track-title">Better Than I Was</span>
+          <button class="track-play-btn" onclick="playTrack('btw')">&#9654;</button>
+        </div>
+        <div class="track-row">
+          <span class="track-num">06</span>
+          <span class="track-title">All My Life</span>
+          <button class="track-play-btn" onclick="playTrack('aml')">&#9654;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO STRIP -->
+<div class="photo-strip">
+  <img src="https://raw.githubusercontent.com/SteveP999/Sawyer-Price/main/sawyer-photo-1.png" alt="Sawyer Price" class="photo-strip-img">
+  <img src="https://raw.githubusercontent.com/SteveP999/Sawyer-Price/main/sawyer-photo-2.png" alt="Sawyer Price" class="photo-strip-img" style="object-position: center 20%;">
+  <img src="https://raw.githubusercontent.com/SteveP999/Sawyer-Price/main/sawyer-photo-3.png" alt="Sawyer Price" class="photo-strip-img">
+</div>
+
+<!-- FIXED PLAYER -->
+<audio id="audio" playsinline preload="none"></audio>
+<div id="player">
+  <div class="p-info">
+    <img id="p-thumb" src="https://raw.githubusercontent.com/SteveP999/Sawyer-Price/main/sawyer-player-thumb.png" alt="" class="p-thumb">
+    <div>
+      <div id="p-title" class="p-title">—</div>
+      <div id="p-sub" class="p-sub">Sawyer Price</div>
+    </div>
+  </div>
+  <div class="p-controls">
+    <div class="p-btn-row">
+      <button class="p-btn" id="p-prev">&#9664;&#9664;</button>
+      <button id="p-playbtn">&#9654;</button>
+      <button class="p-btn" id="p-next">&#9654;&#9654;</button>
+    </div>
+    <div class="p-progress">
+      <span class="p-time" id="p-cur">0:00</span>
+      <div id="p-bar"><div id="p-fill"></div></div>
+      <span class="p-time" id="p-dur">0:00</span>
+    </div>
+  </div>
+  <div class="p-right">
+    <input type="range" id="p-vol" min="0" max="1" step="0.02" value="0.85">
+    <button id="p-close">&#x2715;</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-name">Sawyer Price</div>
+  <div class="foot-label">Hello Texas Records</div>
+  <div class="foot-links">
+    <a href="#">Spotify</a>
+    <a href="#">Apple Music</a>
+    <a href="#">YouTube</a>
+    <a href="#">Instagram</a>
+    <a href="#">Facebook</a>
+  </div>
+</footer>
+
+<script>
+const TRACKS = {
+  aml:  { title: 'All My Life',                   sub: 'Unrushed',      src: 'https://www.dropbox.com/scl/fi/2bme49g8ftejf9e3recpn/Sawyer-Price-All-My-Life-Mastered-MP3.mp3?rlkey=k1ob4d11k6j9lw7axx42mwaz7&raw=1' },
+  btw:  { title: 'Better Than I Was',             sub: 'Unrushed',      src: 'https://www.dropbox.com/scl/fi/fk5xta94xxst5pvy3p2vu/Better-Than-I-Was-Mastered-MP3.mp3?rlkey=8djl84bq7ostjo6styngxdjph&raw=1' },
+  mbm:  { title: 'Miles Between Mistakes',        sub: 'Unrushed',      src: 'https://www.dropbox.com/scl/fi/hikevhxn35l202bvyr9h4/Miles-Between-Mistakes-Mastered-MP3.mp3?rlkey=ep2g8nkmr5xn115b6sdi4p0cb&raw=1' },
+  esiy: { title: 'Every Song is You',             sub: 'Unrushed',      src: 'https://www.dropbox.com/scl/fi/emwh6p45i8l2fydaz0o8c/V3-Every-Song-Is-You-Mastered-MP3-411.mp3?rlkey=17b87sw5gzelujbblmm99euay&raw=1' },
+  slow: { title: 'Slow Like Sunday',              sub: 'Unrushed',      src: 'https://www.dropbox.com/scl/fi/bitpjaaarrwfnd0vmunzw/Slow-Like-Sunday-v01-Mastered-mp3.mp3?rlkey=exmyeq79diwehdpa9ki8r4qx2&raw=1' },
+  eotw: { title: "It's Not the End of the World", sub: 'Unrushed',      src: 'https://www.dropbox.com/scl/fi/9dmyy1dgdahz0br6pkz0x/It-s-Not-the-End-of-the-World-Mastered-MP3.mp3?rlkey=zyg5ujza84d2udn1wfrbpwoe8&raw=1' },
+};
+const ORDER = ['aml', 'btw', 'mbm', 'esiy', 'slow', 'eotw'];
+let cur = null;
+const audio  = document.getElementById('audio');
+const player = document.getElementById('player');
+const pThumb = document.getElementById('p-thumb');
+const thumbMap = {
+  aml:  { src: 'https://raw.githubusercontent.com/SteveP999/Sawyer-Price/main/sawyer-price-all-my-life-cover.png' },
+  btw:  { src: 'https://raw.githubusercontent.com/SteveP999/Sawyer-Price/main/sawyer-price-better-than-i-was-cover.png' },
+  mbm:  { src: 'https://raw.githubusercontent.com/SteveP999/Sawyer-Price/main/Sawyer%20Price%20-%20Miles%20Between%20Mistakes%20-%20Album%20Cover.png' },
+  esiy: { src: 'https://raw.githubusercontent.com/SteveP999/Sawyer-Price/main/Every%20Song%20is%20you%20-%201x1%20-%20text.png' },
+  slow: { src: 'https://raw.githubusercontent.com/SteveP999/Sawyer-Price/main/Sawyer%20Price%20-%20Slow%20Like%20Sunday%20%28Record%20Cover%29.png' },
+  eotw: { src: 'https://raw.githubusercontent.com/SteveP999/Sawyer-Price/main/It%27s%20Not%20the%20End%20of%20the%20World%20-%20Record%20Cover.png' },
+};
+
+function fmt(s) {
+  if (isNaN(s) || s === Infinity) return '0:00';
+  const m = Math.floor(s/60), sec = Math.floor(s%60);
+  return m + ':' + (sec < 10 ? '0' : '') + sec;
+}
+function setAllBtns(id, playing) {
+  document.querySelectorAll('.track-play-btn:not(.disabled)').forEach(b => {
+    const tid = b.getAttribute('onclick')?.match(/'([^']+)'/)?.[1];
+    if (!tid) return;
+    b.innerHTML = (tid === id && playing) ? '&#9646;&#9646;' : '&#9654;';
+    b.classList.toggle('playing', tid === id && playing);
+  });
+  document.querySelectorAll('.single-play-btn').forEach(b => {
+    const tid = b.closest('.single-card')?.getAttribute('onclick')?.match(/'([^']+)'/)?.[1];
+    b.innerHTML = (tid === id && playing) ? '&#9646;&#9646;' : '&#9654;';
+    b.classList.toggle('playing', tid === id && playing);
+  });
+  document.getElementById('p-playbtn').innerHTML = playing ? '&#9646;&#9646;' : '&#9654;';
+}
+function playTrack(id) {
+  const t = TRACKS[id];
+  if (!t) return;
+  if (cur === id) {
+    if (audio.paused) { audio.play().catch(()=>{}); setAllBtns(id, true); }
+    else              { audio.pause(); setAllBtns(id, false); }
+    return;
+  }
+  cur = id;
+  audio.removeAttribute('crossorigin');
+  audio.src = t.src;
+  document.getElementById('p-title').textContent = t.title;
+  document.getElementById('p-sub').textContent   = t.sub;
+  if (thumbMap[id]) pThumb.src = thumbMap[id].src;
+  player.style.display = 'grid';
+  setTimeout(() => player.classList.add('visible'), 10);
+  setAllBtns(id, true);
+  audio.load();
+  const pp = audio.play();
+  if (pp !== undefined) {
+    pp.catch(() => {
+      audio.addEventListener('canplaythrough', function onCPT() {
+        audio.removeEventListener('canplaythrough', onCPT);
+        audio.play().catch(()=>{});
+      });
+    });
+  }
+}
+audio.addEventListener('timeupdate', () => {
+  const pct = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
+  document.getElementById('p-fill').style.width = pct + '%';
+  document.getElementById('p-cur').textContent  = fmt(audio.currentTime);
+  document.getElementById('p-dur').textContent  = fmt(audio.duration);
+});
+audio.addEventListener('ended', () => {
+  const i = ORDER.indexOf(cur);
+  if (i < ORDER.length - 1) playTrack(ORDER[i+1]);
+  else setAllBtns(cur, false);
+});
+document.getElementById('p-playbtn').addEventListener('click', () => {
+  if (!cur) return;
+  if (audio.paused) { audio.play().catch(()=>{}); setAllBtns(cur, true); }
+  else              { audio.pause(); setAllBtns(cur, false); }
+});
+document.getElementById('p-prev').addEventListener('click', () => {
+  if (!cur) return;
+  const i = ORDER.indexOf(cur);
+  if (audio.currentTime > 3) { audio.currentTime = 0; return; }
+  if (i > 0) playTrack(ORDER[i-1]);
+});
+document.getElementById('p-next').addEventListener('click', () => {
+  if (!cur) return;
+  const i = ORDER.indexOf(cur);
+  if (i < ORDER.length - 1) playTrack(ORDER[i+1]);
+});
+document.getElementById('p-bar').addEventListener('click', e => {
+  if (!audio.duration) return;
+  const r = e.currentTarget.getBoundingClientRect();
+  audio.currentTime = ((e.clientX - r.left) / r.width) * audio.duration;
+});
+document.getElementById('p-vol').addEventListener('input', e => { audio.volume = e.target.value; });
+document.getElementById('p-close').addEventListener('click', () => {
+  audio.pause(); player.classList.remove('visible');
+  setTimeout(() => player.style.display = 'none', 350);
+  setAllBtns(cur, false); cur = null;
+});
+const nav = document.getElementById('topnav');
+window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); });
+</script>
+
+<script>
+/* ── LATEST SINGLE (auto-updates from latest.json) ─────────────────────── */
+fetch('https://raw.githubusercontent.com/SteveP999/Sawyer-Price/main/latest.json')
+  .then(r => r.json())
+  .then(data => {
+    if (data.title && data.audio) {
+      TRACKS['btw'] = { title: data.title, sub: 'Latest Single', src: data.audio };
+    }
+    const secTitle = document.getElementById('latest-section-title');
+    const latTitle = document.getElementById('latest-title');
+    const latCover = document.getElementById('latest-cover');
+    if (secTitle && data.title) secTitle.textContent = data.title;
+    if (latTitle && data.title) latTitle.textContent = data.title;
+    if (latCover && data.image) latCover.src = data.image;
+    document.querySelectorAll('.single-card').forEach(card => {
+      const titleEl = card.querySelector('.single-title');
+      const subEl   = card.querySelector('.single-sub');
+      if (!titleEl || !subEl) return;
+      const existing = subEl.querySelector('.single-badge');
+      if (existing) existing.remove();
+      if (data.title && titleEl.textContent.trim() === data.title) {
+        subEl.innerHTML = 'Single <span class="single-badge">Latest</span>';
+      }
+    });
+  })
+  .catch(() => {});
+</script>
+
+</body>
+</html>
