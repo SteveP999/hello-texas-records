@@ -757,9 +757,26 @@ input.radio-vol {
         <a href="https://stevep999.github.io/Vincent-Cole/" target="_blank" class="card-btn primary">Artist Site &#8599;</a>
       </div>
     </div>
-    <!-- 15. Stephen Parsons -->
+    <!-- 15. Night Shift -->
     <div class="artist-card">
       <span class="card-number">15</span>
+      <div class="card-logo"><img src="https://raw.githubusercontent.com/SteveP999/Night-Shift/main/night-shift-logo-transparent-background.png" alt="Night Shift"></div>
+      <p class="card-genre">Rock &nbsp;&middot;&nbsp; Hard Rock &nbsp;&middot;&nbsp; Classic Rock</p>
+      <h3 class="card-name">Night Shift</h3>
+      <div class="card-single">
+        <div class="card-single-label">Latest Single</div>
+        <img class="card-single-art" id="art-night-shift" src="https://raw.githubusercontent.com/SteveP999/Night-Shift/main/night-shift-no-rules-tonight-cover.png" alt="No Rules Tonight">
+        <p class="card-single-title" id="latest-night-shift">No Rules Tonight</p>
+        <button class="card-play-btn" id="btn-night-shift" onclick="cardPlay('night-shift')">&#9654; Play</button>
+        <audio id="aud-night-shift" src="https://www.dropbox.com/scl/fi/y095y6udugo5czzvwjk9a/night-shift-no-rules-tonight-mp3.mp3?rlkey=jf20t7501lnj4e3ywn1do39ko&raw=1" preload="none"></audio>
+      </div>
+      <div class="card-actions">
+        <a href="https://night-shift.hellotexasrecords.com" target="_blank" class="card-btn primary">Artist Site &#8599;</a>
+      </div>
+    </div>
+    <!-- 16. Stephen Parsons -->
+    <div class="artist-card">
+      <span class="card-number">16</span>
       <div class="card-logo"><img src="https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/stephen-parsons-logo-transparent-oval.png" alt="Stephen Parsons"></div>
       <p class="card-genre">Christian &nbsp;&middot;&nbsp; Singer-Songwriter</p>
       <h3 class="card-name">Stephen Parsons</h3>
@@ -917,7 +934,9 @@ const HTR_RADIO = [
   { title: 'Slow on My Lips', artist: 'Vincent Cole', album: 'The Cole Standard', src: 'https://www.dropbox.com/scl/fi/lq899f1r95gdgqlhpbdq6/vincent-cole-slow-on-my-lips-mp3-v1.mp3?rlkey=ek8p2mx0x1w3ayxqkie0bix9c&raw=1', image: 'https://raw.githubusercontent.com/SteveP999/Vincent-Cole/main/covers/vincent-cole-slow-on-my-lips-cover.png' },
   { title: 'The Last Song', artist: 'Vincent Cole', album: 'The Cole Standard', src: 'https://www.dropbox.com/scl/fi/mzrz0htmnr3rpkof2sadg/vincent-cole-the-last-song-mp3-v1.mp3?rlkey=vhgd3bjde2k1qli8lkmk07iq3&raw=1', image: 'https://raw.githubusercontent.com/SteveP999/Vincent-Cole/main/covers/vincent-cole-the-last-song-cover.png' },
   { title: 'If Tonight Would Never End', artist: 'Vincent Cole', album: 'The Cole Standard', src: 'https://www.dropbox.com/scl/fi/24kj8kf367r8q0xgeji62/vincent-cole-if-tonight-would-never-end-mp3.mp3?rlkey=hhbv46uxi693qxiwdhb7bhxjz&raw=1', image: 'https://raw.githubusercontent.com/SteveP999/Vincent-Cole/main/covers/vincent-cole-if-tonight-would-never-end-cover.png' },
-  { title: 'Just Watch Me Walk Away', artist: 'Vincent Cole', album: 'The Cole Standard', src: 'https://www.dropbox.com/scl/fi/gt5fe1l7mrp49u5jszvbi/vincent-cole-just-watch-me-walk-away-mp3-v4.mp3?rlkey=zooi7gl31kvkj0g3qts950ouw&raw=1', image: 'https://raw.githubusercontent.com/SteveP999/Vincent-Cole/main/covers/vincent-cole-just-watch-me-walk-away-cover.png' }
+  { title: 'Just Watch Me Walk Away', artist: 'Vincent Cole', album: 'The Cole Standard', src: 'https://www.dropbox.com/scl/fi/gt5fe1l7mrp49u5jszvbi/vincent-cole-just-watch-me-walk-away-mp3-v4.mp3?rlkey=zooi7gl31kvkj0g3qts950ouw&raw=1', image: 'https://raw.githubusercontent.com/SteveP999/Vincent-Cole/main/covers/vincent-cole-just-watch-me-walk-away-cover.png' },
+  // ── Night Shift ──
+  { title: 'No Rules Tonight', artist: 'Night Shift', album: 'No Rules Tonight', src: 'https://www.dropbox.com/scl/fi/y095y6udugo5czzvwjk9a/night-shift-no-rules-tonight-mp3.mp3?rlkey=jf20t7501lnj4e3ywn1do39ko&raw=1', image: 'https://raw.githubusercontent.com/SteveP999/Night-Shift/main/night-shift-no-rules-tonight-cover.png' }
 ];
 
 
@@ -943,6 +962,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ['sawyer-price',   'Sawyer-Price'],
     ['silent-oblivion','Silent-Oblivion'],
     ['vincent-cole',   'Vincent-Cole'],
+    ['night-shift',    'Night-Shift'],
   ];
   repos.forEach(([slug, repo]) => {
     fetch('https://raw.githubusercontent.com/SteveP999/' + repo + '/main/latest.json')
