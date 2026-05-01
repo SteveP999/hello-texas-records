@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTR Listening Room</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --rust:#c8922a;--rust-lt:#e8ad4a;--cream:#e8e0d4;
+  --muted:rgba(232,224,212,0.45);--dark:#0d0c0b;--dark2:#141210;
+  --dark3:#1c1a17;--dark4:#242118;--border:rgba(200,146,42,0.18);
+  --player-h:80px;
+}
+body{font-family:'Barlow',sans-serif;background:var(--dark);color:var(--cream);min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden}
+/* GATE */
+#gate{position:fixed;inset:0;z-index:100;background:var(--dark);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;padding:2rem}
+.gate-logo{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;letter-spacing:.12em;color:var(--rust)}
+.gate-sub{font-family:'Barlow Condensed',sans-serif;letter-spacing:.25em;text-transform:uppercase;font-size:.75rem;color:var(--muted)}
+.gate-box{background:var(--dark3);border:1px solid var(--border);border-radius:12px;padding:2.5rem 3rem;display:flex;flex-direction:column;gap:1.2rem;width:100%;max-width:420px;text-align:center}
+.gate-box h2{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:.08em;color:var(--cream)}
+.gate-box p{font-size:.9rem;color:var(--muted);line-height:1.5}
+.gate-box input[type=email]{background:var(--dark4);border:1px solid var(--border);border-radius:6px;padding:.75rem 1rem;color:var(--cream);font-family:'Barlow',sans-serif;font-size:1rem;width:100%;outline:none;transition:border-color .2s}
+.gate-box input[type=email]:focus{border-color:var(--rust)}
+.gate-box input[type=email]::placeholder{color:var(--muted)}
+#gate-btn{background:var(--rust);color:#0d0c0b;border:none;border-radius:6px;padding:.75rem 1.5rem;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.1em;cursor:pointer;transition:background .2s}
+#gate-btn:hover{background:var(--rust-lt)}
+#gate-err{color:#e05a2b;font-size:.85rem;display:none}
+/* HEADER */
+header{position:sticky;top:0;z-index:50;background:var(--dark2);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:1rem;padding:.75rem 1.5rem;height:58px}
+.hdr-logo{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.1em;color:var(--rust);white-space:nowrap;text-decoration:none}
+.hdr-divider{width:1px;height:28px;background:var(--border);flex-shrink:0}
+.hdr-playlist-name{background:transparent;border:none;border-bottom:1px solid transparent;color:var(--cream);font-family:'Barlow Condensed',sans-serif;font-size:1.05rem;font-weight:600;letter-spacing:.05em;flex:1;min-width:0;outline:none;padding:.25rem .4rem;transition:border-color .2s}
+.hdr-playlist-name:focus{border-bottom-color:var(--rust)}
+.hdr-email{font-size:.78rem;color:var(--muted);white-space:nowrap}
+.hdr-save{background:var(--rust);color:#0d0c0b;border:none;border-radius:5px;padding:.4rem 1rem;font-family:'Bebas Neue',sans-serif;font-size:.95rem;letter-spacing:.08em;cursor:pointer;transition:background .2s;white-space:nowrap}
+.hdr-save:hover{background:var(--rust-lt)}
+.hdr-save.saved{background:#2a6a2a;color:#b8f0b8}
+/* LAYOUT */
+main{flex:1;display:grid;grid-template-columns:1fr 380px;height:calc(100vh - 58px - var(--player-h));overflow:hidden}
+/* CATALOG */
+.catalog-panel{display:flex;flex-direction:column;border-right:1px solid var(--border);overflow:hidden}
+.catalog-toolbar{padding:.85rem 1rem;background:var(--dark2);border-bottom:1px solid var(--border);display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.catalog-toolbar input[type=text]{flex:1;min-width:140px;background:var(--dark4);border:1px solid var(--border);border-radius:5px;padding:.5rem .75rem;color:var(--cream);font-family:'Barlow',sans-serif;font-size:.9rem;outline:none}
+.catalog-toolbar input[type=text]:focus{border-color:var(--rust)}
+.catalog-toolbar input[type=text]::placeholder{color:var(--muted)}
+.catalog-toolbar select{background:var(--dark4);border:1px solid var(--border);border-radius:5px;padding:.5rem .6rem;color:var(--cream);font-family:'Barlow',sans-serif;font-size:.85rem;outline:none;cursor:pointer}
+.catalog-count{font-size:.75rem;color:var(--muted);font-family:'Barlow Condensed',sans-serif;letter-spacing:.05em;white-space:nowrap}
+.catalog-list{flex:1;overflow-y:auto;padding:.4rem 0}
+.catalog-list::-webkit-scrollbar{width:5px}
+.catalog-list::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+.song-row{display:grid;grid-template-columns:44px 1fr auto;align-items:center;gap:.75rem;padding:.5rem 1rem;border-bottom:1px solid rgba(200,146,42,.06);transition:background .15s}
+.song-row:hover{background:var(--dark3)}
+.song-row.playing{background:rgba(200,146,42,.08)}
+.song-thumb-wrap{position:relative;width:44px;height:44px;flex-shrink:0}
+.song-thumb-wrap img{width:44px;height:44px;border-radius:4px;object-fit:cover;display:block;background:var(--dark4)}
+.song-play-overlay{position:absolute;inset:0;background:rgba(0,0,0,.45);border-radius:4px;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .15s;cursor:pointer;color:var(--rust-lt);font-size:1rem}
+.song-row:hover .song-play-overlay,.song-row.playing .song-play-overlay{opacity:1}
+.song-info{min-width:0}
+.song-title{font-family:'Barlow Condensed',sans-serif;font-size:.97rem;font-weight:600;color:var(--cream);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.song-row.playing .song-title{color:var(--rust-lt)}
+.song-meta{font-size:.78rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.song-add{background:transparent;border:1px solid var(--border);border-radius:4px;color:var(--rust);font-size:1.1rem;width:28px;height:28px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s,color .15s;flex-shrink:0}
+.song-add:hover{background:var(--rust);color:#0d0c0b}
+.song-add.in-list{color:var(--muted);border-color:rgba(200,146,42,.1);cursor:default}
+.song-add.in-list:hover{background:transparent;color:var(--muted)}
+/* PLAYLIST */
+.playlist-panel{display:flex;flex-direction:column;background:var(--dark2);overflow:hidden}
+.playlist-header{padding:.85rem 1rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:.5rem}
+.playlist-header h3{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.1em;color:var(--rust)}
+.playlist-stats{font-size:.75rem;color:var(--muted)}
+.playlist-actions{display:flex;gap:.5rem}
+.pl-btn{background:var(--dark4);border:1px solid var(--border);border-radius:5px;color:var(--cream);font-family:'Bebas Neue',sans-serif;font-size:.85rem;letter-spacing:.06em;padding:.35rem .75rem;cursor:pointer;transition:background .15s,color .15s;white-space:nowrap}
+.pl-btn:hover{background:var(--rust);color:#0d0c0b;border-color:var(--rust)}
+.pl-btn.primary{background:var(--rust);color:#0d0c0b;border-color:var(--rust)}
+.pl-btn.primary:hover{background:var(--rust-lt)}
+.playlist-list{flex:1;overflow-y:auto;padding:.4rem 0}
+.playlist-list::-webkit-scrollbar{width:5px}
+.playlist-list::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+.pl-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:.6rem;color:var(--muted);font-size:.88rem;text-align:center;padding:2rem}
+.pl-empty-icon{font-size:2.5rem;opacity:.3}
+.pl-item{display:grid;grid-template-columns:24px 28px 36px 1fr auto;align-items:center;gap:.6rem;padding:.45rem .85rem;border-bottom:1px solid rgba(200,146,42,.06);cursor:grab;transition:background .15s;user-select:none}
+.pl-item:hover{background:var(--dark3)}
+.pl-item.dragging{opacity:.4}
+.pl-item.drag-over{border-top:2px solid var(--rust)}
+.pl-item.playing{background:rgba(200,146,42,.1)}
+.pl-drag{color:var(--muted);font-size:.9rem;cursor:grab}
+.pl-num{font-family:'Barlow Condensed',sans-serif;font-size:.8rem;color:var(--muted);text-align:center}
+.pl-item.playing .pl-num{color:var(--rust)}
+.pl-thumb{width:36px;height:36px;border-radius:3px;object-fit:cover}
+.pl-info{min-width:0;cursor:pointer}
+.pl-title{font-family:'Barlow Condensed',sans-serif;font-size:.9rem;font-weight:600;color:var(--cream);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pl-item.playing .pl-title{color:var(--rust-lt)}
+.pl-artist{font-size:.72rem;color:var(--muted)}
+.pl-remove{background:transparent;border:none;color:var(--muted);font-size:1rem;cursor:pointer;padding:.2rem .3rem;border-radius:3px;line-height:1;transition:color .15s}
+.pl-remove:hover{color:#e05a2b}
+.playlist-footer{padding:.75rem 1rem;border-top:1px solid var(--border);display:flex;gap:.5rem}
+/* PLAYER */
+#player-bar{position:fixed;bottom:0;left:0;right:0;height:var(--player-h);background:var(--dark2);border-top:1px solid var(--border);display:flex;align-items:center;padding:0 1.5rem;gap:1.25rem;z-index:40}
+.pb-art{width:50px;height:50px;border-radius:5px;object-fit:cover;flex-shrink:0;background:var(--dark4)}
+.pb-info{min-width:0;width:180px;flex-shrink:0}
+.pb-title{font-family:'Barlow Condensed',sans-serif;font-size:.95rem;font-weight:600;color:var(--cream);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pb-artist{font-size:.75rem;color:var(--muted)}
+.pb-controls{display:flex;align-items:center;gap:.75rem;flex-shrink:0}
+.pb-btn{background:transparent;border:none;color:var(--cream);font-size:1.1rem;cursor:pointer;padding:.35rem;border-radius:50%;transition:color .15s;display:flex;align-items:center;justify-content:center}
+.pb-btn:hover{color:var(--rust-lt)}
+.pb-play{background:var(--rust);color:#0d0c0b;width:40px;height:40px;border-radius:50%}
+.pb-play:hover{background:var(--rust-lt);color:#0d0c0b}
+.pb-progress{flex:1;display:flex;align-items:center;gap:.6rem}
+.pb-time{font-size:.73rem;color:var(--muted);white-space:nowrap;width:36px;text-align:center}
+.pb-seek{flex:1;-webkit-appearance:none;appearance:none;height:4px;background:var(--dark4);border-radius:2px;cursor:pointer;outline:none;background-image:linear-gradient(var(--rust),var(--rust));background-size:0% 100%;background-repeat:no-repeat}
+.pb-seek::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;background:var(--rust-lt);border-radius:50%;cursor:pointer}
+.pb-vol-wrap{display:flex;align-items:center;gap:.4rem;flex-shrink:0}
+.pb-vol-icon{font-size:.9rem;color:var(--muted)}
+.pb-vol{width:80px;-webkit-appearance:none;appearance:none;height:3px;background:var(--dark4);border-radius:2px;cursor:pointer;outline:none;background-image:linear-gradient(var(--rust),var(--rust));background-size:85% 100%;background-repeat:no-repeat}
+.pb-vol::-webkit-slider-thumb{-webkit-appearance:none;width:10px;height:10px;background:var(--rust-lt);border-radius:50%}
+/* TOAST */
+#toast{position:fixed;bottom:calc(var(--player-h) + 12px);right:1rem;background:var(--dark3);border:1px solid var(--border);border-radius:6px;padding:.6rem 1rem;font-size:.85rem;color:var(--cream);opacity:0;pointer-events:none;transition:opacity .3s;z-index:60}
+#toast.show{opacity:1}
+@media(max-width:700px){main{grid-template-columns:1fr;grid-template-rows:1fr 1fr}.catalog-panel{border-right:none;border-bottom:1px solid var(--border)}.pb-info,.pb-vol-wrap{display:none}}
+</style>
+</head>
+<body>
+<div id="gate">
+  <div class="gate-logo">Hello Texas Records</div>
+  <div class="gate-sub">Listening Room &nbsp;&middot;&nbsp; Members Only</div>
+  <div class="gate-box">
+    <h2>Welcome to the Listening Room</h2>
+    <p>Enter your email to build playlists, save your favorites, and play the full HTR catalog.</p>
+    <input type="email" id="gate-email" placeholder="your@email.com" autocomplete="email">
+    <button id="gate-btn">Enter the Room</button>
+    <div id="gate-err">Please enter a valid email address.</div>
+  </div>
+</div>
+<header>
+  <a class="hdr-logo" href="index.html">&larr; HTR</a>
+  <div class="hdr-divider"></div>
+  <input class="hdr-playlist-name" id="playlist-name" type="text" value="My Playlist" maxlength="60">
+  <div class="hdr-email" id="hdr-email"></div>
+  <button class="hdr-save" id="save-btn" onclick="savePlaylist()">Save</button>
+</header>
+<main>
+  <div class="catalog-panel">
+    <div class="catalog-toolbar">
+      <input type="text" id="search-input" placeholder="Search songs, artists, albums&hellip;" oninput="renderCatalog()">
+      <select id="artist-filter" onchange="renderCatalog()"><option value="">All Artists</option></select>
+      <span class="catalog-count" id="catalog-count"></span>
+    </div>
+    <div class="catalog-list" id="catalog-list"></div>
+  </div>
+  <div class="playlist-panel">
+    <div class="playlist-header">
+      <div>
+        <h3>Playlist</h3>
+        <div class="playlist-stats" id="pl-stats">0 songs</div>
+      </div>
+      <div class="playlist-actions">
+        <button class="pl-btn" onclick="shufflePlaylist()">&harr; Shuffle</button>
+        <button class="pl-btn primary" onclick="playAll()">&#9654; Play All</button>
+      </div>
+    </div>
+    <div class="playlist-list" id="playlist-list"></div>
+    <div class="playlist-footer">
+      <button class="pl-btn" onclick="clearPlaylist()">Clear All</button>
+    </div>
+  </div>
+</main>
+<div id="player-bar">
+  <img class="pb-art" id="pb-art" src="" alt="">
+  <div class="pb-info">
+    <div class="pb-title" id="pb-title">&mdash;</div>
+    <div class="pb-artist" id="pb-artist">Select a song to play</div>
+  </div>
+  <div class="pb-controls">
+    <button class="pb-btn" onclick="prevTrack()" title="Previous">&#9664;&#9664;</button>
+    <button class="pb-btn pb-play" id="pb-play" onclick="togglePlay()">&#9654;</button>
+    <button class="pb-btn" onclick="nextTrack()" title="Next">&#9654;&#9654;</button>
+  </div>
+  <div class="pb-progress">
+    <span class="pb-time" id="pb-cur">0:00</span>
+    <input type="range" class="pb-seek" id="pb-seek" min="0" max="100" step="0.1" value="0" oninput="seek(this.value)">
+    <span class="pb-time" id="pb-dur">0:00</span>
+  </div>
+  <div class="pb-vol-wrap">
+    <span class="pb-vol-icon">&#128266;</span>
+    <input type="range" class="pb-vol" id="pb-vol" min="0" max="1" step="0.02" value="0.85" oninput="setVolume(this.value)">
+  </div>
+</div>
+<div id="toast"></div>
+<script>
+const CATALOG=[
+{id:0,title:'Happily Ever After',artist:'Hello Texas',album:'That Texas Sound',src:'https://www.dropbox.com/scl/fi/hupjoesyytssakywiqkjv/Happily-Ever-After-Mastered-MP3.mp3?rlkey=kp0csfv81xn0wqxidyfg7qn4v&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Hello-Texas/main/hello-texas-happily-ever-after-cover.png'},
+{id:1,title:'Bullets on the Bible',artist:'Hello Texas',album:'That Texas Sound',src:'https://www.dropbox.com/scl/fi/zqd2j3q8qwp0ar6xqqy8l/Bullets-on-the-Bible-Mastered-MP3.mp3?rlkey=xumwau0hjs5mrnnjh1rh2rytd&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Hello-Texas/main/Bullets%20on%20the%20Bible%20%28Album%20Cover%29.png'},
+{id:2,title:'That Texas Sound',artist:'Hello Texas',album:'Single',src:'https://www.dropbox.com/scl/fi/3sc72tdzvu913t0se9567/Hello-Texas-That-Texas-Sound-Released-MP3.mp3?rlkey=b9sybqjdutyplwqmat72bnn82&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Hello-Texas/main/Hello%20Texas%20-%20That%20Texas%20Sound%20%28Cover%29%203000%20x%203000.png'},
+{id:3,title:'Same Damn Band',artist:'Hello Texas',album:'Single',src:'https://www.dropbox.com/scl/fi/emu7122b7nqxd9hz9v5c6/Same-Damn-Band-1.mp3?rlkey=7c9by9hu7rzss5b542nfq2dc9&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Hello-Texas/main/Hello%20Texas%20-%20Same%20Damn%20Band%20%28Cover%29%203000%20x%203000.png'},
+{id:4,title:'Fade Out',artist:'Hello Texas',album:'Single',src:'https://www.dropbox.com/scl/fi/hplti274nd8jvrfc5su1i/Fade-Out-MASTERED-MP3.mp3?rlkey=sy6wkqhe15gtjp7b1tl87i8ni&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Hello-Texas/main/Fade%20Out%20-%20Album%20Cover.png'},
+{id:5,title:'5 Hours 8 Minutes',artist:'Hello Texas',album:'Single',src:'https://www.dropbox.com/scl/fi/pddstqkzmdos6qh2eb4s1/5-Hours-8-Minutes-Acoustic-MP3.mp3?rlkey=mmu4xr3bjpcuiobnr2zzh86tr&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Hello-Texas/main/5%20Hours%208%20Minutes%20-%203000%20x%203000%20Record%20Cover.jpg'},
+{id:6,title:'All Hat No Shit',artist:'Hello Texas',album:'TeXXXas Tales',src:'https://www.dropbox.com/scl/fi/r0o5eulpngk4bc8vrg24z/All-Hat-No-Shit-Mastered-MP3.mp3?rlkey=r7k5x75qyptl0a8skymgldqs5&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Hello-Texas/main/All%20Hat%2C%20No%20Shit%20%28Album%20Cover%29.png'},
+{id:7,title:'F**k Them Fish',artist:'Hello Texas',album:'TeXXXas Tales',src:'https://www.dropbox.com/scl/fi/5mbg7m39b8o9d2266ibqn/FTFish-Explicit-Version-Mastered-MP3.mp3?rlkey=f680osf7p18sdx95ztqn7wm86&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Hello-Texas/main/FTF%20-%20Album%20Cover%20-%203000%20x%203000.png'},
+{id:8,title:'No Hand-Jobs in the Parking Lot',artist:'Hello Texas',album:'TeXXXas Tales',src:'https://www.dropbox.com/scl/fi/i9rul4r1awlw2dahuc41y/Parking-Lot-Mastered-MP3.mp3?rlkey=30hc9af5e6hpkk0yzxjgaz4d5&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Hello-Texas/main/No%20H-Jobs%20n%20the%20Parking%20Lot%20-%20Album%20Cover.png'},
+{id:9,title:'Every Song is You',artist:'Sawyer Price',album:'Single',src:'https://www.dropbox.com/scl/fi/emwh6p45i8l2fydaz0o8c/V3-Every-Song-Is-You-Mastered-MP3-411.mp3?rlkey=17b87sw5gzelujbblmm99euay&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Sawyer-Price/main/Every%20Song%20is%20you%20-%201x1%20-%20text.png'},
+{id:10,title:'Slow Like Sunday',artist:'Sawyer Price',album:'Single',src:'https://www.dropbox.com/scl/fi/bitpjaaarrwfnd0vmunzw/Slow-Like-Sunday-v01-Mastered-mp3.mp3?rlkey=exmyeq79diwehdpa9ki8r4qx2&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Sawyer-Price/main/Slow%20Burn%20-%201x1%20-%20text.png'},
+{id:11,title:'All My Life',artist:'Sawyer Price',album:'Unrushed',src:'https://www.dropbox.com/scl/fi/2bme49g8ftejf9e3recpn/Sawyer-Price-All-My-Life-Mastered-MP3.mp3?rlkey=k1ob4d11k6j9lw7axx42mwaz7&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Sawyer-Price/main/sawyer-price-all-my-life-cover.png'},
+{id:12,title:'Better Than I Was',artist:'Sawyer Price',album:'Unrushed',src:'https://www.dropbox.com/scl/fi/fk5xta94xxst5pvy3p2vu/Better-Than-I-Was-Mastered-MP3.mp3?rlkey=8djl84bq7ostjo6styngxdjph&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Sawyer-Price/main/sawyer-price-better-than-i-was-cover.png'},
+{id:13,title:'Miles Between Mistakes',artist:'Sawyer Price',album:'Single',src:'https://www.dropbox.com/scl/fi/hikevhxn35l202bvyr9h4/Miles-Between-Mistakes-Mastered-MP3.mp3?rlkey=ep2g8nkmr5xn115b6sdi4p0cb&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Sawyer-Price/main/Sawyer%20Price%20-%20Miles%20Between%20Mistakes%20-%20Album%20Cover.png'},
+{id:14,title:'Cut the Line',artist:'Vanta',album:'Signal',src:'https://www.dropbox.com/scl/fi/kpqpw6x42mlhcn2gtgqka/Cut-the-Line-Mastered-MP3.mp3?rlkey=p98ux0qljqvko46toju9qm125&raw=1',image:'https://raw.githubusercontent.com/SteveP999/vanta/main/Vanta%20-%20Signal%20-%20Album%20Cover.png'},
+{id:15,title:'Dirty Signal',artist:'Vanta',album:'Signal',src:'https://www.dropbox.com/scl/fi/3ukillkac5wjphdvwwzqg/Dirty-Signal-Mastered-MP3.mp3?rlkey=kf5z5f79k89mnnui3yp096w6b&raw=1',image:'https://raw.githubusercontent.com/SteveP999/vanta/main/Vanta%20-%20Signal%20-%20Album%20Cover.png'},
+{id:16,title:'Running Out of Reasons',artist:'Daniel Kincaid',album:'Singles',src:'https://www.dropbox.com/scl/fi/jozx0hhyrkk4e4w3qohqq/Daniel-Kincaid-Running-Out-Of-Reasons-Studio-Mastered-MP3.mp3?rlkey=3sig8j1al2ttgrj36q94m762i&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Daniel-Kincaid/main/Running%20Out%20of%20Reasons%20-%20Album%20Cover%20-%20%28Full%29.png'},
+{id:17,title:'Every Little Maybe',artist:'Daniel Kincaid',album:'Singles',src:'https://www.dropbox.com/scl/fi/yqazu7n0kmft3lwjbl7u9/Daniel-Kincaid-Every-Little-Maybe-Album-Cut-Mastered-MP3.mp3?rlkey=d5wm2e19jp90fvh8jb3x1idv0&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Daniel-Kincaid/main/Every%20Little%20Maybe%20-%20Album%20Cover%20%28Full%29.png'},
+{id:18,title:'I Was a Song',artist:'Daniel Kincaid',album:'Singles',src:'https://www.dropbox.com/scl/fi/54a5viw47taqgo0gbchvk/I-was-a-Song-v2-Mastered-MP3.mp3?rlkey=wm3wwzbidtrose7m93046jd03&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Daniel-Kincaid/main/I%20Was%20a%20Song%20-%20Album%20Cover%20-%20%28Full%29.png'},
+{id:19,title:'Already Gone',artist:'Daniel Kincaid',album:'Singles',src:'https://www.dropbox.com/scl/fi/gymx4asac3silj4s26bl5/Already-Gone-Mastered-MP3.mp3?rlkey=26ppdzh2o2my4ul41w6dmn9on&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Daniel-Kincaid/main/Already%20Gone%20-%20Album%20Cover%20-%20%28Full%29.png'},
+{id:20,title:'Running Out of Reasons (Acoustic)',artist:'Daniel Kincaid',album:'Acoustic Sessions',src:'https://www.dropbox.com/scl/fi/wxb9d60j46233617z9np0/Running-Out-of-Reasons-STRIPPED-Mastered-MP3-v02.mp3?rlkey=4rfrumm5rsnfncbe7ft9p6j8k&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Daniel-Kincaid/main/Daniel%20Kincaid%20-%20Running%20out%20of%20REasons%20%28The%20Acoustic%20Sessions%29%20-%20ALBUM%20COVER.png'},
+{id:21,title:'Every Little Maybe (Acoustic)',artist:'Daniel Kincaid',album:'Acoustic Sessions',src:'https://www.dropbox.com/scl/fi/nd9rduu6whs4e1ux405xe/Every-Little-Maybe-Guitar-and-Vocals-Mastered-MP3.mp3?rlkey=0gjwex7bq2s3ueej92z54efq4&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Daniel-Kincaid/main/Daniel%20Kincaid%20-%20Running%20out%20of%20REasons%20%28The%20Acoustic%20Sessions%29%20-%20ALBUM%20COVER.png'},
+{id:22,title:'I Was a Song (Acoustic)',artist:'Daniel Kincaid',album:'Acoustic Sessions',src:'https://www.dropbox.com/scl/fi/47xqfer16wlb1bnq2f9b7/I-Was-a-Song-Stripped-Mastered-MP3.mp3?rlkey=5q9sab7d3g63ey5f9yaupm3n5&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Daniel-Kincaid/main/Daniel%20Kincaid%20-%20Running%20out%20of%20REasons%20%28The%20Acoustic%20Sessions%29%20-%20ALBUM%20COVER.png'},
+{id:23,title:'Already Gone (Acoustic)',artist:'Daniel Kincaid',album:'Acoustic Sessions',src:'https://www.dropbox.com/scl/fi/dmqu2pxxj7obdyeeporp5/Already-Gone-Acoustic-Mastered-MP3.mp3?rlkey=cnrkn2gcbn6j37adjx50hd6zy&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Daniel-Kincaid/main/Daniel%20Kincaid%20-%20Running%20out%20of%20REasons%20%28The%20Acoustic%20Sessions%29%20-%20ALBUM%20COVER.png'},
+{id:24,title:'Wide Open Silence',artist:'Stephen Parsons',album:'Touches of the Heart',src:'https://www.dropbox.com/scl/fi/4wt3mx9s3woo05d7ff5ei/stephen-parsons-wide-open-silence-mp3.mp3?rlkey=xak7nxx0xb0s9ivrn6azgpbt8&raw=1',image:'https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/covers/stephen-parsons-wide-open-silence-cover.png'},
+{id:25,title:"My Daughter's Heart",artist:'Stephen Parsons',album:'Touches of the Heart',src:'https://www.dropbox.com/scl/fi/czv2skkkp8c3nggo8ngml/stephen-parsons-my-daughters-heart-mp3.mp3?rlkey=keaw0zy3n5zk60igwk8mchqc5&raw=1',image:'https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/covers/stephen-parsons-my-daughters-heart-cover.png'},
+{id:26,title:"Mom's Love",artist:'Stephen Parsons',album:'Touches of the Heart',src:'https://www.dropbox.com/scl/fi/hz1ptkb0eyj06hxe34jvi/stephen-parsons-moms-love-mp3.mp3?rlkey=n4h4u0b64mikukb5inkomx6am&raw=1',image:'https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/covers/stephen-parsons-moms-love-cover.png'},
+{id:27,title:"Debbie's Love Goes On",artist:'Stephen Parsons',album:'Touches of the Heart',src:'https://www.dropbox.com/scl/fi/6m8q9cm1ejsjr1afpco2g/debbie-s-love-goes-on.mp3?rlkey=93fz1f438mxkerbfcwnekq2ud&raw=1',image:'https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/covers/stephen-parsons-rise-up-cover.png'},
+{id:28,title:'Rise Up',artist:'Stephen Parsons',album:'Touches of the Heart',src:'https://www.dropbox.com/scl/fi/fgz0bbtwwf0e9wlkm8org/stephen-parsons-rise-up-mp3.mp3?rlkey=6yh8ebyatwtvovct94a9nj4xn&raw=1',image:'https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/covers/stephen-parsons-rise-up-cover.png'},
+{id:29,title:'Thank You Mom and Dad',artist:'Stephen Parsons',album:'Touches of the Heart',src:'https://www.dropbox.com/scl/fi/09pimczovbjl5bbjqoxjf/stephen-parsons-thank-you-mom-and-dad-mp3.mp3?rlkey=v5qac8t8s945oe016y1p2lnej&raw=1',image:'https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/covers/stephen-parsons-thank-you-mom-and-dad-cover.png'},
+{id:30,title:'Circle the Wagons',artist:'Parsons Cross',album:'Into the Light',src:'https://www.dropbox.com/scl/fi/zv9z8076a6hc13vm8c67z/parsons-cross-circle-the-wagons-mp3.mp3?rlkey=wtv99unlw7flzrtxodxy2n7ho&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Parsons-Cross/main/covers/parsons-cross-circle-the-wagons-cover.png'},
+{id:31,title:'Fear',artist:'Parsons Cross',album:'Into the Light',src:'https://www.dropbox.com/scl/fi/tydai7q6rknk94n1d7wtg/parsons-cross-fear-mp3.mp3?rlkey=7lqwoswtpsob6em8eqd0qo1ay&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Parsons-Cross/main/covers/parsons-cross-fear-cover.png'},
+{id:32,title:'The Waiting Room',artist:'Parsons Cross',album:'Into the Light',src:'https://www.dropbox.com/scl/fi/9j3cp9ajsd513fpjro3wo/parsons-cross-the-waiting-room-mp3.mp3?rlkey=9i3suos4ja4o5kalph8pipnd8&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Parsons-Cross/main/covers/parsons-cross-the-waiting-room-cover-streaming.png'},
+{id:33,title:'Dark Nights of the Soul',artist:'Parsons Cross',album:'Out of the Darkness',src:'https://www.dropbox.com/scl/fi/lvy40kvrsreftclicsiie/parsons-cross-dark-nights-of-the-soul-mp3.mp3?rlkey=5lttcugp86qupyaqz4d9vaesr&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Parsons-Cross/main/covers/parsons-cross-dark-nights-of-the-soul-cover-streaming.png'},
+{id:34,title:'Keep the Son in Your Eyes',artist:'Parsons Cross',album:'Out of the Darkness',src:'https://www.dropbox.com/scl/fi/6futa7hyqu7v61rntvsed/parsons-cross-keep-the-son-in-your-eyes-mp3.mp3?rlkey=tiyf5zck33e0zryg4v8cet64z&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Parsons-Cross/main/covers/parsons-cross-keep-the-son-in-your-eyes-cover-streaming.png'},
+{id:35,title:'Touching Heaven',artist:'Parsons Cross',album:'Out of the Darkness',src:'https://www.dropbox.com/scl/fi/lsd40kwdipq0sxds5yf7o/parsons-cross-touching-heaven-mp3.mp3?rlkey=yleeswhf1tdhrtxeee43z5mye&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Parsons-Cross/main/covers/parsons-cross-touching-heaven-cover-streaming.png'},
+{id:36,title:'Thick & Thin',artist:'Parsons Cross',album:'Out of the Darkness',src:'https://www.dropbox.com/scl/fi/9nxrgic5bpxagygdhgunh/parsons-cross-thick-and-thin-mp3.mp3?rlkey=s5x9s5kdfb0lnnxywo46n266w&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Parsons-Cross/main/covers/parsons-cross-thick-and-thin-cover.png'},
+{id:37,title:'Neon Hearts',artist:'Neon Thunder',album:'Single',src:'https://www.dropbox.com/scl/fi/5hh4exlq1opk9doi6mmjb/Neon-Hearts-Mastered-MP3.mp3?rlkey=orlf1d2ir9lj1t3ydygrk0ais&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Neon-Thunder/main/Neon%20Hearts%20-%20Record%20Cover.png'},
+{id:38,title:'Back to Chapter One',artist:'Avery Ivey',album:'A Soft Place to Fall...',src:'https://www.dropbox.com/scl/fi/jk6614ondo7f9wwziqmf0/Back-to-Chapter-One-Mastered-MP3.mp3?rlkey=zqopgnh98kuqwpuc6flntzf2z&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/covers/avery-ivey-album-a-soft-place-to-fall/avery-ivey-back-to-chapter-one-cover.png'},
+{id:39,title:'Sunday Morning Coffee',artist:'Avery Ivey',album:'A Soft Place to Fall...',src:'https://www.dropbox.com/scl/fi/6yy1arbzeclnvizbllu83/Sunday-Morning-Coffee-MASTERED-MP3.mp3?rlkey=4re3g6c23ixpxws6ywspuzi80&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/covers/avery-ivey-album-a-soft-place-to-fall/avery-ivey-sunday-morning-coffee-cover.png'},
+{id:40,title:'Wildflower',artist:'Avery Ivey',album:'A Soft Place to Fall...',src:'https://www.dropbox.com/scl/fi/4cv8cbapu5lsqirgy4qen/Avery-Ivey-Wildflower-Mastered-MP3.mp3?rlkey=wskilk8augraewdddd7p9hhby&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/covers/avery-ivey-album-a-soft-place-to-fall/avery-ivey-wildflower-cover.png'},
+{id:41,title:'Dreams I Packed Away',artist:'Avery Ivey',album:'A Soft Place to Fall...',src:'https://www.dropbox.com/scl/fi/lcv7smnx2bljmvjxkf1ea/Dreams-I-Packed-Away-Mastered-MP3.mp3?rlkey=s5pljbkl9q7x8uz22ysek1xta&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/covers/avery-ivey-album-a-soft-place-to-fall/avery-ivey-dreams-i-packed-away-cover.png'},
+{id:42,title:'Always the Almost',artist:'Avery Ivey',album:'A Soft Place to Fall...',src:'https://www.dropbox.com/scl/fi/wucmadfxsp7c4i46qp767/Avery-Ivey-Always-the-Almost-Country-Unreleased-MP3.mp3?rlkey=nwwa3bhbvhx2exwu5dzj0n9rd&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/covers/avery-ivey-album-a-soft-place-to-fall/avery-ivey-always-the-almost-cover.png'},
+{id:43,title:'The Long Way Home',artist:'Avery Ivey',album:'A Soft Place to Fall...',src:'https://www.dropbox.com/scl/fi/z8279720lqdqvvm5a4ft0/The-Long-Way-Home-Mastered-MP3.mp3?rlkey=8zu4csh116hxls9tvj15vixel&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/covers/avery-ivey-album-a-soft-place-to-fall/avery-ivey-the-long-way-home-cover.png'},
+{id:44,title:'Backroads After Rain',artist:'Avery Ivey',album:'A Soft Place to Fall...',src:'https://www.dropbox.com/scl/fi/inkygtk375ok8gflb4fsr/Backroads-After-Rain-Mastered-MP3.mp3?rlkey=2w7ub4g23co3z1a125ghx5pzh&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/covers/avery-ivey-album-a-soft-place-to-fall/avery-ivey-backroads-after-rain-cover.png'},
+{id:45,title:'Text from God',artist:'Avery Ivey',album:'A Soft Place to Fall...',src:'https://www.dropbox.com/scl/fi/rbq49kx031ncycvcr12hh/Avery-Ivey-Text-from-God-Master-v14.mp3?rlkey=je3m4idfyavkobyfqdr3jkfsp&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/covers/avery-ivey-album-a-soft-place-to-fall/avery-ivey-text-from-god-cover.png'},
+{id:46,title:'Two Cups',artist:'Avery Ivey',album:'A Soft Place to Fall...',src:'https://www.dropbox.com/scl/fi/b160abr2kgvhn0ngswohf/Avery-Ivey-Two-Cups-Released-MP3.mp3?rlkey=tvq4lcxyf91sqac05jtsebm65&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/covers/avery-ivey-album-a-soft-place-to-fall/avery-ivey-two-cups-cover.png'},
+{id:47,title:'I Still Save It',artist:'Avery Ivey',album:'A Soft Place to Fall...',src:'https://www.dropbox.com/scl/fi/bjvd0u4ipkac7e0uqlf5e/I-Still-Save-It-Mastered-MP3.mp3?rlkey=3ttu5bl4a5g9a0h1abwe1cawx&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/covers/avery-ivey-album-a-soft-place-to-fall/avery-ivey-i-still-save-it-cover.png'},
+{id:48,title:'A Soft Place to Fall',artist:'Avery Ivey',album:'A Soft Place to Fall...',src:'https://www.dropbox.com/scl/fi/e8050ni9uh9of4b5cax4d/Avery-Ivey-A-Soft-Place-to-Fall-Mastered-v2-MP3.mp3?rlkey=amnqgpp0eqzx9uwo1eaio7a8p&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/covers/avery-ivey-album-a-soft-place-to-fall/avery-ivey-a-soft-place-to-fall-SONG-cover.png'},
+{id:49,title:"Lookin' Okay",artist:'Avery Ivey',album:'A Soft Place to Fall...',src:'https://www.dropbox.com/scl/fi/frtp29pivlcuyje8qjbyc/Lookin-OK-Soft-Place-to-Fall-Version-Mastered-MP3.mp3?rlkey=9m0ajdo031flid3qc217bj9s4&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/covers/avery-ivey-album-a-soft-place-to-fall/avery-ivey-lookin-okay-cover.png'},
+{id:50,title:'Main Character',artist:'Avery Ivey',album:'...For Hard Truths',src:'https://www.dropbox.com/scl/fi/trqy5igqzyanjphnsnw6z/V1-Main-Character-Mastered-MP3.mp3?rlkey=764wvwd58t5oj3aOf4gh7nzy6&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/covers/avery-ivey-album-for-hard-truths/avery-ivey-main-character-cover.png'},
+{id:51,title:'People Pleaser (Rest in Peace)',artist:'Avery Ivey',album:'...For Hard Truths',src:'https://www.dropbox.com/scl/fi/ypd63gky426s8qcb4rj9v/Avery-Ivey-People-Pleaser-v18.mp3?rlkey=hxhnjfxtg70vn4ftof38gjo2k&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/covers/avery-ivey-album-for-hard-truths/avery-ivey-people-pleaser-cover.png'},
+{id:52,title:'Chaos Comfort',artist:'Avery Ivey',album:'...For Hard Truths',src:'https://www.dropbox.com/scl/fi/p4y5sisiioswbw8pudlcw/Chaos-Comfort-Mastered-MP3.mp3?rlkey=bdcoa5hvec50h05laqmz1k0ls&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/covers/avery-ivey-album-for-hard-truths/avery-ivey-chaos-comfort-cover.png'},
+{id:53,title:'Same Damn Thing',artist:'Avery Ivey',album:'...For Hard Truths',src:'https://www.dropbox.com/scl/fi/ux83m26fisj2byb9cej8h/Same-Damn-Thing-Mastered-MP3.mp3?rlkey=vkf9zb6k57drsyf849x1ao97r&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/covers/avery-ivey-album-for-hard-truths/avery-ivey-same-damn-thing-cover.png'},
+{id:54,title:'Always the Almost (Alt Rock)',artist:'Avery Ivey',album:'...For Hard Truths',src:'https://www.dropbox.com/scl/fi/8dgpx8wyodqbhow7rvg01/Avery-Ivey-Always-the-Almost-Alt-Rock-Released-MP3.mp3?rlkey=q76rs20bk1kcwbnvie6e7r1ox&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/covers/avery-ivey-album-for-hard-truths/avery-ivey-always-the-almost-cover.png'},
+{id:55,title:'Burning Bridges',artist:'Avery Ivey',album:'...For Hard Truths',src:'https://www.dropbox.com/scl/fi/4lyfkgq3xq9pzez6gbom5/Avery-Ivey-Burning-Bridges-Released-MP3.mp3?rlkey=5dvzni5l5ypl9erfwh7kg7jp2&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/covers/avery-ivey-album-for-hard-truths/avery-ivey-burning-bridges-cover.png'},
+{id:56,title:'Glass Houses',artist:'Avery Ivey',album:'...For Hard Truths',src:'https://www.dropbox.com/scl/fi/wavfoa8k3bnnhlj5mz209/Glass-Houses-Mastered-MP3.mp3?rlkey=ef9bquug79de6gqf3whvg5mxv&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/covers/avery-ivey-album-for-hard-truths/avery-ivey-glass-houses-cover.png'},
+{id:57,title:'Static',artist:'Avery Ivey',album:'...For Hard Truths',src:'https://www.dropbox.com/scl/fi/9l3nczjtnaqrlry78krlm/Static-MASTERED-MP3.mp3?rlkey=p3ku0xpxm0dxbhplcx7dquw58&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/covers/avery-ivey-album-for-hard-truths/avery-ivey-static-cover.png'},
+{id:58,title:'The Long Way Down',artist:'Avery Ivey',album:'...For Hard Truths',src:'https://www.dropbox.com/scl/fi/c06dpwu8z8ghmhripoasu/The-Long-Way-Down-Mastered-MP3.mp3?rlkey=lawjr12q40tq7nvme4lavvzd6&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/covers/avery-ivey-album-for-hard-truths/avery-ivey-the-long-way-down-cover.png'},
+{id:59,title:'Almost Apologies',artist:'Avery Ivey',album:'...For Hard Truths',src:'https://www.dropbox.com/scl/fi/jqlfnvqyzh9s7tk25l92w/Avery-Ivey-For-Hard-Truths-12-Almost-Apologies-MASTERED-MP3.mp3?rlkey=xnci7qbntknrr3so74p5st9aa&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/covers/avery-ivey-album-for-hard-truths/avery-ivey-almost-apologies-cover.png'},
+{id:60,title:'One More Bad Decision',artist:'Avery Ivey',album:'...For Hard Truths',src:'https://www.dropbox.com/scl/fi/wivt8llbxpe0fgtpr4iue/One-More-Bad-Decision-Mastered-MP3.mp3?rlkey=w0ba6ohdaa52h5ydf6rhjj60q&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/covers/avery-ivey-album-for-hard-truths/avery-ivey-one-more-bad-decision-cover.png'},
+{id:61,title:'Nobody Asked Me',artist:'Avery Ivey',album:'...For Hard Truths',src:'https://www.dropbox.com/scl/fi/lfd6skehnor8grv0br1cd/Nobody-Asked-Me-Mastered-MP3.mp3?rlkey=x0q53u4o6dm6r8d39i4lw9l53&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/covers/avery-ivey-album-for-hard-truths/avery-ivey-nobody-asked-me-cover.png'},
+{id:62,title:'Hard Truths',artist:'Avery Ivey',album:'...For Hard Truths',src:'https://www.dropbox.com/scl/fi/5tt2njgq6or9aofycjblt/Avery-Ivey-Hard-Truths-Mastered-MP3.mp3?rlkey=3r783tswtp7eltlziljd0ged9&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/covers/avery-ivey-album-for-hard-truths/avery-ivey-hard-truths-cover.png'},
+{id:63,title:"Lookin' Okay (Alt)",artist:'Avery Ivey',album:'...For Hard Truths',src:'https://www.dropbox.com/scl/fi/p3txf5h16ftq7lzk9fk53/Lookin-Okay-Hard-Truths-Mastered-MP3.mp3?rlkey=gc910quszxn9zl8t6m9mjk126&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/covers/avery-ivey-album-for-hard-truths/avery-ivey-lookin-okay-cover.png'},
+{id:64,title:"Can't Take It Back",artist:'Avery Ivey',album:'...For Hard Truths',src:'https://www.dropbox.com/scl/fi/grmok2ufyr9bpfxy3bywm/Can-t-Take-it-Back-Mastered-MP3.mp3?rlkey=8m6gqj6sudac50ajr83nkejx8&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/covers/avery-ivey-album-for-hard-truths/avery-ivey-cant-take-it-back-cover.png'},
+{id:65,title:"I'm the Problem",artist:'Avery Ivey',album:'...For Hard Truths',src:'https://www.dropbox.com/scl/fi/4l024w1zth1i8f5t1xegj/Avery-Ivey-For-Hard-Truths-13-I-m-the-Problem-Mastered-WAV.wav?rlkey=ab9feusn4ilo94zaxd8bpia7n&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/covers/avery-ivey-album-for-hard-truths/avery-ivey-im-the-problem-cover.png'},
+{id:66,title:'Tonight It Belongs to Me',artist:'Avery Ivey',album:'Wildflower Soundtrack',src:'https://www.dropbox.com/scl/fi/9botip4crmlf4fve5pvru/Tonight-It-Belongs-To-Me-Mixed-MP3.mp3?rlkey=ienj7okdxns7dp6qhaksxzwpf&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/covers/avery-ivey-album-wildflower-soundtrack/avery-ivey-tonight-it-belongs-to-me-cover.png'},
+{id:67,title:'Brand New Me',artist:'Avery Ivey',album:'Wildflower Soundtrack',src:'https://www.dropbox.com/scl/fi/hyinbck8hrijtbj86zzga/Brand-New-Me-Mastered-MP3.mp3?rlkey=upuy0p7qx98pdbaond5sym9uj&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/covers/avery-ivey-album-wildflower-soundtrack/avery-ivey-brand-new-me-cover.png'},
+{id:68,title:'Almost Loved You',artist:'Avery Ivey',album:'Wildflower Soundtrack',src:'https://www.dropbox.com/scl/fi/wgb0lxd9kr2gnr3po9dsw/Avery-Ivey-06-Almost-Loved-You-Mastered-MP3.mp3?rlkey=zrebaj4ocg6afabw5zqlkplks&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/covers/avery-ivey-album-wildflower-soundtrack/avery-ivey-almost-loved-you-cover.png'},
+{id:69,title:'Loud Enough',artist:'Avery Ivey',album:'Wildflower Soundtrack',src:'https://www.dropbox.com/scl/fi/cd1kc1q9kyhjhsr1ex3z9/Loud-Enough-Mastered-MP3.mp3?rlkey=edcbp3ouon92cixqklrf9g82y&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/covers/avery-ivey-album-wildflower-soundtrack/avery-ivey-loud-enough-cover.png'},
+{id:70,title:'Somewhere in the Middle',artist:'Avery Ivey',album:'Wildflower Soundtrack',src:'https://www.dropbox.com/scl/fi/4o4bad3jn16xbga2q3gxi/Somewhere-in-the-Middle-Mastered-MP3.mp3?rlkey=2jj4fqzl3zjzdsof51n9g7ron&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/covers/avery-ivey-album-wildflower-soundtrack/avery-ivey-somewhere-in-the-middle-cover.png'},
+{id:71,title:'Wildflower (Acoustic)',artist:'Avery Ivey',album:'Wildflower Soundtrack',src:'https://www.dropbox.com/scl/fi/zbwykbmgjzx1ickgj7o2w/Wildflower-Acoustic-Mastered-MP3.mp3?rlkey=mwmukd8atrltjf08c7g7qaee9&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/covers/avery-ivey-album-wildflower-soundtrack/avery-ivey-wildflower-acoustic-cover.png'},
+{id:72,title:'Removing the Rear View',artist:'Avery Ivey',album:'Somewhere in the Middle',src:'https://www.dropbox.com/scl/fi/973trytjzj4a9pagqo26s/Avery-Ivey-Removing-the-Rear-View-Mastered-MP3.mp3?rlkey=pfwyeany8ofxtlzm4ic0cn78n&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/covers/avery-ivey-album-somewhere-in-the-middle/avery-ivey-removing-the-rear-view-cover.png'},
+{id:73,title:'Burn It Down',artist:'Avery Ivey',album:'Somewhere in the Middle',src:'https://www.dropbox.com/scl/fi/88z4a3jtfmx4c3f7rv5rr/Avery-Ivey-Burn-it-Down-Master-mp3-1.mp3?rlkey=ojbbd704yy2tvuk4cvd9lm3fp&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/covers/avery-ivey-album-somewhere-in-the-middle/avery-ivey-burn-it-down-cover.png'},
+{id:74,title:'Tomorrow Never Comes',artist:'Avery Ivey',album:'Somewhere in the Middle',src:'https://www.dropbox.com/scl/fi/7bdpevq44m491ygp0gk5i/avery-ivey-tomorrow-never-comes-mp3.mp3?rlkey=2qx7l8yjjnwb2wyiaptkpryau&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/covers/avery-ivey-album-somewhere-in-the-middle/avery-ivey-tomorrow-never-comes-cover.png'},
+{id:75,title:'Lift Off (With a Bang)',artist:'Silent Oblivion',album:'Single',src:'https://www.dropbox.com/scl/fi/tctbe476glsb4mu3hv7k7/Lift-Off-With-a-Bang-Mastered-MP3.mp3?rlkey=2dt2a3mayzne6l1lff1jf3t00&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Silent-Oblivion/main/silent-oblivion-lift-off-cover.png'},
+{id:76,title:'Lip Gloss Ghost',artist:'Silent Oblivion',album:'Beginnings Past',src:'https://www.dropbox.com/scl/fi/j087cbyzyv8jh89ifcc4o/silent-oblivion-lip-gloss-ghost-mastered-MP3.mp3?rlkey=u3a79co0vb1qee24142goud4f&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Silent-Oblivion/main/silent-oblivion-lip-gloss-ghost-cover.png'},
+{id:77,title:'Cruisin',artist:'Silent Oblivion',album:'Beginnings Past',src:'https://www.dropbox.com/scl/fi/9pvkuega75b3cvyrv4aiw/silent-oblivion-cruisin-mastered-mp3.mp3?rlkey=zc46e28eaj60ia8dxdxilyr2m&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Silent-Oblivion/main/silent-oblivion-cruisin-cover.png'},
+{id:78,title:'Surfin',artist:'Silent Oblivion',album:'Beginnings Past',src:'https://www.dropbox.com/scl/fi/h78uz069co3qihjn5a8c1/silent-oblivion-surfin-mastered-mp3.mp3?rlkey=qzee0gdurw8j8z4etd63jbdmd&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Silent-Oblivion/main/silent-oblivion-surfin-cover.png'},
+{id:79,title:'Better Days',artist:'Skyline Theory',album:'Bending Reality',src:'https://www.dropbox.com/scl/fi/xcx0ccgoi724r260ncnie/Better-Days-Mastered-MP3.mp3?rlkey=jj1dzzodynmvs1jjjqa4tcbhl&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Skyline-Theory/main/skyline-theory-better-days-cover.png'},
+{id:80,title:'Gravity Fails',artist:'Skyline Theory',album:'Fade and Fire',src:'https://www.dropbox.com/scl/fi/jmt4fg3momehpr9e7ysou/Gravity-Fails-Mastered-MP3.mp3?rlkey=rvnqt63h336fqg6k341q8leo5&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Skyline-Theory/main/skyline-theory-gravity-fails-cover.png'},
+{id:81,title:'Run Through Fire',artist:'Skyline Theory',album:'Fade and Fire',src:'https://www.dropbox.com/scl/fi/iqbbuzeje60lwbz58h70z/RUN-THROUGH-FIRE-Mastered-MP3.mp3?rlkey=ni4zvb7889a5bm20jjusug04a&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Skyline-Theory/main/skyline-theory-run-through-fire-cover.png'},
+{id:82,title:'Two Nights',artist:'PULSE7',album:'Single',src:'https://www.dropbox.com/scl/fi/2wioc1edj01haev6ifjkl/Two-Nights-PULSE7.mp3?rlkey=dwogp86reax5amxrh30bphoay&raw=1',image:'https://raw.githubusercontent.com/SteveP999/pulse7/main/pulse7-two-nights-cover.png'},
+{id:83,title:"We Don't Miss",artist:'PULSE7',album:'Single',src:'https://www.dropbox.com/scl/fi/ebabtss62r3ykf9p2f7s2/We-Don-t-Miss-Mastered-MP3.mp3?rlkey=b0vf9u40fw7guqel1c1ztu460&raw=1',image:'https://raw.githubusercontent.com/SteveP999/pulse7/main/pulse7-we-dont-miss-cover.png'},
+{id:84,title:'Signal Locked',artist:'PULSE7',album:'Single',src:'https://www.dropbox.com/scl/fi/49isq5ehrm5fxftjgbbdt/PULSE7-Signal-Locked-Mastered-MP3.mp3?rlkey=ewxlecqcld0za18lgj3e4nylb&raw=1',image:'https://raw.githubusercontent.com/SteveP999/pulse7/main/pulse7-signal-locked-cover.png'},
+{id:85,title:'Montana Skies',artist:'Taylor Martin',album:'Single',src:'https://www.dropbox.com/scl/fi/umy4fkkkabucsufshifry/Sky-v10.mp3?rlkey=oal277gilvw2mkava6sm7xy07&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Taylor-Martin/main/taylor-martin-montana-skies-cover.png'},
+{id:86,title:'No Control',artist:'Rio Valencia',album:'Midnight Line',src:'https://www.dropbox.com/scl/fi/xl6id8cftbsvrqpsueehx/No-Control-Mastered-MP3.mp3?rlkey=4vxmg9u10jckquwf5xkloccq0&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Rio-Valencia/main/rio-valencia-no-control-cover.png'},
+{id:87,title:'Midnight Line',artist:'Rio Valencia',album:'Midnight Line',src:'https://www.dropbox.com/scl/fi/tqb3ft2xifve6ovysxuaw/Midight-Line-Mastered-MP3.mp3?rlkey=2z4vel6o30i858b9akegrfd35&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Rio-Valencia/main/rio-valencia-midnight-line-cover.png'},
+{id:88,title:'No Te Vas',artist:'Rio Valencia',album:'Midnight Line',src:'https://www.dropbox.com/scl/fi/1etgax05sxjqo2m55h78v/No-Te-Vas-You-Don-t-Leave-Mastered-MP3.mp3?rlkey=0e3ue4n3vhpl9uppv3nzh8v33&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Rio-Valencia/main/rio-valencia-no-te-vas-you-dont-leave-cover.png'},
+{id:89,title:'Sin Regresar',artist:'Rio Valencia',album:'Midnight Line',src:'https://www.dropbox.com/scl/fi/4dqf8e3lbstvxzvjn5wt9/Sin-Regresar-No-Going-Back-Mastered-MP3-Re-do.mp3?rlkey=j5923sohwcu4dvbtgsdxj4w82&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Rio-Valencia/main/rio-valencia-sin-regresar-no-going-back-cover.png'},
+{id:90,title:'Last Call for Beautiful',artist:'Vincent Cole',album:'The Cole Standard',src:'https://www.dropbox.com/scl/fi/obev4v5cr4av6isho61k2/vincent-cole-last-call-for-beautiful-mp3.wav?rlkey=c67exv0ec4y1ska8eew8fagn3&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Vincent-Cole/main/covers/vincent-cole-last-call-for-beautiful-cover.png'},
+{id:91,title:'Trouble in a Black Dress',artist:'Vincent Cole',album:'The Cole Standard',src:'https://www.dropbox.com/scl/fi/tq3gnmf9kxy2ny7ruxsyq/vincent-cole-trouble-in-a-black-dress-mp3.mp3?rlkey=9injlc1hrfrs17bv2nen79ied&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Vincent-Cole/main/covers/vincent-cole-trouble-in-a-black-dress-cover.png'},
+{id:92,title:'Slow on My Lips',artist:'Vincent Cole',album:'The Cole Standard',src:'https://www.dropbox.com/scl/fi/lq899f1r95gdgqlhpbdq6/vincent-cole-slow-on-my-lips-mp3-v1.mp3?rlkey=ek8p2mx0x1w3ayxqkie0bix9c&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Vincent-Cole/main/covers/vincent-cole-slow-on-my-lips-cover.png'},
+{id:93,title:'The Last Song',artist:'Vincent Cole',album:'The Cole Standard',src:'https://www.dropbox.com/scl/fi/mzrz0htmnr3rpkof2sadg/vincent-cole-the-last-song-mp3-v1.mp3?rlkey=vhgd3bjde2k1qli8lkmk07iq3&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Vincent-Cole/main/covers/vincent-cole-the-last-song-cover.png'},
+{id:94,title:'If Tonight Would Never End',artist:'Vincent Cole',album:'The Cole Standard',src:'https://www.dropbox.com/scl/fi/24kj8kf367r8q0xgeji62/vincent-cole-if-tonight-would-never-end-mp3.mp3?rlkey=hhbv46uxi693qxiwdhb7bhxjz&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Vincent-Cole/main/covers/vincent-cole-if-tonight-would-never-end-cover.png'},
+{id:95,title:'Just Watch Me Walk Away',artist:'Vincent Cole',album:'The Cole Standard',src:'https://www.dropbox.com/scl/fi/gt5fe1l7mrp49u5jszvbi/vincent-cole-just-watch-me-walk-away-mp3-v4.mp3?rlkey=zooi7gl31kvkj0g3qts950ouw&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Vincent-Cole/main/covers/vincent-cole-just-watch-me-walk-away-cover.png'},
+{id:96,title:'No Rules Tonight',artist:'Night Shift',album:'No Rules Tonight',src:'https://www.dropbox.com/scl/fi/y095y6udugo5czzvwjk9a/night-shift-no-rules-tonight-mp3.mp3?rlkey=jf20t7501lnj4e3ywn1do39ko&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Night-Shift/main/covers/night-shift-no-rules-tonight-cover.png'},
+{id:97,title:'Turn Me Up',artist:'Night Shift',album:'No Rules Tonight',src:'https://www.dropbox.com/scl/fi/ncplflnsdo9cp4o5ldgn3/night-shift-turn-me-up-mp3.mp3?rlkey=1w1zljwrr2y901ti1unhppdnw&raw=1',image:'https://raw.githubusercontent.com/SteveP999/Night-Shift/main/covers/night-shift-turn-me-up-cover.png'}
+];
+
+let userEmail='',playlist=[],currentIdx=-1,catalogPlayingId=-1,isPlaying=false,dragSrcIdx=null;
+const aud=new Audio();aud.volume=0.85;
+
+document.getElementById('gate-btn').addEventListener('click',enterRoom);
+document.getElementById('gate-email').addEventListener('keydown',e=>{if(e.key==='Enter')enterRoom()});
+
+function enterRoom(){
+  const v=document.getElementById('gate-email').value.trim();
+  if(!v||!v.includes('@')||!v.includes('.')){document.getElementById('gate-err').style.display='block';return;}
+  userEmail=v.toLowerCase();
+  document.getElementById('gate').style.display='none';
+  document.getElementById('hdr-email').textContent=userEmail;
+  loadFromStorage();populateArtistFilter();renderCatalog();renderPlaylist();
+}
+
+function savePlaylist(){
+  const name=document.getElementById('playlist-name').value.trim()||'My Playlist';
+  const all=JSON.parse(localStorage.getItem('htr_playlists')||'{}');
+  all[userEmail]={name,songs:playlist,saved:new Date().toISOString()};
+  localStorage.setItem('htr_playlists',JSON.stringify(all));
+  const btn=document.getElementById('save-btn');
+  btn.textContent='Saved ✓';btn.classList.add('saved');
+  setTimeout(()=>{btn.textContent='Save';btn.classList.remove('saved');},2000);
+  showToast('Playlist saved!');
+}
+
+function loadFromStorage(){
+  const all=JSON.parse(localStorage.getItem('htr_playlists')||'{}');
+  const saved=all[userEmail];
+  if(saved){playlist=saved.songs||[];document.getElementById('playlist-name').value=saved.name||'My Playlist';showToast('Welcome back — playlist loaded!');}
+}
+
+function populateArtistFilter(){
+  const artists=[...new Set(CATALOG.map(s=>s.artist))].sort();
+  const sel=document.getElementById('artist-filter');
+  artists.forEach(a=>{const o=document.createElement('option');o.value=a;o.textContent=a;sel.appendChild(o);});
+}
+
+function renderCatalog(){
+  const q=document.getElementById('search-input').value.toLowerCase();
+  const artist=document.getElementById('artist-filter').value;
+  const filtered=CATALOG.filter(s=>(!artist||s.artist===artist)&&(!q||s.title.toLowerCase().includes(q)||s.artist.toLowerCase().includes(q)||s.album.toLowerCase().includes(q)));
+  document.getElementById('catalog-count').textContent=filtered.length+' songs';
+  const list=document.getElementById('catalog-list');list.innerHTML='';
+  filtered.forEach(song=>{
+    const inList=playlist.some(p=>p.id===song.id);
+    const playing=(catalogPlayingId===song.id)||(currentIdx>=0&&playlist[currentIdx]?.id===song.id);
+    const row=document.createElement('div');row.className='song-row'+(playing?' playing':'');row.dataset.id=song.id;
+    row.innerHTML=`<div class="song-thumb-wrap"><img src="${song.image}" alt="" onerror="this.src=''" loading="lazy"><div class="song-play-overlay" onclick="catalogPlay(${song.id})">${(catalogPlayingId===song.id&&!aud.paused)?'&#9646;&#9646;':'&#9654;'}</div></div><div class="song-info"><div class="song-title">${song.title}</div><div class="song-meta">${song.artist} &middot; ${song.album}</div></div><button class="song-add${inList?' in-list':''}" onclick="addToPlaylist(${song.id})" title="${inList?'Already in playlist':'Add to playlist'}">${inList?'&#10003;':'+'}</button>`;
+    list.appendChild(row);
+  });
+}
+
+function renderPlaylist(){
+  const list=document.getElementById('playlist-list');list.innerHTML='';
+  if(!playlist.length){list.innerHTML='<div class="pl-empty"><div class="pl-empty-icon">&#127925;</div><div>Your playlist is empty.<br>Add songs from the catalog on the left.</div></div>';document.getElementById('pl-stats').textContent='0 songs';return;}
+  const mins=Math.round(playlist.length*3.5),hrs=Math.floor(mins/60),rem=mins%60;
+  document.getElementById('pl-stats').textContent=`${playlist.length} songs · ${hrs>0?`~${hrs}h ${rem}m`:`~${mins} min`}`;
+  playlist.forEach((song,idx)=>{
+    const playing=idx===currentIdx&&isPlaying;
+    const item=document.createElement('div');item.className='pl-item'+(idx===currentIdx?' playing':'');item.draggable=true;item.dataset.idx=idx;
+    item.innerHTML=`<span class="pl-drag">&#8286;</span><span class="pl-num">${playing?'&#9654;':(idx+1)}</span><img class="pl-thumb" src="${song.image}" alt="" onerror="this.src=''" loading="lazy"><div class="pl-info" onclick="playFromPlaylist(${idx})"><div class="pl-title">${song.title}</div><div class="pl-artist">${song.artist}</div></div><button class="pl-remove" onclick="removeFromPlaylist(${idx})" title="Remove">&#10005;</button>`;
+    item.addEventListener('dragstart',()=>{dragSrcIdx=idx;item.classList.add('dragging');});
+    item.addEventListener('dragend',()=>{item.classList.remove('dragging');document.querySelectorAll('.pl-item').forEach(i=>i.classList.remove('drag-over'));});
+    item.addEventListener('dragover',e=>{e.preventDefault();item.classList.add('drag-over');});
+    item.addEventListener('dragleave',()=>item.classList.remove('drag-over'));
+    item.addEventListener('drop',e=>{
+      e.preventDefault();if(dragSrcIdx===null||dragSrcIdx===idx)return;
+      const moved=playlist.splice(dragSrcIdx,1)[0];playlist.splice(idx,0,moved);
+      if(currentIdx===dragSrcIdx)currentIdx=idx;
+      else if(currentIdx>dragSrcIdx&&currentIdx<=idx)currentIdx--;
+      else if(currentIdx<dragSrcIdx&&currentIdx>=idx)currentIdx++;
+      dragSrcIdx=null;renderPlaylist();renderCatalog();
+    });
+    list.appendChild(item);
+  });
+}
+
+function addToPlaylist(id){
+  if(playlist.some(p=>p.id===id))return;
+  const song=CATALOG.find(s=>s.id===id);if(!song)return;
+  playlist.push({...song});renderPlaylist();renderCatalog();showToast('Added: '+song.title);
+}
+
+function removeFromPlaylist(idx){
+  if(idx===currentIdx){aud.pause();aud.src='';currentIdx=-1;isPlaying=false;updatePlayerBar(null);}
+  else if(idx<currentIdx)currentIdx--;
+  playlist.splice(idx,1);renderPlaylist();renderCatalog();
+}
+
+function clearPlaylist(){
+  if(!playlist.length)return;
+  aud.pause();aud.src='';currentIdx=-1;isPlaying=false;playlist=[];
+  updatePlayerBar(null);renderPlaylist();renderCatalog();
+}
+
+function shufflePlaylist(){
+  for(let i=playlist.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[playlist[i],playlist[j]]=[playlist[j],playlist[i]];}
+  currentIdx=-1;renderPlaylist();showToast('Playlist shuffled!');
+}
+
+function playAll(){if(playlist.length)playFromPlaylist(0);}
+
+function catalogPlay(id){
+  const song=CATALOG.find(s=>s.id===id);if(!song)return;
+  if(catalogPlayingId===id&&!aud.paused){aud.pause();isPlaying=false;catalogPlayingId=-1;currentIdx=-1;updatePlayerBar(null);renderCatalog();return;}
+  catalogPlayingId=id;currentIdx=-1;loadAndPlay(song);
+}
+
+function playFromPlaylist(idx){
+  if(idx<0||idx>=playlist.length)return;
+  currentIdx=idx;catalogPlayingId=-1;loadAndPlay(playlist[idx]);renderPlaylist();
+}
+
+function loadAndPlay(song){
+  aud.src=song.src;aud.play().catch(()=>{});isPlaying=true;updatePlayerBar(song);renderCatalog();
+}
+
+function togglePlay(){
+  if(!aud.src)return;
+  if(aud.paused){aud.play();isPlaying=true;}else{aud.pause();isPlaying=false;}
+  document.getElementById('pb-play').innerHTML=isPlaying?'&#9646;&#9646;':'&#9654;';renderPlaylist();
+}
+
+function prevTrack(){if(currentIdx>0)playFromPlaylist(currentIdx-1);}
+function nextTrack(){
+  if(currentIdx>=0&&currentIdx<playlist.length-1)playFromPlaylist(currentIdx+1);
+  else if(catalogPlayingId>=0){aud.pause();isPlaying=false;catalogPlayingId=-1;updatePlayerBar(null);renderCatalog();}
+}
+function seek(v){if(aud.duration)aud.currentTime=(v/100)*aud.duration;}
+function setVolume(v){aud.volume=v;document.getElementById('pb-vol').style.backgroundSize=(v*100)+'% 100%';}
+
+function updatePlayerBar(song){
+  const art=document.getElementById('pb-art'),title=document.getElementById('pb-title'),artist=document.getElementById('pb-artist'),play=document.getElementById('pb-play');
+  if(!song){art.src='';title.textContent='—';artist.textContent='Select a song to play';play.innerHTML='&#9654;';isPlaying=false;return;}
+  art.src=song.image;title.textContent=song.title;artist.textContent=song.artist+' · '+song.album;play.innerHTML=isPlaying?'&#9646;&#9646;':'&#9654;';
+}
+
+function fmt(s){if(!isFinite(s))return'0:00';const m=Math.floor(s/60),sec=Math.floor(s%60);return m+':'+(sec<10?'0':'')+sec;}
+
+aud.addEventListener('timeupdate',()=>{
+  const cur=aud.currentTime,dur=aud.duration,pct=dur?(cur/dur)*100:0;
+  document.getElementById('pb-cur').textContent=fmt(cur);
+  document.getElementById('pb-dur').textContent=fmt(dur);
+  const seek=document.getElementById('pb-seek');seek.value=pct;seek.style.backgroundSize=pct+'% 100%';
+});
+aud.addEventListener('ended',()=>{
+  if(currentIdx>=0&&currentIdx<playlist.length-1)playFromPlaylist(currentIdx+1);
+  else{isPlaying=false;document.getElementById('pb-play').innerHTML='&#9654;';renderPlaylist();}
+});
+aud.addEventListener('play',()=>{isPlaying=true;document.getElementById('pb-play').innerHTML='&#9646;&#9646;';renderPlaylist();});
+aud.addEventListener('pause',()=>{isPlaying=false;document.getElementById('pb-play').innerHTML='&#9654;';renderPlaylist();});
+
+document.getElementById('pb-vol').style.backgroundSize='85% 100%';
+
+let toastTimer;
+function showToast(msg){
+  const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
+  clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2200);
+}
+document.getElementById('playlist-name').addEventListener('change',()=>{if(userEmail&&playlist.length)savePlaylist();});
+</script>
+</body>
+</html>
