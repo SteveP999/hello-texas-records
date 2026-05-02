@@ -196,7 +196,7 @@ const REPOS = [
   'Hello-Texas','Sawyer-Price','stephen-parsons','Daniel-Kincaid',
   'Neon-Thunder','Skyline-Theory','Lucas-Harlow','Avery-Ivey',
   'Vincent-Cole','Rio-Valencia','vanta','Taylor-Martin',
-  'Silent-Oblivion','PULSE7','Night-Shift','Parsons-Cross'
+  'Silent-Oblivion','pulse7','Night-Shift','Parsons-Cross'
 ];
 
 let CATALOG = [];
@@ -209,12 +209,15 @@ function normalizeSongs(data, repo) {
   function pushTrack(t, defaultArtist) {
     const src = t.audioSrc || t.src || t.audio;
     if (!src) return;
+    const artist = t.artist || defaultArtist;
+    const title  = t.title  || '(Untitled)';
     songs.push({
-      title:  t.title  || '(Untitled)',
-      artist: t.artist || defaultArtist,
-      album:  t.album  || 'Single',
+      id:     (artist + '|' + title).toLowerCase().replace(/[^a-z0-9|]/g,'_'),
+      title,
+      artist,
+      album:  t.album || 'Single',
       src,
-      image:  t.cover  || t.image || ''
+      image:  t.cover || t.image || ''
     });
   }
 
@@ -247,10 +250,9 @@ function loadCatalog() {
         .then(data => data ? normalizeSongs(data, repo) : [])
     )
   ).then(results => {
-    let id = 0;
     results.forEach(r => {
       if (r.status === 'fulfilled') {
-        r.value.forEach(s => { s.id = id++; CATALOG.push(s); });
+        r.value.forEach(s => CATALOG.push(s));
       }
     });
   });
