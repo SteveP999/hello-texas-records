@@ -345,7 +345,7 @@ function renderCatalog() {
     row.className = 'song-row' + (playing ? ' playing' : '');
     row.dataset.id = song.id;
     const imgSrc = song.image || '';
-    row.innerHTML = `<div class="song-thumb-wrap"><img src="${imgSrc}" alt="" onerror="this.style.opacity='.2'" loading="lazy"><div class="song-play-overlay" onclick="catalogPlay(${song.id})">${(catalogPlayingId===song.id&&!aud.paused)?'&#9646;&#9646;':'&#9654;'}</div></div><div class="song-info"><div class="song-title">${song.title}</div><div class="song-meta">${song.artist} &middot; ${song.album}</div></div><button class="song-add${inList?' in-list':''}" onclick="addToPlaylist(${song.id})" title="${inList?'Already in playlist':'Add to playlist'}">${inList?'&#10003;':'+'}</button>`;
+    row.innerHTML = `<div class="song-thumb-wrap"><img src="${imgSrc}" alt="" onerror="this.style.opacity='.2'" loading="lazy"><div class="song-play-overlay" onclick="catalogPlay('${song.id}')">${(catalogPlayingId===song.id&&!aud.paused)?'&#9646;&#9646;':'&#9654;'}</div></div><div class="song-info"><div class="song-title">${song.title}</div><div class="song-meta">${song.artist} &middot; ${song.album}</div></div><button class="song-add${inList?' in-list':''}" onclick="addToPlaylist('${song.id}')" title="${inList?'Already in playlist':'Add to playlist'}">${inList?'&#10003;':'+'}</button>`;
     list.appendChild(row);
   });
 }
