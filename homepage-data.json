@@ -1,6 +1,24 @@
 {
   "latestReleases": [
     {
+      "id": "nightstrike-crash-and-burn",
+      "artistId": "nightstrike",
+      "artist": "NightStrike",
+      "title": "Crash and Burn",
+      "album": "High Voltage",
+      "genre": "Hard Rock / Sleaze Rock",
+      "releaseType": "single",
+      "releaseDate": "2026-06-01",
+      "coverImage": "nightstrike-crash-and-burn-cover.png",
+      "audioFile": "https://www.dropbox.com/scl/fi/pdk6fd86ja75lrfd862i9/nightstrike-crash-and-burn-mp3.mp3?rlkey=65gjedmk6v53dxnyhfwyjwc83&raw=1",
+      "youtubeUrl": "",
+      "featured": false,
+      "explicit": false,
+      "includeOnRadio": true,
+      "includeOnHomepage": false,
+      "tags": []
+    },
+    {
       "id": "skyline-theory-stay-in-the-sound",
       "artistId": "skyline-theory",
       "artist": "Skyline Theory",
@@ -22,6 +40,24 @@
         "uplifting",
         "nostalgic"
       ]
+    },
+    {
+      "id": "nightstrike-the-storm-never-sleeps",
+      "artistId": "nightstrike",
+      "artist": "NightStrike",
+      "title": "The Storm Never Sleeps",
+      "album": "High Foltage",
+      "genre": "Hard Rock / Sleaze Rock",
+      "releaseType": "single",
+      "releaseDate": "2026-05-07",
+      "coverImage": "nightstrike-the-storm-never-sleeps-cover.png",
+      "audioFile": "https://www.dropbox.com/scl/fi/xzj3myi8pt4ulsd2dvfrl/nightstrike-the-storm-never-sleeps-mp3.mp3?rlkey=e4vl08mxg5mb2m3m2yt4zvq3c&raw=1",
+      "youtubeUrl": "",
+      "featured": true,
+      "explicit": false,
+      "includeOnRadio": true,
+      "includeOnHomepage": true,
+      "tags": []
     },
     {
       "id": "back_to_chapter_one",
@@ -178,42 +214,6 @@
       "releaseDate": "",
       "coverImage": "https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/covers/avery-ivey-album-a-soft-place-to-fall/avery-ivey-two-cups-cover.png",
       "audioFile": "https://www.dropbox.com/scl/fi/b160abr2kgvhn0ngswohf/Avery-Ivey-Two-Cups-Released-MP3.mp3?rlkey=tvq4lcxyf91sqac05jtsebm65&raw=1",
-      "youtubeUrl": "",
-      "featured": false,
-      "explicit": false,
-      "includeOnRadio": true,
-      "includeOnHomepage": false,
-      "tags": []
-    },
-    {
-      "id": "i_still_save_it",
-      "artistId": "avery-ivey",
-      "artist": "Avery Ivey",
-      "title": "I Still Save It",
-      "album": "A Soft Place to Fall...",
-      "genre": "Country / folk-pop / alt-rock",
-      "releaseType": "single",
-      "releaseDate": "",
-      "coverImage": "https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/covers/avery-ivey-album-a-soft-place-to-fall/avery-ivey-i-still-save-it-cover.png",
-      "audioFile": "https://www.dropbox.com/scl/fi/bjvd0u4ipkac7e0uqlf5e/I-Still-Save-It-Mastered-MP3.mp3?rlkey=3ttu5bl4a5g9a0h1abwe1cawx&raw=1",
-      "youtubeUrl": "",
-      "featured": false,
-      "explicit": false,
-      "includeOnRadio": true,
-      "includeOnHomepage": false,
-      "tags": []
-    },
-    {
-      "id": "a_soft_place_to_fall",
-      "artistId": "avery-ivey",
-      "artist": "Avery Ivey",
-      "title": "A Soft Place to Fall",
-      "album": "A Soft Place to Fall...",
-      "genre": "Country / folk-pop / alt-rock",
-      "releaseType": "single",
-      "releaseDate": "",
-      "coverImage": "https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/covers/avery-ivey-album-a-soft-place-to-fall/avery-ivey-a-soft-place-to-fall-SONG-cover.png",
-      "audioFile": "https://www.dropbox.com/scl/fi/e8050ni9uh9of4b5cax4d/Avery-Ivey-A-Soft-Place-to-Fall-Mastered-v2-MP3.mp3?rlkey=amnqgpp0eqzx9uwo1eaio7a8p&raw=1",
       "youtubeUrl": "",
       "featured": false,
       "explicit": false,
@@ -508,6 +508,18 @@
         "radio": true,
         "latest": true
       },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true
+    },
+    {
+      "id": "nightstrike",
+      "name": "NightStrike",
+      "repoPath": "D:\\nightstrike",
+      "githubRepo": "SteveP999/nightstrike",
+      "siteUrl": "https://nighstrike.hellotexasrecords.com",
+      "logo": "nightstrike-logo.png",
+      "genre": "Hard Rock / Sleaze Rock",
+      "active": true,
       "includeOnLabelHome": true,
       "includeOnRadio": true
     }
