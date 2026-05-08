@@ -1,4 +1,4 @@
-{
+﻿{
   "latestReleases": [
     {
       "id": "nightstrike-crash-and-burn",
@@ -142,6 +142,24 @@
       "includeOnRadio": true
     },
     {
+      "id": "neon-thunder",
+      "name": "Neon Thunder",
+      "repoFolder": "D:\\Neon-Thunder",
+      "githubRepo": "SteveP999/Neon-Thunder",
+      "siteUrl": "https://stevep999.github.io/Neon-Thunder/",
+      "genre": "Glam metal / arena rock",
+      "status": "active",
+      "logo": "",
+      "heroImage": "",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true
+    },
+    {
       "id": "night-shift",
       "name": "Night Shift",
       "repoFolder": "D:\\Night-Shift",
@@ -162,20 +180,22 @@
     {
       "id": "nightstrike",
       "name": "NightStrike",
+      "repoPath": "D:\\NightStrike",
       "repoFolder": "D:\\NightStrike",
       "githubRepo": "SteveP999/NightStrike",
       "siteUrl": "https://nightstrike.hellotexasrecords.com/",
-      "genre": "Hard Rock / Sleaze Rock",
-      "status": "active",
       "logo": "images/nightstrike-logo.png",
       "heroImage": "images/nightstrike-band-photo.png",
+      "genre": "Hard Rock / Sleaze Rock",
+      "active": true,
+      "status": "active",
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
       "dataFiles": {
         "songs": true,
         "radio": true,
         "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true
+      }
     },
     {
       "id": "parsons-cross",

@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NightStrike | Hello Texas Records</title>
+<link rel="manifest" href="manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root { --bg:#090909; --panel:#151515; --text:#f2eee6; --muted:rgba(242,238,230,.65); --gold:#d7a241; --border:rgba(215,162,65,.25); }
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:'Barlow',sans-serif; background:var(--bg); color:var(--text); overflow-x:hidden; }
+nav { position:fixed; top:0; left:0; right:0; height:64px; z-index:20; display:flex; align-items:center; justify-content:space-between; padding:0 2rem; background:rgba(9,9,9,.88); border-bottom:1px solid var(--border); backdrop-filter:blur(10px); }
+nav a { color:var(--muted); text-decoration:none; font-family:'Barlow Condensed',sans-serif; letter-spacing:.16em; text-transform:uppercase; font-size:.78rem; }
+.hero { min-height:100vh; position:relative; display:grid; place-items:center; text-align:center; padding:7rem 2rem 4rem; background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.78)),url("https://raw.githubusercontent.com/SteveP999/nightstrike/main/images/nightstrike-logo.png") center/cover no-repeat; }
+.hero::after { content:''; position:absolute; inset:0; background:radial-gradient(circle at center, rgba(215,162,65,.12), transparent 55%); }
+.hero-inner { position:relative; z-index:1; max-width:900px; }
+.artist-logo { max-width:min(420px,82vw); max-height:180px; object-fit:contain; margin-bottom:2rem; filter:drop-shadow(0 0 26px rgba(0,0,0,.8)); }
+.eyebrow { font-family:'Barlow Condensed',sans-serif; color:var(--gold); letter-spacing:.32em; text-transform:uppercase; font-size:.75rem; margin-bottom:1rem; }
+h1 { font-family:'Bebas Neue',sans-serif; font-size:clamp(3rem,8vw,7rem); letter-spacing:.12em; line-height:.9; }
+.genre { margin-top:1rem; color:var(--muted); font-family:'Barlow Condensed',sans-serif; letter-spacing:.18em; text-transform:uppercase; }
+.ctas { margin-top:2.25rem; display:flex; justify-content:center; gap:1rem; flex-wrap:wrap; }
+.btn { color:var(--bg); background:var(--gold); padding:.85rem 1.6rem; text-decoration:none; font-family:'Barlow Condensed',sans-serif; font-weight:700; letter-spacing:.16em; text-transform:uppercase; }
+.btn.secondary { background:transparent; color:var(--text); border:1px solid var(--border); }
+section { padding:5rem 2rem; }
+.section-title { text-align:center; margin-bottom:2.5rem; }
+.section-title span { display:block; color:var(--gold); font-family:'Barlow Condensed',sans-serif; letter-spacing:.28em; text-transform:uppercase; font-size:.72rem; margin-bottom:.6rem; }
+.section-title h2 { font-family:'Bebas Neue',sans-serif; letter-spacing:.12em; font-size:clamp(2rem,4vw,3.4rem); }
+.latest { max-width:1000px; margin:0 auto; display:grid; grid-template-columns:minmax(240px,360px) 1fr; gap:2rem; align-items:center; background:var(--panel); border:1px solid var(--border); padding:1.5rem; }
+.latest img { width:100%; aspect-ratio:1; object-fit:cover; }
+.latest h3 { font-family:'Bebas Neue',sans-serif; letter-spacing:.08em; font-size:2.5rem; margin-bottom:.5rem; }
+.latest p { color:var(--muted); line-height:1.7; }
+.song-grid { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:1.25rem; }
+.song-card { background:var(--panel); border:1px solid var(--border); overflow:hidden; }
+.song-card img { width:100%; aspect-ratio:1; object-fit:cover; display:block; }
+.song-info { padding:1rem; }
+.song-title { font-family:'Bebas Neue',sans-serif; font-size:1.45rem; letter-spacing:.07em; }
+.song-album { color:var(--muted); font-size:.85rem; margin:.25rem 0 .75rem; }
+audio { width:100%; height:36px; }
+footer { text-align:center; padding:3rem 2rem; border-top:1px solid var(--border); color:var(--muted); }
+.empty { text-align:center; color:var(--muted); }
+@media(max-width:760px) { nav { padding:0 1rem; } .latest { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<nav><a href="https://stevep999.github.io/hello-texas-records/">Hello Texas Records</a><a href="https://nighstrike.hellotexasrecords.com">NightStrike</a></nav>
+<header class="hero"><div class="hero-inner"><div class="eyebrow">Hello Texas Records Presents</div><img class="artist-logo" src="https://raw.githubusercontent.com/SteveP999/nightstrike/main/images/nightstrike-logo.png" alt="NightStrike logo"><h1>NightStrike</h1><div class="genre">Hard Rock / Sleaze Rock</div><div class="ctas"><a class="btn" href="#music">Listen Now</a><a class="btn secondary" href="https://stevep999.github.io/hello-texas-radio/">HTR Radio</a></div></div></header>
+<section><div class="section-title"><span>Latest Release</span><h2>Now Playing</h2></div><div class="latest"><img src="https://raw.githubusercontent.com/SteveP999/nightstrike/main/nightstrike-crash-and-burn-cover.png" alt="Crash and Burn"><div><h3>Crash and Burn</h3><p>NightStrike joins the Hello Texas Records lineup with a sound built for big choruses, sharp guitars, and full-volume nights.</p></div></div></section>
+<section id="music"><div class="section-title"><span>Catalog</span><h2>Music</h2></div><div class="song-grid">
+        <article class="song-card">
+          <img src="https://raw.githubusercontent.com/SteveP999/nightstrike/main/nightstrike-crash-and-burn-cover.png" alt="Crash and Burn">
+          <div class="song-info">
+            <div class="song-title">Crash and Burn</div>
+            <div class="song-album">High Voltage</div>
+            <audio controls preload="none" src="https://www.dropbox.com/scl/fi/pdk6fd86ja75lrfd862i9/nightstrike-crash-and-burn-mp3.mp3?rlkey=65gjedmk6v53dxnyhfwyjwc83&raw=1"></audio>
+          </div>
+        </article>
+
+        <article class="song-card">
+          <img src="https://raw.githubusercontent.com/SteveP999/nightstrike/main/nightstrike-the-storm-never-sleeps-cover.png" alt="The Storm Never Sleeps">
+          <div class="song-info">
+            <div class="song-title">The Storm Never Sleeps</div>
+            <div class="song-album">High Voltage</div>
+            <audio controls preload="none" src="https://www.dropbox.com/scl/fi/xzj3myi8pt4ulsd2dvfrl/nightstrike-the-storm-never-sleeps-mp3.mp3?rlkey=e4vl08mxg5mb2m3m2yt4zvq3c&raw=1"></audio>
+          </div>
+        </article></div></section>
+<footer>NightStrike Â· Hello Texas Records</footer>
+</body>
+</html>
