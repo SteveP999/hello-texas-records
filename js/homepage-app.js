@@ -8,7 +8,8 @@ async function loadHomepage() {
     console.log('Homepage data loaded:', data);
 
     buildRoster(data.featuredArtists || []);
-    buildRadio(data.latestReleases || []);
+
+    loadRadio();
 
   } catch (err) {
 
@@ -42,7 +43,7 @@ function buildRoster(artists) {
 
         <div class="card-play-overlay">
           <button class="card-play-btn">
-            &#9654;
+            ▶
           </button>
         </div>
       </div>
@@ -98,6 +99,28 @@ function buildArtistImage(artist) {
   }
 
   return 'https://raw.githubusercontent.com/SteveP999/hello-texas-records/main/htr-logo.png';
+}
+
+// ─────────────────────────────────────────────────────────────
+// RADIO LOADER
+// ─────────────────────────────────────────────────────────────
+
+async function loadRadio() {
+
+  try {
+
+    const response = await fetch('radio-data.json?cb=' + Date.now());
+    const songs = await response.json();
+
+    console.log('Radio data loaded:', songs.length);
+
+    buildRadio(songs);
+
+  } catch (err) {
+
+    console.error('Failed to load radio data:', err);
+
+  }
 }
 
 // ─────────────────────────────────────────────────────────────
@@ -179,7 +202,7 @@ function playTrack(index) {
     console.error('Playback failed:', err);
   });
 
-  radioPlayBtn.innerHTML = '&#9646;&#9646; Pause';
+  radioPlayBtn.innerHTML = 'Pause';
   radioPlayBtn.classList.add('active');
 
   highlightTrack(index);
@@ -242,14 +265,14 @@ radioPlayBtn.addEventListener('click', () => {
 
     radioAudio.play().catch(() => {});
 
-    radioPlayBtn.innerHTML = '&#9646;&#9646; Pause';
+    radioPlayBtn.innerHTML = 'Pause';
     radioPlayBtn.classList.add('active');
 
   } else {
 
     radioAudio.pause();
 
-    radioPlayBtn.innerHTML = '&#9654; Play';
+    radioPlayBtn.innerHTML = 'Play';
     radioPlayBtn.classList.remove('active');
 
   }
