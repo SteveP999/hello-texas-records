@@ -1,468 +1,261 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4PCFSEQJZ1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-4PCFSEQJZ1');
-</script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hello Texas Records — Independent Texas Music Label</title>
-<link rel="manifest" href="manifest.json">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body { font-family: 'Barlow', sans-serif; background: #0d0c0b; color: #e8e0d4; overflow-x: hidden; }
-:root {
-  --rust: #c8922a; --rust-lt: #e8ad4a; --rust-glow: rgba(200,146,42,0.18);
-  --cream: #f2ede3; --tan: #c4a97c; --dark: #0d0c0b; --dark2: #161412;
-  --dark3: #1e1c19; --dark4: #252220; --border: rgba(200,146,42,0.18);
-  --muted: rgba(232,224,212,0.5);
-}
-body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");background-size:200px 200px;pointer-events:none;z-index:0;opacity:0.4;}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:64px;background:rgba(13,12,11,0.92);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);}
-.nav-logo{height:36px;width:auto;}
-.nav-links{display:flex;gap:2rem;list-style:none;}
-.nav-links a{color:var(--muted);text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;letter-spacing:0.18em;text-transform:uppercase;transition:color 0.2s;}
-.nav-links a:hover{color:var(--rust-lt);}
-.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:5rem 2rem 4rem;text-align:center;overflow:hidden;}
-.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(200,146,42,0.08) 0%,transparent 70%);pointer-events:none;}
-.hero-eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--rust);margin-bottom:1.5rem;}
-.hero-logo{height:80px;width:auto;margin-bottom:2rem;filter:drop-shadow(0 0 30px rgba(200,146,42,0.25));}
-.hero-headline{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,6vw,5rem);letter-spacing:0.12em;color:var(--cream);line-height:1;margin-bottom:1rem;}
-.hero-sub{font-family:'Barlow Condensed',sans-serif;font-size:clamp(0.9rem,1.5vw,1.1rem);letter-spacing:0.2em;text-transform:uppercase;color:var(--tan);opacity:0.7;margin-bottom:3rem;}
-.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;}
-.btn-primary{background:var(--rust);color:var(--dark);border:none;padding:0.8rem 2rem;font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;text-decoration:none;display:inline-block;transition:background 0.2s,transform 0.15s;}
-.btn-primary:hover{background:var(--rust-lt);transform:translateY(-1px);}
-.btn-secondary{background:transparent;color:var(--cream);border:1px solid var(--border);padding:0.8rem 2rem;font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;letter-spacing:0.18em;text-transform:uppercase;text-decoration:none;display:inline-block;transition:border-color 0.2s,color 0.2s;}
-.btn-secondary:hover{border-color:var(--rust);color:var(--rust-lt);}
-.section-wrap{position:relative;z-index:1;padding:5rem 2rem;}
-.section-header{text-align:center;margin-bottom:3rem;}
-.section-eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;letter-spacing:0.32em;text-transform:uppercase;color:var(--rust);margin-bottom:0.75rem;}
-.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,4vw,3rem);letter-spacing:0.1em;color:var(--cream);}
-.gold-rule{width:48px;height:1px;background:var(--rust);margin:1rem auto 0;opacity:0.6;}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello Texas Radio</title>
+    <meta
+      name="description"
+      content="Tune through the stations of Hello Texas Records in a cinematic radio-dial homepage experience."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JRTPG2XFMT"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JRTPG2XFMT');
+    </script>
+  </head>
+  <body class="theme-texas">
+    <div class="page-shell">
+      <div class="atmosphere">
+        <div class="atmosphere__gradient"></div>
+        <div class="atmosphere__art" id="hero-art"></div>
+        <div class="atmosphere__scanlines"></div>
+        <div class="atmosphere__grain"></div>
+      </div>
 
-/* ── ROSTER GRID ── */
-#roster{background:var(--dark2);}
-.roster-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;}
-.artist-card{background:var(--dark3);border:1px solid var(--border);overflow:hidden;cursor:pointer;transition:border-color 0.25s,transform 0.2s;}
-.artist-card:hover{border-color:var(--rust);transform:translateY(-2px);}
-.card-art{position:relative;aspect-ratio:1;overflow:hidden;background:var(--dark4);}
-.card-art img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s,filter 0.3s;filter:brightness(0.85);}
-.artist-card:hover .card-art img{transform:scale(1.04);filter:brightness(1);}
-.card-play-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(13,12,11,0);transition:background 0.3s;}
-.artist-card:hover .card-play-overlay{background:rgba(13,12,11,0.3);}
-.card-play-btn{width:52px;height:52px;background:var(--rust);border:none;color:var(--dark);font-size:1rem;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transform:scale(0.8);transition:opacity 0.25s,transform 0.25s;padding-left:3px;}
-.artist-card:hover .card-play-btn{opacity:1;transform:scale(1);}
-.card-body{padding:1rem 1.2rem 1.2rem;}
-.card-genre{font-family:'Barlow Condensed',sans-serif;font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--rust);margin-bottom:0.4rem;}
-.card-artist{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:0.08em;color:var(--cream);line-height:1;margin-bottom:0.3rem;}
-.card-song{font-size:0.8rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:0.8rem;}
-.card-links{display:flex;gap:0.5rem;align-items:center;}
-.card-site-btn{font-family:'Barlow Condensed',sans-serif;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--rust);text-decoration:none;border:1px solid var(--border);padding:0.25rem 0.6rem;transition:border-color 0.2s,color 0.2s;}
-.card-site-btn:hover{border-color:var(--rust);color:var(--rust-lt);}
-.card-loading{height:200px;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);}
+      <div class="sticky-player" id="sticky-player" aria-hidden="true">
+        <div class="sticky-player__inner">
+          <div class="sticky-player__meta">
+            <img
+              class="sticky-player__art"
+              id="sticky-art"
+              src="https://raw.githubusercontent.com/SteveP999/Hello-Texas/main/dancing-through-my-dreams-cover.png"
+              alt="Current album art"
+            />
+            <div class="sticky-player__copy">
+              <span id="sticky-track">Dancing Through My Dreams</span>
+              <span id="sticky-artist">Hello Texas</span>
+            </div>
+          </div>
 
-/* ── HTR RADIO PLAYER ── */
-#radio-section{background:var(--dark);}
-.radio-wrap{max-width:900px;margin:0 auto;}
-.radio-display{background:var(--dark3);border:1px solid var(--border);padding:2rem;margin-bottom:1.5rem;display:grid;grid-template-columns:80px 1fr;gap:1.5rem;align-items:center;}
-.radio-art{width:80px;height:80px;object-fit:cover;border:1px solid var(--border);}
-.radio-info{}
-.radio-station{font-family:'Barlow Condensed',sans-serif;font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--rust);margin-bottom:0.3rem;}
-.radio-title{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:0.06em;color:var(--cream);line-height:1.1;margin-bottom:0.2rem;}
-.radio-artist{font-size:0.8rem;color:var(--tan);}
-.radio-controls{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:1rem;}
-.radio-btn{background:transparent;border:1px solid var(--border);color:var(--tan);padding:0.5rem 1rem;font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;transition:border-color 0.2s,color 0.2s,background 0.2s;}
-.radio-btn:hover{border-color:var(--rust);color:var(--rust-lt);}
-.radio-btn.active{background:var(--rust);color:var(--dark);border-color:var(--rust);}
-#radio-progress-wrap{height:4px;background:rgba(200,146,42,0.15);cursor:pointer;margin-bottom:0.5rem;}
-#radio-progress-fill{height:100%;width:0%;background:linear-gradient(to right,var(--rust),var(--rust-lt));transition:width 0.5s linear;}
-.radio-time-row{display:flex;justify-content:space-between;font-size:0.65rem;color:var(--muted);margin-bottom:1.5rem;}
-.radio-vol-row{display:flex;align-items:center;gap:0.75rem;}
-.radio-vol-label{font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);}
-#radio-vol{width:100px;accent-color:var(--rust);}
-.playlist-list{border:1px solid var(--border);max-height:320px;overflow-y:auto;}
-.playlist-list::-webkit-scrollbar{width:3px;}
-.playlist-list::-webkit-scrollbar-thumb{background:var(--border);}
-.pl-item{display:grid;grid-template-columns:36px 40px 1fr auto;align-items:center;gap:0.75rem;padding:0.6rem 1rem;border-bottom:1px solid rgba(200,146,42,0.06);cursor:pointer;transition:background 0.15s;}
-.pl-item:hover,.pl-item.active{background:rgba(200,146,42,0.06);}
-.pl-item.active .pl-num{color:var(--rust);}
-.pl-num{font-family:'Bebas Neue',sans-serif;font-size:0.85rem;color:var(--muted);text-align:center;}
-.pl-thumb{width:40px;height:40px;object-fit:cover;}
-.pl-info{}
-.pl-title{font-size:0.82rem;color:var(--cream);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.pl-artist{font-size:0.68rem;color:var(--muted);}
-.pl-dur{font-size:0.65rem;color:var(--muted);}
+          <div class="sticky-player__station-nav">
+            <button class="transport__button" id="sticky-station-prev" type="button" aria-label="Previous station">
+              &#8592;
+            </button>
+            <div class="sticky-player__station-block">
+              <span id="sticky-frequency">88.1 FM</span>
+              <strong id="sticky-station">Hello Texas Radio</strong>
+            </div>
+            <button class="transport__button" id="sticky-station-next" type="button" aria-label="Next station">
+              &#8594;
+            </button>
+          </div>
 
-/* ── ABOUT ── */
-#about{background:var(--dark2);}
-.about-inner{max-width:780px;margin:0 auto;text-align:center;}
-.about-inner p{color:var(--tan);line-height:1.9;font-size:0.95rem;margin-bottom:1.2rem;}
-.genre-tags{display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center;margin-top:2rem;}
-.genre-tag{font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--rust);border:1px solid var(--border);padding:0.3rem 0.8rem;}
-
-/* ── FOOTER ── */
-footer{background:var(--dark);border-top:1px solid var(--border);padding:4rem 2rem 3rem;text-align:center;}
-.foot-logo{height:52px;width:auto;margin-bottom:1.2rem;opacity:0.8;}
-.foot-tagline{font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted);margin-bottom:1.5rem;}
-.foot-links{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;}
-.foot-links a{font-family:'Barlow Condensed',sans-serif;font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;}
-.foot-links a:hover{color:var(--rust-lt);}
-
-@media(max-width:768px){
-  nav{padding:0 1.5rem;}
-  .nav-links{gap:1.2rem;}
-  .roster-grid{grid-template-columns:repeat(2,1fr);gap:1rem;}
-  .radio-display{grid-template-columns:60px 1fr;gap:1rem;}
-  .radio-art{width:60px;height:60px;}
-  .pl-item{grid-template-columns:28px 36px 1fr;}
-  .pl-dur{display:none;}
-}
-</style>
-</head>
-<body>
-<nav>
-  <img src="https://raw.githubusercontent.com/SteveP999/hello-texas-records/main/htr-logo.png" alt="Hello Texas Records" class="nav-logo">
-  <ul class="nav-links">
-    <li><a href="#roster">Artists</a></li>
-    <li><a href="#radio-section">HTR Radio</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="https://stevep999.github.io/hello-texas-radio/" target="_blank">Radio Site</a></li>
-  </ul>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-eyebrow">Independent Texas Music</div>
-  <img src="https://raw.githubusercontent.com/SteveP999/hello-texas-records/main/htr-logo.png" alt="HTR" class="hero-logo">
-  <h1 class="hero-headline">Hello Texas Records</h1>
-  <p class="hero-sub">16 Artists &nbsp;·&nbsp; Every Genre &nbsp;·&nbsp; One Label</p>
-  <div class="hero-ctas">
-    <a href="#roster" class="btn-primary">Meet the Artists</a>
-    <a href="#radio-section" class="btn-secondary">&#9654;&nbsp; HTR Radio</a>
-  </div>
-</section>
-
-<!-- ROSTER -->
-<section id="roster">
-  <div class="section-wrap">
-    <div class="section-header">
-      <div class="section-eyebrow">Our Artists</div>
-      <h2 class="section-title">The Roster</h2>
-      <div class="gold-rule"></div>
-    </div>
-    <div class="roster-grid" id="roster-grid">
-      <!-- cards injected by JS -->
-    </div>
-  </div>
-</section>
-
-<!-- HTR RADIO -->
-<section id="radio-section">
-  <div class="section-wrap">
-    <div class="section-header">
-      <div class="section-eyebrow">Streaming Now</div>
-      <h2 class="section-title">HTR Radio</h2>
-      <div class="gold-rule"></div>
-    </div>
-    <div class="radio-wrap">
-      <div class="radio-display">
-        <img id="radio-art" src="https://raw.githubusercontent.com/SteveP999/hello-texas-records/main/htr-logo.png" alt="" class="radio-art">
-        <div class="radio-info">
-          <div class="radio-station">Hello Texas Records Radio</div>
-          <div class="radio-title" id="radio-title">Select a track to play</div>
-          <div class="radio-artist" id="radio-artist">HTR Radio</div>
+          <div class="sticky-player__controls">
+            <button class="transport__button" id="sticky-prev" type="button" aria-label="Previous track">
+              &#9198;
+            </button>
+            <button
+              class="transport__button transport__button--play"
+              id="sticky-play"
+              type="button"
+              aria-label="Play or pause"
+            >
+              Play
+            </button>
+            <button class="transport__button" id="sticky-next" type="button" aria-label="Next track">
+              &#9197;
+            </button>
+          </div>
         </div>
       </div>
-      <div class="radio-controls">
-        <button class="radio-btn" id="radio-prev">&#9664;&#9664; Prev</button>
-        <button class="radio-btn active" id="radio-playbtn">&#9654; Play</button>
-        <button class="radio-btn" id="radio-next">Next &#9654;&#9654;</button>
-        <button class="radio-btn" id="radio-shuffle">&#8635; Shuffle</button>
-      </div>
-      <div id="radio-progress-wrap"><div id="radio-progress-fill"></div></div>
-      <div class="radio-time-row">
-        <span id="radio-cur">0:00</span>
-        <span id="radio-dur">0:00</span>
-      </div>
-      <div class="radio-vol-row">
-        <span class="radio-vol-label">Vol</span>
-        <input type="range" id="radio-vol" min="0" max="1" step="0.02" value="0.85">
-      </div>
+
+      <main id="top">
+        <section class="radio-top section" id="stations">
+          <div class="dial-card">
+            <div class="radio-top__header">
+              <div class="radio-top__art">
+                <img
+                  class="player-art radio-top__art-image"
+                  id="player-art"
+                  src="https://raw.githubusercontent.com/SteveP999/Hello-Texas/main/dancing-through-my-dreams-cover.png"
+                  alt="Current track artwork"
+                />
+                <img
+                  class="station-panel__cover station-panel__cover--hidden"
+                  id="station-cover"
+                  src="https://raw.githubusercontent.com/SteveP999/Hello-Texas/main/dancing-through-my-dreams-cover.png"
+                  alt="Selected station art"
+                />
+              </div>
+
+              <div class="player-copy radio-top__copy">
+                <p class="player-kicker">Now Playing</p>
+                <p class="radio-top__meta-line"><span class="radio-top__label">Song:</span> <span id="player-track">Dancing Through My Dreams</span></p>
+                <p class="radio-top__meta-line"><span class="radio-top__label">Artist:</span> <span id="player-artist">Hello Texas</span></p>
+                <p class="radio-top__meta-line"><span class="radio-top__label">Album:</span> <span id="player-album">Day to Day (The Lost Tapes)</span></p>
+              </div>
+
+              <div class="radio-top__center">
+                <div class="radio-top__station-block">
+                  <span class="hero-player-layout__frequency" id="player-frequency">88.1</span>
+                  <p class="player-station" id="player-station">Hello Texas Radio</p>
+                  <div class="radio-top__play-row">
+                    <button class="transport__button" id="player-station-prev" type="button" aria-label="Previous station">
+                      &#8592;
+                    </button>
+                    <button class="transport__button" id="player-station-next" type="button" aria-label="Next station">
+                      &#8594;
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="radio-top__controls">
+              <div class="transport transport--hero">
+                <button class="transport__button" id="player-prev" type="button" aria-label="Previous track">
+                  &#9198;
+                </button>
+                <button
+                  class="transport__button transport__button--play transport__button--hero-play"
+                  id="player-play"
+                  type="button"
+                  aria-label="Play or pause"
+                >
+                  Play
+                </button>
+                <button class="transport__button" id="player-next" type="button" aria-label="Next track">
+                  &#9197;
+                </button>
+              </div>
+
+              <div class="progress">
+                <span id="current-time">0:00</span>
+                <input
+                  class="progress__slider"
+                  id="progress-slider"
+                  type="range"
+                  min="0"
+                  max="100"
+                  value="0"
+                  step="0.1"
+                  aria-label="Track progress"
+                />
+                <span id="duration-time">--:--</span>
+              </div>
+
+              <div class="volume">
+                <label for="volume-slider">Volume</label>
+                <input
+                  class="volume__slider"
+                  id="volume-slider"
+                  type="range"
+                  min="0"
+                  max="1"
+                  value="0.85"
+                  step="0.01"
+                  aria-label="Volume"
+                />
+              </div>
+            </div>
+
+            <div class="dial" id="dial" aria-label="Radio station dial">
+              <div class="dial__track"></div>
+              <div class="dial__ticks" id="dial-ticks"></div>
+              <button
+                class="dial__knob"
+                id="dial-knob"
+                type="button"
+                aria-label="Drag to tune stations"
+                aria-valuemin="88.1"
+                aria-valuemax="109.3"
+                aria-valuenow="88.1"
+              ></button>
+            </div>
+
+            <div class="preset-row" id="preset-row" aria-label="Station presets"></div>
+          </div>
+        </section>
+
+        <section class="hero section" id="main-player-anchor">
+          <article class="station-panel station-info-panel">
+            <div class="station-panel__header station-panel__header--wide">
+              <div class="station-panel__heading">
+                <p class="eyebrow">Selected Station</p>
+                <h1 id="hero-station-name">Hello Texas Radio</h1>
+                <p class="hero__lede" id="hero-tagline">The sound of Texas, turned all the way up.</p>
+              </div>
+              <span class="frequency-badge hero__frequency-badge" id="station-frequency-badge">88.1</span>
+            </div>
+
+            <div class="station-panel__body station-panel__body--wide">
+              <div class="station-panel__copy station-panel__copy--summary">
+                <div class="station-meta station-meta--compact">
+                  <span id="hero-genre">Red Dirt / Texas Country / Roots</span>
+                  <span id="hero-mood">Gritty, warm, backroad, flagship</span>
+                  <span id="station-featured-track">Dancing Through My Dreams</span>
+                </div>
+
+                <p class="hero__description station-panel__description" id="hero-description">
+                  The home signal for Hello Texas Records. Red Dirt roots, Texas storytelling, and the
+                  label's flagship sound.
+                </p>
+              </div>
+
+              <div class="station-panel__actions">
+                <a
+                  class="button button--primary"
+                  id="hero-cta"
+                  href="https://stevep999.github.io/Hello-Texas/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Visit Artist Site
+                </a>
+              </div>
+            </div>
+
+          </article>
+        </section>
+
+        <section class="hero-player section" id="roster">
+          <div class="section-heading">
+            <p class="eyebrow">Broadcasting the Roster</p>
+          </div>
+
+          <div class="quick-strip" id="quick-strip" aria-label="All stations"></div>
+        </section>
+
+        <section class="about section" id="about">
+          <div class="section-heading">
+            <p class="eyebrow">About</p>
+          </div>
+
+          <div class="about-grid">
+            <article class="about-card about-card--wide" id="contact">
+              <h3>Hello Texas Radio</h3>
+              <p>
+                Hello Texas Radio turns the label roster into a station dial: every artist lives on a dedicated
+                frequency with its own mood, color, and full randomized playlist. Use the station dial or roster
+                cards to tune across the catalog, then jump out to each artist site when you want to dig deeper.
+              </p>
+            </article>
+          </div>
+        </section>
+      </main>
     </div>
-    <div class="playlist-list" id="playlist-list" style="margin-top:1.5rem;">
-      <!-- tracks injected by JS -->
-    </div>
-  </div>
-</section>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="section-wrap">
-    <div class="section-header">
-      <div class="section-eyebrow">The Label</div>
-      <h2 class="section-title">About Hello Texas Records</h2>
-      <div class="gold-rule"></div>
-    </div>
-    <div class="about-inner">
-      <p>Hello Texas Records is an independent Texas music label built on one simple idea: great music doesn't need a zip code. Our roster spans country, rock, blues, pop, EDM, Latin, jazz, Christian worship, and beyond.</p>
-      <p>We sign artists we believe in and give them the freedom to make the music they need to make. Every genre. Every story. One label.</p>
-      <div class="genre-tags">
-        <span class="genre-tag">Red Dirt Country</span>
-        <span class="genre-tag">Southern Rock</span>
-        <span class="genre-tag">Blues Rock</span>
-        <span class="genre-tag">Christian Worship</span>
-        <span class="genre-tag">New Age</span>
-        <span class="genre-tag">Adult Contemporary</span>
-        <span class="genre-tag">EDM</span>
-        <span class="genre-tag">K-Pop</span>
-        <span class="genre-tag">Latin Pop</span>
-        <span class="genre-tag">Big Band</span>
-        <span class="genre-tag">Hard Rock</span>
-        <span class="genre-tag">Indie Pop</span>
-        <span class="genre-tag">Americana</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <img src="https://raw.githubusercontent.com/SteveP999/hello-texas-records/main/htr-logo.png" alt="Hello Texas Records" class="foot-logo">
-  <div class="foot-tagline">Hello Texas Records &nbsp;·&nbsp; Independent Texas Music</div>
-  <div class="foot-links">
-    <a href="https://stevep999.github.io/hello-texas-radio/" target="_blank">HTR Radio</a>
-    <a href="#roster">Artists</a>
-    <a href="#about">About</a>
-  </div>
-</footer>
-
-<audio id="radio-audio" playsinline preload="none"></audio>
-<script>
-// ── ARTIST REGISTRY ─────────────────────────────────────────────
-const ARTISTS = [
-  { slug:'Hello-Texas',      name:'Hello Texas',      genre:'Red Dirt Country',           site:'https://stevep999.github.io/Hello-Texas/' },
-  { slug:'Avery-Ivey',       name:'Avery Ivey',       genre:'Country · Pop · Alternative', site:'https://stevep999.github.io/Avery-Ivey/' },
-  { slug:'Parsons-Cross',    name:'Parsons Cross',    genre:'Contemporary Christian',      site:'https://stevep999.github.io/Parsons-Cross/' },
-  { slug:'stephen-parsons',  name:'Stephen Parsons',  genre:'Christian Singer-Songwriter', site:'https://stevep999.github.io/stephen-parsons/' },
-  { slug:'Daniel-Kincaid',   name:'Daniel Kincaid',   genre:'Adult Contemporary',          site:'https://stevep999.github.io/Daniel-Kincaid/' },
-  { slug:'Sawyer-Price',     name:'Sawyer Price',     genre:'Red Dirt Country',            site:'https://stevep999.github.io/Sawyer-Price/' },
-  { slug:'Lucas-Harlow',     name:'Lucas Harlow',     genre:'New Age Instrumental Piano',  site:'https://stevep999.github.io/Lucas-Harlow/' },
-  { slug:'Skyline-Theory',   name:'Skyline Theory',   genre:'EDM · Electronic Pop',        site:'https://stevep999.github.io/Skyline-Theory/' },
-  { slug:'Vincent-Cole',     name:'Vincent Cole',     genre:'Big Band · Swing',            site:'https://stevep999.github.io/Vincent-Cole/' },
-  { slug:'Rio-Valencia',     name:'Rio Valencia',     genre:'Latin Pop · Global',          site:'https://stevep999.github.io/Rio-Valencia/' },
-  { slug:'PULSE7',           name:'PULSE7',           genre:'K-Pop · Electronic',          site:'https://stevep999.github.io/PULSE7/' },
-  { slug:'vanta',            name:'vanta',            genre:'Hard Rock · Alternative',     site:'https://stevep999.github.io/vanta/' },
-  { slug:'Night-Shift',      name:'Night Shift',      genre:'Southern Rock · Blues',       site:'https://stevep999.github.io/Night-Shift/' },
-  { slug:'Taylor-Martin',    name:'Taylor Martin',    genre:'Country · Americana',         site:'https://stevep999.github.io/Taylor-Martin/' },
-  { slug:'NightStrike',      name:'NightStrike',      genre:'Hard Rock · Sleaze Rock',     site:'https://nightstrike.hellotexasrecords.com/' },
-  { slug:'Silent-Oblivion',  name:'Silent Oblivion',  genre:'Indie Pop · Alternative',     site:'https://stevep999.github.io/Silent-Oblivion/' },
-];
-
-// ── HTR RADIO PLAYLIST ──────────────────────────────────────────
-// Pulls all songs from each artist's songs.json dynamically
-// Falls back to individual entries if fetch fails
-const RADIO_FALLBACK = [
-  {t:'That Texas Sound',artist:'Hello Texas',img:'https://raw.githubusercontent.com/SteveP999/Hello-Texas/main/covers/hello-texas-that-texas-sound-cover.png',src:'https://www.dropbox.com/scl/fi/3sc72tdzvu913t0se9567/Hello-Texas-That-Texas-Sound-Released-MP3.mp3?rlkey=b9sybqjdutyplwqmat72bnn82&raw=1'},
-  {t:'Happily Ever After',artist:'Hello Texas',img:'https://raw.githubusercontent.com/SteveP999/Hello-Texas/main/covers/hello-texas-happily-ever-after-cover.png',src:'https://www.dropbox.com/scl/fi/hupjoesyytssakywiqkjv/Happily-Ever-After-Mastered-MP3.mp3?rlkey=kp0csfv81xn0wqxidyfg7qn4v&raw=1'},
-  {t:'Dark Nights of the Soul',artist:'Parsons Cross',img:'https://raw.githubusercontent.com/SteveP999/Parsons-Cross/main/covers/parsons-cross-dark-nights-of-the-soul-cover.png',src:'https://www.dropbox.com/scl/fi/lvy40kvrsreftclicsiie/parsons-cross-dark-nights-of-the-soul-mp3.mp3?rlkey=5lttcugp86qupyaqz4d9vaesr&raw=1'},
-  {t:"Lost (Where's God)",artist:'Parsons Cross',img:'https://raw.githubusercontent.com/SteveP999/Parsons-Cross/main/covers/parsons-cross-lost-wheres-god-cover.png',src:'https://www.dropbox.com/scl/fi/aucayb7h1iimytjaxapwo/parsons-cross-lost-wheres-god-mp3.mp3?rlkey=fbxd0i8l4hax25r4k6f4fk65s&raw=1'},
-  {t:'All My Life',artist:'Sawyer Price',img:'https://raw.githubusercontent.com/SteveP999/Sawyer-Price/main/covers/sawyer-price-all-my-life-cover.png',src:'https://www.dropbox.com/scl/fi/2bme49g8ftejf9e3recpn/Sawyer-Price-All-My-Life-Mastered-MP3.mp3?rlkey=k1ob4d11k6j9lw7axx42mwaz7&raw=1'},
-  {t:'Slow Like Sunday',artist:'Sawyer Price',img:'https://raw.githubusercontent.com/SteveP999/Sawyer-Price/main/covers/sawyer-price-slow-like-sunday-cover.png',src:'https://www.dropbox.com/scl/fi/bitpjaaarrwfnd0vmunzw/Slow-Like-Sunday-v01-Mastered-mp3.mp3?rlkey=exmyeq79diwehdpa9ki8r4qx2&raw=1'},
-  {t:'Where the Light Stayed',artist:'Lucas Harlow',img:'https://raw.githubusercontent.com/SteveP999/Lucas-Harlow/main/covers/lucas-harlow-where-the-light-stayed-cover.png',src:'https://www.dropbox.com/scl/fi/6lbt6f7aju95mqwvv7mm7/14-Where-the-Light-Stayed-Mastered-MP3.mp3?rlkey=pxgumpojrig7tz7wdo19ve5a0&raw=1'},
-  {t:'First Light',artist:'Lucas Harlow',img:'https://raw.githubusercontent.com/SteveP999/Lucas-Harlow/main/covers/lucas-harlow-first-light-cover.png',src:'https://www.dropbox.com/scl/fi/gu9xec1p2tki4vzdfglap/Lucas-Harlow-01-First-Light.mp3?rlkey=53mo20k75q1pn3fj6oeozf3t4&raw=1'},
-  {t:'Just This Once',artist:'Daniel Kincaid',img:'https://raw.githubusercontent.com/SteveP999/Daniel-Kincaid/main/covers/daniel-kincaid-just-this-once-cover.png',src:'https://www.dropbox.com/scl/fi/xfwjj7nwovh6s7gf5oy50/Just-This-Once-Mastered-MP3.mp3?rlkey=1phk6fx0ulbdwr0qpa7zdzjd6&raw=1'},
-  {t:'Running Out of Reasons',artist:'Daniel Kincaid',img:'https://raw.githubusercontent.com/SteveP999/Daniel-Kincaid/main/covers/daniel-kincaid-running-out-of-reasons-cover.png',src:'https://www.dropbox.com/scl/fi/jozx0hhyrkk4e4w3qohqq/Daniel-Kincaid-Running-Out-Of-Reasons-Studio-Mastered-MP3.mp3?rlkey=3sig8j1al2ttgrj36q94m762i&raw=1'},
-  {t:'Main Character',artist:'Avery Ivey',img:'https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/covers/avery-ivey-album-for-hard-truths/avery-ivey-main-character-cover.png',src:'https://www.dropbox.com/scl/fi/trqy5igqzyanjphnsnw6z/V1-Main-Character-Mastered-MP3.mp3?rlkey=764wvwd58t5oj3aOf4gh7nzy6&raw=1'},
-  {t:'Tomorrow Never Comes',artist:'Avery Ivey',img:'https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/covers/avery-ivey-album-somewhere-in-the-middle/avery-ivey-tomorrow-never-comes-cover.png',src:'https://www.dropbox.com/scl/fi/7bdpevq44m491ygp0gk5i/avery-ivey-tomorrow-never-comes-mp3.mp3?rlkey=2qx7l8yjjnwb2wyiaptkpryau&raw=1'},
-  {t:'Text from God',artist:'Avery Ivey',img:'https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/covers/avery-ivey-album-a-soft-place-to-fall/avery-ivey-text-from-god-cover.png',src:'https://www.dropbox.com/scl/fi/rbq49kx031ncycvcr12hh/Avery-Ivey-Text-from-God-Master-v14.mp3?rlkey=je3m4idfyavkobyfqdr3jkfsp&raw=1'},
-  {t:'When the World Goes Quiet',artist:'Skyline Theory',img:'https://raw.githubusercontent.com/SteveP999/Skyline-Theory/main/covers/skyline-theory-when-the-world-goes-quiet-cover.png',src:'https://www.dropbox.com/scl/fi/nc9vds0ee7bvr29wtdj7k/When-the-World-Goes-Quiet-Mastered-MP3.mp3?rlkey=7srnvab42k2xdandp2a7j224j&raw=1'},
-  {t:'We Don\'t Come Down',artist:'Skyline Theory',img:'https://raw.githubusercontent.com/SteveP999/Skyline-Theory/main/covers/skyline-theory-we-dont-come-down-cover.png',src:'https://www.dropbox.com/scl/fi/cf371yd6vj0a6ceaibi75/We-Don-t-Come-Down-Mastered-MP3.mp3?rlkey=po0zerdjt6hsqqi8nx2bcn8oe&raw=1'},
-  {t:'Just Watch Me Walk Away',artist:'Vincent Cole',img:'https://raw.githubusercontent.com/SteveP999/Vincent-Cole/main/covers/vincent-cole-just-watch-me-walk-away-cover.png',src:'https://www.dropbox.com/scl/fi/gt5fe1l7mrp49u5jszvbi/vincent-cole-just-watch-me-walk-away-mp3-v4.mp3?rlkey=zooi7gl31kvkj0g3qts950ouw&raw=1'},
-  {t:'Trouble in a Black Dress',artist:'Vincent Cole',img:'https://raw.githubusercontent.com/SteveP999/Vincent-Cole/main/covers/vincent-cole-trouble-in-a-black-dress-cover.png',src:'https://www.dropbox.com/scl/fi/tq3gnmf9kxy2ny7ruxsyq/vincent-cole-trouble-in-a-black-dress-mp3.mp3?rlkey=9injlc1hrfrs17bv2nen79ied&raw=1'},
-  {t:'No Control',artist:'Rio Valencia',img:'https://raw.githubusercontent.com/SteveP999/Rio-Valencia/main/covers/rio-valencia-no-control-cover.png',src:'https://www.dropbox.com/scl/fi/xl6id8cftbsvrqpsueehx/No-Control-Mastered-MP3.mp3?rlkey=4vxmg9u10jckquwf5xkloccq0&raw=1'},
-  {t:'No Te Vas',artist:'Rio Valencia',img:'https://raw.githubusercontent.com/SteveP999/Rio-Valencia/main/covers/rio-valencia-no-te-vas-you-dont-leave-cover.png',src:'https://www.dropbox.com/scl/fi/1etgax05sxjqo2m55h78v/No-Te-Vas-You-Don-t-Leave-Mastered-MP3.mp3?rlkey=0e3ue4n3vhpl9uppv3nzh8v33&raw=1'},
-  {t:'Two Nights',artist:'PULSE7',img:'https://raw.githubusercontent.com/SteveP999/pulse7/main/covers/pulse7-two-nights-cover.png',src:'https://www.dropbox.com/scl/fi/2wioc1edj01haev6ifjkl/Two-Nights-PULSE7.mp3?rlkey=dwogp86reax5amxrh30bphoay&raw=1'},
-  {t:'Signal Locked',artist:'PULSE7',img:'https://raw.githubusercontent.com/SteveP999/pulse7/main/covers/pulse7-signal-locked-cover.png',src:'https://www.dropbox.com/scl/fi/49isq5ehrm5fxftjgbbdt/PULSE7-Signal-Locked-Mastered-MP3.mp3?rlkey=ewxlecqcld0za18lgj3e4nylb&raw=1'},
-  {t:'Too Loud',artist:'vanta',img:'https://raw.githubusercontent.com/SteveP999/vanta/main/covers/vanta-too-loud-cover.png',src:'https://www.dropbox.com/scl/fi/4228evr7l0qrs0kegwzty/Too-Loud-Mastered-MP3.mp3?rlkey=pw5icqqci9xf6cj36iqarmkdj&raw=1'},
-  {t:"Don't Need Permission",artist:'vanta',img:'https://raw.githubusercontent.com/SteveP999/vanta/main/covers/vanta-dont-need-permission-cover.png',src:'https://www.dropbox.com/scl/fi/7autvxh8dd3aaktvz3vm1/Vanta-Don-t-Need-Permission-Mastered-MP3.mp3?rlkey=505p9f0jnfsg3wau3tpzscbat&raw=1'},
-  {t:'Housefire',artist:'Night Shift',img:'https://stevep999.github.io/Night-Shift/images/covers/night-shift-housefire-cover.png',src:'https://www.dropbox.com/scl/fi/begi3v87qfg2qdotlfw9c/night-shift-housefire-mp3.mp3?rlkey=u9p4rmbuzqcmtfy3moa821co3&raw=1'},
-  {t:'No Rules Tonight',artist:'Night Shift',img:'https://stevep999.github.io/Night-Shift/images/covers/night-shift-no-rules-tonight-cover.png',src:'https://www.dropbox.com/scl/fi/y095y6udugo5czzvwjk9a/night-shift-no-rules-tonight-mp3.mp3?rlkey=jf20t7501lnj4e3ywn1do39ko&raw=1'},
-  {t:'Montana Skies',artist:'Taylor Martin',img:'https://raw.githubusercontent.com/SteveP999/Taylor-Martin/main/covers/taylor-martin-montana-skies-cover.png',src:'https://www.dropbox.com/scl/fi/umy4fkkkabucsufshifry/Sky-v10.mp3?rlkey=oal277gilvw2mkava6sm7xy07&raw=1'},
-  {t:'The Storm Never Sleeps',artist:'NightStrike',img:'https://raw.githubusercontent.com/SteveP999/NightStrike/main/covers/nightstrike-the-storm-never-sleeps-cover.png',src:'https://www.dropbox.com/scl/fi/xzj3myi8pt4ulsd2dvfrl/nightstrike-the-storm-never-sleeps-mp3.mp3?rlkey=e4vl08mxg5mb2m3m2yt4zvq3c&raw=1'},
-  {t:'Crash and Burn',artist:'NightStrike',img:'https://raw.githubusercontent.com/SteveP999/NightStrike/main/covers/nightstrike-crash-and-burn-cover.png',src:'https://www.dropbox.com/scl/fi/pdk6fd86ja75lrfd862i9/nightstrike-crash-and-burn-mp3.mp3?rlkey=65gjedmk6v53dxnyhfwyjwc83&raw=1'},
-  {t:'Lift Off (With a Bang)',artist:'Silent Oblivion',img:'https://stevep999.github.io/Silent-Oblivion/images/covers/silent-oblivion-lift-off-cover.png',src:'https://www.dropbox.com/scl/fi/tctbe476glsb4mu3hv7k7/Lift-Off-With-a-Bang-Mastered-MP3.mp3?rlkey=2dt2a3mayzne6l1lff1jf3t00&raw=1'},
-  {t:'Lip Gloss Ghost',artist:'Silent Oblivion',img:'https://stevep999.github.io/Silent-Oblivion/images/covers/silent-oblivion-lip-gloss-ghost-cover.png',src:'https://www.dropbox.com/scl/fi/j087cbyzyv8jh89ifcc4o/silent-oblivion-lip-gloss-ghost-mastered-MP3.mp3?rlkey=u3a79co0vb1qee24142goud4f&raw=1'},
-  {t:'A Soft Place to Fall',artist:'Avery Ivey',img:'https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/covers/avery-ivey-album-a-soft-place-to-fall/avery-ivey-a-soft-place-to-fall-SONG-cover.png',src:'https://www.dropbox.com/scl/fi/e8050ni9uh9of4b5cax4d/Avery-Ivey-A-Soft-Place-to-Fall-Mastered-v2-MP3.mp3?rlkey=amnqgpp0eqzx9uwo1eaio7a8p&raw=1'},
-];
-
-// ── ROSTER CARDS ────────────────────────────────────────────────
-const BASE = 'https://raw.githubusercontent.com/SteveP999';
-function resolveArtistAsset(path, artist){
-  if(!path) return '';
-  const value = String(path).trim();
-  if(/^https?:\/\//i.test(value) || value.startsWith('data:')) return value;
-  const clean = value.replace(/^\.\//,'').replace(/^\//,'');
-  return artist.site.replace(/\/$/,'') + '/' + clean;
-}
-const grid = document.getElementById('roster-grid');
-let radioIdx = 0;
-let radioShuffle = false;
-let radioOrder = RADIO_FALLBACK.map((_,i)=>i);
-
-ARTISTS.forEach(artist => {
-  const card = document.createElement('div');
-  card.className = 'artist-card';
-  card.innerHTML = `<div class="card-art">
-    <div class="card-loading" id="load-${artist.slug}">Loading…</div>
-    <img id="art-${artist.slug}" src="" alt="${artist.name}" style="display:none;">
-    <div class="card-play-overlay">
-      <button class="card-play-btn" data-slug="${artist.slug}">&#9654;</button>
-    </div>
-  </div>
-  <div class="card-body">
-    <div class="card-genre">${artist.genre}</div>
-    <div class="card-artist">${artist.name}</div>
-    <div class="card-song" id="song-${artist.slug}">Loading…</div>
-    <div class="card-links">
-      <a href="${artist.site}" target="_blank" class="card-site-btn">Visit Site</a>
-    </div>
-  </div>`;
-  grid.appendChild(card);
-
-  // fetch latest.json
-  fetch(`${BASE}/${artist.slug}/main/latest.json?cb=${Date.now()}`)
-    .then(r=>r.json())
-    .then(data=>{
-      const img = document.getElementById(`art-${artist.slug}`);
-      const load = document.getElementById(`load-${artist.slug}`);
-      const song = document.getElementById(`song-${artist.slug}`);
-      const cover = resolveArtistAsset(data.cover || data.image || '', artist);
-      const audio = resolveArtistAsset(data.audio || data.src || data.audioFile || '', artist);
-      if(cover){ img.src=cover; img.style.display='block'; load.style.display='none'; }
-      if(data.title){ song.textContent = data.title; }
-      // wire play button
-      const btn = card.querySelector(`[data-slug="${artist.slug}"]`);
-      if(btn && audio){
-        btn.onclick = (e)=>{
-          e.stopPropagation();
-          const idx = RADIO_FALLBACK.findIndex(t=>t.artist===artist.name);
-          if(idx>=0){ playRadioTrack(idx); }
-          else {
-            // add and play
-            RADIO_FALLBACK.push({t:data.title,artist:artist.name,img:cover,src:audio});
-            radioOrder.push(RADIO_FALLBACK.length-1);
-            buildPlaylist();
-            playRadioTrack(RADIO_FALLBACK.length-1);
-          }
-        };
-      }
-    })
-    .catch(()=>{
-      const load = document.getElementById(`load-${artist.slug}`);
-      if(load) load.textContent = artist.name;
-    });
-});
-
-// ── RADIO ENGINE ────────────────────────────────────────────────
-const radioAudio = document.getElementById('radio-audio');
-const radioArt   = document.getElementById('radio-art');
-const radioTitle = document.getElementById('radio-title');
-const radioArtistEl = document.getElementById('radio-artist');
-const radioPlayBtn  = document.getElementById('radio-playbtn');
-
-function fmt(s){ if(!isFinite(s)||isNaN(s))return'0:00'; const m=Math.floor(s/60),sec=Math.floor(s%60); return m+':'+(sec<10?'0':'')+sec; }
-
-function playRadioTrack(idx){
-  if(idx<0||idx>=RADIO_FALLBACK.length) idx=0;
-  radioIdx=idx;
-  const t=RADIO_FALLBACK[idx];
-  radioAudio.removeAttribute('crossorigin');
-  radioAudio.src=t.src;
-  radioArt.src=t.img||'';
-  radioTitle.textContent=t.t;
-  radioArtistEl.textContent=t.artist;
-  radioPlayBtn.textContent='&#9646;&#9646; Pause';
-  radioPlayBtn.classList.add('active');
-  radioAudio.load();
-  radioAudio.play().catch(()=>{});
-  gtag('event','radio_play',{track:t.t,artist:t.artist});
-  highlightPlaylistItem(idx);
-}
-
-function nextTrack(){
-  let next;
-  if(radioShuffle){
-    next=Math.floor(Math.random()*RADIO_FALLBACK.length);
-  } else {
-    next=(radioIdx+1)%RADIO_FALLBACK.length;
-  }
-  playRadioTrack(next);
-}
-
-radioAudio.addEventListener('ended', nextTrack);
-
-radioAudio.addEventListener('timeupdate',()=>{
-  const pct=radioAudio.duration?(radioAudio.currentTime/radioAudio.duration)*100:0;
-  document.getElementById('radio-progress-fill').style.width=pct+'%';
-  document.getElementById('radio-cur').textContent=fmt(radioAudio.currentTime);
-  document.getElementById('radio-dur').textContent=fmt(radioAudio.duration);
-});
-
-document.getElementById('radio-progress-wrap').addEventListener('click',e=>{
-  if(!radioAudio.duration)return;
-  const r=e.currentTarget.getBoundingClientRect();
-  radioAudio.currentTime=((e.clientX-r.left)/r.width)*radioAudio.duration;
-});
-
-radioPlayBtn.addEventListener('click',()=>{
-  if(radioAudio.src&&radioAudio.src!==window.location.href){
-    if(radioAudio.paused){ radioAudio.play().catch(()=>{}); radioPlayBtn.innerHTML='&#9646;&#9646; Pause'; radioPlayBtn.classList.add('active'); }
-    else { radioAudio.pause(); radioPlayBtn.innerHTML='&#9654; Play'; radioPlayBtn.classList.remove('active'); }
-  } else {
-    playRadioTrack(0);
-  }
-});
-
-document.getElementById('radio-prev').addEventListener('click',()=>{
-  if(radioAudio.currentTime>3){ radioAudio.currentTime=0; return; }
-  playRadioTrack((radioIdx-1+RADIO_FALLBACK.length)%RADIO_FALLBACK.length);
-});
-document.getElementById('radio-next').addEventListener('click', nextTrack);
-document.getElementById('radio-shuffle').addEventListener('click',function(){
-  radioShuffle=!radioShuffle;
-  this.classList.toggle('active',radioShuffle);
-  this.textContent=radioShuffle?'&#8635; Shuffle ON':'&#8635; Shuffle';
-});
-document.getElementById('radio-vol').addEventListener('input',e=>{ radioAudio.volume=+e.target.value; });
-
-// ── BUILD PLAYLIST ──────────────────────────────────────────────
-function buildPlaylist(){
-  const list=document.getElementById('playlist-list');
-  list.innerHTML=RADIO_FALLBACK.map((t,i)=>`
-    <div class="pl-item${i===radioIdx?' active':''}" onclick="playRadioTrack(${i})">
-      <span class="pl-num">${i+1}</span>
-      <img class="pl-thumb" src="${t.img||''}" alt="">
-      <div class="pl-info">
-        <div class="pl-title">${t.t}</div>
-        <div class="pl-artist">${t.artist}</div>
-      </div>
-    </div>`).join('');
-}
-
-function highlightPlaylistItem(idx){
-  document.querySelectorAll('.pl-item').forEach((el,i)=>{
-    el.classList.toggle('active',i===idx);
-  });
-}
-
-buildPlaylist();
-</script>
-</body>
+    <script type="module" src="./js/app.js"></script>
+  </body>
 </html>
