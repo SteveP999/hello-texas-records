@@ -35,15 +35,26 @@ function buildRoster(artists) {
     const card = document.createElement('div');
     card.className = 'artist-card';
 
-    const image = buildArtistImage(artist);
+    const images = buildArtistImageCandidates(artist);
+    const firstImage = images[0] || 'https://raw.githubusercontent.com/SteveP999/hello-texas-records/main/htr-logo.png';
+
+    const isLogoCard = /logo|monogram/i.test(firstImage);
+    const fitClass = isLogoCard ? ' logo-card-img' : '';
 
     card.innerHTML = `
       <div class="card-art">
-        <img src="${image}" alt="${artist.name}">
+        <img
+          src="${firstImage}"
+          alt="${artist.name}"
+          class="artist-card-img${fitClass}"
+          data-img-index="0"
+          data-img-candidates='${JSON.stringify(images)}'
+          onerror="tryNextArtistImage(this)"
+        >
 
         <div class="card-play-overlay">
           <button class="card-play-btn">
-            â–¶
+            ▶
           </button>
         </div>
       </div>
@@ -64,6 +75,7 @@ function buildRoster(artists) {
             href="${artist.siteUrl || '#'}"
             target="_blank"
             class="card-site-btn"
+            onclick="event.stopPropagation()"
           >
             Visit Site
           </a>
@@ -84,18 +96,65 @@ function buildRoster(artists) {
   });
 }
 
-function buildArtistImage(artist) {
+function buildArtistImageCandidates(artist) {
   const fallback = 'https://raw.githubusercontent.com/SteveP999/hello-texas-records/main/htr-logo.png';
 
   const resolve = (path) => {
     if (!path || !artist.githubRepo) return '';
     const value = String(path).trim();
+    if (!value) return '';
     if (/^https?:\/\//i.test(value) || value.startsWith('data:')) return value;
     const clean = value.replace(/^\.\//, '').replace(/^\//, '');
     return `https://raw.githubusercontent.com/${artist.githubRepo}/main/${clean}`;
   };
 
-  return resolve(artist.heroImage) || resolve(artist.logo) || fallback;
+  const raw = [];
+
+  if (Array.isArray(artist.imageCandidates)) raw.push(...artist.imageCandidates);
+  raw.push(artist.heroImage, artist.logo);
+
+  // Add generated fallbacks from the primary fields.
+  [artist.heroImage, artist.logo].forEach(path => {
+    if (!path) return;
+    const clean = String(path).replace(/^\.\//, '').replace(/^\//, '');
+    const file = clean.split('/').pop();
+
+    if (file) {
+      raw.push(file);
+      raw.push(`images/artist/${file}`);
+      raw.push(`images/logos/${file}`);
+      raw.push(`images/covers/${file}`);
+      raw.push(`covers/${file}`);
+    }
+  });
+
+  const resolved = raw.map(resolve).filter(Boolean);
+
+  resolved.push(fallback);
+
+  return [...new Set(resolved)];
+}
+
+function tryNextArtistImage(img) {
+  let list = [];
+
+  try {
+    list = JSON.parse(img.dataset.imgCandidates || '[]');
+  } catch (e) {
+    list = [];
+  }
+
+  const current = Number(img.dataset.imgIndex || 0);
+  const next = current + 1;
+
+  if (next < list.length) {
+    img.dataset.imgIndex = String(next);
+    img.src = list[next];
+  } else {
+    img.onerror = null;
+    img.src = 'https://raw.githubusercontent.com/SteveP999/hello-texas-records/main/htr-logo.png';
+    img.classList.add('logo-card-img');
+  }
 }
 
 // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€

@@ -86,7 +86,11 @@
       },
       "includeOnLabelHome": true,
       "includeOnRadio": true,
-      "latestTitle": "Tomorrow Never Comes"
+      "latestTitle": "Tomorrow Never Comes",
+      "imageCandidates": [
+        "images/artist/avery-photo-01.png",
+        "avery-photo-01.png"
+      ]
     },
     {
       "id": "daniel-kincaid",
@@ -105,7 +109,13 @@
       },
       "includeOnLabelHome": true,
       "includeOnRadio": true,
-      "latestTitle": "Just This Once"
+      "latestTitle": "Just This Once",
+      "imageCandidates": [
+        "images/artist/daniel-kincaid-hero-background.png",
+        "daniel-kincaid-hero-background.png",
+        "images/covers/daniel-kincaid-running-out-of-reasons-ALBUM-cover.png",
+        "covers/daniel-kincaid-running-out-of-reasons-ALBUM-cover.png"
+      ]
     },
     {
       "id": "hello-texas",
@@ -124,7 +134,11 @@
       },
       "includeOnLabelHome": true,
       "includeOnRadio": true,
-      "latestTitle": "Happily Ever After"
+      "latestTitle": "Happily Ever After",
+      "imageCandidates": [
+        "images/logos/hello-texas-logo.png",
+        "hello-texas-logo.png"
+      ]
     },
     {
       "id": "lucas-harlow",
@@ -143,7 +157,12 @@
       },
       "includeOnLabelHome": true,
       "includeOnRadio": true,
-      "latestTitle": "Where the Light Stayed"
+      "latestTitle": "Where the Light Stayed",
+      "imageCandidates": [
+        "images/logos/lucas-harlow-logo.png",
+        "ChatGPT%20Image%20Apr%201%2C%202026%2C%2003_20_52%20PM.png",
+        "ChatGPT Image Apr 1, 2026, 03_20_52 PM.png"
+      ]
     },
     {
       "id": "night-shift",
@@ -180,7 +199,13 @@
       },
       "includeOnLabelHome": true,
       "includeOnRadio": true,
-      "latestTitle": "Crash and Burn"
+      "latestTitle": "Crash and Burn",
+      "imageCandidates": [
+        "images/artist/nightstrike-band-photo.png",
+        "images/logos/nightstrike-logo.png",
+        "covers/nightstrike-crash-and-burn-cover.png",
+        "images/covers/nightstrike-crash-and-burn-cover.png"
+      ]
     },
     {
       "id": "parsons-cross",
@@ -199,7 +224,12 @@
       },
       "includeOnLabelHome": true,
       "includeOnRadio": true,
-      "latestTitle": "Out of the Darkness"
+      "latestTitle": "Out of the Darkness",
+      "imageCandidates": [
+        "images/logos/parsons-cross-logo.png",
+        "parsons-cross-logo.png",
+        "images/covers/parsons-cross-out-of-the-darkness-album-cover.png"
+      ]
     },
     {
       "id": "pulse7",
@@ -236,7 +266,14 @@
       },
       "includeOnLabelHome": true,
       "includeOnRadio": true,
-      "latestTitle": "No Control"
+      "latestTitle": "No Control",
+      "imageCandidates": [
+        "images/artist/rio-valencia-hero-photo.png",
+        "rio-valencia-hero-photo.png",
+        "images/logos/rio-valencia-logo.png",
+        "Rio Valencia Logo and Text.png",
+        "images/covers/rio-valencia-midnight-line-album-cover.png"
+      ]
     },
     {
       "id": "sawyer-price",
@@ -255,7 +292,13 @@
       },
       "includeOnLabelHome": true,
       "includeOnRadio": true,
-      "latestTitle": "All My Life"
+      "latestTitle": "All My Life",
+      "imageCandidates": [
+        "images/artist/sawyer-hero-background.png",
+        "sawyer-hero-background.png",
+        "images/covers/sawyer-price-unrushed-ALBUM-cover.png",
+        "covers/sawyer-price-unrushed-ALBUM-cover.png"
+      ]
     },
     {
       "id": "silent-oblivion",
@@ -310,7 +353,14 @@
       },
       "includeOnLabelHome": true,
       "includeOnRadio": true,
-      "latestTitle": "Calling in the Silence"
+      "latestTitle": "Calling in the Silence",
+      "imageCandidates": [
+        "images/artist/stephen-parsons-artist-photo.png",
+        "stephen-parsons-cowboy-fence-lean.png",
+        "images/artist/stephen-parsons-cowboy-fence-lean.png",
+        "images/logos/stephen-parsons-logo-transparent-oval.png",
+        "stephen-parsons-logo-transparent-oval.png"
+      ]
     },
     {
       "id": "taylor-martin",
@@ -365,7 +415,14 @@
       },
       "includeOnLabelHome": true,
       "includeOnRadio": true,
-      "latestTitle": "Last Call for Beautiful"
+      "latestTitle": "Last Call for Beautiful",
+      "imageCandidates": [
+        "images/artist/vincent-cole-artist-photo.png",
+        "vincent-cole-black-suit-white-shirt-1x1-pic-2.png",
+        "images/artist/vincent-cole-black-suit-white-shirt-1x1-pic-2.png",
+        "images/logos/vincent-cole-logo-monogram-transparent.png",
+        "vincent-cole-logo-monogram-transparent.png"
+      ]
     }
   ]
 }
