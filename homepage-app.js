@@ -56,7 +56,7 @@ function buildRoster(artists) {
         </div>
 
         <div class="card-song">
-          ${artist.genre || ''}
+          ${artist.latestTitle || artist.genre || ''}
         </div>
 
         <div class="card-links">
@@ -85,20 +85,17 @@ function buildRoster(artists) {
 }
 
 function buildArtistImage(artist) {
+  const fallback = 'https://raw.githubusercontent.com/SteveP999/hello-texas-records/main/htr-logo.png';
 
-  if (artist.heroImage && artist.githubRepo) {
+  const resolve = (path) => {
+    if (!path || !artist.githubRepo) return '';
+    const value = String(path).trim();
+    if (/^https?:\/\//i.test(value) || value.startsWith('data:')) return value;
+    const clean = value.replace(/^\.\//, '').replace(/^\//, '');
+    return `https://raw.githubusercontent.com/${artist.githubRepo}/main/${clean}`;
+  };
 
-    return `https://raw.githubusercontent.com/${artist.githubRepo}/main/${artist.heroImage}`;
-
-  }
-
-  if (artist.logo && artist.githubRepo) {
-
-    return `https://raw.githubusercontent.com/${artist.githubRepo}/main/${artist.logo}`;
-
-  }
-
-  return 'https://raw.githubusercontent.com/SteveP999/hello-texas-records/main/htr-logo.png';
+  return resolve(artist.heroImage) || resolve(artist.logo) || fallback;
 }
 
 // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
@@ -139,25 +136,15 @@ const radioPlayBtn = document.getElementById('radio-playbtn');
 
 function buildRadio(songs) {
 
-  // HTR homepage radio must use the full approved catalog from radio-data.json.
-  // Do not fall back to the old short inline playlist.
-  radioTracks = (songs || []).filter(song => song.includeOnRadio !== false && song.audioFile);
+  radioTracks = songs.filter(song => song.audioFile);
 
   buildPlaylist();
 
   if (radioTracks.length > 0) {
-    setRadioDisplay(radioTracks[0]);
-  }
-}
 
-function normalizeCoverUrl(url) {
-  if (!url) return '';
-  return String(url)
-    .replace('https://raw.githubusercontent.com/SteveP999/Night-Shift/main/covers/', 'https://stevep999.github.io/Night-Shift/images/covers/')
-    .replace('https://raw.githubusercontent.com/SteveP999/Silent-Oblivion/main/covers/', 'https://stevep999.github.io/Silent-Oblivion/images/covers/')
-    .replace('https://raw.githubusercontent.com/SteveP999/vanta/main/covers/', 'https://stevep999.github.io/vanta/images/covers/')
-    .replace('https://raw.githubusercontent.com/SteveP999/pulse7/main/covers/', 'https://stevep999.github.io/pulse7/images/covers/')
-    .replace('https://raw.githubusercontent.com/SteveP999/Taylor-Martin/main/covers/', 'https://stevep999.github.io/Taylor-Martin/images/covers/');
+    setRadioDisplay(radioTracks[0]);
+
+  }
 }
 
 function buildPlaylist() {
@@ -177,7 +164,7 @@ function buildPlaylist() {
 
         <img
           class="pl-thumb"
-          src="${normalizeCoverUrl(track.coverImage) || ''}"
+          src="${track.coverImage || ''}"
           alt="${track.title}"
         >
 
@@ -224,7 +211,7 @@ function setRadioDisplay(track) {
   radioArtist.textContent = track.artist || 'Unknown Artist';
 
   if (track.coverImage) {
-    radioArt.src = normalizeCoverUrl(track.coverImage);
+    radioArt.src = track.coverImage;
   }
 }
 
