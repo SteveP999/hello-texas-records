@@ -194,9 +194,29 @@ const radioArtist = document.getElementById('radio-artist');
 const radioAlbum = document.getElementById('radio-album');
 const radioPlayBtn = document.getElementById('radio-playbtn');
 
+function shouldIncludeMainRadioTrack(song) {
+  const artist = String(song.artist || '').toLowerCase();
+  const artistId = String(song.artistId || '').toLowerCase();
+  const title = String(song.title || '').toLowerCase();
+  const album = String(song.album || '').toLowerCase();
+
+  // Remove Lucas Harlow instrumentals from main HTR homepage radio.
+  if (artist.includes('lucas harlow') || artistId === 'lucas-harlow') return false;
+
+  // Remove legacy Neon Thunder replacements.
+  if (artist.includes('neon thunder') || artistId === 'neon-thunder') return false;
+  if (title === 'neon hearts') return false;
+  if (title === 'the storm never sleeps' && (artist.includes('neon thunder') || artistId === 'neon-thunder')) return false;
+
+  // Remove Hello Texas profane TeXXXas Tales album from the main site radio.
+  if ((artist.includes('hello texas') || artistId === 'hello-texas') && album === 'texxxas tales') return false;
+
+  return Boolean(song.audioFile || song.audioSrc || song.audio);
+}
+
 function buildRadio(songs) {
 
-  radioTracks = songs.filter(song => song.audioFile);
+  radioTracks = songs.filter(shouldIncludeMainRadioTrack);
 
   buildPlaylist();
 
@@ -218,7 +238,7 @@ function playTrack(index) {
 
   radioIndex = index;
 
-  radioAudio.src = track.audioFile;
+  radioAudio.src = track.audioFile || track.audioSrc || track.audio;
 
   setRadioDisplay(track);
 
@@ -246,8 +266,10 @@ function resolveRadioImage(track) {
     'lucas-harlow':'SteveP999/Lucas-Harlow',
     'night-shift':'SteveP999/Night-Shift',
     'nightstrike':'SteveP999/NightStrike',
+    'night-strike':'SteveP999/NightStrike',
     'parsons-cross':'SteveP999/Parsons-Cross',
     'pulse7':'SteveP999/PULSE7',
+    'pulse-7':'SteveP999/PULSE7',
     'rio-valencia':'SteveP999/Rio-Valencia',
     'sawyer-price':'SteveP999/Sawyer-Price',
     'silent-oblivion':'SteveP999/Silent-Oblivion',
@@ -258,7 +280,25 @@ function resolveRadioImage(track) {
     'vincent-cole':'SteveP999/Vincent-Cole'
   };
 
-  const artistId = track.artistId || String(track.artist || '').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+  const titleArtistOverrides = {
+    'thank you mom and dad':'stephen-parsons',
+    'run to his heart':'stephen-parsons',
+    'wide open silence':'stephen-parsons',
+    'love for eternity':'stephen-parsons',
+    "mom's love":'stephen-parsons',
+    'done with the damage':'stephen-parsons',
+    "my daughter's heart":'stephen-parsons',
+    'rise up':'stephen-parsons',
+    'calling in the silence':'stephen-parsons'
+  };
+
+  let artistId = track.artistId || String(track.artist || '').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+  const titleKey = String(track.title || '').toLowerCase();
+
+  if (titleArtistOverrides[titleKey]) {
+    artistId = titleArtistOverrides[titleKey];
+  }
+
   const repo = artistRepoMap[artistId];
 
   if (!repo) return fallback;
@@ -269,6 +309,7 @@ function resolveRadioImage(track) {
     return `https://raw.githubusercontent.com/${repo}/main/${clean}`;
   }
 
+  // Current standard: loose filename means it belongs in images/covers.
   return `https://raw.githubusercontent.com/${repo}/main/images/covers/${clean}`;
 }
 
@@ -282,6 +323,15 @@ function setRadioDisplay(track) {
   }
 
   radioArt.onerror = function () {
+    const current = this.src || '';
+    if (current.includes('/images/covers/')) {
+      this.src = current.replace('/images/covers/', '/covers/');
+      this.onerror = function () {
+        this.onerror = null;
+        this.src = 'https://raw.githubusercontent.com/SteveP999/hello-texas-records/main/htr-logo.png';
+      };
+      return;
+    }
     this.onerror = null;
     this.src = 'https://raw.githubusercontent.com/SteveP999/hello-texas-records/main/htr-logo.png';
   };
