@@ -196,6 +196,11 @@ const radioPlayBtn = document.getElementById('radio-playbtn');
 const radioPlayBtnBottom = document.getElementById('radio-playbtn-bottom');
 const radioPrevBottom = document.getElementById('radio-prev-bottom');
 const radioNextBottom = document.getElementById('radio-next-bottom');
+const radioBottomBar = document.getElementById('radio-bottom-bar');
+const bottomRadioArt = document.getElementById('bottom-radio-art');
+const bottomRadioTitle = document.getElementById('bottom-radio-title');
+const bottomRadioArtist = document.getElementById('bottom-radio-artist');
+const bottomRadioAlbum = document.getElementById('bottom-radio-album');
 
 function shouldIncludeMainRadioTrack(song) {
   const artist = String(song.artist || '').toLowerCase();
@@ -217,6 +222,42 @@ function shouldIncludeMainRadioTrack(song) {
   return Boolean(song.audioFile || song.audioSrc || song.audio);
 }
 
+
+
+function showBottomRadioBar() {
+  if (radioBottomBar) radioBottomBar.classList.add('visible');
+  document.body.classList.add('radio-playing');
+}
+
+function hideBottomRadioBar() {
+  if (radioBottomBar) radioBottomBar.classList.remove('visible');
+  document.body.classList.remove('radio-playing');
+}
+
+function syncBottomRadioDisplay(track) {
+  if (!track) return;
+
+  if (bottomRadioTitle) bottomRadioTitle.textContent = track.title || 'Unknown Track';
+  if (bottomRadioArtist) bottomRadioArtist.textContent = track.artist || 'Unknown Artist';
+  if (bottomRadioAlbum) bottomRadioAlbum.textContent = `Album: ${track.album || '—'}`;
+
+  if (bottomRadioArt) {
+    bottomRadioArt.onerror = function () {
+      const current = this.src || '';
+      if (current.includes('/images/covers/')) {
+        this.src = current.replace('/images/covers/', '/covers/');
+        this.onerror = function () {
+          this.onerror = null;
+          this.src = 'https://raw.githubusercontent.com/SteveP999/hello-texas-records/main/htr-logo.png';
+        };
+        return;
+      }
+      this.onerror = null;
+      this.src = 'https://raw.githubusercontent.com/SteveP999/hello-texas-records/main/htr-logo.png';
+    };
+    bottomRadioArt.src = resolveRadioImage(track);
+  }
+}
 
 function setRadioPlayButtonState(isPlaying) {
   const label = isPlaying ? 'Pause' : '▶ Play';
@@ -257,6 +298,8 @@ function playTrack(index) {
   radioAudio.src = track.audioFile || track.audioSrc || track.audio;
 
   setRadioDisplay(track);
+  syncBottomRadioDisplay(track);
+  showBottomRadioBar();
 
   radioAudio.play().catch(err => {
     console.error('Playback failed:', err);
@@ -352,6 +395,7 @@ function setRadioDisplay(track) {
   };
 
   radioArt.src = resolveRadioImage(track);
+  syncBottomRadioDisplay(track);
 }
 
 function highlightTrack(index) {
@@ -403,12 +447,14 @@ function toggleRadioPlayback() {
     radioAudio.play().catch(() => {});
 
     setRadioPlayButtonState(true);
+    showBottomRadioBar();
 
   } else {
 
     radioAudio.pause();
 
     setRadioPlayButtonState(false);
+    hideBottomRadioBar();
 
   }
 }
@@ -445,6 +491,18 @@ document.getElementById('radio-vol').addEventListener('input', e => {
 });
 
 radioAudio.addEventListener('ended', nextTrack);
+
+radioAudio.addEventListener('pause', () => {
+  if (!radioAudio.ended) {
+    setRadioPlayButtonState(false);
+    hideBottomRadioBar();
+  }
+});
+
+radioAudio.addEventListener('play', () => {
+  setRadioPlayButtonState(true);
+  showBottomRadioBar();
+});
 
 radioAudio.addEventListener('timeupdate', () => {
 
