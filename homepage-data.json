@@ -97,14 +97,15 @@
       "genre": "Soft rock / adult contemporary",
       "status": "active",
       "logo": "",
-      "heroImage": "daniel-kincaid-hero-background.png",
+      "heroImage": "images/artist/daniel-kincaid-hero-background.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
         "latest": true
       },
       "includeOnLabelHome": true,
-      "includeOnRadio": true
+      "includeOnRadio": true,
+      "latestTitle": "Just This Once"
     },
     {
       "id": "hello-texas",
@@ -114,15 +115,16 @@
       "siteUrl": "https://stevep999.github.io/Hello-Texas/",
       "genre": "Texas country / Southern rock",
       "status": "active",
-      "logo": "hello-texas-logo.png",
-      "heroImage": "hello-texas-logo.png",
+      "logo": "images/logos/hello-texas-logo.png",
+      "heroImage": "images/logos/hello-texas-logo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
         "latest": true
       },
       "includeOnLabelHome": true,
-      "includeOnRadio": true
+      "includeOnRadio": true,
+      "latestTitle": "Happily Ever After"
     },
     {
       "id": "lucas-harlow",
@@ -140,7 +142,8 @@
         "latest": true
       },
       "includeOnLabelHome": true,
-      "includeOnRadio": true
+      "includeOnRadio": true,
+      "latestTitle": "Where the Light Stayed"
     },
     {
       "id": "night-shift",
@@ -176,7 +179,8 @@
         "latest": true
       },
       "includeOnLabelHome": true,
-      "includeOnRadio": true
+      "includeOnRadio": true,
+      "latestTitle": "Crash and Burn"
     },
     {
       "id": "parsons-cross",
@@ -194,7 +198,8 @@
         "latest": true
       },
       "includeOnLabelHome": true,
-      "includeOnRadio": true
+      "includeOnRadio": true,
+      "latestTitle": "Out of the Darkness"
     },
     {
       "id": "pulse7",
@@ -222,15 +227,16 @@
       "siteUrl": "https://stevep999.github.io/Rio-Valencia/",
       "genre": "Latin pop / reggaeton fusion",
       "status": "active",
-      "logo": "Rio Valencia Logo and Text.png",
-      "heroImage": "rio-valencia-hero-photo.png",
+      "logo": "images/logos/rio-valencia-logo.png",
+      "heroImage": "images/artist/rio-valencia-hero-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
         "latest": true
       },
       "includeOnLabelHome": true,
-      "includeOnRadio": true
+      "includeOnRadio": true,
+      "latestTitle": "No Control"
     },
     {
       "id": "sawyer-price",
@@ -241,14 +247,15 @@
       "genre": "Texas country / Red Dirt",
       "status": "active",
       "logo": "",
-      "heroImage": "sawyer-hero-background.png",
+      "heroImage": "images/artist/sawyer-hero-background.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
         "latest": true
       },
       "includeOnLabelHome": true,
-      "includeOnRadio": true
+      "includeOnRadio": true,
+      "latestTitle": "All My Life"
     },
     {
       "id": "silent-oblivion",
@@ -302,7 +309,8 @@
         "latest": true
       },
       "includeOnLabelHome": true,
-      "includeOnRadio": true
+      "includeOnRadio": true,
+      "latestTitle": "Calling in the Silence"
     },
     {
       "id": "taylor-martin",
@@ -356,7 +364,8 @@
         "latest": true
       },
       "includeOnLabelHome": true,
-      "includeOnRadio": true
+      "includeOnRadio": true,
+      "latestTitle": "Last Call for Beautiful"
     }
   ]
 }
