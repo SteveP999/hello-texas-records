@@ -193,6 +193,9 @@ const radioTitle = document.getElementById('radio-title');
 const radioArtist = document.getElementById('radio-artist');
 const radioAlbum = document.getElementById('radio-album');
 const radioPlayBtn = document.getElementById('radio-playbtn');
+const radioPlayBtnBottom = document.getElementById('radio-playbtn-bottom');
+const radioPrevBottom = document.getElementById('radio-prev-bottom');
+const radioNextBottom = document.getElementById('radio-next-bottom');
 
 function shouldIncludeMainRadioTrack(song) {
   const artist = String(song.artist || '').toLowerCase();
@@ -212,6 +215,19 @@ function shouldIncludeMainRadioTrack(song) {
   if ((artist.includes('hello texas') || artistId === 'hello-texas') && album === 'texxxas tales') return false;
 
   return Boolean(song.audioFile || song.audioSrc || song.audio);
+}
+
+
+function setRadioPlayButtonState(isPlaying) {
+  const label = isPlaying ? 'Pause' : '▶ Play';
+  if (radioPlayBtn) {
+    radioPlayBtn.innerHTML = label;
+    radioPlayBtn.classList.toggle('active', isPlaying);
+  }
+  if (radioPlayBtnBottom) {
+    radioPlayBtnBottom.innerHTML = label;
+    radioPlayBtnBottom.classList.toggle('active', isPlaying);
+  }
 }
 
 function buildRadio(songs) {
@@ -246,8 +262,7 @@ function playTrack(index) {
     console.error('Playback failed:', err);
   });
 
-  radioPlayBtn.innerHTML = 'Pause';
-  radioPlayBtn.classList.add('active');
+  setRadioPlayButtonState(true);
 
   highlightTrack(index);
 }
@@ -374,7 +389,8 @@ function previousTrack() {
   playTrack(prev);
 }
 
-radioPlayBtn.addEventListener('click', () => {
+
+function toggleRadioPlayback() {
 
   if (!radioAudio.src && radioTracks.length > 0) {
 
@@ -386,18 +402,31 @@ radioPlayBtn.addEventListener('click', () => {
 
     radioAudio.play().catch(() => {});
 
-    radioPlayBtn.innerHTML = 'Pause';
-    radioPlayBtn.classList.add('active');
+    setRadioPlayButtonState(true);
 
   } else {
 
     radioAudio.pause();
 
-    radioPlayBtn.innerHTML = 'Play';
-    radioPlayBtn.classList.remove('active');
+    setRadioPlayButtonState(false);
 
   }
-});
+}
+
+radioPlayBtn.addEventListener('click', toggleRadioPlayback);
+
+if (radioPlayBtnBottom) {
+  radioPlayBtnBottom.addEventListener('click', toggleRadioPlayback);
+}
+
+if (radioPrevBottom) {
+  radioPrevBottom.addEventListener('click', previousTrack);
+}
+
+if (radioNextBottom) {
+  radioNextBottom.addEventListener('click', nextTrack);
+}
+
 
 document.getElementById('radio-next').addEventListener('click', nextTrack);
 
