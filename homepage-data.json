@@ -78,14 +78,15 @@
       "genre": "Country / folk-pop / alt-rock",
       "status": "active",
       "logo": "",
-      "heroImage": "avery-photo-01.png",
+      "heroImage": "images/artist/avery-photo-01.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
         "latest": true
       },
       "includeOnLabelHome": true,
-      "includeOnRadio": true
+      "includeOnRadio": true,
+      "latestTitle": "Tomorrow Never Comes"
     },
     {
       "id": "daniel-kincaid",
