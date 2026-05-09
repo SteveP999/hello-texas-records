@@ -330,7 +330,7 @@
       "genre": "Funk rock / alternative rock",
       "status": "active",
       "logo": "images/logos/vanta-logo.png",
-      "heroImage": "images/logo/vanta-band-photo.png",
+      "heroImage": "images/artist/vanta-hero-background.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
