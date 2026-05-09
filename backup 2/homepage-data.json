@@ -1,0 +1,466 @@
+{
+  "latestReleases": [
+    {
+      "id": "nightstrike-crash-and-burn",
+      "artistId": "nightstrike",
+      "artist": "NightStrike",
+      "title": "Crash and Burn",
+      "album": "High Voltage",
+      "genre": "Hard Rock / Sleaze Rock",
+      "releaseType": "single",
+      "releaseDate": "2026-06-01",
+      "coverImage": "https://raw.githubusercontent.com/SteveP999/NightStrike/main/covers/nightstrike-crash-and-burn-cover.png",
+      "audioFile": "https://www.dropbox.com/scl/fi/pdk6fd86ja75lrfd862i9/nightstrike-crash-and-burn-mp3.mp3?rlkey=65gjedmk6v53dxnyhfwyjwc83&raw=1",
+      "youtubeUrl": "",
+      "featured": false,
+      "explicit": false,
+      "includeOnRadio": true,
+      "includeOnHomepage": true,
+      "tags": [
+        "glam metal",
+        "hard rock",
+        "sleaze rock"
+      ]
+    },
+    {
+      "id": "skyline-theory-stay-in-the-sound",
+      "artistId": "skyline-theory",
+      "artist": "Skyline Theory",
+      "title": "Stay in the Sound",
+      "album": "Bending Reality",
+      "genre": "EDM / Progressive House",
+      "releaseType": "single",
+      "releaseDate": "2026-05-07",
+      "coverImage": "skyline-theory-stay-in-the-sound-cover.png",
+      "audioFile": "",
+      "youtubeUrl": "",
+      "featured": true,
+      "explicit": false,
+      "includeOnRadio": true,
+      "includeOnHomepage": true,
+      "tags": [
+        "edm",
+        "festival",
+        "uplifting",
+        "nostalgic"
+      ]
+    },
+    {
+      "id": "nightstrike-the-storm-never-sleeps",
+      "artistId": "nightstrike",
+      "artist": "NightStrike",
+      "title": "The Storm Never Sleeps",
+      "album": "High Voltage",
+      "genre": "Hard Rock / Sleaze Rock",
+      "releaseType": "single",
+      "releaseDate": "2026-05-07",
+      "coverImage": "https://raw.githubusercontent.com/SteveP999/NightStrike/main/covers/nightstrike-the-storm-never-sleeps-cover.png",
+      "audioFile": "https://www.dropbox.com/scl/fi/xzj3myi8pt4ulsd2dvfrl/nightstrike-the-storm-never-sleeps-mp3.mp3?rlkey=e4vl08mxg5mb2m3m2yt4zvq3c&raw=1",
+      "youtubeUrl": "",
+      "featured": true,
+      "explicit": false,
+      "includeOnRadio": true,
+      "includeOnHomepage": true,
+      "tags": [
+        "glam metal",
+        "arena rock",
+        "storm"
+      ]
+    }
+  ],
+  "featuredArtists": [
+    {
+      "id": "avery-ivey",
+      "name": "Avery Ivey",
+      "repoFolder": "D:\\Avery-Ivey",
+      "githubRepo": "SteveP999/Avery-Ivey",
+      "siteUrl": "https://stevep999.github.io/Avery-Ivey/",
+      "genre": "Country / folk-pop / alt-rock",
+      "status": "active",
+      "logo": "",
+      "heroImage": "Roster Photos/avery-ivey-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "imageCandidates": [
+        "Roster Photos/avery-ivey-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Back to Chapter One"
+    },
+    {
+      "id": "daniel-kincaid",
+      "name": "Daniel Kincaid",
+      "repoFolder": "D:\\Daniel-Kincaid",
+      "githubRepo": "SteveP999/Daniel-Kincaid",
+      "siteUrl": "https://stevep999.github.io/Daniel-Kincaid/",
+      "genre": "Soft rock / adult contemporary",
+      "status": "active",
+      "logo": "",
+      "heroImage": "Roster Photos/daniel-kincaid-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "imageCandidates": [
+        "Roster Photos/daniel-kincaid-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Just This Once"
+    },
+    {
+      "id": "hello-texas",
+      "name": "Hello Texas",
+      "repoFolder": "D:\\Hello-Texas",
+      "githubRepo": "SteveP999/Hello-Texas",
+      "siteUrl": "https://stevep999.github.io/Hello-Texas/",
+      "genre": "Texas country / Southern rock",
+      "status": "active",
+      "logo": "hello-texas-logo.png",
+      "heroImage": "Roster Photos/hello-texas-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "imageCandidates": [
+        "Roster Photos/hello-texas-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "That Texas Sound"
+    },
+    {
+      "id": "lucas-harlow",
+      "name": "Lucas Harlow",
+      "repoFolder": "D:\\Lucas-Harlow",
+      "githubRepo": "SteveP999/Lucas-Harlow",
+      "siteUrl": "https://stevep999.github.io/Lucas-Harlow/",
+      "genre": "New age piano / cinematic instrumental",
+      "status": "active",
+      "logo": "",
+      "heroImage": "Roster Photos/lucas-harlow-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "imageCandidates": [
+        "Roster Photos/lucas-harlow-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "First Light"
+    },
+    {
+      "id": "neon-thunder",
+      "name": "Neon Thunder",
+      "repoFolder": "D:\\Neon-Thunder",
+      "githubRepo": "SteveP999/Neon-Thunder",
+      "siteUrl": "https://stevep999.github.io/Neon-Thunder/",
+      "genre": "Glam metal / arena rock",
+      "status": "active",
+      "logo": "",
+      "heroImage": "Roster Photos/neon-thunder-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "imageCandidates": [
+        "Roster Photos/neon-thunder-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "The Storm Never Sleeps"
+    },
+    {
+      "id": "night-shift",
+      "name": "Night Shift",
+      "repoFolder": "D:\\Night-Shift",
+      "githubRepo": "SteveP999/Night-Shift",
+      "siteUrl": "https://stevep999.github.io/Night-Shift/",
+      "genre": "Disco-rock / party anthem pop",
+      "status": "active",
+      "logo": "night-shift-logo-transparent-background.png",
+      "heroImage": "Roster Photos/night-shift-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "imageCandidates": [
+        "Roster Photos/night-shift-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "No Rules Tonight"
+    },
+    {
+      "id": "nightstrike",
+      "name": "NightStrike",
+      "repoPath": "D:\\NightStrike",
+      "repoFolder": "D:\\NightStrike",
+      "githubRepo": "SteveP999/NightStrike",
+      "siteUrl": "https://nightstrike.hellotexasrecords.com/",
+      "logo": "images/nightstrike-logo.png",
+      "heroImage": "Roster Photos/nightstrike-roster-photo.png",
+      "genre": "Hard Rock / Sleaze Rock",
+      "active": true,
+      "status": "active",
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "imageCandidates": [
+        "Roster Photos/nightstrike-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "The Storm Never Sleeps"
+    },
+    {
+      "id": "parsons-cross",
+      "name": "Parsons Cross",
+      "repoFolder": "D:\\Parsons-Cross",
+      "githubRepo": "SteveP999/Parsons-Cross",
+      "siteUrl": "https://stevep999.github.io/Parsons-Cross/",
+      "genre": "Contemporary Christian / worship",
+      "status": "active",
+      "logo": "PARSONS CROSS LOGO.png",
+      "heroImage": "Roster Photos/parsons-cross-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "imageCandidates": [
+        "Roster Photos/parsons-cross-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Dark Nights of the Soul"
+    },
+    {
+      "id": "pulse7",
+      "name": "PULSE7",
+      "repoFolder": "D:\\PULSE7",
+      "githubRepo": "SteveP999/PULSE7",
+      "siteUrl": "https://stevep999.github.io/PULSE7/",
+      "genre": "K-pop / dance-pop",
+      "status": "active",
+      "logo": "pulse7-logo.png",
+      "heroImage": "Roster Photos/pulse7-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "imageCandidates": [
+        "Roster Photos/pulse7-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Two Nights"
+    },
+    {
+      "id": "rio-valencia",
+      "name": "Rio Valencia",
+      "repoFolder": "D:\\Rio-Valencia",
+      "githubRepo": "SteveP999/Rio-Valencia",
+      "siteUrl": "https://stevep999.github.io/Rio-Valencia/",
+      "genre": "Latin pop / reggaeton fusion",
+      "status": "active",
+      "logo": "Rio Valencia Logo and Text.png",
+      "heroImage": "Roster Photos/rio-valencia-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "imageCandidates": [
+        "Roster Photos/rio-valencia-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "No Control"
+    },
+    {
+      "id": "sawyer-price",
+      "name": "Sawyer Price",
+      "repoFolder": "D:\\Sawyer-Price",
+      "githubRepo": "SteveP999/Sawyer-Price",
+      "siteUrl": "https://stevep999.github.io/Sawyer-Price/",
+      "genre": "Texas country / Red Dirt",
+      "status": "active",
+      "logo": "",
+      "heroImage": "Roster Photos/sawyer-price-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "imageCandidates": [
+        "Roster Photos/sawyer-price-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Every Song is You"
+    },
+    {
+      "id": "silent-oblivion",
+      "name": "Silent Oblivion",
+      "repoFolder": "D:\\Silent-Oblivion",
+      "githubRepo": "SteveP999/Silent-Oblivion",
+      "siteUrl": "https://stevep999.github.io/Silent-Oblivion/",
+      "genre": "Surf rock / retro pop-rock",
+      "status": "active",
+      "logo": "silent-oblivion-logo.png",
+      "heroImage": "Roster Photos/silent-oblivion-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "imageCandidates": [
+        "Roster Photos/silent-oblivion-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Lift Off (With a Bang)"
+    },
+    {
+      "id": "skyline-theory",
+      "name": "Skyline Theory",
+      "repoFolder": "D:\\Skyline-Theory",
+      "githubRepo": "SteveP999/Skyline-Theory",
+      "siteUrl": "https://stevep999.github.io/Skyline-Theory/",
+      "genre": "EDM / progressive house",
+      "status": "active",
+      "logo": "skyline-theory-logo-text.png",
+      "heroImage": "Roster Photos/skyline-theory-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "imageCandidates": [
+        "Roster Photos/skyline-theory-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Stay in the Sound"
+    },
+    {
+      "id": "stephen-parsons",
+      "name": "Stephen Parsons",
+      "repoFolder": "D:\\stephen-parsons",
+      "githubRepo": "SteveP999/stephen-parsons",
+      "siteUrl": "https://stevep999.github.io/stephen-parsons/",
+      "genre": "Christian country / worship storyteller",
+      "status": "active",
+      "logo": "stephen-parsons-logo-transparent-oval.png",
+      "heroImage": "Roster Photos/stephen-parsons-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "imageCandidates": [
+        "Roster Photos/stephen-parsons-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Thank You Mom and Dad"
+    },
+    {
+      "id": "taylor-martin",
+      "name": "Taylor Martin",
+      "repoFolder": "D:\\Taylor-Martin",
+      "githubRepo": "SteveP999/Taylor-Martin",
+      "siteUrl": "https://stevep999.github.io/Taylor-Martin/",
+      "genre": "1970s soft pop / folk-rock",
+      "status": "active",
+      "logo": "taylor-martin-logo.png",
+      "heroImage": "Roster Photos/taylor-martin-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "imageCandidates": [
+        "Roster Photos/taylor-martin-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Montana Skies"
+    },
+    {
+      "id": "vanta",
+      "name": "Vanta",
+      "repoFolder": "D:\\vanta",
+      "githubRepo": "SteveP999/vanta",
+      "siteUrl": "https://stevep999.github.io/vanta/",
+      "genre": "Funk rock / alternative rock",
+      "status": "active",
+      "logo": "vanta-logo.png",
+      "heroImage": "Roster Photos/vanta-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "imageCandidates": [
+        "Roster Photos/vanta-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Don't Need Permission"
+    },
+    {
+      "id": "vincent-cole",
+      "name": "Vincent Cole",
+      "repoFolder": "D:\\Vincent-Cole",
+      "githubRepo": "SteveP999/Vincent-Cole",
+      "siteUrl": "https://stevep999.github.io/Vincent-Cole/",
+      "genre": "Crooner / big band swing",
+      "status": "active",
+      "logo": "vincent-cole-logo-monogram-transparent.png",
+      "heroImage": "Roster Photos/vincent-cole-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "imageCandidates": [
+        "Roster Photos/vincent-cole-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Too Late To Behave"
+    }
+  ]
+}

@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4PCFSEQJZ1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-4PCFSEQJZ1');
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hello Texas Records — Independent Texas Music Label</title>
+<link rel="manifest" href="manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Barlow', sans-serif; background: #0d0c0b; color: #e8e0d4; overflow-x: hidden; }
+:root {
+  --rust: #c8922a; --rust-lt: #e8ad4a; --rust-glow: rgba(200,146,42,0.18);
+  --cream: #f2ede3; --tan: #c4a97c; --dark: #0d0c0b; --dark2: #161412;
+  --dark3: #1e1c19; --dark4: #252220; --border: rgba(200,146,42,0.18);
+  --muted: rgba(232,224,212,0.5);
+}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");background-size:200px 200px;pointer-events:none;z-index:0;opacity:0.4;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:64px;background:rgba(13,12,11,0.92);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);}
+.nav-logo{height:36px;width:auto;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;letter-spacing:0.18em;text-transform:uppercase;transition:color 0.2s;}
+.nav-links a:hover{color:var(--rust-lt);}
+.hero{position:relative;min-height:58vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4.25rem 2rem 2.25rem;text-align:center;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(200,146,42,0.08) 0%,transparent 70%);pointer-events:none;}
+.hero-eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--rust);margin-bottom:.35rem;}
+.hero-logo{height:480px;width:auto;margin-bottom:.15rem;filter:drop-shadow(0 0 30px rgba(200,146,42,0.25));max-width:min(92vw,1100px);}
+.hero-headline{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.4rem,6vw,5.2rem);letter-spacing:0.12em;line-height:.92;margin-bottom:.55rem;}
+.hero-sub{font-family:'Barlow Condensed',sans-serif;font-size:clamp(0.95rem,1.5vw,1.25rem);letter-spacing:0.28em;text-transform:uppercase;color:var(--tan);opacity:.82;margin-bottom:1.25rem;}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;}
+.btn-primary{background:var(--rust);color:var(--dark);border:none;padding:0.8rem 2rem;font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;text-decoration:none;display:inline-block;transition:background 0.2s,transform 0.15s;}
+.btn-primary:hover{background:var(--rust-lt);transform:translateY(-1px);}
+.btn-secondary{background:transparent;color:var(--cream);border:1px solid var(--border);padding:0.8rem 2rem;font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;letter-spacing:0.18em;text-transform:uppercase;text-decoration:none;display:inline-block;transition:border-color 0.2s,color 0.2s;}
+.btn-secondary:hover{border-color:var(--rust);color:var(--rust-lt);}
+.section-wrap{position:relative;z-index:1;padding:5rem 2rem;}
+.section-header{text-align:center;margin-bottom:3rem;}
+.section-eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;letter-spacing:0.32em;text-transform:uppercase;color:var(--rust);margin-bottom:0.75rem;}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,4vw,3rem);letter-spacing:0.1em;color:var(--cream);}
+.gold-rule{width:48px;height:1px;background:var(--rust);margin:1rem auto 0;opacity:0.6;}
+
+/* ── ROSTER GRID ── */
+#roster{background:var(--dark2);}
+.roster-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;}
+.artist-card{background:var(--dark3);border:1px solid var(--border);overflow:hidden;cursor:pointer;transition:border-color 0.25s,transform 0.2s;}
+.artist-card:hover{border-color:var(--rust);transform:translateY(-2px);}
+.card-art{position:relative;aspect-ratio:1 / 1;overflow:hidden;background:var(--dark4);}
+.card-art img{width:100%;height:100%;object-fit:cover;object-position:center center;display:block;transition:transform 0.4s,filter 0.3s;filter:brightness(0.85);}
+.artist-card:hover .card-art img{transform:scale(1.04);filter:brightness(1);}
+.card-play-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(13,12,11,0);transition:background 0.3s;}
+.artist-card:hover .card-play-overlay{background:rgba(13,12,11,0.3);}
+.card-play-btn{width:52px;height:52px;background:var(--rust);border:none;color:var(--dark);font-size:1rem;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transform:scale(0.8);transition:opacity 0.25s,transform 0.25s;padding-left:3px;}
+.artist-card:hover .card-play-btn{opacity:1;transform:scale(1);}
+.card-body{padding:1rem 1.2rem 1.2rem;}
+.card-genre{font-family:'Barlow Condensed',sans-serif;font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--rust);margin-bottom:0.4rem;}
+.card-artist{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:0.08em;color:var(--cream);line-height:1;margin-bottom:0.3rem;}
+.card-song{font-size:0.8rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:0.8rem;}
+.card-links{display:flex;gap:0.5rem;align-items:center;}
+.card-site-btn{font-family:'Barlow Condensed',sans-serif;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--rust);text-decoration:none;border:1px solid var(--border);padding:0.25rem 0.6rem;transition:border-color 0.2s,color 0.2s;}
+.card-site-btn:hover{border-color:var(--rust);color:var(--rust-lt);}
+.card-loading{height:200px;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);}
+
+/* ── HTR RADIO PLAYER ── */
+#radio-section{background:var(--dark);}
+.radio-wrap{max-width:760px;margin:0 auto;}
+.radio-display{background:var(--dark3);border:1px solid var(--border);padding:1.25rem;margin-bottom:1rem;display:grid;grid-template-columns:240px 1fr;gap:1.75rem;align-items:center;}
+.radio-art{width:240px;height:240px;object-fit:cover;border:1px solid var(--border);}
+.radio-info{}
+.radio-station{font-family:'Barlow Condensed',sans-serif;font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--rust);margin-bottom:0.3rem;}
+.radio-title{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:0.06em;color:var(--cream);line-height:1.1;margin-bottom:0.2rem;}
+.radio-artist{font-size:0.8rem;color:var(--tan);}
+.radio-controls{display:flex;align-items:center;justify-content:center;gap:.85rem;flex-wrap:wrap;margin-bottom:1rem;}
+.radio-btn{background:transparent;border:1px solid var(--border);color:var(--tan);padding:0.5rem 1rem;font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;transition:border-color 0.2s,color 0.2s,background 0.2s;}
+.radio-btn:hover{border-color:var(--rust);color:var(--rust-lt);}
+.radio-btn.active{background:var(--rust);color:var(--dark);border-color:var(--rust);}
+#radio-progress-wrap{height:4px;background:rgba(200,146,42,0.15);cursor:pointer;margin-bottom:0.5rem;}
+#radio-progress-fill{height:100%;width:0%;background:linear-gradient(to right,var(--rust),var(--rust-lt));transition:width 0.5s linear;}
+.radio-time-row{display:flex;justify-content:space-between;font-size:0.65rem;color:var(--muted);margin-bottom:1.5rem;}
+.radio-vol-row{display:flex;align-items:center;gap:0.75rem;}
+.radio-vol-label{font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);}
+#radio-vol{width:100px;accent-color:var(--rust);}
+.playlist-list{border:1px solid var(--border);max-height:320px;overflow-y:auto;}
+.playlist-list::-webkit-scrollbar{width:3px;}
+.playlist-list::-webkit-scrollbar-thumb{background:var(--border);}
+.pl-item{display:grid;grid-template-columns:36px 40px 1fr auto;align-items:center;gap:0.75rem;padding:0.6rem 1rem;border-bottom:1px solid rgba(200,146,42,0.06);cursor:pointer;transition:background 0.15s;}
+.pl-item:hover,.pl-item.active{background:rgba(200,146,42,0.06);}
+.pl-item.active .pl-num{color:var(--rust);}
+.pl-num{font-family:'Bebas Neue',sans-serif;font-size:0.85rem;color:var(--muted);text-align:center;}
+.pl-thumb{width:40px;height:40px;object-fit:cover;}
+.pl-info{}
+.pl-title{font-size:0.82rem;color:var(--cream);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.pl-artist{font-size:0.68rem;color:var(--muted);}
+.pl-dur{font-size:0.65rem;color:var(--muted);}
+
+/* ── ABOUT ── */
+#about{background:var(--dark2);}
+.about-inner{max-width:780px;margin:0 auto;text-align:center;}
+.about-inner p{color:var(--tan);line-height:1.9;font-size:0.95rem;margin-bottom:1.2rem;}
+.genre-tags{display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center;margin-top:2rem;}
+.genre-tag{font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--rust);border:1px solid var(--border);padding:0.3rem 0.8rem;}
+
+/* ── FOOTER ── */
+footer{background:var(--dark);border-top:1px solid var(--border);padding:4rem 2rem 3rem;text-align:center;}
+.foot-logo{height:52px;width:auto;margin-bottom:1.2rem;opacity:0.8;}
+.foot-tagline{font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted);margin-bottom:1.5rem;}
+.foot-links{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;}
+.foot-links a{font-family:'Barlow Condensed',sans-serif;font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;}
+.foot-links a:hover{color:var(--rust-lt);}
+
+@media(max-width:768px){
+  nav{padding:0 1.5rem;}
+  .nav-links{gap:1.2rem;}
+  .roster-grid{grid-template-columns:repeat(2,1fr);gap:1rem;}
+  .radio-display{grid-template-columns:60px 1fr;gap:1rem;}
+  .radio-art{width:60px;height:60px;}
+  .pl-item{grid-template-columns:28px 36px 1fr;}
+  .pl-dur{display:none;}
+}
+
+.card-art img.logo-card-img{
+  object-fit:contain;
+  padding:1.35rem;
+  background:#111;
+}
+.card-art img.artist-card-img{
+  object-position:center center;
+}
+
+
+.htr-red{color:#C41A1A;}
+.htr-white{color:#F8F2E4;}
+.htr-blue{color:#2D6CFF;}
+.card-art img.logo-card-img{object-fit:contain;padding:1.35rem;background:#111;}
+.card-art img.artist-card-img{object-position:center center;}
+.radio-album{font-size:.78rem;color:var(--muted);margin-top:.25rem;}
+#playlist-list,.playlist-list{display:none!important;}
+#radio-bottom-bar{position:fixed;left:0;right:0;bottom:0;z-index:250;background:rgba(13,12,11,.97);border-top:1px solid var(--border);backdrop-filter:blur(16px);padding:.65rem 1.25rem;}
+.radio-bottom-inner{max-width:920px;margin:0 auto;display:grid;grid-template-columns:auto 1fr auto auto 110px;gap:.75rem;align-items:center;}
+.radio-time{font-family:'Barlow Condensed',sans-serif;font-size:.7rem;color:var(--muted);white-space:nowrap;}
+#radio-progress-wrap{height:4px;background:rgba(200,146,42,0.16);cursor:pointer;}
+#radio-progress-fill{height:100%;width:0%;background:linear-gradient(to right,var(--rust),var(--rust-lt));}
+.radio-vol-label{font-family:'Barlow Condensed',sans-serif;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);}
+#radio-vol{width:110px;accent-color:var(--rust);}
+body{padding-bottom:48px;}
+@media(max-width:768px){
+  .hero{min-height:66vh;padding-top:5rem;}
+  .hero-logo{height:260px;max-width:92vw;}
+  .radio-display{grid-template-columns:110px 1fr;padding:1rem;}
+  .radio-art{width:110px;height:110px;}
+  .radio-bottom-inner{grid-template-columns:auto 1fr auto;gap:.5rem;}
+  .radio-vol-label,#radio-vol{display:none;}
+}
+
+
+
+@media(max-width:768px){
+  .hero-logo{height:260px!important;max-width:92vw!important;}
+  .radio-controls-inside .radio-btn{min-width:auto;padding:.45rem .75rem;}
+}
+
+
+.radio-info{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;text-align:left;}
+.radio-controls-inside{margin-top:1.15rem;margin-bottom:0;justify-content:flex-start;flex-wrap:nowrap;width:100%;}
+.radio-controls-inside .radio-btn{min-width:92px;white-space:nowrap;}
+.radio-title{font-size:clamp(1.65rem,3vw,2.25rem);}
+.radio-artist,.radio-album{font-size:1rem;}
+#radio-bottom-bar{padding:.55rem 1rem;}
+.radio-bottom-inner{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:auto auto 1fr auto auto 110px;gap:.75rem;align-items:center;}
+.bottom-radio-controls{display:flex;align-items:center;gap:.45rem;white-space:nowrap;}
+.bottom-radio-btn{padding:.42rem .72rem;font-size:.68rem;}
+@media(max-width:768px){
+  .hero{min-height:50vh!important;padding:4rem 1.25rem 1.75rem!important;}
+  .hero-eyebrow{margin-bottom:.15rem!important;}
+  .hero-logo{height:260px!important;max-width:94vw!important;margin-bottom:0!important;}
+  .hero-headline{line-height:.9!important;margin-bottom:.35rem!important;}
+  .radio-display{grid-template-columns:150px 1fr!important;padding:1rem!important;gap:1rem!important;}
+  .radio-art{width:150px!important;height:150px!important;}
+  .radio-info{text-align:left!important;align-items:flex-start!important;}
+  .radio-title{font-size:1.45rem!important;}
+  .radio-artist,.radio-album{font-size:.88rem!important;}
+  .radio-controls-inside{gap:.35rem!important;flex-wrap:nowrap!important;}
+  .radio-controls-inside .radio-btn{font-size:.62rem!important;padding:.42rem .48rem!important;min-width:auto!important;}
+  .radio-bottom-inner{grid-template-columns:1fr auto 1fr auto!important;gap:.45rem!important;}
+  .bottom-radio-controls{grid-column:1 / -1;justify-content:center;margin-bottom:.2rem;}
+  .bottom-radio-btn{font-size:.62rem!important;padding:.36rem .55rem!important;}
+  .radio-vol-label,#radio-vol{display:none!important;}
+}
+
+
+/* Artist-site-style HTR bottom player */
+#radio-bottom-bar{
+  display:grid;
+  grid-template-columns:minmax(220px,320px) auto minmax(260px,1fr) auto;
+  gap:1rem;
+  align-items:center;
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  z-index:250;
+  background:rgba(13,12,11,.97);
+  border-top:1px solid var(--border);
+  backdrop-filter:blur(16px);
+  padding:.65rem 1rem;
+  transform:translateY(110%);
+  opacity:0;
+  pointer-events:none;
+  transition:transform .32s ease, opacity .32s ease;
+}
+#radio-bottom-bar.visible{
+  transform:translateY(0);
+  opacity:1;
+  pointer-events:auto;
+}
+.bottom-nowplaying{
+  display:flex;
+  align-items:center;
+  gap:.75rem;
+  min-width:0;
+}
+.bottom-radio-art{
+  width:52px;
+  height:52px;
+  object-fit:cover;
+  border:1px solid var(--border);
+  flex-shrink:0;
+}
+.bottom-radio-meta{
+  min-width:0;
+  text-align:left;
+}
+.bottom-radio-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.05rem;
+  letter-spacing:.05em;
+  color:var(--cream);
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  line-height:1;
+}
+.bottom-radio-artist,
+.bottom-radio-album{
+  font-size:.68rem;
+  color:var(--muted);
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  line-height:1.25;
+}
+.bottom-radio-controls{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:.45rem;
+  white-space:nowrap;
+}
+.bottom-radio-btn{
+  padding:.42rem .72rem;
+  font-size:.68rem;
+}
+.bottom-radio-progress{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  gap:.65rem;
+  align-items:center;
+  min-width:0;
+}
+.bottom-radio-volume{
+  display:flex;
+  align-items:center;
+  gap:.5rem;
+}
+body{padding-bottom:0!important;}
+body.radio-playing{padding-bottom:74px!important;}
+@media(max-width:768px){
+  #radio-bottom-bar{
+    grid-template-columns:1fr;
+    gap:.45rem;
+    padding:.55rem .75rem;
+  }
+  .bottom-nowplaying{
+    justify-content:flex-start;
+  }
+  .bottom-radio-art{
+    width:46px;
+    height:46px;
+  }
+  .bottom-radio-title{
+    font-size:.98rem;
+  }
+  .bottom-radio-controls{
+    justify-content:center;
+  }
+  .bottom-radio-btn{
+    font-size:.62rem!important;
+    padding:.34rem .54rem!important;
+  }
+  .bottom-radio-volume{
+    display:none;
+  }
+  body.radio-playing{padding-bottom:142px!important;}
+}
+
+
+/* Local roster photo standard:
+   Roster Photos/<artist-id>-roster-photo.png
+   Recommended: 1600x1600 PNG.
+*/
+.card-art{aspect-ratio:1 / 1;}
+.card-art img{object-fit:cover;object-position:center center;}
+
+</style>
+</head>
+<body>
+<nav>
+  <img src="https://raw.githubusercontent.com/SteveP999/hello-texas-records/main/htr-logo.png" alt="Hello Texas Records" class="nav-logo">
+  <ul class="nav-links">
+    <li><a href="#roster">Artists</a></li>
+    <li><a href="#radio-section">HTR Radio</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="https://stevep999.github.io/hello-texas-radio/" target="_blank">Radio Site</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-eyebrow">Independent Texas Music</div>
+  <img src="https://raw.githubusercontent.com/SteveP999/hello-texas-records/main/htr-logo.png" alt="HTR" class="hero-logo">
+  <h1 class="hero-headline"><span class="htr-red">Hello</span> <span class="htr-white">Texas</span> <span class="htr-blue">Records</span></h1>
+  <p class="hero-sub">Authentic &nbsp;·&nbsp; Independent</p>
+  <div class="hero-ctas">
+    <a href="#roster" class="btn-primary">Meet the Artists</a>
+    <a href="#radio-section" class="btn-secondary">&#9654;&nbsp; HTR Radio</a>
+  </div>
+</section>
+
+<!-- ROSTER -->
+<section id="roster">
+  <div class="section-wrap">
+    <div class="section-header">
+      <div class="section-eyebrow">Our Artists</div>
+      <h2 class="section-title">The Roster</h2>
+      <div class="gold-rule"></div>
+    </div>
+    <div class="roster-grid" id="roster-grid">
+      <!-- cards injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- HTR RADIO -->
+<section id="radio-section">
+  <div class="section-wrap">
+    <div class="section-header">
+      <div class="section-eyebrow">Streaming Now</div>
+      <h2 class="section-title">HTR Radio</h2>
+      <div class="gold-rule"></div>
+    </div>
+    <div class="radio-wrap">
+      <div class="radio-display">
+        <img id="radio-art" src="https://raw.githubusercontent.com/SteveP999/hello-texas-records/main/htr-logo.png" alt="" class="radio-art">
+        <div class="radio-info">
+          <div class="radio-title" id="radio-title">Select a track to play</div>
+          <div class="radio-artist" id="radio-artist">HTR Radio</div>
+          <div class="radio-album" id="radio-album">Album: —</div>
+        </div>
+        <div class="radio-controls radio-controls-inside">
+          <button class="radio-btn" id="radio-prev">&#9664;&#9664; Prev</button>
+          <button class="radio-btn active" id="radio-playbtn">&#9654; Play</button>
+          <button class="radio-btn" id="radio-next">Next &#9654;&#9654;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-wrap">
+    <div class="section-header">
+      <div class="section-eyebrow">The Label</div>
+      <h2 class="section-title">About Hello Texas Records</h2>
+      <div class="gold-rule"></div>
+    </div>
+    <div class="about-inner">
+      <p>Hello Texas Records is an independent Texas music label built on one simple idea: great music doesn't need a zip code. Our roster spans country, rock, blues, pop, EDM, Latin, jazz, Christian worship, and beyond.</p>
+      <p>We sign artists we believe in and give them the freedom to make the music they need to make. Every genre. Every story. One label.</p>
+      <div class="genre-tags">
+        <span class="genre-tag">Red Dirt Country</span>
+        <span class="genre-tag">Southern Rock</span>
+        <span class="genre-tag">Blues Rock</span>
+        <span class="genre-tag">Christian Worship</span>
+        <span class="genre-tag">New Age</span>
+        <span class="genre-tag">Adult Contemporary</span>
+        <span class="genre-tag">EDM</span>
+        <span class="genre-tag">K-Pop</span>
+        <span class="genre-tag">Latin Pop</span>
+        <span class="genre-tag">Big Band</span>
+        <span class="genre-tag">Hard Rock</span>
+        <span class="genre-tag">Indie Pop</span>
+        <span class="genre-tag">Americana</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <img src="https://raw.githubusercontent.com/SteveP999/hello-texas-records/main/htr-logo.png" alt="Hello Texas Records" class="foot-logo">
+  <div class="foot-tagline">Hello Texas Records &nbsp;·&nbsp; Independent Texas Music</div>
+  <div class="foot-links">
+    <a href="https://stevep999.github.io/hello-texas-radio/" target="_blank">HTR Radio</a>
+    <a href="#roster">Artists</a>
+    <a href="#about">About</a>
+  </div>
+</footer>
+
+
+<div id="radio-bottom-bar">
+  <div class="bottom-nowplaying">
+    <img id="bottom-radio-art" src="https://raw.githubusercontent.com/SteveP999/hello-texas-records/main/htr-logo.png" alt="" class="bottom-radio-art">
+    <div class="bottom-radio-meta">
+      <div id="bottom-radio-title" class="bottom-radio-title">—</div>
+      <div id="bottom-radio-artist" class="bottom-radio-artist">HTR Radio</div>
+      <div id="bottom-radio-album" class="bottom-radio-album">Album: —</div>
+    </div>
+  </div>
+
+  <div class="bottom-radio-controls">
+    <button class="radio-btn bottom-radio-btn" id="radio-prev-bottom">&#9664;&#9664; Prev</button>
+    <button class="radio-btn bottom-radio-btn active" id="radio-playbtn-bottom">&#9654; Play</button>
+    <button class="radio-btn bottom-radio-btn" id="radio-next-bottom">Next &#9654;&#9654;</button>
+  </div>
+
+  <div class="bottom-radio-progress">
+    <span class="radio-time" id="radio-cur">0:00</span>
+    <div id="radio-progress-wrap"><div id="radio-progress-fill"></div></div>
+    <span class="radio-time" id="radio-dur">0:00</span>
+  </div>
+
+  <div class="bottom-radio-volume">
+    <span class="radio-vol-label">Vol</span>
+    <input type="range" id="radio-vol" min="0" max="1" step="0.02" value="0.85">
+  </div>
+</div>
+    <span class="radio-time" id="radio-dur">0:00</span>
+    <span class="radio-vol-label">Vol</span>
+    <input type="range" id="radio-vol" min="0" max="1" step="0.02" value="0.85">
+  </div>
+</div>
+
+<audio id="radio-audio" playsinline preload="none"></audio>
+<script src="homepage-app.js"></script>
+</body>
+</html>
