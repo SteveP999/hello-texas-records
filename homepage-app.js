@@ -185,12 +185,13 @@ async function loadRadio() {
 
 let radioTracks = [];
 let radioIndex = 0;
-let radioShuffle = false;
+let radioShuffle = true;
 
 const radioAudio = document.getElementById('radio-audio');
 const radioArt = document.getElementById('radio-art');
 const radioTitle = document.getElementById('radio-title');
 const radioArtist = document.getElementById('radio-artist');
+const radioAlbum = document.getElementById('radio-album');
 const radioPlayBtn = document.getElementById('radio-playbtn');
 
 function buildRadio(songs) {
@@ -200,46 +201,13 @@ function buildRadio(songs) {
   buildPlaylist();
 
   if (radioTracks.length > 0) {
-
-    setRadioDisplay(radioTracks[0]);
-
+    radioIndex = Math.floor(Math.random() * radioTracks.length);
+    setRadioDisplay(radioTracks[radioIndex]);
   }
 }
 
 function buildPlaylist() {
-
-  const list = document.getElementById('playlist-list');
-
-  if (!list) return;
-
-  list.innerHTML = radioTracks.map((track, index) => {
-
-    return `
-      <div class="pl-item" onclick="playTrack(${index})">
-
-        <span class="pl-num">
-          ${index + 1}
-        </span>
-
-        <img
-          class="pl-thumb"
-          src="${track.coverImage || ''}"
-          alt="${track.title}"
-        >
-
-        <div class="pl-info">
-          <div class="pl-title">
-            ${track.title}
-          </div>
-
-          <div class="pl-artist">
-            ${track.artist}
-          </div>
-        </div>
-      </div>
-    `;
-
-  }).join('');
+  return;
 }
 
 function playTrack(index) {
@@ -264,14 +232,61 @@ function playTrack(index) {
   highlightTrack(index);
 }
 
+function resolveRadioImage(track) {
+  const fallback = 'https://raw.githubusercontent.com/SteveP999/hello-texas-records/main/htr-logo.png';
+  const raw = track.coverImage || track.cover || track.image || '';
+
+  if (!raw) return fallback;
+  if (/^https?:\/\//i.test(raw)) return raw;
+
+  const artistRepoMap = {
+    'avery-ivey':'SteveP999/Avery-Ivey',
+    'daniel-kincaid':'SteveP999/Daniel-Kincaid',
+    'hello-texas':'SteveP999/Hello-Texas',
+    'lucas-harlow':'SteveP999/Lucas-Harlow',
+    'night-shift':'SteveP999/Night-Shift',
+    'nightstrike':'SteveP999/NightStrike',
+    'parsons-cross':'SteveP999/Parsons-Cross',
+    'pulse7':'SteveP999/PULSE7',
+    'rio-valencia':'SteveP999/Rio-Valencia',
+    'sawyer-price':'SteveP999/Sawyer-Price',
+    'silent-oblivion':'SteveP999/Silent-Oblivion',
+    'skyline-theory':'SteveP999/Skyline-Theory',
+    'stephen-parsons':'SteveP999/stephen-parsons',
+    'taylor-martin':'SteveP999/Taylor-Martin',
+    'vanta':'SteveP999/vanta',
+    'vincent-cole':'SteveP999/Vincent-Cole'
+  };
+
+  const artistId = track.artistId || String(track.artist || '').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+  const repo = artistRepoMap[artistId];
+
+  if (!repo) return fallback;
+
+  const clean = String(raw).replace(/^\.\//, '').replace(/^\//, '');
+
+  if (clean.startsWith('images/') || clean.startsWith('covers/')) {
+    return `https://raw.githubusercontent.com/${repo}/main/${clean}`;
+  }
+
+  return `https://raw.githubusercontent.com/${repo}/main/images/covers/${clean}`;
+}
+
 function setRadioDisplay(track) {
 
   radioTitle.textContent = track.title || 'Unknown Track';
   radioArtist.textContent = track.artist || 'Unknown Artist';
 
-  if (track.coverImage) {
-    radioArt.src = track.coverImage;
+  if (radioAlbum) {
+    radioAlbum.textContent = `Album: ${track.album || '—'}`;
   }
+
+  radioArt.onerror = function () {
+    this.onerror = null;
+    this.src = 'https://raw.githubusercontent.com/SteveP999/hello-texas-records/main/htr-logo.png';
+  };
+
+  radioArt.src = resolveRadioImage(track);
 }
 
 function highlightTrack(index) {
@@ -313,7 +328,7 @@ radioPlayBtn.addEventListener('click', () => {
 
   if (!radioAudio.src && radioTracks.length > 0) {
 
-    playTrack(0);
+    playTrack(Math.floor(Math.random() * radioTracks.length));
     return;
   }
 
@@ -338,11 +353,11 @@ document.getElementById('radio-next').addEventListener('click', nextTrack);
 
 document.getElementById('radio-prev').addEventListener('click', previousTrack);
 
-document.getElementById('radio-shuffle').addEventListener('click', function () {
 
-  radioShuffle = !radioShuffle;
-
-  this.classList.toggle('active', radioShuffle);
+document.getElementById('radio-progress-wrap').addEventListener('click', e => {
+  if (!radioAudio.duration) return;
+  const r = e.currentTarget.getBoundingClientRect();
+  radioAudio.currentTime = ((e.clientX - r.left) / r.width) * radioAudio.duration;
 });
 
 document.getElementById('radio-vol').addEventListener('input', e => {
