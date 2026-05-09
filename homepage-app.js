@@ -127,16 +127,6 @@ async function loadRadio() {
 // RADIO
 // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
-
-function fixKnownCoverPath(url) {
-  if (!url) return '';
-  return String(url)
-    .replace('https://raw.githubusercontent.com/SteveP999/vanta/main/covers/', 'https://raw.githubusercontent.com/SteveP999/vanta/main/images/covers/')
-    .replace('https://raw.githubusercontent.com/SteveP999/pulse7/main/covers/', 'https://raw.githubusercontent.com/SteveP999/PULSE7/main/images/covers/')
-    .replace('https://raw.githubusercontent.com/SteveP999/PULSE7/main/covers/', 'https://raw.githubusercontent.com/SteveP999/PULSE7/main/images/covers/')
-    .replace('https://raw.githubusercontent.com/SteveP999/Taylor-Martin/main/covers/', 'https://raw.githubusercontent.com/SteveP999/Taylor-Martin/main/images/covers/');
-}
-
 let radioTracks = [];
 let radioIndex = 0;
 let radioShuffle = false;
@@ -149,15 +139,25 @@ const radioPlayBtn = document.getElementById('radio-playbtn');
 
 function buildRadio(songs) {
 
-  radioTracks = songs.filter(song => song.audioFile);
+  // HTR homepage radio must use the full approved catalog from radio-data.json.
+  // Do not fall back to the old short inline playlist.
+  radioTracks = (songs || []).filter(song => song.includeOnRadio !== false && song.audioFile);
 
   buildPlaylist();
 
   if (radioTracks.length > 0) {
-
     setRadioDisplay(radioTracks[0]);
-
   }
+}
+
+function normalizeCoverUrl(url) {
+  if (!url) return '';
+  return String(url)
+    .replace('https://raw.githubusercontent.com/SteveP999/Night-Shift/main/covers/', 'https://stevep999.github.io/Night-Shift/images/covers/')
+    .replace('https://raw.githubusercontent.com/SteveP999/Silent-Oblivion/main/covers/', 'https://stevep999.github.io/Silent-Oblivion/images/covers/')
+    .replace('https://raw.githubusercontent.com/SteveP999/vanta/main/covers/', 'https://stevep999.github.io/vanta/images/covers/')
+    .replace('https://raw.githubusercontent.com/SteveP999/pulse7/main/covers/', 'https://stevep999.github.io/pulse7/images/covers/')
+    .replace('https://raw.githubusercontent.com/SteveP999/Taylor-Martin/main/covers/', 'https://stevep999.github.io/Taylor-Martin/images/covers/');
 }
 
 function buildPlaylist() {
@@ -177,7 +177,7 @@ function buildPlaylist() {
 
         <img
           class="pl-thumb"
-          src="${fixKnownCoverPath(track.coverImage) || ''}"
+          src="${normalizeCoverUrl(track.coverImage) || ''}"
           alt="${track.title}"
         >
 
@@ -224,7 +224,7 @@ function setRadioDisplay(track) {
   radioArtist.textContent = track.artist || 'Unknown Artist';
 
   if (track.coverImage) {
-    radioArt.src = fixKnownCoverPath(track.coverImage);
+    radioArt.src = normalizeCoverUrl(track.coverImage);
   }
 }
 
