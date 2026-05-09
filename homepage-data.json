@@ -78,7 +78,7 @@
       "genre": "Country / folk-pop / alt-rock",
       "status": "active",
       "logo": "",
-      "heroImage": "images/artist/avery-ivey-roster-photo.png",
+      "heroImage": "Roster Photos/avery-ivey-roster-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -88,9 +88,8 @@
       "includeOnRadio": true,
       "latestTitle": "Tomorrow Never Comes",
       "imageCandidates": [
-        "images/artist/avery-ivey-roster-photo.png",
-        "images/artist/avery-photo-01.png",
-        ""
+        "Roster Photos/avery-ivey-roster-photo.png",
+        "htr-logo.png"
       ]
     },
     {
@@ -102,7 +101,7 @@
       "genre": "Soft rock / adult contemporary",
       "status": "active",
       "logo": "",
-      "heroImage": "images/artist/daniel-kincaid-roster-photo.png",
+      "heroImage": "Roster Photos/daniel-kincaid-roster-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -112,9 +111,8 @@
       "includeOnRadio": true,
       "latestTitle": "Just This Once",
       "imageCandidates": [
-        "images/artist/daniel-kincaid-roster-photo.png",
-        "images/artist/daniel-kincaid-hero-background.png",
-        ""
+        "Roster Photos/daniel-kincaid-roster-photo.png",
+        "htr-logo.png"
       ]
     },
     {
@@ -126,7 +124,7 @@
       "genre": "Texas country / Southern rock",
       "status": "active",
       "logo": "images/logos/hello-texas-logo.png",
-      "heroImage": "images/artist/hello-texas-roster-photo.png",
+      "heroImage": "Roster Photos/hello-texas-roster-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -136,9 +134,8 @@
       "includeOnRadio": true,
       "latestTitle": "Happily Ever After",
       "imageCandidates": [
-        "images/artist/hello-texas-roster-photo.png",
-        "images/logos/hello-texas-logo.png",
-        "images/logos/hello-texas-logo.png"
+        "Roster Photos/hello-texas-roster-photo.png",
+        "htr-logo.png"
       ]
     },
     {
@@ -150,7 +147,7 @@
       "genre": "New age piano / cinematic instrumental",
       "status": "active",
       "logo": "images/logos/lucas-harlow-logo.png",
-      "heroImage": "images/artist/lucas-harlow-roster-photo.png",
+      "heroImage": "Roster Photos/lucas-harlow-roster-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -160,9 +157,8 @@
       "includeOnRadio": true,
       "latestTitle": "Where the Light Stayed",
       "imageCandidates": [
-        "images/artist/lucas-harlow-roster-photo.png",
-        "images/logos/lucas-harlow-logo.png",
-        "images/logos/lucas-harlow-logo.png"
+        "Roster Photos/lucas-harlow-roster-photo.png",
+        "htr-logo.png"
       ]
     },
     {
@@ -174,7 +170,7 @@
       "genre": "Disco-rock / party anthem pop",
       "status": "active",
       "logo": "images/logos/night-shift-logo-transparent-background.png",
-      "heroImage": "images/artist/night-shift-roster-photo.png",
+      "heroImage": "Roster Photos/night-shift-roster-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -183,9 +179,8 @@
       "includeOnLabelHome": true,
       "includeOnRadio": true,
       "imageCandidates": [
-        "images/artist/night-shift-roster-photo.png",
-        "images/artist/night-shift-band-photo-no-text.png",
-        "images/logos/night-shift-logo-transparent-background.png"
+        "Roster Photos/night-shift-roster-photo.png",
+        "htr-logo.png"
       ]
     },
     {
@@ -197,7 +192,7 @@
       "genre": "Hard Rock / Sleaze Rock",
       "status": "active",
       "logo": "images/logos/nightstrike-logo.png",
-      "heroImage": "images/artist/nightstrike-roster-photo.png",
+      "heroImage": "Roster Photos/nightstrike-roster-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -207,9 +202,8 @@
       "includeOnRadio": true,
       "latestTitle": "Crash and Burn",
       "imageCandidates": [
-        "images/artist/nightstrike-roster-photo.png",
-        "images/artist/nightstrike-band-photo.png",
-        "images/logos/nightstrike-logo.png"
+        "Roster Photos/nightstrike-roster-photo.png",
+        "htr-logo.png"
       ]
     },
     {
@@ -221,7 +215,7 @@
       "genre": "Contemporary Christian / worship",
       "status": "active",
       "logo": "images/logos/parsons-cross-logo.png",
-      "heroImage": "images/artist/parsons-cross-roster-photo.png",
+      "heroImage": "Roster Photos/parsons-cross-roster-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -231,9 +225,8 @@
       "includeOnRadio": true,
       "latestTitle": "Out of the Darkness",
       "imageCandidates": [
-        "images/artist/parsons-cross-roster-photo.png",
-        "images/logos/parsons-cross-logo.png",
-        "images/logos/parsons-cross-logo.png"
+        "Roster Photos/parsons-cross-roster-photo.png",
+        "htr-logo.png"
       ]
     },
     {
@@ -245,7 +238,7 @@
       "genre": "K-pop / dance-pop",
       "status": "active",
       "logo": "images/logos/pulse7-logo.png",
-      "heroImage": "images/artist/pulse7-roster-photo.png",
+      "heroImage": "Roster Photos/pulse7-roster-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -254,9 +247,8 @@
       "includeOnLabelHome": true,
       "includeOnRadio": true,
       "imageCandidates": [
-        "images/artist/pulse7-roster-photo.png",
-        "images/artist/pulse7-photo.png",
-        "images/logos/pulse7-logo.png"
+        "Roster Photos/pulse7-roster-photo.png",
+        "htr-logo.png"
       ]
     },
     {
@@ -268,7 +260,7 @@
       "genre": "Latin pop / reggaeton fusion",
       "status": "active",
       "logo": "images/logos/rio-valencia-logo.png",
-      "heroImage": "images/artist/rio-valencia-roster-photo.png",
+      "heroImage": "Roster Photos/rio-valencia-roster-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -278,9 +270,8 @@
       "includeOnRadio": true,
       "latestTitle": "No Control",
       "imageCandidates": [
-        "images/artist/rio-valencia-roster-photo.png",
-        "images/artist/rio-valencia-hero-photo.png",
-        "images/logos/rio-valencia-logo.png"
+        "Roster Photos/rio-valencia-roster-photo.png",
+        "htr-logo.png"
       ]
     },
     {
@@ -292,7 +283,7 @@
       "genre": "Texas country / Red Dirt",
       "status": "active",
       "logo": "",
-      "heroImage": "images/artist/sawyer-price-roster-photo.png",
+      "heroImage": "Roster Photos/sawyer-price-roster-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -302,9 +293,8 @@
       "includeOnRadio": true,
       "latestTitle": "All My Life",
       "imageCandidates": [
-        "images/artist/sawyer-price-roster-photo.png",
-        "images/artist/sawyer-hero-background.png",
-        ""
+        "Roster Photos/sawyer-price-roster-photo.png",
+        "htr-logo.png"
       ]
     },
     {
@@ -316,7 +306,7 @@
       "genre": "Surf rock / retro pop-rock",
       "status": "active",
       "logo": "images/logos/silent-oblivion-logo.png",
-      "heroImage": "images/artist/silent-oblivion-roster-photo.png",
+      "heroImage": "Roster Photos/silent-oblivion-roster-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -325,9 +315,8 @@
       "includeOnLabelHome": true,
       "includeOnRadio": true,
       "imageCandidates": [
-        "images/artist/silent-oblivion-roster-photo.png",
-        "images/logos/silent-oblivion-logo.png",
-        "images/logos/silent-oblivion-logo.png"
+        "Roster Photos/silent-oblivion-roster-photo.png",
+        "htr-logo.png"
       ]
     },
     {
@@ -339,7 +328,7 @@
       "genre": "EDM / progressive house",
       "status": "active",
       "logo": "images/logos/skyline-theory-logo-text.png",
-      "heroImage": "images/artist/skyline-theory-roster-photo.png",
+      "heroImage": "Roster Photos/skyline-theory-roster-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -348,9 +337,8 @@
       "includeOnLabelHome": true,
       "includeOnRadio": true,
       "imageCandidates": [
-        "images/artist/skyline-theory-roster-photo.png",
-        "images/logos/skyline-theory-logo-text.png",
-        "images/logos/skyline-theory-logo-text.png"
+        "Roster Photos/skyline-theory-roster-photo.png",
+        "htr-logo.png"
       ]
     },
     {
@@ -362,7 +350,7 @@
       "genre": "Christian country / worship storyteller",
       "status": "active",
       "logo": "images/logos/stephen-parsons-logo-transparent-oval.png",
-      "heroImage": "images/artist/stephen-parsons-roster-photo.png",
+      "heroImage": "Roster Photos/stephen-parsons-roster-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -372,9 +360,8 @@
       "includeOnRadio": true,
       "latestTitle": "Calling in the Silence",
       "imageCandidates": [
-        "images/artist/stephen-parsons-roster-photo.png",
-        "images/artist/stephen-parsons-artist-photo.png",
-        "images/logos/stephen-parsons-logo-transparent-oval.png"
+        "Roster Photos/stephen-parsons-roster-photo.png",
+        "htr-logo.png"
       ]
     },
     {
@@ -386,7 +373,7 @@
       "genre": "1970s soft pop / folk-rock",
       "status": "active",
       "logo": "images/logos/taylor-martin-logo.png",
-      "heroImage": "images/artist/taylor-martin-roster-photo.png",
+      "heroImage": "Roster Photos/taylor-martin-roster-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -395,9 +382,8 @@
       "includeOnLabelHome": true,
       "includeOnRadio": true,
       "imageCandidates": [
-        "images/artist/taylor-martin-roster-photo.png",
-        "images/artist/taylor-martin-photo.png",
-        "images/logos/taylor-martin-logo.png"
+        "Roster Photos/taylor-martin-roster-photo.png",
+        "htr-logo.png"
       ]
     },
     {
@@ -409,7 +395,7 @@
       "genre": "Funk rock / alternative rock",
       "status": "active",
       "logo": "images/logos/vanta-logo.png",
-      "heroImage": "images/artist/vanta-roster-photo.png",
+      "heroImage": "Roster Photos/vanta-roster-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -418,9 +404,8 @@
       "includeOnLabelHome": true,
       "includeOnRadio": true,
       "imageCandidates": [
-        "images/artist/vanta-roster-photo.png",
-        "images/artist/vanta-hero-background.png",
-        "images/logos/vanta-logo.png"
+        "Roster Photos/vanta-roster-photo.png",
+        "htr-logo.png"
       ]
     },
     {
@@ -432,7 +417,7 @@
       "genre": "Crooner / big band swing",
       "status": "active",
       "logo": "images/logos/vincent-cole-logo-monogram-transparent.png",
-      "heroImage": "images/artist/vincent-cole-roster-photo.png",
+      "heroImage": "Roster Photos/vincent-cole-roster-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -442,9 +427,8 @@
       "includeOnRadio": true,
       "latestTitle": "Last Call for Beautiful",
       "imageCandidates": [
-        "images/artist/vincent-cole-roster-photo.png",
-        "images/artist/vincent-cole-artist-photo.png",
-        "images/logos/vincent-cole-logo-monogram-transparent.png"
+        "Roster Photos/vincent-cole-roster-photo.png",
+        "htr-logo.png"
       ]
     }
   ]

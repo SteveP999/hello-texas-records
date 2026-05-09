@@ -36,7 +36,7 @@ function buildRoster(artists) {
     card.className = 'artist-card';
 
     const images = buildArtistImageCandidates(artist);
-    const firstImage = images[0] || 'https://raw.githubusercontent.com/SteveP999/hello-texas-records/main/htr-logo.png';
+    const firstImage = images[0] || 'htr-logo.png';
 
     const isLogoCard = /logo|monogram/i.test(firstImage);
     const fitClass = isLogoCard ? ' logo-card-img' : '';
@@ -97,39 +97,40 @@ function buildRoster(artists) {
 }
 
 function buildArtistImageCandidates(artist) {
-  const fallback = 'https://raw.githubusercontent.com/SteveP999/hello-texas-records/main/htr-logo.png';
+  const fallback = 'htr-logo.png';
 
   const resolve = (path) => {
-    if (!path || !artist.githubRepo) return '';
+    if (!path) return '';
     const value = String(path).trim();
     if (!value) return '';
     if (/^https?:\/\//i.test(value) || value.startsWith('data:')) return value;
+
     const clean = value.replace(/^\.\//, '').replace(/^\//, '');
-    return `https://raw.githubusercontent.com/${artist.githubRepo}/main/${clean}`;
+
+    // Roster photos live in THIS hello-texas-records repo.
+    if (clean.startsWith('Roster Photos/') && clean.endsWith('-roster-photo.png')) {
+      return clean;
+    }
+
+    // Homepage-owned fallback assets stay local.
+    if (clean.startsWith('images/logos/') || clean === 'htr-logo.png') {
+      return clean;
+    }
+
+    // Older artist-repo images remain a fallback only.
+    if (artist.githubRepo) {
+      return `https://raw.githubusercontent.com/${artist.githubRepo}/main/${clean}`;
+    }
+
+    return fallback;
   };
 
   const raw = [];
 
   if (Array.isArray(artist.imageCandidates)) raw.push(...artist.imageCandidates);
-  raw.push(artist.heroImage, artist.logo);
-
-  // Add generated fallbacks from the primary fields.
-  [artist.heroImage, artist.logo].forEach(path => {
-    if (!path) return;
-    const clean = String(path).replace(/^\.\//, '').replace(/^\//, '');
-    const file = clean.split('/').pop();
-
-    if (file) {
-      raw.push(file);
-      raw.push(`images/artist/${file}`);
-      raw.push(`images/logos/${file}`);
-      raw.push(`images/covers/${file}`);
-      raw.push(`covers/${file}`);
-    }
-  });
+  raw.push(artist.heroImage, artist.logo, 'htr-logo.png');
 
   const resolved = raw.map(resolve).filter(Boolean);
-
   resolved.push(fallback);
 
   return [...new Set(resolved)];
@@ -152,7 +153,7 @@ function tryNextArtistImage(img) {
     img.src = list[next];
   } else {
     img.onerror = null;
-    img.src = 'https://raw.githubusercontent.com/SteveP999/hello-texas-records/main/htr-logo.png';
+    img.src = 'htr-logo.png';
     img.classList.add('logo-card-img');
   }
 }
@@ -248,12 +249,12 @@ function syncBottomRadioDisplay(track) {
         this.src = current.replace('/images/covers/', '/covers/');
         this.onerror = function () {
           this.onerror = null;
-          this.src = 'https://raw.githubusercontent.com/SteveP999/hello-texas-records/main/htr-logo.png';
+          this.src = 'htr-logo.png';
         };
         return;
       }
       this.onerror = null;
-      this.src = 'https://raw.githubusercontent.com/SteveP999/hello-texas-records/main/htr-logo.png';
+      this.src = 'htr-logo.png';
     };
     bottomRadioArt.src = resolveRadioImage(track);
   }
@@ -311,7 +312,7 @@ function playTrack(index) {
 }
 
 function resolveRadioImage(track) {
-  const fallback = 'https://raw.githubusercontent.com/SteveP999/hello-texas-records/main/htr-logo.png';
+  const fallback = 'htr-logo.png';
   const raw = track.coverImage || track.cover || track.image || '';
 
   if (!raw) return fallback;
@@ -386,12 +387,12 @@ function setRadioDisplay(track) {
       this.src = current.replace('/images/covers/', '/covers/');
       this.onerror = function () {
         this.onerror = null;
-        this.src = 'https://raw.githubusercontent.com/SteveP999/hello-texas-records/main/htr-logo.png';
+        this.src = 'htr-logo.png';
       };
       return;
     }
     this.onerror = null;
-    this.src = 'https://raw.githubusercontent.com/SteveP999/hello-texas-records/main/htr-logo.png';
+    this.src = 'htr-logo.png';
   };
 
   radioArt.src = resolveRadioImage(track);
