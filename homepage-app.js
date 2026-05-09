@@ -127,6 +127,16 @@ async function loadRadio() {
 // RADIO
 // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
+
+function fixKnownCoverPath(url) {
+  if (!url) return '';
+  return String(url)
+    .replace('https://raw.githubusercontent.com/SteveP999/vanta/main/covers/', 'https://raw.githubusercontent.com/SteveP999/vanta/main/images/covers/')
+    .replace('https://raw.githubusercontent.com/SteveP999/pulse7/main/covers/', 'https://raw.githubusercontent.com/SteveP999/PULSE7/main/images/covers/')
+    .replace('https://raw.githubusercontent.com/SteveP999/PULSE7/main/covers/', 'https://raw.githubusercontent.com/SteveP999/PULSE7/main/images/covers/')
+    .replace('https://raw.githubusercontent.com/SteveP999/Taylor-Martin/main/covers/', 'https://raw.githubusercontent.com/SteveP999/Taylor-Martin/main/images/covers/');
+}
+
 let radioTracks = [];
 let radioIndex = 0;
 let radioShuffle = false;
@@ -167,7 +177,7 @@ function buildPlaylist() {
 
         <img
           class="pl-thumb"
-          src="${track.coverImage || ''}"
+          src="${fixKnownCoverPath(track.coverImage) || ''}"
           alt="${track.title}"
         >
 
@@ -214,7 +224,7 @@ function setRadioDisplay(track) {
   radioArtist.textContent = track.artist || 'Unknown Artist';
 
   if (track.coverImage) {
-    radioArt.src = track.coverImage;
+    radioArt.src = fixKnownCoverPath(track.coverImage);
   }
 }
 
