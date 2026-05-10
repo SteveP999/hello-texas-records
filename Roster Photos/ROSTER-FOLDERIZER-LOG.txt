@@ -1,0 +1,38 @@
+==================================================
+HTR ROSTER PHOTOS FOLDERIZER v1.2
+ROOT=D:\hello-texas-records\Roster Photos
+==================================================
+
+MOVED: avery-ivey-roster-photo.png -> avery-ivey\
+MOVED: borrowed-whispers-discography-bg.png -> borrowed-whispers\
+MOVED: borrowed-whispers-hero-photo.png -> borrowed-whispers\
+MOVED: borrowed-whispers-photo-1.png -> borrowed-whispers\
+MOVED: borrowed-whispers-photo-2.png -> borrowed-whispers\
+MOVED: borrowed-whispers-photo-3.png -> borrowed-whispers\
+MOVED: borrowed-whispers-video-bg.png -> borrowed-whispers\
+MOVED: daniel-kincaid-roster-photo.png -> daniel-kincaid\
+MOVED: hello-texas-roster-photo.png -> hello-texas\
+MOVED: ivey-wilder-discography-bg.png -> ivey-wilder\
+MOVED: ivey-wilder-hero-photo.png -> ivey-wilder\
+MOVED: ivey-wilder-photo-1.png -> ivey-wilder\
+MOVED: ivey-wilder-photo-2.png -> ivey-wilder\
+MOVED: ivey-wilder-photo-3.png -> ivey-wilder\
+MOVED: ivey-wilder-roster-photo.png -> ivey-wilder\
+MOVED: ivey-wilder-video-bg.png -> ivey-wilder\
+MOVED: lucas-harlow-roster-photo.png -> lucas-harlow\
+MOVED: night-shift-roster-photo.png -> night-shift\
+MOVED: nightstrike-roster-photo.png -> nightstrike\
+MOVED: parsons-cross-roster-photo.png -> parsons-cross\
+MOVED: pulse7-roster-photo.png -> pulse7\
+MOVED: rio-valencia-roster-photo.png -> rio-valencia\
+MOVED: sawyer-price-roster-photo.png -> sawyer-price\
+MOVED: silent-oblivion-roster-photo.png -> silent-oblivion\
+MOVED: skyline-theory-roster-photo.png -> skyline-theory\
+MOVED: stephen-parsons-roster-photo.png -> stephen-parsons\
+MOVED: taylor-martin-roster-photo.png -> taylor-martin\
+MOVED: vanta-roster-photo.png -> vanta\
+MOVED: vincent-cole-roster-photo.png -> vincent-cole\
+
+Done.
+Moved: 29
+Skipped: 0
