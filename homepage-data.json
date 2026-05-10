@@ -93,6 +93,29 @@
       "latestTitle": "Back to Chapter One"
     },
     {
+      "id": "borrowed-whispers",
+      "name": "Borrowed Whispers",
+      "repoFolder": "D:\\Borrowed-Whispers",
+      "githubRepo": "SteveP999/borrowed-whispers",
+      "siteUrl": "https://stevep999.github.io/borrowed-whispers/",
+      "genre": "Soft rock / adult contemporary love songs",
+      "status": "active",
+      "logo": "",
+      "heroImage": "Roster Photos/borrowed-whispers-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "imageCandidates": [
+        "Roster Photos/borrowed-whispers-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Still Falling for You"
+    },
+    {
       "id": "daniel-kincaid",
       "name": "Daniel Kincaid",
       "repoFolder": "D:\\Daniel-Kincaid",
@@ -160,29 +183,6 @@
         "htr-logo.png"
       ],
       "latestTitle": "First Light"
-    },
-    {
-      "id": "neon-thunder",
-      "name": "Neon Thunder",
-      "repoFolder": "D:\\Neon-Thunder",
-      "githubRepo": "SteveP999/Neon-Thunder",
-      "siteUrl": "https://stevep999.github.io/Neon-Thunder/",
-      "genre": "Glam metal / arena rock",
-      "status": "active",
-      "logo": "",
-      "heroImage": "Roster Photos/neon-thunder-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "imageCandidates": [
-        "Roster Photos/neon-thunder-roster-photo.png",
-        "htr-logo.png"
-      ],
-      "latestTitle": "The Storm Never Sleeps"
     },
     {
       "id": "night-shift",
