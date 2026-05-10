@@ -1,28 +1,6 @@
 {
   "latestReleases": [
     {
-      "id": "nightstrike-crash-and-burn",
-      "artistId": "nightstrike",
-      "artist": "NightStrike",
-      "title": "Crash and Burn",
-      "album": "High Voltage",
-      "genre": "Hard Rock / Sleaze Rock",
-      "releaseType": "single",
-      "releaseDate": "2026-06-01",
-      "coverImage": "https://raw.githubusercontent.com/SteveP999/NightStrike/main/covers/nightstrike-crash-and-burn-cover.png",
-      "audioFile": "https://www.dropbox.com/scl/fi/pdk6fd86ja75lrfd862i9/nightstrike-crash-and-burn-mp3.mp3?rlkey=65gjedmk6v53dxnyhfwyjwc83&raw=1",
-      "youtubeUrl": "",
-      "featured": false,
-      "explicit": false,
-      "includeOnRadio": true,
-      "includeOnHomepage": true,
-      "tags": [
-        "glam metal",
-        "hard rock",
-        "sleaze rock"
-      ]
-    },
-    {
       "id": "skyline-theory-stay-in-the-sound",
       "artistId": "skyline-theory",
       "artist": "Skyline Theory",
@@ -46,6 +24,28 @@
       ]
     },
     {
+      "id": "nightstrike-crash-and-burn",
+      "artistId": "nightstrike",
+      "artist": "NightStrike",
+      "title": "Crash and Burn",
+      "album": "High Voltage",
+      "genre": "Hard Rock / Sleaze Rock",
+      "releaseType": "single",
+      "releaseDate": "2026-06-01",
+      "coverImage": "https://raw.githubusercontent.com/SteveP999/NightStrike/main/covers/nightstrike-crash-and-burn-cover.png",
+      "audioFile": "https://www.dropbox.com/scl/fi/pdk6fd86ja75lrfd862i9/nightstrike-crash-and-burn-mp3.mp3?rlkey=65gjedmk6v53dxnyhfwyjwc83&raw=1",
+      "youtubeUrl": "",
+      "featured": false,
+      "explicit": false,
+      "includeOnRadio": true,
+      "includeOnHomepage": true,
+      "tags": [
+        "glam metal",
+        "hard rock",
+        "sleaze rock"
+      ]
+    },
+    {
       "id": "nightstrike-the-storm-never-sleeps",
       "artistId": "nightstrike",
       "artist": "NightStrike",
@@ -66,6 +66,56 @@
         "arena rock",
         "storm"
       ]
+    },
+    {
+      "id": "borrowed-whispers-still-falling-for-you",
+      "artistId": "borrowed-whispers",
+      "artist": "Borrowed Whispers",
+      "title": "Still Falling For You",
+      "album": "I Still Remember",
+      "genre": "80s Soft Rock",
+      "releaseType": "single",
+      "releaseDate": "2026-05-09",
+      "coverImage": "images/covers/borrowed-whispers-still-falling-for-you-cover.png",
+      "albumCover": "images/covers/borrowed-whispers-i-still-remember-ALBUM-cover.png",
+      "audioFile": "https://www.dropbox.com/scl/fi/o8s2z0p87bo8zgl47k0da/Borrowed-Whispers-Still-Falling-for-You-H-O-Version-KEEPER.mp3?rlkey=wc4ww26y1yex5dj9g1bct8712&raw=1",
+      "youtubeUrl": "",
+      "videos": [],
+      "featured": true,
+      "explicit": false,
+      "includeOnRadio": true,
+      "includeOnHomepage": true,
+      "tags": []
+    },
+    {
+      "id": "ivey-wilder-burning-bridges",
+      "artistId": "ivey-wilder",
+      "artist": "Ivey Wilder",
+      "title": "Burning Bridges",
+      "album": "...For Hard Truths",
+      "genre": "Alt. Rock / Hard Rock",
+      "releaseType": "album-track",
+      "releaseDate": "2026-05-10",
+      "coverImage": "images/covers/ivey-wilder-burning-bridges-cover.png",
+      "albumCover": "images/covers/ivey-wilder-for-hard-truths-ALBUM-cover.png",
+      "audioFile": "https://www.dropbox.com/scl/fi/yn1bx0irycyb147ngey9j/ivey-wilder-burning-bridges-mp3.mp3?rlkey=yc3uian4ji5sc8j3kkmxuce4o&raw=1",
+      "youtubeUrl": "",
+      "videos": [
+        {
+          "title": "burning bridges",
+          "youtube": "https://youtu.be/GpTztr6jvBU",
+          "order": 1
+        }
+      ],
+      "featured": true,
+      "explicit": false,
+      "includeOnRadio": true,
+      "includeOnHomepage": true,
+      "tags": [],
+      "isLatest": true,
+      "albumType": "Album",
+      "albumOrder": 7,
+      "trackNumber": 7
     }
   ],
   "featuredArtists": [
@@ -78,7 +128,7 @@
       "genre": "Country / folk-pop / alt-rock",
       "status": "active",
       "logo": "",
-      "heroImage": "Roster Photos/avery-ivey-roster-photo.png",
+      "heroImage": "avery-photo-01.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -86,22 +136,25 @@
       },
       "includeOnLabelHome": true,
       "includeOnRadio": true,
+      "image": "Roster Photos/avery-ivey/avery-ivey-roster-photo.png",
+      "rosterPhoto": "Roster Photos/avery-ivey/avery-ivey-roster-photo.png",
       "imageCandidates": [
-        "Roster Photos/avery-ivey-roster-photo.png",
-        "htr-logo.png"
+        "Roster Photos/avery-ivey/avery-ivey-roster-photo.png",
+        "images/hello-texas-logo.png"
       ],
-      "latestTitle": "Back to Chapter One"
+      "latestTitle": "Back to Chapter One",
+      "rosterOrder": 9999
     },
     {
       "id": "borrowed-whispers",
       "name": "Borrowed Whispers",
-      "repoFolder": "D:\\Borrowed-Whispers",
+      "repoFolder": "D:\\borrowed-whispers",
       "githubRepo": "SteveP999/borrowed-whispers",
-      "siteUrl": "https://stevep999.github.io/borrowed-whispers/",
-      "genre": "Soft rock / adult contemporary love songs",
+      "siteUrl": "Borrowed-Whispers.hellotexasrecords.com",
+      "genre": "70s-80s Soft Rock, Soul",
       "status": "active",
-      "logo": "",
-      "heroImage": "Roster Photos/borrowed-whispers-roster-photo.png",
+      "logo": "images/logos/borrowed-whispers-logo.png",
+      "heroImage": "Roster Photos/borrowed-whispers/borrowed-whispers-roster-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -109,11 +162,15 @@
       },
       "includeOnLabelHome": true,
       "includeOnRadio": true,
+      "latestTitle": "Still Falling For You",
       "imageCandidates": [
-        "Roster Photos/borrowed-whispers-roster-photo.png",
-        "htr-logo.png"
+        "Roster Photos/borrowed-whispers/borrowed-whispers-roster-photo.png",
+        "htr-logo.png",
+        "images/hello-texas-logo.png"
       ],
-      "latestTitle": "Still Falling for You"
+      "image": "Roster Photos/borrowed-whispers/borrowed-whispers-roster-photo.png",
+      "rosterPhoto": "Roster Photos/borrowed-whispers/borrowed-whispers-roster-photo.png",
+      "rosterOrder": 9999
     },
     {
       "id": "daniel-kincaid",
@@ -124,7 +181,7 @@
       "genre": "Soft rock / adult contemporary",
       "status": "active",
       "logo": "",
-      "heroImage": "Roster Photos/daniel-kincaid-roster-photo.png",
+      "heroImage": "daniel-kincaid-hero-background.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -132,11 +189,14 @@
       },
       "includeOnLabelHome": true,
       "includeOnRadio": true,
+      "image": "Roster Photos/daniel-kincaid/daniel-kincaid-roster-photo.png",
+      "rosterPhoto": "Roster Photos/daniel-kincaid/daniel-kincaid-roster-photo.png",
       "imageCandidates": [
-        "Roster Photos/daniel-kincaid-roster-photo.png",
-        "htr-logo.png"
+        "Roster Photos/daniel-kincaid/daniel-kincaid-roster-photo.png",
+        "images/hello-texas-logo.png"
       ],
-      "latestTitle": "Just This Once"
+      "latestTitle": "Just This Once",
+      "rosterOrder": 9999
     },
     {
       "id": "hello-texas",
@@ -147,7 +207,7 @@
       "genre": "Texas country / Southern rock",
       "status": "active",
       "logo": "hello-texas-logo.png",
-      "heroImage": "Roster Photos/hello-texas-roster-photo.png",
+      "heroImage": "hero-background.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -155,11 +215,43 @@
       },
       "includeOnLabelHome": true,
       "includeOnRadio": true,
+      "image": "Roster Photos/hello-texas/hello-texas-roster-photo.png",
+      "rosterPhoto": "Roster Photos/hello-texas/hello-texas-roster-photo.png",
       "imageCandidates": [
-        "Roster Photos/hello-texas-roster-photo.png",
-        "htr-logo.png"
+        "Roster Photos/hello-texas/hello-texas-roster-photo.png",
+        "images/hello-texas-logo.png"
       ],
-      "latestTitle": "That Texas Sound"
+      "latestTitle": "That Texas Sound",
+      "rosterOrder": 9999
+    },
+    {
+      "id": "ivey-wilder",
+      "name": "Ivey Wilder",
+      "repoFolder": "d:\\Ivey-Wilder",
+      "githubRepo": "SteveP999/Ivey-Wilder",
+      "siteUrl": "https://ivey-wilder.hellotexasrecords.com",
+      "genre": "Alt. Rock / Hard Rock",
+      "status": "active",
+      "logo": "images/logos/ivey-wilder-logo.png",
+      "heroImage": "images/artist/ivey-wilder-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "latestTitle": "Burning Bridges",
+      "imageCandidates": [
+        "Roster Photos/ivey-wilder/ivey-wilder-roster-photo.png",
+        "images/artist/ivey-wilder-roster-photo.png",
+        "images/logos/ivey-wilder-logo.png",
+        "images/hello-texas-logo.png"
+      ],
+      "active": true,
+      "image": "Roster Photos/ivey-wilder/ivey-wilder-roster-photo.png",
+      "rosterPhoto": "Roster Photos/ivey-wilder/ivey-wilder-roster-photo.png",
+      "rosterOrder": 9999
     },
     {
       "id": "lucas-harlow",
@@ -170,7 +262,7 @@
       "genre": "New age piano / cinematic instrumental",
       "status": "active",
       "logo": "",
-      "heroImage": "Roster Photos/lucas-harlow-roster-photo.png",
+      "heroImage": "Roster Photos/lucas-harlow/lucas-harlow-hero-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -178,11 +270,14 @@
       },
       "includeOnLabelHome": true,
       "includeOnRadio": true,
+      "image": "Roster Photos/lucas-harlow/lucas-harlow-roster-photo.png",
+      "rosterPhoto": "Roster Photos/lucas-harlow/lucas-harlow-roster-photo.png",
       "imageCandidates": [
-        "Roster Photos/lucas-harlow-roster-photo.png",
-        "htr-logo.png"
+        "Roster Photos/lucas-harlow/lucas-harlow-roster-photo.png",
+        "images/hello-texas-logo.png"
       ],
-      "latestTitle": "First Light"
+      "latestTitle": "First Light",
+      "rosterOrder": 9999
     },
     {
       "id": "night-shift",
@@ -193,7 +288,7 @@
       "genre": "Disco-rock / party anthem pop",
       "status": "active",
       "logo": "night-shift-logo-transparent-background.png",
-      "heroImage": "Roster Photos/night-shift-roster-photo.png",
+      "heroImage": "night-shift-ace-photo-3.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -201,11 +296,14 @@
       },
       "includeOnLabelHome": true,
       "includeOnRadio": true,
+      "image": "Roster Photos/night-shift/night-shift-roster-photo.png",
+      "rosterPhoto": "Roster Photos/night-shift/night-shift-roster-photo.png",
       "imageCandidates": [
-        "Roster Photos/night-shift-roster-photo.png",
-        "htr-logo.png"
+        "Roster Photos/night-shift/night-shift-roster-photo.png",
+        "images/hello-texas-logo.png"
       ],
-      "latestTitle": "No Rules Tonight"
+      "latestTitle": "No Rules Tonight",
+      "rosterOrder": 9999
     },
     {
       "id": "nightstrike",
@@ -215,7 +313,7 @@
       "githubRepo": "SteveP999/NightStrike",
       "siteUrl": "https://nightstrike.hellotexasrecords.com/",
       "logo": "images/nightstrike-logo.png",
-      "heroImage": "Roster Photos/nightstrike-roster-photo.png",
+      "heroImage": "images/nightstrike-band-photo.png",
       "genre": "Hard Rock / Sleaze Rock",
       "active": true,
       "status": "active",
@@ -226,11 +324,14 @@
         "radio": true,
         "latest": true
       },
+      "image": "Roster Photos/nightstrike/nightstrike-roster-photo.png",
+      "rosterPhoto": "Roster Photos/nightstrike/nightstrike-roster-photo.png",
       "imageCandidates": [
-        "Roster Photos/nightstrike-roster-photo.png",
-        "htr-logo.png"
+        "Roster Photos/nightstrike/nightstrike-roster-photo.png",
+        "images/hello-texas-logo.png"
       ],
-      "latestTitle": "The Storm Never Sleeps"
+      "latestTitle": "The Storm Never Sleeps",
+      "rosterOrder": 9999
     },
     {
       "id": "parsons-cross",
@@ -241,7 +342,7 @@
       "genre": "Contemporary Christian / worship",
       "status": "active",
       "logo": "PARSONS CROSS LOGO.png",
-      "heroImage": "Roster Photos/parsons-cross-roster-photo.png",
+      "heroImage": "Roster Photos/parsons-cross/parsons-cross-hero-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -249,11 +350,14 @@
       },
       "includeOnLabelHome": true,
       "includeOnRadio": true,
+      "image": "Roster Photos/parsons-cross/parsons-cross-roster-photo.png",
+      "rosterPhoto": "Roster Photos/parsons-cross/parsons-cross-roster-photo.png",
       "imageCandidates": [
-        "Roster Photos/parsons-cross-roster-photo.png",
-        "htr-logo.png"
+        "Roster Photos/parsons-cross/parsons-cross-roster-photo.png",
+        "images/hello-texas-logo.png"
       ],
-      "latestTitle": "Dark Nights of the Soul"
+      "latestTitle": "Dark Nights of the Soul",
+      "rosterOrder": 9999
     },
     {
       "id": "pulse7",
@@ -264,7 +368,7 @@
       "genre": "K-pop / dance-pop",
       "status": "active",
       "logo": "pulse7-logo.png",
-      "heroImage": "Roster Photos/pulse7-roster-photo.png",
+      "heroImage": "pulse7-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -272,11 +376,14 @@
       },
       "includeOnLabelHome": true,
       "includeOnRadio": true,
+      "image": "Roster Photos/pulse7/pulse7-roster-photo.png",
+      "rosterPhoto": "Roster Photos/pulse7/pulse7-roster-photo.png",
       "imageCandidates": [
-        "Roster Photos/pulse7-roster-photo.png",
-        "htr-logo.png"
+        "Roster Photos/pulse7/pulse7-roster-photo.png",
+        "images/hello-texas-logo.png"
       ],
-      "latestTitle": "Two Nights"
+      "latestTitle": "Two Nights",
+      "rosterOrder": 9999
     },
     {
       "id": "rio-valencia",
@@ -287,7 +394,7 @@
       "genre": "Latin pop / reggaeton fusion",
       "status": "active",
       "logo": "Rio Valencia Logo and Text.png",
-      "heroImage": "Roster Photos/rio-valencia-roster-photo.png",
+      "heroImage": "rio-valencia-hero-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -295,11 +402,14 @@
       },
       "includeOnLabelHome": true,
       "includeOnRadio": true,
+      "image": "Roster Photos/rio-valencia/rio-valencia-roster-photo.png",
+      "rosterPhoto": "Roster Photos/rio-valencia/rio-valencia-roster-photo.png",
       "imageCandidates": [
-        "Roster Photos/rio-valencia-roster-photo.png",
-        "htr-logo.png"
+        "Roster Photos/rio-valencia/rio-valencia-roster-photo.png",
+        "images/hello-texas-logo.png"
       ],
-      "latestTitle": "No Control"
+      "latestTitle": "No Control",
+      "rosterOrder": 9999
     },
     {
       "id": "sawyer-price",
@@ -310,7 +420,7 @@
       "genre": "Texas country / Red Dirt",
       "status": "active",
       "logo": "",
-      "heroImage": "Roster Photos/sawyer-price-roster-photo.png",
+      "heroImage": "sawyer-hero-background.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -318,11 +428,14 @@
       },
       "includeOnLabelHome": true,
       "includeOnRadio": true,
+      "image": "Roster Photos/sawyer-price/sawyer-price-roster-photo.png",
+      "rosterPhoto": "Roster Photos/sawyer-price/sawyer-price-roster-photo.png",
       "imageCandidates": [
-        "Roster Photos/sawyer-price-roster-photo.png",
-        "htr-logo.png"
+        "Roster Photos/sawyer-price/sawyer-price-roster-photo.png",
+        "images/hello-texas-logo.png"
       ],
-      "latestTitle": "Every Song is You"
+      "latestTitle": "Every Song is You",
+      "rosterOrder": 9999
     },
     {
       "id": "silent-oblivion",
@@ -333,7 +446,7 @@
       "genre": "Surf rock / retro pop-rock",
       "status": "active",
       "logo": "silent-oblivion-logo.png",
-      "heroImage": "Roster Photos/silent-oblivion-roster-photo.png",
+      "heroImage": "Roster Photos/silent-oblivion/silent-oblivion-hero-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -341,11 +454,14 @@
       },
       "includeOnLabelHome": true,
       "includeOnRadio": true,
+      "image": "Roster Photos/silent-oblivion/silent-oblivion-roster-photo.png",
+      "rosterPhoto": "Roster Photos/silent-oblivion/silent-oblivion-roster-photo.png",
       "imageCandidates": [
-        "Roster Photos/silent-oblivion-roster-photo.png",
-        "htr-logo.png"
+        "Roster Photos/silent-oblivion/silent-oblivion-roster-photo.png",
+        "images/hello-texas-logo.png"
       ],
-      "latestTitle": "Lift Off (With a Bang)"
+      "latestTitle": "Lift Off (With a Bang)",
+      "rosterOrder": 9999
     },
     {
       "id": "skyline-theory",
@@ -356,7 +472,7 @@
       "genre": "EDM / progressive house",
       "status": "active",
       "logo": "skyline-theory-logo-text.png",
-      "heroImage": "Roster Photos/skyline-theory-roster-photo.png",
+      "heroImage": "Roster Photos/skyline-theory/skyline-theory-hero-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -364,11 +480,14 @@
       },
       "includeOnLabelHome": true,
       "includeOnRadio": true,
+      "image": "Roster Photos/skyline-theory/skyline-theory-roster-photo.png",
+      "rosterPhoto": "Roster Photos/skyline-theory/skyline-theory-roster-photo.png",
       "imageCandidates": [
-        "Roster Photos/skyline-theory-roster-photo.png",
-        "htr-logo.png"
+        "Roster Photos/skyline-theory/skyline-theory-roster-photo.png",
+        "images/hello-texas-logo.png"
       ],
-      "latestTitle": "Stay in the Sound"
+      "latestTitle": "Stay in the Sound",
+      "rosterOrder": 9999
     },
     {
       "id": "stephen-parsons",
@@ -379,7 +498,7 @@
       "genre": "Christian country / worship storyteller",
       "status": "active",
       "logo": "stephen-parsons-logo-transparent-oval.png",
-      "heroImage": "Roster Photos/stephen-parsons-roster-photo.png",
+      "heroImage": "Roster Photos/stephen-parsons/stephen-parsons-hero-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -387,11 +506,14 @@
       },
       "includeOnLabelHome": true,
       "includeOnRadio": true,
+      "image": "Roster Photos/stephen-parsons/stephen-parsons-roster-photo.png",
+      "rosterPhoto": "Roster Photos/stephen-parsons/stephen-parsons-roster-photo.png",
       "imageCandidates": [
-        "Roster Photos/stephen-parsons-roster-photo.png",
-        "htr-logo.png"
+        "Roster Photos/stephen-parsons/stephen-parsons-roster-photo.png",
+        "images/hello-texas-logo.png"
       ],
-      "latestTitle": "Thank You Mom and Dad"
+      "latestTitle": "Thank You Mom and Dad",
+      "rosterOrder": 9999
     },
     {
       "id": "taylor-martin",
@@ -402,7 +524,7 @@
       "genre": "1970s soft pop / folk-rock",
       "status": "active",
       "logo": "taylor-martin-logo.png",
-      "heroImage": "Roster Photos/taylor-martin-roster-photo.png",
+      "heroImage": "taylor-martin-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -410,11 +532,14 @@
       },
       "includeOnLabelHome": true,
       "includeOnRadio": true,
+      "image": "Roster Photos/taylor-martin/taylor-martin-roster-photo.png",
+      "rosterPhoto": "Roster Photos/taylor-martin/taylor-martin-roster-photo.png",
       "imageCandidates": [
-        "Roster Photos/taylor-martin-roster-photo.png",
-        "htr-logo.png"
+        "Roster Photos/taylor-martin/taylor-martin-roster-photo.png",
+        "images/hello-texas-logo.png"
       ],
-      "latestTitle": "Montana Skies"
+      "latestTitle": "Montana Skies",
+      "rosterOrder": 9999
     },
     {
       "id": "vanta",
@@ -425,7 +550,7 @@
       "genre": "Funk rock / alternative rock",
       "status": "active",
       "logo": "vanta-logo.png",
-      "heroImage": "Roster Photos/vanta-roster-photo.png",
+      "heroImage": "vanta-hero-background.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -433,11 +558,14 @@
       },
       "includeOnLabelHome": true,
       "includeOnRadio": true,
+      "image": "Roster Photos/vanta/vanta-roster-photo.png",
+      "rosterPhoto": "Roster Photos/vanta/vanta-roster-photo.png",
       "imageCandidates": [
-        "Roster Photos/vanta-roster-photo.png",
-        "htr-logo.png"
+        "Roster Photos/vanta/vanta-roster-photo.png",
+        "images/hello-texas-logo.png"
       ],
-      "latestTitle": "Don't Need Permission"
+      "latestTitle": "Don't Need Permission",
+      "rosterOrder": 9999
     },
     {
       "id": "vincent-cole",
@@ -448,7 +576,7 @@
       "genre": "Crooner / big band swing",
       "status": "active",
       "logo": "vincent-cole-logo-monogram-transparent.png",
-      "heroImage": "Roster Photos/vincent-cole-roster-photo.png",
+      "heroImage": "Roster Photos/vincent-cole/vincent-cole-hero-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -456,11 +584,14 @@
       },
       "includeOnLabelHome": true,
       "includeOnRadio": true,
+      "image": "Roster Photos/vincent-cole/vincent-cole-roster-photo.png",
+      "rosterPhoto": "Roster Photos/vincent-cole/vincent-cole-roster-photo.png",
       "imageCandidates": [
-        "Roster Photos/vincent-cole-roster-photo.png",
-        "htr-logo.png"
+        "Roster Photos/vincent-cole/vincent-cole-roster-photo.png",
+        "images/hello-texas-logo.png"
       ],
-      "latestTitle": "Too Late To Behave"
+      "latestTitle": "Too Late To Behave",
+      "rosterOrder": 9999
     }
   ]
 }
