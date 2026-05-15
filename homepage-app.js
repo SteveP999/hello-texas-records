@@ -244,15 +244,6 @@ function syncBottomRadioDisplay(track) {
 
   if (bottomRadioArt) {
     bottomRadioArt.onerror = function () {
-      const current = this.src || '';
-      if (current.includes('/images/covers/')) {
-        this.src = current.replace('/images/covers/', '/covers/');
-        this.onerror = function () {
-          this.onerror = null;
-          this.src = 'htr-logo.png';
-        };
-        return;
-      }
       this.onerror = null;
       this.src = 'htr-logo.png';
     };
@@ -313,13 +304,10 @@ function playTrack(index) {
 
 function resolveRadioImage(track) {
   const fallback = 'htr-logo.png';
-  const raw = track.coverImage || track.cover || track.image || '';
-
-  if (!raw) return fallback;
-  if (/^https?:\/\//i.test(raw)) return raw;
 
   const artistRepoMap = {
     'avery-ivey':'SteveP999/Avery-Ivey',
+    'ivey-wilder':'SteveP999/Ivey-Wilder',
     'daniel-kincaid':'SteveP999/Daniel-Kincaid',
     'hello-texas':'SteveP999/Hello-Texas',
     'lucas-harlow':'SteveP999/Lucas-Harlow',
@@ -336,39 +324,52 @@ function resolveRadioImage(track) {
     'stephen-parsons':'SteveP999/stephen-parsons',
     'taylor-martin':'SteveP999/Taylor-Martin',
     'vanta':'SteveP999/vanta',
-    'vincent-cole':'SteveP999/Vincent-Cole'
+    'vincent-cole':'SteveP999/Vincent-Cole',
+    'borrowed-whispers':'SteveP999/Borrowed-Whispers',
+    'brightons':'SteveP999/Brightons'
   };
 
-  const titleArtistOverrides = {
-    'thank you mom and dad':'stephen-parsons',
-    'run to his heart':'stephen-parsons',
-    'wide open silence':'stephen-parsons',
-    'love for eternity':'stephen-parsons',
-    "mom's love":'stephen-parsons',
-    'done with the damage':'stephen-parsons',
-    "my daughter's heart":'stephen-parsons',
-    'rise up':'stephen-parsons',
-    'calling in the silence':'stephen-parsons'
-  };
-
-  let artistId = track.artistId || String(track.artist || '').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
-  const titleKey = String(track.title || '').toLowerCase();
-
-  if (titleArtistOverrides[titleKey]) {
-    artistId = titleArtistOverrides[titleKey];
+  function slugify(text) {
+    return String(text || '')
+      .toLowerCase()
+      .replaceAll('&', 'and')
+      .replaceAll("'", '')
+      .replaceAll('’', '')
+      .replaceAll('‘', '')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '');
   }
 
-  const repo = artistRepoMap[artistId];
+  let artistId = track.artistId || String(track.artist || '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
 
+  const repo = artistRepoMap[artistId];
   if (!repo) return fallback;
 
-  const clean = String(raw).replace(/^\.\//, '').replace(/^\//, '');
+  let raw = String(track.coverImage || track.cover || track.image || '').trim().replace(/\\/g, '/');
 
-  if (clean.startsWith('images/') || clean.startsWith('covers/')) {
+  // Old drift artifact. Do not use this folder. Radio covers live in artist repo images/covers.
+  if (!raw || raw.startsWith('Radio Covers/')) {
+    raw = `images/covers/${artistId}-${slugify(track.title)}-cover.png`;
+  }
+
+  if (/^https?:\/\//i.test(raw)) return raw;
+
+  const clean = raw.replace(/^\.\//, '').replace(/^\//, '');
+
+  // LOCKED: all song covers live here:
+  // <artist-repo>/images/covers/<artist-id>-<song-slug>-cover.png
+  if (clean.startsWith('images/covers/')) {
     return `https://raw.githubusercontent.com/${repo}/main/${clean}`;
   }
 
-  // Current standard: loose filename means it belongs in images/covers.
+  // Safety bridge for older data only. The generator should not output this anymore.
+  if (clean.startsWith('covers/')) {
+    return `https://raw.githubusercontent.com/${repo}/main/images/${clean}`;
+  }
+
   return `https://raw.githubusercontent.com/${repo}/main/images/covers/${clean}`;
 }
 
@@ -382,15 +383,6 @@ function setRadioDisplay(track) {
   }
 
   radioArt.onerror = function () {
-    const current = this.src || '';
-    if (current.includes('/images/covers/')) {
-      this.src = current.replace('/images/covers/', '/covers/');
-      this.onerror = function () {
-        this.onerror = null;
-        this.src = 'htr-logo.png';
-      };
-      return;
-    }
     this.onerror = null;
     this.src = 'htr-logo.png';
   };
