@@ -314,12 +314,13 @@ document.getElementById('radio-next').addEventListener('click', nextTrack);
 
 document.getElementById('radio-prev').addEventListener('click', previousTrack);
 
-document.getElementById('radio-shuffle').addEventListener('click', function () {
-
-  radioShuffle = !radioShuffle;
-
-  this.classList.toggle('active', radioShuffle);
-});
+const shuffleBtn = document.getElementById('radio-shuffle');
+if (shuffleBtn) {
+  shuffleBtn.addEventListener('click', function () {
+    radioShuffle = !radioShuffle;
+    this.classList.toggle('active', radioShuffle);
+  });
+}
 
 document.getElementById('radio-vol').addEventListener('input', e => {
 
