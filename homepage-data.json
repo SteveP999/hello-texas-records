@@ -1,31 +1,6 @@
 {
   "latestReleases": [
     {
-      "id": "skyline-theory-stay-in-the-sound",
-      "artistId": "skyline-theory",
-      "artist": "Skyline Theory",
-      "title": "Stay in the Sound",
-      "album": "Bending Reality",
-      "genre": "EDM / Progressive House",
-      "releaseType": "single",
-      "releaseDate": "2026-05-07",
-      "coverImage": "skyline-theory-stay-in-the-sound-cover.png",
-      "audioFile": "",
-      "youtubeUrl": "",
-      "featured": true,
-      "explicit": false,
-      "includeOnRadio": true,
-      "includeOnHomepage": true,
-      "tags": [
-        "edm",
-        "festival",
-        "uplifting",
-        "nostalgic"
-      ],
-      "videos": [],
-      "albumCover": "images/covers/skyline-theory-bending-reality-ALBUM-cover.png"
-    },
-    {
       "id": "nightstrike-crash-and-burn",
       "artistId": "nightstrike",
       "artist": "NightStrike",
@@ -50,41 +25,17 @@
       "albumCover": "images/covers/nightstrike-high-voltage-ALBUM-cover.png"
     },
     {
-      "id": "nightstrike-the-storm-never-sleeps",
-      "artistId": "nightstrike",
-      "artist": "NightStrike",
-      "title": "The Storm Never Sleeps",
-      "album": "High Voltage",
-      "genre": "Hard Rock / Sleaze Rock",
+      "id": "brightons-nicole-in-the-rain",
+      "artistId": "brightons",
+      "artist": "Brightons",
+      "title": "Nicole in the Rain",
+      "album": "The Last Good Summer",
+      "genre": "50s/60s Pop",
       "releaseType": "single",
-      "releaseDate": "2026-05-07",
-      "coverImage": "https://raw.githubusercontent.com/SteveP999/NightStrike/main/covers/nightstrike-the-storm-never-sleeps-cover.png",
-      "audioFile": "https://www.dropbox.com/scl/fi/xzj3myi8pt4ulsd2dvfrl/nightstrike-the-storm-never-sleeps-mp3.mp3?rlkey=e4vl08mxg5mb2m3m2yt4zvq3c&raw=1",
-      "youtubeUrl": "",
-      "featured": true,
-      "explicit": false,
-      "includeOnRadio": true,
-      "includeOnHomepage": true,
-      "tags": [
-        "glam metal",
-        "arena rock",
-        "storm"
-      ],
-      "videos": [],
-      "albumCover": "images/covers/nightstrike-high-voltage-ALBUM-cover.png"
-    },
-    {
-      "id": "borrowed-whispers-still-falling-for-you",
-      "artistId": "borrowed-whispers",
-      "artist": "Borrowed Whispers",
-      "title": "Still Falling For You",
-      "album": "I Still Remember",
-      "genre": "80s Soft Rock",
-      "releaseType": "single",
-      "releaseDate": "2026-05-09",
-      "coverImage": "images/covers/borrowed-whispers-still-falling-for-you-cover.png",
-      "albumCover": "images/covers/borrowed-whispers-i-still-remember-ALBUM-cover.png",
-      "audioFile": "https://www.dropbox.com/scl/fi/o8s2z0p87bo8zgl47k0da/Borrowed-Whispers-Still-Falling-for-You-H-O-Version-KEEPER.mp3?rlkey=wc4ww26y1yex5dj9g1bct8712&raw=1",
+      "releaseDate": "2026-05-15",
+      "coverImage": "images/covers/brightons-nicole-in-the-rain-cover.png",
+      "albumCover": "images/covers/brightons-the-last-good-summer-ALBUM-cover.png",
+      "audioFile": "https://www.dropbox.com/scl/fi/t9suftfr0k83z2punwruh/brightons-nicole-in-the-rain-mp3-v1.mp3?rlkey=zb7lv17xgx1a4t3nf0d03aic3&raw=1",
       "youtubeUrl": "",
       "videos": [],
       "featured": true,
@@ -94,34 +45,42 @@
       "tags": []
     },
     {
-      "id": "ivey-wilder-burning-bridges",
-      "artistId": "ivey-wilder",
-      "artist": "Ivey Wilder",
-      "title": "Burning Bridges",
-      "album": "...For Hard Truths",
-      "genre": "Alt. Rock / Hard Rock",
-      "releaseType": "album-track",
-      "releaseDate": "2026-05-10",
-      "coverImage": "images/covers/ivey-wilder-burning-bridges-cover.png",
-      "albumCover": "images/covers/ivey-wilder-for-hard-truths-ALBUM-cover.png",
-      "audioFile": "https://www.dropbox.com/scl/fi/yn1bx0irycyb147ngey9j/ivey-wilder-burning-bridges-mp3.mp3?rlkey=yc3uian4ji5sc8j3kkmxuce4o&raw=1",
+      "id": "september-skies-one-move-at-a-time",
+      "artistId": "september-skies",
+      "artist": "September Skies",
+      "title": "One Move at a Time",
+      "album": "One Move at a Time",
+      "genre": "Alternative Rock",
+      "releaseType": "single",
+      "releaseDate": "2026-05-15",
+      "coverImage": "images/covers/september-skies-one-move-at-a-time-cover.png",
+      "albumCover": "images/covers/september-skies-one-move-at-a-time-ALBUM-cover.png",
+      "audioFile": "https://www.dropbox.com/scl/fi/d1e4kiyy4xme7g4656jrt/one-move-at-a-time-live-premier.mp3?rlkey=6acr74q1omxqu2h9kze6xr0h0&raw=1",
       "youtubeUrl": "",
-      "videos": [
-        {
-          "title": "burning bridges",
-          "youtube": "https://youtu.be/GpTztr6jvBU",
-          "order": 1
-        }
-      ],
+      "videos": [],
       "featured": true,
       "explicit": false,
       "includeOnRadio": true,
       "includeOnHomepage": true,
-      "tags": [],
-      "isLatest": true,
-      "albumType": "Album",
-      "albumOrder": 7,
-      "trackNumber": 7
+      "tags": []
+    },
+    {
+      "id": "brightons-yesterday-s-girl",
+      "artistId": "brightons",
+      "artist": "Brightons",
+      "title": "Yesterday's Girl",
+      "album": "The Last Good Summer",
+      "genre": "50s/60s Pop",
+      "releaseType": "single",
+      "releaseDate": "2026-05-14",
+      "coverImage": "\"D:\\Brightons\\images\\covers\\brightons-yesterdays-girl-cover.png\"",
+      "audioFile": "https://www.dropbox.com/scl/fi/q5y6ly4jo82f5f0a6wmpx/brightons-yesterdays-girl-mp3.mp3?rlkey=4zf0wqtnhfxass2xr1mcrjlnx&raw=1",
+      "youtubeUrl": "",
+      "featured": false,
+      "explicit": false,
+      "includeOnRadio": true,
+      "includeOnHomepage": true,
+      "tags": []
     },
     {
       "id": "hello-texas-modern-man-grind",
@@ -169,22 +128,103 @@
       "_sourceIndex": 10
     },
     {
-      "id": "brightons-yesterday-s-girl",
-      "artistId": "brightons",
-      "artist": "Brightons",
-      "title": "Yesterday's Girl",
-      "album": "The Last Good Summer",
-      "genre": "50s/60s Pop",
-      "releaseType": "single",
-      "releaseDate": "2026-05-14",
-      "coverImage": "\"D:\\Brightons\\images\\covers\\brightons-yesterdays-girl-cover.png\"",
-      "audioFile": "https://www.dropbox.com/scl/fi/q5y6ly4jo82f5f0a6wmpx/brightons-yesterdays-girl-mp3.mp3?rlkey=4zf0wqtnhfxass2xr1mcrjlnx&raw=1",
+      "id": "ivey-wilder-burning-bridges",
+      "artistId": "ivey-wilder",
+      "artist": "Ivey Wilder",
+      "title": "Burning Bridges",
+      "album": "...For Hard Truths",
+      "genre": "Alt. Rock / Hard Rock",
+      "releaseType": "album-track",
+      "releaseDate": "2026-05-10",
+      "coverImage": "images/covers/ivey-wilder-burning-bridges-cover.png",
+      "albumCover": "images/covers/ivey-wilder-for-hard-truths-ALBUM-cover.png",
+      "audioFile": "https://www.dropbox.com/scl/fi/yn1bx0irycyb147ngey9j/ivey-wilder-burning-bridges-mp3.mp3?rlkey=yc3uian4ji5sc8j3kkmxuce4o&raw=1",
       "youtubeUrl": "",
+      "videos": [
+        {
+          "title": "burning bridges",
+          "youtube": "https://youtu.be/GpTztr6jvBU",
+          "order": 1
+        }
+      ],
+      "featured": true,
+      "explicit": false,
+      "includeOnRadio": true,
+      "includeOnHomepage": true,
+      "tags": [],
+      "isLatest": true,
+      "albumType": "Album",
+      "albumOrder": 7,
+      "trackNumber": 7
+    },
+    {
+      "id": "borrowed-whispers-still-falling-for-you",
+      "artistId": "borrowed-whispers",
+      "artist": "Borrowed Whispers",
+      "title": "Still Falling For You",
+      "album": "I Still Remember",
+      "genre": "80s Soft Rock",
+      "releaseType": "single",
+      "releaseDate": "2026-05-09",
+      "coverImage": "images/covers/borrowed-whispers-still-falling-for-you-cover.png",
+      "albumCover": "images/covers/borrowed-whispers-i-still-remember-ALBUM-cover.png",
+      "audioFile": "https://www.dropbox.com/scl/fi/o8s2z0p87bo8zgl47k0da/Borrowed-Whispers-Still-Falling-for-You-H-O-Version-KEEPER.mp3?rlkey=wc4ww26y1yex5dj9g1bct8712&raw=1",
+      "youtubeUrl": "",
+      "videos": [],
       "featured": true,
       "explicit": false,
       "includeOnRadio": true,
       "includeOnHomepage": true,
       "tags": []
+    },
+    {
+      "id": "skyline-theory-stay-in-the-sound",
+      "artistId": "skyline-theory",
+      "artist": "Skyline Theory",
+      "title": "Stay in the Sound",
+      "album": "Bending Reality",
+      "genre": "EDM / Progressive House",
+      "releaseType": "single",
+      "releaseDate": "2026-05-07",
+      "coverImage": "skyline-theory-stay-in-the-sound-cover.png",
+      "audioFile": "",
+      "youtubeUrl": "",
+      "featured": true,
+      "explicit": false,
+      "includeOnRadio": true,
+      "includeOnHomepage": true,
+      "tags": [
+        "edm",
+        "festival",
+        "uplifting",
+        "nostalgic"
+      ],
+      "videos": [],
+      "albumCover": "images/covers/skyline-theory-bending-reality-ALBUM-cover.png"
+    },
+    {
+      "id": "nightstrike-the-storm-never-sleeps",
+      "artistId": "nightstrike",
+      "artist": "NightStrike",
+      "title": "The Storm Never Sleeps",
+      "album": "High Voltage",
+      "genre": "Hard Rock / Sleaze Rock",
+      "releaseType": "single",
+      "releaseDate": "2026-05-07",
+      "coverImage": "https://raw.githubusercontent.com/SteveP999/NightStrike/main/covers/nightstrike-the-storm-never-sleeps-cover.png",
+      "audioFile": "https://www.dropbox.com/scl/fi/xzj3myi8pt4ulsd2dvfrl/nightstrike-the-storm-never-sleeps-mp3.mp3?rlkey=e4vl08mxg5mb2m3m2yt4zvq3c&raw=1",
+      "youtubeUrl": "",
+      "featured": true,
+      "explicit": false,
+      "includeOnRadio": true,
+      "includeOnHomepage": true,
+      "tags": [
+        "glam metal",
+        "arena rock",
+        "storm"
+      ],
+      "videos": [],
+      "albumCover": "images/covers/nightstrike-high-voltage-ALBUM-cover.png"
     }
   ],
   "featuredArtists": [
@@ -208,75 +248,7 @@
       "heroLogoScale": 1.0,
       "heroLogoMaxHeight": 420,
       "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1.0,
-      "image": "Roster Photos/avery-ivey/avery-ivey-roster-photo.png",
-      "rosterPhoto": "Roster Photos/avery-ivey/avery-ivey-roster-photo.png",
-      "imageCandidates": [
-        "Roster Photos/avery-ivey/avery-ivey-roster-photo.png",
-        "images/hello-texas-logo.png"
-      ],
-      "latestTitle": "Back to Chapter One",
-      "rosterOrder": 9999
-    },
-    {
-      "id": "borrowed-whispers",
-      "name": "Borrowed Whispers",
-      "repoFolder": "D:\\borrowed-whispers",
-      "githubRepo": "SteveP999/borrowed-whispers",
-      "siteUrl": "https://Borrowed-Whispers.hellotexasrecords.com",
-      "genre": "70s-80s Soft Rock, Soul",
-      "status": "active",
-      "logo": "images/logos/borrowed-whispers-logo.png",
-      "heroImage": "Roster Photos/borrowed-whispers/borrowed-whispers-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "latestTitle": "Still Falling For You",
-      "imageCandidates": [
-        "Roster Photos/borrowed-whispers/borrowed-whispers-roster-photo.png",
-        "htr-logo.png",
-        "images/hello-texas-logo.png"
-      ],
-      "heroLogoScale": 1.0,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1.0,
-      "image": "Roster Photos/borrowed-whispers/borrowed-whispers-roster-photo.png",
-      "rosterPhoto": "Roster Photos/borrowed-whispers/borrowed-whispers-roster-photo.png",
-      "rosterOrder": 9999
-    },
-    {
-      "id": "brightons",
-      "name": "Brightons",
-      "repoFolder": "D:\\brightons",
-      "repoPath": "D:\\brightons",
-      "githubRepo": "stevep999/brightons",
-      "siteUrl": "https://The-Brightons.hellotexasrecords.com",
-      "genre": "50s/60s Pop",
-      "status": "active",
-      "active": true,
-      "logo": "",
-      "heroImage": "Roster Photos/brightons/brightons-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "imageCandidates": [
-        "Roster Photos/brightons/brightons-roster-photo.png",
-        "htr-logo.png",
-        "images/hello-texas-logo.png"
-      ],
-      "latestTitle": "Yesterday's Girl",
-      "image": "Roster Photos/brightons/brightons-roster-photo.png",
-      "rosterPhoto": "Roster Photos/brightons/brightons-roster-photo.png",
-      "rosterOrder": 9999
+      "heroLogoMobileScale": 1.0
     },
     {
       "id": "daniel-kincaid",
@@ -298,15 +270,7 @@
       "heroLogoScale": 1.0,
       "heroLogoMaxHeight": 420,
       "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1.0,
-      "image": "Roster Photos/daniel-kincaid/daniel-kincaid-roster-photo.png",
-      "rosterPhoto": "Roster Photos/daniel-kincaid/daniel-kincaid-roster-photo.png",
-      "imageCandidates": [
-        "Roster Photos/daniel-kincaid/daniel-kincaid-roster-photo.png",
-        "images/hello-texas-logo.png"
-      ],
-      "latestTitle": "Just This Once",
-      "rosterOrder": 9999
+      "heroLogoMobileScale": 1.0
     },
     {
       "id": "hello-texas",
@@ -329,46 +293,7 @@
       "heroLogoScale": 2.25,
       "heroLogoMaxHeight": 560,
       "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1.0,
-      "image": "Roster Photos/hello-texas/hello-texas-roster-photo.png",
-      "rosterPhoto": "Roster Photos/hello-texas/hello-texas-roster-photo.png",
-      "imageCandidates": [
-        "Roster Photos/hello-texas/hello-texas-roster-photo.png",
-        "images/hello-texas-logo.png"
-      ],
-      "rosterOrder": 9999
-    },
-    {
-      "id": "ivey-wilder",
-      "name": "Ivey Wilder",
-      "repoFolder": "D:\\Ivey-Wilder",
-      "githubRepo": "SteveP999/Ivey-Wilder",
-      "siteUrl": "https://ivey-wilder.hellotexasrecords.com",
-      "genre": "Alt. Rock / Hard Rock",
-      "status": "active",
-      "logo": "images/logos/ivey-wilder-logo.png",
-      "heroImage": "Roster Photos/ivey-wilder/ivey-wilder-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "latestTitle": "Burning Bridges",
-      "imageCandidates": [
-        "Roster Photos/ivey-wilder/ivey-wilder-roster-photo.png",
-        "images/logos/ivey-wilder-logo.png",
-        "images/hello-texas-logo.png"
-      ],
-      "heroLogoScale": 1.0,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1.0,
-      "active": true,
-      "image": "Roster Photos/ivey-wilder/ivey-wilder-roster-photo.png",
-      "rosterPhoto": "Roster Photos/ivey-wilder/ivey-wilder-roster-photo.png",
-      "rosterOrder": 9999
+      "heroLogoMobileScale": 1.0
     },
     {
       "id": "lucas-harlow",
@@ -379,7 +304,7 @@
       "genre": "New age piano / cinematic instrumental",
       "status": "active",
       "logo": "",
-      "heroImage": "Roster Photos/lucas-harlow/lucas-harlow-hero-photo.png",
+      "heroImage": "",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -391,15 +316,7 @@
       "heroLogoScale": 1.0,
       "heroLogoMaxHeight": 420,
       "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1.0,
-      "image": "Roster Photos/lucas-harlow/lucas-harlow-roster-photo.png",
-      "rosterPhoto": "Roster Photos/lucas-harlow/lucas-harlow-roster-photo.png",
-      "imageCandidates": [
-        "Roster Photos/lucas-harlow/lucas-harlow-roster-photo.png",
-        "images/hello-texas-logo.png"
-      ],
-      "latestTitle": "First Light",
-      "rosterOrder": 9999
+      "heroLogoMobileScale": 1.0
     },
     {
       "id": "night-shift",
@@ -421,15 +338,7 @@
       "heroLogoScale": 1.0,
       "heroLogoMaxHeight": 420,
       "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1.0,
-      "image": "Roster Photos/night-shift/night-shift-roster-photo.png",
-      "rosterPhoto": "Roster Photos/night-shift/night-shift-roster-photo.png",
-      "imageCandidates": [
-        "Roster Photos/night-shift/night-shift-roster-photo.png",
-        "images/hello-texas-logo.png"
-      ],
-      "latestTitle": "No Rules Tonight",
-      "rosterOrder": 9999
+      "heroLogoMobileScale": 1.0
     },
     {
       "id": "nightstrike",
@@ -453,15 +362,7 @@
       "heroLogoScale": 1.0,
       "heroLogoMaxHeight": 420,
       "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1.0,
-      "image": "Roster Photos/nightstrike/nightstrike-roster-photo.png",
-      "rosterPhoto": "Roster Photos/nightstrike/nightstrike-roster-photo.png",
-      "imageCandidates": [
-        "Roster Photos/nightstrike/nightstrike-roster-photo.png",
-        "images/hello-texas-logo.png"
-      ],
-      "latestTitle": "The Storm Never Sleeps",
-      "rosterOrder": 9999
+      "heroLogoMobileScale": 1.0
     },
     {
       "id": "parsons-cross",
@@ -472,7 +373,7 @@
       "genre": "Contemporary Christian / worship",
       "status": "active",
       "logo": "PARSONS CROSS LOGO.png",
-      "heroImage": "Roster Photos/parsons-cross/parsons-cross-hero-photo.png",
+      "heroImage": "",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -483,15 +384,7 @@
       "heroLogoScale": 1.0,
       "heroLogoMaxHeight": 420,
       "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1.0,
-      "image": "Roster Photos/parsons-cross/parsons-cross-roster-photo.png",
-      "rosterPhoto": "Roster Photos/parsons-cross/parsons-cross-roster-photo.png",
-      "imageCandidates": [
-        "Roster Photos/parsons-cross/parsons-cross-roster-photo.png",
-        "images/hello-texas-logo.png"
-      ],
-      "latestTitle": "Dark Nights of the Soul",
-      "rosterOrder": 9999
+      "heroLogoMobileScale": 1.0
     },
     {
       "id": "pulse7",
@@ -513,15 +406,7 @@
       "heroLogoScale": 1.0,
       "heroLogoMaxHeight": 420,
       "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1.0,
-      "image": "Roster Photos/pulse7/pulse7-roster-photo.png",
-      "rosterPhoto": "Roster Photos/pulse7/pulse7-roster-photo.png",
-      "imageCandidates": [
-        "Roster Photos/pulse7/pulse7-roster-photo.png",
-        "images/hello-texas-logo.png"
-      ],
-      "latestTitle": "Two Nights",
-      "rosterOrder": 9999
+      "heroLogoMobileScale": 1.0
     },
     {
       "id": "rio-valencia",
@@ -543,15 +428,7 @@
       "heroLogoScale": 1.0,
       "heroLogoMaxHeight": 420,
       "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1.0,
-      "image": "Roster Photos/rio-valencia/rio-valencia-roster-photo.png",
-      "rosterPhoto": "Roster Photos/rio-valencia/rio-valencia-roster-photo.png",
-      "imageCandidates": [
-        "Roster Photos/rio-valencia/rio-valencia-roster-photo.png",
-        "images/hello-texas-logo.png"
-      ],
-      "latestTitle": "No Control",
-      "rosterOrder": 9999
+      "heroLogoMobileScale": 1.0
     },
     {
       "id": "sawyer-price",
@@ -573,15 +450,7 @@
       "heroLogoScale": 1.0,
       "heroLogoMaxHeight": 420,
       "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1.0,
-      "image": "Roster Photos/sawyer-price/sawyer-price-roster-photo.png",
-      "rosterPhoto": "Roster Photos/sawyer-price/sawyer-price-roster-photo.png",
-      "imageCandidates": [
-        "Roster Photos/sawyer-price/sawyer-price-roster-photo.png",
-        "images/hello-texas-logo.png"
-      ],
-      "latestTitle": "Every Song is You",
-      "rosterOrder": 9999
+      "heroLogoMobileScale": 1.0
     },
     {
       "id": "silent-oblivion",
@@ -592,7 +461,7 @@
       "genre": "Surf rock / retro pop-rock",
       "status": "active",
       "logo": "silent-oblivion-logo.png",
-      "heroImage": "Roster Photos/silent-oblivion/silent-oblivion-hero-photo.png",
+      "heroImage": "",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -603,15 +472,7 @@
       "heroLogoScale": 1.0,
       "heroLogoMaxHeight": 420,
       "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1.0,
-      "image": "Roster Photos/silent-oblivion/silent-oblivion-roster-photo.png",
-      "rosterPhoto": "Roster Photos/silent-oblivion/silent-oblivion-roster-photo.png",
-      "imageCandidates": [
-        "Roster Photos/silent-oblivion/silent-oblivion-roster-photo.png",
-        "images/hello-texas-logo.png"
-      ],
-      "latestTitle": "Lift Off (With a Bang)",
-      "rosterOrder": 9999
+      "heroLogoMobileScale": 1.0
     },
     {
       "id": "skyline-theory",
@@ -622,7 +483,7 @@
       "genre": "EDM / progressive house",
       "status": "active",
       "logo": "skyline-theory-logo-text.png",
-      "heroImage": "Roster Photos/skyline-theory/skyline-theory-hero-photo.png",
+      "heroImage": "",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -633,15 +494,7 @@
       "heroLogoScale": 1.0,
       "heroLogoMaxHeight": 420,
       "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1.0,
-      "image": "Roster Photos/skyline-theory/skyline-theory-roster-photo.png",
-      "rosterPhoto": "Roster Photos/skyline-theory/skyline-theory-roster-photo.png",
-      "imageCandidates": [
-        "Roster Photos/skyline-theory/skyline-theory-roster-photo.png",
-        "images/hello-texas-logo.png"
-      ],
-      "latestTitle": "Stay in the Sound",
-      "rosterOrder": 9999
+      "heroLogoMobileScale": 1.0
     },
     {
       "id": "stephen-parsons",
@@ -652,7 +505,7 @@
       "genre": "Christian country / worship storyteller",
       "status": "active",
       "logo": "stephen-parsons-logo-transparent-oval.png",
-      "heroImage": "Roster Photos/stephen-parsons/stephen-parsons-hero-photo.png",
+      "heroImage": "",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -664,14 +517,7 @@
       "heroLogoMaxHeight": 420,
       "heroLogoOffsetY": 0,
       "heroLogoMobileScale": 1.0,
-      "latestTitle": "Just Move On",
-      "image": "Roster Photos/stephen-parsons/stephen-parsons-roster-photo.png",
-      "rosterPhoto": "Roster Photos/stephen-parsons/stephen-parsons-roster-photo.png",
-      "imageCandidates": [
-        "Roster Photos/stephen-parsons/stephen-parsons-roster-photo.png",
-        "images/hello-texas-logo.png"
-      ],
-      "rosterOrder": 9999
+      "latestTitle": "Just Move On"
     },
     {
       "id": "taylor-martin",
@@ -693,15 +539,7 @@
       "heroLogoScale": 1.0,
       "heroLogoMaxHeight": 420,
       "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1.0,
-      "image": "Roster Photos/taylor-martin/taylor-martin-roster-photo.png",
-      "rosterPhoto": "Roster Photos/taylor-martin/taylor-martin-roster-photo.png",
-      "imageCandidates": [
-        "Roster Photos/taylor-martin/taylor-martin-roster-photo.png",
-        "images/hello-texas-logo.png"
-      ],
-      "latestTitle": "Montana Skies",
-      "rosterOrder": 9999
+      "heroLogoMobileScale": 1.0
     },
     {
       "id": "vanta",
@@ -723,15 +561,7 @@
       "heroLogoScale": 1.0,
       "heroLogoMaxHeight": 420,
       "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1.0,
-      "image": "Roster Photos/vanta/vanta-roster-photo.png",
-      "rosterPhoto": "Roster Photos/vanta/vanta-roster-photo.png",
-      "imageCandidates": [
-        "Roster Photos/vanta/vanta-roster-photo.png",
-        "images/hello-texas-logo.png"
-      ],
-      "latestTitle": "Don't Need Permission",
-      "rosterOrder": 9999
+      "heroLogoMobileScale": 1.0
     },
     {
       "id": "vincent-cole",
@@ -742,7 +572,7 @@
       "genre": "Crooner / big band swing",
       "status": "active",
       "logo": "vincent-cole-logo-monogram-transparent.png",
-      "heroImage": "Roster Photos/vincent-cole/vincent-cole-hero-photo.png",
+      "heroImage": "",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -753,15 +583,111 @@
       "heroLogoScale": 1.0,
       "heroLogoMaxHeight": 420,
       "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1.0,
-      "image": "Roster Photos/vincent-cole/vincent-cole-roster-photo.png",
-      "rosterPhoto": "Roster Photos/vincent-cole/vincent-cole-roster-photo.png",
+      "heroLogoMobileScale": 1.0
+    },
+    {
+      "id": "borrowed-whispers",
+      "name": "Borrowed Whispers",
+      "repoFolder": "D:\\borrowed-whispers",
+      "githubRepo": "SteveP999/borrowed-whispers",
+      "siteUrl": "Borrowed-Whispers.hellotexasrecords.com",
+      "genre": "70s-80s Soft Rock, Soul",
+      "status": "active",
+      "logo": "images/logos/borrowed-whispers-logo.png",
+      "heroImage": "Roster Photos/borrowed-whispers/borrowed-whispers-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "latestTitle": "Still Falling For You",
       "imageCandidates": [
-        "Roster Photos/vincent-cole/vincent-cole-roster-photo.png",
-        "images/hello-texas-logo.png"
+        "Roster Photos/borrowed-whispers/borrowed-whispers-roster-photo.png",
+        "htr-logo.png"
       ],
-      "latestTitle": "Too Late To Behave",
-      "rosterOrder": 9999
+      "heroLogoScale": 1.0,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1.0
+    },
+    {
+      "id": "ivey-wilder",
+      "name": "Ivey Wilder",
+      "repoFolder": "D:\\Ivey-Wilder",
+      "githubRepo": "SteveP999/Ivey-Wilder",
+      "siteUrl": "https://ivey-wilder.hellotexasrecords.com",
+      "genre": "Alt. Rock / Hard Rock",
+      "status": "active",
+      "logo": "images/logos/ivey-wilder-logo.png",
+      "heroImage": "Roster Photos/ivey-wilder/ivey-wilder-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "latestTitle": "Burning Bridges",
+      "imageCandidates": [
+        "Roster Photos/ivey-wilder/ivey-wilder-roster-photo.png",
+        "images/logos/ivey-wilder-logo.png"
+      ],
+      "heroLogoScale": 1.0,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1.0
+    },
+    {
+      "id": "brightons",
+      "name": "Brightons",
+      "repoFolder": "D:\\brightons",
+      "repoPath": "D:\\brightons",
+      "githubRepo": "stevep999/brightons",
+      "siteUrl": "The-Brightons.hellotexasrecords.com",
+      "genre": "50s/60s Pop",
+      "status": "active",
+      "active": true,
+      "logo": "",
+      "heroImage": "Roster Photos/brightons/brightons-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "imageCandidates": [
+        "Roster Photos/brightons/brightons-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Nicole in the Rain"
+    },
+    {
+      "id": "september-skies",
+      "name": "September Skies",
+      "repoFolder": "D:\\september-skies",
+      "repoPath": "D:\\september-skies",
+      "githubRepo": "SteveP999/september-skies",
+      "siteUrl": "september-skies.hellotexasrecords.com",
+      "genre": "Alternative Rock",
+      "status": "active",
+      "active": true,
+      "logo": "",
+      "heroImage": "Roster Photos/september-skies/september-skies-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "imageCandidates": [
+        "Roster Photos/september-skies/september-skies-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "One Move at a Time"
     }
   ]
 }

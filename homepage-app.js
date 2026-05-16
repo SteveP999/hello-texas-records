@@ -243,11 +243,7 @@ function syncBottomRadioDisplay(track) {
   if (bottomRadioAlbum) bottomRadioAlbum.textContent = `Album: ${track.album || '—'}`;
 
   if (bottomRadioArt) {
-    bottomRadioArt.onerror = function () {
-      this.onerror = null;
-      this.src = 'htr-logo.png';
-    };
-    bottomRadioArt.src = resolveRadioImage(track);
+    applyRadioImage(bottomRadioArt, track);
   }
 }
 
@@ -302,9 +298,7 @@ function playTrack(index) {
   highlightTrack(index);
 }
 
-function resolveRadioImage(track) {
-  const fallback = 'htr-logo.png';
-
+function radioRepoForArtist(artistId) {
   const artistRepoMap = {
     'avery-ivey':'SteveP999/Avery-Ivey',
     'ivey-wilder':'SteveP999/Ivey-Wilder',
@@ -329,49 +323,121 @@ function resolveRadioImage(track) {
     'brightons':'SteveP999/Brightons'
   };
 
-  function slugify(text) {
-    return String(text || '')
-      .toLowerCase()
-      .replaceAll('&', 'and')
-      .replaceAll("'", '')
-      .replaceAll('’', '')
-      .replaceAll('‘', '')
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-+|-+$/g, '');
-  }
-
-  let artistId = track.artistId || String(track.artist || '')
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-|-$/g, '');
-
-  const repo = artistRepoMap[artistId];
-  if (!repo) return fallback;
-
-  let raw = String(track.coverImage || track.cover || track.image || '').trim().replace(/\\/g, '/');
-
-  // Old drift artifact. Do not use this folder. Radio covers live in artist repo images/covers.
-  if (!raw || raw.startsWith('Radio Covers/')) {
-    raw = `images/covers/${artistId}-${slugify(track.title)}-cover.png`;
-  }
-
-  if (/^https?:\/\//i.test(raw)) return raw;
-
-  const clean = raw.replace(/^\.\//, '').replace(/^\//, '');
-
-  // LOCKED: all song covers live here:
-  // <artist-repo>/images/covers/<artist-id>-<song-slug>-cover.png
-  if (clean.startsWith('images/covers/')) {
-    return `https://raw.githubusercontent.com/${repo}/main/${clean}`;
-  }
-
-  // Safety bridge for older data only. The generator should not output this anymore.
-  if (clean.startsWith('covers/')) {
-    return `https://raw.githubusercontent.com/${repo}/main/images/${clean}`;
-  }
-
-  return `https://raw.githubusercontent.com/${repo}/main/images/covers/${clean}`;
+  return artistRepoMap[artistId] || '';
 }
+
+function radioSlugStripApostrophes(text) {
+  return String(text || '')
+    .toLowerCase()
+    .replaceAll('&', 'and')
+    .replaceAll("'", '')
+    .replaceAll('’', '')
+    .replaceAll('‘', '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+function radioSlugApostrophesAsHyphen(text) {
+  return String(text || '')
+    .toLowerCase()
+    .replaceAll('&', 'and')
+    .replace(/['’‘]/g, '-')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+function radioUnique(list) {
+  return list.filter(Boolean).filter((value, index, arr) => arr.indexOf(value) === index);
+}
+
+function radioFilenameFromPath(value) {
+  const clean = String(value || '').split('?')[0].replace(/\\/g, '/');
+  return clean.split('/').pop() || '';
+}
+
+function radioCoverUrl(repo, filename) {
+  if (!repo || !filename) return '';
+  return `https://raw.githubusercontent.com/${repo}/main/images/covers/${encodeURIComponent(filename)}`;
+}
+
+function buildRadioImageCandidates(track) {
+  const fallback = 'htr-logo.png';
+  const artistId = String(track.artistId || String(track.artist || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')).toLowerCase();
+  const repo = radioRepoForArtist(artistId);
+
+  const candidates = [];
+
+  // Use generator-provided candidates first.
+  if (Array.isArray(track.coverCandidates)) {
+    candidates.push(...track.coverCandidates);
+  }
+
+  // Keep any already-valid full URL from data.
+  [track.coverImage, track.cover, track.image].forEach(value => {
+    const raw = String(value || '').trim();
+    if (/^https?:\/\//i.test(raw)) candidates.push(raw);
+  });
+
+  if (repo) {
+    const rawValues = [track.coverImage, track.cover, track.image];
+
+    rawValues.forEach(value => {
+      const filename = radioFilenameFromPath(value);
+      if (!filename) return;
+
+      const dot = filename.lastIndexOf('.');
+      const ext = dot >= 0 ? filename.slice(dot) : '.png';
+      const stem = dot >= 0 ? filename.slice(0, dot) : filename;
+
+      // Converts bad drift like Radio Covers/ivey-wilder/burning-bridges.png
+      // into the locked artist cover filename.
+      if (stem.endsWith('-cover')) {
+        candidates.push(radioCoverUrl(repo, `${stem}${ext}`));
+      } else if (stem.startsWith(`${artistId}-`)) {
+        candidates.push(radioCoverUrl(repo, `${stem}-cover${ext}`));
+      } else {
+        candidates.push(radioCoverUrl(repo, `${artistId}-${stem}-cover${ext}`));
+      }
+    });
+
+    const titleStrip = radioSlugStripApostrophes(track.title);
+    const titleHyphen = radioSlugApostrophesAsHyphen(track.title);
+    const idSlug = radioSlugStripApostrophes(String(track.id || '').replace(/_/g, '-'));
+
+    [
+      `${artistId}-${titleStrip}-cover.png`,
+      `${artistId}-${titleHyphen}-cover.png`,
+      idSlug.startsWith(`${artistId}-`) ? `${idSlug}-cover.png` : `${artistId}-${idSlug}-cover.png`
+    ].forEach(filename => candidates.push(radioCoverUrl(repo, filename)));
+  }
+
+  candidates.push(fallback);
+  return radioUnique(candidates);
+}
+
+function resolveRadioImage(track) {
+  return buildRadioImageCandidates(track)[0] || 'htr-logo.png';
+}
+
+function applyRadioImage(img, track) {
+  if (!img || !track) return;
+
+  const candidates = buildRadioImageCandidates(track);
+  let index = 0;
+
+  img.onerror = function () {
+    index += 1;
+    if (index < candidates.length) {
+      this.src = candidates[index];
+      return;
+    }
+    this.onerror = null;
+    this.src = 'htr-logo.png';
+  };
+
+  img.src = candidates[0] || 'htr-logo.png';
+}
+
 
 function setRadioDisplay(track) {
 
@@ -382,12 +448,7 @@ function setRadioDisplay(track) {
     radioAlbum.textContent = `Album: ${track.album || '—'}`;
   }
 
-  radioArt.onerror = function () {
-    this.onerror = null;
-    this.src = 'htr-logo.png';
-  };
-
-  radioArt.src = resolveRadioImage(track);
+  applyRadioImage(radioArt, track);
   syncBottomRadioDisplay(track);
 }
 
