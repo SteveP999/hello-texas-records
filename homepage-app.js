@@ -39,7 +39,19 @@ function buildRoster(artists) {
 
     card.innerHTML = `
       <div class="card-art">
-        <img src="${image}" alt="${artist.name}" onerror="this.onerror=null;this.src='htr-logo.png';">
+        <img
+          src="${image}"
+          alt="${artist.name}"
+          onerror="
+            if (!this.dataset.triedFlat) {
+              this.dataset.triedFlat='1';
+              this.src='Roster Photos/${artist.id}-roster-photo.png';
+            } else {
+              this.onerror=null;
+              this.src='htr-logo.png';
+            }
+          "
+        >
 
         <div class="card-play-overlay">
           <button class="card-play-btn">
@@ -92,10 +104,11 @@ function buildArtistImage(artist) {
 
   const artistId = String(artist.id).trim();
 
-  // LOCKED RULE:
-  // Roster photos live in the HelloTexasRecords.com repo.
-  // Path:
-  // Roster Photos/<artist-id>/<artist-id>-roster-photo.png
+  // LOCKED ROSTER PHOTO RULE:
+  // First try the current nested folder:
+  //   Roster Photos/<artist-id>/<artist-id>-roster-photo.png
+  // Then the image tag falls back to the older flat file:
+  //   Roster Photos/<artist-id>-roster-photo.png
   return `Roster Photos/${artistId}/${artistId}-roster-photo.png`;
 }
 
@@ -165,7 +178,7 @@ function buildPlaylist() {
 
         <img
           class="pl-thumb"
-          src="${track.coverImage || ''}"
+          src="${getRadioCover(track)}" onerror="this.onerror=null;this.src='htr-logo.png';"
           alt="${track.title}"
         >
 
@@ -206,14 +219,35 @@ function playTrack(index) {
   highlightTrack(index);
 }
 
+
+function getRadioCover(track) {
+  return (
+    track.coverImage ||
+    track.cover ||
+    track.image ||
+    track.albumCover ||
+    track.albumArt ||
+    'htr-logo.png'
+  );
+}
+
+function setRadioImg(img, track) {
+  if (!img) return;
+  img.onerror = function () {
+    this.onerror = null;
+    this.src = 'htr-logo.png';
+  };
+  img.src = getRadioCover(track);
+}
+
 function setRadioDisplay(track) {
 
-  radioTitle.textContent = track.title || 'Unknown Track';
-  radioArtist.textContent = track.artist || 'Unknown Artist';
+  if (!track) return;
 
-  if (track.coverImage) {
-    radioArt.src = track.coverImage;
-  }
+  if (radioTitle) radioTitle.textContent = track.title || 'Unknown Track';
+  if (radioArtist) radioArtist.textContent = track.artist || 'Unknown Artist';
+
+  setRadioImg(radioArt, track);
 }
 
 function highlightTrack(index) {

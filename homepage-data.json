@@ -237,7 +237,7 @@
       "genre": "Country / folk-pop / alt-rock",
       "status": "active",
       "logo": "",
-      "heroImage": "avery-photo-01.png",
+      "heroImage": "Roster Photos/avery-ivey/avery-ivey-roster-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -248,7 +248,14 @@
       "heroLogoScale": 1.0,
       "heroLogoMaxHeight": 420,
       "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1.0
+      "heroLogoMobileScale": 1.0,
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/avery-ivey/avery-ivey-roster-photo.png",
+        "Roster Photos/avery-ivey-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Back to Chapter One"
     },
     {
       "id": "daniel-kincaid",
@@ -259,7 +266,7 @@
       "genre": "Soft rock / adult contemporary",
       "status": "active",
       "logo": "",
-      "heroImage": "daniel-kincaid-hero-background.png",
+      "heroImage": "Roster Photos/daniel-kincaid/daniel-kincaid-roster-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -270,7 +277,14 @@
       "heroLogoScale": 1.0,
       "heroLogoMaxHeight": 420,
       "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1.0
+      "heroLogoMobileScale": 1.0,
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/daniel-kincaid/daniel-kincaid-roster-photo.png",
+        "Roster Photos/daniel-kincaid-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Just This Once"
     },
     {
       "id": "hello-texas",
@@ -281,7 +295,7 @@
       "genre": "Texas country / Southern rock",
       "status": "active",
       "logo": "hello-texas-logo.png",
-      "heroImage": "hero-background.png",
+      "heroImage": "Roster Photos/hello-texas/hello-texas-roster-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -293,7 +307,13 @@
       "heroLogoScale": 2.25,
       "heroLogoMaxHeight": 560,
       "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1.0
+      "heroLogoMobileScale": 1.0,
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/hello-texas/hello-texas-roster-photo.png",
+        "Roster Photos/hello-texas-roster-photo.png",
+        "htr-logo.png"
+      ]
     },
     {
       "id": "lucas-harlow",
@@ -304,7 +324,7 @@
       "genre": "New age piano / cinematic instrumental",
       "status": "active",
       "logo": "",
-      "heroImage": "",
+      "heroImage": "Roster Photos/lucas-harlow/lucas-harlow-roster-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -316,7 +336,14 @@
       "heroLogoScale": 1.0,
       "heroLogoMaxHeight": 420,
       "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1.0
+      "heroLogoMobileScale": 1.0,
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/lucas-harlow/lucas-harlow-roster-photo.png",
+        "Roster Photos/lucas-harlow-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "First Light"
     },
     {
       "id": "night-shift",
@@ -327,7 +354,7 @@
       "genre": "Disco-rock / party anthem pop",
       "status": "active",
       "logo": "night-shift-logo-transparent-background.png",
-      "heroImage": "night-shift-ace-photo-3.png",
+      "heroImage": "Roster Photos/night-shift/night-shift-roster-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -338,7 +365,14 @@
       "heroLogoScale": 1.0,
       "heroLogoMaxHeight": 420,
       "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1.0
+      "heroLogoMobileScale": 1.0,
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/night-shift/night-shift-roster-photo.png",
+        "Roster Photos/night-shift-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "No Rules Tonight"
     },
     {
       "id": "nightstrike",
@@ -348,7 +382,7 @@
       "githubRepo": "SteveP999/NightStrike",
       "siteUrl": "https://nightstrike.hellotexasrecords.com/",
       "logo": "images/nightstrike-logo.png",
-      "heroImage": "images/nightstrike-band-photo.png",
+      "heroImage": "Roster Photos/nightstrike/nightstrike-roster-photo.png",
       "genre": "Hard Rock / Sleaze Rock",
       "active": true,
       "status": "active",
@@ -362,7 +396,13 @@
       "heroLogoScale": 1.0,
       "heroLogoMaxHeight": 420,
       "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1.0
+      "heroLogoMobileScale": 1.0,
+      "imageCandidates": [
+        "Roster Photos/nightstrike/nightstrike-roster-photo.png",
+        "Roster Photos/nightstrike-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Crash and Burn"
     },
     {
       "id": "parsons-cross",
@@ -373,139 +413,7 @@
       "genre": "Contemporary Christian / worship",
       "status": "active",
       "logo": "PARSONS CROSS LOGO.png",
-      "heroImage": "",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "heroLogoScale": 1.0,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1.0
-    },
-    {
-      "id": "pulse7",
-      "name": "PULSE7",
-      "repoFolder": "D:\\PULSE7",
-      "githubRepo": "SteveP999/PULSE7",
-      "siteUrl": "https://stevep999.github.io/PULSE7/",
-      "genre": "K-pop / dance-pop",
-      "status": "active",
-      "logo": "pulse7-logo.png",
-      "heroImage": "pulse7-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "heroLogoScale": 1.0,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1.0
-    },
-    {
-      "id": "rio-valencia",
-      "name": "Rio Valencia",
-      "repoFolder": "D:\\Rio-Valencia",
-      "githubRepo": "SteveP999/Rio-Valencia",
-      "siteUrl": "https://stevep999.github.io/Rio-Valencia/",
-      "genre": "Latin pop / reggaeton fusion",
-      "status": "active",
-      "logo": "Rio Valencia Logo and Text.png",
-      "heroImage": "rio-valencia-hero-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "heroLogoScale": 1.0,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1.0
-    },
-    {
-      "id": "sawyer-price",
-      "name": "Sawyer Price",
-      "repoFolder": "D:\\Sawyer-Price",
-      "githubRepo": "SteveP999/Sawyer-Price",
-      "siteUrl": "https://stevep999.github.io/Sawyer-Price/",
-      "genre": "Texas country / Red Dirt",
-      "status": "active",
-      "logo": "",
-      "heroImage": "sawyer-hero-background.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "heroLogoScale": 1.0,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1.0
-    },
-    {
-      "id": "silent-oblivion",
-      "name": "Silent Oblivion",
-      "repoFolder": "D:\\Silent-Oblivion",
-      "githubRepo": "SteveP999/Silent-Oblivion",
-      "siteUrl": "https://stevep999.github.io/Silent-Oblivion/",
-      "genre": "Surf rock / retro pop-rock",
-      "status": "active",
-      "logo": "silent-oblivion-logo.png",
-      "heroImage": "",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "heroLogoScale": 1.0,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1.0
-    },
-    {
-      "id": "skyline-theory",
-      "name": "Skyline Theory",
-      "repoFolder": "D:\\Skyline-Theory",
-      "githubRepo": "SteveP999/Skyline-Theory",
-      "siteUrl": "https://stevep999.github.io/Skyline-Theory/",
-      "genre": "EDM / progressive house",
-      "status": "active",
-      "logo": "skyline-theory-logo-text.png",
-      "heroImage": "",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "heroLogoScale": 1.0,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1.0
-    },
-    {
-      "id": "stephen-parsons",
-      "name": "Stephen Parsons",
-      "repoFolder": "D:\\stephen-parsons",
-      "githubRepo": "SteveP999/stephen-parsons",
-      "siteUrl": "https://stevep999.github.io/stephen-parsons/",
-      "genre": "Christian country / worship storyteller",
-      "status": "active",
-      "logo": "stephen-parsons-logo-transparent-oval.png",
-      "heroImage": "",
+      "heroImage": "Roster Photos/parsons-cross/parsons-cross-roster-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -517,7 +425,187 @@
       "heroLogoMaxHeight": 420,
       "heroLogoOffsetY": 0,
       "heroLogoMobileScale": 1.0,
-      "latestTitle": "Just Move On"
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/parsons-cross/parsons-cross-roster-photo.png",
+        "Roster Photos/parsons-cross-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Dark Nights of the Soul"
+    },
+    {
+      "id": "pulse7",
+      "name": "PULSE7",
+      "repoFolder": "D:\\PULSE7",
+      "githubRepo": "SteveP999/PULSE7",
+      "siteUrl": "https://stevep999.github.io/PULSE7/",
+      "genre": "K-pop / dance-pop",
+      "status": "active",
+      "logo": "pulse7-logo.png",
+      "heroImage": "Roster Photos/pulse7/pulse7-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "heroLogoScale": 1.0,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1.0,
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/pulse7/pulse7-roster-photo.png",
+        "Roster Photos/pulse7-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Two Nights"
+    },
+    {
+      "id": "rio-valencia",
+      "name": "Rio Valencia",
+      "repoFolder": "D:\\Rio-Valencia",
+      "githubRepo": "SteveP999/Rio-Valencia",
+      "siteUrl": "https://stevep999.github.io/Rio-Valencia/",
+      "genre": "Latin pop / reggaeton fusion",
+      "status": "active",
+      "logo": "Rio Valencia Logo and Text.png",
+      "heroImage": "Roster Photos/rio-valencia/rio-valencia-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "heroLogoScale": 1.0,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1.0,
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/rio-valencia/rio-valencia-roster-photo.png",
+        "Roster Photos/rio-valencia-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "No Control"
+    },
+    {
+      "id": "sawyer-price",
+      "name": "Sawyer Price",
+      "repoFolder": "D:\\Sawyer-Price",
+      "githubRepo": "SteveP999/Sawyer-Price",
+      "siteUrl": "https://stevep999.github.io/Sawyer-Price/",
+      "genre": "Texas country / Red Dirt",
+      "status": "active",
+      "logo": "",
+      "heroImage": "Roster Photos/sawyer-price/sawyer-price-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "heroLogoScale": 1.0,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1.0,
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/sawyer-price/sawyer-price-roster-photo.png",
+        "Roster Photos/sawyer-price-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Every Song is You"
+    },
+    {
+      "id": "silent-oblivion",
+      "name": "Silent Oblivion",
+      "repoFolder": "D:\\Silent-Oblivion",
+      "githubRepo": "SteveP999/Silent-Oblivion",
+      "siteUrl": "https://stevep999.github.io/Silent-Oblivion/",
+      "genre": "Surf rock / retro pop-rock",
+      "status": "active",
+      "logo": "silent-oblivion-logo.png",
+      "heroImage": "Roster Photos/silent-oblivion/silent-oblivion-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "heroLogoScale": 1.0,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1.0,
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/silent-oblivion/silent-oblivion-roster-photo.png",
+        "Roster Photos/silent-oblivion-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Lift Off (With a Bang)"
+    },
+    {
+      "id": "skyline-theory",
+      "name": "Skyline Theory",
+      "repoFolder": "D:\\Skyline-Theory",
+      "githubRepo": "SteveP999/Skyline-Theory",
+      "siteUrl": "https://stevep999.github.io/Skyline-Theory/",
+      "genre": "EDM / progressive house",
+      "status": "active",
+      "logo": "skyline-theory-logo-text.png",
+      "heroImage": "Roster Photos/skyline-theory/skyline-theory-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "heroLogoScale": 1.0,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1.0,
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/skyline-theory/skyline-theory-roster-photo.png",
+        "Roster Photos/skyline-theory-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Stay in the Sound"
+    },
+    {
+      "id": "stephen-parsons",
+      "name": "Stephen Parsons",
+      "repoFolder": "D:\\stephen-parsons",
+      "githubRepo": "SteveP999/stephen-parsons",
+      "siteUrl": "https://stevep999.github.io/stephen-parsons/",
+      "genre": "Christian country / worship storyteller",
+      "status": "active",
+      "logo": "stephen-parsons-logo-transparent-oval.png",
+      "heroImage": "Roster Photos/stephen-parsons/stephen-parsons-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "heroLogoScale": 1.0,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1.0,
+      "latestTitle": "Just Move On",
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/stephen-parsons/stephen-parsons-roster-photo.png",
+        "Roster Photos/stephen-parsons-roster-photo.png",
+        "htr-logo.png"
+      ]
     },
     {
       "id": "taylor-martin",
@@ -528,7 +616,7 @@
       "genre": "1970s soft pop / folk-rock",
       "status": "active",
       "logo": "taylor-martin-logo.png",
-      "heroImage": "taylor-martin-photo.png",
+      "heroImage": "Roster Photos/taylor-martin/taylor-martin-roster-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -539,7 +627,14 @@
       "heroLogoScale": 1.0,
       "heroLogoMaxHeight": 420,
       "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1.0
+      "heroLogoMobileScale": 1.0,
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/taylor-martin/taylor-martin-roster-photo.png",
+        "Roster Photos/taylor-martin-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Montana Skies"
     },
     {
       "id": "vanta",
@@ -550,7 +645,7 @@
       "genre": "Funk rock / alternative rock",
       "status": "active",
       "logo": "vanta-logo.png",
-      "heroImage": "vanta-hero-background.png",
+      "heroImage": "Roster Photos/vanta/vanta-roster-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -561,7 +656,14 @@
       "heroLogoScale": 1.0,
       "heroLogoMaxHeight": 420,
       "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1.0
+      "heroLogoMobileScale": 1.0,
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/vanta/vanta-roster-photo.png",
+        "Roster Photos/vanta-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Don't Need Permission"
     },
     {
       "id": "vincent-cole",
@@ -572,7 +674,7 @@
       "genre": "Crooner / big band swing",
       "status": "active",
       "logo": "vincent-cole-logo-monogram-transparent.png",
-      "heroImage": "",
+      "heroImage": "Roster Photos/vincent-cole/vincent-cole-roster-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -583,14 +685,21 @@
       "heroLogoScale": 1.0,
       "heroLogoMaxHeight": 420,
       "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1.0
+      "heroLogoMobileScale": 1.0,
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/vincent-cole/vincent-cole-roster-photo.png",
+        "Roster Photos/vincent-cole-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Too Late To Behave"
     },
     {
       "id": "borrowed-whispers",
       "name": "Borrowed Whispers",
       "repoFolder": "D:\\borrowed-whispers",
       "githubRepo": "SteveP999/borrowed-whispers",
-      "siteUrl": "Borrowed-Whispers.hellotexasrecords.com",
+      "siteUrl": "https://Borrowed-Whispers.hellotexasrecords.com",
       "genre": "70s-80s Soft Rock, Soul",
       "status": "active",
       "logo": "images/logos/borrowed-whispers-logo.png",
@@ -605,12 +714,14 @@
       "latestTitle": "Still Falling For You",
       "imageCandidates": [
         "Roster Photos/borrowed-whispers/borrowed-whispers-roster-photo.png",
+        "Roster Photos/borrowed-whispers-roster-photo.png",
         "htr-logo.png"
       ],
       "heroLogoScale": 1.0,
       "heroLogoMaxHeight": 420,
       "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1.0
+      "heroLogoMobileScale": 1.0,
+      "active": true
     },
     {
       "id": "ivey-wilder",
@@ -632,12 +743,14 @@
       "latestTitle": "Burning Bridges",
       "imageCandidates": [
         "Roster Photos/ivey-wilder/ivey-wilder-roster-photo.png",
-        "images/logos/ivey-wilder-logo.png"
+        "Roster Photos/ivey-wilder-roster-photo.png",
+        "htr-logo.png"
       ],
       "heroLogoScale": 1.0,
       "heroLogoMaxHeight": 420,
       "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1.0
+      "heroLogoMobileScale": 1.0,
+      "active": true
     },
     {
       "id": "brightons",
@@ -645,7 +758,7 @@
       "repoFolder": "D:\\brightons",
       "repoPath": "D:\\brightons",
       "githubRepo": "stevep999/brightons",
-      "siteUrl": "The-Brightons.hellotexasrecords.com",
+      "siteUrl": "https://The-Brightons.hellotexasrecords.com",
       "genre": "50s/60s Pop",
       "status": "active",
       "active": true,
@@ -660,9 +773,10 @@
       "includeOnRadio": true,
       "imageCandidates": [
         "Roster Photos/brightons/brightons-roster-photo.png",
+        "Roster Photos/brightons-roster-photo.png",
         "htr-logo.png"
       ],
-      "latestTitle": "Nicole in the Rain"
+      "latestTitle": "Yesterday's Girl"
     },
     {
       "id": "september-skies",
@@ -670,7 +784,7 @@
       "repoFolder": "D:\\september-skies",
       "repoPath": "D:\\september-skies",
       "githubRepo": "SteveP999/september-skies",
-      "siteUrl": "september-skies.hellotexasrecords.com",
+      "siteUrl": "https://september-skies.hellotexasrecords.com",
       "genre": "Alternative Rock",
       "status": "active",
       "active": true,
@@ -685,6 +799,7 @@
       "includeOnRadio": true,
       "imageCandidates": [
         "Roster Photos/september-skies/september-skies-roster-photo.png",
+        "Roster Photos/september-skies-roster-photo.png",
         "htr-logo.png"
       ],
       "latestTitle": "One Move at a Time"
