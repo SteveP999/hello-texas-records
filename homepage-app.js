@@ -331,6 +331,19 @@ radioPlayBtn.addEventListener('click', () => {
   }
 });
 
+// Progress bar seek — both main player and bottom bar
+function seekFromClick(e, wrap) {
+  if (!radioAudio.duration) return;
+  const rect = wrap.getBoundingClientRect();
+  const pct  = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+  radioAudio.currentTime = pct * radioAudio.duration;
+}
+
+const progressWrap = document.getElementById('radio-progress-wrap');
+if (progressWrap) {
+  progressWrap.addEventListener('click', e => seekFromClick(e, progressWrap));
+}
+
 document.getElementById('radio-next').addEventListener('click', nextTrack);
 
 document.getElementById('radio-prev').addEventListener('click', previousTrack);
