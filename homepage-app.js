@@ -54,9 +54,9 @@ function buildRoster(artists) {
         >
 
         <div class="card-play-overlay">
-          <button class="card-play-btn">
-            â–¶
-          </button>
+          <a class="card-play-btn" href="${artist.siteUrl || '#'}" target="_blank">
+            Visit Site
+          </a>
         </div>
       </div>
 
