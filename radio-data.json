@@ -3297,6 +3297,28 @@
     "cover": "https://raw.githubusercontent.com/SteveP999/Skyline-Theory/main/images/covers/skyline-theory-run-through-fire-cover.png"
   },
   {
+    "id": "skyline-theory-stay-in-the-sound",
+    "artistId": "skyline-theory",
+    "artist": "Skyline Theory",
+    "title": "Stay in the Sound",
+    "album": "Fade and Fire",
+    "genre": "EDM / progressive house",
+    "releaseType": "single",
+    "releaseDate": "",
+    "coverImage": "https://raw.githubusercontent.com/SteveP999/Skyline-Theory/main/images/covers/skyline-theory-stay-in-the-sound-cover.png",
+    "albumCover": "https://raw.githubusercontent.com/SteveP999/Skyline-Theory/main/images/covers/skyline-theory-fade-and-fire-ALBUM-cover.png",
+    "audioFile": "https://www.dropbox.com/scl/fi/h537vb9szh61ccgenh1g7/Stay-in-the-Sound-Mastered-MP3.mp3?rlkey=enc1qe7jdkkoxnva2a26hx7ni&raw=1",
+    "audioSrc": "https://www.dropbox.com/scl/fi/h537vb9szh61ccgenh1g7/Stay-in-the-Sound-Mastered-MP3.mp3?rlkey=enc1qe7jdkkoxnva2a26hx7ni&raw=1",
+    "youtubeUrl": "",
+    "videos": [],
+    "featured": true,
+    "explicit": false,
+    "includeOnRadio": true,
+    "includeOnHomepage": true,
+    "tags": [],
+    "cover": "https://raw.githubusercontent.com/SteveP999/Skyline-Theory/main/images/covers/skyline-theory-stay-in-the-sound-cover.png"
+  },
+  {
     "id": "skyline-theory-until-the-silence-ends",
     "artistId": "skyline-theory",
     "artist": "Skyline Theory",
