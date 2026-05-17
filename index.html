@@ -72,10 +72,34 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .card-site-btn:hover{border-color:var(--rust);color:var(--rust-lt);}
 .card-loading{height:200px;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);}
 
+/* ── HTR RADIO + ABOUT SHARED BACKGROUND ── */
+#radio-about-wrap{
+  position:relative;
+  background-image: url('htr-radio-bg.png');
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+}
+#radio-about-wrap::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.62) 0%,
+    rgba(0,0,0,0.48) 40%,
+    rgba(0,0,0,0.68) 100%
+  );
+  pointer-events:none;
+  z-index:0;
+}
+#radio-about-wrap > *{position:relative;z-index:1;}
+
 /* ── HTR RADIO PLAYER ── */
-#radio-section{background:var(--dark);}
+#radio-section{background:transparent;}
 .radio-wrap{max-width:760px;margin:0 auto;}
-.radio-display{background:var(--dark3);border:1px solid var(--border);padding:1.25rem;margin-bottom:1rem;display:grid;grid-template-columns:240px 1fr;gap:1.75rem;align-items:center;}
+.radio-display{background:rgba(13,12,11,0.72);border:1px solid var(--border);padding:1.25rem;margin-bottom:1rem;display:grid;grid-template-columns:240px 1fr;gap:1.75rem;align-items:center;backdrop-filter:blur(4px);}
 .radio-art{width:240px;height:240px;object-fit:cover;border:1px solid var(--border);}
 .radio-info{}
 .radio-station{font-family:'Barlow Condensed',sans-serif;font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--rust);margin-bottom:0.3rem;}
@@ -105,7 +129,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .pl-dur{font-size:0.65rem;color:var(--muted);}
 
 /* ── ABOUT ── */
-#about{background:var(--dark2);}
+#about{background:transparent;}
 .about-inner{max-width:780px;margin:0 auto;text-align:center;}
 .about-inner p{color:var(--tan);line-height:1.9;font-size:0.95rem;margin-bottom:1.2rem;}
 .genre-tags{display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center;margin-top:2rem;}
@@ -363,6 +387,9 @@ body.radio-playing{padding-bottom:74px!important;}
   </div>
 </section>
 
+<!-- RADIO + ABOUT SHARED CAMPFIRE BACKGROUND -->
+<div id="radio-about-wrap">
+
 <!-- HTR RADIO -->
 <section id="radio-section">
   <div class="section-wrap">
@@ -418,6 +445,8 @@ body.radio-playing{padding-bottom:74px!important;}
     </div>
   </div>
 </section>
+
+</div><!-- /radio-about-wrap -->
 
 <footer>
   <img src="https://raw.githubusercontent.com/SteveP999/hello-texas-records/main/htr-logo.png" alt="Hello Texas Records" class="foot-logo">
