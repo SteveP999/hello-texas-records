@@ -31,7 +31,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .nav-links a{color:var(--muted);text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;letter-spacing:0.18em;text-transform:uppercase;transition:color 0.2s;}
 .nav-links a:hover{color:var(--rust-lt);}
 .hero{position:relative;min-height:58vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4.25rem 2rem 2.25rem;text-align:center;overflow:hidden;}
-.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(200,146,42,0.08) 0%,transparent 70%);pointer-events:none;}
+.hero-bg{position:absolute;inset:0;background-image:url('htr-hero-bg.png');background-size:cover;background-position:center 40%;background-repeat:no-repeat;pointer-events:none;}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(13,12,11,0.45) 0%,rgba(13,12,11,0.25) 40%,rgba(13,12,11,0.72) 100%);}
+.hero > *:not(.hero-bg){position:relative;z-index:1;}
 .hero-eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--rust);margin-bottom:.35rem;}
 .hero-logo{height:480px;width:auto;margin-bottom:.15rem;filter:drop-shadow(0 0 30px rgba(200,146,42,0.25));max-width:min(92vw,1100px);}
 .hero-headline{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.4rem,6vw,5.2rem);letter-spacing:0.12em;line-height:.92;margin-bottom:.55rem;}
@@ -48,7 +50,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .gold-rule{width:48px;height:1px;background:var(--rust);margin:1rem auto 0;opacity:0.6;}
 
 /* ── ROSTER GRID ── */
-#roster{background:var(--dark2);}
+#roster{background:var(--dark2);position:relative;overflow:hidden;}
+#roster-particles{position:absolute;inset:0;pointer-events:none;z-index:0;}
+#roster .section-wrap{position:relative;z-index:1;}
 .roster-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;}
 .artist-card{background:var(--dark3);border:1px solid var(--border);overflow:hidden;cursor:pointer;transition:border-color 0.25s,transform 0.2s;}
 .artist-card:hover{border-color:var(--rust);transform:translateY(-2px);}
@@ -346,6 +350,7 @@ body.radio-playing{padding-bottom:74px!important;}
 
 <!-- ROSTER -->
 <section id="roster">
+  <canvas id="roster-particles"></canvas>
   <div class="section-wrap">
     <div class="section-header">
       <div class="section-eyebrow">Our Artists</div>
@@ -455,5 +460,88 @@ body.radio-playing{padding-bottom:74px!important;}
 
 <audio id="radio-audio" playsinline preload="none"></audio>
 <script src="homepage-app.js"></script>
+<script>
+/* ── ROSTER PARTICLE CANVAS ── */
+(function(){
+  const canvas = document.getElementById('roster-particles');
+  const section = document.getElementById('roster');
+  if (!canvas || !section) return;
+  const ctx = canvas.getContext('2d');
+  const GOLD = 'rgba(200,146,42,';
+  const RUST = 'rgba(180,80,30,';
+  let W, H, particles = [], raf;
+
+  function resize() {
+    W = canvas.width  = section.offsetWidth;
+    H = canvas.height = section.offsetHeight;
+  }
+
+  function Particle() {
+    this.reset();
+  }
+  Particle.prototype.reset = function() {
+    this.x  = Math.random() * W;
+    this.y  = Math.random() * H;
+    this.r  = Math.random() * 1.6 + 0.3;
+    this.vx = (Math.random() - 0.5) * 0.28;
+    this.vy = -(Math.random() * 0.35 + 0.08);
+    this.alpha = Math.random() * 0.5 + 0.1;
+    this.life  = Math.random() * 280 + 120;
+    this.age   = 0;
+    this.color = Math.random() > 0.6 ? RUST : GOLD;
+  };
+
+  function init() {
+    resize();
+    particles = [];
+    const count = Math.min(Math.floor((W * H) / 6500), 120);
+    for (let i = 0; i < count; i++) {
+      const p = new Particle();
+      p.age = Math.floor(Math.random() * p.life); // stagger start
+      particles.push(p);
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(p => {
+      p.x   += p.vx;
+      p.y   += p.vy;
+      p.age += 1;
+      // fade in / fade out
+      const progress = p.age / p.life;
+      const fade = progress < 0.15
+        ? progress / 0.15
+        : progress > 0.75
+          ? 1 - (progress - 0.75) / 0.25
+          : 1;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.color + (p.alpha * fade) + ')';
+      ctx.fill();
+      if (p.age >= p.life || p.y < -10 || p.x < -10 || p.x > W + 10) {
+        p.reset();
+        p.age = 0;
+      }
+    });
+    raf = requestAnimationFrame(draw);
+  }
+
+  // only run when roster is visible (IntersectionObserver)
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        if (!raf) { init(); draw(); }
+      } else {
+        cancelAnimationFrame(raf);
+        raf = null;
+      }
+    });
+  }, { threshold: 0.05 });
+
+  observer.observe(section);
+  window.addEventListener('resize', () => { resize(); });
+})();
+</script>
 </body>
 </html>
