@@ -170,14 +170,6 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:4rem 2r
 .card-art img.artist-card-img{object-position:center center;}
 .radio-album{font-size:.78rem;color:var(--muted);margin-top:.25rem;}
 #playlist-list,.playlist-list{display:none!important;}
-#radio-bottom-bar{position:fixed;left:0;right:0;bottom:0;z-index:250;background:rgba(13,12,11,.97);border-top:1px solid var(--border);backdrop-filter:blur(16px);padding:.65rem 1.25rem;}
-.radio-bottom-inner{max-width:920px;margin:0 auto;display:grid;grid-template-columns:auto 1fr auto auto 110px;gap:.75rem;align-items:center;}
-.radio-time{font-family:'Barlow Condensed',sans-serif;font-size:.7rem;color:var(--muted);white-space:nowrap;}
-#radio-progress-wrap{height:4px;background:rgba(200,146,42,0.16);cursor:pointer;}
-#radio-progress-fill{height:100%;width:0%;background:linear-gradient(to right,var(--rust),var(--rust-lt));}
-.radio-vol-label{font-family:'Barlow Condensed',sans-serif;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);}
-#radio-vol{width:110px;accent-color:var(--rust);}
-body{padding-bottom:48px;}
 @media(max-width:768px){
   .hero{min-height:66vh;padding-top:5rem;}
   .hero-logo{height:260px;max-width:92vw;}
@@ -200,7 +192,6 @@ body{padding-bottom:48px;}
 .radio-controls-inside .radio-btn{min-width:92px;white-space:nowrap;}
 .radio-title{font-size:clamp(1.65rem,3vw,2.25rem);}
 .radio-artist,.radio-album{font-size:1rem;}
-#radio-bottom-bar{padding:.55rem 1rem;}
 .radio-bottom-inner{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:auto auto 1fr auto auto 110px;gap:.75rem;align-items:center;}
 .bottom-radio-controls{display:flex;align-items:center;gap:.45rem;white-space:nowrap;}
 .bottom-radio-btn{padding:.42rem .72rem;font-size:.68rem;}
