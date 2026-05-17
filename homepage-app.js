@@ -213,6 +213,7 @@ function playTrack(index) {
   radioAudio.src = track.audioFile;
 
   setRadioDisplay(track);
+  updateBottomBar(track);
 
   radioAudio.play().catch(err => {
     console.error('Playback failed:', err);
@@ -222,8 +223,24 @@ function playTrack(index) {
   radioPlayBtn.classList.add('active');
 
   highlightTrack(index);
+
+  // Show floating play bar
+  const bar = document.getElementById('radio-bottom-bar');
+  if (bar) bar.classList.add('visible');
+  document.body.classList.add('radio-playing');
 }
 
+
+function updateBottomBar(track) {
+  const title  = document.getElementById('bottom-radio-title');
+  const artist = document.getElementById('bottom-radio-artist');
+  const album  = document.getElementById('bottom-radio-album');
+  const art    = document.getElementById('bottom-radio-art');
+  if (title)  title.textContent  = track.title  || '—';
+  if (artist) artist.textContent = track.artist || 'HTR Radio';
+  if (album)  album.textContent  = track.album  || '';
+  if (art)    { art.onerror = () => { art.src = 'htr-logo.png'; }; art.src = getRadioCover(track); }
+}
 
 function getRadioCover(track) {
   return (
@@ -304,6 +321,9 @@ radioPlayBtn.addEventListener('click', () => {
 
     radioPlayBtn.innerHTML = 'Pause';
     radioPlayBtn.classList.add('active');
+    const bar = document.getElementById('radio-bottom-bar');
+    if (bar) bar.classList.add('visible');
+    document.body.classList.add('radio-playing');
 
   } else {
 
@@ -369,3 +389,19 @@ function formatTime(seconds) {
 // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 loadHomepage();
+
+// Bottom bar controls
+const barPrev = document.getElementById('radio-prev-bottom');
+const barPlay = document.getElementById('radio-playbtn-bottom');
+const barNext = document.getElementById('radio-next-bottom');
+if (barPrev) barPrev.addEventListener('click', previousTrack);
+if (barNext) barNext.addEventListener('click', nextTrack);
+if (barPlay) barPlay.addEventListener('click', () => {
+  if (radioAudio.paused) {
+    radioAudio.play().catch(() => {});
+    barPlay.innerHTML = '&#9646;&#9646; Pause';
+  } else {
+    radioAudio.pause();
+    barPlay.innerHTML = '&#9654; Play';
+  }
+});
