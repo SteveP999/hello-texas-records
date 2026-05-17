@@ -463,10 +463,10 @@ body.radio-playing{padding-bottom:74px!important;}
 <script>
 /* ── ROSTER PARTICLE CANVAS ── */
 (function(){
-  const canvas = document.getElementById('roster-particles');
+  const canvas  = document.getElementById('roster-particles');
   const section = document.getElementById('roster');
   if (!canvas || !section) return;
-  const ctx = canvas.getContext('2d');
+  const ctx   = canvas.getContext('2d');
   const GOLD  = 'rgba(200,146,42,';
   const RUST  = 'rgba(200,80,20,';
   const WHITE = 'rgba(242,237,227,';
@@ -477,40 +477,58 @@ body.radio-playing{padding-bottom:74px!important;}
     H = canvas.height = section.offsetHeight;
   }
 
-  function Particle() { this.reset(true); }
-  Particle.prototype.reset = function(initial) {
-    this.x     = Math.random() * W;
-    this.y     = initial ? Math.random() * H : H + 6;
-    this.r     = Math.random() * 2.4 + 0.4;
-    this.vx    = (Math.random() - 0.5) * 0.55;
-    this.vy    = -(Math.random() * 0.7 + 0.15);
-    this.alpha = Math.random() * 0.7 + 0.15;
-    this.life  = Math.floor(H / Math.abs(this.vy) * (0.8 + Math.random() * 0.4));
-    this.age   = initial ? Math.floor(Math.random() * this.life) : 0;
-    const r    = Math.random();
-    this.color = r > 0.72 ? RUST : r > 0.18 ? GOLD : WHITE;
-    this.glow  = this.r > 1.8 && Math.random() > 0.5;
-    this._initial = false;
-  };
+  function makeParticle(y) {
+    const vy = -(Math.random() * 0.7 + 0.15);
+    const r  = Math.random() * 2.4 + 0.4;
+    return {
+      x:     Math.random() * W,
+      y:     (y !== undefined) ? y : Math.random() * H,
+      r,
+      vx:    (Math.random() - 0.5) * 0.55,
+      vy,
+      alpha: Math.random() * 0.7 + 0.15,
+      life:  Math.floor(H / Math.abs(vy) * (0.8 + Math.random() * 0.4)),
+      age:   0,
+      color: Math.random() > 0.72 ? RUST : Math.random() > 0.18 ? GOLD : WHITE,
+      glow:  r > 1.8 && Math.random() > 0.5
+    };
+  }
+
+  function scatter() {
+    /* Re-scatter ALL particles across the FULL current section height.
+       Called once after artist cards have rendered so H is the true height. */
+    resize();
+    const target = Math.min(Math.floor((W * H) / 3500), 260);
+    // Redistribute existing
+    particles.forEach(p => {
+      Object.assign(p, makeParticle(Math.random() * H));
+      p.age = Math.floor(Math.random() * p.life); // stagger
+    });
+    // Top up
+    while (particles.length < target) {
+      const p = makeParticle(Math.random() * H);
+      p.age = Math.floor(Math.random() * p.life);
+      particles.push(p);
+    }
+  }
 
   function init() {
     resize();
     particles = [];
-    // density: 1 particle per ~3500px² — more dramatic
     const count = Math.min(Math.floor((W * H) / 3500), 260);
     for (let i = 0; i < count; i++) {
-      particles.push(new Particle());
+      const p = makeParticle(Math.random() * H);
+      p.age = Math.floor(Math.random() * p.life);
+      particles.push(p);
     }
   }
 
   function draw() {
     ctx.clearRect(0, 0, W, H);
-
     particles.forEach(p => {
       p.x   += p.vx;
       p.y   += p.vy;
       p.age += 1;
-
       const progress = p.age / p.life;
       const fade = progress < 0.12
         ? progress / 0.12
@@ -518,7 +536,6 @@ body.radio-playing{padding-bottom:74px!important;}
           ? 1 - (progress - 0.78) / 0.22
           : 1;
       const a = p.alpha * fade;
-
       if (p.glow) {
         const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 4.5);
         g.addColorStop(0, p.color + a + ')');
@@ -528,57 +545,33 @@ body.radio-playing{padding-bottom:74px!important;}
         ctx.fillStyle = g;
         ctx.fill();
       }
-
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
       ctx.fillStyle = p.color + a + ')';
       ctx.fill();
-
       if (p.age >= p.life || p.y < -10 || p.x < -20 || p.x > W + 20) {
-        p.reset(false);
+        Object.assign(p, makeParticle(H + 6));
+        p.age = 0;
       }
     });
-
     raf = requestAnimationFrame(draw);
   }
 
-  // Resize canvas whenever roster section size changes (cards load async)
-  let lastH = 0;
-  const ro = new ResizeObserver(() => {
-    const newH = section.offsetHeight;
-    resize();
-    const target = Math.min(Math.floor((W * H) / 3500), 260);
-    // If section grew significantly, scatter existing particles across full height
-    if (newH > lastH * 1.15) {
-      particles.forEach(p => {
-        p.y    = Math.random() * H;
-        p.life = Math.floor(H / Math.abs(p.vy) * (0.8 + Math.random() * 0.4));
-        p.age  = Math.floor(Math.random() * p.life);
-      });
-    }
-    while (particles.length < target) {
-      const p = new Particle();
-      p.y   = Math.random() * H;
-      p.age = Math.floor(Math.random() * p.life);
-      particles.push(p);
-    }
-    lastH = newH;
-  });
-  ro.observe(section);
+  // Expose scatter globally — homepage-app.js calls this after cards render
+  window.particleScatter = scatter;
 
-  // Only animate when visible
-  const io = new IntersectionObserver(entries => {
+  // Only run animation when roster is visible
+  new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
         if (!raf) { init(); draw(); }
       } else {
-        cancelAnimationFrame(raf);
-        raf = null;
+        cancelAnimationFrame(raf); raf = null;
       }
     });
-  }, { threshold: 0.01 });
+  }, { threshold: 0.01 }).observe(section);
 
-  io.observe(section);
+  window.addEventListener('resize', () => { if (raf) scatter(); });
 })();
 </script>
 </body>

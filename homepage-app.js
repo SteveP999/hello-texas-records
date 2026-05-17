@@ -9,6 +9,11 @@
 
     buildRoster(data.featuredArtists || []);
 
+    // After cards render, re-scatter particles across full roster height
+    setTimeout(() => {
+      if (typeof window.particleScatter === 'function') window.particleScatter();
+    }, 120);
+
     loadRadio();
 
   } catch (err) {
