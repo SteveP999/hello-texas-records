@@ -212,12 +212,18 @@ function buildPlaylist() {
   }).join('');
 }
 
-function playTrack(trackIndex) {
+function playTrack(trackIndex, addToHistory = true) {
   const track = radioTracks[trackIndex];
   if (!track) return;
 
-  // Record in history
-  if (radioQueuePos >= 0) radioHistory.push(radioQueue[radioQueuePos]);
+  // Save current to history before moving away
+  if (addToHistory && radioQueuePos >= 0) {
+    radioHistory.push(radioQueue[radioQueuePos]);
+  }
+
+  // Update queue position to match this track
+  const qPos = radioQueue.indexOf(trackIndex);
+  if (qPos >= 0) radioQueuePos = qPos;
 
   radioAudio.src = track.audioFile;
   setRadioDisplay(track);
@@ -234,24 +240,22 @@ function playTrack(trackIndex) {
 }
 
 function playNextInQueue() {
+  // Save current position to history before advancing
+  if (radioQueuePos >= 0) radioHistory.push(radioQueue[radioQueuePos]);
   radioQueuePos++;
   if (radioQueuePos >= radioQueue.length) {
-    // Reshuffle when we run out
     shuffleQueue();
     radioQueuePos = 0;
   }
-  playTrack(radioQueue[radioQueuePos]);
+  playTrack(radioQueue[radioQueuePos], false);
 }
 
 function playPrevInQueue() {
   if (radioHistory.length > 0) {
-    const prevIndex = radioHistory.pop();
-    radioQueuePos = radioQueue.indexOf(prevIndex);
-    if (radioQueuePos < 0) radioQueuePos = 0;
-    playTrack(radioQueue[radioQueuePos]);
-  } else if (radioQueuePos > 0) {
-    radioQueuePos--;
-    playTrack(radioQueue[radioQueuePos]);
+    const prevTrackIndex = radioHistory.pop();
+    const qPos = radioQueue.indexOf(prevTrackIndex);
+    radioQueuePos = qPos >= 0 ? qPos : Math.max(0, radioQueuePos - 1);
+    playTrack(radioQueue[radioQueuePos], false);
   }
 }
 
