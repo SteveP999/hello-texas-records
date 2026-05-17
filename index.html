@@ -489,8 +489,8 @@ body.radio-playing{padding-bottom:74px!important;}
     this.age   = initial ? Math.floor(Math.random() * this.life) : 0;
     const r    = Math.random();
     this.color = r > 0.72 ? RUST : r > 0.18 ? GOLD : WHITE;
-    // some particles get a soft glow radius
     this.glow  = this.r > 1.8 && Math.random() > 0.5;
+    this._initial = false;
   };
 
   function init() {
@@ -543,11 +543,26 @@ body.radio-playing{padding-bottom:74px!important;}
   }
 
   // Resize canvas whenever roster section size changes (cards load async)
+  let lastH = 0;
   const ro = new ResizeObserver(() => {
+    const newH = section.offsetHeight;
     resize();
-    // add particles if section grew
     const target = Math.min(Math.floor((W * H) / 3500), 260);
-    while (particles.length < target) particles.push(new Particle());
+    // If section grew significantly, scatter existing particles across full height
+    if (newH > lastH * 1.15) {
+      particles.forEach(p => {
+        p.y    = Math.random() * H;
+        p.life = Math.floor(H / Math.abs(p.vy) * (0.8 + Math.random() * 0.4));
+        p.age  = Math.floor(Math.random() * p.life);
+      });
+    }
+    while (particles.length < target) {
+      const p = new Particle();
+      p.y   = Math.random() * H;
+      p.age = Math.floor(Math.random() * p.life);
+      particles.push(p);
+    }
+    lastH = newH;
   });
   ro.observe(section);
 
