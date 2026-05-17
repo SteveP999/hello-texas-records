@@ -144,7 +144,9 @@ async function loadRadio() {
 // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 let radioTracks = [];
-let radioIndex = 0;
+let radioQueue  = [];   // shuffled playback order (indices into radioTracks)
+let radioQueuePos = -1; // current position in queue
+let radioHistory = []; // track indices already played, for back navigation
 let radioShuffle = false;
 
 const radioAudio = document.getElementById('radio-audio');
@@ -154,16 +156,24 @@ const radioArtist = document.getElementById('radio-artist');
 const radioPlayBtn = document.getElementById('radio-playbtn');
 
 function buildRadio(songs) {
-
   radioTracks = songs.filter(song => song.audioFile);
-
   buildPlaylist();
-
   if (radioTracks.length > 0) {
-
-    setRadioDisplay(radioTracks[0]);
-
+    shuffleQueue();
+    setRadioDisplay(radioTracks[radioQueue[0]]);
   }
+}
+
+function shuffleQueue() {
+  // Fisher-Yates shuffle of track indices
+  const indices = radioTracks.map((_, i) => i);
+  for (let i = indices.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [indices[i], indices[j]] = [indices[j], indices[i]];
+  }
+  radioQueue = indices;
+  radioQueuePos = -1;
+  radioHistory = [];
 }
 
 function buildPlaylist() {
@@ -202,32 +212,47 @@ function buildPlaylist() {
   }).join('');
 }
 
-function playTrack(index) {
-
-  const track = radioTracks[index];
-
+function playTrack(trackIndex) {
+  const track = radioTracks[trackIndex];
   if (!track) return;
 
-  radioIndex = index;
+  // Record in history
+  if (radioQueuePos >= 0) radioHistory.push(radioQueue[radioQueuePos]);
 
   radioAudio.src = track.audioFile;
-
   setRadioDisplay(track);
   updateBottomBar(track);
+  highlightTrack(trackIndex);
 
-  radioAudio.play().catch(err => {
-    console.error('Playback failed:', err);
-  });
-
+  radioAudio.play().catch(err => console.error('Playback failed:', err));
   radioPlayBtn.innerHTML = 'Pause';
   radioPlayBtn.classList.add('active');
 
-  highlightTrack(index);
-
-  // Show floating play bar
   const bar = document.getElementById('radio-bottom-bar');
   if (bar) bar.classList.add('visible');
   document.body.classList.add('radio-playing');
+}
+
+function playNextInQueue() {
+  radioQueuePos++;
+  if (radioQueuePos >= radioQueue.length) {
+    // Reshuffle when we run out
+    shuffleQueue();
+    radioQueuePos = 0;
+  }
+  playTrack(radioQueue[radioQueuePos]);
+}
+
+function playPrevInQueue() {
+  if (radioHistory.length > 0) {
+    const prevIndex = radioHistory.pop();
+    radioQueuePos = radioQueue.indexOf(prevIndex);
+    if (radioQueuePos < 0) radioQueuePos = 0;
+    playTrack(radioQueue[radioQueuePos]);
+  } else if (radioQueuePos > 0) {
+    radioQueuePos--;
+    playTrack(radioQueue[radioQueuePos]);
+  }
 }
 
 
@@ -263,12 +288,11 @@ function setRadioImg(img, track) {
 }
 
 function setRadioDisplay(track) {
-
   if (!track) return;
-
-  if (radioTitle) radioTitle.textContent = track.title || 'Unknown Track';
+  if (radioTitle)  radioTitle.textContent  = track.title  || 'Unknown Track';
   if (radioArtist) radioArtist.textContent = track.artist || 'Unknown Artist';
-
+  const albumEl = document.getElementById('radio-album');
+  if (albumEl) albumEl.textContent = track.album ? `Album: ${track.album}` : '';
   setRadioImg(radioArt, track);
 }
 
@@ -281,57 +305,25 @@ function highlightTrack(index) {
   });
 }
 
-function nextTrack() {
-
-  if (radioTracks.length === 0) return;
-
-  if (radioShuffle) {
-
-    const random = Math.floor(Math.random() * radioTracks.length);
-    playTrack(random);
-
-  } else {
-
-    const next = (radioIndex + 1) % radioTracks.length;
-    playTrack(next);
-
-  }
-}
-
-function previousTrack() {
-
-  if (radioTracks.length === 0) return;
-
-  const prev = (radioIndex - 1 + radioTracks.length) % radioTracks.length;
-
-  playTrack(prev);
-}
+function nextTrack() { playNextInQueue(); }
+function previousTrack() { playPrevInQueue(); }
 
 radioPlayBtn.addEventListener('click', () => {
-
-  if (!radioAudio.src && radioTracks.length > 0) {
-
-    playTrack(0);
+  if (!radioAudio.src || radioAudio.src === window.location.href) {
+    playNextInQueue();
     return;
   }
-
   if (radioAudio.paused) {
-
     radioAudio.play().catch(() => {});
-
     radioPlayBtn.innerHTML = 'Pause';
     radioPlayBtn.classList.add('active');
     const bar = document.getElementById('radio-bottom-bar');
     if (bar) bar.classList.add('visible');
     document.body.classList.add('radio-playing');
-
   } else {
-
     radioAudio.pause();
-
-    radioPlayBtn.innerHTML = 'Play';
+    radioPlayBtn.innerHTML = '&#9654; Play';
     radioPlayBtn.classList.remove('active');
-
   }
 });
 
@@ -352,7 +344,7 @@ document.getElementById('radio-vol').addEventListener('input', e => {
   radioAudio.volume = +e.target.value;
 });
 
-radioAudio.addEventListener('ended', nextTrack);
+radioAudio.addEventListener('ended', playNextInQueue);
 
 radioAudio.addEventListener('timeupdate', () => {
 
