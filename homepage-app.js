@@ -59,7 +59,7 @@ function buildRoster(artists) {
         >
 
         <div class="card-play-overlay">
-          <a class="card-play-btn" href="${artist.siteUrl || '#'}" target="_blank">
+          <a class="card-play-btn" href="${artist.siteUrl || '#'}" target="_blank" onclick="event.stopPropagation()">
             Visit Site
           </a>
         </div>
@@ -69,7 +69,7 @@ function buildRoster(artists) {
         <div class="card-genre">${artist.genre || ''}</div>
 
         <div class="card-artist">
-          ${artist.id === 'avery-ivey' ? '<a href="https://stevep999.github.io/Wildflower-Movie/" target="_blank" class="card-easter-egg" title="Wildflower - The Movie">&#127902;</a> ' : ''}${artist.name}${artist.id === 'avery-ivey' ? ' <a href="https://stevep999.github.io/Wildflower-Series/" target="_blank" class="card-easter-egg" title="Wildflower - The Series">&#128250;</a>' : ''}${artist.id === 'hello-texas' ? ' <a href="https://stevep999.github.io/sdb-style-game/" target="_blank" class="card-easter-egg" title="&#127926;">&#9834;</a>' : ''}
+          ${artist.id === 'avery-ivey' ? '<a href="https://stevep999.github.io/Wildflower-Movie/" target="_blank" class="card-easter-egg" title="Wildflower - The Movie" onclick="event.stopPropagation()">&#127902;</a> ' : ''}${artist.name}${artist.id === 'avery-ivey' ? ' <a href="https://stevep999.github.io/Wildflower-Series/" target="_blank" class="card-easter-egg" title="Wildflower - The Series" onclick="event.stopPropagation()">&#128250;</a>' : ''}${artist.id === 'hello-texas' ? ' <a href="https://stevep999.github.io/sdb-style-game/" target="_blank" class="card-easter-egg" title="Same Damn Song" onclick="event.stopPropagation()">&#9834;</a>' : ''}
         </div>
 
         <div class="card-song">
@@ -81,6 +81,7 @@ function buildRoster(artists) {
             href="${artist.siteUrl || '#'}"
             target="_blank"
             class="card-site-btn"
+            onclick="event.stopPropagation()"
           >
             Visit Site
           </a>
