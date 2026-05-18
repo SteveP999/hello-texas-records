@@ -61,6 +61,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .artist-card:hover .card-art img{transform:scale(1.04);filter:brightness(1);}
 .card-easter-egg{color:rgba(200,146,42,0.25);font-size:0.9rem;text-decoration:none;margin-left:2px;transition:color 0.3s,text-shadow 0.3s;vertical-align:middle;position:relative;z-index:2;}
 .card-easter-egg:hover{color:var(--rust-lt);text-shadow:0 0 8px rgba(200,146,42,0.6);}
+.easter-egg-label{color:rgba(200,146,42,0.2);font-size:0.85rem;text-decoration:none;margin-left:4px;transition:color 0.3s,text-shadow 0.3s;vertical-align:middle;}
+.easter-egg-label:hover{color:var(--rust-lt);text-shadow:0 0 10px rgba(200,146,42,0.7);}
 .card-play-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(13,12,11,0);transition:background 0.3s;}
 .artist-card:hover .card-play-overlay{background:rgba(13,12,11,0.45);}
 .card-play-btn{background:var(--rust);border:none;color:var(--dark);font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;padding:0.6rem 1.4rem;cursor:pointer;opacity:0;transform:translateY(6px);transition:opacity 0.25s,transform 0.25s;text-decoration:none;display:inline-block;}
@@ -369,7 +371,7 @@ body.radio-playing{padding-bottom:74px!important;}
   <canvas id="roster-particles"></canvas>
   <div class="section-wrap">
     <div class="section-header">
-      <div class="section-eyebrow">Our Artists</div>
+      <div class="section-eyebrow">Our Artists <a href="https://stevep999.github.io/hello-texas-single-votes/" target="_blank" class="easter-egg-label" title="Something hidden...">&#129412;</a></div>
       <h2 class="section-title">The Roster</h2>
       <div class="gold-rule"></div>
     </div>
@@ -387,7 +389,7 @@ body.radio-playing{padding-bottom:74px!important;}
   <div class="section-wrap">
     <div class="section-header">
       <div class="section-eyebrow">Streaming Now</div>
-      <h2 class="section-title">HTR Radio</h2>
+      <h2 class="section-title">HTR Radio <a href="https://stevep999.github.io/hello-texas-radio/" target="_blank" class="easter-egg-label" title="Full Radio Experience">&#11088;</a></h2>
       <div class="gold-rule"></div>
     </div>
     <div class="radio-wrap">

@@ -69,7 +69,7 @@ function buildRoster(artists) {
         <div class="card-genre">${artist.genre || ''}</div>
 
         <div class="card-artist">
-          ${artist.name}${artist.id === 'hello-texas' ? ' <a href="https://stevep999.github.io/sdb-style-game/" target="_blank" class="card-easter-egg" title="&#127926;">&#9834;</a>' : ''}
+          ${artist.id === 'avery-ivey' ? '<a href="https://stevep999.github.io/Wildflower-Movie/" target="_blank" class="card-easter-egg" title="Wildflower - The Movie">&#127902;</a> ' : ''}${artist.name}${artist.id === 'avery-ivey' ? ' <a href="https://stevep999.github.io/Wildflower-Series/" target="_blank" class="card-easter-egg" title="Wildflower - The Series">&#128250;</a>' : ''}${artist.id === 'hello-texas' ? ' <a href="https://stevep999.github.io/sdb-style-game/" target="_blank" class="card-easter-egg" title="&#127926;">&#9834;</a>' : ''}
         </div>
 
         <div class="card-song">
