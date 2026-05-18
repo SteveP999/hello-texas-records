@@ -3361,5 +3361,27 @@
     "includeOnHomepage": false,
     "tags": [],
     "cover": "https://raw.githubusercontent.com/SteveP999/Skyline-Theory/main/images/covers/skyline-theory-we-dont-come-down-cover.png"
+  },
+  {
+    "id": "borrowed-whispers-if-i-could-love-you-again",
+    "artistId": "borrowed-whispers",
+    "artist": "Borrowed Whispers",
+    "title": "If I Could Love You Again",
+    "album": "I Still Remember",
+    "genre": "70s-80s Soft Rock, Soul",
+    "releaseType": "album track",
+    "releaseDate": "",
+    "coverImage": "https://raw.githubusercontent.com/SteveP999/borrowed-whispers/main/images/covers/borrowed-whispers-if-i-could-love-you-again-cover.png",
+    "albumCover": "https://raw.githubusercontent.com/SteveP999/borrowed-whispers/main/images/covers/borrowed-whispers-i-still-remember-ALBUM-cover.png",
+    "audioFile": "https://www.dropbox.com/scl/fi/r2ph0eaje07tqmz1kxbeo/borrowed-whispers-if-i-could-love-you-again-mp3.mp3?rlkey=9nmgyjhpmi6nor9d7ap31edj8&raw=1",
+    "audioSrc": "https://www.dropbox.com/scl/fi/r2ph0eaje07tqmz1kxbeo/borrowed-whispers-if-i-could-love-you-again-mp3.mp3?rlkey=9nmgyjhpmi6nor9d7ap31edj8&raw=1",
+    "youtubeUrl": "",
+    "videos": [],
+    "featured": false,
+    "explicit": false,
+    "includeOnRadio": true,
+    "includeOnHomepage": false,
+    "tags": [],
+    "cover": "https://raw.githubusercontent.com/SteveP999/borrowed-whispers/main/images/covers/borrowed-whispers-if-i-could-love-you-again-cover.png"
   }
 ]
