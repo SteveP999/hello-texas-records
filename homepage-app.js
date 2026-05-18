@@ -69,7 +69,7 @@ function buildRoster(artists) {
         <div class="card-genre">${artist.genre || ''}</div>
 
         <div class="card-artist">
-          ${artist.name}
+          ${artist.name}${artist.id === 'hello-texas' ? ' <a href="https://stevep999.github.io/sdb-style-game/" target="_blank" class="card-easter-egg" title="&#127926;">&#9834;</a>' : ''}
         </div>
 
         <div class="card-song">
