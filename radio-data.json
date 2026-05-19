@@ -2827,7 +2827,7 @@
     "audioSrc": "https://www.dropbox.com/scl/fi/b0gq0xfl1tzelkwztw8s8/september-skies-moment-to-live.mp3?rlkey=lgry7yd1dcy4pj765j2h12k84&raw=1",
     "youtubeUrl": "",
     "videos": [],
-    "featured": true,
+    "featured": false,
     "explicit": false,
     "includeOnRadio": true,
     "includeOnHomepage": true,
@@ -3383,5 +3383,27 @@
     "includeOnHomepage": false,
     "tags": [],
     "cover": "https://raw.githubusercontent.com/SteveP999/borrowed-whispers/main/images/covers/borrowed-whispers-if-i-could-love-you-again-cover.png"
+  },
+  {
+    "id": "september-skies-life-in-the-light",
+    "artistId": "september-skies",
+    "artist": "September Skies",
+    "title": "Life in the Light",
+    "album": "One Move at a Time",
+    "genre": "Alternative Rock",
+    "releaseType": "single",
+    "releaseDate": "",
+    "coverImage": "https://raw.githubusercontent.com/SteveP999/september-skies/main/images/covers/september-skies-life-in-the-light-cover.png",
+    "albumCover": "https://raw.githubusercontent.com/SteveP999/september-skies/main/images/covers/september-skies-one-move-at-a-time-ALBUM-cover.png",
+    "audioFile": "https://www.dropbox.com/scl/fi/gmsamup3bfiiwb0libxop/september-skies-life-in-the-light-mp3.mp3?rlkey=mhxx75x2xqf5k5esdt6joqstt&raw=1",
+    "audioSrc": "https://www.dropbox.com/scl/fi/gmsamup3bfiiwb0libxop/september-skies-life-in-the-light-mp3.mp3?rlkey=mhxx75x2xqf5k5esdt6joqstt&raw=1",
+    "youtubeUrl": "",
+    "videos": [],
+    "featured": true,
+    "explicit": false,
+    "includeOnRadio": true,
+    "includeOnHomepage": true,
+    "tags": [],
+    "cover": "https://raw.githubusercontent.com/SteveP999/september-skies/main/images/covers/september-skies-life-in-the-light-cover.png"
   }
 ]
