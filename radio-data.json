@@ -2172,7 +2172,7 @@
     "coverImage": "https://raw.githubusercontent.com/SteveP999/NightStrike/main/images/covers/nightstrike-the-storm-never-sleeps-cover.png",
     "audioFile": "https://www.dropbox.com/scl/fi/xzj3myi8pt4ulsd2dvfrl/nightstrike-the-storm-never-sleeps-mp3.mp3?rlkey=e4vl08mxg5mb2m3m2yt4zvq3c&raw=1",
     "youtubeUrl": "",
-    "featured": true,
+    "featured": false,
     "explicit": false,
     "includeOnRadio": true,
     "includeOnHomepage": true,
@@ -3449,5 +3449,27 @@
     "includeOnHomepage": true,
     "tags": [],
     "cover": "https://raw.githubusercontent.com/SteveP999/Sawyer-Price/main/images/covers/sawyer-price-burnin-gas-cover.png"
+  },
+  {
+    "id": "nightstrike-while-the-city-sleeps",
+    "artistId": "nightstrike",
+    "artist": "NightStrike",
+    "title": "While The City Sleeps",
+    "album": "High Voltage",
+    "genre": "Hard Rock / Sleaze Rock",
+    "releaseType": "single",
+    "releaseDate": "",
+    "coverImage": "https://raw.githubusercontent.com/SteveP999/NightStrike/main/images/covers/nightstrike-while-the-city-sleeps-cover.png",
+    "albumCover": "https://raw.githubusercontent.com/SteveP999/NightStrike/main/images/covers/nightstrike-high-voltage-ALBUM-cover.png",
+    "audioFile": "https://www.dropbox.com/scl/fi/a308cgw7d3jffbdnungpx/nightstrike-while-the-city-sleeps-mp3.mp3?rlkey=8cfqd4tjs2kz9xao36qfv48bt&raw=1",
+    "audioSrc": "https://www.dropbox.com/scl/fi/a308cgw7d3jffbdnungpx/nightstrike-while-the-city-sleeps-mp3.mp3?rlkey=8cfqd4tjs2kz9xao36qfv48bt&raw=1",
+    "youtubeUrl": "",
+    "videos": [],
+    "featured": true,
+    "explicit": false,
+    "includeOnRadio": true,
+    "includeOnHomepage": true,
+    "tags": [],
+    "cover": "https://raw.githubusercontent.com/SteveP999/NightStrike/main/images/covers/nightstrike-while-the-city-sleeps-cover.png"
   }
 ]
