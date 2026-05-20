@@ -3427,5 +3427,27 @@
     "includeOnHomepage": true,
     "tags": [],
     "cover": "https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/images/covers/stephen-parsons-finally-alive-cover.png"
+  },
+  {
+    "id": "sawyer-price-burnin-gas",
+    "artistId": "sawyer-price",
+    "artist": "Sawyer Price",
+    "title": "Burnin' Gas",
+    "album": "Unrushed",
+    "genre": "Texas country / Red Dirt",
+    "releaseType": "single",
+    "releaseDate": "",
+    "coverImage": "https://raw.githubusercontent.com/SteveP999/Sawyer-Price/main/images/covers/sawyer-price-burnin-gas-cover.png",
+    "albumCover": "https://raw.githubusercontent.com/SteveP999/Sawyer-Price/main/images/covers/sawyer-price-unrushed-ALBUM-cover.png",
+    "audioFile": "https://www.dropbox.com/scl/fi/4fx72e3509ucibl04wnm5/sawyer-price-burnin-gas-MP3.mp3?rlkey=k0llb4t23e4hlei6gafmk57xk&raw=1",
+    "audioSrc": "https://www.dropbox.com/scl/fi/4fx72e3509ucibl04wnm5/sawyer-price-burnin-gas-MP3.mp3?rlkey=k0llb4t23e4hlei6gafmk57xk&raw=1",
+    "youtubeUrl": "",
+    "videos": [],
+    "featured": true,
+    "explicit": false,
+    "includeOnRadio": true,
+    "includeOnHomepage": true,
+    "tags": [],
+    "cover": "https://raw.githubusercontent.com/SteveP999/Sawyer-Price/main/images/covers/sawyer-price-burnin-gas-cover.png"
   }
 ]
