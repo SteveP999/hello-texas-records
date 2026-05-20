@@ -3399,7 +3399,7 @@
     "audioSrc": "https://www.dropbox.com/scl/fi/gmsamup3bfiiwb0libxop/september-skies-life-in-the-light-mp3.mp3?rlkey=mhxx75x2xqf5k5esdt6joqstt&raw=1",
     "youtubeUrl": "",
     "videos": [],
-    "featured": true,
+    "featured": false,
     "explicit": false,
     "includeOnRadio": true,
     "includeOnHomepage": true,
@@ -3471,5 +3471,27 @@
     "includeOnHomepage": true,
     "tags": [],
     "cover": "https://raw.githubusercontent.com/SteveP999/NightStrike/main/images/covers/nightstrike-while-the-city-sleeps-cover.png"
+  },
+  {
+    "id": "september-skies-perfectly-imperfect",
+    "artistId": "september-skies",
+    "artist": "September Skies",
+    "title": "Perfectly Imperfect",
+    "album": "One Move at a Time",
+    "genre": "Alternative Rock",
+    "releaseType": "single",
+    "releaseDate": "",
+    "coverImage": "https://raw.githubusercontent.com/SteveP999/september-skies/main/images/covers/september-skies-perfectly-imperfect-cover.png",
+    "albumCover": "https://raw.githubusercontent.com/SteveP999/september-skies/main/images/covers/september-skies-one-move-at-a-time-ALBUM-cover.png",
+    "audioFile": "https://www.dropbox.com/scl/fi/lg6e6m5qbxuuh41uuggww/silent-oblivion-perfectly-imperfect.mp3.mp3?rlkey=eja1hfky1z793h9jtstd271bj&raw=1",
+    "audioSrc": "https://www.dropbox.com/scl/fi/lg6e6m5qbxuuh41uuggww/silent-oblivion-perfectly-imperfect.mp3.mp3?rlkey=eja1hfky1z793h9jtstd271bj&raw=1",
+    "youtubeUrl": "",
+    "videos": [],
+    "featured": true,
+    "explicit": false,
+    "includeOnRadio": true,
+    "includeOnHomepage": true,
+    "tags": [],
+    "cover": "https://raw.githubusercontent.com/SteveP999/september-skies/main/images/covers/september-skies-perfectly-imperfect-cover.png"
   }
 ]
