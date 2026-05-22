@@ -3616,6 +3616,7 @@
     "includeOnRadio": true,
     "includeOnHomepage": true,
     "tags": [],
+    "isLatest": true,
     "cover": "https://raw.githubusercontent.com/SteveP999/september-skies/main/images/covers/september-skies-shine-for-all-time-cover.png"
   },
   {
@@ -3633,11 +3634,12 @@
     "audioSrc": "https://www.dropbox.com/scl/fi/rvksbrmd25kl66ot6m7rz/night-shift-hearts-racing-mp3.mp3?rlkey=f1ub15nhbdclmcvag0lzev4v3&raw=1",
     "youtubeUrl": "",
     "videos": [],
-    "featured": true,
+    "featured": false,
     "explicit": false,
     "includeOnRadio": true,
     "includeOnHomepage": true,
     "tags": [],
+    "isLatest": true,
     "cover": "https://raw.githubusercontent.com/SteveP999/Night-Shift/main/images/covers/night-shift-hearts-racing-cover.png"
   },
   {
@@ -3660,6 +3662,7 @@
     "includeOnRadio": true,
     "includeOnHomepage": true,
     "tags": [],
+    "isLatest": true,
     "cover": "https://raw.githubusercontent.com/SteveP999/Sawyer-Price/main/images/covers/sawyer-price-wish-that-i-was-here-cover.png"
   }
 ]
