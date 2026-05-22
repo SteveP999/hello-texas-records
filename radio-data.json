@@ -3520,7 +3520,7 @@
     "audioSrc": "https://www.dropbox.com/scl/fi/4fx72e3509ucibl04wnm5/sawyer-price-burnin-gas-MP3.mp3?rlkey=k0llb4t23e4hlei6gafmk57xk&raw=1",
     "youtubeUrl": "",
     "videos": [],
-    "featured": true,
+    "featured": false,
     "explicit": false,
     "includeOnRadio": true,
     "includeOnHomepage": true,
@@ -3639,5 +3639,27 @@
     "includeOnHomepage": true,
     "tags": [],
     "cover": "https://raw.githubusercontent.com/SteveP999/Night-Shift/main/images/covers/night-shift-hearts-racing-cover.png"
+  },
+  {
+    "id": "sawyer-price-wish-that-i-was-here",
+    "artistId": "sawyer-price",
+    "artist": "Sawyer Price",
+    "title": "Wish That I Was Here",
+    "album": "Unrushed",
+    "genre": "Texas country / Red Dirt",
+    "releaseType": "single",
+    "releaseDate": "",
+    "coverImage": "https://raw.githubusercontent.com/SteveP999/Sawyer-Price/main/images/covers/sawyer-price-wish-that-i-was-here-cover.png",
+    "albumCover": "https://raw.githubusercontent.com/SteveP999/Sawyer-Price/main/images/covers/sawyer-price-unrushed-ALBUM-cover.png",
+    "audioFile": "https://www.dropbox.com/scl/fi/omwmauhlbbfrzqzagju9c/sawyer-price-wish-that-i-was-here-mp3.mp3?rlkey=sfyryj05qt7a4k2fa7s87ix4x&raw=1",
+    "audioSrc": "https://www.dropbox.com/scl/fi/omwmauhlbbfrzqzagju9c/sawyer-price-wish-that-i-was-here-mp3.mp3?rlkey=sfyryj05qt7a4k2fa7s87ix4x&raw=1",
+    "youtubeUrl": "",
+    "videos": [],
+    "featured": true,
+    "explicit": false,
+    "includeOnRadio": true,
+    "includeOnHomepage": true,
+    "tags": [],
+    "cover": "https://raw.githubusercontent.com/SteveP999/Sawyer-Price/main/images/covers/sawyer-price-wish-that-i-was-here-cover.png"
   }
 ]
