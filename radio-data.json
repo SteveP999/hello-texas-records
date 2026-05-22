@@ -421,6 +421,7 @@
     "trackNumber": 10,
     "albumOrder": 10,
     "num": "10",
+    "isLatest": true,
     "cover": "https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/images/covers/avery-ivey-album-wildflower-soundtrack/avery-ivey-wildflower-soundtrack-somewhere-in-the-middle-cover.png",
     "audioSrc": "https://www.dropbox.com/scl/fi/4o4bad3jn16xbga2q3gxi/Somewhere-in-the-Middle-Mastered-MP3.mp3?rlkey=2jj4fqzl3zjzdsof51n9g7ron&raw=1"
   },
@@ -537,6 +538,7 @@
     "tags": [],
     "videos": [],
     "albumCover": "https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/images/covers/avery-ivey-somewhere-in-the-middle-ALBUM-cover.png",
+    "isLatest": true,
     "cover": "https://raw.githubusercontent.com/SteveP999/Avery-Ivey/main/images/covers/avery-ivey-album-somewhere-in-the-middle/avery-ivey-tomorrow-never-comes-cover.png",
     "audioSrc": "https://www.dropbox.com/scl/fi/7bdpevq44m491ygp0gk5i/avery-ivey-tomorrow-never-comes-mp3.mp3?rlkey=2qx7l8yjjnwb2wyiaptkpryau&raw=1"
   },
@@ -559,6 +561,7 @@
     "tags": [],
     "videos": [],
     "albumCover": "https://raw.githubusercontent.com/SteveP999/Daniel-Kincaid/main/images/covers/daniel-kincaid-running-out-of-reasons-ALBUM-cover.png",
+    "isLatest": true,
     "cover": "https://raw.githubusercontent.com/SteveP999/Daniel-Kincaid/main/images/covers/daniel-kincaid-just-this-once-cover.png",
     "audioSrc": "https://www.dropbox.com/scl/fi/xfwjj7nwovh6s7gf5oy50/Just-This-Once-Mastered-MP3.mp3?rlkey=1phk6fx0ulbdwr0qpa7zdzjd6&raw=1"
   },
@@ -956,6 +959,7 @@
     "trackNumber": 7,
     "albumOrder": 7,
     "videos": [],
+    "isLatest": true,
     "cover": "https://raw.githubusercontent.com/SteveP999/Hello-Texas/main/images/covers/hello-texas-happily-ever-after-cover.png",
     "audioSrc": "https://www.dropbox.com/scl/fi/hupjoesyytssakywiqkjv/Happily-Ever-After-Mastered-MP3.mp3?rlkey=kp0csfv81xn0wqxidyfg7qn4v&raw=1"
   },
@@ -1031,6 +1035,7 @@
     "trackNumber": 1,
     "albumOrder": 1,
     "videos": [],
+    "isLatest": true,
     "cover": "https://raw.githubusercontent.com/SteveP999/Hello-Texas/main/images/covers/hello-texas-dancing-through-my-dreams-lost-sessions-cover.png",
     "audioSrc": "https://www.dropbox.com/scl/fi/w2hsbin8zy5qy6zutfvph/Dancing-Through-My-Dreams-Lost-Session.wav?rlkey=7ugf8qa4kjwx5upjy6z7gc7cl&raw=1"
   },
@@ -1081,6 +1086,7 @@
     "tags": [],
     "videos": [],
     "albumCover": "https://raw.githubusercontent.com/SteveP999/Night-Shift/main/images/covers/night-shift-no-rules-tonight-ALBUM-cover.png",
+    "isLatest": true,
     "cover": "https://raw.githubusercontent.com/SteveP999/Night-Shift/main/images/covers/night-shift-turn-me-up-cover.png",
     "audioSrc": "https://www.dropbox.com/scl/fi/ncplflnsdo9cp4o5ldgn3/night-shift-turn-me-up-mp3.mp3?rlkey=1w1zljwrr2y901ti1unhppdnw&raw=1"
   },
@@ -1285,6 +1291,7 @@
     "tags": [],
     "videos": [],
     "albumCover": "https://raw.githubusercontent.com/SteveP999/Parsons-Cross/main/images/covers/parsons-cross-into-the-light-ALBUM-cover.png",
+    "isLatest": true,
     "cover": "https://raw.githubusercontent.com/SteveP999/Parsons-Cross/main/images/covers/parsons-cross-circle-the-wagons-cover.png",
     "audioSrc": "https://www.dropbox.com/scl/fi/zv9z8076a6hc13vm8c67z/parsons-cross-circle-the-wagons-mp3.mp3?rlkey=wtv99unlw7flzrtxodxy2n7ho&st=i4v868b3&raw=1"
   },
@@ -1329,6 +1336,7 @@
     "tags": [],
     "videos": [],
     "albumCover": "https://raw.githubusercontent.com/SteveP999/PULSE7/main/images/covers/pulse7-endless-echo-ALBUM-cover.png",
+    "isLatest": true,
     "cover": "https://raw.githubusercontent.com/SteveP999/pulse7/main/images/covers/pulse7-two-nights-cover.png",
     "audioSrc": "https://www.dropbox.com/scl/fi/2wioc1edj01haev6ifjkl/Two-Nights-PULSE7.mp3?rlkey=dwogp86reax5amxrh30bphoay&raw=1"
   },
@@ -1401,6 +1409,7 @@
       }
     ],
     "albumCover": "https://raw.githubusercontent.com/SteveP999/Rio-Valencia/main/images/covers/rio-valencia-midnight-line-ALBUM-cover.png",
+    "isLatest": true,
     "cover": "https://raw.githubusercontent.com/SteveP999/Rio-Valencia/main/images/covers/rio-valencia-no-control-cover.png",
     "audioSrc": "https://www.dropbox.com/scl/fi/xl6id8cftbsvrqpsueehx/No-Control-Mastered-MP3.mp3?rlkey=4vxmg9u10jckquwf5xkloccq0&raw=1"
   },
@@ -1633,6 +1642,7 @@
       }
     ],
     "albumCover": "https://raw.githubusercontent.com/SteveP999/Silent-Oblivion/main/images/covers/silent-oblivion-beginnings-past-album-cover.png",
+    "isLatest": true,
     "cover": "https://raw.githubusercontent.com/SteveP999/Silent-Oblivion/main/images/covers/silent-oblivion-lift-off-cover.png",
     "audioSrc": "https://www.dropbox.com/scl/fi/tctbe476glsb4mu3hv7k7/Lift-Off-With-a-Bang-Mastered-MP3.mp3?rlkey=2dt2a3mayzne6l1lff1jf3t00&raw=1"
   },
@@ -2028,6 +2038,7 @@
       }
     ],
     "albumCover": "https://raw.githubusercontent.com/SteveP999/vanta/main/images/covers/vanta-signal-ALBUM-cover.png",
+    "isLatest": true,
     "cover": "https://raw.githubusercontent.com/SteveP999/vanta/main/images/covers/vanta-too-loud-cover.png",
     "audioSrc": "https://www.dropbox.com/scl/fi/4228evr7l0qrs0kegwzty/Too-Loud-Mastered-MP3.mp3?rlkey=pw5icqqci9xf6cj36iqarmkdj&raw=1"
   },
@@ -2050,6 +2061,7 @@
     "tags": [],
     "videos": [],
     "albumCover": "https://raw.githubusercontent.com/SteveP999/Vincent-Cole/main/images/covers/vincent-cole-the-cole-standard-ALBUM-cover.png",
+    "isLatest": true,
     "cover": "https://raw.githubusercontent.com/SteveP999/Vincent-Cole/main/images/covers/vincent-cole-too-late-to-behave-cover.png",
     "audioSrc": "https://www.dropbox.com/scl/fi/wvym3juow40a76gor19hu/vincent-cole-too-late-to-behave-mp3.mp3?rlkey=2gu6hybeu8y49mwdqoea71yhv&raw=1"
   },
@@ -2214,6 +2226,7 @@
     ],
     "videos": [],
     "albumCover": "https://raw.githubusercontent.com/SteveP999/NightStrike/main/images/covers/nightstrike-high-voltage-ALBUM-cover.png",
+    "isLatest": true,
     "cover": "https://raw.githubusercontent.com/SteveP999/NightStrike/main/images/covers/nightstrike-crash-and-burn-cover.png",
     "audioSrc": "https://www.dropbox.com/scl/fi/pdk6fd86ja75lrfd862i9/nightstrike-crash-and-burn-mp3.mp3?rlkey=65gjedmk6v53dxnyhfwyjwc83&raw=1"
   },
@@ -2446,7 +2459,7 @@
     "includeOnRadio": true,
     "includeOnHomepage": true,
     "tags": [],
-    "isLatest": true,
+    "isLatest": false,
     "albumType": "Album",
     "albumOrder": 7,
     "trackNumber": 7,
@@ -2733,6 +2746,7 @@
     "includeOnHomepage": true,
     "tags": [],
     "_sourceIndex": 10,
+    "isLatest": true,
     "cover": "https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/images/covers/stephen-parsons-just-move-on-cover.png",
     "audioSrc": "https://www.dropbox.com/scl/fi/0jh7i1oix1yhh5jyc51n2/just-move-on.mp3?rlkey=duqmyacqvmc1ghcqeb8pkrs8k&raw=1"
   },
@@ -2777,6 +2791,7 @@
     "includeOnHomepage": true,
     "tags": [],
     "albumCover": "",
+    "isLatest": true,
     "cover": "https://raw.githubusercontent.com/stevep999/brightons/main/images/covers/brightons-yesterdays-girl-cover.png",
     "audioSrc": "https://www.dropbox.com/scl/fi/q5y6ly4jo82f5f0a6wmpx/brightons-yesterdays-girl-mp3.mp3?rlkey=4zf0wqtnhfxass2xr1mcrjlnx&raw=1",
     "videos": []
@@ -2844,6 +2859,7 @@
     "includeOnRadio": true,
     "includeOnHomepage": true,
     "tags": [],
+    "isLatest": true,
     "cover": "https://raw.githubusercontent.com/stevep999/brightons/main/images/covers/brightons-nicole-in-the-rain-cover.png",
     "audioSrc": "https://www.dropbox.com/scl/fi/t9suftfr0k83z2punwruh/brightons-nicole-in-the-rain-mp3-v1.mp3?rlkey=zb7lv17xgx1a4t3nf0d03aic3&raw=1"
   },
@@ -3417,6 +3433,7 @@
     "includeOnRadio": true,
     "includeOnHomepage": false,
     "tags": [],
+    "isLatest": true,
     "cover": "https://raw.githubusercontent.com/SteveP999/Skyline-Theory/main/images/covers/skyline-theory-we-dont-come-down-cover.png"
   },
   {
@@ -3439,6 +3456,7 @@
     "includeOnRadio": true,
     "includeOnHomepage": false,
     "tags": [],
+    "isLatest": true,
     "cover": "https://raw.githubusercontent.com/SteveP999/borrowed-whispers/main/images/covers/borrowed-whispers-if-i-could-love-you-again-cover.png"
   },
   {
@@ -3461,6 +3479,7 @@
     "includeOnRadio": true,
     "includeOnHomepage": true,
     "tags": [],
+    "isLatest": true,
     "cover": "https://raw.githubusercontent.com/SteveP999/september-skies/main/images/covers/september-skies-life-in-the-light-cover.png"
   },
   {
@@ -3483,6 +3502,7 @@
     "includeOnRadio": true,
     "includeOnHomepage": true,
     "tags": [],
+    "isLatest": true,
     "cover": "https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/images/covers/stephen-parsons-finally-alive-cover.png"
   },
   {
@@ -3505,6 +3525,7 @@
     "includeOnRadio": true,
     "includeOnHomepage": true,
     "tags": [],
+    "isLatest": true,
     "cover": "https://raw.githubusercontent.com/SteveP999/Sawyer-Price/main/images/covers/sawyer-price-burnin-gas-cover.png"
   },
   {
@@ -3544,11 +3565,12 @@
     "audioSrc": "https://www.dropbox.com/scl/fi/lg6e6m5qbxuuh41uuggww/silent-oblivion-perfectly-imperfect.mp3.mp3?rlkey=eja1hfky1z793h9jtstd271bj&raw=1",
     "youtubeUrl": "",
     "videos": [],
-    "featured": true,
+    "featured": false,
     "explicit": false,
     "includeOnRadio": true,
     "includeOnHomepage": true,
     "tags": [],
+    "isLatest": true,
     "cover": "https://raw.githubusercontent.com/SteveP999/september-skies/main/images/covers/september-skies-perfectly-imperfect-cover.png"
   },
   {
@@ -3571,6 +3593,29 @@
     "includeOnRadio": true,
     "includeOnHomepage": true,
     "tags": [],
+    "isLatest": true,
     "cover": "https://raw.githubusercontent.com/SteveP999/vanta/main/images/covers/vanta-say-it-again-cover.png"
+  },
+  {
+    "id": "september-skies-shine-for-all-time",
+    "artistId": "september-skies",
+    "artist": "September Skies",
+    "title": "Shine For All Time",
+    "album": "One Move at a Time",
+    "genre": "Alternative Rock",
+    "releaseType": "single",
+    "releaseDate": "",
+    "coverImage": "https://raw.githubusercontent.com/SteveP999/september-skies/main/images/covers/september-skies-shine-for-all-time-cover.png",
+    "albumCover": "https://raw.githubusercontent.com/SteveP999/september-skies/main/images/covers/september-skies-one-move-at-a-time-ALBUM-cover.png",
+    "audioFile": "https://www.dropbox.com/scl/fi/jkukm6o7wy611leuu7xlm/september-skies-shine-for-all-time-mp3.mp3?rlkey=4un7snrpkasg5z1lozmxqi926&raw=1",
+    "audioSrc": "https://www.dropbox.com/scl/fi/jkukm6o7wy611leuu7xlm/september-skies-shine-for-all-time-mp3.mp3?rlkey=4un7snrpkasg5z1lozmxqi926&raw=1",
+    "youtubeUrl": "",
+    "videos": [],
+    "featured": true,
+    "explicit": false,
+    "includeOnRadio": true,
+    "includeOnHomepage": true,
+    "tags": [],
+    "cover": "https://raw.githubusercontent.com/SteveP999/september-skies/main/images/covers/september-skies-shine-for-all-time-cover.png"
   }
 ]
