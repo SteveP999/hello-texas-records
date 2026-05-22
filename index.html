@@ -27,6 +27,8 @@ body { font-family: 'Barlow', sans-serif; background: #0d0c0b; color: #e8e0d4; o
 body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");background-size:200px 200px;pointer-events:none;z-index:0;opacity:0.4;}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:64px;background:rgba(13,12,11,0.92);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);}
 .nav-logo{height:36px;width:auto;}
+.nav-radio-egg{position:absolute;left:50%;transform:translateX(-50%);color:rgba(200,146,42,0.2);transition:color 0.3s,filter 0.3s;display:flex;align-items:center;}
+.nav-radio-egg:hover{color:rgba(200,146,42,0.9);filter:drop-shadow(0 0 6px rgba(200,146,42,0.5));}
 .nav-links{display:flex;gap:2rem;list-style:none;}
 .nav-links a{color:var(--muted);text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;letter-spacing:0.18em;text-transform:uppercase;transition:color 0.2s;}
 .nav-links a:hover{color:var(--rust-lt);}
@@ -347,6 +349,15 @@ body.radio-playing{padding-bottom:74px!important;}
 <body>
 <nav>
   <img src="https://raw.githubusercontent.com/SteveP999/hello-texas-records/main/htr-logo.png" alt="Hello Texas Records" class="nav-logo">
+  <a href="https://htr-radio.hellotexasrecords.com" target="_blank" class="nav-radio-egg" title="HTR Radio">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="2" y="9" width="20" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M6 9V7a6 6 0 0 1 12 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="8.5" cy="15.5" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+      <line x1="14" y1="13" x2="19" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="14" y1="16" x2="19" y2="16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+  </a>
   <ul class="nav-links">
     <li><a href="#roster">Artists</a></li>
     <li><a href="#radio-section">HTR Radio</a></li>
