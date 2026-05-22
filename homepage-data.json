@@ -60,7 +60,7 @@
       "audioSrc": "https://www.dropbox.com/scl/fi/b0gq0xfl1tzelkwztw8s8/september-skies-moment-to-live.mp3?rlkey=lgry7yd1dcy4pj765j2h12k84&raw=1",
       "youtubeUrl": "",
       "videos": [],
-      "featured": true,
+      "featured": false,
       "explicit": false,
       "includeOnRadio": true,
       "includeOnHomepage": true,
@@ -163,7 +163,7 @@
       "audioFile": "https://www.dropbox.com/scl/fi/0jh7i1oix1yhh5jyc51n2/just-move-on.mp3?rlkey=duqmyacqvmc1ghcqeb8pkrs8k&raw=1",
       "youtubeUrl": "",
       "videos": [],
-      "featured": true,
+      "featured": false,
       "explicit": false,
       "includeOnRadio": true,
       "includeOnHomepage": true,
@@ -221,31 +221,6 @@
       "tags": []
     },
     {
-      "id": "skyline-theory-stay-in-the-sound",
-      "artistId": "skyline-theory",
-      "artist": "Skyline Theory",
-      "title": "Stay in the Sound",
-      "album": "Bending Reality",
-      "genre": "EDM / Progressive House",
-      "releaseType": "single",
-      "releaseDate": "2026-05-07",
-      "coverImage": "https://raw.githubusercontent.com/SteveP999/Skyline-Theory/main/images/covers/skyline-theory-stay-in-the-sound-cover.png",
-      "audioFile": "",
-      "youtubeUrl": "",
-      "featured": false,
-      "explicit": false,
-      "includeOnRadio": true,
-      "includeOnHomepage": true,
-      "tags": [
-        "edm",
-        "festival",
-        "uplifting",
-        "nostalgic"
-      ],
-      "videos": [],
-      "albumCover": "https://raw.githubusercontent.com/SteveP999/Skyline-Theory/main/images/covers/skyline-theory-bending-reality-ALBUM-cover.png"
-    },
-    {
       "id": "nightstrike-the-storm-never-sleeps",
       "artistId": "nightstrike",
       "artist": "NightStrike",
@@ -257,7 +232,7 @@
       "coverImage": "https://raw.githubusercontent.com/SteveP999/NightStrike/main/images/covers/nightstrike-the-storm-never-sleeps-cover.png",
       "audioFile": "https://www.dropbox.com/scl/fi/xzj3myi8pt4ulsd2dvfrl/nightstrike-the-storm-never-sleeps-mp3.mp3?rlkey=e4vl08mxg5mb2m3m2yt4zvq3c&raw=1",
       "youtubeUrl": "",
-      "featured": true,
+      "featured": false,
       "explicit": false,
       "includeOnRadio": true,
       "includeOnHomepage": true,
@@ -268,6 +243,27 @@
       ],
       "videos": [],
       "albumCover": "https://raw.githubusercontent.com/SteveP999/NightStrike/main/images/covers/nightstrike-high-voltage-ALBUM-cover.png"
+    },
+    {
+      "id": "skyline-theory-stay-until-the-sunrise",
+      "artistId": "skyline-theory",
+      "artist": "Skyline Theory",
+      "title": "Stay Until the Sunrise",
+      "album": "Bending Reality",
+      "genre": "EDM / progressive house",
+      "releaseType": "single",
+      "releaseDate": "",
+      "coverImage": "https://raw.githubusercontent.com/SteveP999/Skyline-Theory/main/images/covers/skyline-theory-stay-until-the-sunrise-cover.png",
+      "albumCover": "https://raw.githubusercontent.com/SteveP999/Skyline-Theory/main/images/covers/skyline-theory-bending-reality-ALBUM-cover.png",
+      "audioFile": "https://www.dropbox.com/scl/fi/d9kw1lj5bxkax9uqapdik/Stay-Until-the-Sunrise-Mastered-MP3.mp3?rlkey=86xqp27garczvvae3hzjefr6g&raw=1",
+      "audioSrc": "https://www.dropbox.com/scl/fi/d9kw1lj5bxkax9uqapdik/Stay-Until-the-Sunrise-Mastered-MP3.mp3?rlkey=86xqp27garczvvae3hzjefr6g&raw=1",
+      "youtubeUrl": "",
+      "videos": [],
+      "featured": false,
+      "explicit": false,
+      "includeOnRadio": true,
+      "includeOnHomepage": true,
+      "tags": []
     }
   ],
   "featuredArtists": [
@@ -298,7 +294,8 @@
         "Roster Photos/avery-ivey-roster-photo.png",
         "htr-logo.png"
       ],
-      "latestTitle": "Back to Chapter One"
+      "latestTitle": "Back to Chapter One",
+      "tagline": "The voice that grew up in public"
     },
     {
       "id": "daniel-kincaid",
@@ -327,7 +324,8 @@
         "Roster Photos/daniel-kincaid-roster-photo.png",
         "htr-logo.png"
       ],
-      "latestTitle": "Just This Once"
+      "latestTitle": "Just This Once",
+      "tagline": "The reluctant voice they couldn't keep quiet"
     },
     {
       "id": "hello-texas",
@@ -356,7 +354,8 @@
         "Roster Photos/hello-texas/hello-texas-roster-photo.png",
         "Roster Photos/hello-texas-roster-photo.png",
         "htr-logo.png"
-      ]
+      ],
+      "tagline": "Where country started and never stopped"
     },
     {
       "id": "lucas-harlow",
@@ -386,7 +385,8 @@
         "Roster Photos/lucas-harlow-roster-photo.png",
         "htr-logo.png"
       ],
-      "latestTitle": "First Light"
+      "latestTitle": "First Light",
+      "tagline": "New age piano for late nights and long drives"
     },
     {
       "id": "night-shift",
@@ -415,7 +415,8 @@
         "Roster Photos/night-shift-roster-photo.png",
         "htr-logo.png"
       ],
-      "latestTitle": "No Rules Tonight"
+      "latestTitle": "No Rules Tonight",
+      "tagline": "Disco never died — it just moved to Texas"
     },
     {
       "id": "nightstrike",
@@ -445,7 +446,8 @@
         "Roster Photos/nightstrike-roster-photo.png",
         "htr-logo.png"
       ],
-      "latestTitle": "Crash and Burn"
+      "latestTitle": "Crash and Burn",
+      "tagline": "Bringing 1987 back whether you're ready or not"
     },
     {
       "id": "parsons-cross",
@@ -474,7 +476,8 @@
         "Roster Photos/parsons-cross-roster-photo.png",
         "htr-logo.png"
       ],
-      "latestTitle": "Dark Nights of the Soul"
+      "latestTitle": "Dark Nights of the Soul",
+      "tagline": "Worship that doesn't ask permission"
     },
     {
       "id": "pulse7",
@@ -503,7 +506,8 @@
         "Roster Photos/pulse7-roster-photo.png",
         "htr-logo.png"
       ],
-      "latestTitle": "Two Nights"
+      "latestTitle": "Two Nights",
+      "tagline": "Coming soon"
     },
     {
       "id": "rio-valencia",
@@ -532,7 +536,8 @@
         "Roster Photos/rio-valencia-roster-photo.png",
         "htr-logo.png"
       ],
-      "latestTitle": "No Control"
+      "latestTitle": "No Control",
+      "tagline": "Latin fire with no boundaries"
     },
     {
       "id": "sawyer-price",
@@ -561,7 +566,8 @@
         "Roster Photos/sawyer-price-roster-photo.png",
         "htr-logo.png"
       ],
-      "latestTitle": "Every Song is You"
+      "latestTitle": "Burnin' Gas",
+      "tagline": "Texas country, honest and unhurried"
     },
     {
       "id": "silent-oblivion",
@@ -590,7 +596,8 @@
         "Roster Photos/silent-oblivion-roster-photo.png",
         "htr-logo.png"
       ],
-      "latestTitle": "Lift Off (With a Bang)"
+      "latestTitle": "Lift Off (With a Bang)",
+      "tagline": "Alt-rock built for lift-off"
     },
     {
       "id": "skyline-theory",
@@ -619,7 +626,8 @@
         "Roster Photos/skyline-theory-roster-photo.png",
         "htr-logo.png"
       ],
-      "latestTitle": "Stay in the Sound"
+      "latestTitle": "Ghost in The Mirror",
+      "tagline": "EDM built for 2am and open roads"
     },
     {
       "id": "stephen-parsons",
@@ -648,7 +656,8 @@
         "Roster Photos/stephen-parsons/stephen-parsons-roster-photo.png",
         "Roster Photos/stephen-parsons-roster-photo.png",
         "htr-logo.png"
-      ]
+      ],
+      "tagline": "Raw. Honest. No filter."
     },
     {
       "id": "taylor-martin",
@@ -677,7 +686,8 @@
         "Roster Photos/taylor-martin-roster-photo.png",
         "htr-logo.png"
       ],
-      "latestTitle": "Montana Skies"
+      "latestTitle": "Montana Skies",
+      "tagline": "Coming soon"
     },
     {
       "id": "vanta",
@@ -706,7 +716,8 @@
         "Roster Photos/vanta-roster-photo.png",
         "htr-logo.png"
       ],
-      "latestTitle": "Don't Need Permission"
+      "latestTitle": "Don't Need Permission",
+      "tagline": "Rock that doesn't ask for permission"
     },
     {
       "id": "vincent-cole",
@@ -735,7 +746,8 @@
         "Roster Photos/vincent-cole-roster-photo.png",
         "htr-logo.png"
       ],
-      "latestTitle": "Too Late To Behave"
+      "latestTitle": "Too Late To Behave",
+      "tagline": "Las Vegas never sounded this good"
     },
     {
       "id": "borrowed-whispers",
@@ -764,7 +776,8 @@
       "heroLogoMaxHeight": 420,
       "heroLogoOffsetY": 0,
       "heroLogoMobileScale": 1.0,
-      "active": true
+      "active": true,
+      "tagline": "Two old friends and a decade of unfinished songs"
     },
     {
       "id": "ivey-wilder",
@@ -793,7 +806,8 @@
       "heroLogoMaxHeight": 420,
       "heroLogoOffsetY": 0,
       "heroLogoMobileScale": 1.0,
-      "active": true
+      "active": true,
+      "tagline": "Alt-rock edges on a country soul"
     },
     {
       "id": "brightons",
@@ -819,7 +833,8 @@
         "Roster Photos/brightons-roster-photo.png",
         "htr-logo.png"
       ],
-      "latestTitle": "Yesterday's Girl"
+      "latestTitle": "Yesterday's Girl",
+      "tagline": "Four lads who learned from the greats"
     },
     {
       "id": "september-skies",
@@ -845,7 +860,8 @@
         "Roster Photos/september-skies-roster-photo.png",
         "htr-logo.png"
       ],
-      "latestTitle": "One Move at a Time"
+      "latestTitle": "One Move at a Time",
+      "tagline": "Alternative rock that fills a stadium with one chord"
     }
   ]
 }

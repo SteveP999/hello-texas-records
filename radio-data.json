@@ -3550,5 +3550,27 @@
     "includeOnHomepage": true,
     "tags": [],
     "cover": "https://raw.githubusercontent.com/SteveP999/september-skies/main/images/covers/september-skies-perfectly-imperfect-cover.png"
+  },
+  {
+    "id": "vanta-say-it-again",
+    "artistId": "vanta",
+    "artist": "Vanta",
+    "title": "Say It Again",
+    "album": "Eclipse",
+    "genre": "Funk rock / alternative rock",
+    "releaseType": "single",
+    "releaseDate": "",
+    "coverImage": "https://raw.githubusercontent.com/SteveP999/vanta/main/images/covers/vanta-say-it-again-cover.png",
+    "albumCover": "https://raw.githubusercontent.com/SteveP999/vanta/main/images/covers/vanta-eclipse-ALBUM-cover.png",
+    "audioFile": "https://www.dropbox.com/scl/fi/m44zpz3iy0opjdnp9p23u/vanta-say-it-again-mp3.mp3?rlkey=m38kdqjh98pkbpy7zlm270a9e&raw=1",
+    "audioSrc": "https://www.dropbox.com/scl/fi/m44zpz3iy0opjdnp9p23u/vanta-say-it-again-mp3.mp3?rlkey=m38kdqjh98pkbpy7zlm270a9e&raw=1",
+    "youtubeUrl": "",
+    "videos": [],
+    "featured": true,
+    "explicit": false,
+    "includeOnRadio": true,
+    "includeOnHomepage": true,
+    "tags": [],
+    "cover": "https://raw.githubusercontent.com/SteveP999/vanta/main/images/covers/vanta-say-it-again-cover.png"
   }
 ]
