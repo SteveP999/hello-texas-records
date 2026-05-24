@@ -415,7 +415,7 @@
         "Roster Photos/night-shift-roster-photo.png",
         "htr-logo.png"
       ],
-      "latestTitle": "No Rules Tonight",
+      "latestTitle": "Hearts Racing",
       "tagline": "Disco never died — it just moved to Texas"
     },
     {
@@ -566,7 +566,7 @@
         "Roster Photos/sawyer-price-roster-photo.png",
         "htr-logo.png"
       ],
-      "latestTitle": "Burnin' Gas",
+      "latestTitle": "Wish That I Was Here",
       "tagline": "Texas country, honest and unhurried"
     },
     {
@@ -716,7 +716,7 @@
         "Roster Photos/vanta-roster-photo.png",
         "htr-logo.png"
       ],
-      "latestTitle": "Don't Need Permission",
+      "latestTitle": "Say It Again",
       "tagline": "Rock that doesn't ask for permission"
     },
     {
@@ -860,8 +860,22 @@
         "Roster Photos/september-skies-roster-photo.png",
         "htr-logo.png"
       ],
-      "latestTitle": "One Move at a Time",
+      "latestTitle": "Shine For All Time",
       "tagline": "Alternative rock that fills a stadium with one chord"
+    },
+    {
+      "id": "harlan-rhodes",
+      "name": "Harlan Rhodes",
+      "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Harlan Rhodes\\_repo",
+      "githubRepo": "stevep999/harlan-rhodes",
+      "siteUrl": "harlan-rhodes.hellotexasrecords.com",
+      "genre": "Blues Rock / Blues Country",
+      "tagline": "Where country bleeds into blues and every scar sings.",
+      "status": "active",
+      "active": true,
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "latestTitle": "PAIN"
     }
   ]
 }
