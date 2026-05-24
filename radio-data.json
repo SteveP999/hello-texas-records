@@ -3664,5 +3664,28 @@
     "tags": [],
     "isLatest": true,
     "cover": "https://raw.githubusercontent.com/SteveP999/Sawyer-Price/main/images/covers/sawyer-price-wish-that-i-was-here-cover.png"
+  },
+  {
+    "id": "harlan-rhodes-pain",
+    "artistId": "harlan-rhodes",
+    "artist": "Harlan Rhodes",
+    "title": "PAIN",
+    "album": "Ashes and Rain",
+    "genre": "Blues Rock / Blues Country",
+    "releaseType": "single",
+    "releaseDate": "2026-05-24",
+    "coverImage": "https://raw.githubusercontent.com/stevep999/harlan-rhodes/main/images/covers/harlan-rhodes-pain-cover.png",
+    "albumCover": "https://raw.githubusercontent.com/stevep999/harlan-rhodes/main/images/covers/harlan-rhodes-ashes-and-rain-ALBUM-cover.png",
+    "audioFile": "https://www.dropbox.com/scl/fi/splb0tlcd7e2puzid5vdc/harlan-rhodes-pain-mp3.mp3?rlkey=v69cvbfw4xpqvr1nzkzm3nisl&raw=1",
+    "youtubeUrl": "",
+    "videos": [],
+    "featured": true,
+    "explicit": false,
+    "includeOnRadio": true,
+    "includeOnHomepage": true,
+    "isLatest": true,
+    "tags": [],
+    "cover": "https://raw.githubusercontent.com/stevep999/harlan-rhodes/main/images/covers/harlan-rhodes-pain-cover.png",
+    "audioSrc": "https://www.dropbox.com/scl/fi/splb0tlcd7e2puzid5vdc/harlan-rhodes-pain-mp3.mp3?rlkey=v69cvbfw4xpqvr1nzkzm3nisl&raw=1"
   }
 ]
