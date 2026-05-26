@@ -2792,9 +2792,18 @@
     "tags": [],
     "albumCover": "",
     "isLatest": true,
+    "videos": [
+      {
+        "title": "Yesterday's Girl",
+        "youtube": "https://youtu.be/smE2f1v082g",
+        "order": 1
+      }
+    ],
+    "trackNumber": 1,
+    "albumOrder": 1,
+    "num": "01",
     "cover": "https://raw.githubusercontent.com/stevep999/brightons/main/images/covers/brightons-yesterdays-girl-cover.png",
-    "audioSrc": "https://www.dropbox.com/scl/fi/q5y6ly4jo82f5f0a6wmpx/brightons-yesterdays-girl-mp3.mp3?rlkey=4zf0wqtnhfxass2xr1mcrjlnx&raw=1",
-    "videos": []
+    "audioSrc": "https://www.dropbox.com/scl/fi/q5y6ly4jo82f5f0a6wmpx/brightons-yesterdays-girl-mp3.mp3?rlkey=4zf0wqtnhfxass2xr1mcrjlnx&raw=1"
   },
   {
     "id": "brightons-boardwalk-heartbeat",
@@ -2815,6 +2824,9 @@
     "includeOnRadio": true,
     "includeOnHomepage": false,
     "tags": [],
+    "trackNumber": 2,
+    "albumOrder": 2,
+    "num": "02",
     "cover": "https://raw.githubusercontent.com/stevep999/brightons/main/images/covers/brightons-boardwalk-heartbeat-cover.png",
     "audioSrc": "https://www.dropbox.com/scl/fi/3cyjio37a6jsqnsdnasd7/brightons-boardwalk-heartbeat-mp3.mp3?rlkey=s4vrobpup2n0zuft32fxtx62z&raw=1"
   },
@@ -2837,6 +2849,9 @@
     "includeOnRadio": true,
     "includeOnHomepage": false,
     "tags": [],
+    "trackNumber": 3,
+    "albumOrder": 3,
+    "num": "03",
     "cover": "https://raw.githubusercontent.com/stevep999/brightons/main/images/covers/brightons-names-in-the-sand-cover.png",
     "audioSrc": "https://www.dropbox.com/scl/fi/1gu88hwu1p25lpzrwgzr8/brightons-names-in-the-sand-mp3.mp3?rlkey=q2t914k2narvcuc0ut5jdejw5&raw=1"
   },
@@ -2860,6 +2875,9 @@
     "includeOnHomepage": true,
     "tags": [],
     "isLatest": true,
+    "trackNumber": 4,
+    "albumOrder": 4,
+    "num": "04",
     "cover": "https://raw.githubusercontent.com/stevep999/brightons/main/images/covers/brightons-nicole-in-the-rain-cover.png",
     "audioSrc": "https://www.dropbox.com/scl/fi/t9suftfr0k83z2punwruh/brightons-nicole-in-the-rain-mp3-v1.mp3?rlkey=zb7lv17xgx1a4t3nf0d03aic3&raw=1"
   },
