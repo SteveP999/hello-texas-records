@@ -21,6 +21,8 @@
   --border:#242424; --border2:#2e2e2e;
 
   --gold:#c8a84b; --gold-l:#e8c870; --gold-dim:rgba(200,168,75,.12);
+  --font-mono:'Space Mono',monospace;
+  --font-head:'Bebas Neue',sans-serif;
 
   --red:#c0392b; --green:#27ae60; --blue:#2980b9;
 
@@ -1616,8 +1618,8 @@ async function loadPlaylists(){
   const snap=await getDocs(query(collection(db,'playlists'),where('userId','==',currentUser.uid),orderBy('createdAt','desc')));
   if(snap.empty){ el.innerHTML='<div class="empty-state"><h3>No Playlists Yet</h3><p>Build one above.</p></div>'; return; }
 
-  const monoStyle = "font-family:'Space Mono',monospace";
-  const bebasStyle = "font-family:'Bebas Neue',sans-serif";
+  const monoStyle = "font-family:var(--font-mono,monospace)";
+  const bebasStyle = "font-family:var(--font-head,sans-serif)";
 
   el.innerHTML = snap.docs.map(d => {
     const pl  = d.data();
@@ -1643,9 +1645,9 @@ async function loadPlaylists(){
         <div style="${bebasStyle};font-size:1.4rem;letter-spacing:.06em">${pl.title || 'Untitled'}</div>
         <div style="display:flex;gap:8px;align-items:center">
           <span class="chip">${tracks.length} tracks</span>
-          <button onclick="playPlaylist('${pid}')" style="background:var(--gold);border:none;color:var(--black);font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.1em;padding:5px 12px;cursor:pointer">&#9654; Play All</button>
-          <button onclick="loadPlaylistIntoBuilder('${pid}')" style="background:none;border:1px solid var(--border);color:var(--muted);font-family:'Space Mono',monospace;font-size:.6rem;padding:5px 12px;cursor:pointer">Edit</button>
-          <button onclick="deletePlaylist('${pid}')" style="background:none;border:1px solid var(--border);color:var(--red);font-family:'Space Mono',monospace;font-size:.6rem;padding:5px 10px;cursor:pointer">&#x2715;</button>
+          <button onclick="playPlaylist('${pid}')" style="background:var(--gold);border:none;color:var(--black);font-family:var(--font-mono,monospace);font-size:.6rem;letter-spacing:.1em;padding:5px 12px;cursor:pointer">&#9654; Play All</button>
+          <button onclick="loadPlaylistIntoBuilder('${pid}')" style="background:none;border:1px solid var(--border);color:var(--muted);font-family:var(--font-mono,monospace);font-size:.6rem;padding:5px 12px;cursor:pointer">Edit</button>
+          <button onclick="deletePlaylist('${pid}')" style="background:none;border:1px solid var(--border);color:var(--red);font-family:var(--font-mono,monospace);font-size:.6rem;padding:5px 10px;cursor:pointer">&#x2715;</button>
         </div>
       </div>
       <div>${trackRows}</div>
