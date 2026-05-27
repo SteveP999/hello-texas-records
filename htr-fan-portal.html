@@ -1,288 +1,555 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>HTR Fan Portal â€“ Hello Texas Records</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
 <style>
+
 :root {
+
   --black:#080808; --dark:#111; --card:#161616; --card2:#1c1c1c;
+
   --border:#242424; --border2:#2e2e2e;
+
   --gold:#c8a84b; --gold-l:#e8c870; --gold-dim:rgba(200,168,75,.12);
+
   --red:#c0392b; --green:#27ae60; --blue:#2980b9;
+
   --text:#e4e4e4; --muted:#777; --white:#fff;
+
 }
+
 *{box-sizing:border-box;margin:0;padding:0}
+
 html{scroll-behavior:smooth}
+
 body{background:var(--black);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden}
+
 body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.4}
+
 .nav{display:flex;justify-content:space-between;align-items:center;padding:0 40px;height:64px;border-bottom:1px solid var(--border);background:rgba(8,8,8,.95);backdrop-filter:blur(12px);position:sticky;top:0;z-index:1000}
+
 .nav-logo{display:flex;flex-direction:column;line-height:1}
+
 .nav-logo-main{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.18em;color:var(--gold)}
+
 .nav-logo-sub{font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.22em;color:var(--muted);text-transform:uppercase}
+
 .nav-right{display:flex;align-items:center;gap:16px}
+
 .nav-user{display:flex;align-items:center;gap:10px;cursor:pointer}
+
 .nav-avatar{width:36px;height:36px;border-radius:50%;border:2px solid var(--gold);overflow:hidden;background:var(--card2);display:flex;align-items:center;justify-content:center;font-size:1.2rem}
+
 .nav-name{font-family:'Space Mono',monospace;font-size:.65rem;color:var(--gold);letter-spacing:.08em}
+
 .nav-btn{background:none;border:1px solid var(--border);color:var(--muted);font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.1em;padding:7px 16px;cursor:pointer;text-transform:uppercase;transition:all .2s}
+
 .nav-btn:hover,.nav-btn.active{border-color:var(--gold);color:var(--gold);background:var(--gold-dim)}
+
 .nav-btn.primary{background:linear-gradient(135deg,var(--gold),var(--gold-l));border-color:transparent;color:var(--black);font-family:'Bebas Neue',sans-serif;font-size:.85rem;letter-spacing:.12em}
+
 .nav-btn.primary:hover{opacity:.88}
+
 .view{display:none;position:relative;z-index:1;min-height:calc(100vh - 64px)}
+
 .view.active{display:block;animation:fadeUp .35s ease}
+
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
 .hero{position:relative;overflow:hidden;padding:80px 40px 64px;text-align:center;border-bottom:1px solid var(--border)}
+
 .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(200,168,75,.08) 0%,transparent 70%);pointer-events:none}
+
 .hero-line{position:absolute;top:0;left:50%;transform:translateX(-50%);width:1px;height:100%;background:linear-gradient(180deg,var(--gold) 0%,transparent 100%);opacity:.15}
+
 .eyebrow{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin-bottom:20px;opacity:.8}
+
 .hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(4rem,10vw,8rem);line-height:.9;letter-spacing:.04em;color:var(--white);margin-bottom:8px}
+
 .hero-title em{color:var(--gold);font-style:normal;display:block}
+
 .hero-sub{max-width:520px;margin:24px auto 0;color:var(--muted);font-size:.95rem;line-height:1.7;font-weight:300}
+
 .hero-actions{display:flex;gap:12px;justify-content:center;margin-top:36px;flex-wrap:wrap}
+
 .btn{padding:14px 36px;border:none;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.18em;cursor:pointer;transition:all .2s;text-transform:uppercase}
+
 .btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-l));color:var(--black)}
+
 .btn-gold:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(200,168,75,.25)}
+
 .btn-outline{background:none;border:1px solid var(--border2);color:var(--muted)}
+
 .btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+
 .section{padding:64px 40px;max-width:1200px;margin:0 auto}
+
 .section-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:32px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+
 .section-title{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.08em;color:var(--white)}
+
 .section-title span{color:var(--gold)}
+
 .section-sub{font-family:'Space Mono',monospace;font-size:.62rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+
 .avatar-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:12px;max-width:700px;margin:0 auto}
+
 .avatar-opt{width:80px;height:80px;border-radius:50%;border:2px solid var(--border);cursor:pointer;transition:all .25s;display:flex;align-items:center;justify-content:center;font-size:2.2rem;background:var(--card2);position:relative;overflow:hidden}
+
 .avatar-opt:hover{border-color:var(--gold);transform:scale(1.08)}
+
 .avatar-opt.selected{border-color:var(--gold);box-shadow:0 0 0 3px rgba(200,168,75,.3)}
+
 .avatar-opt.selected::after{content:'âœ“';position:absolute;bottom:2px;right:2px;background:var(--gold);color:var(--black);width:18px;height:18px;border-radius:50%;font-size:.65rem;display:flex;align-items:center;justify-content:center;font-weight:700}
+
 .profile-hero{background:linear-gradient(135deg,var(--card) 0%,var(--card2) 100%);border:1px solid var(--border);padding:40px;display:grid;grid-template-columns:auto 1fr auto;gap:32px;align-items:center;margin-bottom:24px}
+
 .profile-avatar-big{width:100px;height:100px;border-radius:50%;border:3px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:3.5rem;background:var(--card2);flex-shrink:0}
+
 .profile-name{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;letter-spacing:.06em;color:var(--white);line-height:1}
+
 .profile-handle{font-family:'Space Mono',monospace;font-size:.7rem;color:var(--gold);letter-spacing:.12em;margin-top:4px}
+
 .profile-joined{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--muted);margin-top:8px}
+
 .profile-stats{display:flex;gap:32px;text-align:center}
+
 .stat-num{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--gold);line-height:1}
+
 .stat-label{font-family:'Space Mono',monospace;font-size:.55rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-top:2px}
+
 .badge-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+
 .badge-card{background:var(--card);border:1px solid var(--border);padding:20px 16px;text-align:center;transition:border-color .2s;position:relative;overflow:hidden}
+
 .badge-card.earned{border-color:rgba(200,168,75,.4)}
+
 .badge-card.earned::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(200,168,75,.06) 0%,transparent 70%);pointer-events:none}
+
 .badge-card.locked{opacity:.4;filter:grayscale(1)}
+
 .badge-icon{font-size:2.4rem;margin-bottom:10px;display:block}
+
 .badge-name{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.08em;color:var(--white);margin-bottom:4px}
+
 .badge-desc{font-size:.72rem;color:var(--muted);line-height:1.5}
+
 .badge-earned-tag{font-family:'Space Mono',monospace;font-size:.55rem;color:var(--gold);letter-spacing:.1em;margin-top:8px;text-transform:uppercase}
+
 .playlist-builder{background:var(--card);border:1px solid var(--border);overflow:hidden}
+
 .playlist-toolbar{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:12px}
+
 .playlist-title-input{background:none;border:none;color:var(--white);font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.08em;outline:none;min-width:200px}
+
 .playlist-title-input::placeholder{color:var(--border2)}
+
 .track-list{min-height:200px}
+
 .track-row{display:flex;align-items:center;gap:16px;padding:12px 20px;border-bottom:1px solid var(--border);transition:background .2s}
+
 .track-row:hover{background:var(--card2)}
+
 .track-num{font-family:'Space Mono',monospace;font-size:.65rem;color:var(--muted);width:20px;text-align:right;flex-shrink:0}
+
 .track-info{flex:1}
+
 .track-name{font-size:.9rem;color:var(--white)}
+
 .track-artist{font-family:'Space Mono',monospace;font-size:.62rem;color:var(--muted);letter-spacing:.06em}
+
 .track-remove{background:none;border:none;color:var(--border2);cursor:pointer;font-size:1rem;transition:color .2s;flex-shrink:0}
+
 .track-remove:hover{color:var(--red)}
+
 .add-track-form{padding:16px 20px;border-top:1px solid var(--border);display:grid;grid-template-columns:1fr 1fr auto;gap:10px}
+
 .playlist-empty{text-align:center;padding:48px 20px;color:var(--muted);font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.08em}
+
 .suggestion-form{background:var(--card);border:1px solid var(--border);padding:28px}
+
 .suggestion-list{margin-top:20px;display:flex;flex-direction:column;gap:8px}
+
 .suggestion-item{background:var(--card2);border:1px solid var(--border);padding:16px 20px;display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+
 .suggestion-text{font-size:.88rem;line-height:1.5;flex:1}
+
 .suggestion-type{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+
 .upvote-btn{background:none;border:1px solid var(--border);color:var(--muted);font-family:'Space Mono',monospace;font-size:.6rem;padding:4px 10px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:4px}
+
 .upvote-btn:hover,.upvote-btn.voted{border-color:var(--gold);color:var(--gold)}
+
 .admin-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:32px}
+
 .admin-stat-card{background:var(--card);border:1px solid var(--border);padding:24px}
+
 .admin-stat-num{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:var(--gold);line-height:1}
+
 .admin-stat-label{font-family:'Space Mono',monospace;font-size:.62rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-top:4px}
+
 .admin-table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--border)}
+
 .admin-table th{text-align:left;padding:12px 16px;font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border);background:var(--card2)}
+
 .admin-table td{padding:12px 16px;border-bottom:1px solid var(--border);font-size:.85rem;vertical-align:middle}
+
 .admin-table tr:last-child td{border-bottom:none}
+
 .admin-table tr:hover td{background:var(--card2)}
+
 .badge-pill{display:inline-flex;align-items:center;gap:4px;background:var(--gold-dim);border:1px solid rgba(200,168,75,.2);padding:2px 8px;font-family:'Space Mono',monospace;font-size:.55rem;color:var(--gold);letter-spacing:.06em;margin:2px}
+
 .admin-award-btn{background:none;border:1px solid var(--border);color:var(--muted);font-family:'Space Mono',monospace;font-size:.58rem;padding:4px 10px;cursor:pointer;transition:all .2s}
+
 .admin-award-btn:hover{border-color:var(--gold);color:var(--gold)}
+
 .form-group{margin-bottom:18px}
+
 .form-label{display:block;font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+
 .form-label .opt{color:var(--border2);font-size:.52rem;margin-left:6px}
+
 .form-input{width:100%;padding:12px 14px;background:var(--black);border:1px solid var(--border2);color:var(--text);font-family:'DM Sans',sans-serif;font-size:.9rem;outline:none;transition:border-color .2s}
+
 .form-input:focus{border-color:var(--gold)}
+
 .form-input::placeholder{color:var(--border2)}
+
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
 .form-submit{width:100%;padding:15px;background:linear-gradient(135deg,var(--gold),var(--gold-l));border:none;color:var(--black);font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:.18em;cursor:pointer;transition:opacity .2s;margin-top:8px}
+
 .form-submit:hover{opacity:.88}
+
 .form-msg{font-size:.8rem;margin-top:10px;padding:10px 14px;border-left:2px solid;display:none}
+
 .form-msg.err{color:var(--red);border-color:var(--red);background:rgba(192,57,43,.07)}
+
 .form-msg.ok{color:var(--green);border-color:var(--green);background:rgba(39,174,96,.07)}
+
 .or-divider{display:flex;align-items:center;gap:12px;margin:20px 0;color:var(--muted);font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.1em}
+
 .or-divider::before,.or-divider::after{content:'';flex:1;height:1px;background:var(--border)}
+
 .google-btn{width:100%;padding:13px;background:var(--card2);border:1px solid var(--border2);color:var(--text);font-family:'DM Sans',sans-serif;font-size:.9rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:12px;transition:all .2s}
+
 .google-btn:hover{border-color:var(--gold);background:var(--card)}
+
 .google-icon{width:18px;height:18px}
+
 .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:2000;align-items:center;justify-content:center;padding:20px}
+
 .overlay.open{display:flex}
+
 .modal{background:var(--dark);border:1px solid var(--border);width:100%;max-width:480px;max-height:90vh;overflow-y:auto;animation:fadeUp .25s ease;position:relative}
+
 .modal-header{padding:28px 32px 0;display:flex;justify-content:space-between;align-items:flex-start}
+
 .modal-logo{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:.18em;color:var(--gold)}
+
 .modal-close{background:none;border:none;color:var(--muted);font-size:1.3rem;cursor:pointer;line-height:1;padding:4px}
+
 .modal-close:hover{color:var(--white)}
+
 .modal-body{padding:20px 32px 32px}
+
 .modal-title{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;letter-spacing:.06em;color:var(--white);margin-bottom:6px}
+
 .modal-sub{font-size:.82rem;color:var(--muted);line-height:1.6;margin-bottom:24px}
+
 .modal-tabs{display:flex;border-bottom:1px solid var(--border);margin-bottom:24px}
+
 .modal-tab{flex:1;padding:11px;background:none;border:none;font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .2s}
+
 .modal-tab.active{color:var(--gold);border-bottom-color:var(--gold)}
+
 .avatar-picker-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:20px}
+
 .avatar-pick-opt{width:100%;aspect-ratio:1;border-radius:50%;border:2px solid var(--border);cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;font-size:1.6rem;background:var(--card2)}
+
 .avatar-pick-opt:hover{border-color:var(--gold);transform:scale(1.1)}
+
 .avatar-pick-opt.selected{border-color:var(--gold);box-shadow:0 0 0 3px rgba(200,168,75,.3)}
+
 .chip{display:inline-block;background:var(--gold-dim);border:1px solid rgba(200,168,75,.2);color:var(--gold);font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.1em;padding:3px 10px;text-transform:uppercase}
+
 .loading{text-align:center;padding:60px;font-family:'Space Mono',monospace;font-size:.7rem;color:var(--muted);letter-spacing:.12em}
+
 .empty-state{text-align:center;padding:60px 20px}
+
 .empty-state h3{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--border2);letter-spacing:.06em;margin-bottom:8px}
+
 .empty-state p{color:var(--muted);font-size:.85rem}
+
 .tabs{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:28px}
+
 .tab-btn{padding:12px 20px;background:none;border:none;font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .2s}
+
 .tab-btn:hover,.tab-btn.active{color:var(--gold);border-bottom-color:var(--gold)}
+
 select.form-input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23777' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+
 textarea.form-input{resize:vertical;min-height:100px}
+
 @media(max-width:768px){
+
   .nav{padding:0 16px}
+
   .hero{padding:48px 20px 40px}
+
   .section{padding:40px 20px}
+
   .profile-hero{grid-template-columns:1fr;text-align:center}
+
   .profile-stats{justify-content:center}
+
   .form-row{grid-template-columns:1fr}
+
   .add-track-form{grid-template-columns:1fr}
+
   .avatar-picker-grid{grid-template-columns:repeat(4,1fr)}
+
 }
-.catalog-row{display:flex;align-items:center;gap:12px;padding:10px 16px;border-bottom:1px solid var(--border);transition:background .15s;cursor:default}
+
+
+/* -- CATALOG BROWSER -- */
+.catalog-row{display:flex;align-items:center;gap:12px;padding:10px 16px;border-bottom:1px solid var(--border);transition:background .15s}
 .catalog-row:hover{background:var(--card2)}
 .catalog-row-info{flex:1;min-width:0}
 .catalog-row-title{font-size:.88rem;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .catalog-row-meta{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
-.catalog-add-btn{background:none;border:1px solid var(--border);color:var(--gold);font-family:'Space Mono',monospace;font-size:.7rem;padding:4px 10px;cursor:pointer;transition:all .2s;flex-shrink:0}
+.catalog-add-btn{background:none;border:1px solid var(--border);color:var(--gold);font-family:'Space Mono',monospace;font-size:.7rem;padding:4px 10px;cursor:pointer;transition:all .2s;flex-shrink:0;white-space:nowrap}
 .catalog-add-btn:hover{background:var(--gold);color:var(--black);border-color:var(--gold)}
-.catalog-add-btn.added{border-color:var(--green);color:var(--green)}
-@media(max-width:768px){#view-playlists .section>div[style*="grid"]{grid-template-columns:1fr!important}}
+.catalog-add-btn.added{border-color:var(--green);color:var(--green);cursor:default}
+.nav-back-btn{text-decoration:none;font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.1em;padding:7px 16px;text-transform:uppercase;border:1px solid var(--border);color:var(--muted);transition:all .2s}
+.nav-back-btn:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-dim)}
+@media(max-width:768px){.playlist-two-col{grid-template-columns:1fr!important}}
+
 </style>
+
 </head>
+
 <body>
 
+
+
 <nav class="nav">
-  <a href="https://hellotexasrecords.com" style="text-decoration:none">
+
+  <a href="https://hellotexasrecords.com" style="text-decoration:none;display:flex;flex-direction:column;line-height:1">
+
     <div class="nav-logo-main">Hello Texas Records</div>
+
     <div class="nav-logo-sub">Fan Portal</div>
-  </a>
-  <div class="nav-right" id="nav-right">
-    <button class="nav-btn" onclick="showView('home')">Home</button>
-    <button class="nav-btn" id="nav-profile-btn" style="display:none" onclick="showView('profile')">My Profile</button>
-    <button class="nav-btn" id="nav-admin-btn" style="display:none" onclick="showView('admin')">Admin</button>
-    <div class="nav-user" id="nav-user" style="display:none" onclick="showView('profile')">
-      <div class="nav-avatar" id="nav-avatar-el">ðŸ‘¤</div>
-      <span class="nav-name" id="nav-name-el"></span>
-    </div>
-    <button class="nav-btn primary" id="nav-join-btn" onclick="openAuthModal('register')">Join HTR</button>
-    <button class="nav-btn" id="nav-signin-btn" onclick="openAuthModal('login')">Sign In</button>
-    <button class="nav-btn" id="nav-signout-btn" style="display:none" onclick="doSignOut()">Sign Out</button>
-    <a href="https://hellotexasrecords.com" class="nav-btn" style="text-decoration:none">&#8592; HTR</a>
+
   </div>
+
+  <div class="nav-right" id="nav-right">
+
+    <button class="nav-btn" onclick="showView('home')">Home</button>
+
+    <button class="nav-btn" id="nav-profile-btn" style="display:none" onclick="showView('profile')">My Profile</button>
+
+    <button class="nav-btn" id="nav-admin-btn" style="display:none" onclick="showView('admin')">Admin</button>
+
+    <div class="nav-user" id="nav-user" style="display:none" onclick="showView('profile')">
+
+      <div class="nav-avatar" id="nav-avatar-el">ðŸ‘¤</div>
+
+      <span class="nav-name" id="nav-name-el"></span>
+
+    </div>
+
+    <button class="nav-btn primary" id="nav-join-btn" onclick="openAuthModal('register')">Join HTR</button>
+
+    <button class="nav-btn" id="nav-signin-btn" onclick="openAuthModal('login')">Sign In</button>
+
+    <button class="nav-btn" id="nav-signout-btn" style="display:none" onclick="doSignOut()">Sign Out</button>
+
+  </div>
+
 </nav>
 
+
+
 <div id="view-home" class="view active">
+
   <div class="hero">
+
     <div class="hero-bg"></div>
+
     <div class="hero-line"></div>
+
     <div class="eyebrow">Hello Texas Records Â· Fan Portal</div>
+
     <h1 class="hero-title">The<br><em>Insider</em></h1>
+
     <p class="hero-sub">You found it. The HTR Fan Portal is where the real fans live â€” vote on who gets developed, build playlists, drop suggestions, and earn your place in the community.</p>
+
     <div class="hero-actions" id="hero-actions">
+
       <button class="btn btn-gold" onclick="openAuthModal('register')">Join HTR Free</button>
+
       <button class="btn btn-outline" onclick="openAuthModal('login')">Sign In</button>
+
     </div>
+
   </div>
+
   <div class="section">
+
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px">
+
       <div style="background:var(--card);border:1px solid var(--border);padding:28px">
+
         <div style="font-size:2rem;margin-bottom:12px">ðŸ—³ï¸</div>
+
         <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.06em;margin-bottom:8px">Who's Next Vote</div>
+
         <div style="font-size:.85rem;color:var(--muted);line-height:1.6">Vote on which developing artist gets the full HTR treatment. Your vote counts â€” and your history follows you.</div>
+
       </div>
+
       <div style="background:var(--card);border:1px solid var(--border);padding:28px">
+
         <div style="font-size:2rem;margin-bottom:12px">ðŸŽµ</div>
+
         <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.06em;margin-bottom:8px">Playlist Builder</div>
+
         <div style="font-size:.85rem;color:var(--muted);line-height:1.6">Build and save custom playlists from the HTR catalog. Name them, arrange them, share them.</div>
+
       </div>
+
       <div style="background:var(--card);border:1px solid var(--border);padding:28px">
+
         <div style="font-size:2rem;margin-bottom:12px">ðŸ’¡</div>
+
         <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.06em;margin-bottom:8px">Suggestions</div>
+
         <div style="font-size:.85rem;color:var(--muted);line-height:1.6">Got an idea? Want a genre? Drop it here. HTR actually reads these.</div>
+
       </div>
+
       <div style="background:var(--card);border:1px solid var(--border);padding:28px">
+
         <div style="font-size:2rem;margin-bottom:12px">ðŸ†</div>
+
         <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.06em;margin-bottom:8px">Badges</div>
+
         <div style="font-size:.85rem;color:var(--muted);line-height:1.6">Earn badges for being active in the community. Some are automatic. Some are awarded by HTR personally.</div>
+
       </div>
+
     </div>
+
   </div>
+
 </div>
 
+
+
 <div id="view-profile" class="view">
+
   <div class="section">
+
     <div class="profile-hero" id="profile-hero">
+
       <div class="profile-avatar-big" id="profile-avatar-big">ðŸ‘¤</div>
+
       <div>
+
         <div class="profile-name" id="profile-name-el">â€”</div>
+
         <div class="profile-handle" id="profile-handle-el"></div>
+
         <div class="profile-joined" id="profile-joined-el"></div>
+
         <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
+
           <button class="nav-btn" onclick="openAvatarModal()">Change Avatar</button>
+
         </div>
+
       </div>
+
       <div class="profile-stats" id="profile-stats">
+
         <div><div class="stat-num" id="stat-votes">0</div><div class="stat-label">Votes</div></div>
+
         <div><div class="stat-num" id="stat-playlists">0</div><div class="stat-label">Playlists</div></div>
+
         <div><div class="stat-num" id="stat-suggestions">0</div><div class="stat-label">Ideas</div></div>
+
       </div>
+
     </div>
+
     <div style="margin-bottom:40px">
+
       <div class="section-header" style="padding:0;margin-bottom:20px;border:none">
+
         <div class="section-title">My <span>Badges</span></div>
+
       </div>
+
       <div class="badge-grid" id="badge-grid"></div>
+
     </div>
+
     <div class="tabs">
+
       <button class="tab-btn active" onclick="switchProfileTab('playlists',this)">Playlists</button>
+
       <button class="tab-btn" onclick="switchProfileTab('suggestions',this)">My Suggestions</button>
+
       <button class="tab-btn" onclick="switchProfileTab('history',this)">Vote History</button>
+
     </div>
+
     <div id="ptab-playlists">
+
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+
         <div style="font-family:'Space Mono',monospace;font-size:.65rem;color:var(--muted);letter-spacing:.1em">YOUR PLAYLISTS</div>
+
         <button class="nav-btn" onclick="showView('playlists')">+ New Playlist</button>
+
       </div>
+
       <div id="my-playlists-list"></div>
+
     </div>
+
     <div id="ptab-suggestions" style="display:none"><div id="my-suggestions-list"></div></div>
+
     <div id="ptab-history" style="display:none"><div id="vote-history-list"></div></div>
+
   </div>
+
 </div>
+
+
 
 <div id="view-playlists" class="view">
   <div class="section">
     <div class="section-header">
       <div>
         <div class="section-title">Playlist <span>Builder</span></div>
-        <div class="section-sub">Build your HTR soundtrack</div>
+        <div class="section-sub">Browse the HTR catalog and build your soundtrack</div>
       </div>
       <button class="btn btn-gold" style="padding:10px 24px;font-size:.9rem" onclick="savePlaylist()">Save Playlist</button>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start">
-      <!-- LEFT: Current playlist being built -->
+    <div class="playlist-two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start">
       <div>
         <div class="playlist-builder">
           <div class="playlist-toolbar">
@@ -290,7 +557,7 @@ textarea.form-input{resize:vertical;min-height:100px}
             <div style="font-family:'Space Mono',monospace;font-size:.62rem;color:var(--muted)" id="track-count">0 tracks</div>
           </div>
           <div class="track-list" id="track-list">
-            <div class="playlist-empty">Browse the catalog and hit + to add tracks.</div>
+            <div class="playlist-empty">Browse the catalog on the right and hit + to add tracks.</div>
           </div>
         </div>
         <div style="margin-top:32px">
@@ -300,16 +567,15 @@ textarea.form-input{resize:vertical;min-height:100px}
           <div id="all-playlists"></div>
         </div>
       </div>
-      <!-- RIGHT: HTR Catalog browser -->
-      <div>
+      <div style="position:sticky;top:80px">
         <div style="background:var(--card);border:1px solid var(--border);overflow:hidden">
-          <div style="padding:14px 16px;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:center">
-            <input class="form-input" id="catalog-search" placeholder="Search songs, artists, albums..." style="padding:8px 12px;flex:1" oninput="filterCatalog()">
-            <select class="form-input" id="catalog-artist-filter" style="padding:8px 12px;width:auto;min-width:140px" onchange="filterCatalog()">
+          <div style="padding:12px 16px;border-bottom:1px solid var(--border);display:flex;gap:8px;flex-wrap:wrap">
+            <input class="form-input" id="catalog-search" placeholder="Search songs or artists..." style="padding:8px 12px;flex:1;min-width:160px" oninput="filterCatalog()">
+            <select class="form-input" id="catalog-artist-filter" style="padding:8px 12px;min-width:140px" onchange="filterCatalog()">
               <option value="">All Artists</option>
             </select>
           </div>
-          <div id="catalog-list" style="max-height:560px;overflow-y:auto"></div>
+          <div id="catalog-list" style="max-height:520px;overflow-y:auto"></div>
         </div>
       </div>
     </div>
@@ -317,476 +583,1113 @@ textarea.form-input{resize:vertical;min-height:100px}
 </div>
 
 <div id="view-suggestions" class="view">
+
   <div class="section">
+
     <div class="section-header">
+
       <div>
+
         <div class="section-title">Suggestions <span>&amp;</span> Requests</div>
+
         <div class="section-sub">HTR reads every one</div>
+
       </div>
+
     </div>
+
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start">
+
       <div class="suggestion-form">
+
         <div style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.08em;color:var(--gold);margin-bottom:20px">Drop Your Idea</div>
+
         <div class="form-group">
+
           <label class="form-label">Type</label>
+
           <select class="form-input" id="sug-type">
+
             <option value="artist">New Artist / Genre</option>
+
             <option value="song">Song Request</option>
+
             <option value="feature">Site Feature</option>
+
             <option value="feedback">General Feedback</option>
+
             <option value="other">Other</option>
+
           </select>
+
         </div>
+
         <div class="form-group">
+
           <label class="form-label">Your Idea</label>
+
           <textarea class="form-input" id="sug-text" placeholder="Tell HTR what you're thinking..."></textarea>
+
         </div>
+
         <button class="form-submit" onclick="submitSuggestion()">Submit Idea</button>
+
         <div class="form-msg" id="sug-msg"></div>
+
       </div>
+
       <div>
+
         <div style="font-family:'Space Mono',monospace;font-size:.62rem;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px">Community Board</div>
+
         <div class="suggestion-list" id="suggestion-list"><div class="loading">Loading suggestions...</div></div>
+
       </div>
+
     </div>
+
   </div>
+
 </div>
+
+
 
 <div id="view-admin" class="view">
+
   <div class="section">
+
     <div class="section-header">
+
       <div>
+
         <div class="section-title">Admin <span>Dashboard</span></div>
+
         <div class="section-sub">Hello Texas Records</div>
+
       </div>
+
       <div style="font-family:'Space Mono',monospace;font-size:.62rem;color:var(--gold)">â— LIVE</div>
+
     </div>
+
     <div class="admin-grid" id="admin-stats"></div>
+
     <div class="tabs">
+
       <button class="tab-btn active" onclick="switchAdminTab('members',this)">Members</button>
+
       <button class="tab-btn" onclick="switchAdminTab('suggestions',this)">Suggestions</button>
+
       <button class="tab-btn" onclick="switchAdminTab('badges',this)">Award Badges</button>
+
     </div>
+
     <div id="atab-members">
+
       <table class="admin-table">
+
         <thead><tr><th>Member</th><th>Email</th><th>Joined</th><th>Badges</th><th>Activity</th><th>Actions</th></tr></thead>
+
         <tbody id="members-tbody"></tbody>
+
       </table>
+
     </div>
+
     <div id="atab-suggestions" style="display:none"><div id="admin-suggestions-list"></div></div>
+
     <div id="atab-badges" style="display:none"><div id="admin-badge-award"></div></div>
+
   </div>
+
 </div>
+
+
 
 <div class="overlay" id="auth-modal">
+
   <div class="modal">
+
     <div class="modal-header">
+
       <div class="modal-logo">HTR</div>
+
       <button class="modal-close" onclick="closeModal('auth-modal')">âœ•</button>
+
     </div>
+
     <div class="modal-body">
+
       <div class="modal-title" id="auth-modal-title">Join HTR</div>
+
       <p class="modal-sub">Free membership. Vote, build playlists, earn badges, be part of the label story.</p>
+
       <div class="modal-tabs">
+
         <button class="modal-tab active" id="auth-tab-register" onclick="switchAuthTab('register')">Join HTR</button>
+
         <button class="modal-tab" id="auth-tab-login" onclick="switchAuthTab('login')">Sign In</button>
+
       </div>
+
       <div id="auth-register">
+
         <div class="form-row">
+
           <div class="form-group">
+
             <label class="form-label">First Name</label>
+
             <input type="text" class="form-input" id="r-first" placeholder="First">
+
           </div>
+
           <div class="form-group">
+
             <label class="form-label">Last Name <span class="opt">(optional)</span></label>
+
             <input type="text" class="form-input" id="r-last" placeholder="Last">
+
           </div>
+
         </div>
+
         <div class="form-group">
+
           <label class="form-label">Email</label>
+
           <input type="email" class="form-input" id="r-email" placeholder="you@email.com">
+
         </div>
+
         <div class="form-group">
+
           <label class="form-label">Password</label>
+
           <input type="password" class="form-input" id="r-pw" placeholder="Create a password (6+ characters)">
+
         </div>
+
         <button class="form-submit" onclick="doRegister()">Join Hello Texas Records</button>
+
         <div class="or-divider">or</div>
+
         <button class="google-btn" onclick="doGoogleSignIn()">
+
           <svg class="google-icon" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+
           Continue with Google
+
         </button>
+
         <div class="form-msg" id="r-msg"></div>
+
       </div>
+
       <div id="auth-login" style="display:none">
+
         <div class="form-group">
+
           <label class="form-label">Email</label>
+
           <input type="email" class="form-input" id="l-email" placeholder="you@email.com">
+
         </div>
+
         <div class="form-group">
+
           <label class="form-label">Password</label>
+
           <input type="password" class="form-input" id="l-pw" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" onkeydown="if(event.key==='Enter')doLogin()">
+
         </div>
+
         <button class="form-submit" onclick="doLogin()">Sign In</button>
+
         <div class="or-divider">or</div>
+
         <button class="google-btn" onclick="doGoogleSignIn()">
+
           <svg class="google-icon" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+
           Continue with Google
+
         </button>
+
         <div class="form-msg" id="l-msg"></div>
+
       </div>
+
     </div>
+
   </div>
+
 </div>
+
+
 
 <div class="overlay" id="avatar-modal">
+
   <div class="modal">
+
     <div class="modal-header">
+
       <div class="modal-logo">HTR</div>
+
       <button class="modal-close" onclick="closeModal('avatar-modal')">âœ•</button>
+
     </div>
+
     <div class="modal-body">
+
       <div class="modal-title">Choose Your Avatar</div>
+
       <p class="modal-sub" style="margin-bottom:20px">Pick the one that fits your HTR vibe.</p>
+
       <div class="avatar-picker-grid" id="avatar-picker-grid"></div>
+
       <button class="form-submit" onclick="saveAvatar()">Save Avatar</button>
+
     </div>
+
   </div>
+
 </div>
 
+
+
 <script type="module">
+
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
+
 import { getFirestore, doc, getDoc, setDoc, updateDoc, collection, addDoc, getDocs, query, orderBy, limit, where, increment, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 
+
+
 const firebaseConfig = {
+
   apiKey: "AIzaSyDCEQYAA3uSJhEbBpxDT1c6xw3OfPvV4yA",
+
   authDomain: "htr-fans.firebaseapp.com",
+
   projectId: "htr-fans",
+
   storageBucket: "htr-fans.firebasestorage.app",
+
   messagingSenderId: "475143848447",
+
   appId: "1:475143848447:web:288a666aa5a4556d6627ca"
+
 };
 
+
+
 const app  = initializeApp(firebaseConfig);
+
 const auth = getAuth(app);
+
 const db   = getFirestore(app);
+
 const googleProvider = new GoogleAuthProvider();
 
-const HTR_CATALOG = [{id:"back_to_chapter_one",title:"Back to Chapter One",artist:"Avery Ivey",album:"A Soft Place to Fall...",genre:"Country / folk-pop / alt-rock"},{id:"sunday_morning_coffee",title:"Sunday Morning Coffee",artist:"Avery Ivey",album:"A Soft Place to Fall...",genre:"Country / folk-pop / alt-rock"},{id:"wildflower_sptf",title:"Wildflower",artist:"Avery Ivey",album:"A Soft Place to Fall...",genre:"Country / folk-pop / alt-rock"},{id:"dreams_i_packed_away_sptf",title:"Dreams I Packed Away",artist:"Avery Ivey",album:"A Soft Place to Fall...",genre:"Country / folk-pop / alt-rock"},{id:"always_the_almost_country",title:"Always the Almost",artist:"Avery Ivey",album:"A Soft Place to Fall...",genre:"Country / folk-pop / alt-rock"},{id:"the_long_way_home",title:"The Long Way Home",artist:"Avery Ivey",album:"A Soft Place to Fall...",genre:"Country / folk-pop / alt-rock"},{id:"backroads_after_rain",title:"Backroads After Rain",artist:"Avery Ivey",album:"A Soft Place to Fall...",genre:"Country / folk-pop / alt-rock"},{id:"text_from_god",title:"Text from God",artist:"Avery Ivey",album:"A Soft Place to Fall...",genre:"Country / folk-pop / alt-rock"},{id:"two_cups",title:"Two Cups",artist:"Avery Ivey",album:"A Soft Place to Fall...",genre:"Country / folk-pop / alt-rock"},{id:"i_still_save_it",title:"I Still Save It",artist:"Avery Ivey",album:"A Soft Place to Fall...",genre:"Country / folk-pop / alt-rock"},{id:"a_soft_place_to_fall",title:"A Soft Place to Fall",artist:"Avery Ivey",album:"A Soft Place to Fall...",genre:"Country / folk-pop / alt-rock"},{id:"lookin_okay_country",title:"Lookin' Okay",artist:"Avery Ivey",album:"A Soft Place to Fall...",genre:"Country / folk-pop / alt-rock"},{id:"tonight_it_belongs_to_me",title:"Tonight It Belongs to Me",artist:"Avery Ivey",album:"Wildflower Soundtrack",genre:"Country / folk-pop / alt-rock"},{id:"brand_new_me",title:"Brand New Me",artist:"Avery Ivey",album:"Wildflower Soundtrack",genre:"Country / folk-pop / alt-rock"},{id:"almost_loved_you",title:"Almost Loved You",artist:"Avery Ivey",album:"Wildflower Soundtrack",genre:"Country / folk-pop / alt-rock"},{id:"loud_enough",title:"Loud Enough",artist:"Avery Ivey",album:"Wildflower Soundtrack",genre:"Country / folk-pop / alt-rock"},{id:"somewhere_in_the_middle_wf",title:"Somewhere in the Middle",artist:"Avery Ivey",album:"Wildflower Soundtrack",genre:"Country / folk-pop / alt-rock"},{id:"wildflower_acoustic",title:"Wildflower (Acoustic)",artist:"Avery Ivey",album:"Wildflower Soundtrack",genre:"Country / folk-pop / alt-rock"},{id:"lookin_ok_wf",title:"Lookin' OK",artist:"Avery Ivey",album:"Wildflower Soundtrack",genre:"Country / folk-pop / alt-rock"},{id:"removing_the_rear_view",title:"Removing the Rear View",artist:"Ivey Wilder",album:"Singles",genre:"Country / folk-pop / alt-rock"},{id:"burn_it_down",title:"Burn It Down",artist:"Avery Ivey",album:"Somewhere in the Middle",genre:"Country / folk-pop / alt-rock"},{id:"tomorrow_never_comes",title:"Tomorrow Never Comes",artist:"Ivey Wilder",album:"Singles",genre:"Country / folk-pop / alt-rock"},{id:"just_this_once",title:"Just This Once",artist:"Daniel Kincaid",album:"Running Out of Reasons",genre:"Soft rock / adult contemporary"},{id:"running_out_of_reasons",title:"Running Out of Reasons",artist:"Daniel Kincaid",album:"Running Out of Reasons",genre:"Soft rock / adult contemporary"},{id:"every_little_maybe",title:"Every Little Maybe",artist:"Daniel Kincaid",album:"Running Out of Reasons",genre:"Soft rock / adult contemporary"},{id:"i_was_a_song",title:"I Was a Song",artist:"Daniel Kincaid",album:"Running Out of Reasons",genre:"Soft rock / adult contemporary"},{id:"already_gone",title:"Already Gone",artist:"Daniel Kincaid",album:"Running Out of Reasons",genre:"Soft rock / adult contemporary"},{id:"running_out_of_reasons_acoustic",title:"Running Out of Reasons (Acoustic)",artist:"Daniel Kincaid",album:"Running Out of Reasons Acoustic",genre:"Soft rock / adult contemporary"},{id:"every_little_maybe_acoustic",title:"Every Little Maybe (Acoustic)",artist:"Daniel Kincaid",album:"Running Out of Reasons Acoustic",genre:"Soft rock / adult contemporary"},{id:"i_was_a_song_acoustic",title:"I Was a Song (Acoustic)",artist:"Daniel Kincaid",album:"Running Out of Reasons Acoustic",genre:"Soft rock / adult contemporary"},{id:"already_gone_acoustic",title:"Already Gone (Acoustic)",artist:"Daniel Kincaid",album:"Running Out of Reasons Acoustic",genre:"Soft rock / adult contemporary"},{id:"just_this_once_acoustic",title:"Just This Once (Acoustic)",artist:"Daniel Kincaid",album:"Running Out of Reasons Acoustic",genre:"Soft rock / adult contemporary"},{id:"that_texas_sound",title:"That Texas Sound",artist:"Hello Texas",album:"That Texas Sound",genre:"Texas country / Southern rock"},{id:"same_damn_band",title:"Same Damn Band",artist:"Hello Texas",album:"That Texas Sound",genre:"Texas country / Southern rock"},{id:"bullets_on_the_bible",title:"Bullets on the Bible",artist:"Hello Texas",album:"That Texas Sound",genre:"Texas country / Southern rock"},{id:"fade_out",title:"Fade Out",artist:"Hello Texas",album:"That Texas Sound",genre:"Texas country / Southern rock"},{id:"five_hours_eight_minutes",title:"5 Hours 8 Minutes",artist:"Hello Texas",album:"That Texas Sound",genre:"Texas country / Southern rock"},{id:"silence_dont_scare_me",title:"Silence Don't Scare Me Anymore",artist:"Hello Texas",album:"That Texas Sound",genre:"Texas country / Southern rock"},{id:"happily_ever_after",title:"Happily Ever After",artist:"Hello Texas",album:"That Texas Sound",genre:"Texas country / Southern rock"},{id:"good_intentions",title:"Good Intentions",artist:"Hello Texas",album:"Messin' Round",genre:"Texas country / Southern rock"},{id:"this_booze_is_broken",title:"This Booze is Broken",artist:"Hello Texas",album:"Messin' Round",genre:"Texas country / Southern rock"},{id:"dancing_through_my_dreams",title:"Dancing Through My Dreams",artist:"Hello Texas",album:"Day To Day (The Lost Tapes)",genre:"Texas country / Southern rock"},{id:"no_rules_tonight",title:"No Rules Tonight",artist:"Night Shift",album:"No Rules Tonight",genre:"Disco-rock / party anthem pop"},{id:"turn_me_up",title:"Turn Me Up",artist:"Night Shift",album:"No Rules Tonight",genre:"Disco-rock / party anthem pop"},{id:"housefire",title:"Housefire",artist:"Night Shift",album:"No Rules Tonight",genre:"Disco-rock / party anthem pop"},{id:"dark_nights_of_the_soul",title:"Dark Nights of the Soul",artist:"Parsons Cross",album:"Out of the Darkness",genre:"Contemporary Christian / worship"},{id:"keep_the_son_in_your_eyes",title:"Keep the Son In Your Eyes",artist:"Parsons Cross",album:"Out of the Darkness",genre:"Contemporary Christian / worship"},{id:"touching_heaven",title:"Touching Heaven",artist:"Parsons Cross",album:"Out of the Darkness",genre:"Contemporary Christian / worship"},{id:"you_havent_moved",title:"You Haven't Moved",artist:"Parsons Cross",album:"Out of the Darkness",genre:"Contemporary Christian / worship"},{id:"thick_and_thin",title:"Thick & Thin",artist:"Parsons Cross",album:"Out of the Darkness",genre:"Contemporary Christian / worship"},{id:"the_waiting_room",title:"The Waiting Room",artist:"Parsons Cross",album:"Into the Light",genre:"Contemporary Christian / worship"},{id:"fear",title:"Fear",artist:"Parsons Cross",album:"Into the Light",genre:"Contemporary Christian / worship"},{id:"circle_the_wagons",title:"Circle the Wagons",artist:"Parsons Cross",album:"Into the Light",genre:"Contemporary Christian / worship"},{id:"lost_wheres_god",title:"Lost (Where's God)",artist:"Parsons Cross",album:"Into the Light",genre:"Contemporary Christian / worship"},{id:"twonights",title:"Two Nights",artist:"PULSE7",album:"Endless Echo",genre:"K-pop / dance-pop"},{id:"wedontmiss",title:"We Don't Miss",artist:"PULSE7",album:"Endless Echo",genre:"K-pop / dance-pop"},{id:"signallocked",title:"Signal Locked",artist:"PULSE7",album:"Endless Echo",genre:"K-pop / dance-pop"},{id:"no_control",title:"No Control",artist:"Rio Valencia",album:"Midnight Line",genre:"Latin pop / reggaeton fusion"},{id:"midnight_line",title:"Midnight Line",artist:"Rio Valencia",album:"Midnight Line",genre:"Latin pop / reggaeton fusion"},{id:"no_te_vas",title:"No Te Vas",artist:"Rio Valencia",album:"Midnight Line",genre:"Latin pop / reggaeton fusion"},{id:"sin_regresar",title:"Sin Regresar",artist:"Rio Valencia",album:"Midnight Line",genre:"Latin pop / reggaeton fusion"},{id:"every_song_is_you",title:"Every Song is You",artist:"Sawyer Price",album:"Unrushed",genre:"Texas country / Red Dirt"},{id:"slow_like_sunday",title:"Slow Like Sunday",artist:"Sawyer Price",album:"Unrushed",genre:"Texas country / Red Dirt"},{id:"its_not_the_end_of_the_world",title:"It's Not the End of the World",artist:"Sawyer Price",album:"Unrushed",genre:"Texas country / Red Dirt"},{id:"miles_between_mistakes",title:"Miles Between Mistakes",artist:"Sawyer Price",album:"Unrushed",genre:"Texas country / Red Dirt"},{id:"better_than_i_was",title:"Better Than I Was",artist:"Sawyer Price",album:"Unrushed",genre:"Texas country / Red Dirt"},{id:"all_my_life",title:"All My Life",artist:"Sawyer Price",album:"Unrushed",genre:"Texas country / Red Dirt"},{id:"lift_off_with_a_bang",title:"Lift Off (With a Bang)",artist:"Silent Oblivion",album:"Beginnings Past",genre:"Surf rock / retro pop-rock"},{id:"lip_gloss_ghost",title:"Lip Gloss Ghost",artist:"Silent Oblivion",album:"Beginnings Past",genre:"Surf rock / retro pop-rock"},{id:"cruisin",title:"Cruisin'",artist:"Silent Oblivion",album:"Beginnings Past",genre:"Surf rock / retro pop-rock"},{id:"surfin",title:"Surfin'",artist:"Silent Oblivion",album:"Beginnings Past",genre:"Surf rock / retro pop-rock"},{id:"thank_you_mom_and_dad",title:"Thank You Mom and Dad",artist:"Stephen Parsons",album:"Touches of the Heart",genre:"Christian country / worship storyteller"},{id:"run_to_his_heart",title:"Run to His Heart",artist:"Stephen Parsons",album:"Touches of the Heart",genre:"Christian country / worship storyteller"},{id:"wide_open_silence",title:"Wide Open Silence",artist:"Stephen Parsons",album:"Touches of the Heart",genre:"Christian country / worship storyteller"},{id:"love_for_eternity",title:"Love for Eternity",artist:"Stephen Parsons",album:"Touches of the Heart",genre:"Christian country / worship storyteller"},{id:"moms_love",title:"Mom's Love",artist:"Stephen Parsons",album:"Touches of the Heart",genre:"Christian country / worship storyteller"},{id:"done_with_the_damage",title:"Done With The Damage",artist:"Stephen Parsons",album:"Touches of the Heart",genre:"Christian country / worship storyteller"},{id:"my_daughters_heart",title:"My Daughter's Heart",artist:"Stephen Parsons",album:"Touches of the Heart",genre:"Christian country / worship storyteller"},{id:"rise_up",title:"Rise Up",artist:"Stephen Parsons",album:"Touches of the Heart",genre:"Christian country / worship storyteller"},{id:"calling_in_the_silence",title:"Calling in the Silence",artist:"Stephen Parsons",album:"Touches of the Heart",genre:"Christian country / worship storyteller"},{id:"montana_skies",title:"Montana Skies",artist:"Taylor Martin",album:"Northbound",genre:"1970s soft pop / folk-rock"},{id:"dont_need_permission",title:"Don't Need Permission",artist:"Vanta",album:"Signal",genre:"Funk rock / alternative rock"},{id:"cut_the_line",title:"Cut the Line",artist:"Vanta",album:"Signal",genre:"Funk rock / alternative rock"},{id:"dirty_signal",title:"Dirty Signal",artist:"Vanta",album:"Signal",genre:"Funk rock / alternative rock"},{id:"too_loud",title:"Too Loud",artist:"Vanta",album:"Signal",genre:"Funk rock / alternative rock"},{id:"too_late_to_behave",title:"Too Late To Behave",artist:"Vincent Cole",album:"The Cole Standard",genre:"Crooner / big band swing"},{id:"last_call_for_beautiful",title:"Last Call for Beautiful",artist:"Vincent Cole",album:"The Cole Standard",genre:"Crooner / big band swing"},{id:"trouble_in_a_black_dress",title:"Trouble in a Black Dress",artist:"Vincent Cole",album:"The Cole Standard",genre:"Crooner / big band swing"},{id:"slow_on_my_lips",title:"Slow on My Lips",artist:"Vincent Cole",album:"The Cole Standard",genre:"Crooner / big band swing"},{id:"the_last_song",title:"The Last Song",artist:"Vincent Cole",album:"The Cole Standard",genre:"Crooner / big band swing"},{id:"if_tonight_would_never_end",title:"If Tonight Would Never End",artist:"Vincent Cole",album:"The Cole Standard",genre:"Crooner / big band swing"},{id:"just_watch_me_walk_away",title:"Just Watch Me Walk Away",artist:"Vincent Cole",album:"The Cole Standard",genre:"Crooner / big band swing"},{id:"nightstrike-crash-and-burn",title:"Crash and Burn",artist:"NightStrike",album:"High Voltage",genre:"Hard Rock / Sleaze Rock"},{id:"nightstrike-the-storm-never-sleeps",title:"The Storm Never Sleeps",artist:"NightStrike",album:"High Voltage",genre:"Hard Rock / Sleaze Rock"},{id:"borrowed-whispers-still-falling-for-you",title:"Still Falling For You",artist:"Borrowed Whispers",album:"I Still Remember",genre:"80s Soft Rock"},{id:"ivey-wilder-main-character",title:"Main Character",artist:"Ivey Wilder",album:"...For Hard Truths",genre:"Alt. Rock / Hard Rock"},{id:"ivey-wilder-lookin-okay",title:"Lookin' Okay",artist:"Ivey Wilder",album:"...For Hard Truths",genre:"Alt. Rock / Hard Rock"},{id:"ivey-wilder-people-pleaser-rest-in-peace",title:"People Pleaser (Rest In Peace)",artist:"Ivey Wilder",album:"...For Hard Truths",genre:"Alt. Rock / Hard Rock"},{id:"ivey-wilder-chaos-comfort",title:"Chaos Comfort",artist:"Ivey Wilder",album:"...For Hard Truths",genre:"Alt. Rock / Hard Rock"},{id:"ivey-wilder-same-damn-thing",title:"Same Damn Thing",artist:"Ivey Wilder",album:"...For Hard Truths",genre:"Alt. Rock / Hard Rock"},{id:"ivey-wilder-always-the-almost",title:"Always the Almost",artist:"Ivey Wilder",album:"...For Hard Truths",genre:"Alt. Rock / Hard Rock"},{id:"ivey-wilder-burning-bridges",title:"Burning Bridges",artist:"Ivey Wilder",album:"...For Hard Truths",genre:"Alt. Rock / Hard Rock"},{id:"ivey-wilder-glass-houses",title:"Glass Houses",artist:"Ivey Wilder",album:"...For Hard Truths",genre:"Alt. Rock / Hard Rock"},{id:"ivey-wilder-static",title:"Static",artist:"Ivey Wilder",album:"...For Hard Truths",genre:"Alt. Rock / Hard Rock"},{id:"ivey-wilder-the-long-way-down",title:"The Long Way Down",artist:"Ivey Wilder",album:"...For Hard Truths",genre:"Alt. Rock / Hard Rock"},{id:"ivey-wilder-can-t-take-it-back",title:"Can't Take It Back",artist:"Ivey Wilder",album:"...For Hard Truths",genre:"Alt. Rock / Hard Rock"},{id:"ivey-wilder-almost-apologies",title:"Almost Apologies",artist:"Ivey Wilder",album:"...For Hard Truths",genre:"Alt. Rock / Hard Rock"},{id:"ivey-wilder-i-m-the-problem",title:"I'm the Problem",artist:"Ivey Wilder",album:"...For Hard Truths",genre:"Alt. Rock / Hard Rock"},{id:"ivey-wilder-one-more-bad-decision",title:"One More Bad Decision",artist:"Ivey Wilder",album:"...For Hard Truths",genre:"Alt. Rock / Hard Rock"},{id:"ivey-wilder-nobody-asked-me",title:"Nobody Asked Me",artist:"Ivey Wilder",album:"...For Hard Truths",genre:"Alt. Rock / Hard Rock"},{id:"ivey-wilder-hard-truths",title:"Hard Truths",artist:"Ivey Wilder",album:"...For Hard Truths",genre:"Alt. Rock / Hard Rock"},{id:"hello-texas-modern-man-grind",title:"Modern Man Grind",artist:"Hello Texas",album:"Messin' Round",genre:"Southern Rock"},{id:"stephen-parsons-just-move-on",title:"Just Move On",artist:"Stephen Parsons",album:"Touches of the Heart",genre:"Christian Country"},{id:"stephen-parsons-here-and-now",title:"Here and Now",artist:"Stephen Parsons",album:"Touches of the Heart",genre:"Christian Country"},{id:"brightons-yesterday-s-girl",title:"Yesterday's Girl",artist:"Brightons",album:"The Last Good Summer",genre:"50s/60s Pop"},{id:"brightons-boardwalk-heartbeat",title:"Boardwalk Heartbeat",artist:"Brightons",album:"The Last Good Summer",genre:"50s/60s Pop"},{id:"brightons-names-in-the-sand",title:"Names in the Sand",artist:"Brightons",album:"The Last Good Summer",genre:"50s/60s Pop"},{id:"brightons-nicole-in-the-rain",title:"Nicole in the Rain",artist:"Brightons",album:"The Last Good Summer",genre:"50s/60s Pop"},{id:"september-skies-one-move-at-a-time",title:"One Move at a Time",artist:"September Skies",album:"One Move at a Time",genre:"Alternative Rock"},{id:"september-skies-moment-to-live",title:"Moment to Live",artist:"September Skies",album:"One Move at a Time",genre:"Alternative Rock"},{id:"skyline-theory-better-days",title:"Better Days",artist:"Skyline Theory",album:"Bending Reality",genre:"EDM / progressive house"},{id:"skyline-theory-carry-me-through",title:"Carry Me Through",artist:"Skyline Theory",album:"Bending Reality",genre:"EDM / progressive house"},{id:"skyline-theory-chasing-the-feeling",title:"Chasing the Feeling",artist:"Skyline Theory",album:"Bending Reality",genre:"EDM / progressive house"},{id:"skyline-theory-falling-into-light",title:"Falling Into Light",artist:"Skyline Theory",album:"Bending Reality",genre:"EDM / progressive house"},{id:"skyline-theory-ghost-in-the-mirror",title:"Ghost in The Mirror",artist:"Skyline Theory",album:"Bending Reality",genre:"EDM / progressive house"},{id:"skyline-theory-hearts-like-these",title:"Hearts Like These",artist:"Skyline Theory",album:"Bending Reality",genre:"EDM / progressive house"},{id:"skyline-theory-let-it-run-wild",title:"Let It Run Wild",artist:"Skyline Theory",album:"Bending Reality",genre:"EDM / progressive house"},{id:"skyline-theory-open-roads-and-broken-nights",title:"Open Roads and Broken Nights",artist:"Skyline Theory",album:"Bending Reality",genre:"EDM / progressive house"},{id:"skyline-theory-something-changed",title:"Something Changed",artist:"Skyline Theory",album:"Bending Reality",genre:"EDM / progressive house"},{id:"skyline-theory-stay-until-the-sunrise",title:"Stay Until the Sunrise",artist:"Skyline Theory",album:"Bending Reality",genre:"EDM / progressive house"},{id:"skyline-theory-when-the-world-goes-quiet",title:"When the World Goes Quiet",artist:"Skyline Theory",album:"Bending Reality",genre:"EDM / progressive house"},{id:"skyline-theory-when-we-were-free",title:"When We Were Free",artist:"Skyline Theory",album:"Bending Reality",genre:"EDM / progressive house"},{id:"skyline-theory-break-the-pattern",title:"Break the Pattern",artist:"Skyline Theory",album:"Fade and Fire",genre:"EDM / progressive house"},{id:"skyline-theory-echoes-in-the-dark",title:"Echoes in the Dark",artist:"Skyline Theory",album:"Fade and Fire",genre:"EDM / progressive house"},{id:"skyline-theory-fading-lights",title:"Fading Lights",artist:"Skyline Theory",album:"Fade and Fire",genre:"EDM / progressive house"},{id:"skyline-theory-gravity-fails",title:"Gravity Fails",artist:"Skyline Theory",album:"Fade and Fire",genre:"EDM / progressive house"},{id:"skyline-theory-higher-than-air",title:"Higher Than Air",artist:"Skyline Theory",album:"Fade and Fire",genre:"EDM / progressive house"},{id:"skyline-theory-hold-the-moment",title:"Hold the Moment",artist:"Skyline Theory",album:"Fade and Fire",genre:"EDM / progressive house"},{id:"skyline-theory-no-way-back",title:"No Way Back",artist:"Skyline Theory",album:"Fade and Fire",genre:"EDM / progressive house"},{id:"skyline-theory-pressure-lines",title:"Pressure Lines",artist:"Skyline Theory",album:"Fade and Fire",genre:"EDM / progressive house"},{id:"skyline-theory-run-through-fire",title:"Run Through Fire",artist:"Skyline Theory",album:"Fade and Fire",genre:"EDM / progressive house"},{id:"skyline-theory-stay-in-the-sound",title:"Stay in the Sound",artist:"Skyline Theory",album:"Fade and Fire",genre:"EDM / progressive house"},{id:"skyline-theory-until-the-silence-ends",title:"Until the Silence Ends",artist:"Skyline Theory",album:"Fade and Fire",genre:"EDM / progressive house"},{id:"skyline-theory-we-dont-come-down",title:"We Don't Come Down",artist:"Skyline Theory",album:"Fade and Fire",genre:"EDM / progressive house"},{id:"borrowed-whispers-if-i-could-love-you-again",title:"If I Could Love You Again",artist:"Borrowed Whispers",album:"I Still Remember",genre:"70s-80s Soft Rock, Soul"},{id:"september-skies-life-in-the-light",title:"Life in the Light",artist:"September Skies",album:"One Move at a Time",genre:"Alternative Rock"},{id:"stephen-parsons-finally-alive",title:"Finally Alive",artist:"Stephen Parsons",album:"Touches of the Heart",genre:"Christian country / worship storyteller"},{id:"sawyer-price-burnin-gas",title:"Burnin' Gas",artist:"Sawyer Price",album:"Unrushed",genre:"Texas country / Red Dirt"},{id:"nightstrike-while-the-city-sleeps",title:"While The City Sleeps",artist:"NightStrike",album:"High Voltage",genre:"Hard Rock / Sleaze Rock"},{id:"september-skies-perfectly-imperfect",title:"Perfectly Imperfect",artist:"September Skies",album:"One Move at a Time",genre:"Alternative Rock"},{id:"vanta-say-it-again",title:"Say It Again",artist:"Vanta",album:"Eclipse",genre:"Funk rock / alternative rock"},{id:"september-skies-shine-for-all-time",title:"Shine For All Time",artist:"September Skies",album:"One Move at a Time",genre:"Alternative Rock"},{id:"night-shift-hearts-racing",title:"Hearts Racing",artist:"Night Shift",album:"No Rules Tonight",genre:"Disco-rock / party anthem pop"},{id:"sawyer-price-wish-that-i-was-here",title:"Wish That I Was Here",artist:"Sawyer Price",album:"Unrushed",genre:"Texas country / Red Dirt"},{id:"harlan-rhodes-pain",title:"PAIN",artist:"Harlan Rhodes",album:"Ashes and Rain",genre:"Blues Rock / Blues Country"}];
+
+
+const HTR_CATALOG = [
+  {id:"back_to_chapter_one",title:"Back to Chapter One",artist:"Avery Ivey",album:"A Soft Place to Fall...",genre:"Country / folk-pop / alt-rock"},
+  {id:"sunday_morning_coffee",title:"Sunday Morning Coffee",artist:"Avery Ivey",album:"A Soft Place to Fall...",genre:"Country / folk-pop / alt-rock"},
+  {id:"wildflower_sptf",title:"Wildflower",artist:"Avery Ivey",album:"A Soft Place to Fall...",genre:"Country / folk-pop / alt-rock"},
+  {id:"dreams_i_packed_away_sptf",title:"Dreams I Packed Away",artist:"Avery Ivey",album:"A Soft Place to Fall...",genre:"Country / folk-pop / alt-rock"},
+  {id:"always_the_almost_country",title:"Always the Almost",artist:"Avery Ivey",album:"A Soft Place to Fall...",genre:"Country / folk-pop / alt-rock"},
+  {id:"the_long_way_home",title:"The Long Way Home",artist:"Avery Ivey",album:"A Soft Place to Fall...",genre:"Country / folk-pop / alt-rock"},
+  {id:"backroads_after_rain",title:"Backroads After Rain",artist:"Avery Ivey",album:"A Soft Place to Fall...",genre:"Country / folk-pop / alt-rock"},
+  {id:"text_from_god",title:"Text from God",artist:"Avery Ivey",album:"A Soft Place to Fall...",genre:"Country / folk-pop / alt-rock"},
+  {id:"two_cups",title:"Two Cups",artist:"Avery Ivey",album:"A Soft Place to Fall...",genre:"Country / folk-pop / alt-rock"},
+  {id:"i_still_save_it",title:"I Still Save It",artist:"Avery Ivey",album:"A Soft Place to Fall...",genre:"Country / folk-pop / alt-rock"},
+  {id:"a_soft_place_to_fall",title:"A Soft Place to Fall",artist:"Avery Ivey",album:"A Soft Place to Fall...",genre:"Country / folk-pop / alt-rock"},
+  {id:"lookin_okay_country",title:"Lookin\' Okay",artist:"Avery Ivey",album:"A Soft Place to Fall...",genre:"Country / folk-pop / alt-rock"},
+  {id:"tonight_it_belongs_to_me",title:"Tonight It Belongs to Me",artist:"Avery Ivey",album:"Wildflower Soundtrack",genre:"Country / folk-pop / alt-rock"},
+  {id:"brand_new_me",title:"Brand New Me",artist:"Avery Ivey",album:"Wildflower Soundtrack",genre:"Country / folk-pop / alt-rock"},
+  {id:"almost_loved_you",title:"Almost Loved You",artist:"Avery Ivey",album:"Wildflower Soundtrack",genre:"Country / folk-pop / alt-rock"},
+  {id:"loud_enough",title:"Loud Enough",artist:"Avery Ivey",album:"Wildflower Soundtrack",genre:"Country / folk-pop / alt-rock"},
+  {id:"somewhere_in_the_middle_wf",title:"Somewhere in the Middle",artist:"Avery Ivey",album:"Wildflower Soundtrack",genre:"Country / folk-pop / alt-rock"},
+  {id:"wildflower_acoustic",title:"Wildflower (Acoustic)",artist:"Avery Ivey",album:"Wildflower Soundtrack",genre:"Country / folk-pop / alt-rock"},
+  {id:"lookin_ok_wf",title:"Lookin\' OK",artist:"Avery Ivey",album:"Wildflower Soundtrack",genre:"Country / folk-pop / alt-rock"},
+  {id:"removing_the_rear_view",title:"Removing the Rear View",artist:"Ivey Wilder",album:"Singles",genre:"Country / folk-pop / alt-rock"},
+  {id:"burn_it_down",title:"Burn It Down",artist:"Avery Ivey",album:"Somewhere in the Middle",genre:"Country / folk-pop / alt-rock"},
+  {id:"tomorrow_never_comes",title:"Tomorrow Never Comes",artist:"Ivey Wilder",album:"Singles",genre:"Country / folk-pop / alt-rock"},
+  {id:"just_this_once",title:"Just This Once",artist:"Daniel Kincaid",album:"Running Out of Reasons",genre:"Soft rock / adult contemporary"},
+  {id:"running_out_of_reasons",title:"Running Out of Reasons",artist:"Daniel Kincaid",album:"Running Out of Reasons",genre:"Soft rock / adult contemporary"},
+  {id:"every_little_maybe",title:"Every Little Maybe",artist:"Daniel Kincaid",album:"Running Out of Reasons",genre:"Soft rock / adult contemporary"},
+  {id:"i_was_a_song",title:"I Was a Song",artist:"Daniel Kincaid",album:"Running Out of Reasons",genre:"Soft rock / adult contemporary"},
+  {id:"already_gone",title:"Already Gone",artist:"Daniel Kincaid",album:"Running Out of Reasons",genre:"Soft rock / adult contemporary"},
+  {id:"running_out_of_reasons_acoustic",title:"Running Out of Reasons (Acoustic)",artist:"Daniel Kincaid",album:"Running Out of Reasons Acoustic",genre:"Soft rock / adult contemporary"},
+  {id:"every_little_maybe_acoustic",title:"Every Little Maybe (Acoustic)",artist:"Daniel Kincaid",album:"Running Out of Reasons Acoustic",genre:"Soft rock / adult contemporary"},
+  {id:"i_was_a_song_acoustic",title:"I Was a Song (Acoustic)",artist:"Daniel Kincaid",album:"Running Out of Reasons Acoustic",genre:"Soft rock / adult contemporary"},
+  {id:"already_gone_acoustic",title:"Already Gone (Acoustic)",artist:"Daniel Kincaid",album:"Running Out of Reasons Acoustic",genre:"Soft rock / adult contemporary"},
+  {id:"just_this_once_acoustic",title:"Just This Once (Acoustic)",artist:"Daniel Kincaid",album:"Running Out of Reasons Acoustic",genre:"Soft rock / adult contemporary"},
+  {id:"that_texas_sound",title:"That Texas Sound",artist:"Hello Texas",album:"That Texas Sound",genre:"Texas country / Southern rock"},
+  {id:"same_damn_band",title:"Same Damn Band",artist:"Hello Texas",album:"That Texas Sound",genre:"Texas country / Southern rock"},
+  {id:"bullets_on_the_bible",title:"Bullets on the Bible",artist:"Hello Texas",album:"That Texas Sound",genre:"Texas country / Southern rock"},
+  {id:"fade_out",title:"Fade Out",artist:"Hello Texas",album:"That Texas Sound",genre:"Texas country / Southern rock"},
+  {id:"five_hours_eight_minutes",title:"5 Hours 8 Minutes",artist:"Hello Texas",album:"That Texas Sound",genre:"Texas country / Southern rock"},
+  {id:"silence_dont_scare_me",title:"Silence Don\'t Scare Me Anymore",artist:"Hello Texas",album:"That Texas Sound",genre:"Texas country / Southern rock"},
+  {id:"happily_ever_after",title:"Happily Ever After",artist:"Hello Texas",album:"That Texas Sound",genre:"Texas country / Southern rock"},
+  {id:"good_intentions",title:"Good Intentions",artist:"Hello Texas",album:"Messin\' Round",genre:"Texas country / Southern rock"},
+  {id:"this_booze_is_broken",title:"This Booze is Broken",artist:"Hello Texas",album:"Messin\' Round",genre:"Texas country / Southern rock"},
+  {id:"dancing_through_my_dreams",title:"Dancing Through My Dreams",artist:"Hello Texas",album:"Day To Day (The Lost Tapes)",genre:"Texas country / Southern rock"},
+  {id:"no_rules_tonight",title:"No Rules Tonight",artist:"Night Shift",album:"No Rules Tonight",genre:"Disco-rock / party anthem pop"},
+  {id:"turn_me_up",title:"Turn Me Up",artist:"Night Shift",album:"No Rules Tonight",genre:"Disco-rock / party anthem pop"},
+  {id:"housefire",title:"Housefire",artist:"Night Shift",album:"No Rules Tonight",genre:"Disco-rock / party anthem pop"},
+  {id:"dark_nights_of_the_soul",title:"Dark Nights of the Soul",artist:"Parsons Cross",album:"Out of the Darkness",genre:"Contemporary Christian / worship"},
+  {id:"keep_the_son_in_your_eyes",title:"Keep the Son In Your Eyes",artist:"Parsons Cross",album:"Out of the Darkness",genre:"Contemporary Christian / worship"},
+  {id:"touching_heaven",title:"Touching Heaven",artist:"Parsons Cross",album:"Out of the Darkness",genre:"Contemporary Christian / worship"},
+  {id:"you_havent_moved",title:"You Haven\'t Moved",artist:"Parsons Cross",album:"Out of the Darkness",genre:"Contemporary Christian / worship"},
+  {id:"thick_and_thin",title:"Thick & Thin",artist:"Parsons Cross",album:"Out of the Darkness",genre:"Contemporary Christian / worship"},
+  {id:"the_waiting_room",title:"The Waiting Room",artist:"Parsons Cross",album:"Into the Light",genre:"Contemporary Christian / worship"},
+  {id:"fear",title:"Fear",artist:"Parsons Cross",album:"Into the Light",genre:"Contemporary Christian / worship"},
+  {id:"circle_the_wagons",title:"Circle the Wagons",artist:"Parsons Cross",album:"Into the Light",genre:"Contemporary Christian / worship"},
+  {id:"lost_wheres_god",title:"Lost (Where\'s God)",artist:"Parsons Cross",album:"Into the Light",genre:"Contemporary Christian / worship"},
+  {id:"twonights",title:"Two Nights",artist:"PULSE7",album:"Endless Echo",genre:"K-pop / dance-pop"},
+  {id:"wedontmiss",title:"We Don\'t Miss",artist:"PULSE7",album:"Endless Echo",genre:"K-pop / dance-pop"},
+  {id:"signallocked",title:"Signal Locked",artist:"PULSE7",album:"Endless Echo",genre:"K-pop / dance-pop"},
+  {id:"no_control",title:"No Control",artist:"Rio Valencia",album:"Midnight Line",genre:"Latin pop / reggaeton fusion"},
+  {id:"midnight_line",title:"Midnight Line",artist:"Rio Valencia",album:"Midnight Line",genre:"Latin pop / reggaeton fusion"},
+  {id:"no_te_vas",title:"No Te Vas",artist:"Rio Valencia",album:"Midnight Line",genre:"Latin pop / reggaeton fusion"},
+  {id:"sin_regresar",title:"Sin Regresar",artist:"Rio Valencia",album:"Midnight Line",genre:"Latin pop / reggaeton fusion"},
+  {id:"every_song_is_you",title:"Every Song is You",artist:"Sawyer Price",album:"Unrushed",genre:"Texas country / Red Dirt"},
+  {id:"slow_like_sunday",title:"Slow Like Sunday",artist:"Sawyer Price",album:"Unrushed",genre:"Texas country / Red Dirt"},
+  {id:"its_not_the_end_of_the_world",title:"It\'s Not the End of the World",artist:"Sawyer Price",album:"Unrushed",genre:"Texas country / Red Dirt"},
+  {id:"miles_between_mistakes",title:"Miles Between Mistakes",artist:"Sawyer Price",album:"Unrushed",genre:"Texas country / Red Dirt"},
+  {id:"better_than_i_was",title:"Better Than I Was",artist:"Sawyer Price",album:"Unrushed",genre:"Texas country / Red Dirt"},
+  {id:"all_my_life",title:"All My Life",artist:"Sawyer Price",album:"Unrushed",genre:"Texas country / Red Dirt"},
+  {id:"lift_off_with_a_bang",title:"Lift Off (With a Bang)",artist:"Silent Oblivion",album:"Beginnings Past",genre:"Surf rock / retro pop-rock"},
+  {id:"lip_gloss_ghost",title:"Lip Gloss Ghost",artist:"Silent Oblivion",album:"Beginnings Past",genre:"Surf rock / retro pop-rock"},
+  {id:"cruisin",title:"Cruisin\'",artist:"Silent Oblivion",album:"Beginnings Past",genre:"Surf rock / retro pop-rock"},
+  {id:"surfin",title:"Surfin\'",artist:"Silent Oblivion",album:"Beginnings Past",genre:"Surf rock / retro pop-rock"},
+  {id:"thank_you_mom_and_dad",title:"Thank You Mom and Dad",artist:"Stephen Parsons",album:"Touches of the Heart",genre:"Christian country / worship storyteller"},
+  {id:"run_to_his_heart",title:"Run to His Heart",artist:"Stephen Parsons",album:"Touches of the Heart",genre:"Christian country / worship storyteller"},
+  {id:"wide_open_silence",title:"Wide Open Silence",artist:"Stephen Parsons",album:"Touches of the Heart",genre:"Christian country / worship storyteller"},
+  {id:"love_for_eternity",title:"Love for Eternity",artist:"Stephen Parsons",album:"Touches of the Heart",genre:"Christian country / worship storyteller"},
+  {id:"moms_love",title:"Mom\'s Love",artist:"Stephen Parsons",album:"Touches of the Heart",genre:"Christian country / worship storyteller"},
+  {id:"done_with_the_damage",title:"Done With The Damage",artist:"Stephen Parsons",album:"Touches of the Heart",genre:"Christian country / worship storyteller"},
+  {id:"my_daughters_heart",title:"My Daughter\'s Heart",artist:"Stephen Parsons",album:"Touches of the Heart",genre:"Christian country / worship storyteller"},
+  {id:"rise_up",title:"Rise Up",artist:"Stephen Parsons",album:"Touches of the Heart",genre:"Christian country / worship storyteller"},
+  {id:"calling_in_the_silence",title:"Calling in the Silence",artist:"Stephen Parsons",album:"Touches of the Heart",genre:"Christian country / worship storyteller"},
+  {id:"montana_skies",title:"Montana Skies",artist:"Taylor Martin",album:"Northbound",genre:"1970s soft pop / folk-rock"},
+  {id:"dont_need_permission",title:"Don\'t Need Permission",artist:"Vanta",album:"Signal",genre:"Funk rock / alternative rock"},
+  {id:"cut_the_line",title:"Cut the Line",artist:"Vanta",album:"Signal",genre:"Funk rock / alternative rock"},
+  {id:"dirty_signal",title:"Dirty Signal",artist:"Vanta",album:"Signal",genre:"Funk rock / alternative rock"},
+  {id:"too_loud",title:"Too Loud",artist:"Vanta",album:"Signal",genre:"Funk rock / alternative rock"},
+  {id:"too_late_to_behave",title:"Too Late To Behave",artist:"Vincent Cole",album:"The Cole Standard",genre:"Crooner / big band swing"},
+  {id:"last_call_for_beautiful",title:"Last Call for Beautiful",artist:"Vincent Cole",album:"The Cole Standard",genre:"Crooner / big band swing"},
+  {id:"trouble_in_a_black_dress",title:"Trouble in a Black Dress",artist:"Vincent Cole",album:"The Cole Standard",genre:"Crooner / big band swing"},
+  {id:"slow_on_my_lips",title:"Slow on My Lips",artist:"Vincent Cole",album:"The Cole Standard",genre:"Crooner / big band swing"},
+  {id:"the_last_song",title:"The Last Song",artist:"Vincent Cole",album:"The Cole Standard",genre:"Crooner / big band swing"},
+  {id:"if_tonight_would_never_end",title:"If Tonight Would Never End",artist:"Vincent Cole",album:"The Cole Standard",genre:"Crooner / big band swing"},
+  {id:"just_watch_me_walk_away",title:"Just Watch Me Walk Away",artist:"Vincent Cole",album:"The Cole Standard",genre:"Crooner / big band swing"},
+  {id:"nightstrike-crash-and-burn",title:"Crash and Burn",artist:"NightStrike",album:"High Voltage",genre:"Hard Rock / Sleaze Rock"},
+  {id:"nightstrike-the-storm-never-sleeps",title:"The Storm Never Sleeps",artist:"NightStrike",album:"High Voltage",genre:"Hard Rock / Sleaze Rock"},
+  {id:"borrowed-whispers-still-falling-for-you",title:"Still Falling For You",artist:"Borrowed Whispers",album:"I Still Remember",genre:"80s Soft Rock"},
+  {id:"ivey-wilder-main-character",title:"Main Character",artist:"Ivey Wilder",album:"...For Hard Truths",genre:"Alt. Rock / Hard Rock"},
+  {id:"ivey-wilder-lookin-okay",title:"Lookin\' Okay",artist:"Ivey Wilder",album:"...For Hard Truths",genre:"Alt. Rock / Hard Rock"},
+  {id:"ivey-wilder-people-pleaser-rest-in-peace",title:"People Pleaser (Rest In Peace)",artist:"Ivey Wilder",album:"...For Hard Truths",genre:"Alt. Rock / Hard Rock"},
+  {id:"ivey-wilder-chaos-comfort",title:"Chaos Comfort",artist:"Ivey Wilder",album:"...For Hard Truths",genre:"Alt. Rock / Hard Rock"},
+  {id:"ivey-wilder-same-damn-thing",title:"Same Damn Thing",artist:"Ivey Wilder",album:"...For Hard Truths",genre:"Alt. Rock / Hard Rock"},
+  {id:"ivey-wilder-always-the-almost",title:"Always the Almost",artist:"Ivey Wilder",album:"...For Hard Truths",genre:"Alt. Rock / Hard Rock"},
+  {id:"ivey-wilder-burning-bridges",title:"Burning Bridges",artist:"Ivey Wilder",album:"...For Hard Truths",genre:"Alt. Rock / Hard Rock"},
+  {id:"ivey-wilder-glass-houses",title:"Glass Houses",artist:"Ivey Wilder",album:"...For Hard Truths",genre:"Alt. Rock / Hard Rock"},
+  {id:"ivey-wilder-static",title:"Static",artist:"Ivey Wilder",album:"...For Hard Truths",genre:"Alt. Rock / Hard Rock"},
+  {id:"ivey-wilder-the-long-way-down",title:"The Long Way Down",artist:"Ivey Wilder",album:"...For Hard Truths",genre:"Alt. Rock / Hard Rock"},
+  {id:"ivey-wilder-can-t-take-it-back",title:"Can\'t Take It Back",artist:"Ivey Wilder",album:"...For Hard Truths",genre:"Alt. Rock / Hard Rock"},
+  {id:"ivey-wilder-almost-apologies",title:"Almost Apologies",artist:"Ivey Wilder",album:"...For Hard Truths",genre:"Alt. Rock / Hard Rock"},
+  {id:"ivey-wilder-i-m-the-problem",title:"I\'m the Problem",artist:"Ivey Wilder",album:"...For Hard Truths",genre:"Alt. Rock / Hard Rock"},
+  {id:"ivey-wilder-one-more-bad-decision",title:"One More Bad Decision",artist:"Ivey Wilder",album:"...For Hard Truths",genre:"Alt. Rock / Hard Rock"},
+  {id:"ivey-wilder-nobody-asked-me",title:"Nobody Asked Me",artist:"Ivey Wilder",album:"...For Hard Truths",genre:"Alt. Rock / Hard Rock"},
+  {id:"ivey-wilder-hard-truths",title:"Hard Truths",artist:"Ivey Wilder",album:"...For Hard Truths",genre:"Alt. Rock / Hard Rock"},
+  {id:"hello-texas-modern-man-grind",title:"Modern Man Grind",artist:"Hello Texas",album:"Messin\' Round",genre:"Southern Rock"},
+  {id:"stephen-parsons-just-move-on",title:"Just Move On",artist:"Stephen Parsons",album:"Touches of the Heart",genre:"Christian Country"},
+  {id:"stephen-parsons-here-and-now",title:"Here and Now",artist:"Stephen Parsons",album:"Touches of the Heart",genre:"Christian Country"},
+  {id:"brightons-yesterday-s-girl",title:"Yesterday\'s Girl",artist:"Brightons",album:"The Last Good Summer",genre:"50s/60s Pop"},
+  {id:"brightons-boardwalk-heartbeat",title:"Boardwalk Heartbeat",artist:"Brightons",album:"The Last Good Summer",genre:"50s/60s Pop"},
+  {id:"brightons-names-in-the-sand",title:"Names in the Sand",artist:"Brightons",album:"The Last Good Summer",genre:"50s/60s Pop"},
+  {id:"brightons-nicole-in-the-rain",title:"Nicole in the Rain",artist:"Brightons",album:"The Last Good Summer",genre:"50s/60s Pop"},
+  {id:"september-skies-one-move-at-a-time",title:"One Move at a Time",artist:"September Skies",album:"One Move at a Time",genre:"Alternative Rock"},
+  {id:"september-skies-moment-to-live",title:"Moment to Live",artist:"September Skies",album:"One Move at a Time",genre:"Alternative Rock"},
+  {id:"skyline-theory-better-days",title:"Better Days",artist:"Skyline Theory",album:"Bending Reality",genre:"EDM / progressive house"},
+  {id:"skyline-theory-carry-me-through",title:"Carry Me Through",artist:"Skyline Theory",album:"Bending Reality",genre:"EDM / progressive house"},
+  {id:"skyline-theory-chasing-the-feeling",title:"Chasing the Feeling",artist:"Skyline Theory",album:"Bending Reality",genre:"EDM / progressive house"},
+  {id:"skyline-theory-falling-into-light",title:"Falling Into Light",artist:"Skyline Theory",album:"Bending Reality",genre:"EDM / progressive house"},
+  {id:"skyline-theory-ghost-in-the-mirror",title:"Ghost in The Mirror",artist:"Skyline Theory",album:"Bending Reality",genre:"EDM / progressive house"},
+  {id:"skyline-theory-hearts-like-these",title:"Hearts Like These",artist:"Skyline Theory",album:"Bending Reality",genre:"EDM / progressive house"},
+  {id:"skyline-theory-let-it-run-wild",title:"Let It Run Wild",artist:"Skyline Theory",album:"Bending Reality",genre:"EDM / progressive house"},
+  {id:"skyline-theory-open-roads-and-broken-nights",title:"Open Roads and Broken Nights",artist:"Skyline Theory",album:"Bending Reality",genre:"EDM / progressive house"},
+  {id:"skyline-theory-something-changed",title:"Something Changed",artist:"Skyline Theory",album:"Bending Reality",genre:"EDM / progressive house"},
+  {id:"skyline-theory-stay-until-the-sunrise",title:"Stay Until the Sunrise",artist:"Skyline Theory",album:"Bending Reality",genre:"EDM / progressive house"},
+  {id:"skyline-theory-when-the-world-goes-quiet",title:"When the World Goes Quiet",artist:"Skyline Theory",album:"Bending Reality",genre:"EDM / progressive house"},
+  {id:"skyline-theory-when-we-were-free",title:"When We Were Free",artist:"Skyline Theory",album:"Bending Reality",genre:"EDM / progressive house"},
+  {id:"skyline-theory-break-the-pattern",title:"Break the Pattern",artist:"Skyline Theory",album:"Fade and Fire",genre:"EDM / progressive house"},
+  {id:"skyline-theory-echoes-in-the-dark",title:"Echoes in the Dark",artist:"Skyline Theory",album:"Fade and Fire",genre:"EDM / progressive house"},
+  {id:"skyline-theory-fading-lights",title:"Fading Lights",artist:"Skyline Theory",album:"Fade and Fire",genre:"EDM / progressive house"},
+  {id:"skyline-theory-gravity-fails",title:"Gravity Fails",artist:"Skyline Theory",album:"Fade and Fire",genre:"EDM / progressive house"},
+  {id:"skyline-theory-higher-than-air",title:"Higher Than Air",artist:"Skyline Theory",album:"Fade and Fire",genre:"EDM / progressive house"},
+  {id:"skyline-theory-hold-the-moment",title:"Hold the Moment",artist:"Skyline Theory",album:"Fade and Fire",genre:"EDM / progressive house"},
+  {id:"skyline-theory-no-way-back",title:"No Way Back",artist:"Skyline Theory",album:"Fade and Fire",genre:"EDM / progressive house"},
+  {id:"skyline-theory-pressure-lines",title:"Pressure Lines",artist:"Skyline Theory",album:"Fade and Fire",genre:"EDM / progressive house"},
+  {id:"skyline-theory-run-through-fire",title:"Run Through Fire",artist:"Skyline Theory",album:"Fade and Fire",genre:"EDM / progressive house"},
+  {id:"skyline-theory-stay-in-the-sound",title:"Stay in the Sound",artist:"Skyline Theory",album:"Fade and Fire",genre:"EDM / progressive house"},
+  {id:"skyline-theory-until-the-silence-ends",title:"Until the Silence Ends",artist:"Skyline Theory",album:"Fade and Fire",genre:"EDM / progressive house"},
+  {id:"skyline-theory-we-dont-come-down",title:"We Don\'t Come Down",artist:"Skyline Theory",album:"Fade and Fire",genre:"EDM / progressive house"},
+  {id:"borrowed-whispers-if-i-could-love-you-again",title:"If I Could Love You Again",artist:"Borrowed Whispers",album:"I Still Remember",genre:"70s-80s Soft Rock, Soul"},
+  {id:"september-skies-life-in-the-light",title:"Life in the Light",artist:"September Skies",album:"One Move at a Time",genre:"Alternative Rock"},
+  {id:"stephen-parsons-finally-alive",title:"Finally Alive",artist:"Stephen Parsons",album:"Touches of the Heart",genre:"Christian country / worship storyteller"},
+  {id:"sawyer-price-burnin-gas",title:"Burnin\' Gas",artist:"Sawyer Price",album:"Unrushed",genre:"Texas country / Red Dirt"},
+  {id:"nightstrike-while-the-city-sleeps",title:"While The City Sleeps",artist:"NightStrike",album:"High Voltage",genre:"Hard Rock / Sleaze Rock"},
+  {id:"september-skies-perfectly-imperfect",title:"Perfectly Imperfect",artist:"September Skies",album:"One Move at a Time",genre:"Alternative Rock"},
+  {id:"vanta-say-it-again",title:"Say It Again",artist:"Vanta",album:"Eclipse",genre:"Funk rock / alternative rock"},
+  {id:"september-skies-shine-for-all-time",title:"Shine For All Time",artist:"September Skies",album:"One Move at a Time",genre:"Alternative Rock"},
+  {id:"night-shift-hearts-racing",title:"Hearts Racing",artist:"Night Shift",album:"No Rules Tonight",genre:"Disco-rock / party anthem pop"},
+  {id:"sawyer-price-wish-that-i-was-here",title:"Wish That I Was Here",artist:"Sawyer Price",album:"Unrushed",genre:"Texas country / Red Dirt"},
+  {id:"harlan-rhodes-pain",title:"PAIN",artist:"Harlan Rhodes",album:"Ashes and Rain",genre:"Blues Rock / Blues Country"}
+];
 
 const ADMIN_EMAILS = ['speters999@gmail.com'];
 
+
+
 const BADGES = [
-  { id:'early_member',   icon:'ðŸ¤ ', name:'Early Member',       desc:'One of the first 500 fans to join HTR',           auto:true,  manual:false },
-  { id:'first_vote',     icon:'ðŸ—³ï¸', name:'First Vote',          desc:"Cast your first Who's Next vote",                 auto:true,  manual:false },
-  { id:'playlist_build', icon:'ðŸŽµ', name:'Playlist Builder',    desc:'Created your first HTR playlist',                 auto:true,  manual:false },
-  { id:'voice_people',   icon:'ðŸ’¡', name:'Voice of the People', desc:'Submitted your first suggestion to HTR',          auto:true,  manual:false },
-  { id:'superfan',       icon:'ðŸ”¥', name:'Superfan',            desc:'Earned all four community badges',                auto:true,  manual:false },
-  { id:'top_voter',      icon:'ðŸ†', name:'Top Voter',           desc:'Voted in 3+ HTR polls',                           auto:true,  manual:false },
-  { id:'og',             icon:'â­', name:'OG',                  desc:'Personally awarded by HTR â€” old school fan',      auto:false, manual:true  },
-  { id:'insider',        icon:'ðŸŽ¸', name:'Insider',             desc:'VIP access â€” awarded by HTR',                     auto:false, manual:true  },
+  { id:'early_member',   icon:'&#x1F920;', name:'Early Member',       desc:'One of the first 500 fans to join HTR',      auto:true,  manual:false },
+  { id:'first_vote',     icon:'&#x1F5F3;', name:'First Vote',          desc:"Cast your first Who's Next vote",            auto:true,  manual:false },
+  { id:'playlist_build', icon:'&#x1F3B5;', name:'Playlist Builder',    desc:'Created your first HTR playlist',            auto:true,  manual:false },
+  { id:'voice_people',   icon:'&#x1F4A1;', name:'Voice of the People', desc:'Submitted your first suggestion to HTR',     auto:true,  manual:false },
+  { id:'superfan',       icon:'&#x1F525;', name:'Superfan',            desc:'Earned all four community badges',           auto:true,  manual:false },
+  { id:'top_voter',      icon:'&#x1F3C6;', name:'Top Voter',           desc:'Voted in 3+ HTR polls',                      auto:true,  manual:false },
+  { id:'og',             icon:'&#x2B50;',  name:'OG',                  desc:'Personally awarded by HTR',                  auto:false, manual:true  },
+  { id:'insider',        icon:'&#x1F3B8;', name:'Insider',             desc:'VIP access - awarded by HTR',                auto:false, manual:true  },
 ];
 
+
+
 const AVATARS = [
-  {id:'cowboy',e:'ðŸ¤ '},{id:'guitar',e:'ðŸŽ¸'},{id:'mic',e:'ðŸŽ¤'},
-  {id:'vinyl',e:'ðŸŽµ'},{id:'star',e:'â­'},{id:'fire',e:'ðŸ”¥'},
-  {id:'texas',e:'ðŸ¤˜'},{id:'notes',e:'ðŸŽ¶'},{id:'drum',e:'ðŸ¥'},
-  {id:'radio',e:'ðŸ“»'},{id:'lightning',e:'âš¡'},{id:'boots',e:'ðŸ‘¢'},
-  {id:'hat',e:'ðŸŽ©'},{id:'rose',e:'ðŸŒ¹'},{id:'skull',e:'ðŸ’€'},
-  {id:'wolf',e:'ðŸº'},{id:'eagle',e:'ðŸ¦…'},{id:'cactus',e:'ðŸŒµ'},
-  {id:'moon',e:'ðŸŒ™'},{id:'sun',e:'â˜€ï¸'},{id:'flame',e:'ðŸ•¯ï¸'},
-  {id:'diamond',e:'ðŸ’Ž'},{id:'crown',e:'ðŸ‘‘'},{id:'horse',e:'ðŸ´'},
+  {id:'cowboy',e:'&#x1F920;'},{id:'guitar',e:'&#x1F3B8;'},{id:'mic',e:'&#x1F3A4;'},
+  {id:'vinyl',e:'&#x1F3B5;'},{id:'star',e:'&#x2B50;'},{id:'fire',e:'&#x1F525;'},
+  {id:'texas',e:'&#x1F918;'},{id:'notes',e:'&#x1F3B6;'},{id:'drum',e:'&#x1F941;'},
+  {id:'radio',e:'&#x1F4FB;'},{id:'lightning',e:'&#x26A1;'},{id:'boots',e:'&#x1F462;'},
+  {id:'hat',e:'&#x1F3A9;'},{id:'rose',e:'&#x1F339;'},{id:'skull',e:'&#x1F480;'},
+  {id:'wolf',e:'&#x1F43A;'},{id:'eagle',e:'&#x1F985;'},{id:'cactus',e:'&#x1F335;'},
+  {id:'moon',e:'&#x1F319;'},{id:'sun',e:'&#x2600;'},{id:'flame',e:'&#x1F56F;'},
+  {id:'diamond',e:'&#x1F48E;'},{id:'crown',e:'&#x1F451;'},{id:'horse',e:'&#x1F434;'},
 ];
+
+
 
 let currentUser=null, userProfile=null, currentTracks=[], selectedAvatar=null;
 
+
+
 window.showView = function(id) {
+
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+
   document.getElementById('view-'+id).classList.add('active');
+
   if(id==='suggestions') loadSuggestions();
+
   if(id==='profile') loadProfile();
-  if(id==='playlists') loadPlaylists();
-  if(id==='playlists'){ loadPlaylists(); setTimeout(initCatalog,50); }
+
+  if(id==='playlists'){ loadPlaylists(); setTimeout(window.initCatalog,100); }
+
   if(id==='admin') loadAdmin();
+
   window.scrollTo(0,0);
+
 }
+
 window.openAuthModal = function(tab) { document.getElementById('auth-modal').classList.add('open'); switchAuthTab(tab); }
+
 window.closeModal = function(id) { document.getElementById(id).classList.remove('open'); }
+
 document.querySelectorAll('.overlay').forEach(o=>o.addEventListener('click',e=>{ if(e.target===o) o.classList.remove('open'); }));
+
 window.switchAuthTab = function(tab) {
+
   document.getElementById('auth-register').style.display=tab==='register'?'':'none';
+
   document.getElementById('auth-login').style.display=tab==='login'?'':'none';
+
   document.getElementById('auth-tab-register').classList.toggle('active',tab==='register');
+
   document.getElementById('auth-tab-login').classList.toggle('active',tab==='login');
+
   document.getElementById('auth-modal-title').textContent=tab==='register'?'Join HTR':'Welcome Back';
+
 }
+
 function setMsg(id,text,type){ const el=document.getElementById(id); if(!el) return; el.textContent=text; el.className='form-msg '+type; el.style.display=text?'':'none'; }
+
 function fmtDate(ts){ if(!ts) return 'Early Member'; const d=ts.toDate?ts.toDate():new Date(ts); return d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}); }
 
+
+
 window.doRegister = async function() {
+
   const first=document.getElementById('r-first').value.trim();
+
   const last=document.getElementById('r-last').value.trim();
+
   const email=document.getElementById('r-email').value.trim();
+
   const pw=document.getElementById('r-pw').value;
+
   if(!first) return setMsg('r-msg','First name is required.','err');
+
   if(!email) return setMsg('r-msg','Email is required.','err');
+
   if(pw.length<6) return setMsg('r-msg','Password must be 6+ characters.','err');
+
   try {
+
     const cred=await createUserWithEmailAndPassword(auth,email,pw);
+
     await createUserProfile(cred.user,first,last);
+
     closeModal('auth-modal');
+
   } catch(e){ setMsg('r-msg',friendlyError(e.code),'err'); }
+
 }
+
+
 
 window.doLogin = async function() {
+
   const email=document.getElementById('l-email').value.trim();
+
   const pw=document.getElementById('l-pw').value;
+
   if(!email||!pw) return setMsg('l-msg','Email and password required.','err');
+
   try { await signInWithEmailAndPassword(auth,email,pw); closeModal('auth-modal'); }
+
   catch(e){ setMsg('l-msg',friendlyError(e.code),'err'); }
+
 }
+
+
 
 window.doGoogleSignIn = async function() {
+
   try {
+
     const result=await signInWithPopup(auth,googleProvider);
+
     const user=result.user;
+
     const existing=await getDoc(doc(db,'users',user.uid));
+
     if(!existing.exists()){
+
       const parts=(user.displayName||'').split(' ');
+
       await createUserProfile(user,parts[0]||'Fan',parts.slice(1).join(' ')||'');
+
     }
+
     closeModal('auth-modal');
+
   } catch(e){ console.error(e); }
+
 }
+
+
 
 window.doSignOut = async function() {
+
   await signOut(auth); currentUser=null; userProfile=null;
+
   showView('home'); updateNav(null);
+
 }
 
+
+
 async function createUserProfile(user,firstName,lastName) {
+
   const memberCount=await getMemberCount();
+
   await setDoc(doc(db,'users',user.uid),{
+
     firstName,lastName,email:user.email,avatar:'cowboy',
+
     badges:memberCount<500?['early_member']:[],
+
     votedPolls:[],suggestionsCount:0,
+
     isAdmin:ADMIN_EMAILS.includes(user.email),
+
     joinedAt:serverTimestamp(),createdAt:serverTimestamp()
+
   });
+
 }
+
+
 
 async function getMemberCount(){ try{ const s=await getDocs(collection(db,'users')); return s.size; }catch{ return 999; } }
 
+
+
 function friendlyError(code){
+
   const map={'auth/email-already-in-use':'That email is already registered. Try signing in.',
+
     'auth/invalid-email':"That doesn't look like a valid email.",
+
     'auth/weak-password':'Password needs to be at least 6 characters.',
+
     'auth/user-not-found':'No account found for that email.',
+
     'auth/wrong-password':'Incorrect password.',
+
     'auth/invalid-credential':'Email or password is incorrect.',
+
     'auth/popup-closed-by-user':'Sign-in popup was closed.'};
+
   return map[code]||'Something went wrong. Try again.';
+
 }
+
+
 
 onAuthStateChanged(auth, async (user) => {
+
   currentUser=user;
+
   if(user){
+
     const snap=await getDoc(doc(db,'users',user.uid));
+
     userProfile=snap.exists()?snap.data():null;
+
     updateNav(user);
+
     const ha=document.getElementById('hero-actions');
+
     if(ha) ha.innerHTML=`<button class="btn btn-gold" onclick="showView('profile')">My Profile</button><button class="btn btn-outline" onclick="showView('playlists')">Build a Playlist</button>`;
+
   } else {
+
     updateNav(null);
+
     const ha=document.getElementById('hero-actions');
+
     if(ha) ha.innerHTML=`<button class="btn btn-gold" onclick="openAuthModal('register')">Join HTR Free</button><button class="btn btn-outline" onclick="openAuthModal('login')">Sign In</button>`;
+
   }
+
 });
 
+
+
 function updateNav(user){
+
   const on=!!user;
+
   document.getElementById('nav-join-btn').style.display=on?'none':'';
+
   document.getElementById('nav-signin-btn').style.display=on?'none':'';
+
   document.getElementById('nav-signout-btn').style.display=on?'':'none';
+
   document.getElementById('nav-user').style.display=on?'':'none';
+
   document.getElementById('nav-profile-btn').style.display=on?'':'none';
+
   if(user&&userProfile){
+
     document.getElementById('nav-name-el').textContent=userProfile.firstName;
+
     const av=AVATARS.find(a=>a.id===userProfile.avatar);
+
     document.getElementById('nav-avatar-el').textContent=av?av.e:'ðŸ‘¤';
+
     document.getElementById('nav-admin-btn').style.display=ADMIN_EMAILS.includes(user.email)?'':'none';
+
   }
+
 }
+
+
 
 async function loadProfile(){
+
   if(!currentUser||!userProfile) return;
+
   const p=userProfile;
+
   document.getElementById('profile-name-el').textContent=p.firstName+(p.lastName?' '+p.lastName:'');
+
   document.getElementById('profile-handle-el').textContent=p.email;
+
   document.getElementById('profile-joined-el').textContent='Member since '+fmtDate(p.joinedAt);
+
   const av=AVATARS.find(a=>a.id===p.avatar);
+
   document.getElementById('profile-avatar-big').textContent=av?av.e:'ðŸ‘¤';
+
   const plSnap=await getDocs(query(collection(db,'playlists'),where('userId','==',currentUser.uid)));
+
   const sugSnap=await getDocs(query(collection(db,'suggestions'),where('userId','==',currentUser.uid)));
+
   document.getElementById('stat-votes').textContent=(p.votedPolls||[]).length;
+
   document.getElementById('stat-playlists').textContent=plSnap.size;
+
   document.getElementById('stat-suggestions').textContent=sugSnap.size;
+
   renderBadges(p.badges||[]);
+
   const plDiv=document.getElementById('my-playlists-list');
+
   plDiv.innerHTML=plSnap.empty?`<div class="empty-state"><h3>No Playlists Yet</h3><p>Head to the Playlist Builder to create your first one.</p></div>`:plSnap.docs.map(d=>{const pl=d.data();return `<div style="background:var(--card);border:1px solid var(--border);padding:16px 20px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center"><div><div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.06em">${pl.title||'Untitled'}</div><div style="font-family:'Space Mono',monospace;font-size:.6rem;color:var(--muted)">${(pl.tracks||[]).length} tracks Â· ${fmtDate(pl.createdAt)}</div></div><span class="chip">${pl.tracks?.length||0} tracks</span></div>`;}).join('');
+
   const sugDiv=document.getElementById('my-suggestions-list');
+
   sugDiv.innerHTML=sugSnap.empty?`<div class="empty-state"><h3>No Suggestions Yet</h3><p>Head to Suggestions to drop an idea.</p></div>`:sugSnap.docs.map(d=>suggestionHTML(d.id,d.data(),false)).join('');
+
   const polls=p.votedPolls||[];
+
   document.getElementById('vote-history-list').innerHTML=polls.length?polls.map(v=>`<div style="background:var(--card);border:1px solid var(--border);padding:14px 20px;margin-bottom:8px;display:flex;justify-content:space-between"><div style="font-size:.88rem">${v.artistName||v.artistId}</div><div class="chip">${v.pollName||"Who's Next"}</div></div>`).join(''):`<div class="empty-state"><h3>No Votes Yet</h3><p>Head to the Who's Next page to cast your vote.</p></div>`;
+
 }
+
+
 
 function renderBadges(earned){
+
   document.getElementById('badge-grid').innerHTML=BADGES.map(b=>{
+
     const has=earned.includes(b.id);
+
     return `<div class="badge-card ${has?'earned':'locked'}"><span class="badge-icon">${b.icon}</span><div class="badge-name">${b.name}</div><div class="badge-desc">${b.desc}</div>${has?'<div class="badge-earned-tag">âœ“ Earned</div>':''}</div>`;
+
   }).join('');
+
 }
+
+
 
 window.switchProfileTab = function(tab,btn){
+
   ['playlists','suggestions','history'].forEach(t=>{ document.getElementById('ptab-'+t).style.display=t===tab?'':'none'; });
+
   document.querySelectorAll('#view-profile .tab-btn').forEach(b=>b.classList.remove('active'));
+
   if(btn) btn.classList.add('active');
+
 }
+
+
 
 window.openAvatarModal = function(){
+
   selectedAvatar=userProfile?.avatar||'cowboy';
+
   const grid=document.getElementById('avatar-picker-grid');
+
   grid.innerHTML=AVATARS.map(a=>{
+
     const sel=a.id===selectedAvatar;
+
     return `<div class="avatar-pick-opt${sel?' selected':''}" data-avid="${a.id}">${a.e}</div>`;
+
   }).join('');
+
   grid.onclick=function(e){
+
     const opt=e.target.closest('.avatar-pick-opt');
+
     if(!opt) return;
+
     selectedAvatar=opt.dataset.avid;
+
     grid.querySelectorAll('.avatar-pick-opt').forEach(el=>el.classList.remove('selected'));
+
     opt.classList.add('selected');
+
   };
+
   document.getElementById('avatar-modal').classList.add('open');
-}
-window.selectAvatar = function(id,el){ selectedAvatar=id; document.querySelectorAll('.avatar-pick-opt').forEach(e=>e.classList.remove('selected')); el.classList.add('selected'); }
-window.saveAvatar = async function(){
-  if(!currentUser||!selectedAvatar) return;
-  await updateDoc(doc(db,'users',currentUser.uid),{avatar:selectedAvatar});
-  userProfile.avatar=selectedAvatar;
-  const av=AVATARS.find(a=>a.id===selectedAvatar);
-  document.getElementById('profile-avatar-big').textContent=av?av.e:'ðŸ‘¤';
-  document.getElementById('nav-avatar-el').textContent=av?av.e:'ðŸ‘¤';
-  closeModal('avatar-modal');
+
 }
 
-window.addTrack = function(){
-  const name=document.getElementById('new-track-name').value.trim();
-  const artist=document.getElementById('new-track-artist').value.trim();
-  if(!name) return;
-  currentTracks.push({name,artist,id:Date.now()});
-  document.getElementById('new-track-name').value='';
-  document.getElementById('new-track-artist').value='';
+window.selectAvatar = function(id,el){ selectedAvatar=id; document.querySelectorAll('.avatar-pick-opt').forEach(e=>e.classList.remove('selected')); el.classList.add('selected'); }
+
+window.saveAvatar = async function(){
+
+  if(!currentUser||!selectedAvatar) return;
+
+  await updateDoc(doc(db,'users',currentUser.uid),{avatar:selectedAvatar});
+
+  userProfile.avatar=selectedAvatar;
+
+  const av=AVATARS.find(a=>a.id===selectedAvatar);
+
+  document.getElementById('profile-avatar-big').textContent=av?av.e:'ðŸ‘¤';
+
+  document.getElementById('nav-avatar-el').textContent=av?av.e:'ðŸ‘¤';
+
+  closeModal('avatar-modal');
+
+}
+
+
+
+window.addTrackFromCatalog = function(songId){
+  const s=HTR_CATALOG.find(x=>x.id===songId);
+  if(!s||currentTracks.find(t=>t.songId===songId)) return;
+  currentTracks.push({name:s.title,artist:s.artist,album:s.album,genre:s.genre,songId:s.id,id:Date.now()});
   renderTrackList();
+  const btn=document.querySelector('.catalog-add-btn[data-sid="'+songId+'"]');
+  if(btn){btn.textContent='Added';btn.classList.add('added');btn.disabled=true;}
 }
+window.addTrack = window.addTrackFromCatalog;
+
+window.filterCatalog = function(){
+  const q=(document.getElementById('catalog-search')?.value||'').toLowerCase();
+  const a=(document.getElementById('catalog-artist-filter')?.value||'');
+  const filtered=HTR_CATALOG.filter(s=>{
+    const matchQ=!q||s.title.toLowerCase().includes(q)||s.artist.toLowerCase().includes(q)||(s.album||'').toLowerCase().includes(q);
+    const matchA=!a||s.artist===a;
+    return matchQ&&matchA;
+  });
+  renderCatalog(filtered);
+}
+
+function renderCatalog(songs){
+  const el=document.getElementById('catalog-list');
+  if(!el) return;
+  if(!songs.length){el.innerHTML='<div style="padding:32px;text-align:center;color:var(--muted)">No songs found</div>';return;}
+  const addedIds=new Set(currentTracks.map(t=>t.songId).filter(Boolean));
+  el.innerHTML=songs.map(s=>{
+    const added=addedIds.has(s.id);
+    return '<div class="catalog-row">'
+      +'<div class="catalog-row-info">'
+      +'<div class="catalog-row-title">'+s.title+'</div>'
+      +'<div class="catalog-row-meta">'+s.artist+(s.album?' - '+s.album:'')+'</div>'
+      +'</div>'
+      +'<button class="catalog-add-btn'+(added?' added':'')+'" data-sid="'+s.id+'" '
+      +(added?'disabled ':'')+' onclick="addTrackFromCatalog(\''+s.id+'\')">'+( added?'Added':'+ Add')+'</button>'
+      +'</div>';
+  }).join('');
+}
+
+window.initCatalog = function(){
+  const sel=document.getElementById('catalog-artist-filter');
+  if(!sel||sel.options.length>1) return;
+  const artists=[...new Set(HTR_CATALOG.map(s=>s.artist))].sort();
+  artists.forEach(a=>{const o=document.createElement('option');o.value=a;o.textContent=a;sel.appendChild(o);});
+  renderCatalog(HTR_CATALOG);
+}
+
 window.removeTrack = function(id){ currentTracks=currentTracks.filter(t=>t.id!==id); renderTrackList(); }
+
 function renderTrackList(){
+
   document.getElementById('track-count').textContent=currentTracks.length+' track'+(currentTracks.length!==1?'s':'');
+
   document.getElementById('track-list').innerHTML=currentTracks.length?currentTracks.map((t,i)=>`<div class="track-row"><span class="track-num">${i+1}</span><div class="track-info"><div class="track-name">${t.name}</div>${t.artist?`<div class="track-artist">${t.artist}</div>`:''}</div><button class="track-remove" onclick="removeTrack(${t.id})">âœ•</button></div>`).join(''):'<div class="playlist-empty">No tracks yet. Add some below.</div>';
+
 }
+
 window.savePlaylist = async function(){
+
   if(!currentUser) return openAuthModal('login');
+
   const title=document.getElementById('playlist-title').value.trim()||'Untitled Playlist';
+
   if(!currentTracks.length) return;
+
   await addDoc(collection(db,'playlists'),{userId:currentUser.uid,userName:userProfile?.firstName||'Fan',title,tracks:currentTracks,createdAt:serverTimestamp()});
+
   await checkAndAwardBadge('playlist_build');
+
   currentTracks=[]; document.getElementById('playlist-title').value=''; renderTrackList(); loadPlaylists();
+
 }
+
 async function loadPlaylists(){
+
   const el=document.getElementById('all-playlists');
+
   if(!currentUser){ el.innerHTML=`<div class="empty-state"><h3>Sign In to See Your Playlists</h3></div>`; return; }
+
   const snap=await getDocs(query(collection(db,'playlists'),where('userId','==',currentUser.uid),orderBy('createdAt','desc')));
+
   el.innerHTML=snap.empty?`<div class="empty-state"><h3>No Playlists Yet</h3><p>Build one above.</p></div>`:snap.docs.map(d=>{const pl=d.data();return `<div style="background:var(--card);border:1px solid var(--border);padding:20px;margin-bottom:12px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.06em">${pl.title||'Untitled'}</div><span class="chip">${(pl.tracks||[]).length} tracks</span></div>${(pl.tracks||[]).map((t,i)=>`<div style="display:flex;gap:12px;padding:6px 0;border-bottom:1px solid var(--border);font-size:.82rem"><span style="color:var(--muted);font-family:'Space Mono',monospace;font-size:.6rem;width:20px">${i+1}</span><span>${t.name}</span>${t.artist?`<span style="color:var(--muted)">${t.artist}</span>`:''}</div>`).join('')}</div>`;}).join('');
+
 }
+
+
 
 window.submitSuggestion = async function(){
+
   if(!currentUser) return openAuthModal('login');
+
   const type=document.getElementById('sug-type').value;
+
   const text=document.getElementById('sug-text').value.trim();
+
   if(!text) return setMsg('sug-msg','Write something first.','err');
+
   await addDoc(collection(db,'suggestions'),{userId:currentUser.uid,userName:userProfile?.firstName+(userProfile?.lastName?' '+userProfile.lastName:''),type,text,upvotes:0,upvotedBy:[],createdAt:serverTimestamp()});
+
   await checkAndAwardBadge('voice_people');
+
   document.getElementById('sug-text').value='';
+
   setMsg('sug-msg','Suggestion submitted. HTR appreciates it.','ok');
+
   loadSuggestions();
+
 }
+
 async function loadSuggestions(){
+
   const el=document.getElementById('suggestion-list');
+
   el.innerHTML='<div class="loading">Loading...</div>';
+
   try{
+
     const snap=await getDocs(query(collection(db,'suggestions'),orderBy('upvotes','desc'),limit(30)));
+
     el.innerHTML=snap.empty?`<div class="empty-state"><h3>No Suggestions Yet</h3><p>Be the first to drop an idea.</p></div>`:snap.docs.map(d=>suggestionHTML(d.id,d.data(),true)).join('');
+
   }catch(e){ el.innerHTML='<div class="loading">Could not load suggestions.</div>'; }
+
 }
+
 function suggestionHTML(id,s,showUpvote){
+
   const typeMap={artist:'ðŸŽ¸ New Artist',song:'ðŸŽµ Song Request',feature:'ðŸ’» Feature',feedback:'ðŸ’¬ Feedback',other:'ðŸ’¡ Other'};
+
   const hasVoted=(s.upvotedBy||[]).includes(currentUser?.uid);
+
   return `<div class="suggestion-item"><div><div class="suggestion-type">${typeMap[s.type]||s.type}</div><div class="suggestion-text">${s.text}</div><div style="font-family:'Space Mono',monospace;font-size:.58rem;color:var(--muted);margin-top:6px">â€” ${s.userName||'Fan'} Â· ${fmtDate(s.createdAt)}</div></div>${showUpvote?`<button class="upvote-btn ${hasVoted?'voted':''}" onclick="upvoteSuggestion('${id}',this)">â–² ${s.upvotes||0}</button>`:''}</div>`;
+
 }
+
 window.upvoteSuggestion = async function(id,btn){
+
   if(!currentUser) return openAuthModal('login');
+
   const ref=doc(db,'suggestions',id);
+
   const snap=await getDoc(ref); const data=snap.data();
+
   if((data.upvotedBy||[]).includes(currentUser.uid)) return;
+
   await updateDoc(ref,{upvotes:increment(1),upvotedBy:[...(data.upvotedBy||[]),currentUser.uid]});
+
   btn.classList.add('voted'); btn.textContent='â–² '+(data.upvotes+1);
+
 }
+
+
 
 async function checkAndAwardBadge(badgeId){
+
   if(!currentUser||!userProfile) return;
+
   if((userProfile.badges||[]).includes(badgeId)) return;
+
   userProfile.badges=[...(userProfile.badges||[]),badgeId];
+
   const autoIds=BADGES.filter(b=>b.auto&&b.id!=='superfan').map(b=>b.id);
+
   if(autoIds.every(id=>userProfile.badges.includes(id))&&!userProfile.badges.includes('superfan')) userProfile.badges.push('superfan');
+
   await updateDoc(doc(db,'users',currentUser.uid),{badges:userProfile.badges});
+
 }
+
 window.awardManualBadge = async function(userId,badgeId){
+
   const ref=doc(db,'users',userId); const snap=await getDoc(ref);
+
   if(!snap.exists()) return;
+
   const current=snap.data().badges||[];
+
   if(current.includes(badgeId)) return;
+
   await updateDoc(ref,{badges:[...current,badgeId]}); loadAdmin();
+
 }
+
+
 
 async function loadAdmin(){
+
   if(!currentUser||!ADMIN_EMAILS.includes(currentUser.email)) return;
+
   const usersSnap=await getDocs(collection(db,'users'));
+
   const sugSnap=await getDocs(collection(db,'suggestions'));
+
   const plSnap=await getDocs(collection(db,'playlists'));
+
   document.getElementById('admin-stats').innerHTML=`
+
     <div class="admin-stat-card"><div class="admin-stat-num">${usersSnap.size}</div><div class="admin-stat-label">Total Members</div></div>
+
     <div class="admin-stat-card"><div class="admin-stat-num">${sugSnap.size}</div><div class="admin-stat-label">Suggestions</div></div>
+
     <div class="admin-stat-card"><div class="admin-stat-num">${plSnap.size}</div><div class="admin-stat-label">Playlists Built</div></div>
+
     <div class="admin-stat-card"><div class="admin-stat-num">${usersSnap.docs.filter(d=>(d.data().badges||[]).length>0).length}</div><div class="admin-stat-label">Members with Badges</div></div>`;
+
   document.getElementById('members-tbody').innerHTML=usersSnap.docs.map(d=>{
+
     const u=d.data();
+
     const name=u.firstName+(u.lastName?' '+u.lastName:'');
+
     const badges=(u.badges||[]).map(b=>{const bd=BADGES.find(x=>x.id===b);return bd?`<span class="badge-pill">${bd.icon} ${bd.name}</span>`:''}).join('');
+
     const awardBtns=BADGES.filter(b=>b.manual&&!(u.badges||[]).includes(b.id)).map(b=>`<button class="admin-award-btn" onclick="awardManualBadge('${d.id}','${b.id}')">${b.icon} Award ${b.name}</button>`).join(' ');
+
     return `<tr><td>${name}</td><td style="font-family:'Space Mono',monospace;font-size:.65rem;color:var(--muted)">${u.email}</td><td style="font-family:'Space Mono',monospace;font-size:.65rem;color:var(--muted)">${fmtDate(u.joinedAt)}</td><td>${badges||'<span style="color:var(--muted);font-size:.75rem">None yet</span>'}</td><td style="font-family:'Space Mono',monospace;font-size:.65rem">V:${(u.votedPolls||[]).length}</td><td>${awardBtns}</td></tr>`;
+
   }).join('');
+
   document.getElementById('admin-suggestions-list').innerHTML=sugSnap.docs.map(d=>suggestionHTML(d.id,d.data(),false)).join('');
+
   document.getElementById('admin-badge-award').innerHTML=`<p style="color:var(--muted);font-size:.85rem;margin-bottom:20px">Manual badges (â­ OG and ðŸŽ¸ Insider) are awarded from the Members table. Auto badges trigger automatically.</p><div class="badge-grid">${BADGES.map(b=>`<div class="badge-card earned"><span class="badge-icon">${b.icon}</span><div class="badge-name">${b.name}</div><div class="badge-desc">${b.desc}</div><div class="badge-earned-tag">${b.manual?'Manual â€” award from Members tab':'Auto-awarded'}</div></div>`).join('')}</div>`;
-}
-window.switchAdminTab = function(tab,btn){
-  ['members','suggestions','badges'].forEach(t=>{ document.getElementById('atab-'+t).style.display=t===tab?'':'none'; });
-  document.querySelectorAll('#view-admin .tab-btn').forEach(b=>b.classList.remove('active'));
-  if(btn) btn.classList.add('active');
+
 }
 
+window.switchAdminTab = function(tab,btn){
+
+  ['members','suggestions','badges'].forEach(t=>{ document.getElementById('atab-'+t).style.display=t===tab?'':'none'; });
+
+  document.querySelectorAll('#view-admin .tab-btn').forEach(b=>b.classList.remove('active'));
+
+  if(btn) btn.classList.add('active');
+
+}
+
+
+
 document.getElementById('nav-right').insertAdjacentHTML('afterbegin',`<button class="nav-btn" onclick="showView('playlists')">Playlists</button><button class="nav-btn" onclick="showView('suggestions')">Suggestions</button>`);
+
 </script>
+
 </body>
+
 </html>
+
+
 
