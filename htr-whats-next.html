@@ -382,10 +382,10 @@ async function sg(k,sh=true){ try{ const r=await window.storage.get(k,sh); retur
 async function ss(k,v,sh=true){ try{ await window.storage.set(k,JSON.stringify(v),sh); }catch(e){ console.warn(e); } }
 async function sdel(k,sh=true){ try{ await window.storage.delete(k,sh); }catch{} }
 
-// ── Init ───────────────────────────────────────
+// ── Init ─────────────────────────────────────
 
-// ── Restored admin functions ──────────────────────────────
-async window.deleteArtist = function(id){
+// ── Restored admin functions ────────────────
+window.deleteArtist = async function(id){
   const a=artists.find(x=>x.id===id);
   if(!a) return;
   if(!confirm(`Delete ${a.name}? This cannot be undone. Any votes cast for them will be removed.`)) return;
@@ -394,9 +394,7 @@ async window.deleteArtist = function(id){
   // clear any member vote for this artist
   for(const e in members){ if(members[e].votedFor===id) members[e].votedFor=null; }
   if(member?.votedFor===id) member.votedFor=null;
-  await ss('htr:artists',artists);
-  await ss('htr:votes',votes);
-  await ss('htr:members',members,false);
+  await window.FS.saveArtists(artists);
   renderAdminList(); renderTally(); renderMemberList(); renderVote();
 }
 
