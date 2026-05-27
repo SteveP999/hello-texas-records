@@ -320,41 +320,117 @@ body{background:var(--black);color:var(--text);font-family:'DM Sans',sans-serif;
   </div>
 </div>
 
+
 <script type="module">
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
-import { getFirestore, doc, getDoc, setDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+import { initializeApp }                                          from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+import { getAuth, signInWithEmailAndPassword,
+         createUserWithEmailAndPassword,
+         onAuthStateChanged, signOut }                            from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
+import { getFirestore, doc, getDoc, setDoc,
+         updateDoc, collection, getDocs,
+         onSnapshot, serverTimestamp,
+         increment, arrayUnion }                                  from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 
-const fbApp = initializeApp({
-  apiKey:"AIzaSyDCEQYAA3uSJhEbBpxDT1c6xw3OfPvV4yA",
-  authDomain:"htr-fans.firebaseapp.com",
-  projectId:"htr-fans",
-  storageBucket:"htr-fans.firebasestorage.app",
-  messagingSenderId:"475143848447",
-  appId:"1:475143848447:web:288a666aa5a4556d6627ca"
+// ── Firebase config ───────────────────────────────────────────────────────────
+const app  = initializeApp({
+  apiKey:            "AIzaSyDCEQYAA3uSJhEbBpxDT1c6xw3OfPvV4yA",
+  authDomain:        "htr-fans.firebaseapp.com",
+  projectId:         "htr-fans",
+  storageBucket:     "htr-fans.firebasestorage.app",
+  messagingSenderId: "475143848447",
+  appId:             "1:475143848447:web:288a666aa5a4556d6627ca"
 });
-const fbAuth = getAuth(fbApp);
-const fbDb   = getFirestore(fbApp);
+const auth = getAuth(app);
+const db   = getFirestore(app);
 
-window._fb = {
-  signIn: (e,p) => signInWithEmailAndPassword(fbAuth, e, p),
-  register: (e,p) => createUserWithEmailAndPassword(fbAuth, e, p),
-  signOut: () => signOut(fbAuth),
-  saveUser: (uid, data) => setDoc(doc(fbDb,'users',uid), data),
-  ready: true
+// ── Firestore helpers ────────────────────────────────────────────────────────
+// Expose to main script scope via window
+window.FS = {
+  // Artist config (admin-managed, shared across all users)
+  getArtists: async () => {
+    const snap = await getDoc(doc(db, 'whatsNext', 'artists'));
+    return snap.exists() ? snap.data().list || [] : [];
+  },
+  saveArtists: async (list) => {
+    await setDoc(doc(db, 'whatsNext', 'artists'), { list, updatedAt: serverTimestamp() });
+  },
+
+  // Votes (shared, real-time)
+  getVotes: async () => {
+    const snap = await getDoc(doc(db, 'whatsNext', 'votes'));
+    return snap.exists() ? snap.data() : {};
+  },
+  castVote: async (artistId, userId) => {
+    // Increment vote count
+    await updateDoc(doc(db, 'whatsNext', 'votes'), {
+      [artistId]: increment(1)
+    }).catch(async () => {
+      // Document may not exist yet
+      await setDoc(doc(db, 'whatsNext', 'votes'), { [artistId]: 1 });
+    });
+    // Record vote on user profile
+    await updateDoc(doc(db, 'users', userId), {
+      votedPolls: arrayUnion({ artistId, pollName: "Who's Next", votedAt: new Date().toISOString() })
+    }).catch(() => {});
+  },
+  resetVotes: async (artistIds) => {
+    const data = {};
+    artistIds.forEach(id => data[id] = 0);
+    await setDoc(doc(db, 'whatsNext', 'votes'), data);
+  },
+
+  // Check if user already voted
+  getUserVote: async (userId) => {
+    const snap = await getDoc(doc(db, 'users', userId));
+    if (!snap.exists()) return null;
+    const polls = snap.data().votedPolls || [];
+    const vote  = polls.find(p => p.pollName === "Who's Next");
+    return vote ? vote.artistId : null;
+  },
+
+  // Auth
+  signIn:   (e, p) => signInWithEmailAndPassword(auth, e, p),
+  register: (e, p) => createUserWithEmailAndPassword(auth, e, p),
+  signOut:  ()     => signOut(auth),
+  saveUser: (uid, data) => setDoc(doc(db, 'users', uid), data),
+
+  // Members list for admin
+  getMembers: async () => {
+    const snap = await getDocs(collection(db, 'users'));
+    const result = {};
+    snap.forEach(d => { result[d.data().email] = { ...d.data(), uid: d.id }; });
+    return result;
+  }
 };
 
-onAuthStateChanged(fbAuth, async (user) => {
+// ── Auth state → page ────────────────────────────────────────────────────────
+onAuthStateChanged(auth, async (user) => {
   if (user) {
-    const snap = await getDoc(doc(fbDb,'users',user.uid));
-    const p = snap.exists() ? snap.data() : {};
-    const name = (p.firstName||user.displayName||'Fan') + (p.lastName?' '+p.lastName:'');
-    if (window._onFBLogin) window._onFBLogin(user.email, name, user.uid);
+    const snap = await getDoc(doc(db, 'users', user.uid));
+    const p    = snap.exists() ? snap.data() : {};
+    const firstName = p.firstName || user.displayName || 'Fan';
+    const lastName  = p.lastName  || '';
+    // Load their existing vote
+    const polls = p.votedPolls || [];
+    const existingVote = polls.find(v => v.pollName === "Who's Next");
+
+    window._currentUser = {
+      uid:      user.uid,
+      email:    user.email,
+      firstName,
+      lastName,
+      name:     firstName + (lastName ? ' ' + lastName : ''),
+      votedFor: existingVote ? existingVote.artistId : null
+    };
+    if (window._onAuthReady) window._onAuthReady(window._currentUser);
   } else {
-    if (window._onFBLogout) window._onFBLogout();
+    window._currentUser = null;
+    if (window._onAuthReady) window._onAuthReady(null);
   }
 });
 </script>
+
+<script></script>
 
 <script>
 const ADMIN_PW = 'HTR2026';
@@ -382,22 +458,80 @@ async function ss(k,v,sh=true){ try{ await window.storage.set(k,JSON.stringify(v
 async function sdel(k,sh=true){ try{ await window.storage.delete(k,sh); }catch{} }
 
 // ── Init ───────────────────────────────────────
-async function init(){
-  const sa = await sg('htr:artists');
-  const sv = await sg('htr:votes');
-  const sm = await sg('htr:members',false);
-  const ss2= await sg('htr:session',false);
-  if(sa) artists=sa;
-  if(sv) votes=sv;
-  if(sm) members=sm;
-  // ensure vote keys
-  artists.forEach(a=>{ if(votes[a.id]===undefined) votes[a.id]=0; });
-  // restore session
-  if(ss2 && members[ss2.email]){
-    member={email:ss2.email,...members[ss2.email]};
-  }
+async function saveConfig(){
+  artists.forEach(a=>{
+    const ab=document.getElementById('aa-'+a.id);
+    const ag=document.getElementById('ag-'+a.id);
+    const au=document.getElementById('au-'+a.id);
+    if(ab) a.about=ab.value.trim();
+    if(ag) a.genre=ag.value.trim();
+    if(au) a.audioUrl=au.value.trim();
+  });
+  await window.FS.saveArtists(artists);
+  const m=document.getElementById('save-msg');
+  if(m){m.textContent='Saved to cloud.';setTimeout(()=>m.textContent='',3000);}
   renderVote();
-  renderProfile();
+}
+
+async function resetVotes(){
+  if(!confirm('Reset ALL votes? Cannot be undone.')) return;
+  const artistIds=artists.map(a=>a.id);
+  await window.FS.resetVotes(artistIds);
+  artists.forEach(a=>votes[a.id]=0);
+  if(member) member.votedFor=null;
+  renderVote(); renderTally();
+}
+
+async function renderMemberList(){
+  const cnt=document.getElementById('member-count');
+  const el=document.getElementById('member-list');
+  if(!cnt||!el) return;
+  if(!window.FS){el.innerHTML='<div>Loading...</div>';return;}
+  const mbrs=await window.FS.getMembers();
+  const emails=Object.keys(mbrs);
+  cnt.textContent=emails.length;
+  if(!emails.length){
+    el.innerHTML='<div class="srow"><span style="color:var(--muted)">No members yet.</span></div>';
+    return;
+  }
+  el.innerHTML=emails.map(e=>{
+    const m=mbrs[e];
+    const name=(m.firstName||'')+(m.lastName?' '+m.lastName:'');
+    const polls=m.votedPolls||[];
+    const wn=polls.find(p=>p.pollName==="Who's Next");
+    const va=wn?(artists.find(a=>a.id===wn.artistId)?.name||wn.artistId):'—';
+    const gold='color:var(--gold)'; const muted='color:var(--muted)';
+    return '<div class="srow"><div><div style="font-size:.9rem">'+name+'</div>'
+      +'<div style="font-family:'Space Mono',monospace;font-size:.6rem;'+muted+'">'+e+'</div></div>'
+      +'<div style="text-align:right;font-family:'Space Mono',monospace;font-size:.62rem;'+(wn?gold:muted)+'">'+va+'</div></div>';
+  }).join('');
+}
+
+async function doLogout(){
+  if(window.FS) await window.FS.signOut();
+  member=null;
+  renderVote(); renderProfile();
+}
+async function init(){
+  // Load from Firestore
+  if(window.FS) {
+    artists = await window.FS.getArtists();
+    votes   = await window.FS.getVotes();
+  }
+  artists.forEach(a=>{ if(votes[a.id]===undefined) votes[a.id]=0; });
+
+  // Auth handled by Firebase onAuthStateChanged
+  window._onAuthReady = function(user) {
+    member = user;
+    renderVote();
+    renderProfile();
+  };
+  // If auth already resolved
+  if(window._currentUser !== undefined) {
+    member = window._currentUser;
+    renderVote();
+    renderProfile();
+  }
 }
 
 // ── View switching ─────────────────────────────
@@ -495,12 +629,12 @@ function cardHTML(a){
 async function castVote(id){
   if(!member) return openModal('login');
   if(member.votedFor) return;
-  votes[id]=(votes[id]||0)+1;
-  members[member.email].votedFor=id;
-  member.votedFor=id;
-  await ss('htr:votes',votes);
-  await ss('htr:members',members,false);
-  renderVote();
+  try {
+    await window.FS.castVote(id, member.uid);
+    votes[id]=(votes[id]||0)+1;
+    member.votedFor=id;
+    renderVote();
+  } catch(e){ console.error('Vote error:',e); }
 }
 
 // ── PROFILE ───────────────────────────────────
@@ -541,6 +675,20 @@ function switchMTab(t){
   document.getElementById('mtab-reg').classList.toggle('active',t==='reg');
 }
 
+async function doLogin(){
+  const email=document.getElementById('l-email').value.trim();
+  const pw=document.getElementById('l-pw').value;
+  if(!email||!pw) return setMsg('l-msg','Email and password required.','err');
+  if(!window.FS) return setMsg('l-msg','Still connecting, try again.','err');
+  try {
+    await window.FS.signIn(email, pw);
+    closeModal('auth-modal');
+  } catch(e){
+    const msgs={'auth/invalid-credential':'Email or password is incorrect.','auth/user-not-found':'No account found.','auth/wrong-password':'Incorrect password.'};
+    setMsg('l-msg', msgs[e.code]||'Sign in failed.','err');
+  }
+}
+
 async function doRegister(){
   const first=document.getElementById('r-first').value.trim();
   const last=document.getElementById('r-last').value.trim();
@@ -549,14 +697,13 @@ async function doRegister(){
   if(!first) return setMsg('r-msg','First name required.','err');
   if(!email) return setMsg('r-msg','Email required.','err');
   if(pw.length<6) return setMsg('r-msg','Password must be 6+ characters.','err');
-  if(!window._fb) return setMsg('r-msg','Still loading, try again.','err');
+  if(!window.FS) return setMsg('r-msg','Still connecting, try again.','err');
   try {
-    const cred = await window._fb.register(email, pw);
-    await window._fb.saveUser(cred.user.uid, {
+    const cred = await window.FS.register(email, pw);
+    await window.FS.saveUser(cred.user.uid, {
       firstName:first, lastName:last||'', email,
       avatar:'cowboy', badges:[], votedPolls:[],
-      joinedAt:serverTimestamp?serverTimestamp():new Date().toISOString(),
-      createdAt:new Date().toISOString()
+      joinedAt:new Date().toISOString(), createdAt:new Date().toISOString()
     });
     closeModal('auth-modal');
   } catch(e) {
@@ -564,31 +711,4 @@ async function doRegister(){
     setMsg('r-msg', msgs[e.code]||'Registration failed.','err');
   }
 }
-
-async function doLogin(){
-  const email=document.getElementById('l-email').value.trim();
-  const pw=document.getElementById('l-pw').value;
-  if(!email||!pw) return setMsg('l-msg','Email and password required.','err');
-  if(!window._fb) return setMsg('l-msg','Still loading, try again.','err');
-  try {
-    await window._fb.signIn(email, pw);
-    closeModal('auth-modal');
-  } catch(e) {
-    const msgs={'auth/invalid-credential':'Email or password is incorrect.','auth/user-not-found':'No account found.','auth/wrong-password':'Incorrect password.'};
-    setMsg('l-msg', msgs[e.code]||'Sign in failed.','err');
-  }
-}
-
-
-window._onFBLogin = function(email, name, uid) {
-  member = {email, name: name.split(' ')[0], lastName: name.split(' ').slice(1).join(' '), uid};
-  renderVote(); renderProfile();
-  const badge = document.getElementById('badge-wrap');
-  if(badge) badge.innerHTML = '<span class="mbadge">&#x26A1; ' + name.split(' ')[0] + '</span>';
-  document.getElementById('vote-login-prompt') && (document.getElementById('vote-login-prompt').style.display='none');
-};
-window._onFBLogout = function() {
-  member = null;
-  renderVote(); renderProfile();
-};
 
