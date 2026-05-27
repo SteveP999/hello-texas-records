@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html lang="en">
 
@@ -110,7 +110,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 
 .avatar-opt.selected{border-color:var(--gold);box-shadow:0 0 0 3px rgba(200,168,75,.3)}
 
-.avatar-opt.selected::after{content:'âœ&#x201C;';position:absolute;bottom:2px;right:2px;background:var(--gold);color:var(--black);width:18px;height:18px;border-radius:50%;font-size:.65rem;display:flex;align-items:center;justify-content:center;font-weight:700}
+.avatar-opt.selected::after{content:'Ã¢Å“&#x201C;';position:absolute;bottom:2px;right:2px;background:var(--gold);color:var(--black);width:18px;height:18px;border-radius:50%;font-size:.65rem;display:flex;align-items:center;justify-content:center;font-weight:700}
 
 .profile-hero{background:linear-gradient(135deg,var(--card) 0%,var(--card2) 100%);border:1px solid var(--border);padding:40px;display:grid;grid-template-columns:auto 1fr auto;gap:32px;align-items:center;margin-bottom:24px}
 
@@ -423,7 +423,7 @@ textarea.form-input{resize:vertical;min-height:100px}
 
         <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.06em;margin-bottom:8px">Who's Next Vote</div>
 
-        <div style="font-size:.85rem;color:var(--muted);line-height:1.6">Vote on which developing artist gets the full HTR treatment. Your vote counts â€&#x201D; and your history follows you.</div>
+        <div style="font-size:.85rem;color:var(--muted);line-height:1.6">Vote on which developing artist gets the full HTR treatment. Your vote counts Ã¢â‚¬&#x201D; and your history follows you.</div>
 
       </div>
 
@@ -471,11 +471,11 @@ textarea.form-input{resize:vertical;min-height:100px}
 
     <div class="profile-hero" id="profile-hero">
 
-      <div class="profile-avatar-big" id="profile-avatar-big">ðŸ‘¤</div>
+      <div class="profile-avatar-big" id="profile-avatar-big">Ã°Å¸â€˜Â¤</div>
 
       <div>
 
-        <div class="profile-name" id="profile-name-el">â€&#x201D;</div>
+        <div class="profile-name" id="profile-name-el">Ã¢â‚¬&#x201D;</div>
 
         <div class="profile-handle" id="profile-handle-el"></div>
 
@@ -675,7 +675,7 @@ textarea.form-input{resize:vertical;min-height:100px}
 
       </div>
 
-      <div style="font-family:'Space Mono',monospace;font-size:.62rem;color:var(--gold)">â&mdash; LIVE</div>
+      <div style="font-family:'Space Mono',monospace;font-size:.62rem;color:var(--gold)">Ã¢&mdash;Â LIVE</div>
 
     </div>
 
@@ -721,7 +721,7 @@ textarea.form-input{resize:vertical;min-height:100px}
 
       <div class="modal-logo">HTR</div>
 
-      <button class="modal-close" onclick="closeModal('auth-modal')">âœ&bull;</button>
+      <button class="modal-close" onclick="closeModal('auth-modal')">Ã¢Å“&bull;</button>
 
     </div>
 
@@ -807,7 +807,7 @@ textarea.form-input{resize:vertical;min-height:100px}
 
           <label class="form-label">Password</label>
 
-          <input type="password" class="form-input" id="l-pw" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" onkeydown="if(event.key==='Enter')doLogin()">
+          <input type="password" class="form-input" id="l-pw" placeholder="Ã¢â‚¬Â¢Ã¢â‚¬Â¢Ã¢â‚¬Â¢Ã¢â‚¬Â¢Ã¢â‚¬Â¢Ã¢â‚¬Â¢Ã¢â‚¬Â¢Ã¢â‚¬Â¢" onkeydown="if(event.key==='Enter')doLogin()">
 
         </div>
 
@@ -843,7 +843,7 @@ textarea.form-input{resize:vertical;min-height:100px}
 
       <div class="modal-logo">HTR</div>
 
-      <button class="modal-close" onclick="closeModal('avatar-modal')">âœ&bull;</button>
+      <button class="modal-close" onclick="closeModal('avatar-modal')">Ã¢Å“&bull;</button>
 
     </div>
 
@@ -1318,7 +1318,7 @@ function updateNav(user){
 
     const av=AVATARS.find(a=>a.id===userProfile.avatar);
 
-    document.getElementById('nav-avatar-el').innerHTML=av?av.e:'ðŸ‘¤';
+    document.getElementById('nav-avatar-el').innerHTML=av?av.e:'Ã°Å¸â€˜Â¤';
 
     document.getElementById('nav-admin-btn').style.display=ADMIN_EMAILS.includes(user.email)?'':'none';
 
@@ -1342,7 +1342,7 @@ async function loadProfile(){
 
   const av=AVATARS.find(a=>a.id===p.avatar);
 
-  document.getElementById('profile-avatar-big').innerHTML=av?av.e:'ðŸ‘¤';
+  document.getElementById('profile-avatar-big').innerHTML=av?av.e:'Ã°Å¸â€˜Â¤';
 
   const plSnap=await getDocs(query(collection(db,'playlists'),where('userId','==',currentUser.uid)));
 
@@ -1442,9 +1442,9 @@ window.saveAvatar = async function(){
 
   const av=AVATARS.find(a=>a.id===selectedAvatar);
 
-  document.getElementById('profile-avatar-big').innerHTML=av?av.e:'ðŸ‘¤';
+  document.getElementById('profile-avatar-big').innerHTML=av?av.e:'Ã°Å¸â€˜Â¤';
 
-  document.getElementById('nav-avatar-el').innerHTML=av?av.e:'ðŸ‘¤';
+  document.getElementById('nav-avatar-el').innerHTML=av?av.e:'Ã°Å¸â€˜Â¤';
 
   closeModal('avatar-modal');
 
@@ -1556,7 +1556,7 @@ function renderTrackList(){
 
   document.getElementById('track-count').textContent=currentTracks.length+' track'+(currentTracks.length!==1?'s':'');
 
-  document.getElementById('track-list').innerHTML=currentTracks.length?currentTracks.map((t,i)=>`<div class="track-row"><span class="track-num">${i+1}</span><div class="track-info"><div class="track-name">${t.name}</div>${t.artist?`<div class="track-artist">${t.artist}</div>`:''}</div><button class="track-remove" onclick="removeTrack(${t.id})">âœ&bull;</button></div>`).join(''):'<div class="playlist-empty">No tracks yet. Add some below.</div>';
+  document.getElementById('track-list').innerHTML=currentTracks.length?currentTracks.map((t,i)=>`<div class="track-row"><span class="track-num">${i+1}</span><div class="track-info"><div class="track-name">${t.name}</div>${t.artist?`<div class="track-artist">${t.artist}</div>`:''}</div><button class="track-remove" onclick="removeTrack(${t.id})">Ã¢Å“&bull;</button></div>`).join(''):'<div class="playlist-empty">No tracks yet. Add some below.</div>';
 
 }
 
@@ -1732,11 +1732,11 @@ async function loadSuggestions(){
 
 function suggestionHTML(id,s,showUpvote){
 
-  const typeMap={artist:'ðŸŽ¸ New Artist',song:'ðŸŽµ Song Request',feature:'ðŸ&#x2019;» Feature',feedback:'ðŸ&#x2019;¬ Feedback',other:'ðŸ&#x2019;¡ Other'};
+  const typeMap={artist:'Ã°Å¸Å½Â¸ New Artist',song:'Ã°Å¸Å½Âµ Song Request',feature:'Ã°Å¸&#x2019;Â» Feature',feedback:'Ã°Å¸&#x2019;Â¬ Feedback',other:'Ã°Å¸&#x2019;Â¡ Other'};
 
   const hasVoted=(s.upvotedBy||[]).includes(currentUser?.uid);
 
-  return `<div class="suggestion-item"><div><div class="suggestion-type">${typeMap[s.type]||s.type}</div><div class="suggestion-text">${s.text}</div><div style="font-family:'Space Mono',monospace;font-size:.58rem;color:var(--muted);margin-top:6px">â€&#x201D; ${s.userName||'Fan'} &middot; ${fmtDate(s.createdAt)}</div></div>${showUpvote?`<button class="upvote-btn ${hasVoted?'voted':''}" onclick="upvoteSuggestion('${id}',this)">â&ndash;² ${s.upvotes||0}</button>`:''}</div>`;
+  return `<div class="suggestion-item"><div><div class="suggestion-type">${typeMap[s.type]||s.type}</div><div class="suggestion-text">${s.text}</div><div style="font-family:'Space Mono',monospace;font-size:.58rem;color:var(--muted);margin-top:6px">Ã¢â‚¬&#x201D; ${s.userName||'Fan'} &middot; ${fmtDate(s.createdAt)}</div></div>${showUpvote?`<button class="upvote-btn ${hasVoted?'voted':''}" onclick="upvoteSuggestion('${id}',this)">Ã¢&ndash;Â² ${s.upvotes||0}</button>`:''}</div>`;
 
 }
 
@@ -1752,7 +1752,7 @@ window.upvoteSuggestion = async function(id,btn){
 
   await updateDoc(ref,{upvotes:increment(1),upvotedBy:[...(data.upvotedBy||[]),currentUser.uid]});
 
-  btn.classList.add('voted'); btn.textContent='â&ndash;² '+(data.upvotes+1);
+  btn.classList.add('voted'); btn.textContent='Ã¢&ndash;Â² '+(data.upvotes+1);
 
 }
 
@@ -1826,7 +1826,7 @@ async function loadAdmin(){
 
   document.getElementById('admin-suggestions-list').innerHTML=sugSnap.docs.map(d=>suggestionHTML(d.id,d.data(),false)).join('');
 
-  document.getElementById('admin-badge-award').innerHTML=`<p style="color:var(--muted);font-size:.85rem;margin-bottom:20px">Manual badges (â­ OG and ðŸŽ¸ Insider) are awarded from the Members table. Auto badges trigger automatically.</p><div class="badge-grid">${BADGES.map(b=>`<div class="badge-card earned"><span class="badge-icon">${b.icon}</span><div class="badge-name">${b.name}</div><div class="badge-desc">${b.desc}</div><div class="badge-earned-tag">${b.manual?'Manual - award from Members tab':'Auto-awarded'}</div></div>`).join('')}</div>`;
+  document.getElementById('admin-badge-award').innerHTML=`<p style="color:var(--muted);font-size:.85rem;margin-bottom:20px">Manual badges (Ã¢Â­Â OG and Ã°Å¸Å½Â¸ Insider) are awarded from the Members table. Auto badges trigger automatically.</p><div class="badge-grid">${BADGES.map(b=>`<div class="badge-card earned"><span class="badge-icon">${b.icon}</span><div class="badge-name">${b.name}</div><div class="badge-desc">${b.desc}</div><div class="badge-earned-tag">${b.manual?'Manual - award from Members tab':'Auto-awarded'}</div></div>`).join('')}</div>`;
 
 }
 
@@ -1874,6 +1874,7 @@ document.getElementById('nav-right').insertAdjacentHTML('afterbegin',`<button cl
 
 </body>
 
+<!-- deployed: 2026-05-26 22:23:47 -->
 </html>
 
 
