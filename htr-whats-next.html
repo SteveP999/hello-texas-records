@@ -399,7 +399,7 @@ async function init(){
 }
 
 // ── View switching ─────────────────────────────
-function switchView(id,btn){
+window.switchView = function(id,btn){
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
   document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
   document.getElementById('view-'+id).classList.add('active');
@@ -490,7 +490,7 @@ function cardHTML(a){
   </div>`;
 }
 
-async function castVote(id){
+window.castVote = async function(id){
   if(!member) return openModal('login');
   if(member.votedFor) return;
   try{
@@ -527,17 +527,17 @@ function renderProfile(){
 }
 
 // ── MODAL ─────────────────────────────────────
-function openModal(tab){ document.getElementById('modal').classList.add('open'); switchMTab(tab||'login'); }
+window.openModal = function(tab){ document.getElementById('modal').classList.add('open'); switchMTab(tab||'login'); }
 function closeModal(){ document.getElementById('modal').classList.remove('open'); }
 document.getElementById('modal').addEventListener('click',e=>{ if(e.target===e.currentTarget) closeModal(); });
-function switchMTab(t){
+window.switchMTab = function(t){
   document.getElementById('mpanel-login').style.display=t==='login'?'':'none';
   document.getElementById('mpanel-reg').style.display=t==='reg'?'':'none';
   document.getElementById('mtab-login').classList.toggle('active',t==='login');
   document.getElementById('mtab-reg').classList.toggle('active',t==='reg');
 }
 
-async function doRegister(){
+window.doRegister = async function(){
   const first=document.getElementById('r-first').value.trim();
   const last=document.getElementById('r-last').value.trim();
   const email=document.getElementById('r-email').value.trim();
