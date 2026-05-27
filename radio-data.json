@@ -1992,28 +1992,6 @@
     "audioSrc": "https://www.dropbox.com/scl/fi/kpqpw6x42mlhcn2gtgqka/Cut-the-Line-Mastered-MP3.mp3?rlkey=p98ux0qljqvko46toju9qm125&raw=1"
   },
   {
-    "id": "dirty_signal",
-    "artistId": "vanta",
-    "artist": "Vanta",
-    "title": "Dirty Signal",
-    "album": "Signal",
-    "genre": "Funk rock / alternative rock",
-    "releaseType": "single",
-    "releaseDate": "",
-    "coverImage": "https://raw.githubusercontent.com/SteveP999/vanta/main/images/covers/vanta-dirty-signal-cover.png",
-    "audioFile": "https://www.dropbox.com/scl/fi/3ukillkac5wjphdvwwzqg/Dirty-Signal-Mastered-MP3.mp3?rlkey=kf5z5f79k89mnnui3yp096w6b&raw=1",
-    "youtubeUrl": "",
-    "featured": false,
-    "explicit": false,
-    "includeOnRadio": true,
-    "includeOnHomepage": false,
-    "tags": [],
-    "videos": [],
-    "albumCover": "https://raw.githubusercontent.com/SteveP999/vanta/main/images/covers/vanta-signal-ALBUM-cover.png",
-    "cover": "https://raw.githubusercontent.com/SteveP999/vanta/main/images/covers/vanta-dirty-signal-cover.png",
-    "audioSrc": "https://www.dropbox.com/scl/fi/3ukillkac5wjphdvwwzqg/Dirty-Signal-Mastered-MP3.mp3?rlkey=kf5z5f79k89mnnui3yp096w6b&raw=1"
-  },
-  {
     "id": "too_loud",
     "artistId": "vanta",
     "artist": "Vanta",
