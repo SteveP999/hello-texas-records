@@ -1282,6 +1282,13 @@ onAuthStateChanged(auth, async (user) => {
 
     updateNav(user);
 
+    // If already on playlists or profile page when auth resolves, reload them
+    const _activeView = document.querySelector('.view.active');
+    if(_activeView){
+      if(_activeView.id==='view-playlists') loadPlaylists();
+      if(_activeView.id==='view-profile') loadProfile();
+    }
+
     const ha=document.getElementById('hero-actions');
 
     if(ha) ha.innerHTML=`<button class="btn btn-gold" onclick="showView('profile')">My Profile</button><button class="btn btn-outline" onclick="showView('playlists')">Build a Playlist</button>`;
