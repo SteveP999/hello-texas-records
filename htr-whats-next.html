@@ -520,6 +520,36 @@ window.switchAdminTab = function(tab,btn){
   if(btn) btn.classList.add('active');
 }
 
+
+window.adminLogin = function(){
+  const pw = document.getElementById('apw').value;
+  const msg = document.getElementById('apw-msg');
+  if(pw === ADMIN_PW){
+    adminIn = true;
+    document.getElementById('admin-login-screen').style.display = 'none';
+    document.getElementById('admin-panel').style.display = 'block';
+    window.renderAdmin();
+  } else {
+    if(msg){ msg.textContent='Incorrect password.'; msg.className='fmsg err'; msg.style.display=''; }
+  }
+}
+
+window.renderAdmin = function(){
+  if(!adminIn) return;
+  if(window.renderAdminList) window.renderAdminList();
+  if(window.renderTally) window.renderTally();
+  if(window.renderMemberList) window.renderMemberList();
+}
+
+window.switchAdminTab = function(tab, btn){
+  ['members','suggestions','badges'].forEach(t=>{
+    const el = document.getElementById('atab-'+t);
+    if(el) el.style.display = t===tab ? '' : 'none';
+  });
+  document.querySelectorAll('#view-admin .tab-btn').forEach(b=>b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+}
+
 async function init(){
   try {
     if(window.FS){
