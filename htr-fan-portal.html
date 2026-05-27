@@ -1599,17 +1599,83 @@ window.savePlaylist = async function(){
 }
 
 async function loadPlaylists(){
-
   const el=document.getElementById('all-playlists');
-
-  if(!currentUser){ el.innerHTML=`<div class="empty-state"><h3>Sign In to See Your Playlists</h3></div>`; return; }
-
+  if(!currentUser){ el.innerHTML='<div class="empty-state"><h3>Sign In to See Your Playlists</h3></div>'; return; }
   const snap=await getDocs(query(collection(db,'playlists'),where('userId','==',currentUser.uid),orderBy('createdAt','desc')));
-
-  el.innerHTML=snap.empty?`<div class="empty-state"><h3>No Playlists Yet</h3><p>Build one above.</p></div>`:snap.docs.map(d=>{const pl=d.data();return `<div style="background:var(--card);border:1px solid var(--border);padding:20px;margin-bottom:12px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.06em">${pl.title||'Untitled'}</div><span class="chip">${(pl.tracks||[]).length} tracks</span></div>${(pl.tracks||[]).map((t,i)=>`<div style="display:flex;gap:12px;padding:6px 0;border-bottom:1px solid var(--border);font-size:.82rem"><span style="color:var(--muted);font-family:'Space Mono',monospace;font-size:.6rem;width:20px">${i+1}</span><span>${t.name}</span>${t.artist?`<span style="color:var(--muted)">${t.artist}</span>`:''}</div>`).join('')}</div>`;}).join('');
-
+  if(snap.empty){ el.innerHTML='<div class="empty-state"><h3>No Playlists Yet</h3><p>Build one above.</p></div>'; return; }
+  el.innerHTML=snap.docs.map(d=>{
+    const pl=d.data(); const pid=d.id;
+    const tracks=pl.tracks||[];
+    const trackRows=tracks.map((t,i)=>'<div style="display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid var(--border)">'
+      +'<span style="font-family:'Space Mono',monospace;font-size:.6rem;color:var(--muted);width:20px;flex-shrink:0">'+(i+1)+'</span>'
+      +(t.audioSrc||t.audio?'<button onclick="playFromPlaylist(''+pid+'','+i+')" style="width:24px;height:24px;border-radius:50%;border:1px solid var(--gold);background:transparent;color:var(--gold);cursor:pointer;font-size:.6rem;display:flex;align-items:center;justify-content:center;flex-shrink:0">&#9654;</button>':'<span style="width:24px;flex-shrink:0"></span>')
+      +'<span style="font-size:.88rem;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+t.name+'</span>'
+      +'<span style="font-family:'Space Mono',monospace;font-size:.6rem;color:var(--muted)">'+t.artist+'</span>'
+      +'<button onclick="removeFromSavedPlaylist(''+pid+'','+i+')" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:.8rem;flex-shrink:0" title="Remove">&#x2715;</button>'
+      +'</div>'
+    ).join('');
+    return '<div style="background:var(--card);border:1px solid var(--border);padding:20px;margin-bottom:16px">'
+      +'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">'
+      +'<div style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.06em">'+( pl.title||'Untitled')+'</div>'
+      +'<div style="display:flex;gap:8px;align-items:center">'
+      +'<span class="chip">'+tracks.length+' tracks</span>'
+      +'<button onclick="playPlaylist(''+pid+'')" style="background:var(--gold);border:none;color:var(--black);font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.1em;padding:5px 12px;cursor:pointer">&#9654; Play All</button>'
+      +'<button onclick="loadPlaylistIntoBuilder(''+pid+'')" style="background:none;border:1px solid var(--border);color:var(--muted);font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.08em;padding:5px 12px;cursor:pointer" title="Load into builder to edit">Edit</button>'
+      +'<button onclick="deletePlaylist(''+pid+'')" style="background:none;border:1px solid var(--border);color:var(--red);font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.08em;padding:5px 10px;cursor:pointer">&#x2715;</button>'
+      +'</div></div>'
+      +'<div>'+trackRows+'</div>'
+      +'</div>';
+  }).join('');
 }
 
+window.playPlaylist = async function(pid){
+  const snap=await getDocs(query(collection(db,'playlists'),where('userId','==',currentUser.uid)));
+  const doc=snap.docs.find(d=>d.id===pid);
+  if(!doc) return;
+  const tracks=(doc.data().tracks||[]).filter(t=>t.audioSrc||t.audio);
+  if(!tracks.length) return;
+  playerQueue=tracks;
+  playerIndex=0;
+  window.playPlayerSong(tracks[0]);
+}
+
+window.playFromPlaylist = async function(pid,idx){
+  const snap=await getDocs(query(collection(db,'playlists'),where('userId','==',currentUser.uid)));
+  const doc=snap.docs.find(d=>d.id===pid);
+  if(!doc) return;
+  const tracks=(doc.data().tracks||[]).filter(t=>t.audioSrc||t.audio);
+  playerQueue=tracks;
+  playerIndex=idx;
+  window.playPlayerSong(tracks[idx]);
+}
+
+window.loadPlaylistIntoBuilder = async function(pid){
+  const snap=await getDocs(query(collection(db,'playlists'),where('userId','==',currentUser.uid)));
+  const doc=snap.docs.find(d=>d.id===pid);
+  if(!doc) return;
+  const pl=doc.data();
+  currentTracks=[...( pl.tracks||[])].map(t=>({...t,id:Date.now()+Math.random()}));
+  document.getElementById('playlist-title').value=pl.title||'';
+  renderTrackList();
+  showView('playlists');
+}
+
+window.removeFromSavedPlaylist = async function(pid,trackIdx){
+  const ref=doc(db,'playlists',pid);
+  const snap=await getDoc(ref);
+  if(!snap.exists()) return;
+  const tracks=[...(snap.data().tracks||[])];
+  tracks.splice(trackIdx,1);
+  await updateDoc(ref,{tracks});
+  loadPlaylists();
+}
+
+window.deletePlaylist = async function(pid){
+  if(!confirm('Delete this playlist? This cannot be undone.')) return;
+  const {deleteDoc}=await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js');
+  await deleteDoc(doc(db,'playlists',pid));
+  loadPlaylists();
+}
 
 
 window.submitSuggestion = async function(){
