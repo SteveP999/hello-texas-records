@@ -41,7 +41,7 @@ body{background:var(--black);color:var(--text);font-family:'DM Sans',sans-serif;
 .card{background:var(--card);border:1px solid var(--border);overflow:hidden;display:flex;flex-direction:column;transition:border-color .25s}
 .card:hover{border-color:rgba(200,168,75,.4)}
 .card.voted{border-color:var(--gold)}
-.img-wrap{width:100%;aspect-ratio:1;overflow:hidden;background:#1a1a1a;position:relative}
+.img-wrap{width:100%;aspect-ratio:9/16;overflow:hidden;background:#1a1a1a;position:relative}
 .img-wrap img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
 .card:hover .img-wrap img{transform:scale(1.04)}
 .placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--border);font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.1em}
@@ -320,6 +320,42 @@ body{background:var(--black);color:var(--text);font-family:'DM Sans',sans-serif;
   </div>
 </div>
 
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
+import { getFirestore, doc, getDoc, setDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+
+const fbApp = initializeApp({
+  apiKey:"AIzaSyDCEQYAA3uSJhEbBpxDT1c6xw3OfPvV4yA",
+  authDomain:"htr-fans.firebaseapp.com",
+  projectId:"htr-fans",
+  storageBucket:"htr-fans.firebasestorage.app",
+  messagingSenderId:"475143848447",
+  appId:"1:475143848447:web:288a666aa5a4556d6627ca"
+});
+const fbAuth = getAuth(fbApp);
+const fbDb   = getFirestore(fbApp);
+
+window._fb = {
+  signIn: (e,p) => signInWithEmailAndPassword(fbAuth, e, p),
+  register: (e,p) => createUserWithEmailAndPassword(fbAuth, e, p),
+  signOut: () => signOut(fbAuth),
+  saveUser: (uid, data) => setDoc(doc(fbDb,'users',uid), data),
+  ready: true
+};
+
+onAuthStateChanged(fbAuth, async (user) => {
+  if (user) {
+    const snap = await getDoc(doc(fbDb,'users',user.uid));
+    const p = snap.exists() ? snap.data() : {};
+    const name = (p.firstName||user.displayName||'Fan') + (p.lastName?' '+p.lastName:'');
+    if (window._onFBLogin) window._onFBLogin(user.email, name, user.uid);
+  } else {
+    if (window._onFBLogout) window._onFBLogout();
+  }
+});
+</script>
+
 <script>
 const ADMIN_PW = 'HTR2026';
 
@@ -508,262 +544,51 @@ function switchMTab(t){
 async function doRegister(){
   const first=document.getElementById('r-first').value.trim();
   const last=document.getElementById('r-last').value.trim();
-  const email=document.getElementById('r-email').value.trim().toLowerCase();
+  const email=document.getElementById('r-email').value.trim();
   const pw=document.getElementById('r-pw').value;
-  if(!first) return setMsg('r-msg','First name is required.','err');
-  if(!email) return setMsg('r-msg','Email is required.','err');
-  if(!pw) return setMsg('r-msg','Password is required.','err');
-  if(members[email]) return setMsg('r-msg','An account already exists for that email.','err');
+  if(!first) return setMsg('r-msg','First name required.','err');
+  if(!email) return setMsg('r-msg','Email required.','err');
   if(pw.length<6) return setMsg('r-msg','Password must be 6+ characters.','err');
-  members[email]={
-    firstName:first, lastName:last||'',
-    hash:hashStr(pw+email), votedFor:null,
-    joined:new Date().toLocaleDateString('en-US',{month:'short',year:'numeric'})
-  };
-  await ss('htr:members',members,false);
-  member={email,...members[email]};
-  await ss('htr:session',{email},false);
-  closeModal();
-  renderVote(); renderProfile();
+  if(!window._fb) return setMsg('r-msg','Still loading, try again.','err');
+  try {
+    const cred = await window._fb.register(email, pw);
+    await window._fb.saveUser(cred.user.uid, {
+      firstName:first, lastName:last||'', email,
+      avatar:'cowboy', badges:[], votedPolls:[],
+      joinedAt:serverTimestamp?serverTimestamp():new Date().toISOString(),
+      createdAt:new Date().toISOString()
+    });
+    closeModal('auth-modal');
+  } catch(e) {
+    const msgs={'auth/email-already-in-use':'That email is already registered.'};
+    setMsg('r-msg', msgs[e.code]||'Registration failed.','err');
+  }
 }
 
 async function doLogin(){
-  const email=document.getElementById('l-email').value.trim().toLowerCase();
+  const email=document.getElementById('l-email').value.trim();
   const pw=document.getElementById('l-pw').value;
   if(!email||!pw) return setMsg('l-msg','Email and password required.','err');
-  const m=members[email];
-  if(!m) return setMsg('l-msg','No account found for that email.','err');
-  if(m.hash!==hashStr(pw+email)) return setMsg('l-msg','Incorrect password.','err');
-  member={email,...m};
-  await ss('htr:session',{email},false);
-  closeModal();
-  renderVote(); renderProfile();
-}
-
-async function doLogout(){
-  member=null;
-  await sdel('htr:session',false);
-  renderVote(); renderProfile();
-}
-
-// ── ADMIN ─────────────────────────────────────
-function adminLogin(){
-  const pw=document.getElementById('apw').value;
-  if(pw===ADMIN_PW){
-    adminIn=true;
-    document.getElementById('admin-login-screen').style.display='none';
-    document.getElementById('admin-panel').style.display='block';
-    renderAdmin();
-  } else { setMsg('apw-msg','Incorrect password.','err'); }
-}
-
-function renderAdmin(){
-  if(!adminIn) return;
-  renderAdminList();
-  renderTally();
-  renderMemberList();
-}
-
-// ── IMAGE UPLOAD (new artist) ─────────────────
-function handleNewImg(input){
-  const file=input.files[0];
-  if(!file) return;
-  const reader=new FileReader();
-  reader.onload=e=>{
-    newImgData=e.target.result;
-    const prev=document.getElementById('new-img-preview');
-    prev.src=newImgData; prev.style.display='block';
-    document.getElementById('new-img-label').textContent=file.name;
-  };
-  reader.readAsDataURL(file);
-}
-
-// ── IMAGE UPLOAD (existing artist) ───────────
-function handleReupload(input,id){
-  const file=input.files[0];
-  if(!file) return;
-  const reader=new FileReader();
-  reader.onload=e=>{
-    const a=artists.find(x=>x.id===id);
-    if(a) a.imageData=e.target.result;
-    const prev=document.getElementById('prev-'+id);
-    if(prev){ prev.src=e.target.result; prev.style.display='block'; }
-    const ph=document.getElementById('ph-'+id);
-    if(ph) ph.style.display='none';
-  };
-  reader.readAsDataURL(file);
-}
-
-// ── ADD ARTIST ────────────────────────────────
-async function addArtist(){
-  const name=document.getElementById('new-name').value.trim();
-  const genre=document.getElementById('new-genre').value.trim();
-  const about=document.getElementById('new-about').value.trim();
-  const audio=document.getElementById('new-audio').value.trim();
-  if(!name) return setMsg('add-msg','Artist name is required.','err');
-  if(!genre) return setMsg('add-msg','Genre is required.','err');
-  const a={id:uid(),name,genre,about,imageData:newImgData||null,audioUrl:audio,active:false};
-  artists.push(a);
-  votes[a.id]=0;
-  await ss('htr:artists',artists);
-  await ss('htr:votes',votes);
-  // clear form
-  document.getElementById('new-name').value='';
-  document.getElementById('new-genre').value='';
-  document.getElementById('new-about').value='';
-  document.getElementById('new-audio').value='';
-  document.getElementById('new-img-preview').style.display='none';
-  document.getElementById('new-img-label').textContent='Click or drag photo here';
-  newImgData=null;
-  setMsg('add-msg',`${name} added to the dashboard.`,'ok');
-  renderAdminList(); renderTally();
-}
-
-// ── DELETE ARTIST ─────────────────────────────
-async function deleteArtist(id){
-  const a=artists.find(x=>x.id===id);
-  if(!a) return;
-  if(!confirm(`Delete ${a.name}? This cannot be undone. Any votes cast for them will be removed.`)) return;
-  artists=artists.filter(x=>x.id!==id);
-  delete votes[id];
-  // clear any member vote for this artist
-  for(const e in members){ if(members[e].votedFor===id) members[e].votedFor=null; }
-  if(member?.votedFor===id) member.votedFor=null;
-  await ss('htr:artists',artists);
-  await ss('htr:votes',votes);
-  await ss('htr:members',members,false);
-  renderAdminList(); renderTally(); renderMemberList(); renderVote();
-}
-
-// ── TOGGLE ACTIVE ─────────────────────────────
-function toggleA(id){
-  const tog=document.getElementById('tog-'+id);
-  const lbl=document.getElementById('tl-'+id);
-  const ac=artists.filter(a=>a.active).length;
-  const on=tog.classList.contains('on');
-  if(!on && ac>=5){
-    document.getElementById('slot-warn').style.display='block';
-    setTimeout(()=>document.getElementById('slot-warn').style.display='none',2500);
-    return;
+  if(!window._fb) return setMsg('l-msg','Still loading, try again.','err');
+  try {
+    await window._fb.signIn(email, pw);
+    closeModal('auth-modal');
+  } catch(e) {
+    const msgs={'auth/invalid-credential':'Email or password is incorrect.','auth/user-not-found':'No account found.','auth/wrong-password':'Incorrect password.'};
+    setMsg('l-msg', msgs[e.code]||'Sign in failed.','err');
   }
-  tog.classList.toggle('on');
-  const a=artists.find(x=>x.id===id);
-  if(a) a.active=!on;
-  lbl.textContent=!on?'Active':'Inactive';
-  const acn=artists.filter(x=>x.active).length;
-  document.getElementById('slot-counter').innerHTML=`<strong style="color:${acn>=5?'var(--gold)':'var(--muted)'}">${acn}/5</strong> slots active`;
 }
 
-// ── RENDER ADMIN LIST ─────────────────────────
-function renderAdminList(){
-  const el=document.getElementById('admin-list');
-  if(!el) return;
-  const ac=artists.filter(a=>a.active).length;
-  document.getElementById('slot-counter').innerHTML=`<strong style="color:${ac>=5?'var(--gold)':'var(--muted)'}">${ac}/5</strong> slots active`;
-  if(!artists.length){
-    el.innerHTML=`<div class="no-artists">No artists added yet. Use the form above to add your first candidate.</div>`;
-    return;
-  }
-  el.innerHTML=artists.map(a=>{
-    const imgEl=a.imageData
-      ?`<img class="acard-img" id="prev-${a.id}" src="${a.imageData}" alt="${a.name}">`
-      :`<div class="acard-img-ph" id="ph-${a.id}">NO<br>IMAGE</div><img class="acard-img" id="prev-${a.id}" src="" style="display:none">`;
-    return `<div class="acard" id="ac-${a.id}">
-      <div class="acard-img-wrap">
-        ${imgEl}
-        <div class="reupload-zone">
-          <input type="file" accept="image/*" onchange="handleReupload(this,'${a.id}')">
-          <span>Change Photo</span>
-        </div>
-      </div>
-      <div style="grid-column:2/-1">
-        <div class="acard-header">
-          <div><div class="acard-name">${a.name}</div><div class="acard-genre">${a.genre}</div></div>
-          <div class="acard-controls">
-            <div class="toggle-wrap">
-              <span id="tl-${a.id}">${a.active?'Active':'Inactive'}</span>
-              <div class="tog${a.active?' on':''}" id="tog-${a.id}" onclick="toggleA('${a.id}')"></div>
-            </div>
-            <button class="del-btn" onclick="deleteArtist('${a.id}')">✕ Delete</button>
-          </div>
-        </div>
-        <div class="acard-fields">
-          <div class="afwrap"><label class="afl">About</label><textarea class="ainput ata" id="aa-${a.id}" placeholder="Brief bio...">${a.about||''}</textarea></div>
-          <div style="display:flex;flex-direction:column;gap:12px">
-            <div class="afwrap"><label class="afl">Genre</label><input type="text" class="ainput" id="ag-${a.id}" value="${a.genre}"></div>
-            <div class="afwrap"><label class="afl">Audio Clip URL</label><input type="text" class="ainput" id="au-${a.id}" value="${a.audioUrl||''}" placeholder="Dropbox raw=1 .mp3 link"></div>
-          </div>
-        </div>
-      </div>
-    </div>`;
-  }).join('');
-}
 
-// ── SAVE CONFIG ───────────────────────────────
-async function saveConfig(){
-  artists.forEach(a=>{
-    const ab=document.getElementById('aa-'+a.id);
-    const ag=document.getElementById('ag-'+a.id);
-    const au=document.getElementById('au-'+a.id);
-    if(ab) a.about=ab.value.trim();
-    if(ag) a.genre=ag.value.trim();
-    if(au) a.audioUrl=au.value.trim();
-  });
-  await ss('htr:artists',artists);
-  const m=document.getElementById('save-msg');
-  m.textContent='✓ Saved. Vote page updated.';
-  setTimeout(()=>m.textContent='',3000);
-  renderVote(); renderTally();
-}
+window._onFBLogin = function(email, name, uid) {
+  member = {email, name: name.split(' ')[0], lastName: name.split(' ').slice(1).join(' '), uid};
+  renderVote(); renderProfile();
+  const badge = document.getElementById('badge-wrap');
+  if(badge) badge.innerHTML = '<span class="mbadge">&#x26A1; ' + name.split(' ')[0] + '</span>';
+  document.getElementById('vote-login-prompt') && (document.getElementById('vote-login-prompt').style.display='none');
+};
+window._onFBLogout = function() {
+  member = null;
+  renderVote(); renderProfile();
+};
 
-// ── RESET VOTES ───────────────────────────────
-async function resetVotes(){
-  if(!confirm('Reset ALL votes? This cannot be undone.')) return;
-  artists.forEach(a=>votes[a.id]=0);
-  for(const e in members) members[e].votedFor=null;
-  if(member) member.votedFor=null;
-  await ss('htr:votes',votes);
-  await ss('htr:members',members,false);
-  renderVote(); renderTally(); renderMemberList(); renderProfile();
-}
-
-// ── TALLY ─────────────────────────────────────
-function renderTally(){
-  const el=document.getElementById('tally-list');
-  if(!el) return;
-  const active=artists.filter(a=>a.active).sort((a,b)=>(votes[b.id]||0)-(votes[a.id]||0));
-  if(!active.length){ el.innerHTML=`<div class="srow"><span style="color:var(--muted);font-size:.85rem">No active artists yet.</span></div>`; return; }
-  const max=Math.max(...active.map(a=>votes[a.id]||0),1);
-  el.innerHTML=active.map(a=>{
-    const v=votes[a.id]||0;
-    return `<div class="srow"><div style="flex:1"><div style="font-size:.9rem">${a.name} <span style="font-family:'Space Mono',monospace;font-size:.6rem;color:var(--muted)">${a.genre}</span></div><div style="height:3px;background:var(--border);border-radius:2px;margin-top:4px"><div style="height:100%;width:${Math.round(v/max*100)}%;background:var(--gold);border-radius:2px"></div></div></div><div class="snum" style="margin-left:16px">${v}</div></div>`;
-  }).join('');
-}
-
-// ── MEMBER LIST ───────────────────────────────
-function renderMemberList(){
-  const cnt=document.getElementById('member-count');
-  const el=document.getElementById('member-list');
-  if(!cnt||!el) return;
-  const emails=Object.keys(members);
-  cnt.textContent=emails.length;
-  if(!emails.length){ el.innerHTML=`<div class="srow"><span style="color:var(--muted);font-size:.85rem">No members yet.</span></div>`; return; }
-  el.innerHTML=emails.map(e=>{
-    const m=members[e];
-    const fullName=m.firstName+(m.lastName?' '+m.lastName:'');
-    const va=m.votedFor?artists.find(a=>a.id===m.votedFor)?.name||'(deleted artist)':'—';
-    return `<div class="srow">
-      <div>
-        <div style="font-size:.9rem">${fullName}</div>
-        <div style="font-family:'Space Mono',monospace;font-size:.6rem;color:var(--muted)">${e}</div>
-        <div style="font-family:'Space Mono',monospace;font-size:.58rem;color:var(--border)">${m.joined||''}</div>
-      </div>
-      <div style="text-align:right;font-family:'Space Mono',monospace;font-size:.62rem;color:${m.votedFor?'var(--gold)':'var(--muted)'}">${va}</div>
-    </div>`;
-  }).join('');
-}
-
-init();
-</script>
-</body>
-</html>
