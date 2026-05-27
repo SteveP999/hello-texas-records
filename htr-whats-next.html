@@ -348,8 +348,10 @@ const db   = getFirestore(app);
 window.FS = {
   // Artist config (admin-managed, shared across all users)
   getArtists: async () => {
-    const snap = await getDoc(doc(db, 'whatsNext', 'artists'));
-    return snap.exists() ? snap.data().list || [] : [];
+    try {
+      const snap = await getDoc(doc(db, 'whatsNext', 'artists'));
+      return snap.exists() ? snap.data().list || [] : [];
+    } catch(e) { return []; }
   },
   saveArtists: async (list) => {
     await setDoc(doc(db, 'whatsNext', 'artists'), { list, updatedAt: serverTimestamp() });
@@ -357,8 +359,10 @@ window.FS = {
 
   // Votes (shared, real-time)
   getVotes: async () => {
-    const snap = await getDoc(doc(db, 'whatsNext', 'votes'));
-    return snap.exists() ? snap.data() : {};
+    try {
+      const snap = await getDoc(doc(db, 'whatsNext', 'votes'));
+      return snap.exists() ? snap.data() : {};
+    } catch(e) { return {}; }
   },
   castVote: async (artistId, userId) => {
     // Increment vote count
@@ -513,10 +517,18 @@ async function doLogout(){
   renderVote(); renderProfile();
 }
 async function init(){
-  // Load from Firestore
-  if(window.FS) {
-    artists = await window.FS.getArtists();
-    votes   = await window.FS.getVotes();
+  // Load from Firestore with timeout fallback
+  try {
+    const timeout = new Promise((_,rej)=>setTimeout(()=>rej(new Error('timeout')),8000));
+    if(window.FS) {
+      [artists, votes] = await Promise.race([
+        Promise.all([window.FS.getArtists(), window.FS.getVotes()]),
+        timeout.then(()=>[[], {}])
+      ]).catch(()=>[[],{}]);
+    }
+  } catch(e) {
+    console.warn('Firestore load failed, using empty state:', e);
+    artists = []; votes = {};
   }
   artists.forEach(a=>{ if(votes[a.id]===undefined) votes[a.id]=0; });
 
@@ -526,12 +538,12 @@ async function init(){
     renderVote();
     renderProfile();
   };
-  // If auth already resolved
+  // If auth already resolved before init ran
   if(window._currentUser !== undefined) {
     member = window._currentUser;
-    renderVote();
-    renderProfile();
   }
+  renderVote();
+  renderProfile();
 }
 
 // ── View switching ─────────────────────────────
