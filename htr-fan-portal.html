@@ -1371,6 +1371,7 @@ async function loadProfile(){
           +'<div style="display:flex;gap:8px;align-items:center">'
           +'<button onclick="playPlaylist(\''+pid+'\')" style="background:var(--gold);border:none;color:var(--black);font-family:\'Space Mono\',monospace;font-size:.58rem;padding:5px 12px;cursor:pointer">&#9654; Play</button>'
           +'<button onclick="loadPlaylistIntoBuilder(\''+pid+'\')" style="background:none;border:1px solid var(--border);color:var(--muted);font-family:\'Space Mono\',monospace;font-size:.58rem;padding:5px 10px;cursor:pointer">Edit</button>'
+          +'<button onclick="deletePlaylist(\''+pid+'\')" style="background:none;border:1px solid var(--red);color:var(--red);font-family:\'Space Mono\',monospace;font-size:.58rem;padding:5px 10px;cursor:pointer">Delete</button>'
           +'</div></div>';
       }).join('');
 
@@ -1566,33 +1567,18 @@ window.initCatalog = function(){
 window.removeTrack = function(id){ currentTracks=currentTracks.filter(t=>t.id!==id); renderTrackList(); }
 
 function renderTrackList(){
-
   document.getElementById('track-count').textContent=currentTracks.length+' track'+(currentTracks.length!==1?'s':'');
-
-  document.getElementById('track-list').innerHTML=currentTracks.length?currentTracks.map((t,i)=>`<div class="track-row"><span class="track-num">${i+1}</span><div class="track-info"><div class="track-name">${t.name}</div>${t.artist?`<div class="track-artist">${t.artist}</div>`:''}</div><button class="track-remove" onclick="removeTrack(${t.id})">Ã¢Å“&bull;</button></div>`).join(''):'<div class="playlist-empty">No tracks yet. Add some below.</div>';
-
-}
-
-
-window.addCurrentToPlaylist = function(){
-  const title  = document.getElementById('p-title')?.textContent;
-  const subRaw = document.getElementById('p-sub')?.textContent || '';
-  if(!title) return;
-  // sub is "Artist - Album"
-  const parts = subRaw.split(' - ');
-  const artist = parts[0]?.trim() || '';
-  const album  = parts[1]?.trim() || '';
-  // Check if already in playlist
-  if(currentTracks.find(t=>t.name===title && t.artist===artist)) {
-    document.getElementById('p-add-playlist-btn').textContent='Already Added';
-    setTimeout(()=>{ document.getElementById('p-add-playlist-btn').textContent='+ Playlist'; },1500);
-    return;
-  }
-  currentTracks.push({name:title,artist,album,id:Date.now()});
-  renderTrackList();
-  document.getElementById('p-add-playlist-btn').textContent='&#x2713; Added';
-  document.getElementById('p-add-playlist-btn').innerHTML='&#x2713; Added';
-  setTimeout(()=>{ document.getElementById('p-add-playlist-btn').textContent='+ Playlist'; },1500);
+  document.getElementById('track-list').innerHTML=currentTracks.length
+    ? currentTracks.map((t,i)=>`
+        <div class="track-row">
+          <span class="track-num">${i+1}</span>
+          <div class="track-info">
+            <div class="track-name">${t.name}</div>
+            ${t.artist?`<div class="track-artist">${t.artist}</div>`:''}
+          </div>
+          <button class="track-remove" onclick="removeTrack(${t.id})" title="Remove">&#x2715;</button>
+        </div>`).join('')
+    : '<div class="playlist-empty" id="playlist-empty">Browse the catalog on the right and hit + to add tracks.</div>';
 }
 
 window.savePlaylist = async function(){
@@ -1656,23 +1642,25 @@ async function loadPlaylists(){
 
 
 window.playPlaylist = async function(pid){
-  const ref=doc(db,'playlists',pid);
-  const snap=await getDoc(ref);
-  if(!snap.exists()) return;
-  const tracks=(snap.data().tracks||[]);
-  if(!tracks.length) return;
-  // Load audio URLs from catalog for tracks that need it
-  tracks.forEach(t=>{
-    if(!t.audio && !t.audioSrc && t.name){
-      const cat=HTR_CATALOG.find(s=>s.title===t.name && s.artist===t.artist);
-      if(cat) { t.audio=cat.audioUrl; t.audioSrc=cat.audioUrl; t.cover=cat.cover||''; }
-    }
-  });
-  const playable=tracks.filter(t=>t.audio||t.audioSrc||t.audioUrl);
-  if(!playable.length){ alert('No playable tracks found. Songs need audio URLs.'); return; }
-  playerQueue=playable;
-  playerIndex=0;
-  window.playPlayerSong(playable[0]);
+  try {
+    const ref = doc(db, 'playlists', pid);
+    const snap = await getDoc(ref);
+    if (!snap.exists()) { console.log('Playlist not found:', pid); return; }
+    const tracks = snap.data().tracks || [];
+    if (!tracks.length) { alert('This playlist has no tracks.'); return; }
+    // Enrich tracks with audio from catalog
+    tracks.forEach(t => {
+      if (!t.audio && !t.audioSrc) {
+        const cat = HTR_CATALOG.find(s => s.title === t.name && s.artist === t.artist);
+        if (cat) { t.audio = cat.audioUrl; t.audioSrc = cat.audioUrl; t.cover = cat.cover || ''; }
+      }
+    });
+    const playable = tracks.filter(t => t.audio || t.audioSrc);
+    if (!playable.length) { alert('No songs with audio found in this playlist.'); return; }
+    playerQueue = playable;
+    playerIndex = 0;
+    window.playPlayerSong(playable[0]);
+  } catch(e) { console.error('playPlaylist error:', e); }
 }
 
 window.playFromPlaylist = async function(pid,trackIdx){
