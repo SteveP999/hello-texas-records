@@ -1603,30 +1603,44 @@ async function loadPlaylists(){
   if(!currentUser){ el.innerHTML='<div class="empty-state"><h3>Sign In to See Your Playlists</h3></div>'; return; }
   const snap=await getDocs(query(collection(db,'playlists'),where('userId','==',currentUser.uid),orderBy('createdAt','desc')));
   if(snap.empty){ el.innerHTML='<div class="empty-state"><h3>No Playlists Yet</h3><p>Build one above.</p></div>'; return; }
-  el.innerHTML=snap.docs.map(d=>{
-    const pl=d.data(); const pid=d.id;
-    const tracks=pl.tracks||[];
-    const trackRows=tracks.map((t,i)=>'<div style="display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid var(--border)">'
-      +'<span style="font-family:'Space Mono',monospace;font-size:.6rem;color:var(--muted);width:20px;flex-shrink:0">'+(i+1)+'</span>'
-      +(t.audioSrc||t.audio?'<button onclick="playFromPlaylist(''+pid+'','+i+')" style="width:24px;height:24px;border-radius:50%;border:1px solid var(--gold);background:transparent;color:var(--gold);cursor:pointer;font-size:.6rem;display:flex;align-items:center;justify-content:center;flex-shrink:0">&#9654;</button>':'<span style="width:24px;flex-shrink:0"></span>')
-      +'<span style="font-size:.88rem;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+t.name+'</span>'
-      +'<span style="font-family:'Space Mono',monospace;font-size:.6rem;color:var(--muted)">'+t.artist+'</span>'
-      +'<button onclick="removeFromSavedPlaylist(''+pid+'','+i+')" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:.8rem;flex-shrink:0" title="Remove">&#x2715;</button>'
-      +'</div>'
-    ).join('');
-    return '<div style="background:var(--card);border:1px solid var(--border);padding:20px;margin-bottom:16px">'
-      +'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">'
-      +'<div style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.06em">'+( pl.title||'Untitled')+'</div>'
-      +'<div style="display:flex;gap:8px;align-items:center">'
-      +'<span class="chip">'+tracks.length+' tracks</span>'
-      +'<button onclick="playPlaylist(''+pid+'')" style="background:var(--gold);border:none;color:var(--black);font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.1em;padding:5px 12px;cursor:pointer">&#9654; Play All</button>'
-      +'<button onclick="loadPlaylistIntoBuilder(''+pid+'')" style="background:none;border:1px solid var(--border);color:var(--muted);font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.08em;padding:5px 12px;cursor:pointer" title="Load into builder to edit">Edit</button>'
-      +'<button onclick="deletePlaylist(''+pid+'')" style="background:none;border:1px solid var(--border);color:var(--red);font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.08em;padding:5px 10px;cursor:pointer">&#x2715;</button>'
-      +'</div></div>'
-      +'<div>'+trackRows+'</div>'
-      +'</div>';
+
+  const monoStyle = "font-family:'Space Mono',monospace";
+  const bebasStyle = "font-family:'Bebas Neue',sans-serif";
+
+  el.innerHTML = snap.docs.map(d => {
+    const pl  = d.data();
+    const pid = d.id;
+    const tracks = pl.tracks || [];
+
+    const trackRows = tracks.map((t, i) => {
+      const playBtn = (t.audioSrc || t.audio)
+        ? `<button onclick="playFromPlaylist('${pid}',${i})" style="width:24px;height:24px;border-radius:50%;border:1px solid var(--gold);background:transparent;color:var(--gold);cursor:pointer;font-size:.6rem;display:flex;align-items:center;justify-content:center;flex-shrink:0">&#9654;</button>`
+        : '<span style="width:24px;flex-shrink:0"></span>';
+      const removeBtn = `<button onclick="removeFromSavedPlaylist('${pid}',${i})" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:.8rem;flex-shrink:0" title="Remove">&#x2715;</button>`;
+      return `<div style="display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid var(--border)">
+        <span style="${monoStyle};font-size:.6rem;color:var(--muted);width:20px;flex-shrink:0">${i+1}</span>
+        ${playBtn}
+        <span style="font-size:.88rem;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${t.name}</span>
+        <span style="${monoStyle};font-size:.6rem;color:var(--muted)">${t.artist || ''}</span>
+        ${removeBtn}
+      </div>`;
+    }).join('');
+
+    return `<div style="background:var(--card);border:1px solid var(--border);padding:20px;margin-bottom:16px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <div style="${bebasStyle};font-size:1.4rem;letter-spacing:.06em">${pl.title || 'Untitled'}</div>
+        <div style="display:flex;gap:8px;align-items:center">
+          <span class="chip">${tracks.length} tracks</span>
+          <button onclick="playPlaylist('${pid}')" style="background:var(--gold);border:none;color:var(--black);font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.1em;padding:5px 12px;cursor:pointer">&#9654; Play All</button>
+          <button onclick="loadPlaylistIntoBuilder('${pid}')" style="background:none;border:1px solid var(--border);color:var(--muted);font-family:'Space Mono',monospace;font-size:.6rem;padding:5px 12px;cursor:pointer">Edit</button>
+          <button onclick="deletePlaylist('${pid}')" style="background:none;border:1px solid var(--border);color:var(--red);font-family:'Space Mono',monospace;font-size:.6rem;padding:5px 10px;cursor:pointer">&#x2715;</button>
+        </div>
+      </div>
+      <div>${trackRows}</div>
+    </div>`;
   }).join('');
 }
+
 
 window.playPlaylist = async function(pid){
   const snap=await getDocs(query(collection(db,'playlists'),where('userId','==',currentUser.uid)));
