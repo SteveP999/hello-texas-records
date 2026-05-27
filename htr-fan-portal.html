@@ -387,7 +387,7 @@ textarea.form-input{resize:vertical;min-height:100px}
 
     <div class="hero-line"></div>
 
-    <div class="eyebrow">Hello Texas Records Â· Fan Portal</div>
+    <div class="eyebrow">Hello Texas Records &middot; Fan Portal</div>
 
     <h1 class="hero-title">The<br><em>Insider</em></h1>
 
@@ -1349,7 +1349,7 @@ async function loadProfile(){
 
   const plDiv=document.getElementById('my-playlists-list');
 
-  plDiv.innerHTML=plSnap.empty?`<div class="empty-state"><h3>No Playlists Yet</h3><p>Head to the Playlist Builder to create your first one.</p></div>`:plSnap.docs.map(d=>{const pl=d.data();return `<div style="background:var(--card);border:1px solid var(--border);padding:16px 20px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center"><div><div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.06em">${pl.title||'Untitled'}</div><div style="font-family:'Space Mono',monospace;font-size:.6rem;color:var(--muted)">${(pl.tracks||[]).length} tracks Â· ${fmtDate(pl.createdAt)}</div></div><span class="chip">${pl.tracks?.length||0} tracks</span></div>`;}).join('');
+  plDiv.innerHTML=plSnap.empty?`<div class="empty-state"><h3>No Playlists Yet</h3><p>Head to the Playlist Builder to create your first one.</p></div>`:plSnap.docs.map(d=>{const pl=d.data();return `<div style="background:var(--card);border:1px solid var(--border);padding:16px 20px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center"><div><div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.06em">${pl.title||'Untitled'}</div><div style="font-family:'Space Mono',monospace;font-size:.6rem;color:var(--muted)">${(pl.tracks||[]).length} tracks &middot; ${fmtDate(pl.createdAt)}</div></div><span class="chip">${pl.tracks?.length||0} tracks</span></div>`;}).join('');
 
   const sugDiv=document.getElementById('my-suggestions-list');
 
@@ -1574,7 +1574,7 @@ function suggestionHTML(id,s,showUpvote){
 
   const hasVoted=(s.upvotedBy||[]).includes(currentUser?.uid);
 
-  return `<div class="suggestion-item"><div><div class="suggestion-type">${typeMap[s.type]||s.type}</div><div class="suggestion-text">${s.text}</div><div style="font-family:'Space Mono',monospace;font-size:.58rem;color:var(--muted);margin-top:6px">â€” ${s.userName||'Fan'} Â· ${fmtDate(s.createdAt)}</div></div>${showUpvote?`<button class="upvote-btn ${hasVoted?'voted':''}" onclick="upvoteSuggestion('${id}',this)">â–² ${s.upvotes||0}</button>`:''}</div>`;
+  return `<div class="suggestion-item"><div><div class="suggestion-type">${typeMap[s.type]||s.type}</div><div class="suggestion-text">${s.text}</div><div style="font-family:'Space Mono',monospace;font-size:.58rem;color:var(--muted);margin-top:6px">â€” ${s.userName||'Fan'} &middot; ${fmtDate(s.createdAt)}</div></div>${showUpvote?`<button class="upvote-btn ${hasVoted?'voted':''}" onclick="upvoteSuggestion('${id}',this)">â–² ${s.upvotes||0}</button>`:''}</div>`;
 
 }
 
