@@ -1309,7 +1309,7 @@ function updateNav(user){
 
     const av=AVATARS.find(a=>a.id===userProfile.avatar);
 
-    document.getElementById('nav-avatar-el').textContent=av?av.e:'ðŸ‘¤';
+    document.getElementById('nav-avatar-el').innerHTML=av?av.e:'ðŸ‘¤';
 
     document.getElementById('nav-admin-btn').style.display=ADMIN_EMAILS.includes(user.email)?'':'none';
 
@@ -1333,7 +1333,7 @@ async function loadProfile(){
 
   const av=AVATARS.find(a=>a.id===p.avatar);
 
-  document.getElementById('profile-avatar-big').textContent=av?av.e:'ðŸ‘¤';
+  document.getElementById('profile-avatar-big').innerHTML=av?av.e:'ðŸ‘¤';
 
   const plSnap=await getDocs(query(collection(db,'playlists'),where('userId','==',currentUser.uid)));
 
@@ -1433,9 +1433,9 @@ window.saveAvatar = async function(){
 
   const av=AVATARS.find(a=>a.id===selectedAvatar);
 
-  document.getElementById('profile-avatar-big').textContent=av?av.e:'ðŸ‘¤';
+  document.getElementById('profile-avatar-big').innerHTML=av?av.e:'ðŸ‘¤';
 
-  document.getElementById('nav-avatar-el').textContent=av?av.e:'ðŸ‘¤';
+  document.getElementById('nav-avatar-el').innerHTML=av?av.e:'ðŸ‘¤';
 
   closeModal('avatar-modal');
 
