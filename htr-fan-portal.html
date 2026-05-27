@@ -573,7 +573,12 @@ textarea.form-input{resize:vertical;min-height:100px}
           <div class="section-header" style="padding:0;border:none;margin-bottom:16px">
             <div class="section-title" style="font-size:1.4rem">My <span>Playlists</span></div>
           </div>
-          <div id="all-playlists"></div>
+          <div style="margin-top:32px">
+            <div class="section-header" style="padding:0;border:none;margin-bottom:16px">
+              <div class="section-title" style="font-size:1.4rem">My <span>Playlists</span></div>
+            </div>
+            <div id="all-playlists"></div>
+          </div>
         </div>
       </div>
       <div style="position:sticky;top:80px">
@@ -1591,6 +1596,60 @@ function renderTrackList(){
           <button class="track-remove" onclick="removeTrack(${t.id})" title="Remove">&#x2715;</button>
         </div>`).join('')
     : '<div class="playlist-empty" id="playlist-empty">Browse the catalog on the right and hit + to add tracks.</div>';
+}
+
+
+window.playPlaylist = async function(pid){
+  try {
+    const ref=doc(db,'playlists',pid);
+    const snap=await getDoc(ref);
+    if(!snap.exists()) return;
+    const tracks=(snap.data().tracks||[]);
+    tracks.forEach(t=>{
+      if(!t.audio&&!t.audioSrc){
+        const cat=HTR_CATALOG.find(s=>s.title===t.name&&s.artist===t.artist);
+        if(cat){t.audio=cat.audioUrl;t.audioSrc=cat.audioUrl;}
+      }
+    });
+    const playable=tracks.filter(t=>t.audio||t.audioSrc);
+    if(!playable.length){alert('No playable tracks in this playlist.');return;}
+    playerQueue=playable; playerIndex=0;
+    window.playPlayerSong(playable[0]);
+  }catch(e){console.error('playPlaylist:',e);}
+}
+
+window.loadPlaylistIntoBuilder = async function(pid){
+  try {
+    const ref=doc(db,'playlists',pid);
+    const snap=await getDoc(ref);
+    if(!snap.exists()) return;
+    const pl=snap.data();
+    currentTracks=(pl.tracks||[]).map(t=>({...t,id:Date.now()+Math.random()}));
+    document.getElementById('playlist-title').value=pl.title||'';
+    renderTrackList();
+    showView('playlists');
+  }catch(e){console.error('loadPlaylistIntoBuilder:',e);}
+}
+
+window.removeFromSavedPlaylist = async function(pid,trackIdx){
+  try {
+    const ref=doc(db,'playlists',pid);
+    const snap=await getDoc(ref);
+    if(!snap.exists()) return;
+    const tracks=[...(snap.data().tracks||[])];
+    tracks.splice(trackIdx,1);
+    await updateDoc(ref,{tracks});
+    loadPlaylists();
+  }catch(e){console.error('removeFromSavedPlaylist:',e);}
+}
+
+window.deletePlaylist = async function(pid){
+  if(!confirm('Delete this playlist?')) return;
+  try {
+    const {deleteDoc:_dd}=await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js');
+    await _dd(doc(db,'playlists',pid));
+    loadPlaylists();
+  }catch(e){console.error('deletePlaylist:',e);}
 }
 
 window.savePlaylist = async function(){
