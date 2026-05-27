@@ -320,121 +320,42 @@ body{background:var(--black);color:var(--text);font-family:'DM Sans',sans-serif;
   </div>
 </div>
 
-
 <script type="module">
-import { initializeApp }                                          from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
-import { getAuth, signInWithEmailAndPassword,
-         createUserWithEmailAndPassword,
-         onAuthStateChanged, signOut }                            from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
-import { getFirestore, doc, getDoc, setDoc,
-         updateDoc, collection, getDocs,
-         onSnapshot, serverTimestamp,
-         increment, arrayUnion }                                  from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
+import { getFirestore, doc, getDoc, setDoc, updateDoc, collection, getDocs, serverTimestamp, increment, arrayUnion } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 
-// ── Firebase config ───────────────────────────────────────────────────────────
-const app  = initializeApp({
-  apiKey:            "AIzaSyDCEQYAA3uSJhEbBpxDT1c6xw3OfPvV4yA",
-  authDomain:        "htr-fans.firebaseapp.com",
-  projectId:         "htr-fans",
-  storageBucket:     "htr-fans.firebasestorage.app",
-  messagingSenderId: "475143848447",
-  appId:             "1:475143848447:web:288a666aa5a4556d6627ca"
-});
-const auth = getAuth(app);
-const db   = getFirestore(app);
+const app=initializeApp({apiKey:"AIzaSyDCEQYAA3uSJhEbBpxDT1c6xw3OfPvV4yA",authDomain:"htr-fans.firebaseapp.com",projectId:"htr-fans",storageBucket:"htr-fans.firebasestorage.app",messagingSenderId:"475143848447",appId:"1:475143848447:web:288a666aa5a4556d6627ca"});
+const auth=getAuth(app); const db=getFirestore(app);
 
-// ── Firestore helpers ────────────────────────────────────────────────────────
-// Expose to main script scope via window
-window.FS = {
-  // Artist config (admin-managed, shared across all users)
-  getArtists: async () => {
-    try {
-      const snap = await getDoc(doc(db, 'whatsNext', 'artists'));
-      return snap.exists() ? snap.data().list || [] : [];
-    } catch(e) { return []; }
+window.FS={
+  getArtists:async()=>{try{const s=await getDoc(doc(db,'whatsNext','artists'));return s.exists()?s.data().list||[]:[]}catch{return[]}},
+  saveArtists:async(list)=>{await setDoc(doc(db,'whatsNext','artists'),{list,updatedAt:serverTimestamp()})},
+  getVotes:async()=>{try{const s=await getDoc(doc(db,'whatsNext','votes'));return s.exists()?s.data():{}}catch{return{}}},
+  castVote:async(artistId,userId)=>{
+    try{await updateDoc(doc(db,'whatsNext','votes'),{[artistId]:increment(1)})}
+    catch{await setDoc(doc(db,'whatsNext','votes'),{[artistId]:1})}
+    await updateDoc(doc(db,'users',userId),{votedPolls:arrayUnion({artistId,pollName:"Who's Next",votedAt:new Date().toISOString()})}).catch(()=>{})
   },
-  saveArtists: async (list) => {
-    await setDoc(doc(db, 'whatsNext', 'artists'), { list, updatedAt: serverTimestamp() });
-  },
-
-  // Votes (shared, real-time)
-  getVotes: async () => {
-    try {
-      const snap = await getDoc(doc(db, 'whatsNext', 'votes'));
-      return snap.exists() ? snap.data() : {};
-    } catch(e) { return {}; }
-  },
-  castVote: async (artistId, userId) => {
-    // Increment vote count
-    await updateDoc(doc(db, 'whatsNext', 'votes'), {
-      [artistId]: increment(1)
-    }).catch(async () => {
-      // Document may not exist yet
-      await setDoc(doc(db, 'whatsNext', 'votes'), { [artistId]: 1 });
-    });
-    // Record vote on user profile
-    await updateDoc(doc(db, 'users', userId), {
-      votedPolls: arrayUnion({ artistId, pollName: "Who's Next", votedAt: new Date().toISOString() })
-    }).catch(() => {});
-  },
-  resetVotes: async (artistIds) => {
-    const data = {};
-    artistIds.forEach(id => data[id] = 0);
-    await setDoc(doc(db, 'whatsNext', 'votes'), data);
-  },
-
-  // Check if user already voted
-  getUserVote: async (userId) => {
-    const snap = await getDoc(doc(db, 'users', userId));
-    if (!snap.exists()) return null;
-    const polls = snap.data().votedPolls || [];
-    const vote  = polls.find(p => p.pollName === "Who's Next");
-    return vote ? vote.artistId : null;
-  },
-
-  // Auth
-  signIn:   (e, p) => signInWithEmailAndPassword(auth, e, p),
-  register: (e, p) => createUserWithEmailAndPassword(auth, e, p),
-  signOut:  ()     => signOut(auth),
-  saveUser: (uid, data) => setDoc(doc(db, 'users', uid), data),
-
-  // Members list for admin
-  getMembers: async () => {
-    const snap = await getDocs(collection(db, 'users'));
-    const result = {};
-    snap.forEach(d => { result[d.data().email] = { ...d.data(), uid: d.id }; });
-    return result;
-  }
+  resetVotes:async(ids)=>{const d={};ids.forEach(id=>d[id]=0);await setDoc(doc(db,'whatsNext','votes'),d)},
+  signIn:(e,p)=>signInWithEmailAndPassword(auth,e,p),
+  register:(e,p)=>createUserWithEmailAndPassword(auth,e,p),
+  signOut:()=>signOut(auth),
+  saveUser:(uid,data)=>setDoc(doc(db,'users',uid),data),
+  getMembers:async()=>{const s=await getDocs(collection(db,'users'));const r={};s.forEach(d=>r[d.data().email]={...d.data(),uid:d.id});return r}
 };
 
-// ── Auth state → page ────────────────────────────────────────────────────────
-onAuthStateChanged(auth, async (user) => {
-  if (user) {
-    const snap = await getDoc(doc(db, 'users', user.uid));
-    const p    = snap.exists() ? snap.data() : {};
-    const firstName = p.firstName || user.displayName || 'Fan';
-    const lastName  = p.lastName  || '';
-    // Load their existing vote
-    const polls = p.votedPolls || [];
-    const existingVote = polls.find(v => v.pollName === "Who's Next");
-
-    window._currentUser = {
-      uid:      user.uid,
-      email:    user.email,
-      firstName,
-      lastName,
-      name:     firstName + (lastName ? ' ' + lastName : ''),
-      votedFor: existingVote ? existingVote.artistId : null
-    };
-    if (window._onAuthReady) window._onAuthReady(window._currentUser);
-  } else {
-    window._currentUser = null;
-    if (window._onAuthReady) window._onAuthReady(null);
-  }
+onAuthStateChanged(auth,async(user)=>{
+  if(user){
+    const snap=await getDoc(doc(db,'users',user.uid));
+    const p=snap.exists()?snap.data():{};
+    const fn=p.firstName||user.displayName||'Fan', ln=p.lastName||'';
+    const wn=(p.votedPolls||[]).find(v=>v.pollName==="Who's Next");
+    window._currentUser={uid:user.uid,email:user.email,firstName:fn,lastName:ln,name:fn+(ln?' '+ln:''),votedFor:wn?wn.artistId:null};
+  }else{window._currentUser=null;}
+  if(window._onAuthReady)window._onAuthReady(window._currentUser);
 });
 </script>
-
-<script></script>
 
 <script>
 const ADMIN_PW = 'HTR2026';
@@ -462,88 +383,19 @@ async function ss(k,v,sh=true){ try{ await window.storage.set(k,JSON.stringify(v
 async function sdel(k,sh=true){ try{ await window.storage.delete(k,sh); }catch{} }
 
 // ── Init ───────────────────────────────────────
-async function saveConfig(){
-  artists.forEach(a=>{
-    const ab=document.getElementById('aa-'+a.id);
-    const ag=document.getElementById('ag-'+a.id);
-    const au=document.getElementById('au-'+a.id);
-    if(ab) a.about=ab.value.trim();
-    if(ag) a.genre=ag.value.trim();
-    if(au) a.audioUrl=au.value.trim();
-  });
-  await window.FS.saveArtists(artists);
-  const m=document.getElementById('save-msg');
-  if(m){m.textContent='Saved to cloud.';setTimeout(()=>m.textContent='',3000);}
-  renderVote();
-}
-
-async function resetVotes(){
-  if(!confirm('Reset ALL votes? Cannot be undone.')) return;
-  const artistIds=artists.map(a=>a.id);
-  await window.FS.resetVotes(artistIds);
-  artists.forEach(a=>votes[a.id]=0);
-  if(member) member.votedFor=null;
-  renderVote(); renderTally();
-}
-
-async function renderMemberList(){
-  const cnt=document.getElementById('member-count');
-  const el=document.getElementById('member-list');
-  if(!cnt||!el) return;
-  if(!window.FS){el.innerHTML='<div>Loading...</div>';return;}
-  const mbrs=await window.FS.getMembers();
-  const emails=Object.keys(mbrs);
-  cnt.textContent=emails.length;
-  if(!emails.length){
-    el.innerHTML='<div class="srow"><span style="color:var(--muted)">No members yet.</span></div>';
-    return;
-  }
-  el.innerHTML=emails.map(e=>{
-    const m=mbrs[e];
-    const name=(m.firstName||'')+(m.lastName?' '+m.lastName:'');
-    const polls=m.votedPolls||[];
-    const wn=polls.find(p=>p.pollName==="Who's Next");
-    const va=wn?(artists.find(a=>a.id===wn.artistId)?.name||wn.artistId):'—';
-    const gold='color:var(--gold)'; const muted='color:var(--muted)';
-    return '<div class="srow"><div><div style="font-size:.9rem">'+name+'</div>'
-      +'<div style="font-family:'Space Mono',monospace;font-size:.6rem;'+muted+'">'+e+'</div></div>'
-      +'<div style="text-align:right;font-family:'Space Mono',monospace;font-size:.62rem;'+(wn?gold:muted)+'">'+va+'</div></div>';
-  }).join('');
-}
-
-async function doLogout(){
-  if(window.FS) await window.FS.signOut();
-  member=null;
-  renderVote(); renderProfile();
-}
 async function init(){
-  // Load from Firestore with timeout fallback
   try {
-    const timeout = new Promise((_,rej)=>setTimeout(()=>rej(new Error('timeout')),8000));
-    if(window.FS) {
-      [artists, votes] = await Promise.race([
-        Promise.all([window.FS.getArtists(), window.FS.getVotes()]),
-        timeout.then(()=>[[], {}])
-      ]).catch(()=>[[],{}]);
+    if(window.FS){
+      artists=await window.FS.getArtists();
+      votes=await window.FS.getVotes();
     }
-  } catch(e) {
-    console.warn('Firestore load failed, using empty state:', e);
-    artists = []; votes = {};
-  }
-  artists.forEach(a=>{ if(votes[a.id]===undefined) votes[a.id]=0; });
-
-  // Auth handled by Firebase onAuthStateChanged
-  window._onAuthReady = function(user) {
-    member = user;
-    renderVote();
-    renderProfile();
+  }catch(e){console.warn('Firestore load:',e);}
+  artists.forEach(a=>{if(votes[a.id]===undefined)votes[a.id]=0;});
+  window._onAuthReady=function(user){
+    member=user; renderVote(); renderProfile();
   };
-  // If auth already resolved before init ran
-  if(window._currentUser !== undefined) {
-    member = window._currentUser;
-  }
-  renderVote();
-  renderProfile();
+  if(window._currentUser!==undefined) member=window._currentUser;
+  renderVote(); renderProfile();
 }
 
 // ── View switching ─────────────────────────────
@@ -641,12 +493,10 @@ function cardHTML(a){
 async function castVote(id){
   if(!member) return openModal('login');
   if(member.votedFor) return;
-  try {
-    await window.FS.castVote(id, member.uid);
-    votes[id]=(votes[id]||0)+1;
-    member.votedFor=id;
-    renderVote();
-  } catch(e){ console.error('Vote error:',e); }
+  try{
+    await window.FS.castVote(id,member.uid);
+    votes[id]=(votes[id]||0)+1; member.votedFor=id; renderVote();
+  }catch(e){console.error('Vote error:',e);}
 }
 
 // ── PROFILE ───────────────────────────────────
@@ -687,18 +537,564 @@ function switchMTab(t){
   document.getElementById('mtab-reg').classList.toggle('active',t==='reg');
 }
 
-async function doLogin(){
-  const email=document.getElementById('l-email').value.trim();
-  const pw=document.getElementById('l-pw').value;
-  if(!email||!pw) return setMsg('l-msg','Email and password required.','err');
-  if(!window.FS) return setMsg('l-msg','Still connecting, try again.','err');
-  try {
-    await window.FS.signIn(email, pw);
+async function doRegister(){
+  const first=document.getElementById('r-first').value.trim();
+  const last=document.getElementById('r-last').value.trim();
+  const email=document.getElementById('r-email').value.trim();
+  const pw=document.getElementById('r-pw').value;
+  if(!first) return setMsg('r-msg','First name required.','err');
+  if(!email) return setMsg('r-msg','Email required.','err');
+  if(pw.length<6) return setMsg('r-msg','Password must be 6+ chars.','err');
+  if(!window.FS) return setMsg('r-msg','Still connecting.','err');
+  try{
+    const cred=await window.FS.register(email,pw);
+    await window.FS.saveUser(cred.user.uid,{firstName:first,lastName:last||'',email,avatar:'cowboy',badges:[],votedPolls:[],joinedAt:new Date().toISOString()});
     closeModal('auth-modal');
-  } catch(e){
-    const msgs={'auth/invalid-credential':'Email or password is incorrect.','auth/user-not-found':'No account found.','auth/wrong-password':'Incorrect password.'};
-    setMsg('l-msg', msgs[e.code]||'Sign in failed.','err');
+  }catch(e){
+    setMsg('r-msg',e.code==='auth/email-already-in-use'?'Email already registered.':'Registration failed.','err');
   }
+}
+async function doLogout(){
+  if(window.FS) await window.FS.signOut();
+  member=null; renderVote(); renderProfile();
+}
+!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTR – Who's Next?</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#0a0a0a;--dark:#111;--card:#181818;--border:#2a2a2a;
+  --gold:#c8a84b;--gold-l:#e8c870;--red:#c0392b;
+  --text:#e8e8e8;--muted:#888;--white:#fff;--green:#27ae60;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--black);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
+
+.nav{display:flex;justify-content:space-between;align-items:center;padding:16px 32px;border-bottom:1px solid var(--border);background:var(--black);position:sticky;top:0;z-index:100}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:.12em;color:var(--gold)}
+.logo span{color:var(--white)}
+.nav-tabs{display:flex;gap:6px}
+.nav-tab{background:none;border:1px solid var(--border);color:var(--muted);font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.1em;padding:7px 14px;cursor:pointer;text-transform:uppercase;transition:all .2s}
+.nav-tab:hover,.nav-tab.active{border-color:var(--gold);color:var(--gold);background:rgba(200,168,75,.07)}
+
+.view{display:none;animation:fi .3s ease}
+.view.active{display:block}
+@keyframes fi{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+.hero{text-align:center;padding:64px 32px 40px;background:linear-gradient(180deg,rgba(200,168,75,.06) 0%,transparent 100%);border-bottom:1px solid var(--border)}
+.eyebrow{font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.25em;color:var(--gold);text-transform:uppercase;margin-bottom:16px}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,8vw,7rem);line-height:.95;letter-spacing:.04em;color:var(--white)}
+.hero-title em{color:var(--gold);font-style:normal}
+.hero-sub{margin:20px auto 0;max-width:540px;color:var(--muted);font-size:.95rem;line-height:1.65}
+
+.vote-meta{display:flex;justify-content:space-between;align-items:center;padding:16px 32px;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:12px}
+.pill{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.1em;color:var(--muted)}
+.pill strong{color:var(--gold)}
+.mbadge{font-family:'Space Mono',monospace;font-size:.68rem;color:var(--gold);border:1px solid rgba(200,168,75,.3);padding:4px 12px}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:2px;padding:2px;max-width:1400px;margin:0 auto}
+
+.card{background:var(--card);border:1px solid var(--border);overflow:hidden;display:flex;flex-direction:column;transition:border-color .25s}
+.card:hover{border-color:rgba(200,168,75,.4)}
+.card.voted{border-color:var(--gold)}
+.img-wrap{width:100%;aspect-ratio:9/16;overflow:hidden;background:#1a1a1a;position:relative}
+.img-wrap img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.card:hover .img-wrap img{transform:scale(1.04)}
+.placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--border);font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.1em}
+.genre-tag{position:absolute;top:12px;left:12px;background:var(--black);border:1px solid var(--border);font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:3px 8px}
+.cbody{padding:20px;flex:1;display:flex;flex-direction:column;gap:12px}
+.aname{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.06em;color:var(--white);line-height:1}
+.about{font-size:.85rem;color:var(--muted);line-height:1.6;flex:1}
+.clip{border-top:1px solid var(--border);padding-top:12px}
+.clip-label{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.controls{display:flex;align-items:center;gap:10px}
+.playbtn{width:36px;height:36px;border-radius:50%;border:1px solid var(--gold);background:transparent;color:var(--gold);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
+.playbtn:hover,.playbtn.playing{background:var(--gold);color:var(--black)}
+.progwrap{flex:1;height:3px;background:var(--border);border-radius:2px;cursor:pointer}
+.progfill{height:100%;background:var(--gold);border-radius:2px;width:0%;transition:width .2s linear}
+.ctime{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--muted);flex-shrink:0}
+.noclip{font-family:'Space Mono',monospace;font-size:.62rem;color:var(--border);letter-spacing:.08em}
+.vbtn{width:100%;padding:13px;border:none;background:linear-gradient(135deg,var(--gold),var(--gold-l));color:var(--black);font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.15em;cursor:pointer;transition:opacity .2s,transform .1s;margin-top:auto}
+.vbtn:hover{opacity:.88;transform:translateY(-1px)}
+.vbtn:disabled{background:var(--border);color:var(--muted);cursor:not-allowed;transform:none;opacity:1}
+.vbtn.voted{background:transparent;border:1px solid var(--gold);color:var(--gold)}
+.tally{font-family:'Space Mono',monospace;font-size:.65rem;color:var(--muted);text-align:center;padding:6px;letter-spacing:.08em}
+
+/* MODAL */
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:200;align-items:center;justify-content:center}
+.overlay.open{display:flex}
+.modal{background:var(--dark);border:1px solid var(--border);padding:40px;width:100%;max-width:440px;animation:fi .25s ease;position:relative;max-height:90vh;overflow-y:auto}
+.mclose{position:absolute;top:14px;right:18px;background:none;border:none;color:var(--muted);font-size:1.4rem;cursor:pointer}
+.mlogo{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.15em;color:var(--gold);margin-bottom:4px}
+.mtitle{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.06em;color:var(--white);margin-bottom:6px}
+.msub{font-size:.82rem;color:var(--muted);margin-bottom:28px;line-height:1.5}
+.mtabs{display:flex;border-bottom:1px solid var(--border);margin-bottom:24px}
+.mtab{flex:1;padding:10px;background:none;border:none;font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .2s}
+.mtab.active{color:var(--gold);border-bottom-color:var(--gold)}
+.name-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fg{margin-bottom:16px}
+.fl{display:block;font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.fl .opt{color:var(--border);font-size:.55rem;margin-left:6px}
+.fi{width:100%;padding:11px 14px;background:var(--black);border:1px solid var(--border);color:var(--text);font-family:'DM Sans',sans-serif;font-size:.9rem;outline:none;transition:border-color .2s}
+.fi:focus{border-color:var(--gold)}
+.fsubmit{width:100%;padding:14px;background:linear-gradient(135deg,var(--gold),var(--gold-l));border:none;color:var(--black);font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:.15em;cursor:pointer;transition:opacity .2s}
+.fsubmit:hover{opacity:.88}
+.fmsg{font-size:.8rem;margin-top:10px;padding:8px 12px;border-left:2px solid;display:none}
+.fmsg.err{color:var(--red);border-color:var(--red);background:rgba(192,57,43,.08)}
+.fmsg.ok{color:var(--gold);border-color:var(--gold);background:rgba(200,168,75,.08)}
+
+/* ADMIN */
+.awrap{max-width:1060px;margin:0 auto;padding:40px 24px}
+.atitle{font-family:'Bebas Neue',sans-serif;font-size:2.4rem;letter-spacing:.08em;color:var(--gold);border-bottom:1px solid var(--border);padding-bottom:16px;margin-bottom:32px}
+.asection{font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+
+/* ADD ARTIST FORM */
+.add-artist-panel{background:var(--card);border:1px solid rgba(200,168,75,.3);padding:24px;margin-bottom:28px}
+.add-title{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.08em;color:var(--gold);margin-bottom:20px}
+.add-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.add-grid .span2{grid-column:1/-1}
+.ainput{background:var(--black);border:1px solid var(--border);color:var(--text);font-family:'DM Sans',sans-serif;font-size:.85rem;padding:8px 10px;outline:none;transition:border-color .2s;width:100%}
+.ainput:focus{border-color:var(--gold)}
+.ata{resize:vertical;min-height:80px}
+.afl{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:5px;display:block}
+.afl .opt{color:var(--border);font-size:.52rem;margin-left:6px}
+.afwrap{display:flex;flex-direction:column}
+
+/* IMAGE UPLOAD */
+.img-upload-zone{border:1px dashed var(--border);padding:16px;text-align:center;cursor:pointer;transition:border-color .2s;background:var(--black);position:relative}
+.img-upload-zone:hover{border-color:var(--gold)}
+.img-upload-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%}
+.img-upload-zone .upload-label{font-family:'Space Mono',monospace;font-size:.62rem;color:var(--muted);letter-spacing:.08em;pointer-events:none}
+.img-preview{width:60px;height:60px;object-fit:cover;border:1px solid var(--border);display:none}
+
+.add-btn{background:linear-gradient(135deg,var(--gold),var(--gold-l));border:none;color:var(--black);font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.15em;padding:10px 24px;cursor:pointer;transition:opacity .2s}
+.add-btn:hover{opacity:.88}
+
+/* ARTIST CARDS IN ADMIN */
+.acard{background:var(--card);border:1px solid var(--border);padding:20px;margin-bottom:12px;display:grid;grid-template-columns:80px 1fr 1fr;gap:16px;align-items:start}
+.acard-img{width:80px;height:80px;object-fit:cover;border:1px solid var(--border);display:block}
+.acard-img-ph{width:80px;height:80px;background:#1a1a1a;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--border);font-size:.6rem;font-family:'Space Mono',monospace;text-align:center;letter-spacing:.06em}
+.acard-header{grid-column:2/-1;display:flex;align-items:center;justify-content:space-between;padding-bottom:12px;border-bottom:1px solid var(--border);margin-bottom:4px}
+.acard-name{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.06em}
+.acard-genre{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--muted);letter-spacing:.1em}
+.acard-controls{display:flex;align-items:center;gap:10px}
+.toggle-wrap{display:flex;align-items:center;gap:8px;font-family:'Space Mono',monospace;font-size:.65rem;color:var(--muted)}
+.tog{width:40px;height:22px;border-radius:11px;border:1px solid var(--border);background:var(--black);cursor:pointer;position:relative;transition:background .2s;flex-shrink:0}
+.tog.on{background:var(--gold);border-color:var(--gold)}
+.tog::after{content:'';position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:var(--muted);transition:left .2s,background .2s}
+.tog.on::after{left:20px;background:var(--black)}
+.del-btn{background:none;border:1px solid var(--border);color:var(--muted);font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.08em;padding:5px 10px;cursor:pointer;transition:all .2s;white-space:nowrap}
+.del-btn:hover{border-color:var(--red);color:var(--red)}
+.acard-fields{grid-column:2/-1;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.acard-img-wrap{display:flex;flex-direction:column;gap:8px;align-items:center}
+.reupload-zone{border:1px dashed var(--border);padding:8px;text-align:center;cursor:pointer;transition:border-color .2s;background:var(--black);position:relative;width:80px}
+.reupload-zone:hover{border-color:var(--gold)}
+.reupload-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.reupload-zone span{font-family:'Space Mono',monospace;font-size:.5rem;color:var(--muted);letter-spacing:.06em;pointer-events:none;display:block}
+
+.asave{background:linear-gradient(135deg,var(--gold),var(--gold-l));border:none;color:var(--black);font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.15em;padding:12px 32px;cursor:pointer;transition:opacity .2s;margin-top:24px}
+.asave:hover{opacity:.88}
+.sw{font-family:'Space Mono',monospace;font-size:.65rem;color:var(--red);margin-top:10px;letter-spacing:.06em;display:none}
+.astat{background:var(--card);border:1px solid var(--border);padding:20px;margin-top:32px}
+.srow{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)}
+.srow:last-child{border-bottom:none}
+.snum{font-family:'Space Mono',monospace;color:var(--gold);font-size:.85rem}
+.alogin{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:50vh;gap:16px}
+.aloginbox{background:var(--card);border:1px solid var(--border);padding:32px;width:100%;max-width:360px}
+.reset-btn{background:none;border:1px solid var(--red);color:var(--red);font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.1em;padding:8px 16px;cursor:pointer;transition:all .2s}
+.reset-btn:hover{background:var(--red);color:var(--white)}
+.empty{text-align:center;padding:80px 24px;color:var(--muted)}
+.empty h3{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--border);margin-bottom:12px;letter-spacing:.06em}
+.lprompt{text-align:center;padding:40px 24px}
+.lpbtn{background:linear-gradient(135deg,var(--gold),var(--gold-l));border:none;color:var(--black);font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.15em;padding:14px 36px;cursor:pointer;margin-top:16px;transition:opacity .2s}
+.lpbtn:hover{opacity:.88}
+.mprofile{max-width:600px;margin:0 auto;padding:48px 24px}
+.no-artists{font-family:'Space Mono',monospace;font-size:.72rem;color:var(--muted);padding:20px;border:1px dashed var(--border);text-align:center;letter-spacing:.08em}
+
+@media(max-width:700px){
+  .nav{padding:12px 16px}
+  .hero{padding:40px 16px 28px}
+  .grid{grid-template-columns:1fr}
+  .add-grid{grid-template-columns:1fr}
+  .acard{grid-template-columns:1fr}
+  .acard-img-wrap{flex-direction:row;align-items:flex-start}
+  .acard-header{grid-column:1/-1}
+  .acard-fields{grid-column:1/-1;grid-template-columns:1fr}
+  .name-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="logo">Hello Texas <span>Records</span></div>
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="switchView('vote',this)">Who's Next</button>
+    <button class="nav-tab" onclick="switchView('members',this)">My Profile</button>
+    <button class="nav-tab" onclick="switchView('admin',this)">Admin</button>
+  </div>
+</nav>
+
+<!-- ═══ VOTE ═══ -->
+<div id="view-vote" class="view active">
+  <div class="hero">
+    <div class="eyebrow">Hello Texas Records · Fan Vote</div>
+    <h1 class="hero-title">Who's<br><em>Next?</em></h1>
+    <p class="hero-sub">Five artists. One spot on the HTR roster. Listen to their sound, read their story — then cast your vote. One vote per member.</p>
+  </div>
+  <div class="vote-meta">
+    <div class="pill" id="total-pill">Loading...</div>
+    <div id="badge-wrap"></div>
+  </div>
+  <div id="vote-login-prompt" class="lprompt" style="display:none">
+    <p style="color:var(--muted);font-size:.9rem">Join free as an HTR member to cast your vote.</p>
+    <button class="lpbtn" onclick="openModal('login')">Sign In / Join HTR</button>
+  </div>
+  <div class="grid" id="artists-grid"></div>
+</div>
+
+<!-- ═══ PROFILE ═══ -->
+<div id="view-members" class="view">
+  <div class="mprofile" id="profile-area"></div>
+</div>
+
+<!-- ═══ ADMIN ═══ -->
+<div id="view-admin" class="view">
+  <div id="admin-login-screen" class="awrap">
+    <div class="alogin">
+      <div class="aloginbox">
+        <div class="atitle" style="font-size:1.8rem;border:none;margin-bottom:20px">Admin Access</div>
+        <div class="fg">
+          <label class="afl">Password</label>
+          <input type="password" class="ainput" id="apw" placeholder="Enter admin password" onkeydown="if(event.key==='Enter')adminLogin()">
+        </div>
+        <button class="fsubmit" onclick="adminLogin()">Enter</button>
+        <div id="apw-msg" class="fmsg"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="admin-panel" class="awrap" style="display:none">
+    <div class="atitle">Admin Dashboard</div>
+
+    <!-- ADD ARTIST -->
+    <div class="add-artist-panel">
+      <div class="add-title">+ Add Developing Artist</div>
+      <div class="add-grid">
+        <div class="afwrap">
+          <label class="afl">Artist Name</label>
+          <input type="text" class="ainput" id="new-name" placeholder="e.g. Maggie Rose">
+        </div>
+        <div class="afwrap">
+          <label class="afl">Genre</label>
+          <input type="text" class="ainput" id="new-genre" placeholder="e.g. Roots Rock">
+        </div>
+        <div class="afwrap span2">
+          <label class="afl">About <span class="opt">(optional — can add after)</span></label>
+          <textarea class="ainput ata" id="new-about" placeholder="Brief bio for the vote card..."></textarea>
+        </div>
+        <div class="afwrap">
+          <label class="afl">Artist Photo <span class="opt">(optional)</span></label>
+          <div class="img-upload-zone" id="new-img-zone">
+            <input type="file" accept="image/*" onchange="handleNewImg(this)">
+            <img id="new-img-preview" class="img-preview" style="margin:0 auto 8px">
+            <div class="upload-label" id="new-img-label">Click or drag photo here</div>
+          </div>
+        </div>
+        <div class="afwrap">
+          <label class="afl">Audio Clip URL <span class="opt">(optional)</span></label>
+          <input type="text" class="ainput" id="new-audio" placeholder="Dropbox raw=1 .mp3 link">
+          <div style="font-family:'Space Mono',monospace;font-size:.55rem;color:var(--border);margin-top:5px">Use ?raw=1 Dropbox links for audio</div>
+        </div>
+        <div class="afwrap span2" style="margin-top:4px">
+          <button class="add-btn" onclick="addArtist()">Add to Dashboard</button>
+          <div id="add-msg" class="fmsg"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ARTIST LIST -->
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:12px">
+      <div class="asection" style="margin:0">Artist Roster — Toggle active (max 5 on vote page)</div>
+      <div style="display:flex;gap:10px;align-items:center">
+        <span class="pill" id="slot-counter"></span>
+        <button class="reset-btn" onclick="resetVotes()">Reset All Votes</button>
+      </div>
+    </div>
+    <div class="sw" id="slot-warn">Maximum 5 artists can be active at once.</div>
+    <div id="admin-list"></div>
+    <button class="asave" onclick="saveConfig()">Save All Changes</button>
+    <div id="save-msg" style="margin-top:12px;font-family:'Space Mono',monospace;font-size:.7rem;color:var(--gold)"></div>
+
+    <!-- TALLY -->
+    <div class="astat" style="margin-top:40px">
+      <div class="asection">Live Vote Tally</div>
+      <div id="tally-list"></div>
+    </div>
+
+    <!-- MEMBERS -->
+    <div class="astat" style="margin-top:16px">
+      <div class="asection">Members (<span id="member-count">0</span>)</div>
+      <div id="member-list"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ MODAL ═══ -->
+<div class="overlay" id="modal">
+  <div class="modal">
+    <button class="mclose" onclick="closeModal()">✕</button>
+    <div class="mlogo">HTR</div>
+    <div class="mtitle">Fan Membership</div>
+    <p class="msub">Free HTR membership lets you vote on who gets developed next and track your picks over time.</p>
+    <div class="mtabs">
+      <button class="mtab active" id="mtab-login" onclick="switchMTab('login')">Sign In</button>
+      <button class="mtab" id="mtab-reg" onclick="switchMTab('reg')">Join HTR</button>
+    </div>
+    <div id="mpanel-login">
+      <div class="fg"><label class="fl">Email</label><input type="email" class="fi" id="l-email" placeholder="you@email.com"></div>
+      <div class="fg"><label class="fl">Password</label><input type="password" class="fi" id="l-pw" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()"></div>
+      <button class="fsubmit" onclick="doLogin()">Sign In</button>
+      <div id="l-msg" class="fmsg"></div>
+    </div>
+    <div id="mpanel-reg" style="display:none">
+      <div class="name-row">
+        <div class="fg">
+          <label class="fl">First Name</label>
+          <input type="text" class="fi" id="r-first" placeholder="First">
+        </div>
+        <div class="fg">
+          <label class="fl">Last Name <span class="opt">(optional)</span></label>
+          <input type="text" class="fi" id="r-last" placeholder="Last">
+        </div>
+      </div>
+      <div class="fg"><label class="fl">Email</label><input type="email" class="fi" id="r-email" placeholder="you@email.com"></div>
+      <div class="fg"><label class="fl">Password</label><input type="password" class="fi" id="r-pw" placeholder="Create a password" onkeydown="if(event.key==='Enter')doRegister()"></div>
+      <button class="fsubmit" onclick="doRegister()">Join HTR — It's Free</button>
+      <div id="r-msg" class="fmsg"></div>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
+import { getFirestore, doc, getDoc, setDoc, updateDoc, collection, getDocs, serverTimestamp, increment, arrayUnion } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+
+const app=initializeApp({apiKey:"AIzaSyDCEQYAA3uSJhEbBpxDT1c6xw3OfPvV4yA",authDomain:"htr-fans.firebaseapp.com",projectId:"htr-fans",storageBucket:"htr-fans.firebasestorage.app",messagingSenderId:"475143848447",appId:"1:475143848447:web:288a666aa5a4556d6627ca"});
+const auth=getAuth(app); const db=getFirestore(app);
+
+window.FS={
+  getArtists:async()=>{try{const s=await getDoc(doc(db,'whatsNext','artists'));return s.exists()?s.data().list||[]:[]}catch{return[]}},
+  saveArtists:async(list)=>{await setDoc(doc(db,'whatsNext','artists'),{list,updatedAt:serverTimestamp()})},
+  getVotes:async()=>{try{const s=await getDoc(doc(db,'whatsNext','votes'));return s.exists()?s.data():{}}catch{return{}}},
+  castVote:async(artistId,userId)=>{
+    try{await updateDoc(doc(db,'whatsNext','votes'),{[artistId]:increment(1)})}
+    catch{await setDoc(doc(db,'whatsNext','votes'),{[artistId]:1})}
+    await updateDoc(doc(db,'users',userId),{votedPolls:arrayUnion({artistId,pollName:"Who's Next",votedAt:new Date().toISOString()})}).catch(()=>{})
+  },
+  resetVotes:async(ids)=>{const d={};ids.forEach(id=>d[id]=0);await setDoc(doc(db,'whatsNext','votes'),d)},
+  signIn:(e,p)=>signInWithEmailAndPassword(auth,e,p),
+  register:(e,p)=>createUserWithEmailAndPassword(auth,e,p),
+  signOut:()=>signOut(auth),
+  saveUser:(uid,data)=>setDoc(doc(db,'users',uid),data),
+  getMembers:async()=>{const s=await getDocs(collection(db,'users'));const r={};s.forEach(d=>r[d.data().email]={...d.data(),uid:d.id});return r}
+};
+
+onAuthStateChanged(auth,async(user)=>{
+  if(user){
+    const snap=await getDoc(doc(db,'users',user.uid));
+    const p=snap.exists()?snap.data():{};
+    const fn=p.firstName||user.displayName||'Fan', ln=p.lastName||'';
+    const wn=(p.votedPolls||[]).find(v=>v.pollName==="Who's Next");
+    window._currentUser={uid:user.uid,email:user.email,firstName:fn,lastName:ln,name:fn+(ln?' '+ln:''),votedFor:wn?wn.artistId:null};
+  }else{window._currentUser=null;}
+  if(window._onAuthReady)window._onAuthReady(window._currentUser);
+});
+</script>
+
+<script>
+const ADMIN_PW = 'HTR2026';
+
+// State
+let member   = null;
+let adminIn  = false;
+let artists  = []; // [{id,name,genre,about,imageData,audioUrl,active}]
+let votes    = {}; // {id: count}
+let members  = {}; // {email: {firstName,lastName,hash,votedFor,joined}}
+let newImgData = null;
+let curAudio = null;
+
+// ── Utils ──────────────────────────────────────
+function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,7); }
+function hashStr(s){ let h=0; for(let c of s) h=((h<<5)-h)+c.charCodeAt(0)|0; return h.toString(16); }
+function pico(){ return `<svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M0 0l12 7-12 7z"/></svg>`; }
+function pauco(){ return `<svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><rect x="0" y="0" width="4" height="14"/><rect x="8" y="0" width="4" height="14"/></svg>`; }
+function fmt(s){ return Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0'); }
+function setMsg(id,text,type){ const el=document.getElementById(id); if(!el) return; el.textContent=text; el.className='fmsg '+type; el.style.display=text?'':'none'; }
+
+// ── Storage ────────────────────────────────────
+async function sg(k,sh=true){ try{ const r=await window.storage.get(k,sh); return r?JSON.parse(r.value):null; }catch{ return null; } }
+async function ss(k,v,sh=true){ try{ await window.storage.set(k,JSON.stringify(v),sh); }catch(e){ console.warn(e); } }
+async function sdel(k,sh=true){ try{ await window.storage.delete(k,sh); }catch{} }
+
+// ── Init ───────────────────────────────────────
+async function init(){
+  try {
+    if(window.FS){
+      artists=await window.FS.getArtists();
+      votes=await window.FS.getVotes();
+    }
+  }catch(e){console.warn('Firestore load:',e);}
+  artists.forEach(a=>{if(votes[a.id]===undefined)votes[a.id]=0;});
+  window._onAuthReady=function(user){
+    member=user; renderVote(); renderProfile();
+  };
+  if(window._currentUser!==undefined) member=window._currentUser;
+  renderVote(); renderProfile();
+}
+
+// ── View switching ─────────────────────────────
+function switchView(id,btn){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('view-'+id).classList.add('active');
+  if(btn) btn.classList.add('active');
+  if(id==='admin') renderAdmin();
+}
+
+// ── VOTE VIEW ──────────────────────────────────
+function renderVote(){
+  const active=artists.filter(a=>a.active);
+  const g=document.getElementById('artists-grid');
+  const lp=document.getElementById('vote-login-prompt');
+  const bw=document.getElementById('badge-wrap');
+  const total=Object.values(votes).reduce((a,b)=>a+b,0);
+  document.getElementById('total-pill').innerHTML=`<strong>${total}</strong> total votes cast`;
+
+  if(member){
+    lp.style.display='none';
+    const disp=member.firstName+(member.lastName?' '+member.lastName:'');
+    bw.innerHTML=`<span class="mbadge">◆ ${disp}</span>`;
+  } else {
+    lp.style.display=active.length?'block':'none';
+    bw.innerHTML='';
+  }
+
+  if(!active.length){
+    g.innerHTML=`<div class="empty" style="grid-column:1/-1"><h3>Coming Soon</h3><p>HTR is lining up the candidates. Check back soon.</p></div>`;
+    return;
+  }
+  g.innerHTML=active.map(a=>cardHTML(a)).join('');
+
+  active.forEach(a=>{
+    if(!a.audioUrl) return;
+    const audio=new Audio();
+    audio.src=a.audioUrl;
+    audio.removeAttribute('crossorigin');
+    const pb=document.getElementById('pb-'+a.id);
+    const pf=document.getElementById('pf-'+a.id);
+    const pt=document.getElementById('pt-'+a.id);
+    const bar=document.getElementById('bar-'+a.id);
+    if(!pb) return;
+    pb.onclick=()=>doPlay(audio,pb,pf,pt);
+    audio.addEventListener('timeupdate',()=>{
+      if(audio.duration){ pf.style.width=(audio.currentTime/audio.duration*100)+'%'; pt.textContent=fmt(audio.currentTime)+' / '+fmt(audio.duration); }
+    });
+    audio.addEventListener('ended',()=>{ pb.classList.remove('playing'); pb.innerHTML=pico(); pf.style.width='0%'; });
+    if(bar) bar.onclick=(e)=>{ if(audio.duration){ const r=bar.getBoundingClientRect(); audio.currentTime=((e.clientX-r.left)/r.width)*audio.duration; } };
+  });
+}
+
+function doPlay(audio,btn,fill,time){
+  if(curAudio && curAudio!==audio){
+    curAudio.pause();
+    document.querySelectorAll('.playbtn.playing').forEach(b=>{ b.classList.remove('playing'); b.innerHTML=pico(); });
+  }
+  if(audio.paused){
+    audio.load(); audio.play().catch(()=>{});
+    btn.classList.add('playing'); btn.innerHTML=pauco(); curAudio=audio;
+  } else {
+    audio.pause(); btn.classList.remove('playing'); btn.innerHTML=pico();
+  }
+}
+
+function cardHTML(a){
+  const myv=member?.votedFor;
+  const hasv=!!myv;
+  const isv=myv===a.id;
+  const vc=votes[a.id]||0;
+  const imgH=a.imageData
+    ?`<img src="${a.imageData}" alt="${a.name}">`
+    :`<div class="placeholder"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.5"/><circle cx="24" cy="18" r="6" stroke="currentColor" stroke-width="1.5"/><path d="M12 38c0-6.627 5.373-12 12-12s12 5.373 12 12" stroke="currentColor" stroke-width="1.5"/></svg>${a.name}</div>`;
+  const clipH=a.audioUrl
+    ?`<div class="clip"><div class="clip-label">Sound Clip</div><div class="controls"><button class="playbtn" id="pb-${a.id}">${pico()}</button><div class="progwrap" id="bar-${a.id}"><div class="progfill" id="pf-${a.id}"></div></div><span class="ctime" id="pt-${a.id}">0:00</span></div></div>`
+    :`<div class="clip"><span class="noclip">— no clip yet —</span></div>`;
+  let vbH;
+  if(!member) vbH=`<button class="vbtn" onclick="openModal('login')">Sign In to Vote</button>`;
+  else if(isv) vbH=`<button class="vbtn voted" disabled>✓ Your Vote</button>`;
+  else if(hasv) vbH=`<button class="vbtn" disabled>Vote Cast</button>`;
+  else vbH=`<button class="vbtn" onclick="castVote('${a.id}')">Vote for ${a.name}</button>`;
+  return `<div class="card${isv?' voted':''}" id="card-${a.id}">
+    <div class="img-wrap">${imgH}<div class="genre-tag">${a.genre}</div></div>
+    <div class="cbody">
+      <div class="aname">${a.name}</div>
+      <div class="about">${a.about||'<em style="color:var(--border)">About coming soon...</em>'}</div>
+      ${clipH}${vbH}
+    </div>
+    <div class="tally">${vc} vote${vc!==1?'s':''}</div>
+  </div>`;
+}
+
+async function castVote(id){
+  if(!member) return openModal('login');
+  if(member.votedFor) return;
+  try{
+    await window.FS.castVote(id,member.uid);
+    votes[id]=(votes[id]||0)+1; member.votedFor=id; renderVote();
+  }catch(e){console.error('Vote error:',e);}
+}
+
+// ── PROFILE ───────────────────────────────────
+function renderProfile(){
+  const el=document.getElementById('profile-area');
+  if(!member){
+    el.innerHTML=`<h2 style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;letter-spacing:.06em;color:var(--white);margin-bottom:12px">HTR Fan Membership</h2>
+<p style="color:var(--muted);line-height:1.7;margin-bottom:28px">Sign in or join free to vote on the next HTR developing artist and track your picks.</p>
+<button class="lpbtn" onclick="openModal('login')">Sign In / Join HTR</button>`;
+    return;
+  }
+  const fullName=member.firstName+(member.lastName?' '+member.lastName:'');
+  const va=member.votedFor?artists.find(a=>a.id===member.votedFor):null;
+  el.innerHTML=`<h2 style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;letter-spacing:.06em;color:var(--gold);margin-bottom:4px">Welcome back,</h2>
+<div style="font-family:'Bebas Neue',sans-serif;font-size:3rem;letter-spacing:.04em;color:var(--white);margin-bottom:32px">${fullName}</div>
+<div style="background:var(--card);border:1px solid var(--border);padding:24px;margin-bottom:16px">
+  <div class="asection" style="margin-bottom:12px">Your Vote</div>
+  ${va
+    ?`<div style="font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--gold)">◆ ${va.name}</div><div style="font-family:'Space Mono',monospace;font-size:.65rem;color:var(--muted)">${va.genre}</div>`
+    :`<div style="color:var(--muted);font-size:.9rem">You haven't voted yet — head to the Who's Next tab.</div>`}
+</div>
+<div style="background:var(--card);border:1px solid var(--border);padding:24px;margin-bottom:24px">
+  <div class="asection" style="margin-bottom:4px">Member Info</div>
+  <div style="font-family:'Space Mono',monospace;font-size:.75rem;color:var(--text);margin-bottom:4px">${member.email}</div>
+  <div style="font-family:'Space Mono',monospace;font-size:.7rem;color:var(--muted)">Joined ${member.joined||'Early Member'}</div>
+</div>
+<button onclick="doLogout()" style="background:none;border:1px solid var(--border);color:var(--muted);font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.1em;padding:10px 20px;cursor:pointer;text-transform:uppercase;transition:all .2s" onmouseover="this.style.borderColor='var(--red)';this.style.color='var(--red)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)'">Sign Out</button>`;
+}
+
+// ── MODAL ─────────────────────────────────────
+function openModal(tab){ document.getElementById('modal').classList.add('open'); switchMTab(tab||'login'); }
+function closeModal(){ document.getElementById('modal').classList.remove('open'); }
+document.getElementById('modal').addEventListener('click',e=>{ if(e.target===e.currentTarget) closeModal(); });
+function switchMTab(t){
+  document.getElementById('mpanel-login').style.display=t==='login'?'':'none';
+  document.getElementById('mpanel-reg').style.display=t==='reg'?'':'none';
+  document.getElementById('mtab-login').classList.toggle('active',t==='login');
+  document.getElementById('mtab-reg').classList.toggle('active',t==='reg');
 }
 
 async function doRegister(){
@@ -708,19 +1104,14 @@ async function doRegister(){
   const pw=document.getElementById('r-pw').value;
   if(!first) return setMsg('r-msg','First name required.','err');
   if(!email) return setMsg('r-msg','Email required.','err');
-  if(pw.length<6) return setMsg('r-msg','Password must be 6+ characters.','err');
-  if(!window.FS) return setMsg('r-msg','Still connecting, try again.','err');
-  try {
-    const cred = await window.FS.register(email, pw);
-    await window.FS.saveUser(cred.user.uid, {
-      firstName:first, lastName:last||'', email,
-      avatar:'cowboy', badges:[], votedPolls:[],
-      joinedAt:new Date().toISOString(), createdAt:new Date().toISOString()
-    });
+  if(pw.length<6) return setMsg('r-msg','Password must be 6+ chars.','err');
+  if(!window.FS) return setMsg('r-msg','Still connecting.','err');
+  try{
+    const cred=await window.FS.register(email,pw);
+    await window.FS.saveUser(cred.user.uid,{firstName:first,lastName:last||'',email,avatar:'cowboy',badges:[],votedPolls:[],joinedAt:new Date().toISOString()});
     closeModal('auth-modal');
-  } catch(e) {
-    const msgs={'auth/email-already-in-use':'That email is already registered.'};
-    setMsg('r-msg', msgs[e.code]||'Registration failed.','err');
+  }catch(e){
+    setMsg('r-msg',e.code==='auth/email-already-in-use'?'Email already registered.':'Registration failed.','err');
   }
 }
 

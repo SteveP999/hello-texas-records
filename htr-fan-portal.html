@@ -677,7 +677,7 @@ textarea.form-input{resize:vertical;min-height:100px}
 
       </div>
 
-      <div style="font-family:'Space Mono',monospace;font-size:.62rem;color:var(--gold)">Ã¢&mdash;&#x25CF; LIVE</div>
+      <div style="font-family:'Space Mono',monospace;font-size:.62rem;color:var(--gold)">&#x25CF; LIVE</div>
 
     </div>
 
@@ -1564,7 +1564,12 @@ window.initCatalog = function(){
   renderCatalog(HTR_CATALOG);
 }
 
-window.removeTrack = function(id){ currentTracks=currentTracks.filter(t=>t.id!==id); renderTrackList(); }
+window.removeTrack = function(id){
+  currentTracks=currentTracks.filter(t=>t.id!==id);
+  renderTrackList();
+  // Refresh catalog to update Added/+Add buttons
+  filterCatalog();
+}
 
 function renderTrackList(){
   document.getElementById('track-count').textContent=currentTracks.length+' track'+(currentTracks.length!==1?'s':'');
@@ -1582,131 +1587,75 @@ function renderTrackList(){
 }
 
 window.savePlaylist = async function(){
-
   if(!currentUser) return openAuthModal('login');
-
   const title=document.getElementById('playlist-title').value.trim()||'Untitled Playlist';
-
   if(!currentTracks.length) return;
-
   await addDoc(collection(db,'playlists'),{userId:currentUser.uid,userName:userProfile?.firstName||'Fan',title,tracks:currentTracks,createdAt:serverTimestamp()});
-
   await checkAndAwardBadge('playlist_build');
-
-  currentTracks=[]; document.getElementById('playlist-title').value=''; renderTrackList(); loadPlaylists();
-
+  // Reset builder state completely
+  currentTracks=[];
+  document.getElementById('playlist-title').value='';
+  renderTrackList();
+  loadPlaylists();
+  // Reset catalog - clear all Added buttons and re-render
+  document.querySelectorAll('.catalog-add-btn.added').forEach(btn=>{
+    btn.textContent='+ Add';
+    btn.classList.remove('added');
+    btn.disabled=false;
+  });
 }
 
 async function loadPlaylists(){
-  const el=document.getElementById('all-playlists');
-  if(!currentUser){ el.innerHTML='<div class="empty-state"><h3>Sign In to See Your Playlists</h3></div>'; return; }
+  // Update both playlist display areas
+  const els = [
+    document.getElementById('all-playlists'),
+    document.getElementById('my-playlists-list')
+  ].filter(Boolean);
+
+  if(!currentUser){
+    els.forEach(el=>el.innerHTML='<div class="empty-state"><h3>Sign In to See Your Playlists</h3></div>');
+    return;
+  }
+
   const snap=await getDocs(query(collection(db,'playlists'),where('userId','==',currentUser.uid),orderBy('createdAt','desc')));
-  if(snap.empty){ el.innerHTML='<div class="empty-state"><h3>No Playlists Yet</h3><p>Build one above.</p></div>'; return; }
 
-  const monoStyle = "font-family:var(--font-mono,monospace)";
-  const bebasStyle = "font-family:var(--font-head,sans-serif)";
+  if(snap.empty){
+    els.forEach(el=>el.innerHTML='<div class="empty-state"><h3>No Playlists Yet</h3><p>Build one above.</p></div>');
+    return;
+  }
 
-  el.innerHTML = snap.docs.map(d => {
+  const monoStyle = "font-family:'Space Mono',monospace";
+  const bebasStyle = "font-family:'Bebas Neue',sans-serif";
+
+  const html = snap.docs.map(d => {
     const pl  = d.data();
     const pid = d.id;
     const tracks = pl.tracks || [];
-
     const trackRows = tracks.map((t, i) => {
-      const playBtn = (t.audioSrc || t.audio)
-        ? `<button onclick="playFromPlaylist('${pid}',${i})" style="width:24px;height:24px;border-radius:50%;border:1px solid var(--gold);background:transparent;color:var(--gold);cursor:pointer;font-size:.6rem;display:flex;align-items:center;justify-content:center;flex-shrink:0">&#9654;</button>`
-        : '<span style="width:24px;flex-shrink:0"></span>';
       const removeBtn = `<button onclick="removeFromSavedPlaylist('${pid}',${i})" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:.8rem;flex-shrink:0" title="Remove">&#x2715;</button>`;
       return `<div style="display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid var(--border)">
         <span style="${monoStyle};font-size:.6rem;color:var(--muted);width:20px;flex-shrink:0">${i+1}</span>
-        ${playBtn}
         <span style="font-size:.88rem;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${t.name}</span>
-        <span style="${monoStyle};font-size:.6rem;color:var(--muted)">${t.artist || ''}</span>
+        <span style="${monoStyle};font-size:.6rem;color:var(--muted)">${t.artist||''}</span>
         ${removeBtn}
       </div>`;
     }).join('');
 
     return `<div style="background:var(--card);border:1px solid var(--border);padding:20px;margin-bottom:16px">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
-        <div style="${bebasStyle};font-size:1.4rem;letter-spacing:.06em">${pl.title || 'Untitled'}</div>
+        <div style="${bebasStyle};font-size:1.4rem;letter-spacing:.06em">${pl.title||'Untitled'}</div>
         <div style="display:flex;gap:8px;align-items:center">
           <span class="chip">${tracks.length} tracks</span>
-          <button onclick="playPlaylist('${pid}')" style="background:var(--gold);border:none;color:var(--black);font-family:var(--font-mono,monospace);font-size:.6rem;letter-spacing:.1em;padding:5px 12px;cursor:pointer">&#9654; Play All</button>
-          <button onclick="loadPlaylistIntoBuilder('${pid}')" style="background:none;border:1px solid var(--border);color:var(--muted);font-family:var(--font-mono,monospace);font-size:.6rem;padding:5px 12px;cursor:pointer">Edit</button>
-          <button onclick="deletePlaylist('${pid}')" style="background:none;border:1px solid var(--border);color:var(--red);font-family:var(--font-mono,monospace);font-size:.6rem;padding:5px 10px;cursor:pointer">&#x2715;</button>
+          <button onclick="playPlaylist('${pid}')" style="background:var(--gold);border:none;color:var(--black);font-family:var(--font-mono,monospace);font-size:.6rem;letter-spacing:.1em;padding:5px 12px;cursor:pointer">&#9654; Play</button>
+          <button onclick="loadPlaylistIntoBuilder('${pid}')" style="background:none;border:1px solid var(--border);color:var(--muted);font-family:var(--font-mono,monospace);font-size:.6rem;padding:5px 10px;cursor:pointer">Edit</button>
+          <button onclick="deletePlaylist('${pid}')" style="background:none;border:1px solid var(--red);color:var(--red);font-family:var(--font-mono,monospace);font-size:.6rem;padding:5px 10px;cursor:pointer">Delete</button>
         </div>
       </div>
       <div>${trackRows}</div>
     </div>`;
   }).join('');
-}
 
-
-window.playPlaylist = async function(pid){
-  try {
-    const ref = doc(db, 'playlists', pid);
-    const snap = await getDoc(ref);
-    if (!snap.exists()) { console.log('Playlist not found:', pid); return; }
-    const tracks = snap.data().tracks || [];
-    if (!tracks.length) { alert('This playlist has no tracks.'); return; }
-    // Enrich tracks with audio from catalog
-    tracks.forEach(t => {
-      if (!t.audio && !t.audioSrc) {
-        const cat = HTR_CATALOG.find(s => s.title === t.name && s.artist === t.artist);
-        if (cat) { t.audio = cat.audioUrl; t.audioSrc = cat.audioUrl; t.cover = cat.cover || ''; }
-      }
-    });
-    const playable = tracks.filter(t => t.audio || t.audioSrc);
-    if (!playable.length) { alert('No songs with audio found in this playlist.'); return; }
-    playerQueue = playable;
-    playerIndex = 0;
-    window.playPlayerSong(playable[0]);
-  } catch(e) { console.error('playPlaylist error:', e); }
-}
-
-window.playFromPlaylist = async function(pid,trackIdx){
-  const ref=doc(db,'playlists',pid);
-  const snap=await getDoc(ref);
-  if(!snap.exists()) return;
-  const tracks=(snap.data().tracks||[]);
-  tracks.forEach(t=>{
-    if(!t.audio && !t.audioSrc && t.name){
-      const cat=HTR_CATALOG.find(s=>s.title===t.name && s.artist===t.artist);
-      if(cat) { t.audio=cat.audioUrl; t.audioSrc=cat.audioUrl; }
-    }
-  });
-  const playable=tracks.filter(t=>t.audio||t.audioSrc||t.audioUrl);
-  if(!playable.length) return;
-  playerQueue=playable;
-  playerIndex=Math.min(trackIdx, playable.length-1);
-  window.playPlayerSong(playable[playerIndex]);
-}
-
-window.loadPlaylistIntoBuilder = async function(pid){
-  const snap=await getDocs(query(collection(db,'playlists'),where('userId','==',currentUser.uid)));
-  const doc=snap.docs.find(d=>d.id===pid);
-  if(!doc) return;
-  const pl=doc.data();
-  currentTracks=[...( pl.tracks||[])].map(t=>({...t,id:Date.now()+Math.random()}));
-  document.getElementById('playlist-title').value=pl.title||'';
-  renderTrackList();
-  showView('playlists');
-}
-
-window.removeFromSavedPlaylist = async function(pid,trackIdx){
-  const ref=doc(db,'playlists',pid);
-  const snap=await getDoc(ref);
-  if(!snap.exists()) return;
-  const tracks=[...(snap.data().tracks||[])];
-  tracks.splice(trackIdx,1);
-  await updateDoc(ref,{tracks});
-  loadPlaylists();
-}
-
-window.deletePlaylist = async function(pid){
-  if(!confirm('Delete this playlist? This cannot be undone.')) return;
-  const {deleteDoc}=await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js');
-  await deleteDoc(doc(db,'playlists',pid));
-  loadPlaylists();
+  els.forEach(el => el.innerHTML = html);
 }
 
 
@@ -1750,7 +1699,7 @@ async function loadSuggestions(){
 
 function suggestionHTML(id,s,showUpvote){
 
-  const typeMap={artist:'Ã°Å¸Å½Â¸ New Artist',song:'Ã°Å¸Å½Âµ Song Request',feature:'Ã°Å¸&#x2019;Â» Feature',feedback:'Ã°Å¸&#x2019;Â¬ Feedback',other:'Ã°Å¸&#x2019;Â¡ Other'};
+  const typeMap={artist:'&#x1F3B8; New Artist',song:'&#x1F3B5; Song Request',feature:'&#x1F4BB; Feature',feedback:'&#x1F4AC; Feedback',other:'&#x1F4A1; Other'};
 
   const hasVoted=(s.upvotedBy||[]).includes(currentUser?.uid);
 
