@@ -66,14 +66,12 @@ body{background:var(--black);color:var(--text);font-family:'DM Sans',sans-serif;
 .bar-track{height:4px;background:var(--border);border-radius:2px;overflow:hidden;margin-top:2px}
 .bar-fill{height:100%;border-radius:2px;background:var(--gold);transition:width .4s}
 .bar-label{display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:.58rem;color:var(--muted);margin-top:4px}
-.poll-footer{padding:12px 24px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;border-top:1px solid var(--border)}
+.poll-footer{padding:12px 24px 20px;border-top:1px solid var(--border)}
 .vote-btn{background:linear-gradient(135deg,var(--gold),var(--gold-l));border:none;color:var(--black);font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.15em;padding:11px 28px;cursor:pointer;transition:opacity .2s,transform .1s}
 .vote-btn:hover{opacity:.88;transform:translateY(-1px)}
 .vote-btn:disabled{background:var(--border);color:var(--muted);cursor:not-allowed;transform:none;opacity:1}
 .vote-btn.voted{background:transparent;border:1px solid var(--gold);color:var(--gold)}
-.vote-notes{flex:1;min-width:200px}
-.vote-notes textarea{width:100%;background:var(--black);border:1px solid var(--border);color:var(--text);font-family:'DM Sans',sans-serif;font-size:.82rem;padding:8px 10px;resize:none;height:38px;outline:none;transition:border-color .2s}
-.vote-notes textarea:focus{border-color:var(--gold)}
+
 .voted-msg{font-family:'Space Mono',monospace;font-size:.68rem;color:var(--gold);letter-spacing:.08em}
 .empty{text-align:center;padding:80px 24px;color:var(--muted)}
 .empty h3{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--border);margin-bottom:12px;letter-spacing:.06em}
@@ -264,7 +262,7 @@ function pollHTML(p){
     <div class="poll-footer">
       ${voted||closed
         ?`<div class="voted-msg">${closed?'This poll is closed.':'&#x2713; Vote recorded &mdash; thank you!'}</div>`
-        :`<div class="vote-notes"><textarea id="notes-${p.id}" placeholder="Notes / feedback (optional)"></textarea></div><button class="vote-btn" id="vbtn-${p.id}" onclick="submitVote('${p.id}')" ${selected[p.id]===undefined?'disabled':''}>Cast Vote</button>`}
+        :`<div style="flex:1"><button class="vote-btn" id="vbtn-${p.id}" onclick="submitVote('${p.id}')" ${selected[p.id]===undefined?'disabled':''}>Cast Vote</button><div id="notes-wrap-${p.id}" style="margin-top:10px;display:${selected[p.id]!==undefined?'block':'none'}"><textarea id="notes-${p.id}" class="ainput" style="width:100%;height:52px;resize:none;font-size:.82rem;padding:8px 10px;background:var(--black);border:1px solid var(--border);color:var(--text)" placeholder="Optional &mdash; tell us why you chose this version"></textarea></div></div>`}
     </div>
   </div>`;
 }
@@ -296,7 +294,7 @@ window.selectOpt=function(pollId,idx){
     if(opt)opt.classList.toggle('selected',i===idx);
     if(radio){if(i===idx){radio.style.borderColor='var(--gold)';radio.style.background='var(--gold)';radio.innerHTML='<span style="width:8px;height:8px;border-radius:50%;background:var(--black);display:block"></span>';}else{radio.style.borderColor='var(--border)';radio.style.background='';radio.innerHTML='';}}
   });
-  const btn=gid(`vbtn-${pollId}`);if(btn)btn.disabled=false;
+  const btn=gid(`vbtn-${pollId}`);if(btn)btn.disabled=false;const nw=gid(`notes-wrap-${pollId}`);if(nw)nw.style.display='block';
 };
 
 window.submitVote=async function(pollId){
