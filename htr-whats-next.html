@@ -258,7 +258,7 @@ body{background:var(--black);color:var(--text);font-family:'DM Sans',sans-serif;
 <script type="module">
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
-import { getFirestore, doc, getDoc, setDoc, updateDoc, collection, getDocs, serverTimestamp, increment, arrayUnion } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+import { getFirestore, doc, getDoc, setDoc, updateDoc, deleteDoc, collection, getDocs, serverTimestamp, increment, arrayUnion } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 
 const app  = initializeApp({apiKey:"AIzaSyDCEQYAA3uSJhEbBpxDT1c6xw3OfPvV4yA",authDomain:"htr-fans.firebaseapp.com",projectId:"htr-fans",storageBucket:"htr-fans.firebasestorage.app",messagingSenderId:"475143848447",appId:"1:475143848447:web:288a666aa5a4556d6627ca"});
 const auth = getAuth(app);
@@ -274,8 +274,22 @@ const fmt    = s => Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0'
 const setMsg = (id,text,type) => { const el=document.getElementById(id); if(!el)return; el.textContent=text; el.className='fmsg '+type; el.style.display=text?'':'none'; };
 
 // ── Firestore helpers ─────────────────────────────────────────────────────────
-const getArtists   = async () => { const s=await getDoc(doc(db,'whatsNext','artists')); return s.exists()?(s.data().list||[]):[];};
-const saveArtists  = async (list) => setDoc(doc(db,'whatsNext','artists'),{list,updatedAt:serverTimestamp()});
+// Each artist is its own doc: whatsNext/roster/{id}
+// This avoids the 1MB Firestore document limit when storing base64 images
+const getArtists = async () => {
+  const snap = await getDocs(collection(db,'wnRoster'));
+  if(snap.empty) return [];
+  return snap.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>a._order-b._order);
+};
+const saveArtists = async (list) => {
+  const batch = [];
+  list.forEach((a,i) => {
+    const {id,...data} = a;
+    batch.push(setDoc(doc(db,'wnRoster',id),{...data,_order:i}));
+  });
+  await Promise.all(batch);
+};
+const deleteArtistDoc = async (id) => deleteDoc(doc(db,'wnRoster',id));
 const getVotes     = async () => { const s=await getDoc(doc(db,'whatsNext','votes')); return s.exists()?s.data():{};};
 const doResetVotes = async (ids) => { const d={}; ids.forEach(id=>d[id]=0); return setDoc(doc(db,'whatsNext','votes'),d);};
 const getMembers   = async () => { const s=await getDocs(collection(db,'users')); const r={}; s.forEach(d=>r[d.data().email]={...d.data(),uid:d.id}); return r;};
@@ -424,7 +438,7 @@ window.addArtist = async function(){
   if(!genre)return setMsg('add-msg','Genre is required.','err');
   const a={id:uid(),name,genre,about,imageData:newImgData||null,audioUrl:audio,active:false};
   artists.push(a); votes[a.id]=0;
-  await saveArtists(artists);
+  await setDoc(doc(db,'wnRoster',a.id),{name:a.name,genre:a.genre,about:a.about,imageData:a.imageData||null,audioUrl:a.audioUrl||'',active:false,_order:artists.length-1});
   ['new-name','new-genre','new-about','new-audio'].forEach(id=>document.getElementById(id).value='');
   document.getElementById('new-img-preview').style.display='none';
   document.getElementById('new-img-label').textContent='Click or drag photo here';
@@ -437,7 +451,7 @@ window.deleteArtist = async function(id){
   const a=artists.find(x=>x.id===id); if(!a)return;
   if(!confirm('Delete '+a.name+'? Cannot be undone.'))return;
   artists=artists.filter(x=>x.id!==id); delete votes[id];
-  await saveArtists(artists);
+  await deleteArtistDoc(id);
   renderAdminList(); renderTally(); renderVote();
 };
 
