@@ -411,19 +411,11 @@ window.adminLogin = function(){
 
 window.renderAdmin = () => { renderAdminList(); renderTally(); renderMemberList(); };
 
-window.handleNewImg = function(input){
-  const file=input.files[0]; if(!file)return;
-  const reader=new FileReader();
-  reader.onload=e=>{newImgData=e.target.result;const p=document.getElementById('new-img-preview');p.src=newImgData;p.style.display='block';document.getElementById('new-img-label').textContent=file.name;};
-  reader.readAsDataURL(file);
-};
+const compressImg=(file,cb)=>{const r=new FileReader();r.onload=e=>{const img=new Image();img.onload=()=>{const MAX=300,scale=Math.min(1,MAX/Math.max(img.width,img.height)),w=Math.round(img.width*scale),h=Math.round(img.height*scale),canvas=document.createElement('canvas');canvas.width=w;canvas.height=h;canvas.getContext('2d').drawImage(img,0,0,w,h);cb(canvas.toDataURL('image/jpeg',0.7));};img.src=e.target.result;};r.readAsDataURL(file);};
 
-window.handleReupload = function(input,id){
-  const file=input.files[0]; if(!file)return;
-  const reader=new FileReader();
-  reader.onload=e=>{const a=artists.find(x=>x.id===id);if(a)a.imageData=e.target.result;const p=document.getElementById('prev-'+id);if(p){p.src=e.target.result;p.style.display='block';}const ph=document.getElementById('ph-'+id);if(ph)ph.style.display='none';};
-  reader.readAsDataURL(file);
-};
+window.handleNewImg=function(input){const file=input.files[0];if(!file)return;compressImg(file,data=>{newImgData=data;const p=document.getElementById('new-img-preview');p.src=data;p.style.display='block';document.getElementById('new-img-label').textContent=file.name;});};
+
+window.handleReupload=function(input,id){const file=input.files[0];if(!file)return;compressImg(file,data=>{const a=artists.find(x=>x.id===id);if(a)a.imageData=data;const p=document.getElementById('prev-'+id);if(p){p.src=data;p.style.display='block';}const ph=document.getElementById('ph-'+id);if(ph)ph.style.display='none';});};
 
 window.addArtist = async function(){
   const name=document.getElementById('new-name').value.trim(), genre=document.getElementById('new-genre').value.trim();
