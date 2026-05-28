@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -41,7 +41,7 @@ body{background:var(--black);color:var(--text);font-family:'DM Sans',sans-serif;
 .card{background:var(--card);border:1px solid var(--border);overflow:hidden;display:flex;flex-direction:column;transition:border-color .25s}
 .card:hover{border-color:rgba(200,168,75,.4)}
 .card.voted{border-color:var(--gold)}
-.img-wrap{width:100%;aspect-ratio:1;overflow:hidden;background:#1a1a1a;position:relative}
+.img-wrap{width:100%;aspect-ratio:9/16;overflow:hidden;background:#1a1a1a;position:relative}
 .img-wrap img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
 .card:hover .img-wrap img{transform:scale(1.04)}
 .placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--border);font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.1em}
@@ -179,7 +179,7 @@ body{background:var(--black);color:var(--text);font-family:'DM Sans',sans-serif;
   </div>
 </nav>
 
-<!-- VOTE -->
+<!-- ═══ VOTE ═══ -->
 <div id="view-vote" class="view active">
   <div class="hero">
     <div class="eyebrow">Hello Texas Records · Fan Vote</div>
@@ -197,12 +197,12 @@ body{background:var(--black);color:var(--text);font-family:'DM Sans',sans-serif;
   <div class="grid" id="artists-grid"></div>
 </div>
 
-<!-- PROFILE -->
+<!-- ═══ PROFILE ═══ -->
 <div id="view-members" class="view">
   <div class="mprofile" id="profile-area"></div>
 </div>
 
-<!-- ADMIN -->
+<!-- ═══ ADMIN ═══ -->
 <div id="view-admin" class="view">
   <div id="admin-login-screen" class="awrap">
     <div class="alogin">
@@ -221,6 +221,7 @@ body{background:var(--black);color:var(--text);font-family:'DM Sans',sans-serif;
   <div id="admin-panel" class="awrap" style="display:none">
     <div class="atitle">Admin Dashboard</div>
 
+    <!-- ADD ARTIST -->
     <div class="add-artist-panel">
       <div class="add-title">+ Add Developing Artist</div>
       <div class="add-grid">
@@ -256,6 +257,7 @@ body{background:var(--black);color:var(--text);font-family:'DM Sans',sans-serif;
       </div>
     </div>
 
+    <!-- ARTIST LIST -->
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:12px">
       <div class="asection" style="margin:0">Artist Roster — Toggle active (max 5 on vote page)</div>
       <div style="display:flex;gap:10px;align-items:center">
@@ -268,11 +270,13 @@ body{background:var(--black);color:var(--text);font-family:'DM Sans',sans-serif;
     <button class="asave" onclick="saveConfig()">Save All Changes</button>
     <div id="save-msg" style="margin-top:12px;font-family:'Space Mono',monospace;font-size:.7rem;color:var(--gold)"></div>
 
+    <!-- TALLY -->
     <div class="astat" style="margin-top:40px">
       <div class="asection">Live Vote Tally</div>
       <div id="tally-list"></div>
     </div>
 
+    <!-- MEMBERS -->
     <div class="astat" style="margin-top:16px">
       <div class="asection">Members (<span id="member-count">0</span>)</div>
       <div id="member-list"></div>
@@ -280,10 +284,10 @@ body{background:var(--black);color:var(--text);font-family:'DM Sans',sans-serif;
   </div>
 </div>
 
-<!-- MODAL -->
+<!-- ═══ MODAL ═══ -->
 <div class="overlay" id="modal">
   <div class="modal">
-    <button class="mclose" onclick="closeModal()">&#x2715;</button>
+    <button class="mclose" onclick="closeModal()">✕</button>
     <div class="mlogo">HTR</div>
     <div class="mtitle">Fan Membership</div>
     <p class="msub">Free HTR membership lets you vote on who gets developed next and track your picks over time.</p>
@@ -293,7 +297,7 @@ body{background:var(--black);color:var(--text);font-family:'DM Sans',sans-serif;
     </div>
     <div id="mpanel-login">
       <div class="fg"><label class="fl">Email</label><input type="email" class="fi" id="l-email" placeholder="you@email.com"></div>
-      <div class="fg"><label class="fl">Password</label><input type="password" class="fi" id="l-pw" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" onkeydown="if(event.key==='Enter')doLogin()"></div>
+      <div class="fg"><label class="fl">Password</label><input type="password" class="fi" id="l-pw" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()"></div>
       <button class="fsubmit" onclick="doLogin()">Sign In</button>
       <div id="l-msg" class="fmsg"></div>
     </div>
@@ -310,50 +314,224 @@ body{background:var(--black);color:var(--text);font-family:'DM Sans',sans-serif;
       </div>
       <div class="fg"><label class="fl">Email</label><input type="email" class="fi" id="r-email" placeholder="you@email.com"></div>
       <div class="fg"><label class="fl">Password</label><input type="password" class="fi" id="r-pw" placeholder="Create a password" onkeydown="if(event.key==='Enter')doRegister()"></div>
-      <button class="fsubmit" onclick="doRegister()">Join HTR &#8212; It's Free</button>
+      <button class="fsubmit" onclick="doRegister()">Join HTR — It's Free</button>
       <div id="r-msg" class="fmsg"></div>
     </div>
   </div>
 </div>
 
+
+<script type="module">
+import { initializeApp }                                          from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+import { getAuth, signInWithEmailAndPassword,
+         createUserWithEmailAndPassword,
+         onAuthStateChanged, signOut }                            from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
+import { getFirestore, doc, getDoc, setDoc,
+         updateDoc, collection, getDocs,
+         onSnapshot, serverTimestamp,
+         increment, arrayUnion }                                  from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+
+// ── Firebase config ───────────────────────────────────────────────────────────
+const app  = initializeApp({
+  apiKey:            "AIzaSyDCEQYAA3uSJhEbBpxDT1c6xw3OfPvV4yA",
+  authDomain:        "htr-fans.firebaseapp.com",
+  projectId:         "htr-fans",
+  storageBucket:     "htr-fans.firebasestorage.app",
+  messagingSenderId: "475143848447",
+  appId:             "1:475143848447:web:288a666aa5a4556d6627ca"
+});
+const auth = getAuth(app);
+const db   = getFirestore(app);
+
+// ── Firestore helpers ────────────────────────────────────────────────────────
+// Expose to main script scope via window
+window.FS = {
+  // Artist config (admin-managed, shared across all users)
+  getArtists: async () => {
+    const snap = await getDoc(doc(db, 'whatsNext', 'artists'));
+    return snap.exists() ? snap.data().list || [] : [];
+  },
+  saveArtists: async (list) => {
+    await setDoc(doc(db, 'whatsNext', 'artists'), { list, updatedAt: serverTimestamp() });
+  },
+
+  // Votes (shared, real-time)
+  getVotes: async () => {
+    const snap = await getDoc(doc(db, 'whatsNext', 'votes'));
+    return snap.exists() ? snap.data() : {};
+  },
+  castVote: async (artistId, userId) => {
+    // Increment vote count
+    await updateDoc(doc(db, 'whatsNext', 'votes'), {
+      [artistId]: increment(1)
+    }).catch(async () => {
+      // Document may not exist yet
+      await setDoc(doc(db, 'whatsNext', 'votes'), { [artistId]: 1 });
+    });
+    // Record vote on user profile
+    await updateDoc(doc(db, 'users', userId), {
+      votedPolls: arrayUnion({ artistId, pollName: "Who's Next", votedAt: new Date().toISOString() })
+    }).catch(() => {});
+  },
+  resetVotes: async (artistIds) => {
+    const data = {};
+    artistIds.forEach(id => data[id] = 0);
+    await setDoc(doc(db, 'whatsNext', 'votes'), data);
+  },
+
+  // Check if user already voted
+  getUserVote: async (userId) => {
+    const snap = await getDoc(doc(db, 'users', userId));
+    if (!snap.exists()) return null;
+    const polls = snap.data().votedPolls || [];
+    const vote  = polls.find(p => p.pollName === "Who's Next");
+    return vote ? vote.artistId : null;
+  },
+
+  // Auth
+  signIn:   (e, p) => signInWithEmailAndPassword(auth, e, p),
+  register: (e, p) => createUserWithEmailAndPassword(auth, e, p),
+  signOut:  ()     => signOut(auth),
+  saveUser: (uid, data) => setDoc(doc(db, 'users', uid), data),
+
+  // Members list for admin
+  getMembers: async () => {
+    const snap = await getDocs(collection(db, 'users'));
+    const result = {};
+    snap.forEach(d => { result[d.data().email] = { ...d.data(), uid: d.id }; });
+    return result;
+  }
+};
+
+// ── Auth state → page ────────────────────────────────────────────────────────
+onAuthStateChanged(auth, async (user) => {
+  if (user) {
+    const snap = await getDoc(doc(db, 'users', user.uid));
+    const p    = snap.exists() ? snap.data() : {};
+    const firstName = p.firstName || user.displayName || 'Fan';
+    const lastName  = p.lastName  || '';
+    // Load their existing vote
+    const polls = p.votedPolls || [];
+    const existingVote = polls.find(v => v.pollName === "Who's Next");
+
+    window._currentUser = {
+      uid:      user.uid,
+      email:    user.email,
+      firstName,
+      lastName,
+      name:     firstName + (lastName ? ' ' + lastName : ''),
+      votedFor: existingVote ? existingVote.artistId : null
+    };
+    if (window._onAuthReady) window._onAuthReady(window._currentUser);
+  } else {
+    window._currentUser = null;
+    if (window._onAuthReady) window._onAuthReady(null);
+  }
+});
+</script>
+
+<script></script>
+
 <script>
 const ADMIN_PW = 'HTR2026';
 
+// State
 let member   = null;
 let adminIn  = false;
-let artists  = [];
-let votes    = {};
-let members  = {};
+let artists  = []; // [{id,name,genre,about,imageData,audioUrl,active}]
+let votes    = {}; // {id: count}
+let members  = {}; // {email: {firstName,lastName,hash,votedFor,joined}}
 let newImgData = null;
 let curAudio = null;
 
+// ── Utils ──────────────────────────────────────
 window.uid = function(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,7); }
 window.hashStr = function(s){ let h=0; for(let c of s) h=((h<<5)-h)+c.charCodeAt(0)|0; return h.toString(16); }
-window.pico = function(){ return '<svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M0 0l12 7-12 7z"/></svg>'; }
-window.pauco = function(){ return '<svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><rect x="0" y="0" width="4" height="14"/><rect x="8" y="0" width="4" height="14"/></svg>'; }
+window.pico = function(){ return `<svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M0 0l12 7-12 7z"/></svg>`; }
+window.pauco = function(){ return `<svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><rect x="0" y="0" width="4" height="14"/><rect x="8" y="0" width="4" height="14"/></svg>`; }
 window.fmt = function(s){ return Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0'); }
 window.setMsg = function(id,text,type){ const el=document.getElementById(id); if(!el) return; el.textContent=text; el.className='fmsg '+type; el.style.display=text?'':'none'; }
 
-window.sg = async function(k,sh=true){ try{ const r=await window.storage.get(k,sh); return r?JSON.parse(r.value):null; }catch{ return null; } }
-window.ss = async function(k,v,sh=true){ try{ await window.storage.set(k,JSON.stringify(v),sh); }catch(e){ console.warn(e); } }
-window.sdel = async function(k,sh=true){ try{ await window.storage.delete(k,sh); }catch{} }
+// ── Storage ────────────────────────────────────
 
-window.init = async function(){
-  const sa = await sg('htr:artists');
-  const sv = await sg('htr:votes');
-  const sm = await sg('htr:members',false);
-  const ss2= await sg('htr:session',false);
-  if(sa) artists=sa;
-  if(sv) votes=sv;
-  if(sm) members=sm;
-  artists.forEach(a=>{ if(votes[a.id]===undefined) votes[a.id]=0; });
-  if(ss2 && members[ss2.email]){
-    member={email:ss2.email,...members[ss2.email]};
-  }
+// ── Init ───────────────────────────────────────
+window.saveConfig = async function(){
+  artists.forEach(a=>{
+    const ab=document.getElementById('aa-'+a.id);
+    const ag=document.getElementById('ag-'+a.id);
+    const au=document.getElementById('au-'+a.id);
+    if(ab) a.about=ab.value.trim();
+    if(ag) a.genre=ag.value.trim();
+    if(au) a.audioUrl=au.value.trim();
+  });
+  await window.FS.saveArtists(artists);
+  const m=document.getElementById('save-msg');
+  if(m){m.textContent='Saved to cloud.';setTimeout(()=>m.textContent='',3000);}
   renderVote();
-  renderProfile();
 }
 
+window.resetVotes = async function(){
+  if(!confirm('Reset ALL votes? Cannot be undone.')) return;
+  const artistIds=artists.map(a=>a.id);
+  await window.FS.resetVotes(artistIds);
+  artists.forEach(a=>votes[a.id]=0);
+  if(member) member.votedFor=null;
+  renderVote(); renderTally();
+}
+
+window.renderMemberList = async function(){
+  const cnt=document.getElementById('member-count');
+  const el=document.getElementById('member-list');
+  if(!cnt||!el) return;
+  if(!window.FS){el.innerHTML='<div>Loading...</div>';return;}
+  const mbrs=await window.FS.getMembers();
+  const emails=Object.keys(mbrs);
+  cnt.textContent=emails.length;
+  if(!emails.length){
+    el.innerHTML='<div class="srow"><span style="color:var(--muted)">No members yet.</span></div>';
+    return;
+  }
+  el.innerHTML=emails.map(e=>{
+    const m=mbrs[e];
+    const name=(m.firstName||'')+(m.lastName?' '+m.lastName:'');
+    const polls=m.votedPolls||[];
+    const wn=polls.find(p=>p.pollName==="Who's Next");
+    const va=wn?(artists.find(a=>a.id===wn.artistId)?.name||wn.artistId):'—';
+    const gold='color:var(--gold)'; const muted='color:var(--muted)';
+    return '<div class="srow"><div><div style="font-size:.9rem">'+name+'</div>'
+      +'<div style="font-family:'Space Mono',monospace;font-size:.6rem;'+muted+'">'+e+'</div></div>'
+      +'<div style="text-align:right;font-family:'Space Mono',monospace;font-size:.62rem;'+(wn?gold:muted)+'">'+va+'</div></div>';
+  }).join('');
+}
+
+window.doLogout = async function(){
+  if(window.FS) await window.FS.signOut();
+  member=null;
+  renderVote(); renderProfile();
+}
+window.init = async function(){
+  // Load from Firestore
+  if(window.FS) {
+    artists = await window.FS.getArtists();
+    votes   = await window.FS.getVotes();
+  }
+  artists.forEach(a=>{ if(votes[a.id]===undefined) votes[a.id]=0; });
+
+  // Auth handled by Firebase onAuthStateChanged
+  window._onAuthReady = function(user) {
+    member = user;
+    renderVote();
+    renderProfile();
+  };
+  // If auth already resolved
+  if(window._currentUser !== undefined) {
+    member = window._currentUser;
+    renderVote();
+    renderProfile();
+  }
+}
+
+// ── View switching ─────────────────────────────
 window.switchView = function(id,btn){
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
   document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
@@ -362,26 +540,30 @@ window.switchView = function(id,btn){
   if(id==='admin') renderAdmin();
 }
 
+// ── VOTE VIEW ──────────────────────────────────
 window.renderVote = function(){
   const active=artists.filter(a=>a.active);
   const g=document.getElementById('artists-grid');
   const lp=document.getElementById('vote-login-prompt');
   const bw=document.getElementById('badge-wrap');
   const total=Object.values(votes).reduce((a,b)=>a+b,0);
-  document.getElementById('total-pill').innerHTML='<strong>'+total+'</strong> total votes cast';
+  document.getElementById('total-pill').innerHTML=`<strong>${total}</strong> total votes cast`;
+
   if(member){
     lp.style.display='none';
     const disp=member.firstName+(member.lastName?' '+member.lastName:'');
-    bw.innerHTML='<span class="mbadge">&#9670; '+disp+'</span>';
+    bw.innerHTML=`<span class="mbadge">◆ ${disp}</span>`;
   } else {
     lp.style.display=active.length?'block':'none';
     bw.innerHTML='';
   }
+
   if(!active.length){
-    g.innerHTML='<div class="empty" style="grid-column:1/-1"><h3>Coming Soon</h3><p>HTR is lining up the candidates. Check back soon.</p></div>';
+    g.innerHTML=`<div class="empty" style="grid-column:1/-1"><h3>Coming Soon</h3><p>HTR is lining up the candidates. Check back soon.</p></div>`;
     return;
   }
   g.innerHTML=active.map(a=>cardHTML(a)).join('');
+
   active.forEach(a=>{
     if(!a.audioUrl) return;
     const audio=new Audio();
@@ -392,22 +574,22 @@ window.renderVote = function(){
     const pt=document.getElementById('pt-'+a.id);
     const bar=document.getElementById('bar-'+a.id);
     if(!pb) return;
-    pb.onclick=function(){ doPlay(audio,pb,pf,pt); };
-    audio.addEventListener('timeupdate',function(){
+    pb.onclick=()=>doPlay(audio,pb,pf,pt);
+    audio.addEventListener('timeupdate',()=>{
       if(audio.duration){ pf.style.width=(audio.currentTime/audio.duration*100)+'%'; pt.textContent=fmt(audio.currentTime)+' / '+fmt(audio.duration); }
     });
-    audio.addEventListener('ended',function(){ pb.classList.remove('playing'); pb.innerHTML=pico(); pf.style.width='0%'; });
-    if(bar) bar.onclick=function(e){ if(audio.duration){ const r=bar.getBoundingClientRect(); audio.currentTime=((e.clientX-r.left)/r.width)*audio.duration; } };
+    audio.addEventListener('ended',()=>{ pb.classList.remove('playing'); pb.innerHTML=pico(); pf.style.width='0%'; });
+    if(bar) bar.onclick=(e)=>{ if(audio.duration){ const r=bar.getBoundingClientRect(); audio.currentTime=((e.clientX-r.left)/r.width)*audio.duration; } };
   });
 }
 
 window.doPlay = function(audio,btn,fill,time){
   if(curAudio && curAudio!==audio){
     curAudio.pause();
-    document.querySelectorAll('.playbtn.playing').forEach(function(b){ b.classList.remove('playing'); b.innerHTML=pico(); });
+    document.querySelectorAll('.playbtn.playing').forEach(b=>{ b.classList.remove('playing'); b.innerHTML=pico(); });
   }
   if(audio.paused){
-    audio.load(); audio.play().catch(function(){});
+    audio.load(); audio.play().catch(()=>{});
     btn.classList.add('playing'); btn.innerHTML=pauco(); curAudio=audio;
   } else {
     audio.pause(); btn.classList.remove('playing'); btn.innerHTML=pico();
@@ -415,72 +597,74 @@ window.doPlay = function(audio,btn,fill,time){
 }
 
 window.cardHTML = function(a){
-  const myv=member?member.votedFor:null;
+  const myv=member?.votedFor;
   const hasv=!!myv;
   const isv=myv===a.id;
   const vc=votes[a.id]||0;
   const imgH=a.imageData
-    ?'<img src="'+a.imageData+'" alt="'+a.name+'">'
-    :'<div class="placeholder"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.5"/><circle cx="24" cy="18" r="6" stroke="currentColor" stroke-width="1.5"/><path d="M12 38c0-6.627 5.373-12 12-12s12 5.373 12 12" stroke="currentColor" stroke-width="1.5"/></svg>'+a.name+'</div>';
+    ?`<img src="${a.imageData}" alt="${a.name}">`
+    :`<div class="placeholder"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.5"/><circle cx="24" cy="18" r="6" stroke="currentColor" stroke-width="1.5"/><path d="M12 38c0-6.627 5.373-12 12-12s12 5.373 12 12" stroke="currentColor" stroke-width="1.5"/></svg>${a.name}</div>`;
   const clipH=a.audioUrl
-    ?'<div class="clip"><div class="clip-label">Sound Clip</div><div class="controls"><button class="playbtn" id="pb-'+a.id+'">'+pico()+'</button><div class="progwrap" id="bar-'+a.id+'"><div class="progfill" id="pf-'+a.id+'"></div></div><span class="ctime" id="pt-'+a.id+'">0:00</span></div></div>'
-    :'<div class="clip"><span class="noclip">&#8212; no clip yet &#8212;</span></div>';
+    ?`<div class="clip"><div class="clip-label">Sound Clip</div><div class="controls"><button class="playbtn" id="pb-${a.id}">${pico()}</button><div class="progwrap" id="bar-${a.id}"><div class="progfill" id="pf-${a.id}"></div></div><span class="ctime" id="pt-${a.id}">0:00</span></div></div>`
+    :`<div class="clip"><span class="noclip">— no clip yet —</span></div>`;
   let vbH;
-  if(!member) vbH='<button class="vbtn" onclick="openModal(\'login\')">Sign In to Vote</button>';
-  else if(isv) vbH='<button class="vbtn voted" disabled>&#x2713; Your Vote</button>';
-  else if(hasv) vbH='<button class="vbtn" disabled>Vote Cast</button>';
-  else vbH='<button class="vbtn" onclick="castVote(\''+a.id+'\')">Vote for '+a.name+'</button>';
-  return '<div class="card'+(isv?' voted':'')+'" id="card-'+a.id+'">'
-    +'<div class="img-wrap">'+imgH+'<div class="genre-tag">'+a.genre+'</div></div>'
-    +'<div class="cbody">'
-    +'<div class="aname">'+a.name+'</div>'
-    +'<div class="about">'+(a.about||'<em style="color:var(--border)">About coming soon...</em>')+'</div>'
-    +clipH+vbH
-    +'</div>'
-    +'<div class="tally">'+vc+' vote'+(vc!==1?'s':'')+'</div>'
-    +'</div>';
+  if(!member) vbH=`<button class="vbtn" onclick="openModal('login')">Sign In to Vote</button>`;
+  else if(isv) vbH=`<button class="vbtn voted" disabled>✓ Your Vote</button>`;
+  else if(hasv) vbH=`<button class="vbtn" disabled>Vote Cast</button>`;
+  else vbH=`<button class="vbtn" onclick="castVote('${a.id}')">Vote for ${a.name}</button>`;
+  return `<div class="card${isv?' voted':''}" id="card-${a.id}">
+    <div class="img-wrap">${imgH}<div class="genre-tag">${a.genre}</div></div>
+    <div class="cbody">
+      <div class="aname">${a.name}</div>
+      <div class="about">${a.about||'<em style="color:var(--border)">About coming soon...</em>'}</div>
+      ${clipH}${vbH}
+    </div>
+    <div class="tally">${vc} vote${vc!==1?'s':''}</div>
+  </div>`;
 }
 
 window.castVote = async function(id){
   if(!member) return openModal('login');
   if(member.votedFor) return;
-  votes[id]=(votes[id]||0)+1;
-  members[member.email].votedFor=id;
-  member.votedFor=id;
-  await ss('htr:votes',votes);
-  await ss('htr:members',members,false);
-  renderVote();
+  try {
+    await window.FS.castVote(id, member.uid);
+    votes[id]=(votes[id]||0)+1;
+    member.votedFor=id;
+    renderVote();
+  } catch(e){ console.error('Vote error:',e); }
 }
 
+// ── PROFILE ───────────────────────────────────
 window.renderProfile = function(){
   const el=document.getElementById('profile-area');
   if(!member){
-    el.innerHTML='<h2 style="font-family:\'Bebas Neue\',sans-serif;font-size:2.5rem;letter-spacing:.06em;color:var(--white);margin-bottom:12px">HTR Fan Membership</h2>'
-      +'<p style="color:var(--muted);line-height:1.7;margin-bottom:28px">Sign in or join free to vote on the next HTR developing artist and track your picks.</p>'
-      +'<button class="lpbtn" onclick="openModal(\'login\')">Sign In / Join HTR</button>';
+    el.innerHTML=`<h2 style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;letter-spacing:.06em;color:var(--white);margin-bottom:12px">HTR Fan Membership</h2>
+<p style="color:var(--muted);line-height:1.7;margin-bottom:28px">Sign in or join free to vote on the next HTR developing artist and track your picks.</p>
+<button class="lpbtn" onclick="openModal('login')">Sign In / Join HTR</button>`;
     return;
   }
   const fullName=member.firstName+(member.lastName?' '+member.lastName:'');
-  const va=member.votedFor?artists.find(function(a){ return a.id===member.votedFor; }):null;
-  el.innerHTML='<h2 style="font-family:\'Bebas Neue\',sans-serif;font-size:2.5rem;letter-spacing:.06em;color:var(--gold);margin-bottom:4px">Welcome back,</h2>'
-    +'<div style="font-family:\'Bebas Neue\',sans-serif;font-size:3rem;letter-spacing:.04em;color:var(--white);margin-bottom:32px">'+fullName+'</div>'
-    +'<div style="background:var(--card);border:1px solid var(--border);padding:24px;margin-bottom:16px">'
-    +'<div class="asection" style="margin-bottom:12px">Your Vote</div>'
-    +(va
-      ?'<div style="font-family:\'Bebas Neue\',sans-serif;font-size:1.6rem;color:var(--gold)">&#9670; '+va.name+'</div><div style="font-family:\'Space Mono\',monospace;font-size:.65rem;color:var(--muted)">'+va.genre+'</div>'
-      :'<div style="color:var(--muted);font-size:.9rem">You haven\'t voted yet &#8212; head to the Who\'s Next tab.</div>')
-    +'</div>'
-    +'<div style="background:var(--card);border:1px solid var(--border);padding:24px;margin-bottom:24px">'
-    +'<div class="asection" style="margin-bottom:4px">Member Info</div>'
-    +'<div style="font-family:\'Space Mono\',monospace;font-size:.75rem;color:var(--text);margin-bottom:4px">'+member.email+'</div>'
-    +'<div style="font-family:\'Space Mono\',monospace;font-size:.7rem;color:var(--muted)">Joined '+(member.joined||'Early Member')+'</div>'
-    +'</div>'
-    +'<button onclick="doLogout()" style="background:none;border:1px solid var(--border);color:var(--muted);font-family:\'Space Mono\',monospace;font-size:.65rem;letter-spacing:.1em;padding:10px 20px;cursor:pointer;text-transform:uppercase;transition:all .2s" onmouseover="this.style.borderColor=\'var(--red)\';this.style.color=\'var(--red)\'" onmouseout="this.style.borderColor=\'var(--border)\';this.style.color=\'var(--muted)\'">Sign Out</button>';
+  const va=member.votedFor?artists.find(a=>a.id===member.votedFor):null;
+  el.innerHTML=`<h2 style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;letter-spacing:.06em;color:var(--gold);margin-bottom:4px">Welcome back,</h2>
+<div style="font-family:'Bebas Neue',sans-serif;font-size:3rem;letter-spacing:.04em;color:var(--white);margin-bottom:32px">${fullName}</div>
+<div style="background:var(--card);border:1px solid var(--border);padding:24px;margin-bottom:16px">
+  <div class="asection" style="margin-bottom:12px">Your Vote</div>
+  ${va
+    ?`<div style="font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--gold)">◆ ${va.name}</div><div style="font-family:'Space Mono',monospace;font-size:.65rem;color:var(--muted)">${va.genre}</div>`
+    :`<div style="color:var(--muted);font-size:.9rem">You haven't voted yet — head to the Who's Next tab.</div>`}
+</div>
+<div style="background:var(--card);border:1px solid var(--border);padding:24px;margin-bottom:24px">
+  <div class="asection" style="margin-bottom:4px">Member Info</div>
+  <div style="font-family:'Space Mono',monospace;font-size:.75rem;color:var(--text);margin-bottom:4px">${member.email}</div>
+  <div style="font-family:'Space Mono',monospace;font-size:.7rem;color:var(--muted)">Joined ${member.joined||'Early Member'}</div>
+</div>
+<button onclick="doLogout()" style="background:none;border:1px solid var(--border);color:var(--muted);font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.1em;padding:10px 20px;cursor:pointer;text-transform:uppercase;transition:all .2s" onmouseover="this.style.borderColor='var(--red)';this.style.color='var(--red)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)'">Sign Out</button>`;
 }
 
+// ── MODAL ─────────────────────────────────────
 window.openModal = function(tab){ document.getElementById('modal').classList.add('open'); switchMTab(tab||'login'); }
 window.closeModal = function(){ document.getElementById('modal').classList.remove('open'); }
-document.getElementById('modal').addEventListener('click',function(e){ if(e.target===e.currentTarget) closeModal(); });
+document.getElementById('modal').addEventListener('click',e=>{ if(e.target===e.currentTarget) closeModal(); });
 window.switchMTab = function(t){
   document.getElementById('mpanel-login').style.display=t==='login'?'':'none';
   document.getElementById('mpanel-reg').style.display=t==='reg'?'':'none';
@@ -488,253 +672,264 @@ window.switchMTab = function(t){
   document.getElementById('mtab-reg').classList.toggle('active',t==='reg');
 }
 
+window.doLogin = async function(){
+  const email=document.getElementById('l-email').value.trim();
+  const pw=document.getElementById('l-pw').value;
+  if(!email||!pw) return setMsg('l-msg','Email and password required.','err');
+  if(!window.FS) return setMsg('l-msg','Still connecting, try again.','err');
+  try {
+    await window.FS.signIn(email, pw);
+    closeModal('auth-modal');
+  } catch(e){
+    const msgs={'auth/invalid-credential':'Email or password is incorrect.','auth/user-not-found':'No account found.','auth/wrong-password':'Incorrect password.'};
+    setMsg('l-msg', msgs[e.code]||'Sign in failed.','err');
+  }
+}
+
 window.doRegister = async function(){
   const first=document.getElementById('r-first').value.trim();
   const last=document.getElementById('r-last').value.trim();
-  const email=document.getElementById('r-email').value.trim().toLowerCase();
+  const email=document.getElementById('r-email').value.trim();
   const pw=document.getElementById('r-pw').value;
-  if(!first) return setMsg('r-msg','First name is required.','err');
-  if(!email) return setMsg('r-msg','Email is required.','err');
-  if(!pw) return setMsg('r-msg','Password is required.','err');
-  if(members[email]) return setMsg('r-msg','An account already exists for that email.','err');
+  if(!first) return setMsg('r-msg','First name required.','err');
+  if(!email) return setMsg('r-msg','Email required.','err');
   if(pw.length<6) return setMsg('r-msg','Password must be 6+ characters.','err');
-  members[email]={
-    firstName:first, lastName:last||'',
-    hash:hashStr(pw+email), votedFor:null,
-    joined:new Date().toLocaleDateString('en-US',{month:'short',year:'numeric'})
-  };
-  await ss('htr:members',members,false);
-  member={email:email,firstName:first,lastName:last||'',hash:hashStr(pw+email),votedFor:null,joined:members[email].joined};
-  await ss('htr:session',{email:email},false);
-  closeModal();
-  renderVote(); renderProfile();
-}
-
-window.doLogin = async function(){
-  const email=document.getElementById('l-email').value.trim().toLowerCase();
-  const pw=document.getElementById('l-pw').value;
-  if(!email||!pw) return setMsg('l-msg','Email and password required.','err');
-  const m=members[email];
-  if(!m) return setMsg('l-msg','No account found for that email.','err');
-  if(m.hash!==hashStr(pw+email)) return setMsg('l-msg','Incorrect password.','err');
-  member={email:email,firstName:m.firstName,lastName:m.lastName,hash:m.hash,votedFor:m.votedFor,joined:m.joined};
-  await ss('htr:session',{email:email},false);
-  closeModal();
-  renderVote(); renderProfile();
-}
-
-window.doLogout = async function(){
-  member=null;
-  await sdel('htr:session',false);
-  renderVote(); renderProfile();
-}
-
-window.adminLogin = function(){
-  const pw=document.getElementById('apw').value;
-  if(pw===ADMIN_PW){
-    adminIn=true;
-    document.getElementById('admin-login-screen').style.display='none';
-    document.getElementById('admin-panel').style.display='block';
-    renderAdmin();
-  } else { setMsg('apw-msg','Incorrect password.','err'); }
-}
-
-window.renderAdmin = function(){
-  if(!adminIn) return;
-  renderAdminList();
-  renderTally();
-  renderMemberList();
-}
-
-window.handleNewImg = function(input){
-  const file=input.files[0];
-  if(!file) return;
-  const reader=new FileReader();
-  reader.onload=function(e){
-    newImgData=e.target.result;
-    const prev=document.getElementById('new-img-preview');
-    prev.src=newImgData; prev.style.display='block';
-    document.getElementById('new-img-label').textContent=file.name;
-  };
-  reader.readAsDataURL(file);
-}
-
-window.handleReupload = function(input,id){
-  const file=input.files[0];
-  if(!file) return;
-  const reader=new FileReader();
-  reader.onload=function(e){
-    const a=artists.find(function(x){ return x.id===id; });
-    if(a) a.imageData=e.target.result;
-    const prev=document.getElementById('prev-'+id);
-    if(prev){ prev.src=e.target.result; prev.style.display='block'; }
-    const ph=document.getElementById('ph-'+id);
-    if(ph) ph.style.display='none';
-  };
-  reader.readAsDataURL(file);
-}
-
-window.addArtist = async function(){
-  const name=document.getElementById('new-name').value.trim();
-  const genre=document.getElementById('new-genre').value.trim();
-  const about=document.getElementById('new-about').value.trim();
-  const audio=document.getElementById('new-audio').value.trim();
-  if(!name) return setMsg('add-msg','Artist name is required.','err');
-  if(!genre) return setMsg('add-msg','Genre is required.','err');
-  const a={id:uid(),name:name,genre:genre,about:about,imageData:newImgData||null,audioUrl:audio,active:false};
-  artists.push(a);
-  votes[a.id]=0;
-  await ss('htr:artists',artists);
-  await ss('htr:votes',votes);
-  document.getElementById('new-name').value='';
-  document.getElementById('new-genre').value='';
-  document.getElementById('new-about').value='';
-  document.getElementById('new-audio').value='';
-  document.getElementById('new-img-preview').style.display='none';
-  document.getElementById('new-img-label').textContent='Click or drag photo here';
-  newImgData=null;
-  setMsg('add-msg',name+' added to the dashboard.','ok');
-  renderAdminList(); renderTally();
-}
-
-window.deleteArtist = async function(id){
-  const a=artists.find(function(x){ return x.id===id; });
-  if(!a) return;
-  if(!confirm('Delete '+a.name+'? This cannot be undone. Any votes cast for them will be removed.')) return;
-  artists=artists.filter(function(x){ return x.id!==id; });
-  delete votes[id];
-  for(const e in members){ if(members[e].votedFor===id) members[e].votedFor=null; }
-  if(member&&member.votedFor===id) member.votedFor=null;
-  await ss('htr:artists',artists);
-  await ss('htr:votes',votes);
-  await ss('htr:members',members,false);
-  renderAdminList(); renderTally(); renderMemberList(); renderVote();
-}
-
-window.toggleA = function(id){
-  const tog=document.getElementById('tog-'+id);
-  const lbl=document.getElementById('tl-'+id);
-  const ac=artists.filter(function(a){ return a.active; }).length;
-  const on=tog.classList.contains('on');
-  if(!on && ac>=5){
-    document.getElementById('slot-warn').style.display='block';
-    setTimeout(function(){ document.getElementById('slot-warn').style.display='none'; },2500);
-    return;
+  if(!window.FS) return setMsg('r-msg','Still connecting, try again.','err');
+  try {
+    const cred = await window.FS.register(email, pw);
+    await window.FS.saveUser(cred.user.uid, {
+      firstName:first, lastName:last||'', email,
+      avatar:'cowboy', badges:[], votedPolls:[],
+      joinedAt:new Date().toISOString(), createdAt:new Date().toISOString()
+    });
+    closeModal('auth-modal');
+  } catch(e) {
+    const msgs={'auth/email-already-in-use':'That email is already registered.'};
+    setMsg('r-msg', msgs[e.code]||'Registration failed.','err');
   }
-  tog.classList.toggle('on');
-  const a=artists.find(function(x){ return x.id===id; });
-  if(a) a.active=!on;
+}
+﻿
+
+<script>
+
+var ADMIN_PW='HTR2026';
+var member=null,adminIn=false,artists=[],votes={},newImgData=null,curAudio=null;
+window.uid=function(){return Date.now().toString(36)+Math.random().toString(36).slice(2,7);}
+window.pico=function(){return '<svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M0 0l12 7-12 7z"/></svg>';}
+window.pauco=function(){return '<svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><rect x="0" y="0" width="4" height="14"/><rect x="8" y="0" width="4" height="14"/></svg>';}
+window.fmt=function(s){return Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0');}
+window.setMsg=function(id,text,type){var el=document.getElementById(id);if(!el)return;el.textContent=text;el.className='fmsg '+type;el.style.display=text?'':'none';}
+window.init=async function(){
+  if(!window.FS){setTimeout(init,200);return;}
+  artists=await window.FS.getArtists();
+  votes=await window.FS.getVotes();
+  artists.forEach(function(a){if(votes[a.id]===undefined)votes[a.id]=0;});
+  window._onAuthReady=function(user){member=user;renderVote();renderProfile();};
+  if(window._currentUser!==undefined){member=window._currentUser;renderVote();renderProfile();}
+}
+window.switchView=function(id,btn){
+  document.querySelectorAll('.view').forEach(function(v){v.classList.remove('active');});
+  document.querySelectorAll('.nav-tab').forEach(function(t){t.classList.remove('active');});
+  document.getElementById('view-'+id).classList.add('active');
+  if(btn)btn.classList.add('active');
+  if(id==='admin')renderAdmin();
+}
+window.renderVote=function(){
+  var active=artists.filter(function(a){return a.active;});
+  var g=document.getElementById('artists-grid');
+  var lp=document.getElementById('vote-login-prompt');
+  var bw=document.getElementById('badge-wrap');
+  var total=Object.values(votes).reduce(function(a,b){return a+b;},0);
+  document.getElementById('total-pill').innerHTML='<strong>'+total+'</strong> total votes cast';
+  if(member){lp.style.display='none';var disp=member.firstName+(member.lastName?' '+member.lastName:'');bw.innerHTML='<span class="mbadge">&#9670; '+disp+'</span>';}
+  else{lp.style.display=active.length?'block':'none';bw.innerHTML='';}
+  if(!active.length){g.innerHTML='<div class="empty" style="grid-column:1/-1"><h3>Coming Soon</h3><p>HTR is lining up the candidates. Check back soon.</p></div>';return;}
+  g.innerHTML=active.map(function(a){return cardHTML(a);}).join('');
+  active.forEach(function(a){
+    if(!a.audioUrl)return;
+    var audio=new Audio();audio.src=a.audioUrl;audio.removeAttribute('crossorigin');
+    var pb=document.getElementById('pb-'+a.id);var pf=document.getElementById('pf-'+a.id);var pt=document.getElementById('pt-'+a.id);var bar=document.getElementById('bar-'+a.id);
+    if(!pb)return;
+    pb.onclick=function(){doPlay(audio,pb,pf,pt);};
+    audio.addEventListener('timeupdate',function(){if(audio.duration){pf.style.width=(audio.currentTime/audio.duration*100)+'%';pt.textContent=fmt(audio.currentTime)+' / '+fmt(audio.duration);}});
+    audio.addEventListener('ended',function(){pb.classList.remove('playing');pb.innerHTML=pico();pf.style.width='0%';});
+    if(bar)bar.onclick=function(e){if(audio.duration){var r=bar.getBoundingClientRect();audio.currentTime=((e.clientX-r.left)/r.width)*audio.duration;}};
+  });
+}
+window.doPlay=function(audio,btn){
+  if(curAudio&&curAudio!==audio){curAudio.pause();document.querySelectorAll('.playbtn.playing').forEach(function(b){b.classList.remove('playing');b.innerHTML=pico();});}
+  if(audio.paused){audio.load();audio.play().catch(function(){});btn.classList.add('playing');btn.innerHTML=pauco();curAudio=audio;}
+  else{audio.pause();btn.classList.remove('playing');btn.innerHTML=pico();}
+}
+window.cardHTML=function(a){
+  var myv=member?member.votedFor:null;var hasv=!!myv;var isv=myv===a.id;var vc=votes[a.id]||0;
+  var imgH=a.imageData?'<img src="'+a.imageData+'" alt="'+a.name+'">'
+    :'<div class="placeholder"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.5"/><circle cx="24" cy="18" r="6" stroke="currentColor" stroke-width="1.5"/><path d="M12 38c0-6.627 5.373-12 12-12s12 5.373 12 12" stroke="currentColor" stroke-width="1.5"/></svg>'+a.name+'</div>';
+  var clipH=a.audioUrl?'<div class="clip"><div class="clip-label">Sound Clip</div><div class="controls"><button class="playbtn" id="pb-'+a.id+'">'+pico()+'</button><div class="progwrap" id="bar-'+a.id+'"><div class="progfill" id="pf-'+a.id+'"></div></div><span class="ctime" id="pt-'+a.id+'">0:00</span></div></div>'
+    :'<div class="clip"><span class="noclip">&#8212; no clip yet &#8212;</span></div>';
+  var vbH;
+  if(!member)vbH='<button class="vbtn" onclick="openModal(\'login\')">Sign In to Vote</button>';
+  else if(isv)vbH='<button class="vbtn voted" disabled>&#x2713; Your Vote</button>';
+  else if(hasv)vbH='<button class="vbtn" disabled>Vote Cast</button>';
+  else vbH='<button class="vbtn" onclick="castVote(\''+a.id+'\')">Vote for '+a.name+'</button>';
+  return '<div class="card'+(isv?' voted':'')+'" id="card-'+a.id+'"><div class="img-wrap">'+imgH+'<div class="genre-tag">'+a.genre+'</div></div><div class="cbody"><div class="aname">'+a.name+'</div><div class="about">'+(a.about||'<em style="color:var(--border)">About coming soon...</em>')+'</div>'+clipH+vbH+'</div><div class="tally">'+vc+' vote'+(vc!==1?'s':'')+'</div></div>';
+}
+window.castVote=async function(id){
+  if(!member)return openModal('login');
+  if(member.votedFor)return;
+  if(!window.FS)return;
+  try{await window.FS.castVote(id,member.uid);votes[id]=(votes[id]||0)+1;member.votedFor=id;renderVote();}
+  catch(e){console.error('Vote error:',e);}
+}
+window.renderProfile=function(){
+  var el=document.getElementById('profile-area');
+  if(!member){el.innerHTML='<h2 style="font-family:\'Bebas Neue\',sans-serif;font-size:2.5rem;color:var(--white);margin-bottom:12px">HTR Fan Membership</h2><p style="color:var(--muted);line-height:1.7;margin-bottom:28px">Sign in or join free to vote on the next HTR developing artist.</p><button class="lpbtn" onclick="openModal(\'login\')">Sign In / Join HTR</button>';return;}
+  var fullName=member.firstName+(member.lastName?' '+member.lastName:'');
+  var va=member.votedFor?artists.find(function(a){return a.id===member.votedFor;}):null;
+  el.innerHTML='<h2 style="font-family:\'Bebas Neue\',sans-serif;font-size:2.5rem;color:var(--gold);margin-bottom:4px">Welcome back,</h2><div style="font-family:\'Bebas Neue\',sans-serif;font-size:3rem;color:var(--white);margin-bottom:32px">'+fullName+'</div>'
+    +'<div style="background:var(--card);border:1px solid var(--border);padding:24px;margin-bottom:16px"><div class="asection" style="margin-bottom:12px">Your Vote</div>'
+    +(va?'<div style="font-family:\'Bebas Neue\',sans-serif;font-size:1.6rem;color:var(--gold)">&#9670; '+va.name+'</div><div style="color:var(--muted);font-size:.65rem">'+va.genre+'</div>'
+       :'<div style="color:var(--muted)">You have not voted yet.</div>')+'</div>'
+    +'<div style="background:var(--card);border:1px solid var(--border);padding:24px;margin-bottom:24px"><div class="asection" style="margin-bottom:4px">Member Info</div><div style="font-size:.85rem;margin-bottom:4px">'+member.email+'</div><div style="color:var(--muted);font-size:.7rem">Joined '+(member.joined||'Early Member')+'</div></div>'
+    +'<button onclick="doLogout()" style="background:none;border:1px solid var(--border);color:var(--muted);font-family:\'Space Mono\',monospace;font-size:.65rem;letter-spacing:.1em;padding:10px 20px;cursor:pointer;text-transform:uppercase">Sign Out</button>';
+}
+window.openModal=function(tab){document.getElementById('modal').classList.add('open');switchMTab(tab||'login');}
+window.closeModal=function(){document.getElementById('modal').classList.remove('open');}
+document.getElementById('modal').addEventListener('click',function(e){if(e.target===e.currentTarget)closeModal();});
+window.switchMTab=function(t){
+  document.getElementById('mpanel-login').style.display=t==='login'?'':'none';
+  document.getElementById('mpanel-reg').style.display=t==='reg'?'':'none';
+  document.getElementById('mtab-login').classList.toggle('active',t==='login');
+  document.getElementById('mtab-reg').classList.toggle('active',t==='reg');
+}
+window.doLogin=async function(){
+  var email=document.getElementById('l-email').value.trim();var pw=document.getElementById('l-pw').value;
+  if(!email||!pw)return setMsg('l-msg','Email and password required.','err');
+  if(!window.FS)return setMsg('l-msg','Still connecting, try again.','err');
+  try{await window.FS.signIn(email,pw);closeModal();}
+  catch(e){var msgs={'auth/invalid-credential':'Email or password is incorrect.','auth/user-not-found':'No account found.','auth/wrong-password':'Incorrect password.'};setMsg('l-msg',msgs[e.code]||'Sign in failed.','err');}
+}
+window.doRegister=async function(){
+  var first=document.getElementById('r-first').value.trim();var last=document.getElementById('r-last').value.trim();
+  var email=document.getElementById('r-email').value.trim();var pw=document.getElementById('r-pw').value;
+  if(!first)return setMsg('r-msg','First name required.','err');
+  if(!email)return setMsg('r-msg','Email required.','err');
+  if(pw.length<6)return setMsg('r-msg','Password must be 6+ characters.','err');
+  if(!window.FS)return setMsg('r-msg','Still connecting, try again.','err');
+  try{
+    var cred=await window.FS.register(email,pw);
+    await window.FS.saveUser(cred.user.uid,{firstName:first,lastName:last||'',email:email,avatar:'cowboy',badges:[],votedPolls:[],joinedAt:new Date().toISOString(),createdAt:new Date().toISOString()});
+    closeModal();
+  }catch(e){var msgs={'auth/email-already-in-use':'That email is already registered.'};setMsg('r-msg',msgs[e.code]||'Registration failed.','err');}
+}
+window.doLogout=async function(){if(window.FS)await window.FS.signOut();member=null;renderVote();renderProfile();}
+window.adminLogin=function(){
+  var pw=document.getElementById('apw').value;
+  if(pw===ADMIN_PW){document.getElementById('admin-login-screen').style.display='none';document.getElementById('admin-panel').style.display='block';renderAdmin();}
+  else setMsg('apw-msg','Incorrect password.','err');
+}
+window.renderAdmin=function(){renderAdminList();renderTally();renderMemberList();}
+window.handleNewImg=function(input){
+  var file=input.files[0];if(!file)return;
+  var reader=new FileReader();
+  reader.onload=function(e){newImgData=e.target.result;var p=document.getElementById('new-img-preview');p.src=newImgData;p.style.display='block';document.getElementById('new-img-label').textContent=file.name;};
+  reader.readAsDataURL(file);
+}
+window.handleReupload=function(input,id){
+  var file=input.files[0];if(!file)return;
+  var reader=new FileReader();
+  reader.onload=function(e){var a=artists.find(function(x){return x.id===id;});if(a)a.imageData=e.target.result;var p=document.getElementById('prev-'+id);if(p){p.src=e.target.result;p.style.display='block';}var ph=document.getElementById('ph-'+id);if(ph)ph.style.display='none';};
+  reader.readAsDataURL(file);
+}
+window.addArtist=async function(){
+  var name=document.getElementById('new-name').value.trim();var genre=document.getElementById('new-genre').value.trim();
+  var about=document.getElementById('new-about').value.trim();var audio=document.getElementById('new-audio').value.trim();
+  if(!name)return setMsg('add-msg','Artist name is required.','err');
+  if(!genre)return setMsg('add-msg','Genre is required.','err');
+  if(!window.FS)return setMsg('add-msg','Still connecting, try again.','err');
+  var a={id:uid(),name:name,genre:genre,about:about,imageData:newImgData||null,audioUrl:audio,active:false};
+  artists.push(a);votes[a.id]=0;
+  await window.FS.saveArtists(artists);
+  ['new-name','new-genre','new-about','new-audio'].forEach(function(id){document.getElementById(id).value='';});
+  document.getElementById('new-img-preview').style.display='none';document.getElementById('new-img-label').textContent='Click or drag photo here';newImgData=null;
+  setMsg('add-msg',name+' added.','ok');renderAdminList();renderTally();
+}
+window.deleteArtist=async function(id){
+  var a=artists.find(function(x){return x.id===id;});if(!a)return;
+  if(!confirm('Delete '+a.name+'? Cannot be undone.'))return;
+  artists=artists.filter(function(x){return x.id!==id;});delete votes[id];
+  await window.FS.saveArtists(artists);
+  renderAdminList();renderTally();renderVote();
+}
+window.toggleA=function(id){
+  var tog=document.getElementById('tog-'+id);var lbl=document.getElementById('tl-'+id);
+  var ac=artists.filter(function(a){return a.active;}).length;var on=tog.classList.contains('on');
+  if(!on&&ac>=5){document.getElementById('slot-warn').style.display='block';setTimeout(function(){document.getElementById('slot-warn').style.display='none';},2500);return;}
+  tog.classList.toggle('on');var a=artists.find(function(x){return x.id===id;});if(a)a.active=!on;
   lbl.textContent=!on?'Active':'Inactive';
-  const acn=artists.filter(function(x){ return x.active; }).length;
+  var acn=artists.filter(function(x){return x.active;}).length;
   document.getElementById('slot-counter').innerHTML='<strong style="color:'+(acn>=5?'var(--gold)':'var(--muted)')+'">'+acn+'/5</strong> slots active';
 }
-
-window.renderAdminList = function(){
-  const el=document.getElementById('admin-list');
-  if(!el) return;
-  const ac=artists.filter(function(a){ return a.active; }).length;
+window.renderAdminList=function(){
+  var el=document.getElementById('admin-list');if(!el)return;
+  var ac=artists.filter(function(a){return a.active;}).length;
   document.getElementById('slot-counter').innerHTML='<strong style="color:'+(ac>=5?'var(--gold)':'var(--muted)')+'">'+ac+'/5</strong> slots active';
-  if(!artists.length){
-    el.innerHTML='<div class="no-artists">No artists added yet. Use the form above to add your first candidate.</div>';
-    return;
-  }
+  if(!artists.length){el.innerHTML='<div class="no-artists">No artists added yet.</div>';return;}
   el.innerHTML=artists.map(function(a){
-    const imgEl=a.imageData
-      ?'<img class="acard-img" id="prev-'+a.id+'" src="'+a.imageData+'" alt="'+a.name+'">'
-      :'<div class="acard-img-ph" id="ph-'+a.id+'">NO<br>IMAGE</div><img class="acard-img" id="prev-'+a.id+'" src="" style="display:none">';
-    return '<div class="acard" id="ac-'+a.id+'">'
-      +'<div class="acard-img-wrap">'
-      +imgEl
-      +'<div class="reupload-zone">'
-      +'<input type="file" accept="image/*" onchange="handleReupload(this,\''+a.id+'\')">'
-      +'<span>Change Photo</span>'
-      +'</div>'
-      +'</div>'
-      +'<div style="grid-column:2/-1">'
-      +'<div class="acard-header">'
-      +'<div><div class="acard-name">'+a.name+'</div><div class="acard-genre">'+a.genre+'</div></div>'
-      +'<div class="acard-controls">'
-      +'<div class="toggle-wrap">'
-      +'<span id="tl-'+a.id+'">'+(a.active?'Active':'Inactive')+'</span>'
-      +'<div class="tog'+(a.active?' on':'')+'" id="tog-'+a.id+'" onclick="toggleA(\''+a.id+'\')"></div>'
-      +'</div>'
-      +'<button class="del-btn" onclick="deleteArtist(\''+a.id+'\')">&#x2715; Delete</button>'
-      +'</div>'
-      +'</div>'
-      +'<div class="acard-fields">'
-      +'<div class="afwrap"><label class="afl">About</label><textarea class="ainput ata" id="aa-'+a.id+'" placeholder="Brief bio...">'+(a.about||'')+'</textarea></div>'
-      +'<div style="display:flex;flex-direction:column;gap:12px">'
-      +'<div class="afwrap"><label class="afl">Genre</label><input type="text" class="ainput" id="ag-'+a.id+'" value="'+a.genre+'"></div>'
-      +'<div class="afwrap"><label class="afl">Audio Clip URL</label><input type="text" class="ainput" id="au-'+a.id+'" value="'+(a.audioUrl||'')+'" placeholder="Dropbox raw=1 .mp3 link"></div>'
-      +'</div>'
-      +'</div>'
-      +'</div>'
-      +'</div>';
+    var imgEl=a.imageData?'<img class="acard-img" id="prev-'+a.id+'" src="'+a.imageData+'" alt="'+a.name+'">'
+      :'<div class="acard-img-ph" id="ph-'+a.id+'">NO<br>IMAGE</div>';
+    return '<div class="acard"><div class="acard-img-wrap">'+imgEl
+      +'<div class="reupload-zone"><input type="file" accept="image/*" onchange="handleReupload(this,\''+a.id+'\')"><span>Change Photo</span></div></div>'
+      +'<div style="grid-column:2/-1"><div class="acard-header"><div><div class="acard-name">'+a.name+'</div><div class="acard-genre">'+a.genre+'</div></div>'
+      +'<div class="acard-controls"><div class="toggle-wrap"><span id="tl-'+a.id+'">'+(a.active?'Active':'Inactive')+'</span>'
+      +'<div class="tog'+(a.active?' on':'')+'" id="tog-'+a.id+'" onclick="toggleA(\''+a.id+'\')"></div></div>'
+      +'<button class="del-btn" onclick="deleteArtist(\''+a.id+'\')">&#x2715; Delete</button></div></div>'
+      +'<div class="acard-fields"><div class="afwrap"><label class="afl">About</label><textarea class="ainput ata" id="aa-'+a.id+'">'+(a.about||'')+'</textarea></div>'
+      +'<div style="display:flex;flex-direction:column;gap:12px"><div class="afwrap"><label class="afl">Genre</label><input type="text" class="ainput" id="ag-'+a.id+'" value="'+a.genre+'"></div>'
+      +'<div class="afwrap"><label class="afl">Audio URL</label><input type="text" class="ainput" id="au-'+a.id+'" value="'+(a.audioUrl||'')+'"></div></div></div></div></div>';
   }).join('');
 }
-
-window.saveConfig = async function(){
+window.saveConfig=async function(){
   artists.forEach(function(a){
-    const ab=document.getElementById('aa-'+a.id);
-    const ag=document.getElementById('ag-'+a.id);
-    const au=document.getElementById('au-'+a.id);
-    if(ab) a.about=ab.value.trim();
-    if(ag) a.genre=ag.value.trim();
-    if(au) a.audioUrl=au.value.trim();
+    var ab=document.getElementById('aa-'+a.id);var ag=document.getElementById('ag-'+a.id);var au=document.getElementById('au-'+a.id);
+    if(ab)a.about=ab.value.trim();if(ag)a.genre=ag.value.trim();if(au)a.audioUrl=au.value.trim();
   });
-  await ss('htr:artists',artists);
-  const m=document.getElementById('save-msg');
-  m.textContent='&#x2713; Saved. Vote page updated.';
-  setTimeout(function(){ m.textContent=''; },3000);
-  renderVote(); renderTally();
+  await window.FS.saveArtists(artists);
+  var m=document.getElementById('save-msg');if(m){m.textContent='Saved to cloud.';setTimeout(function(){m.textContent='';},3000);}
+  renderVote();renderTally();
 }
-
-window.resetVotes = async function(){
-  if(!confirm('Reset ALL votes? This cannot be undone.')) return;
-  artists.forEach(function(a){ votes[a.id]=0; });
-  for(const e in members) members[e].votedFor=null;
-  if(member) member.votedFor=null;
-  await ss('htr:votes',votes);
-  await ss('htr:members',members,false);
-  renderVote(); renderTally(); renderMemberList(); renderProfile();
+window.resetVotes=async function(){
+  if(!confirm('Reset ALL votes? Cannot be undone.'))return;
+  await window.FS.resetVotes(artists.map(function(a){return a.id;}));
+  artists.forEach(function(a){votes[a.id]=0;});if(member)member.votedFor=null;
+  renderVote();renderTally();
 }
-
-window.renderTally = function(){
-  const el=document.getElementById('tally-list');
-  if(!el) return;
-  const active=artists.filter(function(a){ return a.active; }).sort(function(a,b){ return (votes[b.id]||0)-(votes[a.id]||0); });
-  if(!active.length){ el.innerHTML='<div class="srow"><span style="color:var(--muted);font-size:.85rem">No active artists yet.</span></div>'; return; }
-  const max=Math.max.apply(null,active.map(function(a){ return votes[a.id]||0; }).concat([1]));
-  el.innerHTML=active.map(function(a){
-    const v=votes[a.id]||0;
-    return '<div class="srow"><div style="flex:1"><div style="font-size:.9rem">'+a.name+' <span style="font-family:\'Space Mono\',monospace;font-size:.6rem;color:var(--muted)">'+a.genre+'</span></div><div style="height:3px;background:var(--border);border-radius:2px;margin-top:4px"><div style="height:100%;width:'+Math.round(v/max*100)+'%;background:var(--gold);border-radius:2px"></div></div></div><div class="snum" style="margin-left:16px">'+v+'</div></div>';
+window.renderTally=function(){
+  var el=document.getElementById('tally-list');if(!el)return;
+  var active=artists.filter(function(a){return a.active;}).sort(function(a,b){return (votes[b.id]||0)-(votes[a.id]||0);});
+  if(!active.length){el.innerHTML='<div class="srow"><span style="color:var(--muted)">No active artists yet.</span></div>';return;}
+  var max=Math.max.apply(null,active.map(function(a){return votes[a.id]||0;}).concat([1]));
+  el.innerHTML=active.map(function(a){var v=votes[a.id]||0;
+    return '<div class="srow"><div style="flex:1"><div>'+a.name+'</div><div style="height:3px;background:var(--border);margin-top:4px"><div style="height:100%;width:'+Math.round(v/max*100)+'%;background:var(--gold)"></div></div></div><div class="snum" style="margin-left:16px">'+v+'</div></div>';
   }).join('');
 }
-
-window.renderMemberList = function(){
-  const cnt=document.getElementById('member-count');
-  const el=document.getElementById('member-list');
-  if(!cnt||!el) return;
-  const emails=Object.keys(members);
+window.renderMemberList=async function(){
+  var cnt=document.getElementById('member-count');var el=document.getElementById('member-list');if(!cnt||!el)return;
+  if(!window.FS){el.innerHTML='<div class="srow"><span style="color:var(--muted)">Loading...</span></div>';return;}
+  var mbrs=await window.FS.getMembers();var emails=Object.keys(mbrs);
   cnt.textContent=emails.length;
-  if(!emails.length){ el.innerHTML='<div class="srow"><span style="color:var(--muted);font-size:.85rem">No members yet.</span></div>'; return; }
+  if(!emails.length){el.innerHTML='<div class="srow"><span style="color:var(--muted)">No members yet.</span></div>';return;}
   el.innerHTML=emails.map(function(e){
-    const m=members[e];
-    const fullName=m.firstName+(m.lastName?' '+m.lastName:'');
-    const matched=artists.find(function(a){ return a.id===m.votedFor; });
-    const va=m.votedFor?(matched?matched.name:'(deleted artist)'):'&#8212;';
-    return '<div class="srow">'
-      +'<div>'
-      +'<div style="font-size:.9rem">'+fullName+'</div>'
-      +'<div style="font-family:\'Space Mono\',monospace;font-size:.6rem;color:var(--muted)">'+e+'</div>'
-      +'<div style="font-family:\'Space Mono\',monospace;font-size:.58rem;color:var(--border)">'+(m.joined||'')+'</div>'
-      +'</div>'
-      +'<div style="text-align:right;font-family:\'Space Mono\',monospace;font-size:.62rem;color:'+(m.votedFor?'var(--gold)':'var(--muted)')+'">'+va+'</div>'
-      +'</div>';
+    var m=mbrs[e];var name=(m.firstName||'')+(m.lastName?' '+m.lastName:'');
+    var polls=m.votedPolls||[];var wn=polls.find(function(p){return p.pollName==="Who's Next";});
+    var matched=wn?artists.find(function(a){return a.id===wn.artistId;}):null;
+    var va=wn?(matched?matched.name:wn.artistId):'&#8212;';
+    return '<div class="srow"><div><div>'+name+'</div><div style="color:var(--muted);font-size:.75rem">'+e+'</div></div>'
+      +'<div style="color:'+(wn?'var(--gold)':'var(--muted)')+';font-size:.75rem">'+va+'</div></div>';
   }).join('');
 }
-
 init();
+
 </script>
 </body>
 </html>
