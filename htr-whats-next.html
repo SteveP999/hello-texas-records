@@ -293,10 +293,16 @@ const doResetVotes = async (ids) => { const d={}; ids.forEach(id=>d[id]=0); retu
 const getMembers   = async () => { const s=await getDocs(collection(db,'users')); const r={}; s.forEach(d=>r[d.data().email]={...d.data(),uid:d.id}); return r;};
 
 // ── Init ──────────────────────────────────────────────────────────────────────
+let bootDone = false;
+
 async function boot() {
   artists = await getArtists();
   votes   = await getVotes();
   artists.forEach(a=>{ if(votes[a.id]===undefined) votes[a.id]=0; });
+  bootDone = true;
+  // Re-render now that data is loaded (auth state may have already fired)
+  renderVote();
+  renderProfile();
 }
 
 onAuthStateChanged(auth, async user => {
@@ -309,8 +315,8 @@ onAuthStateChanged(auth, async user => {
   } else {
     member = null;
   }
-  renderVote();
-  renderProfile();
+  // Only render if boot has already loaded data; otherwise boot() will render on completion
+  if(bootDone){renderVote();renderProfile();}
 });
 
 boot();
