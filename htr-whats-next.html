@@ -192,11 +192,9 @@ body{background:var(--black);color:var(--text);font-family:'DM Sans',sans-serif;
         <div class="afwrap span2"><label class="afl">About <span class="opt">(optional)</span></label><textarea class="ainput ata" id="new-about" placeholder="Brief bio..."></textarea></div>
         <div class="afwrap">
           <label class="afl">Artist Photo <span class="opt">(optional)</span></label>
-          <div class="img-upload-zone" id="new-img-zone">
-            <input type="file" accept="image/*" onchange="handleNewImg(this)">
-            <img id="new-img-preview" class="img-preview" style="margin:0 auto 8px">
-            <div class="upload-label" id="new-img-label">Click or drag photo here</div>
-          </div>
+          <input type="text" class="ainput" id="new-img-url" placeholder="Paste image URL (Dropbox ?raw=1, Imgur, etc)" oninput="previewNewImg(this)">
+          <img id="new-img-preview" class="img-preview" style="margin-top:8px;display:none">
+          <div style="font-size:.55rem;color:var(--border);margin-top:5px">Dropbox: change dl=0 to raw=1</div>
         </div>
         <div class="afwrap">
           <label class="afl">Audio Clip URL <span class="opt">(optional)</span></label>
@@ -259,12 +257,10 @@ body{background:var(--black);color:var(--text);font-family:'DM Sans',sans-serif;
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
 import { getFirestore, doc, getDoc, setDoc, updateDoc, deleteDoc, collection, getDocs, serverTimestamp, increment, arrayUnion } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
-import { getStorage, ref, uploadBytes, getDownloadURL } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-storage.js';
 
 const app  = initializeApp({apiKey:"AIzaSyDCEQYAA3uSJhEbBpxDT1c6xw3OfPvV4yA",authDomain:"htr-fans.firebaseapp.com",projectId:"htr-fans",storageBucket:"htr-fans.firebasestorage.app",messagingSenderId:"475143848447",appId:"1:475143848447:web:288a666aa5a4556d6627ca"});
 const auth = getAuth(app);
 const db   = getFirestore(app);
-const storage = getStorage(app);
 
 const ADMIN_PW = 'HTR2026';
 let member=null, artists=[], votes={}, newImgData=null, curAudio=null;
@@ -427,33 +423,13 @@ window.adminLogin = function(){
 
 window.renderAdmin = () => { renderAdminList(); renderTally(); renderMemberList(); };
 
-// Upload to Firebase Storage, return download URL (no base64 in Firestore)
-const uploadImg = async (file, path) => {
-  const storageRef = ref(storage, path);
-  await uploadBytes(storageRef, file);
-  return getDownloadURL(storageRef);
-};
 
-window.handleNewImg = async function(input){
-  const file=input.files[0]; if(!file)return;
-  const lbl=document.getElementById('new-img-label');
-  lbl.textContent='Uploading...';
-  try {
-    const url = await uploadImg(file, 'artists/new-'+Date.now()+'-'+file.name);
-    newImgData = url;
-    const p=document.getElementById('new-img-preview'); p.src=url; p.style.display='block';
-    lbl.textContent=file.name+' (uploaded)';
-  } catch(e){ lbl.textContent='Upload failed: '+e.message; console.error(e); }
-};
-
-window.handleReupload = async function(input,id){
-  const file=input.files[0]; if(!file)return;
-  try {
-    const url = await uploadImg(file, 'artists/'+id+'-'+Date.now()+'-'+file.name);
-    const a=artists.find(x=>x.id===id); if(a)a.imageData=url;
-    const p=document.getElementById('prev-'+id); if(p){p.src=url;p.style.display='block';}
-    const ph=document.getElementById('ph-'+id); if(ph)ph.style.display='none';
-  } catch(e){ console.error('Reupload failed:',e); }
+window.handleReupload = function(input,id){
+  const url=input.value.trim();
+  const a=artists.find(x=>x.id===id); if(a)a.imageData=url||null;
+  const p=document.getElementById('prev-'+id);
+  if(p&&url){p.src=url;p.style.display='block';}
+  const ph=document.getElementById('ph-'+id); if(ph&&url)ph.style.display='none';
 };en">
 <head>
 <meta charset="UTF-8">
@@ -647,11 +623,9 @@ body{background:var(--black);color:var(--text);font-family:'DM Sans',sans-serif;
         <div class="afwrap span2"><label class="afl">About <span class="opt">(optional)</span></label><textarea class="ainput ata" id="new-about" placeholder="Brief bio..."></textarea></div>
         <div class="afwrap">
           <label class="afl">Artist Photo <span class="opt">(optional)</span></label>
-          <div class="img-upload-zone" id="new-img-zone">
-            <input type="file" accept="image/*" onchange="handleNewImg(this)">
-            <img id="new-img-preview" class="img-preview" style="margin:0 auto 8px">
-            <div class="upload-label" id="new-img-label">Click or drag photo here</div>
-          </div>
+          <input type="text" class="ainput" id="new-img-url" placeholder="Paste image URL (Dropbox ?raw=1, Imgur, etc)" oninput="previewNewImg(this)">
+          <img id="new-img-preview" class="img-preview" style="margin-top:8px;display:none">
+          <div style="font-size:.55rem;color:var(--border);margin-top:5px">Dropbox: change dl=0 to raw=1</div>
         </div>
         <div class="afwrap">
           <label class="afl">Audio Clip URL <span class="opt">(optional)</span></label>
@@ -880,33 +854,12 @@ window.adminLogin = function(){
 
 window.renderAdmin = () => { renderAdminList(); renderTally(); renderMemberList(); };
 
-// Upload to Firebase Storage - URL stored in Firestore, never base64
-const uploadImg = async (file, path) => {
-  const storageRef = ref(storage, path);
-  await uploadBytes(storageRef, file);
-  return getDownloadURL(storageRef);
-};
-
-window.handleNewImg = async function(input){
-  const file=input.files[0]; if(!file)return;
-  const lbl=document.getElementById('new-img-label');
-  lbl.textContent='Uploading...';
-  try {
-    const url = await uploadImg(file, 'artists/new-'+Date.now()+'-'+file.name);
-    newImgData = url;
-    const p=document.getElementById('new-img-preview'); p.src=url; p.style.display='block';
-    lbl.textContent=file.name+' (uploaded)';
-  } catch(e){ lbl.textContent='Upload failed: '+e.message; console.error(e); }
-};
-
-window.handleReupload = async function(input,id){
-  const file=input.files[0]; if(!file)return;
-  try {
-    const url = await uploadImg(file, 'artists/'+id+'-'+Date.now()+'-'+file.name);
-    const a=artists.find(x=>x.id===id); if(a)a.imageData=url;
-    const p=document.getElementById('prev-'+id); if(p){p.src=url;p.style.display='block';}
-    const ph=document.getElementById('ph-'+id); if(ph)ph.style.display='none';
-  } catch(e){ console.error('Reupload failed:',e); }
+window.handleReupload = function(input,id){
+  const url=input.value.trim();
+  const a=artists.find(x=>x.id===id); if(a)a.imageData=url||null;
+  const p=document.getElementById('prev-'+id);
+  if(p&&url){p.src=url;p.style.display='block';}
+  const ph=document.getElementById('ph-'+id); if(ph&&url)ph.style.display='none';
 };};
 
 window.addArtist = async function(){
@@ -917,9 +870,8 @@ window.addArtist = async function(){
   const a={id:uid(),name,genre,about,imageData:newImgData||null,audioUrl:audio,active:false};
   artists.push(a); votes[a.id]=0;
   await setDoc(doc(db,'wnRoster',a.id),{name:a.name,genre:a.genre,about:a.about,imageData:a.imageData||null,audioUrl:a.audioUrl||'',active:false,_order:artists.length-1});
-  ['new-name','new-genre','new-about','new-audio'].forEach(id=>document.getElementById(id).value='');
+  ['new-name','new-genre','new-about','new-audio','new-img-url'].forEach(id=>document.getElementById(id).value='');
   document.getElementById('new-img-preview').style.display='none';
-  document.getElementById('new-img-label').textContent='Click or drag photo here';
   newImgData=null;
   setMsg('add-msg',name+' added.','ok');
   renderAdminList(); renderTally();
@@ -951,7 +903,7 @@ window.renderAdminList = function(){
   if(!artists.length){el.innerHTML='<div class="no-artists">No artists added yet. Use the form above.</div>';return;}
   el.innerHTML=artists.map(a=>{
     const imgEl=a.imageData?`<img class="acard-img" id="prev-${a.id}" src="${a.imageData}" alt="${a.name}">`:`<div class="acard-img-ph" id="ph-${a.id}">NO<br>IMAGE</div>`;
-    return `<div class="acard"><div class="acard-img-wrap">${imgEl}<div class="reupload-zone"><input type="file" accept="image/*" onchange="handleReupload(this,'${a.id}')"><span>Change Photo</span></div></div><div style="grid-column:2/-1"><div class="acard-header"><div><div class="acard-name">${a.name}</div><div class="acard-genre">${a.genre}</div></div><div class="acard-controls"><div class="toggle-wrap"><span id="tl-${a.id}">${a.active?'Active':'Inactive'}</span><div class="tog${a.active?' on':''}" id="tog-${a.id}" onclick="toggleA('${a.id}')"></div></div><button class="del-btn" onclick="deleteArtist('${a.id}')">&#x2715; Delete</button></div></div><div class="acard-fields"><div class="afwrap"><label class="afl">About</label><textarea class="ainput ata" id="aa-${a.id}">${a.about||''}</textarea></div><div style="display:flex;flex-direction:column;gap:12px"><div class="afwrap"><label class="afl">Genre</label><input type="text" class="ainput" id="ag-${a.id}" value="${a.genre}"></div><div class="afwrap"><label class="afl">Audio URL</label><input type="text" class="ainput" id="au-${a.id}" value="${a.audioUrl||''}"></div></div></div></div></div>`;
+    return `<div class="acard"><div class="acard-img-wrap">${imgEl}<div class="afwrap" style="margin-top:6px"><label class="afl" style="font-size:.45rem">Photo URL</label><input type="text" class="ainput" style="font-size:.6rem;padding:4px 6px" placeholder="Paste URL" value="${a.imageData||''}" oninput="handleReupload(this,'${a.id}')"></div></div><div style="grid-column:2/-1"><div class="acard-header"><div><div class="acard-name">${a.name}</div><div class="acard-genre">${a.genre}</div></div><div class="acard-controls"><div class="toggle-wrap"><span id="tl-${a.id}">${a.active?'Active':'Inactive'}</span><div class="tog${a.active?' on':''}" id="tog-${a.id}" onclick="toggleA('${a.id}')"></div></div><button class="del-btn" onclick="deleteArtist('${a.id}')">&#x2715; Delete</button></div></div><div class="acard-fields"><div class="afwrap"><label class="afl">About</label><textarea class="ainput ata" id="aa-${a.id}">${a.about||''}</textarea></div><div style="display:flex;flex-direction:column;gap:12px"><div class="afwrap"><label class="afl">Genre</label><input type="text" class="ainput" id="ag-${a.id}" value="${a.genre}"></div><div class="afwrap"><label class="afl">Audio URL</label><input type="text" class="ainput" id="au-${a.id}" value="${a.audioUrl||''}"></div></div></div></div></div>`;
   }).join('');
 };
 
