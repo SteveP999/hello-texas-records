@@ -367,7 +367,7 @@ window.castVote = async function(id){
   if(member.votedFor)return;
   try{
     await updateDoc(doc(db,'whatsNext','votes'),{[id]:increment(1)}).catch(async()=>setDoc(doc(db,'whatsNext','votes'),{[id]:1}));
-    await updateDoc(doc(db,'users',member.uid),{votedPolls:arrayUnion({artistId:id,pollName:"Who's Next",votedAt:new Date().toISOString()})}).catch(()=>{});
+    await updateDoc(doc(db,'users',member.uid),{votedPolls:arrayUnion({artistId:id,pollName:"Who's Next",votedAt:new Date().toISOString()}),badges:arrayUnion('first_vote')}).catch(()=>{});
     votes[id]=(votes[id]||0)+1; member.votedFor=id; renderVote();
   }catch(e){console.error('Vote error:',e);}
 }

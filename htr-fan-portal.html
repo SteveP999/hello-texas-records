@@ -1073,7 +1073,7 @@ const ADMIN_EMAILS = ['speters999@gmail.com'];
 
 const BADGES = [
   { id:'early_member',   icon:'&#x1F920;', name:'Early Member',       desc:'One of the first 500 fans to join HTR',      auto:true,  manual:false },
-  { id:'first_vote',     icon:'&#x1F5F3;', name:'First Vote',          desc:"Cast your first Who's Next vote",            auto:true,  manual:false },
+  { id:'first_vote',     icon:'&#x1F5F3;', name:'First Vote',          desc:"Cast your first HTR vote",                   auto:true,  manual:false },
   { id:'playlist_build', icon:'&#x1F3B5;', name:'Playlist Builder',    desc:'Created your first HTR playlist',            auto:true,  manual:false },
   { id:'voice_people',   icon:'&#x1F4A1;', name:'Voice of the People', desc:'Submitted your first suggestion to HTR',     auto:true,  manual:false },
   { id:'superfan',       icon:'&#x1F525;', name:'Superfan',            desc:'Earned all four community badges',           auto:true,  manual:false },
@@ -1368,6 +1368,17 @@ async function loadProfile(){
 
   document.getElementById('stat-suggestions').textContent=sugSnap.size;
 
+  // Auto-award first_vote if user has any votes and doesn't have the badge yet
+  const hasVotes = (p.votedPolls||[]).length > 0 || (p.songVotes||[]).length > 0;
+  if(hasVotes && !(p.badges||[]).includes('first_vote')) {
+    await awardBadge('first_vote');
+    p.badges = [...(p.badges||[]), 'first_vote'];
+  }
+  // Auto-award early_member if missing (all members qualify right now)
+  if(!(p.badges||[]).includes('early_member')) {
+    await awardBadge('early_member');
+    p.badges = [...(p.badges||[]), 'early_member'];
+  }
   renderBadges(p.badges||[]);
 
   const plDiv=document.getElementById('my-playlists-list');
@@ -1391,15 +1402,21 @@ async function loadProfile(){
 
   sugDiv.innerHTML=sugSnap.empty?`<div class="empty-state"><h3>No Suggestions Yet</h3><p>Head to Suggestions to drop an idea.</p></div>`:sugSnap.docs.map(d=>suggestionHTML(d.id,d.data(),false)).join('');
 
-  const polls=p.votedPolls||[];
-
-  document.getElementById('vote-history-list').innerHTML=polls.length?polls.map(v=>{
-    // Format display name: use artistName if set, otherwise clean up the doc ID
+  // Combine Who's Next votes and Song Poll votes for history display
+  const wn = (p.votedPolls||[]).map(v=>{
     const rawId = v.artistId||'';
     const cleanId = rawId.replace(/-\d{3,4}$/, '').replace(/-/g,' ').replace(/\b\w/g,l=>l.toUpperCase());
-    const displayName = v.artistName || cleanId || 'Unknown Artist';
-    const pollLabel = v.pollName || "Who's Next";
-    return `<div style="background:var(--card);border:1px solid var(--border);padding:14px 20px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center"><div style="font-size:.88rem">${displayName}</div><div class="chip">${pollLabel}</div></div>`;
+    return { displayName: v.artistName||cleanId||'Unknown Artist', label: v.pollName||"Who's Next", link:'htr-whats-next.html' };
+  });
+  const sv = (p.songVotes||[]).map(v=>{
+    const pollId = v.pollId||'';
+    const cleanPoll = pollId.replace(/-\d{3,4}$/, '').replace(/-/g,' ').replace(/\b\w/g,l=>l.toUpperCase());
+    return { displayName: cleanPoll||'Song Vote', label:'Fan Vote', link:'htr-vote.html' };
+  });
+  const allVotes = [...wn, ...sv];
+
+  document.getElementById('vote-history-list').innerHTML=allVotes.length?allVotes.map(v=>{
+    return `<div style="background:var(--card);border:1px solid var(--border);padding:14px 20px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center"><div style="font-size:.88rem">${v.displayName}</div><div class="chip"><a href="${v.link}" style="color:inherit;text-decoration:none">${v.label}</a></div></div>`;
   }).join(''):`<div class="empty-state"><h3>No Votes Yet</h3><p>Head to the <a href="htr-whats-next.html" style="color:var(--gold)">Who's Next</a> or <a href="htr-vote.html" style="color:var(--gold)">Fan Vote</a> pages to cast your vote.</p></div>`;
 
 }
