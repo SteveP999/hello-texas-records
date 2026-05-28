@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTR Fan Vote</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--black:#0a0a0a;--dark:#111;--card:#181818;--border:#2a2a2a;--gold:#c8a84b;--gold-l:#e8c870;--red:#c0392b;--text:#e8e8e8;--muted:#888;--white:#fff;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--black);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:16px 32px;border-bottom:1px solid var(--border);background:var(--black);position:sticky;top:0;z-index:100}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:.12em;color:var(--gold)}
+.logo span{color:var(--white)}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-link{font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-link:hover{color:var(--gold)}
+.nav-user{font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.1em;color:var(--gold)}
+.nav-btn{background:none;border:1px solid var(--border);color:var(--muted);font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.08em;padding:6px 12px;cursor:pointer;text-transform:uppercase;transition:all .2s}
+.nav-btn:hover{border-color:var(--gold);color:var(--gold)}
+.hero{text-align:center;padding:56px 32px 36px;background:linear-gradient(180deg,rgba(200,168,75,.06) 0%,transparent 100%);border-bottom:1px solid var(--border)}
+.eyebrow{font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.25em;color:var(--gold);text-transform:uppercase;margin-bottom:14px}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.8rem,7vw,6rem);line-height:.95;letter-spacing:.04em;color:var(--white)}
+.hero-title em{color:var(--gold);font-style:normal}
+.hero-sub{margin:16px auto 0;max-width:560px;color:var(--muted);font-size:.92rem;line-height:1.65}
+.gate{text-align:center;padding:64px 24px;max-width:480px;margin:0 auto}
+.gate-title{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.06em;color:var(--white);margin-bottom:12px}
+.gate-sub{color:var(--muted);font-size:.9rem;line-height:1.6;margin-bottom:28px}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-l));border:none;color:var(--black);font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.15em;padding:13px 32px;cursor:pointer;transition:opacity .2s}
+.btn-gold:hover{opacity:.88}
+.wrap{max-width:860px;margin:0 auto;padding:48px 24px}
+.artist-section{margin-bottom:64px}
+.artist-header{display:flex;align-items:baseline;gap:16px;margin-bottom:28px;padding-bottom:14px;border-bottom:2px solid var(--border)}
+.artist-name{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;letter-spacing:.08em;color:var(--white)}
+.artist-count{font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+.poll{background:var(--card);border:1px solid var(--border);margin-bottom:20px;overflow:hidden;transition:border-color .2s}
+.poll:hover{border-color:rgba(200,168,75,.3)}.poll.voted{border-color:var(--gold)}
+.poll-header{padding:20px 24px 16px}
+.poll-song{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.06em;color:var(--white);margin-bottom:4px}
+.poll-question{font-size:.88rem;color:var(--gold);font-style:italic}
+.poll-meta{display:flex;gap:16px;margin-top:8px;flex-wrap:wrap}
+.poll-stat{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--muted);letter-spacing:.08em}
+.poll-stat strong{color:var(--text)}
+.poll-deadline{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--muted);letter-spacing:.08em}
+.poll-deadline.closing{color:var(--red)}
+.options{padding:0 24px 20px}
+.option{border:1px solid var(--border);margin-bottom:10px;cursor:pointer;transition:all .2s;overflow:hidden}
+.option:hover{border-color:rgba(200,168,75,.5)}
+.option.selected{border-color:var(--gold);background:rgba(200,168,75,.05)}
+.option-inner{display:flex;align-items:center;gap:16px;padding:14px 16px}
+.option-num{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--border);letter-spacing:.04em;flex-shrink:0;width:32px;text-align:center;transition:color .2s}
+.option.selected .option-num{color:var(--gold)}
+.option-info{flex:1;min-width:0}
+.option-label{font-weight:600;font-size:.95rem;color:var(--text);margin-bottom:3px}
+.option-desc{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--muted);letter-spacing:.06em}
+.option-radio{width:20px;height:20px;border-radius:50%;border:2px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.option.selected .option-radio{border-color:var(--gold);background:var(--gold)}
+.option.selected .option-radio::after{content:'';width:8px;height:8px;border-radius:50%;background:var(--black)}
+.option-audio{width:100%;padding:0 16px 12px;display:flex;align-items:center;gap:10px}
+.playbtn{width:32px;height:32px;border-radius:50%;border:1px solid var(--gold);background:transparent;color:var(--gold);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
+.playbtn:hover,.playbtn.playing{background:var(--gold);color:var(--black)}
+.progwrap{flex:1;height:3px;background:var(--border);border-radius:2px;cursor:pointer}
+.progfill{height:100%;background:var(--gold);border-radius:2px;width:0%;transition:width .15s linear}
+.ptime{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--muted);flex-shrink:0}
+.bar-wrap{padding:0 16px 10px;display:none}.bar-wrap.show{display:block}
+.bar-track{height:4px;background:var(--border);border-radius:2px;overflow:hidden;margin-top:2px}
+.bar-fill{height:100%;border-radius:2px;background:var(--gold);transition:width .4s}
+.bar-label{display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:.58rem;color:var(--muted);margin-top:4px}
+.poll-footer{padding:12px 24px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;border-top:1px solid var(--border)}
+.vote-btn{background:linear-gradient(135deg,var(--gold),var(--gold-l));border:none;color:var(--black);font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.15em;padding:11px 28px;cursor:pointer;transition:opacity .2s,transform .1s}
+.vote-btn:hover{opacity:.88;transform:translateY(-1px)}
+.vote-btn:disabled{background:var(--border);color:var(--muted);cursor:not-allowed;transform:none;opacity:1}
+.vote-btn.voted{background:transparent;border:1px solid var(--gold);color:var(--gold)}
+.vote-notes{flex:1;min-width:200px}
+.vote-notes textarea{width:100%;background:var(--black);border:1px solid var(--border);color:var(--text);font-family:'DM Sans',sans-serif;font-size:.82rem;padding:8px 10px;resize:none;height:38px;outline:none;transition:border-color .2s}
+.vote-notes textarea:focus{border-color:var(--gold)}
+.voted-msg{font-family:'Space Mono',monospace;font-size:.68rem;color:var(--gold);letter-spacing:.08em}
+.empty{text-align:center;padding:80px 24px;color:var(--muted)}
+.empty h3{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--border);margin-bottom:12px;letter-spacing:.06em}
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:200;align-items:center;justify-content:center}
+.overlay.open{display:flex}
+.modal{background:var(--dark);border:1px solid var(--border);padding:40px;width:100%;max-width:420px;position:relative;max-height:90vh;overflow-y:auto}
+.mclose{position:absolute;top:14px;right:18px;background:none;border:none;color:var(--muted);font-size:1.4rem;cursor:pointer}
+.mlogo{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.15em;color:var(--gold);margin-bottom:4px}
+.mtitle{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.06em;color:var(--white);margin-bottom:6px}
+.msub{font-size:.82rem;color:var(--muted);margin-bottom:28px;line-height:1.5}
+.mtabs{display:flex;border-bottom:1px solid var(--border);margin-bottom:24px}
+.mtab{flex:1;padding:10px;background:none;border:none;font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .2s}
+.mtab.active{color:var(--gold);border-bottom-color:var(--gold)}
+.name-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fg{margin-bottom:16px}
+.fl{display:block;font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.fl .opt{color:var(--border);font-size:.55rem;margin-left:6px}
+.fi{width:100%;padding:11px 14px;background:var(--black);border:1px solid var(--border);color:var(--text);font-family:'DM Sans',sans-serif;font-size:.9rem;outline:none;transition:border-color .2s}
+.fi:focus{border-color:var(--gold)}
+.fsubmit{width:100%;padding:14px;background:linear-gradient(135deg,var(--gold),var(--gold-l));border:none;color:var(--black);font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:.15em;cursor:pointer;transition:opacity .2s}
+.fsubmit:hover{opacity:.88}
+.fmsg{font-size:.8rem;margin-top:10px;padding:8px 12px;border-left:2px solid;display:none}
+.fmsg.err{color:var(--red);border-color:var(--red);background:rgba(192,57,43,.08)}
+.fmsg.ok{color:var(--gold);border-color:var(--gold);background:rgba(200,168,75,.08)}
+@media(max-width:640px){
+  .nav{padding:12px 16px}.hero{padding:40px 16px 28px}.wrap{padding:32px 16px}
+  .name-row{grid-template-columns:1fr}.poll-footer{flex-direction:column}.vote-btn{width:100%}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="logo">Hello Texas <span>Records</span></div>
+  <div class="nav-right">
+    <a href="htr-fan-portal.html" class="nav-link">Fan Portal</a>
+    <a href="htr-whats-next.html" class="nav-link">Who's Next</a>
+    <div id="nav-user-area"></div>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="eyebrow">Hello Texas Records &middot; Fan Vote</div>
+  <h1 class="hero-title">Your Vote<br><em>Shapes the Music</em></h1>
+  <p class="hero-sub">Listen to every version. Pick your favorite. Your vote goes directly to the artists &mdash; helping determine what gets recorded, released, and sent to Spotify.</p>
+</div>
+
+<div id="main-content"></div>
+
+<div class="overlay" id="modal">
+  <div class="modal">
+    <button class="mclose" onclick="closeModal()">&#x2715;</button>
+    <div class="mlogo">HTR</div>
+    <div class="mtitle">Fan Membership</div>
+    <p class="msub">Free HTR membership &mdash; vote on songs, shape the catalog, track your picks.</p>
+    <div class="mtabs">
+      <button class="mtab active" id="mtab-login" onclick="switchMTab('login')">Sign In</button>
+      <button class="mtab" id="mtab-reg" onclick="switchMTab('reg')">Join HTR</button>
+    </div>
+    <div id="mpanel-login">
+      <div class="fg"><label class="fl">Email</label><input type="email" class="fi" id="l-email" placeholder="you@email.com"></div>
+      <div class="fg"><label class="fl">Password</label><input type="password" class="fi" id="l-pw" onkeydown="if(event.key==='Enter')doLogin()"></div>
+      <button class="fsubmit" onclick="doLogin()">Sign In</button>
+      <div id="l-msg" class="fmsg"></div>
+    </div>
+    <div id="mpanel-reg" style="display:none">
+      <div class="name-row">
+        <div class="fg"><label class="fl">First Name</label><input type="text" class="fi" id="r-first" placeholder="First"></div>
+        <div class="fg"><label class="fl">Last Name <span class="opt">(opt)</span></label><input type="text" class="fi" id="r-last" placeholder="Last"></div>
+      </div>
+      <div class="fg"><label class="fl">Email</label><input type="email" class="fi" id="r-email" placeholder="you@email.com"></div>
+      <div class="fg"><label class="fl">Password</label><input type="password" class="fi" id="r-pw" onkeydown="if(event.key==='Enter')doRegister()"></div>
+      <button class="fsubmit" onclick="doRegister()">Join HTR &mdash; It's Free</button>
+      <div id="r-msg" class="fmsg"></div>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+import{initializeApp}from'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+import{getAuth,signInWithEmailAndPassword,createUserWithEmailAndPassword,onAuthStateChanged,signOut}from'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
+import{getFirestore,doc,getDoc,setDoc,updateDoc,collection,getDocs,increment,arrayUnion}from'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+
+const app=initializeApp({apiKey:"AIzaSyDCEQYAA3uSJhEbBpxDT1c6xw3OfPvV4yA",authDomain:"htr-fans.firebaseapp.com",projectId:"htr-fans",storageBucket:"htr-fans.firebasestorage.app",messagingSenderId:"475143848447",appId:"1:475143848447:web:288a666aa5a4556d6627ca"});
+const auth=getAuth(app);
+const db=getFirestore(app);
+
+let member=null,polls=[],myVotes={},selected={},curAudio=null;
+const gid=id=>document.getElementById(id);
+const pico=()=>'<svg width="11" height="13" viewBox="0 0 12 14" fill="currentColor"><path d="M0 0l12 7-12 7z"/></svg>';
+const pauco=()=>'<svg width="11" height="13" viewBox="0 0 12 14" fill="currentColor"><rect x="0" y="0" width="4" height="14"/><rect x="8" y="0" width="4" height="14"/></svg>';
+const fmt=s=>Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0');
+const setMsg=(id,t,type)=>{const el=gid(id);if(!el)return;el.textContent=t;el.className='fmsg '+type;el.style.display=t?'':'none';};
+
+async function loadPolls(){
+  const snap=await getDocs(collection(db,'songPolls'));
+  if(snap.empty)return[];
+  const list=snap.docs.map(d=>({id:d.id,...d.data()})).filter(p=>p.active).sort((a,b)=>(a.artist||'').localeCompare(b.artist||'')||(a._order||0)-(b._order||0));
+  for(const p of list){
+    const vs=await getDoc(doc(db,'songPollVotes',p.id));
+    if(vs.exists()){const data=vs.data();p.totalVotes=Object.keys(data).filter(k=>k!=='_counts').length;p.counts=data._counts||{};}
+    else{p.totalVotes=0;p.counts={};}
+  }
+  return list;
+}
+
+async function loadMyVotes(uid){
+  const snap=await getDocs(collection(db,'songPolls'));
+  const result={};
+  for(const d of snap.docs){
+    const vs=await getDoc(doc(db,'songPollVotes',d.id));
+    if(vs.exists()&&vs.data()[uid]!==undefined)result[d.id]=vs.data()[uid];
+  }
+  return result;
+}
+
+async function castVote(pollId,optIdx,notes){
+  if(!member)return;
+  await setDoc(doc(db,'songPollVotes',pollId),{[member.uid]:optIdx,[`_counts.${optIdx}`]:increment(1)},{merge:true});
+  await updateDoc(doc(db,'users',member.uid),{songVotes:arrayUnion({pollId,optionIdx:optIdx,votedAt:new Date().toISOString(),notes:notes||''}),badges:arrayUnion('first-vote')}).catch(()=>{});
+  myVotes[pollId]=optIdx;
+}
+
+async function boot(){polls=await loadPolls();render();}
+boot();
+
+onAuthStateChanged(auth,async user=>{
+  if(user){
+    const snap=await getDoc(doc(db,'users',user.uid));
+    const p=snap.exists()?snap.data():{};
+    member={uid:user.uid,email:user.email,firstName:p.firstName||'Fan',lastName:p.lastName||''};
+    myVotes=await loadMyVotes(user.uid);
+  }else{member=null;myVotes={};}
+  renderNav();render();
+});
+
+function renderNav(){
+  const area=gid('nav-user-area');
+  if(member){area.innerHTML=`<span class="nav-user">&#9670; ${member.firstName}</span><button class="nav-btn" onclick="doLogout()">Sign Out</button>`;}
+  else{area.innerHTML=`<button class="nav-btn" onclick="openModal('login')">Sign In / Join HTR</button>`;}
+}
+
+function render(){
+  const mc=gid('main-content');
+  if(!member){
+    mc.innerHTML=`<div class="gate"><div class="gate-title">Join to Vote</div><p class="gate-sub">Free HTR membership lets you vote on every poll &mdash; and your votes actually count. Artists see the results and make decisions based on them.</p><button class="btn-gold" onclick="openModal('reg')">Join HTR Free</button><p style="margin-top:16px;font-size:.8rem;color:var(--muted)">Already a member? <a href="#" onclick="openModal('login');return false" style="color:var(--gold)">Sign in</a></p></div>`;
+    return;
+  }
+  if(!polls.length){mc.innerHTML='<div class="empty"><h3>No Active Polls</h3><p>Check back soon &mdash; new votes are added regularly.</p></div>';return;}
+  const byArtist={};
+  polls.forEach(p=>{const a=p.artist||'Hello Texas Records';if(!byArtist[a])byArtist[a]=[];byArtist[a].push(p);});
+  mc.innerHTML=`<div class="wrap">${Object.entries(byArtist).map(([artist,ps])=>`<div class="artist-section"><div class="artist-header"><div class="artist-name">${artist}</div><div class="artist-count">${ps.length} active poll${ps.length!==1?'s':''}</div></div>${ps.map(p=>pollHTML(p)).join('')}</div>`).join('')}</div>`;
+  polls.forEach(p=>wireAudio(p));
+}
+
+function pollHTML(p){
+  const voted=myVotes[p.id]!==undefined;
+  const total=p.totalVotes||0;
+  const counts=p.counts||{};
+  const now=Date.now();
+  const closed=p.deadline&&new Date(p.deadline).getTime()<now;
+  const daysLeft=p.deadline?Math.ceil((new Date(p.deadline).getTime()-now)/(1000*60*60*24)):null;
+  return `<div class="poll${voted?' voted':''}" id="poll-${p.id}">
+    <div class="poll-header">
+      <div class="poll-song">${p.song}</div>
+      <div class="poll-question">${p.question}</div>
+      <div class="poll-meta">
+        <span class="poll-stat"><strong>${total}</strong> vote${total!==1?'s':''} cast</span>
+        ${daysLeft!==null?`<span class="poll-deadline${daysLeft<=3?' closing':''}">${closed?'Closed':`${daysLeft}d remaining`}</span>`:''}
+      </div>
+    </div>
+    <div class="options">${p.options.map((o,i)=>{
+      const isVoted=myVotes[p.id]===i;
+      const isSelected=selected[p.id]===i;
+      const vcount=Number(counts[i]||0);
+      const pct=total>0?Math.round(vcount/total*100):0;
+      return `<div class="option${isVoted||isSelected?' selected':''}" id="opt-${p.id}-${i}" onclick="${voted||closed?'':`selectOpt('${p.id}',${i})`}">
+        <div class="option-inner">
+          <div class="option-num">${String(i+1).padStart(2,'0')}</div>
+          <div class="option-info"><div class="option-label">${o.label}</div>${o.desc?`<div class="option-desc">${o.desc}</div>`:''}</div>
+          ${voted||closed?'':`<div class="option-radio" id="radio-${p.id}-${i}"></div>`}
+          ${isVoted?`<span style="font-family:'Space Mono',monospace;font-size:.65rem;color:var(--gold)">&#x2713; YOUR VOTE</span>`:''}
+        </div>
+        ${o.audioUrl?`<div class="option-audio"><button class="playbtn" id="pb-${p.id}-${i}">${pico()}</button><div class="progwrap" id="bar-${p.id}-${i}"><div class="progfill" id="pf-${p.id}-${i}"></div></div><span class="ptime" id="pt-${p.id}-${i}">0:00</span></div>`:''}
+        <div class="bar-wrap${voted||closed?' show':''}" id="bw-${p.id}-${i}"><div class="bar-track"><div class="bar-fill" style="width:${pct}%"></div></div><div class="bar-label"><span>${o.label}</span><span>${vcount} vote${vcount!==1?'s':''} &bull; ${pct}%</span></div></div>
+      </div>`;
+    }).join('')}</div>
+    <div class="poll-footer">
+      ${voted||closed
+        ?`<div class="voted-msg">${closed?'This poll is closed.':'&#x2713; Vote recorded &mdash; thank you!'}</div>`
+        :`<div class="vote-notes"><textarea id="notes-${p.id}" placeholder="Notes / feedback (optional)"></textarea></div><button class="vote-btn" id="vbtn-${p.id}" onclick="submitVote('${p.id}')" ${selected[p.id]===undefined?'disabled':''}>Cast Vote</button>`}
+    </div>
+  </div>`;
+}
+
+function wireAudio(p){
+  p.options.forEach((o,i)=>{
+    if(!o.audioUrl)return;
+    const pb=gid(`pb-${p.id}-${i}`),pf=gid(`pf-${p.id}-${i}`),pt=gid(`pt-${p.id}-${i}`),bar=gid(`bar-${p.id}-${i}`);
+    if(!pb)return;
+    const audio=new Audio();audio.src=o.audioUrl;audio.removeAttribute('crossorigin');
+    pb.onclick=e=>{e.stopPropagation();doPlay(audio,pb,pf,pt);};
+    audio.addEventListener('timeupdate',()=>{if(audio.duration){pf.style.width=(audio.currentTime/audio.duration*100)+'%';pt.textContent=fmt(audio.currentTime)+' / '+fmt(audio.duration);}});
+    audio.addEventListener('ended',()=>{pb.classList.remove('playing');pb.innerHTML=pico();pf.style.width='0%';});
+    if(bar)bar.onclick=e=>{e.stopPropagation();if(audio.duration){const r=bar.getBoundingClientRect();audio.currentTime=((e.clientX-r.left)/r.width)*audio.duration;}};
+  });
+}
+
+function doPlay(audio,btn,fill,time){
+  if(curAudio&&curAudio!==audio){curAudio.pause();document.querySelectorAll('.playbtn.playing').forEach(b=>{b.classList.remove('playing');b.innerHTML=pico();});}
+  if(audio.paused){audio.load();audio.play().catch(()=>{});btn.classList.add('playing');btn.innerHTML=pauco();curAudio=audio;}
+  else{audio.pause();btn.classList.remove('playing');btn.innerHTML=pico();}
+}
+
+window.selectOpt=function(pollId,idx){
+  selected[pollId]=idx;
+  const poll=polls.find(p=>p.id===pollId);if(!poll)return;
+  poll.options.forEach((_,i)=>{
+    const opt=gid(`opt-${pollId}-${i}`),radio=gid(`radio-${pollId}-${i}`);
+    if(opt)opt.classList.toggle('selected',i===idx);
+    if(radio){if(i===idx){radio.style.borderColor='var(--gold)';radio.style.background='var(--gold)';radio.innerHTML='<span style="width:8px;height:8px;border-radius:50%;background:var(--black);display:block"></span>';}else{radio.style.borderColor='var(--border)';radio.style.background='';radio.innerHTML='';}}
+  });
+  const btn=gid(`vbtn-${pollId}`);if(btn)btn.disabled=false;
+};
+
+window.submitVote=async function(pollId){
+  if(!member)return openModal('login');
+  if(selected[pollId]===undefined)return;
+  const notes=gid(`notes-${pollId}`)?.value?.trim()||'';
+  await castVote(pollId,selected[pollId],notes);
+  const vs=await getDoc(doc(db,'songPollVotes',pollId));
+  const poll=polls.find(p=>p.id===pollId);
+  if(poll&&vs.exists()){const data=vs.data();poll.totalVotes=Object.keys(data).filter(k=>k!=='_counts').length;poll.counts=data._counts||{};}
+  render();
+};
+
+window.openModal=tab=>{gid('modal').classList.add('open');switchMTab(tab||'login');};
+window.closeModal=()=>gid('modal').classList.remove('open');
+gid('modal').addEventListener('click',e=>{if(e.target===e.currentTarget)closeModal();});
+window.switchMTab=t=>{gid('mpanel-login').style.display=t==='login'?'':'none';gid('mpanel-reg').style.display=t==='reg'?'':'none';gid('mtab-login').classList.toggle('active',t==='login');gid('mtab-reg').classList.toggle('active',t==='reg');};
+window.doLogin=async function(){
+  const email=gid('l-email').value.trim(),pw=gid('l-pw').value;
+  if(!email||!pw)return setMsg('l-msg','Email and password required.','err');
+  try{await signInWithEmailAndPassword(auth,email,pw);closeModal();}
+  catch(e){const m={'auth/invalid-credential':'Email or password is incorrect.','auth/user-not-found':'No account found.','auth/wrong-password':'Incorrect password.'};setMsg('l-msg',m[e.code]||'Sign in failed.','err');}
+};
+window.doRegister=async function(){
+  const first=gid('r-first').value.trim(),last=gid('r-last').value.trim(),email=gid('r-email').value.trim(),pw=gid('r-pw').value;
+  if(!first)return setMsg('r-msg','First name required.','err');
+  if(!email)return setMsg('r-msg','Email required.','err');
+  if(pw.length<6)return setMsg('r-msg','Password must be 6+ characters.','err');
+  try{const cred=await createUserWithEmailAndPassword(auth,email,pw);await setDoc(doc(db,'users',cred.user.uid),{firstName:first,lastName:last||'',email,avatar:'cowboy',badges:[],votedPolls:[],songVotes:[],joinedAt:new Date().toISOString(),createdAt:new Date().toISOString()});closeModal();}
+  catch(e){const m={'auth/email-already-in-use':'That email is already registered.'};setMsg('r-msg',m[e.code]||'Registration failed.','err');}
+};
+window.doLogout=async()=>{await signOut(auth);};
+</script>
+</body>
+</html>
