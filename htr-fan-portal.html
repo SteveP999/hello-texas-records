@@ -1393,7 +1393,14 @@ async function loadProfile(){
 
   const polls=p.votedPolls||[];
 
-  document.getElementById('vote-history-list').innerHTML=polls.length?polls.map(v=>`<div style="background:var(--card);border:1px solid var(--border);padding:14px 20px;margin-bottom:8px;display:flex;justify-content:space-between"><div style="font-size:.88rem">${v.artistName||v.artistId}</div><div class="chip">${v.pollName||"Who's Next"}</div></div>`).join(''):`<div class="empty-state"><h3>No Votes Yet</h3><p>Head to the Who's Next page to cast your vote.</p></div>`;
+  document.getElementById('vote-history-list').innerHTML=polls.length?polls.map(v=>{
+    // Format display name: use artistName if set, otherwise clean up the doc ID
+    const rawId = v.artistId||'';
+    const cleanId = rawId.replace(/-\d{3,4}$/, '').replace(/-/g,' ').replace(/\b\w/g,l=>l.toUpperCase());
+    const displayName = v.artistName || cleanId || 'Unknown Artist';
+    const pollLabel = v.pollName || "Who's Next";
+    return `<div style="background:var(--card);border:1px solid var(--border);padding:14px 20px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center"><div style="font-size:.88rem">${displayName}</div><div class="chip">${pollLabel}</div></div>`;
+  }).join(''):`<div class="empty-state"><h3>No Votes Yet</h3><p>Head to the <a href="htr-whats-next.html" style="color:var(--gold)">Who's Next</a> or <a href="htr-vote.html" style="color:var(--gold)">Fan Vote</a> pages to cast your vote.</p></div>`;
 
 }
 
@@ -1769,7 +1776,7 @@ function suggestionHTML(id,s,showUpvote){
 
   const hasVoted=(s.upvotedBy||[]).includes(currentUser?.uid);
 
-  return `<div class="suggestion-item"><div><div class="suggestion-type">${typeMap[s.type]||s.type}</div><div class="suggestion-text">${s.text}</div><div style="font-family:'Space Mono',monospace;font-size:.58rem;color:var(--muted);margin-top:6px">Ã¢â‚¬&#x201D; ${s.userName||'Fan'} &middot; ${fmtDate(s.createdAt)}</div></div>${showUpvote?`<button class="upvote-btn ${hasVoted?'voted':''}" onclick="upvoteSuggestion('${id}',this)">Ã¢&ndash;Â² ${s.upvotes||0}</button>`:''}</div>`;
+  return `<div class="suggestion-item"><div><div class="suggestion-type">${typeMap[s.type]||s.type}</div><div class="suggestion-text">${s.text}</div><div style="font-family:'Space Mono',monospace;font-size:.58rem;color:var(--muted);margin-top:6px">Ã¢â‚¬&#x201D; ${s.userName||'Fan'} &middot; ${fmtDate(s.createdAt)}</div></div>${showUpvote?`<button class="upvote-btn ${hasVoted?'voted':''}" onclick="upvoteSuggestion('${id}',this)">&#9650; ${s.upvotes||0}</button>`:''}</div>`;
 
 }
 
@@ -1785,7 +1792,7 @@ window.upvoteSuggestion = async function(id,btn){
 
   await updateDoc(ref,{upvotes:increment(1),upvotedBy:[...(data.upvotedBy||[]),currentUser.uid]});
 
-  btn.classList.add('voted'); btn.textContent='Ã¢&ndash;Â² '+(data.upvotes+1);
+  btn.classList.add('voted'); btn.textContent='&#9650; '+(data.upvotes+1);
 
 }
 
