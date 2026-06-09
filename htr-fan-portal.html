@@ -702,7 +702,7 @@ textarea.form-input{resize:vertical;min-height:100px}
 
       <table class="admin-table">
 
-        <thead><tr><th>Member</th><th>Email</th><th>Joined</th><th>Badges</th><th>Activity</th><th>Actions</th></tr></thead>
+        <thead><tr><th>Member</th><th>Email</th><th>Joined</th><th>Badges</th><th>Playlists</th><th>Activity</th><th>Actions</th></tr></thead>
 
         <tbody id="members-tbody"></tbody>
 
@@ -1877,7 +1877,7 @@ async function loadAdmin(){
 
     const awardBtns=BADGES.filter(b=>b.manual&&!(u.badges||[]).includes(b.id)).map(b=>`<button class="admin-award-btn" onclick="awardManualBadge('${d.id}','${b.id}')">${b.icon} Award ${b.name}</button>`).join(' ');
 
-    return `<tr><td>${name}</td><td style="font-family:'Space Mono',monospace;font-size:.65rem;color:var(--muted)">${u.email}</td><td style="font-family:'Space Mono',monospace;font-size:.65rem;color:var(--muted)">${fmtDate(u.joinedAt)}</td><td>${badges||'<span style="color:var(--muted);font-size:.75rem">None yet</span>'}</td><td style="font-family:'Space Mono',monospace;font-size:.65rem">V:${(u.votedPolls||[]).length}</td><td>${awardBtns}</td></tr>`;
+    return `<tr><td>${name}</td><td style="font-family:'Space Mono',monospace;font-size:.65rem;color:var(--muted)">${u.email}</td><td style="font-family:'Space Mono',monospace;font-size:.65rem;color:var(--muted)">${fmtDate(u.joinedAt)}</td><td>${badges||'<span style="color:var(--muted);font-size:.75rem">None yet</span>'}</td><td style="font-size:.75rem;color:var(--muted)">${plSnap.docs.filter(p=>p.data().userId===d.id||p.data().uid===d.id).map(p=>`<div>${p.data().name||'Untitled'} (${(p.data().tracks||[]).length} tracks)</div>`).join('')||'&mdash;'}</td><td style="font-family:'Space Mono',monospace;font-size:.65rem">V:${(u.votedPolls||[]).length} &bull; PL:${plSnap.docs.filter(p=>p.data().userId===d.id||p.data().uid===d.id).length}</td><td>${awardBtns}</td></tr>`;
 
   }).join('');
 
@@ -1919,7 +1919,7 @@ window.playPlayerSong = function(song) {
     if (cat) cover = cat.cover || cat.albumCover || '';
   }
   const thumbEl = document.getElementById('p-thumb');
-  if (thumbEl) thumbEl.src = cover;
+  if (thumbEl) thumbEl.src = cover || 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44"><rect width="44" height="44" fill="%23222"/><text x="50%25" y="55%25" font-size="18" text-anchor="middle" fill="%23555">&#9835;</text></svg>';
   document.getElementById('p-title').textContent = song.title || '';
   document.getElementById('p-sub').textContent   = (song.artist || '') + (song.album ? ' - ' + song.album : '');
   pPlayer.style.display = 'grid';
@@ -1985,6 +1985,11 @@ window.addCurrentToPlaylist = function() {
 pAudio.addEventListener('timeupdate', () => {
   if (pAudio.duration) {
     document.getElementById('progress-fill').style.width = (pAudio.currentTime / pAudio.duration * 100) + '%';
+    const fmt = s => Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0');
+    const cur = document.getElementById('p-current');
+    const dur = document.getElementById('p-duration');
+    if (cur) cur.textContent = fmt(pAudio.currentTime);
+    if (dur) dur.textContent = fmt(pAudio.duration);
   }
 });
 pAudio.addEventListener('ended', window.nextTrack);
@@ -2010,9 +2015,13 @@ if (volEl) volEl.addEventListener('input', e => pAudio.volume = e.target.value);
     <div id="progress-wrap" onclick="seekPlayer(event)" style="height:3px;background:var(--border);width:100%;max-width:480px;cursor:pointer;border-radius:2px">
       <div id="progress-fill" style="height:100%;width:0%;background:linear-gradient(to right,var(--gold),var(--gold-l));border-radius:2px;transition:width .2s linear"></div>
     </div>
+    <div style="display:flex;justify-content:space-between;width:100%;max-width:480px;margin-top:2px">
+      <span id="p-current" style="font-family:'Space Mono',monospace;font-size:.52rem;color:var(--muted)">0:00</span>
+      <span id="p-duration" style="font-family:'Space Mono',monospace;font-size:.52rem;color:var(--muted)">0:00</span>
+    </div>
   </div>
   <div style="display:flex;align-items:center;gap:10px;flex-shrink:0">
-    <button id="p-add-btn" onclick="addCurrentToPlaylist()" style="background:none;border:1px solid var(--border);color:var(--gold);font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.08em;padding:5px 10px;cursor:pointer;white-space:nowrap;transition:all .2s">+ Playlist</button>
+    <button id="p-add-btn" onclick="addCurrentToPlaylist();showView('playlists')" style="background:none;border:1px solid var(--border);color:var(--gold);font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.08em;padding:5px 10px;cursor:pointer;white-space:nowrap;transition:all .2s">+ Playlist</button>
     <input id="p-volume" type="range" min="0" max="1" step="0.01" value="0.85" style="width:80px;accent-color:var(--gold)">
   </div>
 </div>

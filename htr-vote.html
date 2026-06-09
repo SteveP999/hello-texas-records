@@ -107,6 +107,7 @@ body{background:var(--black);color:var(--text);font-family:'DM Sans',sans-serif;
 <nav class="nav">
   <div class="logo">Hello Texas <span>Records</span></div>
   <div class="nav-right">
+    <a href="https://hellotexasrecords.com" class="nav-link">&larr; HTR Home</a>
     <a href="htr-fan-portal.html" class="nav-link">Fan Portal</a>
     <a href="htr-whats-next.html" class="nav-link">Who's Next</a>
     <div id="nav-user-area"></div>
@@ -195,7 +196,19 @@ async function castVote(pollId,optIdx,notes){
   myVotes[pollId]=optIdx;
 }
 
-async function boot(){polls=await loadPolls();render();}
+// Admin mode: visit htr-vote.html?admin=HTR2026 to see results without logging in
+const ADMIN_MODE = new URLSearchParams(window.location.search).get('admin') === 'HTR2026';
+
+async function boot(){
+  polls = await loadPolls();
+  if(ADMIN_MODE){
+    for(const p of polls){
+      const vs = await getDoc(doc(db,'songPollVotes',p.id));
+      if(vs.exists()){const data=vs.data();p.totalVotes=Object.keys(data).filter(k=>k!=='_counts').length;p.counts=data._counts||{};}
+    }
+  }
+  render();
+}
 boot();
 
 onAuthStateChanged(auth,async user=>{
@@ -216,7 +229,18 @@ function renderNav(){
 
 function render(){
   const mc=gid('main-content');
-  if(!member){
+  // Admin mode banner
+  if(ADMIN_MODE){
+    const existing = gid('admin-banner');
+    if(!existing){
+      const banner = document.createElement('div');
+      banner.id = 'admin-banner';
+      banner.style.cssText = "background:rgba(200,168,75,.15);border-bottom:1px solid var(--gold);padding:10px 32px;font-family:'Space Mono',monospace;font-size:.65rem;color:var(--gold);letter-spacing:.1em;text-align:center";
+      banner.textContent = '&#9670; ADMIN MODE — VOTE RESULTS VISIBLE';
+      document.querySelector('.hero').before(banner);
+    }
+  }
+  if(!member && !ADMIN_MODE){
     mc.innerHTML=`<div class="gate"><div class="gate-title">Join to Vote</div><p class="gate-sub">Free HTR membership lets you vote on every poll &mdash; and your votes actually count. Artists see the results and make decisions based on them.</p><button class="btn-gold" onclick="openModal('reg')">Join HTR Free</button><p style="margin-top:16px;font-size:.8rem;color:var(--muted)">Already a member? <a href="#" onclick="openModal('login');return false" style="color:var(--gold)">Sign in</a></p></div>`;
     return;
   }
@@ -260,6 +284,7 @@ function pollHTML(p){
       </div>`;
     }).join('')}</div>
     <div class="poll-footer">
+      ${ADMIN_MODE?`<div style="width:100%;padding:8px 0 12px;border-bottom:1px solid var(--border);margin-bottom:12px">${p.options.map((o,i)=>{const v=Number((p.counts||{})[i]||0);const tot=p.totalVotes||0;const pct=tot>0?Math.round(v/tot*100):0;const w=tot>0?Math.round(v/tot*100):0;return '<div style="margin-bottom:6px"><div style="display:flex;justify-content:space-between;font-family:\'Space Mono\',monospace;font-size:.62rem;margin-bottom:3px"><span>'+o.label+'</span><span style="color:var(--gold)">'+v+' votes &bull; '+pct+'%</span></div><div style="height:4px;background:var(--border);border-radius:2px"><div style="height:100%;width:'+w+'%;background:var(--gold);border-radius:2px"></div></div></div>';}).join('')}<div style="font-family:\'Space Mono\',monospace;font-size:.6rem;color:var(--muted);margin-top:8px">Total votes: <strong style="color:var(--gold)">${p.totalVotes||0}</strong></div></div>`:``}
       ${voted||closed
         ?`<div class="voted-msg">${closed?'This poll is closed.':'&#x2713; Vote recorded &mdash; thank you!'}</div>`
         :`<div style="flex:1"><button class="vote-btn" id="vbtn-${p.id}" onclick="submitVote('${p.id}')" ${selected[p.id]===undefined?'disabled':''}>Cast Vote</button><div id="notes-wrap-${p.id}" style="margin-top:10px;display:${selected[p.id]!==undefined?'block':'none'}"><textarea id="notes-${p.id}" class="ainput" style="width:100%;height:52px;resize:none;font-size:.82rem;padding:8px 10px;background:var(--black);border:1px solid var(--border);color:var(--text)" placeholder="Optional &mdash; tell us why you chose this version"></textarea></div></div>`}
