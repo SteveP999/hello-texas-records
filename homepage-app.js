@@ -59,7 +59,7 @@ function buildRoster(artists) {
         >
 
         <div class="card-play-overlay">
-          <a class="card-play-btn" href="${artist.siteUrl || '#'}" target="_blank" onclick="event.stopPropagation()">
+          <a class="card-play-btn" href="${artist.siteUrl || '#'}" target="_self" onclick="event.stopPropagation()">
             Visit Site
           </a>
         </div>
@@ -77,7 +77,7 @@ function buildRoster(artists) {
         </div>
 
         <div class="card-links">
-          <a href="${artist.siteUrl || '#'}" target="_blank" class="card-site-btn">Visit Site</a>
+          <a href="${artist.siteUrl || '#'}" target="_self" class="card-site-btn">Visit Site</a>
         </div>
       </div>
     `;
@@ -85,7 +85,7 @@ function buildRoster(artists) {
     card.addEventListener('click', (e) => {
       // Don't navigate if clicking an easter egg or any link inside the card
       if (e.target.closest('a')) return;
-      if (artist.siteUrl) window.open(artist.siteUrl, '_blank');
+      if (artist.siteUrl) window.location.href = artist.siteUrl;
     });
 
     grid.appendChild(card);
@@ -142,6 +142,19 @@ let radioHistory = []; // track indices already played, for back navigation
 let radioShuffle = false;
 
 const radioAudio = document.getElementById('radio-audio');
+// Listen for artist site audio playing - pause radio when they start
+try {
+  const htrCh = new BroadcastChannel('htr-audio');
+  htrCh.onmessage = (e) => {
+    if (e.data.type === 'artist-play' && !radioAudio.paused) {
+      radioAudio.pause();
+      const btn = document.getElementById('radio-playbtn');
+      if (btn) { btn.innerHTML = 'Play'; btn.classList.remove('active'); }
+      const barBtn = document.getElementById('radio-playbtn-bottom');
+      if (barBtn) { barBtn.innerHTML = '&#9654; Play'; barBtn.classList.remove('active'); }
+    }
+  };
+} catch(e) {}
 const radioArt = document.getElementById('radio-art');
 const radioTitle = document.getElementById('radio-title');
 const radioArtist = document.getElementById('radio-artist');
@@ -225,6 +238,8 @@ function playTrack(trackIndex, addToHistory = true) {
   radioAudio.play().catch(err => console.error('Playback failed:', err));
   radioPlayBtn.innerHTML = 'Pause';
   radioPlayBtn.classList.add('active');
+  // Broadcast to other HTR pages that radio is playing
+  try { new BroadcastChannel('htr-audio').postMessage({type:'radio-play'}); } catch(e) {}
 
   const bar = document.getElementById('radio-bottom-bar');
   if (bar) bar.classList.add('visible');
