@@ -1379,6 +1379,18 @@ async function loadProfile(){
     await awardBadge('early_member');
     p.badges = [...(p.badges||[]), 'early_member'];
   }
+  // Auto-award top_voter if user has 3+ votes across all poll types
+  const totalVotes = (p.votedPolls||[]).length + (p.songVotes||[]).length;
+  if(totalVotes >= 3 && !(p.badges||[]).includes('top_voter')) {
+    await awardBadge('top_voter');
+    p.badges = [...(p.badges||[]), 'top_voter'];
+  }
+  // Auto-award superfan if all 4 community badges earned
+  const communityBadges = ['early_member','first_vote','playlist_build','voice_people'];
+  if(communityBadges.every(b=>(p.badges||[]).includes(b)) && !(p.badges||[]).includes('superfan')) {
+    await awardBadge('superfan');
+    p.badges = [...(p.badges||[]), 'superfan'];
+  }
   renderBadges(p.badges||[]);
 
   const plDiv=document.getElementById('my-playlists-list');
@@ -1877,7 +1889,7 @@ async function loadAdmin(){
 
     const awardBtns=BADGES.filter(b=>b.manual&&!(u.badges||[]).includes(b.id)).map(b=>`<button class="admin-award-btn" onclick="awardManualBadge('${d.id}','${b.id}')">${b.icon} Award ${b.name}</button>`).join(' ');
 
-    return `<tr><td>${name}</td><td style="font-family:'Space Mono',monospace;font-size:.65rem;color:var(--muted)">${u.email}</td><td style="font-family:'Space Mono',monospace;font-size:.65rem;color:var(--muted)">${fmtDate(u.joinedAt)}</td><td>${badges||'<span style="color:var(--muted);font-size:.75rem">None yet</span>'}</td><td style="font-size:.75rem;color:var(--muted)">${plSnap.docs.filter(p=>p.data().userId===d.id||p.data().uid===d.id).map(p=>`<div>${p.data().name||'Untitled'} (${(p.data().tracks||[]).length} tracks)</div>`).join('')||'&mdash;'}</td><td style="font-family:'Space Mono',monospace;font-size:.65rem">V:${(u.votedPolls||[]).length} &bull; PL:${plSnap.docs.filter(p=>p.data().userId===d.id||p.data().uid===d.id).length}</td><td>${awardBtns}</td></tr>`;
+    return `<tr><td>${name}</td><td style="font-family:'Space Mono',monospace;font-size:.65rem;color:var(--muted)">${u.email}</td><td style="font-family:'Space Mono',monospace;font-size:.65rem;color:var(--muted)">${fmtDate(u.joinedAt)}</td><td>${badges||'<span style="color:var(--muted);font-size:.75rem">None yet</span>'}</td><td style="font-size:.75rem;color:var(--muted)">${plSnap.docs.filter(p=>p.data().userId===d.id||p.data().uid===d.id).map(p=>`<div>${p.data().name||'Untitled'} (${(p.data().tracks||[]).length} tracks)</div>`).join('')||'&mdash;'}</td><td style="font-family:'Space Mono',monospace;font-size:.65rem">V:${(u.votedPolls||[]).length+(u.songVotes||[]).length} &bull; PL:${plSnap.docs.filter(p=>p.data().userId===d.id||p.data().uid===d.id).length}</td><td>${awardBtns}</td></tr>`;
 
   }).join('');
 
