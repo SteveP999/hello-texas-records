@@ -1362,7 +1362,7 @@ async function loadProfile(){
 
   const sugSnap=await getDocs(query(collection(db,'suggestions'),where('userId','==',currentUser.uid)));
 
-  document.getElementById('stat-votes').textContent=(p.votedPolls||[]).length;
+  document.getElementById('stat-votes').textContent=(p.votedPolls||[]).length+(p.songVotes||[]).length;
 
   document.getElementById('stat-playlists').textContent=plSnap.size;
 
