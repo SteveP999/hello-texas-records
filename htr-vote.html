@@ -173,7 +173,19 @@ async function loadPolls(){
   const list=snap.docs.map(d=>({id:d.id,...d.data()})).filter(p=>p.active).sort((a,b)=>(a.artist||'').localeCompare(b.artist||'')||(a._order||0)-(b._order||0));
   for(const p of list){
     const vs=await getDoc(doc(db,'songPollVotes',p.id));
-    if(vs.exists()){const data=vs.data();p.totalVotes=Object.keys(data).filter(k=>k!=='_counts').length;p.counts=data._counts||{};}
+    if(vs.exists()){
+      const data=vs.data();
+      // Count real voters: all keys except _counts and any flat "_counts.N" legacy keys
+      const voterKeys=Object.keys(data).filter(k=>k!=='_counts'&&!k.startsWith('_counts.'));
+      p.totalVotes=voterKeys.length;
+      // Rebuild counts directly from the uid→optionIdx entries so display is always accurate
+      const rebuilt={};
+      voterKeys.forEach(uid=>{
+        const idx=String(data[uid]);
+        rebuilt[idx]=(rebuilt[idx]||0)+1;
+      });
+      p.counts=rebuilt;
+    }
     else{p.totalVotes=0;p.counts={};}
   }
   return list;
@@ -204,12 +216,7 @@ const ADMIN_MODE = new URLSearchParams(window.location.search).get('admin') === 
 
 async function boot(){
   polls = await loadPolls();
-  if(ADMIN_MODE){
-    for(const p of polls){
-      const vs = await getDoc(doc(db,'songPollVotes',p.id));
-      if(vs.exists()){const data=vs.data();p.totalVotes=Object.keys(data).filter(k=>k!=='_counts').length;p.counts=data._counts||{};}
-    }
-  }
+  // loadPolls() already rebuilds counts from uid entries — admin mode uses same data
   render();
 }
 boot();
@@ -330,9 +337,17 @@ window.submitVote=async function(pollId){
   if(selected[pollId]===undefined)return;
   const notes=gid(`notes-${pollId}`)?.value?.trim()||'';
   await castVote(pollId,selected[pollId],notes);
+  // Reload this poll's counts by rebuilding from uid entries (same logic as loadPolls)
   const vs=await getDoc(doc(db,'songPollVotes',pollId));
   const poll=polls.find(p=>p.id===pollId);
-  if(poll&&vs.exists()){const data=vs.data();poll.totalVotes=Object.keys(data).filter(k=>k!=='_counts').length;poll.counts=data._counts||{};}
+  if(poll&&vs.exists()){
+    const data=vs.data();
+    const voterKeys=Object.keys(data).filter(k=>k!=='_counts'&&!k.startsWith('_counts.'));
+    poll.totalVotes=voterKeys.length;
+    const rebuilt={};
+    voterKeys.forEach(uid=>{const idx=String(data[uid]);rebuilt[idx]=(rebuilt[idx]||0)+1;});
+    poll.counts=rebuilt;
+  }
   render();
 };
 
