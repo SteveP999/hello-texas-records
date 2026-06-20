@@ -27,8 +27,11 @@ body { font-family: 'Barlow', sans-serif; background: #0d0c0b; color: #e8e0d4; o
 body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");background-size:200px 200px;pointer-events:none;z-index:0;opacity:0.4;}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:64px;background:rgba(13,12,11,0.92);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);}
 .nav-logo{height:36px;width:auto;}
-.nav-radio-egg{position:absolute;left:50%;transform:translateX(-50%);color:rgba(200,146,42,0.2);transition:color 0.3s,filter 0.3s;display:flex;align-items:center;}
-.nav-radio-egg:hover{color:rgba(200,146,42,0.9);filter:drop-shadow(0 0 6px rgba(200,146,42,0.5));}
+.nav-radio-egg{color:rgba(200,146,42,0.5);transition:color 0.3s,filter 0.3s;display:flex;align-items:center;margin-left:.75rem;}
+.nav-radio-egg:hover{color:rgba(200,146,42,1);filter:drop-shadow(0 0 6px rgba(200,146,42,0.6));}
+.nav-radio-egg .nav-radio-label{font-family:'Barlow Condensed',sans-serif;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;margin-left:.35rem;color:rgba(200,146,42,0.5);transition:color .3s;}
+.nav-radio-egg:hover .nav-radio-label{color:rgba(200,146,42,1);}
+@media(max-width:768px){.nav-radio-egg .nav-radio-label{display:none;}}
 .nav-links{display:flex;gap:2rem;list-style:none;margin-left:auto;}
 .nav-links a{color:var(--muted);text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;letter-spacing:0.18em;text-transform:uppercase;transition:color 0.2s;}
 .nav-links a:hover{color:var(--rust-lt);}
@@ -358,18 +361,29 @@ body.radio-playing{padding-bottom:74px!important;}
 .join-banner-btn{display:inline-block;background:var(--rust);color:var(--dark);font-family:'Barlow Condensed',sans-serif;font-size:.9rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;padding:.9rem 3rem;text-decoration:none;border:2px solid var(--rust);transition:background .2s,transform .15s;margin-top:.35rem;}
 .join-banner-btn:hover{background:var(--rust-lt);border-color:var(--rust-lt);transform:translateY(-2px);}
 @media(max-width:768px){.join-banner{padding:1.5rem 1rem;}.join-banner-perks{gap:.75rem;}.nav-join-btn{margin-left:1.5rem;font-size:.65rem;padding:.35rem .8rem;}}
+.radio-reveal{background:linear-gradient(135deg,rgba(200,146,42,0.08) 0%,rgba(200,146,42,0.04) 100%);border:1px solid rgba(200,146,42,0.25);border-radius:2px;padding:1.5rem 2rem;margin-bottom:1.75rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;}
+.radio-reveal-left{display:flex;align-items:center;gap:1rem;}
+.radio-reveal-icon{color:var(--rust);flex-shrink:0;opacity:.9;}
+.radio-reveal-text{}
+.radio-reveal-eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:.65rem;letter-spacing:.28em;text-transform:uppercase;color:var(--rust);margin-bottom:.25rem;}
+.radio-reveal-headline{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:.06em;color:var(--cream);line-height:1;}
+.radio-reveal-sub{font-family:'Barlow Condensed',sans-serif;font-size:.82rem;letter-spacing:.1em;color:var(--muted);margin-top:.3rem;}
+.radio-reveal-btn{flex-shrink:0;display:inline-block;background:var(--rust);color:var(--dark);font-family:'Barlow Condensed',sans-serif;font-size:.85rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:.75rem 2rem;text-decoration:none;border:2px solid var(--rust);transition:background .2s,transform .15s;white-space:nowrap;}
+.radio-reveal-btn:hover{background:var(--rust-lt);border-color:var(--rust-lt);transform:translateY(-1px);}
+@media(max-width:600px){.radio-reveal{flex-direction:column;align-items:flex-start;padding:1.25rem;}.radio-reveal-btn{width:100%;text-align:center;}}
 </style>
 </head>
 <body>
 <nav>
   <img src="https://raw.githubusercontent.com/SteveP999/hello-texas-records/main/htr-logo.png" alt="Hello Texas Records" class="nav-logo">
-  <a href="https://htr-radio.hellotexasrecords.com" target="_self" class="nav-radio-egg" title="HTR Radio">
+  <a href="https://htr-radio.hellotexasrecords.com" target="_self" class="nav-radio-egg" title="HTR Radio 2.0">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="2" y="9" width="20" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/>
       <path d="M6 9V7a6 6 0 0 1 12 0v2" stroke="currentColor" stroke-width="1.5"/>
       <circle cx="12" cy="15" r="2" stroke="currentColor" stroke-width="1.5"/>
       <line x1="19" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
     </svg>
+    <span class="nav-radio-label">HTR Radio</span>
   </a>
   <ul class="nav-links">
     <li><a href="#roster-section">Artists</a></li>
@@ -431,10 +445,26 @@ body.radio-playing{padding-bottom:74px!important;}
   <div class="section-wrap">
     <div class="section-header">
       <div class="section-eyebrow">Streaming Now</div>
-      <h2 class="section-title">HTR Radio <a href="https://stevep999.github.io/hello-texas-radio/" target="_blank" class="easter-egg-label" title="Full Radio Experience">&#11088;</a></h2>
+      <h2 class="section-title">HTR Radio</h2>
       <div class="gold-rule"></div>
     </div>
     <div class="radio-wrap">
+      <div class="radio-reveal">
+        <div class="radio-reveal-left">
+          <svg class="radio-reveal-icon" width="36" height="36" viewBox="0 0 24 24" fill="none">
+            <rect x="2" y="9" width="20" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M6 9V7a6 6 0 0 1 12 0v2" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="12" cy="15" r="2" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="19" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <div class="radio-reveal-text">
+            <div class="radio-reveal-eyebrow">Now Available</div>
+            <div class="radio-reveal-headline">HTR Radio 2.0</div>
+            <div class="radio-reveal-sub">Every genre. Custom stations. Always on.</div>
+          </div>
+        </div>
+        <a href="https://htr-radio.hellotexasrecords.com" class="radio-reveal-btn" target="_self">Open HTR Radio &rarr;</a>
+      </div>
       <div class="radio-display">
         <img id="radio-art" src="https://raw.githubusercontent.com/SteveP999/hello-texas-records/main/htr-logo.png" alt="" class="radio-art">
         <div class="radio-info">
