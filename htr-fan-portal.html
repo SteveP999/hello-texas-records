@@ -1869,6 +1869,11 @@ async function loadAdmin(){
 
   const plSnap=await getDocs(collection(db,'playlists'));
 
+  // Load poll definitions so we can resolve pollId → song name and optionIdx → option label
+  const pollsSnap=await getDocs(collection(db,'songPolls'));
+  const pollMap={};
+  pollsSnap.docs.forEach(d=>{ pollMap[d.id]={song:d.data().song||d.id, options:d.data().options||[]}; });
+
   document.getElementById('admin-stats').innerHTML=`
 
     <div class="admin-stat-card"><div class="admin-stat-num">${usersSnap.size}</div><div class="admin-stat-label">Total Members</div></div>
@@ -1889,7 +1894,17 @@ async function loadAdmin(){
 
     const awardBtns=BADGES.filter(b=>b.manual&&!(u.badges||[]).includes(b.id)).map(b=>`<button class="admin-award-btn" onclick="awardManualBadge('${d.id}','${b.id}')">${b.icon} Award ${b.name}</button>`).join(' ');
 
-    return `<tr><td>${name}</td><td style="font-family:'Space Mono',monospace;font-size:.65rem;color:var(--muted)">${u.email}</td><td style="font-family:'Space Mono',monospace;font-size:.65rem;color:var(--muted)">${fmtDate(u.joinedAt)}</td><td>${badges||'<span style="color:var(--muted);font-size:.75rem">None yet</span>'}</td><td style="font-size:.75rem;color:var(--muted)">${plSnap.docs.filter(p=>p.data().userId===d.id||p.data().uid===d.id).map(p=>`<div>${p.data().name||'Untitled'} (${(p.data().tracks||[]).length} tracks)</div>`).join('')||'&mdash;'}</td><td style="font-family:'Space Mono',monospace;font-size:.65rem">V:${(u.votedPolls||[]).length+(u.songVotes||[]).length} &bull; PL:${plSnap.docs.filter(p=>p.data().userId===d.id||p.data().uid===d.id).length}</td><td>${awardBtns}</td></tr>`;
+    // Build readable vote detail for song polls
+    const songVoteDetail=(u.songVotes||[]).map(v=>{
+      const poll=pollMap[v.pollId];
+      const songName=poll?poll.song:v.pollId;
+      const optLabel=poll&&poll.options[v.optionIdx]?poll.options[v.optionIdx].label:`Option ${v.optionIdx+1}`;
+      return `<div style="margin-bottom:3px"><span style="color:var(--text)">${songName}</span><br><span style="color:var(--gold)">→ ${optLabel}</span>${v.notes?`<br><span style="color:var(--muted);font-style:italic">"${v.notes}"</span>`:''}</div>`;
+    }).join('');
+    const whoNextDetail=(u.votedPolls||[]).map(v=>`<div style="margin-bottom:3px"><span style="color:var(--muted)">Who's Next:</span> <span style="color:var(--text)">${v.artistName||v.artistId||'Unknown'}</span></div>`).join('');
+    const activityDetail=songVoteDetail+whoNextDetail||`<span style="color:var(--muted)">No votes yet</span>`;
+
+    return `<tr><td>${name}</td><td style="font-family:'Space Mono',monospace;font-size:.65rem;color:var(--muted)">${u.email}</td><td style="font-family:'Space Mono',monospace;font-size:.65rem;color:var(--muted)">${fmtDate(u.joinedAt)}</td><td>${badges||'<span style="color:var(--muted);font-size:.75rem">None yet</span>'}</td><td style="font-size:.75rem;color:var(--muted)">${plSnap.docs.filter(p=>p.data().userId===d.id||p.data().uid===d.id).map(p=>`<div>${p.data().name||'Untitled'} (${(p.data().tracks||[]).length} tracks)</div>`).join('')||'&mdash;'}</td><td style="font-family:'Space Mono',monospace;font-size:.65rem">${activityDetail}</td><td>${awardBtns}</td></tr>`;
 
   }).join('');
 

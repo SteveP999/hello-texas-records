@@ -191,7 +191,10 @@ async function loadMyVotes(uid){
 
 async function castVote(pollId,optIdx,notes){
   if(!member)return;
-  await setDoc(doc(db,'songPollVotes',pollId),{[member.uid]:optIdx,[`_counts.${optIdx}`]:increment(1)},{merge:true});
+  // Step 1: record the user's choice
+  await setDoc(doc(db,'songPollVotes',pollId),{[member.uid]:optIdx},{merge:true});
+  // Step 2: increment _counts.N — updateDoc dot-notation correctly nests, setDoc merge does NOT
+  await updateDoc(doc(db,'songPollVotes',pollId),{[`_counts.${optIdx}`]:increment(1)});
   await updateDoc(doc(db,'users',member.uid),{songVotes:arrayUnion({pollId,optionIdx:optIdx,votedAt:new Date().toISOString(),notes:notes||''}),badges:arrayUnion('first-vote')}).catch(()=>{});
   myVotes[pollId]=optIdx;
 }
