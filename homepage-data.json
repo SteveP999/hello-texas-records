@@ -493,36 +493,6 @@
       "tagline": "Worship that doesn't ask permission"
     },
     {
-      "id": "pulse7",
-      "name": "PULSE7",
-      "repoFolder": "D:\\Dropbox\\Hello Texas Records\\PULSE7\\_repo",
-      "githubRepo": "SteveP999/PULSE7",
-      "siteUrl": "https://stevep999.github.io/PULSE7/",
-      "genre": "K-pop / dance-pop",
-      "status": "active",
-      "logo": "pulse7-logo.png",
-      "heroImage": "Roster Photos/pulse7/pulse7-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "heroLogoScale": 1.0,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1.0,
-      "active": true,
-      "imageCandidates": [
-        "Roster Photos/pulse7/pulse7-roster-photo.png",
-        "Roster Photos/pulse7-roster-photo.png",
-        "htr-logo.png"
-      ],
-      "latestTitle": "Two Nights",
-      "tagline": "Coming soon"
-    },
-    {
       "id": "rio-valencia",
       "name": "Rio Valencia",
       "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Rio Valencia\\_repo",
@@ -673,36 +643,6 @@
       "tagline": "Raw. Honest. No filter."
     },
     {
-      "id": "taylor-martin",
-      "name": "Taylor Martin",
-      "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Taylor Martin\\_repo",
-      "githubRepo": "SteveP999/Taylor-Martin",
-      "siteUrl": "https://stevep999.github.io/Taylor-Martin/",
-      "genre": "1970s soft pop / folk-rock",
-      "status": "active",
-      "logo": "taylor-martin-logo.png",
-      "heroImage": "Roster Photos/taylor-martin/taylor-martin-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "heroLogoScale": 1.0,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1.0,
-      "active": true,
-      "imageCandidates": [
-        "Roster Photos/taylor-martin/taylor-martin-roster-photo.png",
-        "Roster Photos/taylor-martin-roster-photo.png",
-        "htr-logo.png"
-      ],
-      "latestTitle": "She Loved Horses",
-      "tagline": "Coming soon"
-    },
-    {
       "id": "vanta",
       "name": "Vanta",
       "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Vanta\\_repo",
@@ -761,36 +701,6 @@
       ],
       "latestTitle": "Too Late To Behave",
       "tagline": "Las Vegas never sounded this good"
-    },
-    {
-      "id": "borrowed-whispers",
-      "name": "Borrowed Whispers",
-      "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Borrowed Whispers\\_repo",
-      "githubRepo": "SteveP999/borrowed-whispers",
-      "siteUrl": "https://Borrowed-Whispers.hellotexasrecords.com",
-      "genre": "70s-80s Soft Rock, Soul",
-      "status": "active",
-      "logo": "images/logos/borrowed-whispers-logo.png",
-      "heroImage": "Roster Photos/borrowed-whispers/borrowed-whispers-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "latestTitle": "Still Falling For You",
-      "imageCandidates": [
-        "Roster Photos/borrowed-whispers/borrowed-whispers-roster-photo.png",
-        "Roster Photos/borrowed-whispers-roster-photo.png",
-        "htr-logo.png"
-      ],
-      "heroLogoScale": 1.0,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1.0,
-      "active": true,
-      "tagline": "Two old friends and a decade of unfinished songs"
     },
     {
       "id": "ivey-wilder",
