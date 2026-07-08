@@ -168,12 +168,12 @@
       "audioSrc": "https://www.dropbox.com/scl/fi/i6l30r2si2vgjsk7usyu5/september-skies-give-it-away.mp3?rlkey=0496b3kwnp5hiesyojgykkx0i&raw=1",
       "youtubeUrl": "",
       "videos": [],
-      "featured": true,
+      "featured": false,
       "explicit": false,
       "includeOnRadio": true,
       "includeOnHomepage": true,
       "tags": [],
-      "isLatest": true
+      "isLatest": false
     },
     {
       "id": "sawyer-price-whats-left-of-me",
