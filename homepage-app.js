@@ -118,7 +118,10 @@ async function loadRadio() {
   try {
 
     const response = await fetch('radio-data.json?cb=' + Date.now());
-    const songs = await response.json();
+    const _raw = await response.json();
+    const songs = Array.isArray(_raw) ? _raw
+      : (((_raw && _raw.stations && (_raw.stations.find(s => s.id === 'open-road') || _raw.stations[0])) || {}).tracks || [])
+          .map(t => Object.assign({}, t, { audioFile: t.audio || t.audioFile || '', coverImage: t.cover || t.coverImage || '' }));
 
     console.log('Radio data loaded:', songs.length);
 
