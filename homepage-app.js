@@ -234,6 +234,7 @@ function playTrack(trackIndex, addToHistory = true) {
   if (qPos >= 0) radioQueuePos = qPos;
 
   radioAudio.src = track.audioFile;
+  try { if (typeof gtag === 'function') gtag('event', 'play_song', { song_title: track.title, artist: track.artist, source: 'homepage_radio' }); } catch(e) {}
   setRadioDisplay(track);
   updateBottomBar(track);
   highlightTrack(trackIndex);
