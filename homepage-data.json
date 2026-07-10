@@ -826,6 +826,35 @@
         "Roster Photos/quincy-cade-roster-photo.png",
         "htr-logo.png"
       ]
+    },
+    {
+      "id": "bailey-wade",
+      "name": "Bailey Wade",
+      "githubRepo": "SteveP999/bailey-wade",
+      "siteUrl": "https://bailey-wade.hellotexasrecords.com",
+      "genre": "Contemporary Country",
+      "tagline": "All the country - all the smirk",
+      "status": "active",
+      "active": true,
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "latestTitle": "",
+      "logo": "images/logos/bailey-wade-logo.png",
+      "heroImage": "Roster Photos/bailey-wade/bailey-wade-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "imageCandidates": [
+        "Roster Photos/bailey-wade/bailey-wade-roster-photo.png",
+        "Roster Photos/bailey-wade-roster-photo.png",
+        "htr-logo.png"
+      ]
     }
   ]
 }
