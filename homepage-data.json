@@ -302,6 +302,33 @@
       "tagline": "The voice that grew up in public"
     },
     {
+      "id": "september-skies",
+      "name": "September Skies",
+      "repoFolder": "D:\\Dropbox\\Hello Texas Records\\September Skies\\_repo",
+      "repoPath": "D:\\september-skies",
+      "githubRepo": "SteveP999/september-skies",
+      "siteUrl": "https://september-skies.hellotexasrecords.com",
+      "genre": "Alternative Rock",
+      "status": "active",
+      "active": true,
+      "logo": "",
+      "heroImage": "Roster Photos/september-skies/september-skies-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "imageCandidates": [
+        "Roster Photos/september-skies/september-skies-roster-photo.png",
+        "Roster Photos/september-skies-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "One Move at a Time",
+      "tagline": "Alternative rock that fills a stadium with one chord"
+    },
+    {
       "id": "daniel-kincaid",
       "name": "Daniel Kincaid",
       "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Daniel Kincaid\\_repo",
@@ -749,33 +776,6 @@
       ],
       "latestTitle": "Yesterday's Girl",
       "tagline": "Four lads who learned from the greats"
-    },
-    {
-      "id": "september-skies",
-      "name": "September Skies",
-      "repoFolder": "D:\\Dropbox\\Hello Texas Records\\September Skies\\_repo",
-      "repoPath": "D:\\september-skies",
-      "githubRepo": "SteveP999/september-skies",
-      "siteUrl": "https://september-skies.hellotexasrecords.com",
-      "genre": "Alternative Rock",
-      "status": "active",
-      "active": true,
-      "logo": "",
-      "heroImage": "Roster Photos/september-skies/september-skies-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "imageCandidates": [
-        "Roster Photos/september-skies/september-skies-roster-photo.png",
-        "Roster Photos/september-skies-roster-photo.png",
-        "htr-logo.png"
-      ],
-      "latestTitle": "One Move at a Time",
-      "tagline": "Alternative rock that fills a stadium with one chord"
     },
     {
       "id": "harlan-rhodes",
