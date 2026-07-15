@@ -359,36 +359,6 @@
       "tagline": "Alt-rock edges on a country soul"
     },
     {
-      "id": "hello-texas",
-      "name": "Hello Texas",
-      "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Hello Texas\\_repo",
-      "githubRepo": "SteveP999/Hello-Texas",
-      "siteUrl": "https://stevep999.github.io/Hello-Texas/",
-      "genre": "Texas country / Southern rock",
-      "status": "active",
-      "logo": "hello-texas-logo.png",
-      "heroImage": "Roster Photos/hello-texas/hello-texas-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "latestTitle": "Modern Man Grind",
-      "heroLogoScale": 2.25,
-      "heroLogoMaxHeight": 560,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "active": true,
-      "imageCandidates": [
-        "Roster Photos/hello-texas/hello-texas-roster-photo.png",
-        "Roster Photos/hello-texas-roster-photo.png",
-        "htr-logo.png"
-      ],
-      "tagline": "Where country started and never stopped"
-    },
-    {
       "id": "sawyer-price",
       "name": "Sawyer Price",
       "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Sawyer Price\\_repo",
@@ -419,33 +389,34 @@
       "tagline": "Texas country, honest and unhurried"
     },
     {
-      "id": "bailey-wade",
-      "name": "Bailey Wade",
-      "githubRepo": "SteveP999/bailey-wade",
-      "siteUrl": "https://bailey-wade.hellotexasrecords.com",
-      "genre": "Contemporary Country",
-      "tagline": "All the country - all the smirk",
+      "id": "hello-texas",
+      "name": "Hello Texas",
+      "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Hello Texas\\_repo",
+      "githubRepo": "SteveP999/Hello-Texas",
+      "siteUrl": "https://stevep999.github.io/Hello-Texas/",
+      "genre": "Texas country / Southern rock",
       "status": "active",
-      "active": true,
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "latestTitle": "Half Drunk & Honest",
-      "logo": "images/logos/bailey-wade-logo.png",
-      "heroImage": "Roster Photos/bailey-wade/bailey-wade-roster-photo.png",
+      "logo": "hello-texas-logo.png",
+      "heroImage": "Roster Photos/hello-texas/hello-texas-roster-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
         "latest": true
       },
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "latestTitle": "Modern Man Grind",
+      "heroLogoScale": 2.25,
+      "heroLogoMaxHeight": 560,
       "heroLogoOffsetY": 0,
       "heroLogoMobileScale": 1,
+      "active": true,
       "imageCandidates": [
-        "Roster Photos/bailey-wade/bailey-wade-roster-photo.png",
-        "Roster Photos/bailey-wade-roster-photo.png",
+        "Roster Photos/hello-texas/hello-texas-roster-photo.png",
+        "Roster Photos/hello-texas-roster-photo.png",
         "htr-logo.png"
-      ]
+      ],
+      "tagline": "Where country started and never stopped"
     },
     {
       "id": "daniel-kincaid",
@@ -508,34 +479,33 @@
       "tagline": "Latin fire with no boundaries"
     },
     {
-      "id": "parsons-cross",
-      "name": "Parsons Cross",
-      "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Parsons Cross\\_repo",
-      "githubRepo": "SteveP999/Parsons-Cross",
-      "siteUrl": "https://stevep999.github.io/Parsons-Cross/",
-      "genre": "Contemporary Christian / worship",
+      "id": "bailey-wade",
+      "name": "Bailey Wade",
+      "githubRepo": "SteveP999/bailey-wade",
+      "siteUrl": "https://bailey-wade.hellotexasrecords.com",
+      "genre": "Contemporary Country",
+      "tagline": "All the country - all the smirk",
       "status": "active",
-      "logo": "PARSONS CROSS LOGO.png",
-      "heroImage": "Roster Photos/parsons-cross/parsons-cross-roster-photo.png",
+      "active": true,
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "latestTitle": "Half Drunk & Honest",
+      "logo": "images/logos/bailey-wade-logo.png",
+      "heroImage": "Roster Photos/bailey-wade/bailey-wade-roster-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
         "latest": true
       },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
       "heroLogoScale": 1,
       "heroLogoMaxHeight": 420,
       "heroLogoOffsetY": 0,
       "heroLogoMobileScale": 1,
-      "active": true,
       "imageCandidates": [
-        "Roster Photos/parsons-cross/parsons-cross-roster-photo.png",
-        "Roster Photos/parsons-cross-roster-photo.png",
+        "Roster Photos/bailey-wade/bailey-wade-roster-photo.png",
+        "Roster Photos/bailey-wade-roster-photo.png",
         "htr-logo.png"
-      ],
-      "latestTitle": "Wake Up",
-      "tagline": "Worship that doesn't ask permission"
+      ]
     },
     {
       "id": "vincent-cole",
@@ -568,64 +538,6 @@
       "tagline": "Las Vegas never sounded this good"
     },
     {
-      "id": "brightons",
-      "name": "Brightons",
-      "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Brightons\\_repo",
-      "repoPath": "D:\\brightons",
-      "githubRepo": "stevep999/brightons",
-      "siteUrl": "https://The-Brightons.hellotexasrecords.com",
-      "genre": "50s/60s Pop",
-      "status": "active",
-      "active": true,
-      "logo": "",
-      "heroImage": "Roster Photos/brightons/brightons-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "imageCandidates": [
-        "Roster Photos/brightons/brightons-roster-photo.png",
-        "Roster Photos/brightons-roster-photo.png",
-        "htr-logo.png"
-      ],
-      "latestTitle": "Yesterday's Girl",
-      "tagline": "Four lads who learned from the greats"
-    },
-    {
-      "id": "nightstrike",
-      "name": "NightStrike",
-      "repoPath": "D:\\NightStrike",
-      "repoFolder": "D:\\Dropbox\\Hello Texas Records\\NightStrike\\_repo",
-      "githubRepo": "SteveP999/NightStrike",
-      "siteUrl": "https://nightstrike.hellotexasrecords.com/",
-      "logo": "images/nightstrike-logo.png",
-      "heroImage": "Roster Photos/nightstrike/nightstrike-roster-photo.png",
-      "genre": "Hard Rock / Sleaze Rock",
-      "active": true,
-      "status": "active",
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "imageCandidates": [
-        "Roster Photos/nightstrike/nightstrike-roster-photo.png",
-        "Roster Photos/nightstrike-roster-photo.png",
-        "htr-logo.png"
-      ],
-      "latestTitle": "Crash and Burn",
-      "tagline": "Bringing 1987 back whether you're ready or not"
-    },
-    {
       "id": "skyline-theory",
       "name": "Skyline Theory",
       "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Skyline Theory\\_repo",
@@ -656,6 +568,33 @@
       "tagline": "EDM built for 2am and open roads"
     },
     {
+      "id": "brightons",
+      "name": "Brightons",
+      "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Brightons\\_repo",
+      "repoPath": "D:\\brightons",
+      "githubRepo": "stevep999/brightons",
+      "siteUrl": "https://The-Brightons.hellotexasrecords.com",
+      "genre": "50s/60s Pop",
+      "status": "active",
+      "active": true,
+      "logo": "",
+      "heroImage": "Roster Photos/brightons/brightons-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "imageCandidates": [
+        "Roster Photos/brightons/brightons-roster-photo.png",
+        "Roster Photos/brightons-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Yesterday's Girl",
+      "tagline": "Four lads who learned from the greats"
+    },
+    {
       "id": "quincy-cade",
       "name": "Quincy Cade",
       "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Quincy Cade\\_repo",
@@ -684,6 +623,36 @@
         "Roster Photos/quincy-cade-roster-photo.png",
         "htr-logo.png"
       ]
+    },
+    {
+      "id": "parsons-cross",
+      "name": "Parsons Cross",
+      "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Parsons Cross\\_repo",
+      "githubRepo": "SteveP999/Parsons-Cross",
+      "siteUrl": "https://stevep999.github.io/Parsons-Cross/",
+      "genre": "Contemporary Christian / worship",
+      "status": "active",
+      "logo": "PARSONS CROSS LOGO.png",
+      "heroImage": "Roster Photos/parsons-cross/parsons-cross-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/parsons-cross/parsons-cross-roster-photo.png",
+        "Roster Photos/parsons-cross-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Wake Up",
+      "tagline": "Worship that doesn't ask permission"
     },
     {
       "id": "silent-oblivion",
@@ -744,6 +713,37 @@
         "htr-logo.png"
       ],
       "tagline": "Raw. Honest. No filter."
+    },
+    {
+      "id": "nightstrike",
+      "name": "NightStrike",
+      "repoPath": "D:\\NightStrike",
+      "repoFolder": "D:\\Dropbox\\Hello Texas Records\\NightStrike\\_repo",
+      "githubRepo": "SteveP999/NightStrike",
+      "siteUrl": "https://nightstrike.hellotexasrecords.com/",
+      "logo": "images/nightstrike-logo.png",
+      "heroImage": "Roster Photos/nightstrike/nightstrike-roster-photo.png",
+      "genre": "Hard Rock / Sleaze Rock",
+      "active": true,
+      "status": "active",
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "imageCandidates": [
+        "Roster Photos/nightstrike/nightstrike-roster-photo.png",
+        "Roster Photos/nightstrike-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Crash and Burn",
+      "tagline": "Bringing 1987 back whether you're ready or not"
     },
     {
       "id": "vanta",
