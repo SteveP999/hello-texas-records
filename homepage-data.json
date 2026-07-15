@@ -359,6 +359,95 @@
       "tagline": "Alt-rock edges on a country soul"
     },
     {
+      "id": "hello-texas",
+      "name": "Hello Texas",
+      "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Hello Texas\\_repo",
+      "githubRepo": "SteveP999/Hello-Texas",
+      "siteUrl": "https://stevep999.github.io/Hello-Texas/",
+      "genre": "Texas country / Southern rock",
+      "status": "active",
+      "logo": "hello-texas-logo.png",
+      "heroImage": "Roster Photos/hello-texas/hello-texas-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "latestTitle": "Modern Man Grind",
+      "heroLogoScale": 2.25,
+      "heroLogoMaxHeight": 560,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/hello-texas/hello-texas-roster-photo.png",
+        "Roster Photos/hello-texas-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "tagline": "Where country started and never stopped"
+    },
+    {
+      "id": "sawyer-price",
+      "name": "Sawyer Price",
+      "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Sawyer Price\\_repo",
+      "githubRepo": "SteveP999/Sawyer-Price",
+      "siteUrl": "https://stevep999.github.io/Sawyer-Price/",
+      "genre": "Texas country / Red Dirt",
+      "status": "active",
+      "logo": "",
+      "heroImage": "Roster Photos/sawyer-price/sawyer-price-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/sawyer-price/sawyer-price-roster-photo.png",
+        "Roster Photos/sawyer-price-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Burnin' Gas",
+      "tagline": "Texas country, honest and unhurried"
+    },
+    {
+      "id": "bailey-wade",
+      "name": "Bailey Wade",
+      "githubRepo": "SteveP999/bailey-wade",
+      "siteUrl": "https://bailey-wade.hellotexasrecords.com",
+      "genre": "Contemporary Country",
+      "tagline": "All the country - all the smirk",
+      "status": "active",
+      "active": true,
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "latestTitle": "Half Drunk & Honest",
+      "logo": "images/logos/bailey-wade-logo.png",
+      "heroImage": "Roster Photos/bailey-wade/bailey-wade-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "imageCandidates": [
+        "Roster Photos/bailey-wade/bailey-wade-roster-photo.png",
+        "Roster Photos/bailey-wade-roster-photo.png",
+        "htr-logo.png"
+      ]
+    },
+    {
       "id": "daniel-kincaid",
       "name": "Daniel Kincaid",
       "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Daniel Kincaid\\_repo",
@@ -389,15 +478,15 @@
       "tagline": "The reluctant voice that became our soundtrack"
     },
     {
-      "id": "skyline-theory",
-      "name": "Skyline Theory",
-      "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Skyline Theory\\_repo",
-      "githubRepo": "SteveP999/Skyline-Theory",
-      "siteUrl": "https://stevep999.github.io/Skyline-Theory/",
-      "genre": "EDM / progressive house",
+      "id": "rio-valencia",
+      "name": "Rio Valencia",
+      "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Rio Valencia\\_repo",
+      "githubRepo": "SteveP999/Rio-Valencia",
+      "siteUrl": "https://stevep999.github.io/Rio-Valencia/",
+      "genre": "Latin pop / reggaeton fusion",
       "status": "active",
-      "logo": "skyline-theory-logo-text.png",
-      "heroImage": "Roster Photos/skyline-theory/skyline-theory-roster-photo.png",
+      "logo": "Rio Valencia Logo and Text.png",
+      "heroImage": "Roster Photos/rio-valencia/rio-valencia-roster-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -411,42 +500,12 @@
       "heroLogoMobileScale": 1,
       "active": true,
       "imageCandidates": [
-        "Roster Photos/skyline-theory/skyline-theory-roster-photo.png",
-        "Roster Photos/skyline-theory-roster-photo.png",
+        "Roster Photos/rio-valencia/rio-valencia-roster-photo.png",
+        "Roster Photos/rio-valencia-roster-photo.png",
         "htr-logo.png"
       ],
-      "latestTitle": "Ghost in The Mirror",
-      "tagline": "EDM built for 2am and open roads"
-    },
-    {
-      "id": "hello-texas",
-      "name": "Hello Texas",
-      "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Hello Texas\\_repo",
-      "githubRepo": "SteveP999/Hello-Texas",
-      "siteUrl": "https://stevep999.github.io/Hello-Texas/",
-      "genre": "Texas country / Southern rock",
-      "status": "active",
-      "logo": "hello-texas-logo.png",
-      "heroImage": "Roster Photos/hello-texas/hello-texas-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "latestTitle": "Modern Man Grind",
-      "heroLogoScale": 2.25,
-      "heroLogoMaxHeight": 560,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "active": true,
-      "imageCandidates": [
-        "Roster Photos/hello-texas/hello-texas-roster-photo.png",
-        "Roster Photos/hello-texas-roster-photo.png",
-        "htr-logo.png"
-      ],
-      "tagline": "Where country started and never stopped"
+      "latestTitle": "Fuego Lento",
+      "tagline": "Latin fire with no boundaries"
     },
     {
       "id": "parsons-cross",
@@ -509,36 +568,6 @@
       "tagline": "Las Vegas never sounded this good"
     },
     {
-      "id": "sawyer-price",
-      "name": "Sawyer Price",
-      "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Sawyer Price\\_repo",
-      "githubRepo": "SteveP999/Sawyer-Price",
-      "siteUrl": "https://stevep999.github.io/Sawyer-Price/",
-      "genre": "Texas country / Red Dirt",
-      "status": "active",
-      "logo": "",
-      "heroImage": "Roster Photos/sawyer-price/sawyer-price-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "active": true,
-      "imageCandidates": [
-        "Roster Photos/sawyer-price/sawyer-price-roster-photo.png",
-        "Roster Photos/sawyer-price-roster-photo.png",
-        "htr-logo.png"
-      ],
-      "latestTitle": "Burnin' Gas",
-      "tagline": "Texas country, honest and unhurried"
-    },
-    {
       "id": "brightons",
       "name": "Brightons",
       "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Brightons\\_repo",
@@ -564,36 +593,6 @@
       ],
       "latestTitle": "Yesterday's Girl",
       "tagline": "Four lads who learned from the greats"
-    },
-    {
-      "id": "rio-valencia",
-      "name": "Rio Valencia",
-      "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Rio Valencia\\_repo",
-      "githubRepo": "SteveP999/Rio-Valencia",
-      "siteUrl": "https://stevep999.github.io/Rio-Valencia/",
-      "genre": "Latin pop / reggaeton fusion",
-      "status": "active",
-      "logo": "Rio Valencia Logo and Text.png",
-      "heroImage": "Roster Photos/rio-valencia/rio-valencia-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "active": true,
-      "imageCandidates": [
-        "Roster Photos/rio-valencia/rio-valencia-roster-photo.png",
-        "Roster Photos/rio-valencia-roster-photo.png",
-        "htr-logo.png"
-      ],
-      "latestTitle": "Fuego Lento",
-      "tagline": "Latin fire with no boundaries"
     },
     {
       "id": "nightstrike",
@@ -627,6 +626,66 @@
       "tagline": "Bringing 1987 back whether you're ready or not"
     },
     {
+      "id": "skyline-theory",
+      "name": "Skyline Theory",
+      "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Skyline Theory\\_repo",
+      "githubRepo": "SteveP999/Skyline-Theory",
+      "siteUrl": "https://stevep999.github.io/Skyline-Theory/",
+      "genre": "EDM / progressive house",
+      "status": "active",
+      "logo": "skyline-theory-logo-text.png",
+      "heroImage": "Roster Photos/skyline-theory/skyline-theory-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/skyline-theory/skyline-theory-roster-photo.png",
+        "Roster Photos/skyline-theory-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Ghost in The Mirror",
+      "tagline": "EDM built for 2am and open roads"
+    },
+    {
+      "id": "quincy-cade",
+      "name": "Quincy Cade",
+      "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Quincy Cade\\_repo",
+      "githubRepo": "SteveP999/quincy-cade",
+      "siteUrl": "https://quincy-cade.hellotexasrecords.com",
+      "genre": "Motown / R&B",
+      "tagline": "Where Soul Meets Style",
+      "status": "active",
+      "active": true,
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "latestTitle": "Still Falling For You",
+      "logo": "images/logos/quincy-cade-logo-transparent.png",
+      "heroImage": "Roster Photos/quincy-cade/quincy-cade-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "imageCandidates": [
+        "Roster Photos/quincy-cade/quincy-cade-roster-photo.png",
+        "Roster Photos/quincy-cade-roster-photo.png",
+        "htr-logo.png"
+      ]
+    },
+    {
       "id": "silent-oblivion",
       "name": "Silent Oblivion",
       "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Silent Oblivion\\_repo",
@@ -655,35 +714,6 @@
       ],
       "latestTitle": "Bubblegum",
       "tagline": "Alt-rock built for lift-off"
-    },
-    {
-      "id": "bailey-wade",
-      "name": "Bailey Wade",
-      "githubRepo": "SteveP999/bailey-wade",
-      "siteUrl": "https://bailey-wade.hellotexasrecords.com",
-      "genre": "Contemporary Country",
-      "tagline": "All the country - all the smirk",
-      "status": "active",
-      "active": true,
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "latestTitle": "Half Drunk & Honest",
-      "logo": "images/logos/bailey-wade-logo.png",
-      "heroImage": "Roster Photos/bailey-wade/bailey-wade-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "imageCandidates": [
-        "Roster Photos/bailey-wade/bailey-wade-roster-photo.png",
-        "Roster Photos/bailey-wade-roster-photo.png",
-        "htr-logo.png"
-      ]
     },
     {
       "id": "stephen-parsons",
@@ -825,36 +855,6 @@
       ],
       "latestTitle": "First Light",
       "tagline": "New age piano for late nights and long drives"
-    },
-    {
-      "id": "quincy-cade",
-      "name": "Quincy Cade",
-      "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Quincy Cade\\_repo",
-      "githubRepo": "SteveP999/quincy-cade",
-      "siteUrl": "https://quincy-cade.hellotexasrecords.com",
-      "genre": "Motown / R&B",
-      "tagline": "Where Soul Meets Style",
-      "status": "active",
-      "active": true,
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "latestTitle": "Still Falling For You",
-      "logo": "images/logos/quincy-cade-logo-transparent.png",
-      "heroImage": "Roster Photos/quincy-cade/quincy-cade-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "imageCandidates": [
-        "Roster Photos/quincy-cade/quincy-cade-roster-photo.png",
-        "Roster Photos/quincy-cade-roster-photo.png",
-        "htr-logo.png"
-      ]
     }
   ]
 }
