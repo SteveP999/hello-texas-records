@@ -855,6 +855,35 @@
       ],
       "latestTitle": "First Light",
       "tagline": "New age piano for late nights and long drives"
+    },
+    {
+      "id": "lori-hayes",
+      "name": "Lori Hayes",
+      "githubRepo": "SteveP999/lori-hayes",
+      "siteUrl": "https://lori-hayes.hellotexasrecords.com",
+      "genre": "Heartland Roots Rock",
+      "tagline": "Live Live Simpler",
+      "status": "active",
+      "active": true,
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "latestTitle": "",
+      "logo": "images/logos/lori-hayes-logo.png",
+      "heroImage": "Roster Photos/lori-hayes/lori-hayes-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "imageCandidates": [
+        "Roster Photos/lori-hayes/lori-hayes-roster-photo.png",
+        "Roster Photos/lori-hayes-roster-photo.png",
+        "htr-logo.png"
+      ]
     }
   ]
 }
