@@ -285,7 +285,7 @@ function pollHTML(p){
       return `<div class="option${isVoted||isSelected?' selected':''}" id="opt-${p.id}-${i}" onclick="${voted||closed?'':`selectOpt('${p.id}',${i})`}">
         <div class="option-inner">
           <div class="option-num">${String(i+1).padStart(2,'0')}</div>
-          <div class="option-info"><div class="option-label">${o.label}</div>${o.desc?`<div class="option-desc">${o.desc}</div>`:''}</div>
+          <div class="option-info"><div class="option-label">${o.label}</div>${o.artist?`<div class="option-artist" style="font-size:.72rem;color:var(--gold);letter-spacing:.05em;margin-top:2px">${o.artist}</div>`:''}${o.desc?`<div class="option-desc">${o.desc}</div>`:''}</div>
           ${voted||closed?'':`<div class="option-radio" id="radio-${p.id}-${i}"></div>`}
           ${isVoted?`<span style="font-family:'Space Mono',monospace;font-size:.65rem;color:var(--gold)">&#x2713; YOUR VOTE</span>`:''}
         </div>
