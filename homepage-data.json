@@ -884,6 +884,35 @@
         "Roster Photos/lori-hayes-roster-photo.png",
         "htr-logo.png"
       ]
+    },
+    {
+      "id": "brent-alan",
+      "name": "Brent Alan",
+      "githubRepo": "SteveP999/brent-alan",
+      "siteUrl": "https://brent-alan.hellotexasrecords.com",
+      "genre": "Heartland Roots Rock",
+      "tagline": "Down to Earth Truths You Need to Hear",
+      "status": "active",
+      "active": true,
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "latestTitle": "",
+      "logo": "images/logos/brent-alan-logo.png",
+      "heroImage": "Roster Photos/brent-alan/brent-alan-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "imageCandidates": [
+        "Roster Photos/brent-alan/brent-alan-roster-photo.png",
+        "Roster Photos/brent-alan-roster-photo.png",
+        "htr-logo.png"
+      ]
     }
   ]
 }
