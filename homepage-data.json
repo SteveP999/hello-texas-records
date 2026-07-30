@@ -58,12 +58,12 @@
       "audioSrc": "https://www.dropbox.com/scl/fi/gw76ynyxtfrz0gfuf6ea3/rio-valencia-buenos-noches-mp3.mp3?rlkey=8aygdxdod8fpkiqinlyfk701h&raw=1",
       "youtubeUrl": "",
       "videos": [],
-      "featured": true,
+      "featured": false,
       "explicit": false,
       "includeOnRadio": true,
       "includeOnHomepage": true,
       "tags": [],
-      "isLatest": true
+      "isLatest": false
     },
     {
       "id": "daniel-kincaid-if-i-could-love-you-again",
