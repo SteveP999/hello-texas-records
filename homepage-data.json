@@ -913,6 +913,35 @@
         "Roster Photos/brent-alan-roster-photo.png",
         "htr-logo.png"
       ]
+    },
+    {
+      "id": "elliott-kessler",
+      "name": "Elliott Kessler",
+      "githubRepo": "SteveP999/elliott-kessler",
+      "siteUrl": "https://elliott-kessler.hellotexasrecords.com",
+      "genre": "Emotional Alternative Pop",
+      "tagline": "The sound of Almost Letting Go",
+      "status": "active",
+      "active": true,
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "latestTitle": "",
+      "logo": "images/logos/elliott-kessler-logo.png",
+      "heroImage": "Roster Photos/elliott-kessler/elliott-kessler-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "imageCandidates": [
+        "Roster Photos/elliott-kessler/elliott-kessler-roster-photo.png",
+        "Roster Photos/elliott-kessler-roster-photo.png",
+        "htr-logo.png"
+      ]
     }
   ]
 }
