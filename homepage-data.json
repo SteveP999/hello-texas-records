@@ -715,37 +715,6 @@
       "tagline": "Raw. Honest. No filter."
     },
     {
-      "id": "nightstrike",
-      "name": "NightStrike",
-      "repoPath": "D:\\NightStrike",
-      "repoFolder": "D:\\Dropbox\\Hello Texas Records\\NightStrike\\_repo",
-      "githubRepo": "SteveP999/NightStrike",
-      "siteUrl": "https://nightstrike.hellotexasrecords.com/",
-      "logo": "images/nightstrike-logo.png",
-      "heroImage": "Roster Photos/nightstrike/nightstrike-roster-photo.png",
-      "genre": "Hard Rock / Sleaze Rock",
-      "active": true,
-      "status": "active",
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "imageCandidates": [
-        "Roster Photos/nightstrike/nightstrike-roster-photo.png",
-        "Roster Photos/nightstrike-roster-photo.png",
-        "htr-logo.png"
-      ],
-      "latestTitle": "Crash and Burn",
-      "tagline": "Bringing 1987 back whether you're ready or not"
-    },
-    {
       "id": "vanta",
       "name": "Vanta",
       "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Vanta\\_repo",
@@ -826,37 +795,6 @@
       ]
     },
     {
-      "id": "lucas-harlow",
-      "name": "Lucas Harlow",
-      "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Lucas Harlow\\_repo",
-      "githubRepo": "SteveP999/Lucas-Harlow",
-      "siteUrl": "https://stevep999.github.io/Lucas-Harlow/",
-      "genre": "New age piano / cinematic instrumental",
-      "status": "active",
-      "logo": "",
-      "heroImage": "Roster Photos/lucas-harlow/lucas-harlow-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "noVideoSection": true,
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "active": true,
-      "imageCandidates": [
-        "Roster Photos/lucas-harlow/lucas-harlow-roster-photo.png",
-        "Roster Photos/lucas-harlow-roster-photo.png",
-        "htr-logo.png"
-      ],
-      "latestTitle": "First Light",
-      "tagline": "New age piano for late nights and long drives"
-    },
-    {
       "id": "lori-hayes",
       "name": "Lori Hayes",
       "githubRepo": "SteveP999/lori-hayes",
@@ -882,35 +820,6 @@
       "imageCandidates": [
         "Roster Photos/lori-hayes/lori-hayes-roster-photo.png",
         "Roster Photos/lori-hayes-roster-photo.png",
-        "htr-logo.png"
-      ]
-    },
-    {
-      "id": "brent-alan",
-      "name": "Brent Alan",
-      "githubRepo": "SteveP999/brent-alan",
-      "siteUrl": "https://brent-alan.hellotexasrecords.com",
-      "genre": "Heartland Roots Rock",
-      "tagline": "Down to Earth Truths You Need to Hear",
-      "status": "active",
-      "active": true,
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "latestTitle": "Smoke",
-      "logo": "images/logos/brent-alan-logo.png",
-      "heroImage": "Roster Photos/brent-alan/brent-alan-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "imageCandidates": [
-        "Roster Photos/brent-alan/brent-alan-roster-photo.png",
-        "Roster Photos/brent-alan-roster-photo.png",
         "htr-logo.png"
       ]
     },
