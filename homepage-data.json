@@ -882,6 +882,35 @@
         "Roster Photos/elliott-kessler-roster-photo.png",
         "htr-logo.png"
       ]
+    },
+    {
+      "id": "velvet-static",
+      "name": "Velvet Static",
+      "githubRepo": "SteveP999/velvet-static",
+      "siteUrl": "https://velvet-static.hellotexasrecords.com",
+      "genre": "Synth-pop / Cold-wave / Dream Pop",
+      "tagline": "The internet made her famous.   But it never made her happy.",
+      "status": "active",
+      "active": true,
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "latestTitle": "",
+      "logo": "images/logos/velvet-static-logo.png",
+      "heroImage": "Roster Photos/velvet-static/velvet-static-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "imageCandidates": [
+        "Roster Photos/velvet-static/velvet-static-roster-photo.png",
+        "Roster Photos/velvet-static-roster-photo.png",
+        "htr-logo.png"
+      ]
     }
   ]
 }
