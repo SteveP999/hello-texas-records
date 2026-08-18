@@ -302,6 +302,36 @@
       "tagline": "The voice that grew up in public"
     },
     {
+      "id": "vincent-cole",
+      "name": "Vincent Cole",
+      "repoFolder": "D:\\HTR\\repos\\artists\\vincent-cole",
+      "githubRepo": "SteveP999/Vincent-Cole",
+      "siteUrl": "https://stevep999.github.io/Vincent-Cole/",
+      "genre": "Crooner / big band swing",
+      "status": "active",
+      "logo": "vincent-cole-logo-monogram-transparent.png",
+      "heroImage": "Roster Photos/vincent-cole/vincent-cole-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/vincent-cole/vincent-cole-roster-photo.png",
+        "Roster Photos/vincent-cole-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Just One More Dance",
+      "tagline": "Las Vegas never sounded this good"
+    },
+    {
       "id": "september-skies",
       "name": "September Skies",
       "repoFolder": "D:\\HTR\\repos\\artists\\september-skies",
@@ -506,36 +536,6 @@
         "Roster Photos/bailey-wade-roster-photo.png",
         "htr-logo.png"
       ]
-    },
-    {
-      "id": "vincent-cole",
-      "name": "Vincent Cole",
-      "repoFolder": "D:\\HTR\\repos\\artists\\vincent-cole",
-      "githubRepo": "SteveP999/Vincent-Cole",
-      "siteUrl": "https://stevep999.github.io/Vincent-Cole/",
-      "genre": "Crooner / big band swing",
-      "status": "active",
-      "logo": "vincent-cole-logo-monogram-transparent.png",
-      "heroImage": "Roster Photos/vincent-cole/vincent-cole-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "active": true,
-      "imageCandidates": [
-        "Roster Photos/vincent-cole/vincent-cole-roster-photo.png",
-        "Roster Photos/vincent-cole-roster-photo.png",
-        "htr-logo.png"
-      ],
-      "latestTitle": "Just One More Dance",
-      "tagline": "Las Vegas never sounded this good"
     },
     {
       "id": "skyline-theory",
