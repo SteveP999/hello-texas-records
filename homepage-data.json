@@ -36,11 +36,11 @@
       "audioFile": "https://www.dropbox.com/scl/fi/yw9611c8814o5zqo1xrpo/quincy-cade-still-falling-for-you-mp3.mp3?rlkey=1zvurbrqok6sjycvjycg0930f&raw=1",
       "youtubeUrl": "",
       "videos": [],
-      "featured": true,
+      "featured": false,
       "explicit": false,
       "includeOnRadio": true,
       "includeOnHomepage": true,
-      "isLatest": true,
+      "isLatest": false,
       "tags": []
     },
     {
