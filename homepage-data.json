@@ -419,36 +419,6 @@
       "tagline": "Texas country, honest and unhurried"
     },
     {
-      "id": "hello-texas",
-      "name": "Hello Texas",
-      "repoFolder": "D:\\HTR\\repos\\artists\\hello-texas",
-      "githubRepo": "SteveP999/Hello-Texas",
-      "siteUrl": "https://stevep999.github.io/Hello-Texas/",
-      "genre": "Texas country / Southern rock",
-      "status": "active",
-      "logo": "hello-texas-logo.png",
-      "heroImage": "Roster Photos/hello-texas/hello-texas-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "latestTitle": "Modern Man Grind",
-      "heroLogoScale": 2.25,
-      "heroLogoMaxHeight": 560,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "active": true,
-      "imageCandidates": [
-        "Roster Photos/hello-texas/hello-texas-roster-photo.png",
-        "Roster Photos/hello-texas-roster-photo.png",
-        "htr-logo.png"
-      ],
-      "tagline": "Where country started and never stopped"
-    },
-    {
       "id": "daniel-kincaid",
       "name": "Daniel Kincaid",
       "repoFolder": "D:\\HTR\\repos\\artists\\daniel-kincaid",
@@ -538,36 +508,6 @@
       ]
     },
     {
-      "id": "skyline-theory",
-      "name": "Skyline Theory",
-      "repoFolder": "D:\\HTR\\repos\\artists\\skyline-theory",
-      "githubRepo": "SteveP999/Skyline-Theory",
-      "siteUrl": "https://stevep999.github.io/Skyline-Theory/",
-      "genre": "EDM / progressive house",
-      "status": "active",
-      "logo": "skyline-theory-logo-text.png",
-      "heroImage": "Roster Photos/skyline-theory/skyline-theory-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "active": true,
-      "imageCandidates": [
-        "Roster Photos/skyline-theory/skyline-theory-roster-photo.png",
-        "Roster Photos/skyline-theory-roster-photo.png",
-        "htr-logo.png"
-      ],
-      "latestTitle": "Ghost in The Mirror",
-      "tagline": "EDM built for 2am and open roads"
-    },
-    {
       "id": "brightons",
       "name": "Brightons",
       "repoFolder": "D:\\HTR\\repos\\artists\\brightons",
@@ -621,6 +561,125 @@
       "imageCandidates": [
         "Roster Photos/quincy-cade/quincy-cade-roster-photo.png",
         "Roster Photos/quincy-cade-roster-photo.png",
+        "htr-logo.png"
+      ]
+    },
+    {
+      "id": "stephen-parsons",
+      "name": "Stephen Parsons",
+      "repoFolder": "D:\\HTR\\repos\\artists\\stephen-parsons",
+      "githubRepo": "SteveP999/stephen-parsons",
+      "siteUrl": "https://stevep999.github.io/stephen-parsons/",
+      "genre": "Christian country / worship storyteller",
+      "status": "active",
+      "logo": "stephen-parsons-logo-transparent-oval.png",
+      "heroImage": "Roster Photos/stephen-parsons/stephen-parsons-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "latestTitle": "Just Move On",
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/stephen-parsons/stephen-parsons-roster-photo.png",
+        "Roster Photos/stephen-parsons-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "tagline": "Raw. Honest. No filter."
+    },
+    {
+      "id": "hello-texas",
+      "name": "Hello Texas",
+      "repoFolder": "D:\\HTR\\repos\\artists\\hello-texas",
+      "githubRepo": "SteveP999/Hello-Texas",
+      "siteUrl": "https://stevep999.github.io/Hello-Texas/",
+      "genre": "Texas country / Southern rock",
+      "status": "active",
+      "logo": "hello-texas-logo.png",
+      "heroImage": "Roster Photos/hello-texas/hello-texas-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "latestTitle": "Modern Man Grind",
+      "heroLogoScale": 2.25,
+      "heroLogoMaxHeight": 560,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/hello-texas/hello-texas-roster-photo.png",
+        "Roster Photos/hello-texas-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "tagline": "Where country started and never stopped"
+    },
+    {
+      "id": "skyline-theory",
+      "name": "Skyline Theory",
+      "repoFolder": "D:\\HTR\\repos\\artists\\skyline-theory",
+      "githubRepo": "SteveP999/Skyline-Theory",
+      "siteUrl": "https://stevep999.github.io/Skyline-Theory/",
+      "genre": "EDM / progressive house",
+      "status": "active",
+      "logo": "skyline-theory-logo-text.png",
+      "heroImage": "Roster Photos/skyline-theory/skyline-theory-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/skyline-theory/skyline-theory-roster-photo.png",
+        "Roster Photos/skyline-theory-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Ghost in The Mirror",
+      "tagline": "EDM built for 2am and open roads"
+    },
+    {
+      "id": "elliott-kessler",
+      "name": "Elliott Kessler",
+      "githubRepo": "SteveP999/elliott-kessler",
+      "siteUrl": "https://elliott-kessler.hellotexasrecords.com",
+      "genre": "Emotional Alternative Pop",
+      "tagline": "The sound of Almost Letting Go",
+      "status": "active",
+      "active": true,
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "latestTitle": "Promises I Broke",
+      "logo": "images/logos/elliott-kessler-logo.png",
+      "heroImage": "Roster Photos/elliott-kessler/elliott-kessler-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "imageCandidates": [
+        "Roster Photos/elliott-kessler/elliott-kessler-roster-photo.png",
+        "Roster Photos/elliott-kessler-roster-photo.png",
         "htr-logo.png"
       ]
     },
@@ -683,36 +742,6 @@
       ],
       "latestTitle": "Bubblegum",
       "tagline": "Alt-rock built for lift-off"
-    },
-    {
-      "id": "stephen-parsons",
-      "name": "Stephen Parsons",
-      "repoFolder": "D:\\HTR\\repos\\artists\\stephen-parsons",
-      "githubRepo": "SteveP999/stephen-parsons",
-      "siteUrl": "https://stevep999.github.io/stephen-parsons/",
-      "genre": "Christian country / worship storyteller",
-      "status": "active",
-      "logo": "stephen-parsons-logo-transparent-oval.png",
-      "heroImage": "Roster Photos/stephen-parsons/stephen-parsons-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "latestTitle": "Just Move On",
-      "active": true,
-      "imageCandidates": [
-        "Roster Photos/stephen-parsons/stephen-parsons-roster-photo.png",
-        "Roster Photos/stephen-parsons-roster-photo.png",
-        "htr-logo.png"
-      ],
-      "tagline": "Raw. Honest. No filter."
     },
     {
       "id": "vanta",
@@ -795,37 +824,6 @@
       ]
     },
     {
-      "id": "lucas-harlow",
-      "name": "Lucas Harlow",
-      "repoFolder": "D:\\HTR\\repos\\artists\\lucas-harlow",
-      "githubRepo": "SteveP999/Lucas-Harlow",
-      "siteUrl": "https://stevep999.github.io/Lucas-Harlow/",
-      "genre": "New age piano / cinematic instrumental",
-      "status": "active",
-      "logo": "",
-      "heroImage": "Roster Photos/lucas-harlow/lucas-harlow-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "noVideoSection": true,
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "active": true,
-      "imageCandidates": [
-        "Roster Photos/lucas-harlow/lucas-harlow-roster-photo.png",
-        "Roster Photos/lucas-harlow-roster-photo.png",
-        "htr-logo.png"
-      ],
-      "latestTitle": "First Light",
-      "tagline": "New age piano for late nights and long drives"
-    },
-    {
       "id": "lori-hayes",
       "name": "Lori Hayes",
       "githubRepo": "SteveP999/lori-hayes",
@@ -851,35 +849,6 @@
       "imageCandidates": [
         "Roster Photos/lori-hayes/lori-hayes-roster-photo.png",
         "Roster Photos/lori-hayes-roster-photo.png",
-        "htr-logo.png"
-      ]
-    },
-    {
-      "id": "elliott-kessler",
-      "name": "Elliott Kessler",
-      "githubRepo": "SteveP999/elliott-kessler",
-      "siteUrl": "https://elliott-kessler.hellotexasrecords.com",
-      "genre": "Emotional Alternative Pop",
-      "tagline": "The sound of Almost Letting Go",
-      "status": "active",
-      "active": true,
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "latestTitle": "Promises I Broke",
-      "logo": "images/logos/elliott-kessler-logo.png",
-      "heroImage": "Roster Photos/elliott-kessler/elliott-kessler-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "imageCandidates": [
-        "Roster Photos/elliott-kessler/elliott-kessler-roster-photo.png",
-        "Roster Photos/elliott-kessler-roster-photo.png",
         "htr-logo.png"
       ]
     },
@@ -911,6 +880,37 @@
         "Roster Photos/velvet-static-roster-photo.png",
         "htr-logo.png"
       ]
+    },
+    {
+      "id": "lucas-harlow",
+      "name": "Lucas Harlow",
+      "repoFolder": "D:\\HTR\\repos\\artists\\lucas-harlow",
+      "githubRepo": "SteveP999/Lucas-Harlow",
+      "siteUrl": "https://stevep999.github.io/Lucas-Harlow/",
+      "genre": "New age piano / cinematic instrumental",
+      "status": "active",
+      "logo": "",
+      "heroImage": "Roster Photos/lucas-harlow/lucas-harlow-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "noVideoSection": true,
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/lucas-harlow/lucas-harlow-roster-photo.png",
+        "Roster Photos/lucas-harlow-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "First Light",
+      "tagline": "New age piano for late nights and long drives"
     }
   ]
 }
