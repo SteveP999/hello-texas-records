@@ -851,66 +851,6 @@
         "Roster Photos/lori-hayes-roster-photo.png",
         "htr-logo.png"
       ]
-    },
-    {
-      "id": "velvet-static",
-      "name": "Velvet Static",
-      "githubRepo": "SteveP999/velvet-static",
-      "siteUrl": "https://velvet-static.hellotexasrecords.com",
-      "genre": "Synth-pop / Cold-wave / Dream Pop",
-      "tagline": "The internet made her famous.   But it never made her happy.",
-      "status": "active",
-      "active": true,
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "latestTitle": "Hit The Peak",
-      "logo": "images/logos/velvet-static-logo.png",
-      "heroImage": "Roster Photos/velvet-static/velvet-static-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "imageCandidates": [
-        "Roster Photos/velvet-static/velvet-static-roster-photo.png",
-        "Roster Photos/velvet-static-roster-photo.png",
-        "htr-logo.png"
-      ]
-    },
-    {
-      "id": "lucas-harlow",
-      "name": "Lucas Harlow",
-      "repoFolder": "D:\\HTR\\repos\\artists\\lucas-harlow",
-      "githubRepo": "SteveP999/Lucas-Harlow",
-      "siteUrl": "https://stevep999.github.io/Lucas-Harlow/",
-      "genre": "New age piano / cinematic instrumental",
-      "status": "active",
-      "logo": "",
-      "heroImage": "Roster Photos/lucas-harlow/lucas-harlow-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "noVideoSection": true,
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "active": true,
-      "imageCandidates": [
-        "Roster Photos/lucas-harlow/lucas-harlow-roster-photo.png",
-        "Roster Photos/lucas-harlow-roster-photo.png",
-        "htr-logo.png"
-      ],
-      "latestTitle": "First Light",
-      "tagline": "New age piano for late nights and long drives"
     }
   ]
 }
