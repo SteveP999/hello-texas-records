@@ -804,26 +804,6 @@
       "tagline": "Disco never died — it just moved to Texas"
     },
     {
-      "id": "harlan-rhodes",
-      "name": "Harlan Rhodes",
-      "repoFolder": "D:\\HTR\\repos\\artists\\harlan-rhodes",
-      "githubRepo": "stevep999/harlan-rhodes",
-      "siteUrl": "https://harlan-rhodes.hellotexasrecords.com",
-      "genre": "Blues Rock / Blues Country",
-      "tagline": "Where country bleeds into blues and every scar sings.",
-      "status": "active",
-      "active": true,
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "latestTitle": "PAIN",
-      "heroImage": "Roster Photos/harlan-rhodes/harlan-rhodes-roster-photo.png",
-      "imageCandidates": [
-        "Roster Photos/harlan-rhodes/harlan-rhodes-roster-photo.png",
-        "Roster Photos/harlan-rhodes-roster-photo.png",
-        "htr-logo.png"
-      ]
-    },
-    {
       "id": "lori-hayes",
       "name": "Lori Hayes",
       "githubRepo": "SteveP999/lori-hayes",
