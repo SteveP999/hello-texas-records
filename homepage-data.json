@@ -831,6 +831,35 @@
         "Roster Photos/lori-hayes-roster-photo.png",
         "htr-logo.png"
       ]
+    },
+    {
+      "id": "the-long-weekend",
+      "name": "The Long Weekend",
+      "githubRepo": "SteveP999/the-long-weekend",
+      "siteUrl": "https://the-long-weekend.hellotexasrecords.com",
+      "genre": "1970s Soft Rock / Folk Rock",
+      "tagline": "some roads are worth getting lost on",
+      "status": "active",
+      "active": true,
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "latestTitle": "",
+      "logo": "images/logos/the-long-weekend-logo.png",
+      "heroImage": "Roster Photos/the-long-weekend/the-long-weekend-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "imageCandidates": [
+        "Roster Photos/the-long-weekend/the-long-weekend-roster-photo.png",
+        "Roster Photos/the-long-weekend-roster-photo.png",
+        "htr-logo.png"
+      ]
     }
   ]
 }
