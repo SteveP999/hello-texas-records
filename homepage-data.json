@@ -36,11 +36,11 @@
       "audioFile": "https://www.dropbox.com/scl/fi/yw9611c8814o5zqo1xrpo/quincy-cade-still-falling-for-you-mp3.mp3?rlkey=1zvurbrqok6sjycvjycg0930f&raw=1",
       "youtubeUrl": "",
       "videos": [],
-      "featured": false,
+      "featured": true,
       "explicit": false,
       "includeOnRadio": true,
       "includeOnHomepage": true,
-      "isLatest": false,
+      "isLatest": true,
       "tags": []
     },
     {
@@ -58,12 +58,12 @@
       "audioSrc": "https://www.dropbox.com/scl/fi/gw76ynyxtfrz0gfuf6ea3/rio-valencia-buenos-noches-mp3.mp3?rlkey=8aygdxdod8fpkiqinlyfk701h&raw=1",
       "youtubeUrl": "",
       "videos": [],
-      "featured": false,
+      "featured": true,
       "explicit": false,
       "includeOnRadio": true,
       "includeOnHomepage": true,
       "tags": [],
-      "isLatest": false
+      "isLatest": true
     },
     {
       "id": "daniel-kincaid-if-i-could-love-you-again",
@@ -146,12 +146,12 @@
       "audioSrc": "https://www.dropbox.com/scl/fi/311thg22xifv26fr5ig90/daniel-kincaid-still-falling-for-you-acoustic-mp3.mp3?rlkey=wigwtwksu5gaikiw6d7tpvb8q&raw=1",
       "youtubeUrl": "",
       "videos": [],
-      "featured": false,
+      "featured": true,
       "explicit": false,
       "includeOnRadio": true,
       "includeOnHomepage": true,
       "tags": [],
-      "isLatest": false
+      "isLatest": true
     },
     {
       "id": "september-skies-give-it-away",
@@ -168,12 +168,12 @@
       "audioSrc": "https://www.dropbox.com/scl/fi/i6l30r2si2vgjsk7usyu5/september-skies-give-it-away.mp3?rlkey=0496b3kwnp5hiesyojgykkx0i&raw=1",
       "youtubeUrl": "",
       "videos": [],
-      "featured": false,
+      "featured": true,
       "explicit": false,
       "includeOnRadio": true,
       "includeOnHomepage": true,
       "tags": [],
-      "isLatest": false
+      "isLatest": true
     },
     {
       "id": "sawyer-price-whats-left-of-me",
@@ -240,12 +240,12 @@
       "audioSrc": "https://www.dropbox.com/scl/fi/3lx7e5ochef1cyhhgcxb3/silent-oblivion-bubblegum-mp3.mp3?rlkey=xeat09g9mpdeqkqh7296kgtva&raw=1",
       "youtubeUrl": "",
       "videos": [],
-      "featured": false,
+      "featured": true,
       "explicit": false,
       "includeOnRadio": true,
       "includeOnHomepage": true,
       "tags": [],
-      "isLatest": false
+      "isLatest": true
     },
     {
       "id": "september-skies-serena",
@@ -274,7 +274,7 @@
     {
       "id": "avery-ivey",
       "name": "Avery Ivey",
-      "repoFolder": "D:\\HTR\\repos\\artists\\avery-ivey",
+      "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Avery Ivey\\_repo",
       "githubRepo": "SteveP999/Avery-Ivey",
       "siteUrl": "https://stevep999.github.io/Avery-Ivey/",
       "genre": "Country / folk-pop / alt-rock",
@@ -302,126 +302,9 @@
       "tagline": "The voice that grew up in public"
     },
     {
-      "id": "vincent-cole",
-      "name": "Vincent Cole",
-      "repoFolder": "D:\\HTR\\repos\\artists\\vincent-cole",
-      "githubRepo": "SteveP999/Vincent-Cole",
-      "siteUrl": "https://stevep999.github.io/Vincent-Cole/",
-      "genre": "Crooner / big band swing",
-      "status": "active",
-      "logo": "vincent-cole-logo-monogram-transparent.png",
-      "heroImage": "Roster Photos/vincent-cole/vincent-cole-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "active": true,
-      "imageCandidates": [
-        "Roster Photos/vincent-cole/vincent-cole-roster-photo.png",
-        "Roster Photos/vincent-cole-roster-photo.png",
-        "htr-logo.png"
-      ],
-      "latestTitle": "Just One More Dance",
-      "tagline": "Las Vegas never sounded this good"
-    },
-    {
-      "id": "september-skies",
-      "name": "September Skies",
-      "repoFolder": "D:\\HTR\\repos\\artists\\september-skies",
-      "repoPath": "D:\\september-skies",
-      "githubRepo": "SteveP999/september-skies",
-      "siteUrl": "https://september-skies.hellotexasrecords.com",
-      "genre": "Alternative Rock",
-      "status": "active",
-      "active": true,
-      "logo": "",
-      "heroImage": "Roster Photos/september-skies/september-skies-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "imageCandidates": [
-        "Roster Photos/september-skies/september-skies-roster-photo.png",
-        "Roster Photos/september-skies-roster-photo.png",
-        "htr-logo.png"
-      ],
-      "latestTitle": "One Move at a Time",
-      "tagline": "Alternative rock that fills a stadium with one chord"
-    },
-    {
-      "id": "ivey-wilder",
-      "name": "Ivey Wilder",
-      "repoFolder": "D:\\HTR\\repos\\artists\\ivey-wilder",
-      "githubRepo": "SteveP999/Ivey-Wilder",
-      "siteUrl": "https://ivey-wilder.hellotexasrecords.com",
-      "genre": "Alt. Rock / Hard Rock",
-      "status": "active",
-      "logo": "images/logos/ivey-wilder-logo.png",
-      "heroImage": "Roster Photos/ivey-wilder/ivey-wilder-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "latestTitle": "Burning Bridges",
-      "imageCandidates": [
-        "Roster Photos/ivey-wilder/ivey-wilder-roster-photo.png",
-        "Roster Photos/ivey-wilder-roster-photo.png",
-        "htr-logo.png"
-      ],
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "active": true,
-      "tagline": "Alt-rock edges on a country soul"
-    },
-    {
-      "id": "sawyer-price",
-      "name": "Sawyer Price",
-      "repoFolder": "D:\\HTR\\repos\\artists\\sawyer-price",
-      "githubRepo": "SteveP999/Sawyer-Price",
-      "siteUrl": "https://stevep999.github.io/Sawyer-Price/",
-      "genre": "Texas country / Red Dirt",
-      "status": "active",
-      "logo": "",
-      "heroImage": "Roster Photos/sawyer-price/sawyer-price-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "active": true,
-      "imageCandidates": [
-        "Roster Photos/sawyer-price/sawyer-price-roster-photo.png",
-        "Roster Photos/sawyer-price-roster-photo.png",
-        "htr-logo.png"
-      ],
-      "latestTitle": "Burnin' Gas",
-      "tagline": "Texas country, honest and unhurried"
-    },
-    {
       "id": "daniel-kincaid",
       "name": "Daniel Kincaid",
-      "repoFolder": "D:\\HTR\\repos\\artists\\daniel-kincaid",
+      "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Daniel Kincaid\\_repo",
       "githubRepo": "SteveP999/Daniel-Kincaid",
       "siteUrl": "https://stevep999.github.io/Daniel-Kincaid/",
       "genre": "Soft rock / adult contemporary",
@@ -446,158 +329,12 @@
         "htr-logo.png"
       ],
       "latestTitle": "Two Tickets To Anywhere",
-      "tagline": "The reluctant voice that became our soundtrack"
-    },
-    {
-      "id": "rio-valencia",
-      "name": "Rio Valencia",
-      "repoFolder": "D:\\HTR\\repos\\artists\\rio-valencia",
-      "githubRepo": "SteveP999/Rio-Valencia",
-      "siteUrl": "https://stevep999.github.io/Rio-Valencia/",
-      "genre": "Latin pop / reggaeton fusion",
-      "status": "active",
-      "logo": "Rio Valencia Logo and Text.png",
-      "heroImage": "Roster Photos/rio-valencia/rio-valencia-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "active": true,
-      "imageCandidates": [
-        "Roster Photos/rio-valencia/rio-valencia-roster-photo.png",
-        "Roster Photos/rio-valencia-roster-photo.png",
-        "htr-logo.png"
-      ],
-      "latestTitle": "Fuego Lento",
-      "tagline": "Latin fire with no boundaries"
-    },
-    {
-      "id": "bailey-wade",
-      "name": "Bailey Wade",
-      "githubRepo": "SteveP999/bailey-wade",
-      "siteUrl": "https://bailey-wade.hellotexasrecords.com",
-      "genre": "Contemporary Country",
-      "tagline": "All the country - all the smirk",
-      "status": "active",
-      "active": true,
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "latestTitle": "Half Drunk & Honest",
-      "logo": "images/logos/bailey-wade-logo.png",
-      "heroImage": "Roster Photos/bailey-wade/bailey-wade-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "imageCandidates": [
-        "Roster Photos/bailey-wade/bailey-wade-roster-photo.png",
-        "Roster Photos/bailey-wade-roster-photo.png",
-        "htr-logo.png"
-      ]
-    },
-    {
-      "id": "brightons",
-      "name": "Brightons",
-      "repoFolder": "D:\\HTR\\repos\\artists\\brightons",
-      "repoPath": "D:\\brightons",
-      "githubRepo": "stevep999/brightons",
-      "siteUrl": "https://The-Brightons.hellotexasrecords.com",
-      "genre": "50s/60s Pop",
-      "status": "active",
-      "active": true,
-      "logo": "",
-      "heroImage": "Roster Photos/brightons/brightons-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "imageCandidates": [
-        "Roster Photos/brightons/brightons-roster-photo.png",
-        "Roster Photos/brightons-roster-photo.png",
-        "htr-logo.png"
-      ],
-      "latestTitle": "Yesterday's Girl",
-      "tagline": "Four lads who learned from the greats"
-    },
-    {
-      "id": "quincy-cade",
-      "name": "Quincy Cade",
-      "repoFolder": "D:\\HTR\\repos\\artists\\quincy-cade",
-      "githubRepo": "SteveP999/quincy-cade",
-      "siteUrl": "https://quincy-cade.hellotexasrecords.com",
-      "genre": "Motown / R&B",
-      "tagline": "Where Soul Meets Style",
-      "status": "active",
-      "active": true,
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "latestTitle": "Still Falling For You",
-      "logo": "images/logos/quincy-cade-logo-transparent.png",
-      "heroImage": "Roster Photos/quincy-cade/quincy-cade-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "imageCandidates": [
-        "Roster Photos/quincy-cade/quincy-cade-roster-photo.png",
-        "Roster Photos/quincy-cade-roster-photo.png",
-        "htr-logo.png"
-      ]
-    },
-    {
-      "id": "stephen-parsons",
-      "name": "Stephen Parsons",
-      "repoFolder": "D:\\HTR\\repos\\artists\\stephen-parsons",
-      "githubRepo": "SteveP999/stephen-parsons",
-      "siteUrl": "https://stevep999.github.io/stephen-parsons/",
-      "genre": "Christian country / worship storyteller",
-      "status": "active",
-      "logo": "stephen-parsons-logo-transparent-oval.png",
-      "heroImage": "Roster Photos/stephen-parsons/stephen-parsons-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "latestTitle": "Just Move On",
-      "active": true,
-      "imageCandidates": [
-        "Roster Photos/stephen-parsons/stephen-parsons-roster-photo.png",
-        "Roster Photos/stephen-parsons-roster-photo.png",
-        "htr-logo.png"
-      ],
-      "tagline": "Raw. Honest. No filter."
+      "tagline": "The reluctant voice they couldn't keep quiet"
     },
     {
       "id": "hello-texas",
       "name": "Hello Texas",
-      "repoFolder": "D:\\HTR\\repos\\artists\\hello-texas",
+      "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Hello Texas\\_repo",
       "githubRepo": "SteveP999/Hello-Texas",
       "siteUrl": "https://stevep999.github.io/Hello-Texas/",
       "genre": "Texas country / Southern rock",
@@ -625,15 +362,15 @@
       "tagline": "Where country started and never stopped"
     },
     {
-      "id": "skyline-theory",
-      "name": "Skyline Theory",
-      "repoFolder": "D:\\HTR\\repos\\artists\\skyline-theory",
-      "githubRepo": "SteveP999/Skyline-Theory",
-      "siteUrl": "https://stevep999.github.io/Skyline-Theory/",
-      "genre": "EDM / progressive house",
+      "id": "lucas-harlow",
+      "name": "Lucas Harlow",
+      "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Lucas Harlow\\_repo",
+      "githubRepo": "SteveP999/Lucas-Harlow",
+      "siteUrl": "https://stevep999.github.io/Lucas-Harlow/",
+      "genre": "New age piano / cinematic instrumental",
       "status": "active",
-      "logo": "skyline-theory-logo-text.png",
-      "heroImage": "Roster Photos/skyline-theory/skyline-theory-roster-photo.png",
+      "logo": "",
+      "heroImage": "Roster Photos/lucas-harlow/lucas-harlow-roster-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -641,142 +378,24 @@
       },
       "includeOnLabelHome": true,
       "includeOnRadio": true,
+      "noVideoSection": true,
       "heroLogoScale": 1,
       "heroLogoMaxHeight": 420,
       "heroLogoOffsetY": 0,
       "heroLogoMobileScale": 1,
       "active": true,
       "imageCandidates": [
-        "Roster Photos/skyline-theory/skyline-theory-roster-photo.png",
-        "Roster Photos/skyline-theory-roster-photo.png",
+        "Roster Photos/lucas-harlow/lucas-harlow-roster-photo.png",
+        "Roster Photos/lucas-harlow-roster-photo.png",
         "htr-logo.png"
       ],
-      "latestTitle": "Ghost in The Mirror",
-      "tagline": "EDM built for 2am and open roads"
-    },
-    {
-      "id": "elliott-kessler",
-      "name": "Elliott Kessler",
-      "githubRepo": "SteveP999/elliott-kessler",
-      "siteUrl": "https://elliott-kessler.hellotexasrecords.com",
-      "genre": "Emotional Alternative Pop",
-      "tagline": "The sound of Almost Letting Go",
-      "status": "active",
-      "active": true,
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "latestTitle": "Promises I Broke",
-      "logo": "images/logos/elliott-kessler-logo.png",
-      "heroImage": "Roster Photos/elliott-kessler/elliott-kessler-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "imageCandidates": [
-        "Roster Photos/elliott-kessler/elliott-kessler-roster-photo.png",
-        "Roster Photos/elliott-kessler-roster-photo.png",
-        "htr-logo.png"
-      ]
-    },
-    {
-      "id": "parsons-cross",
-      "name": "Parsons Cross",
-      "repoFolder": "D:\\HTR\\repos\\artists\\parsons-cross",
-      "githubRepo": "SteveP999/Parsons-Cross",
-      "siteUrl": "https://stevep999.github.io/Parsons-Cross/",
-      "genre": "Contemporary Christian / worship",
-      "status": "active",
-      "logo": "PARSONS CROSS LOGO.png",
-      "heroImage": "Roster Photos/parsons-cross/parsons-cross-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "active": true,
-      "imageCandidates": [
-        "Roster Photos/parsons-cross/parsons-cross-roster-photo.png",
-        "Roster Photos/parsons-cross-roster-photo.png",
-        "htr-logo.png"
-      ],
-      "latestTitle": "Wake Up",
-      "tagline": "Worship that doesn't ask permission"
-    },
-    {
-      "id": "silent-oblivion",
-      "name": "Silent Oblivion",
-      "repoFolder": "D:\\HTR\\repos\\artists\\silent-oblivion",
-      "githubRepo": "SteveP999/Silent-Oblivion",
-      "siteUrl": "https://stevep999.github.io/Silent-Oblivion/",
-      "genre": "Surf rock / retro pop-rock",
-      "status": "active",
-      "logo": "silent-oblivion-logo.png",
-      "heroImage": "Roster Photos/silent-oblivion/silent-oblivion-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "active": true,
-      "imageCandidates": [
-        "Roster Photos/silent-oblivion/silent-oblivion-roster-photo.png",
-        "Roster Photos/silent-oblivion-roster-photo.png",
-        "htr-logo.png"
-      ],
-      "latestTitle": "Bubblegum",
-      "tagline": "Alt-rock built for lift-off"
-    },
-    {
-      "id": "vanta",
-      "name": "Vanta",
-      "repoFolder": "D:\\HTR\\repos\\artists\\vanta",
-      "githubRepo": "SteveP999/vanta",
-      "siteUrl": "https://stevep999.github.io/vanta/",
-      "genre": "Funk rock / alternative rock",
-      "status": "active",
-      "logo": "vanta-logo.png",
-      "heroImage": "Roster Photos/vanta/vanta-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "active": true,
-      "imageCandidates": [
-        "Roster Photos/vanta/vanta-roster-photo.png",
-        "Roster Photos/vanta-roster-photo.png",
-        "htr-logo.png"
-      ],
-      "latestTitle": "Say It Again",
-      "tagline": "Rock that doesn't ask for permission"
+      "latestTitle": "First Light",
+      "tagline": "New age piano for late nights and long drives"
     },
     {
       "id": "night-shift",
       "name": "Night Shift",
-      "repoFolder": "D:\\HTR\\repos\\artists\\night-shift",
+      "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Night Shift\\_repo",
       "githubRepo": "SteveP999/Night-Shift",
       "siteUrl": "https://stevep999.github.io/Night-Shift/",
       "genre": "Disco-rock / party anthem pop",
@@ -804,19 +423,19 @@
       "tagline": "Disco never died — it just moved to Texas"
     },
     {
-      "id": "lori-hayes",
-      "name": "Lori Hayes",
-      "githubRepo": "SteveP999/lori-hayes",
-      "siteUrl": "https://lori-hayes.hellotexasrecords.com",
-      "genre": "Heartland Roots Rock",
-      "tagline": "Live Life - And Live it simple",
-      "status": "active",
+      "id": "nightstrike",
+      "name": "NightStrike",
+      "repoPath": "D:\\NightStrike",
+      "repoFolder": "D:\\Dropbox\\Hello Texas Records\\NightStrike\\_repo",
+      "githubRepo": "SteveP999/NightStrike",
+      "siteUrl": "https://nightstrike.hellotexasrecords.com/",
+      "logo": "images/nightstrike-logo.png",
+      "heroImage": "Roster Photos/nightstrike/nightstrike-roster-photo.png",
+      "genre": "Hard Rock / Sleaze Rock",
       "active": true,
+      "status": "active",
       "includeOnLabelHome": true,
       "includeOnRadio": true,
-      "latestTitle": "Don't Cost Nothin'",
-      "logo": "images/logos/lori-hayes-logo.png",
-      "heroImage": "Roster Photos/lori-hayes/lori-hayes-roster-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -827,14 +446,391 @@
       "heroLogoOffsetY": 0,
       "heroLogoMobileScale": 1,
       "imageCandidates": [
-        "Roster Photos/lori-hayes/lori-hayes-roster-photo.png",
-        "Roster Photos/lori-hayes-roster-photo.png",
+        "Roster Photos/nightstrike/nightstrike-roster-photo.png",
+        "Roster Photos/nightstrike-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Crash and Burn",
+      "tagline": "Bringing 1987 back whether you're ready or not"
+    },
+    {
+      "id": "parsons-cross",
+      "name": "Parsons Cross",
+      "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Parsons Cross\\_repo",
+      "githubRepo": "SteveP999/Parsons-Cross",
+      "siteUrl": "https://stevep999.github.io/Parsons-Cross/",
+      "genre": "Contemporary Christian / worship",
+      "status": "active",
+      "logo": "PARSONS CROSS LOGO.png",
+      "heroImage": "Roster Photos/parsons-cross/parsons-cross-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/parsons-cross/parsons-cross-roster-photo.png",
+        "Roster Photos/parsons-cross-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Wake Up",
+      "tagline": "Worship that doesn't ask permission"
+    },
+    {
+      "id": "rio-valencia",
+      "name": "Rio Valencia",
+      "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Rio Valencia\\_repo",
+      "githubRepo": "SteveP999/Rio-Valencia",
+      "siteUrl": "https://stevep999.github.io/Rio-Valencia/",
+      "genre": "Latin pop / reggaeton fusion",
+      "status": "active",
+      "logo": "Rio Valencia Logo and Text.png",
+      "heroImage": "Roster Photos/rio-valencia/rio-valencia-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/rio-valencia/rio-valencia-roster-photo.png",
+        "Roster Photos/rio-valencia-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Fuego Lento",
+      "tagline": "Latin fire with no boundaries"
+    },
+    {
+      "id": "sawyer-price",
+      "name": "Sawyer Price",
+      "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Sawyer Price\\_repo",
+      "githubRepo": "SteveP999/Sawyer-Price",
+      "siteUrl": "https://stevep999.github.io/Sawyer-Price/",
+      "genre": "Texas country / Red Dirt",
+      "status": "active",
+      "logo": "",
+      "heroImage": "Roster Photos/sawyer-price/sawyer-price-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/sawyer-price/sawyer-price-roster-photo.png",
+        "Roster Photos/sawyer-price-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Burnin' Gas",
+      "tagline": "Texas country, honest and unhurried"
+    },
+    {
+      "id": "silent-oblivion",
+      "name": "Silent Oblivion",
+      "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Silent Oblivion\\_repo",
+      "githubRepo": "SteveP999/Silent-Oblivion",
+      "siteUrl": "https://stevep999.github.io/Silent-Oblivion/",
+      "genre": "Surf rock / retro pop-rock",
+      "status": "active",
+      "logo": "silent-oblivion-logo.png",
+      "heroImage": "Roster Photos/silent-oblivion/silent-oblivion-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/silent-oblivion/silent-oblivion-roster-photo.png",
+        "Roster Photos/silent-oblivion-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Bubblegum",
+      "tagline": "Alt-rock built for lift-off"
+    },
+    {
+      "id": "skyline-theory",
+      "name": "Skyline Theory",
+      "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Skyline Theory\\_repo",
+      "githubRepo": "SteveP999/Skyline-Theory",
+      "siteUrl": "https://stevep999.github.io/Skyline-Theory/",
+      "genre": "EDM / progressive house",
+      "status": "active",
+      "logo": "skyline-theory-logo-text.png",
+      "heroImage": "Roster Photos/skyline-theory/skyline-theory-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/skyline-theory/skyline-theory-roster-photo.png",
+        "Roster Photos/skyline-theory-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Ghost in The Mirror",
+      "tagline": "EDM built for 2am and open roads"
+    },
+    {
+      "id": "stephen-parsons",
+      "name": "Stephen Parsons",
+      "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Stephen Parsons\\_repo",
+      "githubRepo": "SteveP999/stephen-parsons",
+      "siteUrl": "https://stevep999.github.io/stephen-parsons/",
+      "genre": "Christian country / worship storyteller",
+      "status": "active",
+      "logo": "stephen-parsons-logo-transparent-oval.png",
+      "heroImage": "Roster Photos/stephen-parsons/stephen-parsons-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "latestTitle": "Just Move On",
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/stephen-parsons/stephen-parsons-roster-photo.png",
+        "Roster Photos/stephen-parsons-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "tagline": "Raw. Honest. No filter."
+    },
+    {
+      "id": "vanta",
+      "name": "Vanta",
+      "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Vanta\\_repo",
+      "githubRepo": "SteveP999/vanta",
+      "siteUrl": "https://stevep999.github.io/vanta/",
+      "genre": "Funk rock / alternative rock",
+      "status": "active",
+      "logo": "vanta-logo.png",
+      "heroImage": "Roster Photos/vanta/vanta-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/vanta/vanta-roster-photo.png",
+        "Roster Photos/vanta-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Say It Again",
+      "tagline": "Rock that doesn't ask for permission"
+    },
+    {
+      "id": "vincent-cole",
+      "name": "Vincent Cole",
+      "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Vincent Cole\\_repo",
+      "githubRepo": "SteveP999/Vincent-Cole",
+      "siteUrl": "https://stevep999.github.io/Vincent-Cole/",
+      "genre": "Crooner / big band swing",
+      "status": "active",
+      "logo": "vincent-cole-logo-monogram-transparent.png",
+      "heroImage": "Roster Photos/vincent-cole/vincent-cole-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/vincent-cole/vincent-cole-roster-photo.png",
+        "Roster Photos/vincent-cole-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Too Late To Behave",
+      "tagline": "Las Vegas never sounded this good"
+    },
+    {
+      "id": "ivey-wilder",
+      "name": "Ivey Wilder",
+      "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Ivey Wilder\\_repo",
+      "githubRepo": "SteveP999/Ivey-Wilder",
+      "siteUrl": "https://ivey-wilder.hellotexasrecords.com",
+      "genre": "Alt. Rock / Hard Rock",
+      "status": "active",
+      "logo": "images/logos/ivey-wilder-logo.png",
+      "heroImage": "Roster Photos/ivey-wilder/ivey-wilder-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "latestTitle": "Burning Bridges",
+      "imageCandidates": [
+        "Roster Photos/ivey-wilder/ivey-wilder-roster-photo.png",
+        "Roster Photos/ivey-wilder-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "active": true,
+      "tagline": "Alt-rock edges on a country soul"
+    },
+    {
+      "id": "brightons",
+      "name": "Brightons",
+      "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Brightons\\_repo",
+      "repoPath": "D:\\brightons",
+      "githubRepo": "stevep999/brightons",
+      "siteUrl": "https://The-Brightons.hellotexasrecords.com",
+      "genre": "50s/60s Pop",
+      "status": "active",
+      "active": true,
+      "logo": "",
+      "heroImage": "Roster Photos/brightons/brightons-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "imageCandidates": [
+        "Roster Photos/brightons/brightons-roster-photo.png",
+        "Roster Photos/brightons-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Yesterday's Girl",
+      "tagline": "Four lads who learned from the greats"
+    },
+    {
+      "id": "september-skies",
+      "name": "September Skies",
+      "repoFolder": "D:\\Dropbox\\Hello Texas Records\\September Skies\\_repo",
+      "repoPath": "D:\\september-skies",
+      "githubRepo": "SteveP999/september-skies",
+      "siteUrl": "https://september-skies.hellotexasrecords.com",
+      "genre": "Alternative Rock",
+      "status": "active",
+      "active": true,
+      "logo": "",
+      "heroImage": "Roster Photos/september-skies/september-skies-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "imageCandidates": [
+        "Roster Photos/september-skies/september-skies-roster-photo.png",
+        "Roster Photos/september-skies-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "One Move at a Time",
+      "tagline": "Alternative rock that fills a stadium with one chord"
+    },
+    {
+      "id": "harlan-rhodes",
+      "name": "Harlan Rhodes",
+      "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Harlan Rhodes\\_repo",
+      "githubRepo": "stevep999/harlan-rhodes",
+      "siteUrl": "https://harlan-rhodes.hellotexasrecords.com",
+      "genre": "Blues Rock / Blues Country",
+      "tagline": "Where country bleeds into blues and every scar sings.",
+      "status": "active",
+      "active": true,
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "latestTitle": "PAIN",
+      "heroImage": "Roster Photos/harlan-rhodes/harlan-rhodes-roster-photo.png",
+      "imageCandidates": [
+        "Roster Photos/harlan-rhodes/harlan-rhodes-roster-photo.png",
+        "Roster Photos/harlan-rhodes-roster-photo.png",
+        "htr-logo.png"
+      ]
+    },
+    {
+      "id": "quincy-cade",
+      "name": "Quincy Cade",
+      "repoFolder": "D:\\Dropbox\\Hello Texas Records\\Quincy Cade\\_repo",
+      "githubRepo": "SteveP999/quincy-cade",
+      "siteUrl": "https://quincy-cade.hellotexasrecords.com",
+      "genre": "Motown / R&B",
+      "tagline": "Where Soul Meets Style",
+      "status": "active",
+      "active": true,
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "latestTitle": "Still Falling For You",
+      "logo": "images/logos/quincy-cade-logo-transparent.png",
+      "heroImage": "Roster Photos/quincy-cade/quincy-cade-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "imageCandidates": [
+        "Roster Photos/quincy-cade/quincy-cade-roster-photo.png",
+        "Roster Photos/quincy-cade-roster-photo.png",
         "htr-logo.png"
       ]
     },
     {
       "id": "the-long-weekend",
       "name": "The Long Weekend",
+      "repoFolder": "D:\\HTR\\repos\\artists\\the-long-weekend",
       "githubRepo": "SteveP999/the-long-weekend",
       "siteUrl": "https://the-long-weekend.hellotexasrecords.com",
       "genre": "1970s Soft Rock / Folk Rock",
@@ -843,23 +839,23 @@
       "active": true,
       "includeOnLabelHome": true,
       "includeOnRadio": true,
-      "latestTitle": "A Little More Of You",
-      "logo": "images/logos/the-long-weekend-logo.png",
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "logo": "",
       "heroImage": "Roster Photos/the-long-weekend/the-long-weekend-roster-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
         "latest": true
       },
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
       "imageCandidates": [
         "Roster Photos/the-long-weekend/the-long-weekend-roster-photo.png",
         "Roster Photos/the-long-weekend-roster-photo.png",
         "htr-logo.png"
-      ]
+      ],
+      "latestTitle": "Anywhere But Here"
     }
   ]
 }
