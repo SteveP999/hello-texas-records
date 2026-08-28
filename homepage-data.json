@@ -168,12 +168,12 @@
       "audioSrc": "https://www.dropbox.com/scl/fi/i6l30r2si2vgjsk7usyu5/september-skies-give-it-away.mp3?rlkey=0496b3kwnp5hiesyojgykkx0i&raw=1",
       "youtubeUrl": "",
       "videos": [],
-      "featured": true,
+      "featured": false,
       "explicit": false,
       "includeOnRadio": true,
       "includeOnHomepage": true,
       "tags": [],
-      "isLatest": true
+      "isLatest": false
     },
     {
       "id": "sawyer-price-whats-left-of-me",
@@ -298,7 +298,7 @@
         "Roster Photos/avery-ivey-roster-photo.png",
         "htr-logo.png"
       ],
-      "latestTitle": "Back to Chapter One",
+      "latestTitle": "Somewhere In the Middle",
       "tagline": "The voice that grew up in public"
     },
     {
@@ -665,7 +665,7 @@
       "active": true,
       "includeOnLabelHome": true,
       "includeOnRadio": true,
-      "latestTitle": "Promises I Broke",
+      "latestTitle": "We're All In this Together",
       "logo": "images/logos/elliott-kessler-logo.png",
       "heroImage": "Roster Photos/elliott-kessler/elliott-kessler-roster-photo.png",
       "dataFiles": {
