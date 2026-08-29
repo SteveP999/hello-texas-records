@@ -267,7 +267,8 @@
       "includeOnRadio": true,
       "includeOnHomepage": true,
       "tags": [],
-      "isLatest": false
+      "isLatest": false,
+      "sunoPrompt": ""
     }
   ],
   "featuredArtists": [
@@ -858,6 +859,35 @@
       "imageCandidates": [
         "Roster Photos/the-long-weekend/the-long-weekend-roster-photo.png",
         "Roster Photos/the-long-weekend-roster-photo.png",
+        "htr-logo.png"
+      ]
+    },
+    {
+      "id": "quiet-damage",
+      "name": "Quiet Damage",
+      "githubRepo": "SteveP999/quiet-damage",
+      "siteUrl": "https://quiet-damage.hellotexasrecords.com",
+      "genre": "Grunge, Alternative Rock",
+      "tagline": "Sometimes the most painful damage is the things you can't always see",
+      "status": "active",
+      "active": true,
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "latestTitle": "",
+      "logo": "images/logos/quiet-damage-logo.png",
+      "heroImage": "Roster Photos/quiet-damage/quiet-damage-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "imageCandidates": [
+        "Roster Photos/quiet-damage/quiet-damage-roster-photo.png",
+        "Roster Photos/quiet-damage-roster-photo.png",
         "htr-logo.png"
       ]
     }
