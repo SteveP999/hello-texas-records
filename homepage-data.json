@@ -23,12 +23,12 @@
       "isLatest": false,
       "unique": "X",
       "radio": "R",
-      "writer": "D",
+      "writer": "P",
       "trackTime": "3:07",
       "workNo": "80441982",
       "regDate": "6/6/26",
       "iswc": "T3411968413",
-      "songview": "Reconciled",
+      "songview": "",
       "liveDate": "",
       "releaseId": "",
       "upc": "",
@@ -64,7 +64,7 @@
       "writer": "D",
       "trackTime": "3:54",
       "workNo": "79432110",
-      "regDate": "5/17/26",
+      "regDate": "5/17/2026",
       "iswc": "T3408868457",
       "songview": "Reconciled",
       "liveDate": "",
@@ -75,7 +75,8 @@
       "regArtists": [
         "Borrowed Whispers"
       ],
-      "trackNumber": 4
+      "trackNumber": 4,
+      "albumOrder": 4
     },
     {
       "id": "rio-valencia-buenos-noches",
@@ -103,7 +104,7 @@
       "writer": "P",
       "trackTime": "3:33",
       "workNo": "80952872",
-      "regDate": "6/28/26",
+      "regDate": "6/28/2026",
       "iswc": "T3415477844",
       "songview": "Reconciled",
       "liveDate": "",
@@ -114,14 +115,15 @@
       "regArtists": [
         "Rio Valencia"
       ],
-      "trackNumber": 1
+      "trackNumber": 1,
+      "albumOrder": 1
     },
     {
       "id": "daniel-kincaid-if-i-could-love-you-again",
       "artistId": "daniel-kincaid",
       "artist": "Daniel Kincaid",
       "title": "If I Could Love You Again",
-      "album": "Running Out of Reasons",
+      "album": "Running out of Reasons",
       "genre": "Soft rock / adult contemporary",
       "releaseType": "single",
       "releaseDate": "2026-06-28",
@@ -139,12 +141,12 @@
       "isLatest": false,
       "unique": "X",
       "radio": "R",
-      "writer": "D",
+      "writer": "P",
       "trackTime": "3:23",
       "workNo": "79736766",
       "regDate": "5/19/2026",
       "iswc": "T3408831589",
-      "songview": "Reconciled",
+      "songview": "",
       "liveDate": "",
       "releaseId": "",
       "upc": "",
@@ -153,15 +155,7 @@
       "regArtists": [
         "Borrowed Whispers"
       ],
-      "trackNumber": 4,
-      "audio": "https://www.dropbox.com/scl/fi/2ql4qup86bgc4u6eklmuu/daniel-kincaid-if-i-could-love-you-again-mp3.mp3?rlkey=p2fm0owphs9d677pdrsb5u5ba&raw=1",
-      "streaming": {
-        "spotify": "",
-        "apple": "",
-        "youtubeMusic": ""
-      },
-      "hasSrt": false,
-      "needsWav": false
+      "trackNumber": 4
     },
     {
       "id": "daniel-kincaid-if-i-could-love-you-again-acoustic",
@@ -172,7 +166,7 @@
       "genre": "Soft rock / adult contemporary",
       "releaseType": "single",
       "releaseDate": "2026-06-28",
-      "coverImage": "https://raw.githubusercontent.com/SteveP999/Daniel-Kincaid/main/images/covers/daniel-kincaid-if-i-could-love-you-again-acoustic-cover-updated.png",
+      "coverImage": "https://raw.githubusercontent.com/SteveP999/Daniel-Kincaid/main/images/covers/daniel-kincaid-if-i-could-love-you-again-acoustic-cover.png",
       "albumCover": "https://raw.githubusercontent.com/SteveP999/Daniel-Kincaid/main/images/covers/daniel-kincaid-running-out-of-reasons-acoustic-ALBUM-cover.png",
       "audioFile": "https://www.dropbox.com/scl/fi/jmo6l2jfrqolpnl8gth2r/daniel-kincaid-if-i-could-love-you-again-acoustic-mp3.mp3?rlkey=bvidcpl1ng08kobp64r5fqqxg&raw=1",
       "audioSrc": "https://www.dropbox.com/scl/fi/jmo6l2jfrqolpnl8gth2r/daniel-kincaid-if-i-could-love-you-again-acoustic-mp3.mp3?rlkey=bvidcpl1ng08kobp64r5fqqxg&raw=1",
@@ -200,15 +194,7 @@
       "regArtists": [
         "Borrowed Whispers"
       ],
-      "trackNumber": 4,
-      "audio": "https://www.dropbox.com/scl/fi/jmo6l2jfrqolpnl8gth2r/daniel-kincaid-if-i-could-love-you-again-acoustic-mp3.mp3?rlkey=bvidcpl1ng08kobp64r5fqqxg&raw=1",
-      "streaming": {
-        "spotify": "",
-        "apple": "",
-        "youtubeMusic": ""
-      },
-      "hasSrt": false,
-      "needsWav": false
+      "trackNumber": 4
     },
     {
       "id": "daniel-kincaid-still-falling-for-you",
@@ -314,7 +300,7 @@
       "writer": "B",
       "trackTime": "4:14",
       "workNo": "80952874",
-      "regDate": "66/28/26",
+      "regDate": "6/28/2026",
       "iswc": "T3415477822",
       "songview": "Reconciled",
       "liveDate": "8/9/26",
@@ -325,7 +311,8 @@
       "regArtists": [
         "September Skies"
       ],
-      "trackNumber": 6
+      "trackNumber": 6,
+      "albumOrder": 6
     },
     {
       "id": "sawyer-price-whats-left-of-me",
@@ -359,7 +346,7 @@
       "writer": "P",
       "trackTime": "3:32",
       "workNo": "80721919",
-      "regDate": "6/17/26",
+      "regDate": "6/17/2026",
       "iswc": "T3414216578",
       "songview": "Reconciled",
       "liveDate": "",
@@ -374,7 +361,8 @@
         "Ivey Wilder",
         "Avery Ivey"
       ],
-      "trackNumber": 9
+      "trackNumber": 9,
+      "albumOrder": 9
     },
     {
       "id": "taylor-martin-she-loved-horses",
@@ -402,7 +390,7 @@
       "writer": "P",
       "trackTime": "",
       "workNo": "79110314",
-      "regDate": "5/5/26",
+      "regDate": "5/5/2026",
       "iswc": "T3404572829",
       "songview": "Reconciled",
       "liveDate": "",
@@ -413,7 +401,8 @@
       "regArtists": [
         "Taylor Martin"
       ],
-      "trackNumber": 2
+      "trackNumber": 2,
+      "albumOrder": 2
     },
     {
       "id": "silent-oblivion-bubblegum",
@@ -441,7 +430,7 @@
       "writer": "B",
       "trackTime": "2:59",
       "workNo": "80604058",
-      "regDate": "6/12/26",
+      "regDate": "6/12/2026",
       "iswc": "T3411844123",
       "songview": "Reconciled",
       "liveDate": "",
@@ -452,7 +441,8 @@
       "regArtists": [
         "Silent Oblivion"
       ],
-      "trackNumber": 1
+      "trackNumber": 1,
+      "albumOrder": 1
     },
     {
       "id": "september-skies-serena",
@@ -480,7 +470,7 @@
       "writer": "B",
       "trackTime": "4:11",
       "workNo": "80604173",
-      "regDate": "6/12/26",
+      "regDate": "6/12/2026",
       "iswc": "T3411844963",
       "songview": "Reconciled",
       "liveDate": "8/2/26",
@@ -492,7 +482,8 @@
         "September Skies",
         "Silent Oblivion"
       ],
-      "trackNumber": 15
+      "trackNumber": 15,
+      "albumOrder": 15
     }
   ],
   "featuredArtists": [
