@@ -20,7 +20,24 @@
       "includeOnRadio": true,
       "includeOnHomepage": true,
       "tags": [],
-      "isLatest": false
+      "isLatest": false,
+      "unique": "V",
+      "radio": "R",
+      "writer": "D",
+      "trackTime": "3:07",
+      "workNo": "80441982",
+      "regDate": "6/6/26",
+      "iswc": "T3411968413",
+      "songview": "Reconciled",
+      "liveDate": "",
+      "releaseId": "",
+      "upc": "",
+      "isrc": "",
+      "regTitle": "TWO TICKETS TO ANYWHERE",
+      "regArtists": [
+        "Borrowed Whispers"
+      ],
+      "trackNumber": 8
     },
     {
       "id": "quincy-cade-still-falling-for-you",
@@ -41,7 +58,24 @@
       "includeOnRadio": true,
       "includeOnHomepage": true,
       "isLatest": true,
-      "tags": []
+      "tags": [],
+      "unique": "X",
+      "radio": "R",
+      "writer": "D",
+      "trackTime": "3:54",
+      "workNo": "79432110",
+      "regDate": "5/17/26",
+      "iswc": "T3408868457",
+      "songview": "Reconciled",
+      "liveDate": "",
+      "releaseId": "",
+      "upc": "",
+      "isrc": "",
+      "regTitle": "STILL FALLING FOR YOU",
+      "regArtists": [
+        "Borrowed Whispers"
+      ],
+      "trackNumber": 4
     },
     {
       "id": "rio-valencia-buenos-noches",
@@ -63,7 +97,24 @@
       "includeOnRadio": true,
       "includeOnHomepage": true,
       "tags": [],
-      "isLatest": true
+      "isLatest": true,
+      "unique": "X",
+      "radio": "R",
+      "writer": "P",
+      "trackTime": "3:33",
+      "workNo": "80952872",
+      "regDate": "6/28/26",
+      "iswc": "T3415477844",
+      "songview": "Reconciled",
+      "liveDate": "",
+      "releaseId": "",
+      "upc": "",
+      "isrc": "",
+      "regTitle": "BUENOS NOCHES",
+      "regArtists": [
+        "Rio Valencia"
+      ],
+      "trackNumber": 1
     },
     {
       "id": "daniel-kincaid-if-i-could-love-you-again",
@@ -85,7 +136,24 @@
       "includeOnRadio": true,
       "includeOnHomepage": true,
       "tags": [],
-      "isLatest": false
+      "isLatest": false,
+      "unique": "V",
+      "radio": "R",
+      "writer": "D",
+      "trackTime": "3:23",
+      "workNo": "79736766",
+      "regDate": "5/19/2026",
+      "iswc": "T3408831589",
+      "songview": "Reconciled",
+      "liveDate": "",
+      "releaseId": "",
+      "upc": "",
+      "isrc": "",
+      "regTitle": "IF I COULD LOVE YOU AGAIN",
+      "regArtists": [
+        "Borrowed Whispers"
+      ],
+      "trackNumber": 4
     },
     {
       "id": "daniel-kincaid-if-i-could-love-you-again-acoustic",
@@ -107,7 +175,24 @@
       "includeOnRadio": true,
       "includeOnHomepage": true,
       "tags": [],
-      "isLatest": false
+      "isLatest": false,
+      "unique": "V",
+      "radio": "R",
+      "writer": "D",
+      "trackTime": "3:23",
+      "workNo": "79736766",
+      "regDate": "5/19/2026",
+      "iswc": "T3408831589",
+      "songview": "Reconciled",
+      "liveDate": "",
+      "releaseId": "",
+      "upc": "",
+      "isrc": "",
+      "regTitle": "IF I COULD LOVE YOU AGAIN",
+      "regArtists": [
+        "Borrowed Whispers"
+      ],
+      "trackNumber": 4
     },
     {
       "id": "daniel-kincaid-still-falling-for-you",
@@ -129,7 +214,24 @@
       "includeOnRadio": true,
       "includeOnHomepage": true,
       "tags": [],
-      "isLatest": false
+      "isLatest": false,
+      "unique": "V",
+      "radio": "R",
+      "writer": "D",
+      "trackTime": "3:24",
+      "workNo": "79432110",
+      "regDate": "5/17/2026",
+      "iswc": "T3408868457",
+      "songview": "Reconciled",
+      "liveDate": "",
+      "releaseId": "",
+      "upc": "",
+      "isrc": "",
+      "regTitle": "STILL FALLING FOR YOU",
+      "regArtists": [
+        "Borrowed Whispers"
+      ],
+      "trackNumber": 7
     },
     {
       "id": "daniel-kincaid-still-falling-for-you-acoustic",
@@ -151,7 +253,24 @@
       "includeOnRadio": true,
       "includeOnHomepage": true,
       "tags": [],
-      "isLatest": true
+      "isLatest": true,
+      "unique": "V",
+      "radio": "R",
+      "writer": "D",
+      "trackTime": "3:24",
+      "workNo": "79432110",
+      "regDate": "5/17/2026",
+      "iswc": "T3408868457",
+      "songview": "Reconciled",
+      "liveDate": "",
+      "releaseId": "",
+      "upc": "",
+      "isrc": "",
+      "regTitle": "STILL FALLING FOR YOU",
+      "regArtists": [
+        "Borrowed Whispers"
+      ],
+      "trackNumber": 7
     },
     {
       "id": "september-skies-give-it-away",
@@ -168,12 +287,29 @@
       "audioSrc": "https://www.dropbox.com/scl/fi/i6l30r2si2vgjsk7usyu5/september-skies-give-it-away.mp3?rlkey=0496b3kwnp5hiesyojgykkx0i&raw=1",
       "youtubeUrl": "",
       "videos": [],
-      "featured": false,
+      "featured": true,
       "explicit": false,
       "includeOnRadio": true,
       "includeOnHomepage": true,
       "tags": [],
-      "isLatest": false
+      "isLatest": true,
+      "unique": "X",
+      "radio": "R",
+      "writer": "B",
+      "trackTime": "4:14",
+      "workNo": "80952874",
+      "regDate": "66/28/26",
+      "iswc": "T3415477822",
+      "songview": "Reconciled",
+      "liveDate": "8/9/26",
+      "releaseId": "4845648",
+      "upc": "7333591335545",
+      "isrc": "SE6132621483",
+      "regTitle": "GIVE IT AWAY",
+      "regArtists": [
+        "September Skies"
+      ],
+      "trackNumber": 6
     },
     {
       "id": "sawyer-price-whats-left-of-me",
@@ -201,7 +337,28 @@
       "includeOnRadio": true,
       "includeOnHomepage": true,
       "tags": [],
-      "isLatest": true
+      "isLatest": true,
+      "unique": "X",
+      "radio": "R",
+      "writer": "P",
+      "trackTime": "3:32",
+      "workNo": "80721919",
+      "regDate": "6/17/26",
+      "iswc": "T3414216578",
+      "songview": "Reconciled",
+      "liveDate": "",
+      "releaseId": "",
+      "upc": "",
+      "isrc": "",
+      "regTitle": "WHATS LEFT OF ME",
+      "regArtists": [
+        "Bailey Wade",
+        "Sawyer Price",
+        "Stephen Parsons",
+        "Ivey Wilder",
+        "Avery Ivey"
+      ],
+      "trackNumber": 9
     },
     {
       "id": "taylor-martin-she-loved-horses",
@@ -223,7 +380,24 @@
       "includeOnRadio": true,
       "includeOnHomepage": true,
       "tags": [],
-      "isLatest": true
+      "isLatest": true,
+      "unique": "X",
+      "radio": "D",
+      "writer": "P",
+      "trackTime": "",
+      "workNo": "79110314",
+      "regDate": "5/5/26",
+      "iswc": "T3404572829",
+      "songview": "Reconciled",
+      "liveDate": "",
+      "releaseId": "",
+      "upc": "",
+      "isrc": "",
+      "regTitle": "SHE LOVED HORSES",
+      "regArtists": [
+        "Taylor Martin"
+      ],
+      "trackNumber": 2
     },
     {
       "id": "silent-oblivion-bubblegum",
@@ -245,7 +419,24 @@
       "includeOnRadio": true,
       "includeOnHomepage": true,
       "tags": [],
-      "isLatest": true
+      "isLatest": true,
+      "unique": "X",
+      "radio": "R",
+      "writer": "B",
+      "trackTime": "2:59",
+      "workNo": "80604058",
+      "regDate": "6/12/26",
+      "iswc": "T3411844123",
+      "songview": "Reconciled",
+      "liveDate": "",
+      "releaseId": "",
+      "upc": "",
+      "isrc": "",
+      "regTitle": "BUBBLEGUM",
+      "regArtists": [
+        "Silent Oblivion"
+      ],
+      "trackNumber": 1
     },
     {
       "id": "september-skies-serena",
@@ -268,7 +459,24 @@
       "includeOnHomepage": true,
       "tags": [],
       "isLatest": false,
-      "sunoPrompt": ""
+      "unique": "X",
+      "radio": "R",
+      "writer": "B",
+      "trackTime": "4:11",
+      "workNo": "80604173",
+      "regDate": "6/12/26",
+      "iswc": "T3411844963",
+      "songview": "Reconciled",
+      "liveDate": "8/2/26",
+      "releaseId": "4845670",
+      "upc": "7333591335583",
+      "isrc": "SE6132621487",
+      "regTitle": "SERENA",
+      "regArtists": [
+        "September Skies",
+        "Silent Oblivion"
+      ],
+      "trackNumber": 15
     }
   ],
   "featuredArtists": [
@@ -299,7 +507,7 @@
         "Roster Photos/avery-ivey-roster-photo.png",
         "htr-logo.png"
       ],
-      "latestTitle": "Somewhere In the Middle",
+      "latestTitle": "Back to Chapter One",
       "tagline": "The voice that grew up in public"
     },
     {
@@ -867,29 +1075,29 @@
       "name": "Quiet Damage",
       "githubRepo": "SteveP999/quiet-damage",
       "siteUrl": "https://quiet-damage.hellotexasrecords.com",
-      "genre": "Grunge, Alternative Rock",
-      "tagline": "Sometimes the most painful damage is the things you can't always see",
+      "genre": "Grunge",
+      "tagline": "Sometimes the most painful damage is in the things you can't always see",
       "status": "active",
       "active": true,
       "includeOnLabelHome": true,
       "includeOnRadio": true,
-      "latestTitle": "10 Years",
-      "logo": "images/logos/quiet-damage-logo.png",
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "logo": "",
       "heroImage": "Roster Photos/quiet-damage/quiet-damage-roster-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
         "latest": true
       },
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
       "imageCandidates": [
         "Roster Photos/quiet-damage/quiet-damage-roster-photo.png",
         "Roster Photos/quiet-damage-roster-photo.png",
         "htr-logo.png"
-      ]
+      ],
+      "latestTitle": "10 Years"
     }
   ]
 }
