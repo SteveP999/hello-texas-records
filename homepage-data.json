@@ -153,7 +153,15 @@
       "regArtists": [
         "Borrowed Whispers"
       ],
-      "trackNumber": 4
+      "trackNumber": 4,
+      "audio": "https://www.dropbox.com/scl/fi/2ql4qup86bgc4u6eklmuu/daniel-kincaid-if-i-could-love-you-again-mp3.mp3?rlkey=p2fm0owphs9d677pdrsb5u5ba&raw=1",
+      "streaming": {
+        "spotify": "",
+        "apple": "",
+        "youtubeMusic": ""
+      },
+      "hasSrt": false,
+      "needsWav": false
     },
     {
       "id": "daniel-kincaid-if-i-could-love-you-again-acoustic",
@@ -164,7 +172,7 @@
       "genre": "Soft rock / adult contemporary",
       "releaseType": "single",
       "releaseDate": "2026-06-28",
-      "coverImage": "https://raw.githubusercontent.com/SteveP999/Daniel-Kincaid/main/images/covers/daniel-kincaid-if-i-could-love-you-again-acoustic-cover.png",
+      "coverImage": "https://raw.githubusercontent.com/SteveP999/Daniel-Kincaid/main/images/covers/daniel-kincaid-if-i-could-love-you-again-acoustic-cover-updated.png",
       "albumCover": "https://raw.githubusercontent.com/SteveP999/Daniel-Kincaid/main/images/covers/daniel-kincaid-running-out-of-reasons-acoustic-ALBUM-cover.png",
       "audioFile": "https://www.dropbox.com/scl/fi/jmo6l2jfrqolpnl8gth2r/daniel-kincaid-if-i-could-love-you-again-acoustic-mp3.mp3?rlkey=bvidcpl1ng08kobp64r5fqqxg&raw=1",
       "audioSrc": "https://www.dropbox.com/scl/fi/jmo6l2jfrqolpnl8gth2r/daniel-kincaid-if-i-could-love-you-again-acoustic-mp3.mp3?rlkey=bvidcpl1ng08kobp64r5fqqxg&raw=1",
@@ -192,7 +200,15 @@
       "regArtists": [
         "Borrowed Whispers"
       ],
-      "trackNumber": 4
+      "trackNumber": 4,
+      "audio": "https://www.dropbox.com/scl/fi/jmo6l2jfrqolpnl8gth2r/daniel-kincaid-if-i-could-love-you-again-acoustic-mp3.mp3?rlkey=bvidcpl1ng08kobp64r5fqqxg&raw=1",
+      "streaming": {
+        "spotify": "",
+        "apple": "",
+        "youtubeMusic": ""
+      },
+      "hasSrt": false,
+      "needsWav": false
     },
     {
       "id": "daniel-kincaid-still-falling-for-you",
