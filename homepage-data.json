@@ -1069,6 +1069,26 @@
       "tagline": "Disco never died â€” it just moved to Texas"
     },
     {
+      "id": "harlan-rhodes",
+      "name": "Harlan Rhodes",
+      "repoFolder": "D:\\HTR\\repos\\artists\\harlan-rhodes",
+      "githubRepo": "stevep999/harlan-rhodes",
+      "siteUrl": "https://harlan-rhodes.hellotexasrecords.com",
+      "genre": "Blues Rock / Blues Country",
+      "tagline": "Where country bleeds into blues and every scar sings.",
+      "status": "active",
+      "active": true,
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "latestTitle": "PAIN",
+      "heroImage": "Roster Photos/harlan-rhodes/harlan-rhodes-roster-photo.png",
+      "imageCandidates": [
+        "Roster Photos/harlan-rhodes/harlan-rhodes-roster-photo.png",
+        "Roster Photos/harlan-rhodes-roster-photo.png",
+        "htr-logo.png"
+      ]
+    },
+    {
       "id": "lori-hayes",
       "name": "Lori Hayes",
       "githubRepo": "SteveP999/lori-hayes",
@@ -1096,6 +1116,66 @@
         "Roster Photos/lori-hayes-roster-photo.png",
         "htr-logo.png"
       ]
+    },
+    {
+      "id": "velvet-static",
+      "name": "Velvet Static",
+      "githubRepo": "SteveP999/velvet-static",
+      "siteUrl": "https://velvet-static.hellotexasrecords.com",
+      "genre": "Synth-pop / Cold-wave / Dream Pop",
+      "tagline": "The internet made her famous.   But it never made her happy.",
+      "status": "active",
+      "active": true,
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "latestTitle": "Hit The Peak",
+      "logo": "images/logos/velvet-static-logo.png",
+      "heroImage": "Roster Photos/velvet-static/velvet-static-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "imageCandidates": [
+        "Roster Photos/velvet-static/velvet-static-roster-photo.png",
+        "Roster Photos/velvet-static-roster-photo.png",
+        "htr-logo.png"
+      ]
+    },
+    {
+      "id": "lucas-harlow",
+      "name": "Lucas Harlow",
+      "repoFolder": "D:\\HTR\\repos\\artists\\lucas-harlow",
+      "githubRepo": "SteveP999/Lucas-Harlow",
+      "siteUrl": "https://stevep999.github.io/Lucas-Harlow/",
+      "genre": "New age piano / cinematic instrumental",
+      "status": "active",
+      "logo": "",
+      "heroImage": "Roster Photos/lucas-harlow/lucas-harlow-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "noVideoSection": true,
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/lucas-harlow/lucas-harlow-roster-photo.png",
+        "Roster Photos/lucas-harlow-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "First Light",
+      "tagline": "New age piano for late nights and long drives"
     },
     {
       "id": "nightstrike",
@@ -1127,6 +1207,65 @@
       ],
       "latestTitle": "Crash and Burn",
       "tagline": "Bringing 1987 back whether you're ready or not"
+    },
+    {
+      "id": "pulse7",
+      "name": "PULSE7",
+      "repoFolder": "D:\\HTR\\repos\\artists\\pulse7",
+      "githubRepo": "SteveP999/PULSE7",
+      "siteUrl": "https://stevep999.github.io/PULSE7/",
+      "genre": "K-pop / dance-pop",
+      "status": "active",
+      "logo": "pulse7-logo.png",
+      "heroImage": "Roster Photos/pulse7/pulse7-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/pulse7/pulse7-roster-photo.png",
+        "Roster Photos/pulse7-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Two Nights",
+      "tagline": "Coming soon"
+    },
+    {
+      "id": "brent-alan",
+      "name": "Brent Alan",
+      "githubRepo": "SteveP999/brent-alan",
+      "siteUrl": "https://brent-alan.hellotexasrecords.com",
+      "genre": "Heartland Roots Rock",
+      "tagline": "Down to Earth Truths You Need to Hear",
+      "status": "active",
+      "active": true,
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "latestTitle": "Smoke",
+      "logo": "images/logos/brent-alan-logo.png",
+      "heroImage": "Roster Photos/brent-alan/brent-alan-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "imageCandidates": [
+        "Roster Photos/brent-alan/brent-alan-roster-photo.png",
+        "Roster Photos/brent-alan-roster-photo.png",
+        "htr-logo.png"
+      ]
     },
     {
       "id": "the-long-weekend",
