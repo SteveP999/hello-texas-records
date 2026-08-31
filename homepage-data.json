@@ -1098,6 +1098,37 @@
       ]
     },
     {
+      "id": "nightstrike",
+      "name": "NightStrike",
+      "repoPath": "D:\\NightStrike",
+      "repoFolder": "D:\\HTR\\repos\\artists\\nightstrike",
+      "githubRepo": "SteveP999/NightStrike",
+      "siteUrl": "https://nightstrike.hellotexasrecords.com/",
+      "logo": "images/nightstrike-logo.png",
+      "heroImage": "Roster Photos/nightstrike/nightstrike-roster-photo.png",
+      "genre": "Hard Rock / Sleaze Rock",
+      "active": true,
+      "status": "active",
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "imageCandidates": [
+        "Roster Photos/nightstrike/nightstrike-roster-photo.png",
+        "Roster Photos/nightstrike-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Crash and Burn",
+      "tagline": "Bringing 1987 back whether you're ready or not"
+    },
+    {
       "id": "the-long-weekend",
       "name": "The Long Weekend",
       "githubRepo": "SteveP999/the-long-weekend",
