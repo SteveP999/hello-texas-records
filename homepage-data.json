@@ -5,7 +5,7 @@
       "artistId": "daniel-kincaid",
       "artist": "Daniel Kincaid",
       "title": "Two Tickets To Anywhere",
-      "album": "Running Out of Reasons",
+      "album": "Running out of Reasons",
       "genre": "Soft rock / adult contemporary",
       "releaseType": "single",
       "releaseDate": "2026-06-28",
@@ -37,11 +37,12 @@
       "regArtists": [
         "Borrowed Whispers"
       ],
-      "trackNumber": 8,
+      "trackNumber": 9,
       "audio": "https://www.dropbox.com/scl/fi/q9psdn077iar1wqr9c7vh/daniel-kincaid-two-tickets-to-anywere-studio-mp3.mp3?rlkey=roqzl8qzizmvoypnb9pna9uu8&raw=1",
       "needsWav": false,
       "streaming": {},
-      "hasSrt": false
+      "hasSrt": false,
+      "albumOrder": 9
     },
     {
       "id": "quincy-cade-still-falling-for-you",
@@ -172,7 +173,8 @@
       "audio": "https://www.dropbox.com/scl/fi/2ql4qup86bgc4u6eklmuu/daniel-kincaid-if-i-could-love-you-again-mp3.mp3?rlkey=p2fm0owphs9d677pdrsb5u5ba&raw=1",
       "needsWav": false,
       "streaming": {},
-      "hasSrt": false
+      "hasSrt": false,
+      "albumOrder": 4
     },
     {
       "id": "daniel-kincaid-if-i-could-love-you-again-acoustic",
@@ -215,14 +217,15 @@
       "audio": "https://www.dropbox.com/scl/fi/jmo6l2jfrqolpnl8gth2r/daniel-kincaid-if-i-could-love-you-again-acoustic-mp3.mp3?rlkey=bvidcpl1ng08kobp64r5fqqxg&raw=1",
       "needsWav": false,
       "streaming": {},
-      "hasSrt": false
+      "hasSrt": false,
+      "albumOrder": 4
     },
     {
       "id": "daniel-kincaid-still-falling-for-you",
       "artistId": "daniel-kincaid",
       "artist": "Daniel Kincaid",
       "title": "Still Falling For You",
-      "album": "Running Out of Reasons",
+      "album": "Running out of Reasons",
       "genre": "Soft rock / adult contemporary",
       "releaseType": "single",
       "releaseDate": "2026-06-28",
@@ -258,7 +261,8 @@
       "audio": "https://www.dropbox.com/scl/fi/311thg22xifv26fr5ig90/daniel-kincaid-still-falling-for-you-acoustic-mp3.mp3?rlkey=wigwtwksu5gaikiw6d7tpvb8q&raw=1",
       "needsWav": false,
       "streaming": {},
-      "hasSrt": false
+      "hasSrt": false,
+      "albumOrder": 7
     },
     {
       "id": "daniel-kincaid-still-falling-for-you-acoustic",
@@ -301,7 +305,8 @@
       "audio": "https://www.dropbox.com/scl/fi/311thg22xifv26fr5ig90/daniel-kincaid-still-falling-for-you-acoustic-mp3.mp3?rlkey=wigwtwksu5gaikiw6d7tpvb8q&raw=1",
       "needsWav": false,
       "streaming": {},
-      "hasSrt": false
+      "hasSrt": false,
+      "albumOrder": 7
     },
     {
       "id": "september-skies-give-it-away",
