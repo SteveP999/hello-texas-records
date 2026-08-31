@@ -37,12 +37,7 @@
       "regArtists": [
         "Borrowed Whispers"
       ],
-      "trackNumber": 9,
-      "audio": "https://www.dropbox.com/scl/fi/q9psdn077iar1wqr9c7vh/daniel-kincaid-two-tickets-to-anywere-studio-mp3.mp3?rlkey=roqzl8qzizmvoypnb9pna9uu8&raw=1",
-      "needsWav": false,
-      "streaming": {},
-      "hasSrt": false,
-      "albumOrder": 9
+      "trackNumber": 8
     },
     {
       "id": "quincy-cade-still-falling-for-you",
@@ -81,12 +76,7 @@
         "Borrowed Whispers"
       ],
       "trackNumber": 4,
-      "albumOrder": 4,
-      "audio": "https://www.dropbox.com/scl/fi/yw9611c8814o5zqo1xrpo/quincy-cade-still-falling-for-you-mp3.mp3?rlkey=1zvurbrqok6sjycvjycg0930f&raw=1",
-      "audioSrc": "https://www.dropbox.com/scl/fi/yw9611c8814o5zqo1xrpo/quincy-cade-still-falling-for-you-mp3.mp3?rlkey=1zvurbrqok6sjycvjycg0930f&raw=1",
-      "needsWav": false,
-      "streaming": {},
-      "hasSrt": false
+      "albumOrder": 4
     },
     {
       "id": "rio-valencia-buenos-noches",
@@ -126,11 +116,7 @@
         "Rio Valencia"
       ],
       "trackNumber": 1,
-      "albumOrder": 1,
-      "audio": "https://www.dropbox.com/scl/fi/gw76ynyxtfrz0gfuf6ea3/rio-valencia-buenos-noches-mp3.mp3?rlkey=8aygdxdod8fpkiqinlyfk701h&raw=1",
-      "needsWav": false,
-      "streaming": {},
-      "hasSrt": false
+      "albumOrder": 1
     },
     {
       "id": "daniel-kincaid-if-i-could-love-you-again",
@@ -169,12 +155,7 @@
       "regArtists": [
         "Borrowed Whispers"
       ],
-      "trackNumber": 4,
-      "audio": "https://www.dropbox.com/scl/fi/2ql4qup86bgc4u6eklmuu/daniel-kincaid-if-i-could-love-you-again-mp3.mp3?rlkey=p2fm0owphs9d677pdrsb5u5ba&raw=1",
-      "needsWav": false,
-      "streaming": {},
-      "hasSrt": false,
-      "albumOrder": 4
+      "trackNumber": 4
     },
     {
       "id": "daniel-kincaid-if-i-could-love-you-again-acoustic",
@@ -213,12 +194,7 @@
       "regArtists": [
         "Borrowed Whispers"
       ],
-      "trackNumber": 4,
-      "audio": "https://www.dropbox.com/scl/fi/jmo6l2jfrqolpnl8gth2r/daniel-kincaid-if-i-could-love-you-again-acoustic-mp3.mp3?rlkey=bvidcpl1ng08kobp64r5fqqxg&raw=1",
-      "needsWav": false,
-      "streaming": {},
-      "hasSrt": false,
-      "albumOrder": 4
+      "trackNumber": 4
     },
     {
       "id": "daniel-kincaid-still-falling-for-you",
@@ -259,10 +235,13 @@
       ],
       "trackNumber": 7,
       "audio": "https://www.dropbox.com/scl/fi/311thg22xifv26fr5ig90/daniel-kincaid-still-falling-for-you-acoustic-mp3.mp3?rlkey=wigwtwksu5gaikiw6d7tpvb8q&raw=1",
-      "needsWav": false,
-      "streaming": {},
+      "streaming": {
+        "spotify": "",
+        "apple": "",
+        "youtubeMusic": ""
+      },
       "hasSrt": false,
-      "albumOrder": 7
+      "needsWav": false
     },
     {
       "id": "daniel-kincaid-still-falling-for-you-acoustic",
@@ -301,12 +280,7 @@
       "regArtists": [
         "Borrowed Whispers"
       ],
-      "trackNumber": 7,
-      "audio": "https://www.dropbox.com/scl/fi/311thg22xifv26fr5ig90/daniel-kincaid-still-falling-for-you-acoustic-mp3.mp3?rlkey=wigwtwksu5gaikiw6d7tpvb8q&raw=1",
-      "needsWav": false,
-      "streaming": {},
-      "hasSrt": false,
-      "albumOrder": 7
+      "trackNumber": 7
     },
     {
       "id": "september-skies-give-it-away",
@@ -346,11 +320,7 @@
         "September Skies"
       ],
       "trackNumber": 6,
-      "albumOrder": 6,
-      "audio": "https://www.dropbox.com/scl/fi/i6l30r2si2vgjsk7usyu5/september-skies-give-it-away.mp3?rlkey=0496b3kwnp5hiesyojgykkx0i&raw=1",
-      "needsWav": false,
-      "streaming": {},
-      "hasSrt": false
+      "albumOrder": 6
     },
     {
       "id": "sawyer-price-whats-left-of-me",
@@ -368,8 +338,8 @@
       "youtubeUrl": "https://youtu.be/MY6Pwp78E_0",
       "videos": [
         {
-          "youtube": "https://youtu.be/MY6Pwp78E_0",
           "title": "Official Video",
+          "youtube": "https://youtu.be/MY6Pwp78E_0",
           "order": 1
         }
       ],
@@ -400,19 +370,7 @@
         "Avery Ivey"
       ],
       "trackNumber": 9,
-      "albumOrder": 9,
-      "audio": "https://www.dropbox.com/scl/fi/v5v10vobdgnk57rnni7ta/sawyer-price-whats-left-of-me-MP3.mp3?rlkey=ozaaqg4er1ekt2ctbf0v6id9a&raw=1",
-      "needsWav": false,
-      "streaming": {
-        "spotify": "",
-        "apple": "",
-        "youtubeMusic": ""
-      },
-      "hasSrt": false,
-      "sunoPrompt": "Intimate small voice recording of an acoustic, indie-folk confessional, desperate and melancholy, Extremely restrained male vocal, raspy alto voice, dry close-mic recording, conversational delivery, emotionally exhausted performance, soft room-tone acoustic guitar, no percussion, no claps, no drums, no harmonies, no cinematic build, no anthem chorus, no vocal runs, no layered harmonies, Intentionally underproduced demo-style recording, small room ambience, late-night loneliness, fragile held-back vocal, one acoustic guitar only, emotional restraint throughout, the song never lifts into a production, final chorus becomes smaller and quieter instead of bigger, ‑arena country, ‑pop country, ‑cinematic builds, ‑stomp claps, ‑dramatic drums, ‑glossy Nashville production, ‑layered harmonies, ‑uplifting finale, ‑powerhouse vocals, ‑vocal acrobatics, ‑EDM, ‑trap drums",
-      "sunoDate": "6/19/26",
-      "sunoLink": "https://suno.com/s/KgbT641yu21HKwWG",
-      "lyrics": "[Verse 1 - acoustic guitar only - dry close vocal]\n\nI keep your number\nAt the top of my phone\nI almost call sometimes\nBut it's another night all alone\n\n[Breathy pause]\n\nYou say you miss me\nAnd I laugh way too fast\n'Cuz if you got the chance\nYou might start to ask\n\n[Pre-Chorus - no emotional build]\n\nI got half-packed boxes\nAnd a sink full of pills\nEvery good intention\nNever stays still\n\n[Chorus - restrained vocal - no build - desperate confession]\n\nYou deserve more\nThan fixing my life\nHoping that someday\nI'll finally get it right\nNot having to chase\nMy old broke-down dreams\nYeah you deserve more\nThan what's left of me\n\n[Verse 2 - restrained energy - no lift - acoustic guitar only]\n\nYou reached across\nAnd took my hand\nI almost let myself\nForget who I really am\n\n[Vocal frays slightly]\n\nI swear I want to\nMore than you know\nBut I've seen where this goes\nAnd it's time to let go\n\n[Pre-Chorus - no emotional build]\n\nI'm just tired of hiding\nThings I can't explain\nEvery time you hold me\nI pull away again\n\n[Chorus - same dynamic - intimate vocal]\n\nYou deserve more\nThan fixing my life\nHoping that someday\nI'll finally get it right\nNot having to chase\nMy old broke-down dreams\nYeah you deserve more\nThan what's left of me\n\n[Bridge - almost spoken - no emotional build -  guitar goes quieter]\n\nI say I'll change\nI try every day\nI know myself\nAnd I won't stay\n\n[Vocal breaking]\n\nYou shouldn't wait\nYou should run away\nYou shouldn't hurt\nOne more damn day\n\n[Chorus - restrained and quieter than previous chorus - no build]\n\nYou deserve more\nThan fixing my life\nHoping that someday\nI'll finally get it right\nNot having to chase\nMy old broke-down dreams\nYeah you deserve more\nThan what's left of me\n\n[Outro - nearly whispered]\n\nYeah you deserve more\nThan what's left of me\n\n[Musical outro]\n\n"
+      "albumOrder": 9
     },
     {
       "id": "taylor-martin-she-loved-horses",
@@ -452,11 +410,7 @@
         "Taylor Martin"
       ],
       "trackNumber": 2,
-      "albumOrder": 2,
-      "audio": "https://www.dropbox.com/scl/fi/3qx8dfahefmelw492p2yu/taylor-martin-she-loved-horses-mp3.mp3?rlkey=i41o1fmafvva2likbm9cmxhn0&raw=1",
-      "needsWav": false,
-      "streaming": {},
-      "hasSrt": false
+      "albumOrder": 2
     },
     {
       "id": "silent-oblivion-bubblegum",
@@ -496,11 +450,7 @@
         "Silent Oblivion"
       ],
       "trackNumber": 1,
-      "albumOrder": 1,
-      "audio": "https://www.dropbox.com/scl/fi/3lx7e5ochef1cyhhgcxb3/silent-oblivion-bubblegum-mp3.mp3?rlkey=xeat09g9mpdeqkqh7296kgtva&raw=1",
-      "needsWav": false,
-      "streaming": {},
-      "hasSrt": false
+      "albumOrder": 1
     },
     {
       "id": "september-skies-serena",
@@ -541,11 +491,7 @@
         "Silent Oblivion"
       ],
       "trackNumber": 15,
-      "albumOrder": 15,
-      "audio": "https://www.dropbox.com/scl/fi/704jbke40c9q3y3jwqn0l/september-skies-serena-mp3.mp3?rlkey=7sh3b38a6zc7r81s1f61ydrne&raw=1",
-      "needsWav": false,
-      "streaming": {},
-      "hasSrt": false
+      "albumOrder": 15
     }
   ],
   "featuredArtists": [
