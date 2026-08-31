@@ -398,8 +398,16 @@
       "albumOrder": 9,
       "audio": "https://www.dropbox.com/scl/fi/v5v10vobdgnk57rnni7ta/sawyer-price-whats-left-of-me-MP3.mp3?rlkey=ozaaqg4er1ekt2ctbf0v6id9a&raw=1",
       "needsWav": false,
-      "streaming": {},
-      "hasSrt": false
+      "streaming": {
+        "spotify": "",
+        "apple": "",
+        "youtubeMusic": ""
+      },
+      "hasSrt": false,
+      "sunoPrompt": "Intimate small voice recording of an acoustic, indie-folk confessional, desperate and melancholy, Extremely restrained male vocal, raspy alto voice, dry close-mic recording, conversational delivery, emotionally exhausted performance, soft room-tone acoustic guitar, no percussion, no claps, no drums, no harmonies, no cinematic build, no anthem chorus, no vocal runs, no layered harmonies, Intentionally underproduced demo-style recording, small room ambience, late-night loneliness, fragile held-back vocal, one acoustic guitar only, emotional restraint throughout, the song never lifts into a production, final chorus becomes smaller and quieter instead of bigger, ‑arena country, ‑pop country, ‑cinematic builds, ‑stomp claps, ‑dramatic drums, ‑glossy Nashville production, ‑layered harmonies, ‑uplifting finale, ‑powerhouse vocals, ‑vocal acrobatics, ‑EDM, ‑trap drums",
+      "sunoDate": "6/19/26",
+      "sunoLink": "https://suno.com/s/KgbT641yu21HKwWG",
+      "lyrics": "[Verse 1 - acoustic guitar only - dry close vocal]\n\nI keep your number\nAt the top of my phone\nI almost call sometimes\nBut it's another night all alone\n\n[Breathy pause]\n\nYou say you miss me\nAnd I laugh way too fast\n'Cuz if you got the chance\nYou might start to ask\n\n[Pre-Chorus - no emotional build]\n\nI got half-packed boxes\nAnd a sink full of pills\nEvery good intention\nNever stays still\n\n[Chorus - restrained vocal - no build - desperate confession]\n\nYou deserve more\nThan fixing my life\nHoping that someday\nI'll finally get it right\nNot having to chase\nMy old broke-down dreams\nYeah you deserve more\nThan what's left of me\n\n[Verse 2 - restrained energy - no lift - acoustic guitar only]\n\nYou reached across\nAnd took my hand\nI almost let myself\nForget who I really am\n\n[Vocal frays slightly]\n\nI swear I want to\nMore than you know\nBut I've seen where this goes\nAnd it's time to let go\n\n[Pre-Chorus - no emotional build]\n\nI'm just tired of hiding\nThings I can't explain\nEvery time you hold me\nI pull away again\n\n[Chorus - same dynamic - intimate vocal]\n\nYou deserve more\nThan fixing my life\nHoping that someday\nI'll finally get it right\nNot having to chase\nMy old broke-down dreams\nYeah you deserve more\nThan what's left of me\n\n[Bridge - almost spoken - no emotional build -  guitar goes quieter]\n\nI say I'll change\nI try every day\nI know myself\nAnd I won't stay\n\n[Vocal breaking]\n\nYou shouldn't wait\nYou should run away\nYou shouldn't hurt\nOne more damn day\n\n[Chorus - restrained and quieter than previous chorus - no build]\n\nYou deserve more\nThan fixing my life\nHoping that someday\nI'll finally get it right\nNot having to chase\nMy old broke-down dreams\nYeah you deserve more\nThan what's left of me\n\n[Outro - nearly whispered]\n\nYeah you deserve more\nThan what's left of me\n\n[Musical outro]\n\n"
     },
     {
       "id": "taylor-martin-she-loved-horses",
