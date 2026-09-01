@@ -159,7 +159,7 @@
       "workNo": "79736766",
       "regDate": "5/19/2026",
       "iswc": "T3408831589",
-      "songview": "",
+      "songview": "Reconciled",
       "liveDate": "",
       "releaseId": "",
       "upc": "",
@@ -171,7 +171,11 @@
       "trackNumber": 4,
       "audio": "https://www.dropbox.com/scl/fi/2ql4qup86bgc4u6eklmuu/daniel-kincaid-if-i-could-love-you-again-mp3.mp3?rlkey=p2fm0owphs9d677pdrsb5u5ba&raw=1",
       "needsWav": false,
-      "streaming": {},
+      "streaming": {
+        "spotify": "",
+        "apple": "",
+        "youtubeMusic": ""
+      },
       "hasSrt": false
     },
     {
@@ -197,7 +201,7 @@
       "isLatest": false,
       "unique": "V",
       "radio": "R",
-      "writer": "D",
+      "writer": "P",
       "trackTime": "3:23",
       "workNo": "79736766",
       "regDate": "5/19/2026",
@@ -214,7 +218,11 @@
       "trackNumber": 4,
       "audio": "https://www.dropbox.com/scl/fi/jmo6l2jfrqolpnl8gth2r/daniel-kincaid-if-i-could-love-you-again-acoustic-mp3.mp3?rlkey=bvidcpl1ng08kobp64r5fqqxg&raw=1",
       "needsWav": false,
-      "streaming": {},
+      "streaming": {
+        "spotify": "",
+        "apple": "",
+        "youtubeMusic": ""
+      },
       "hasSrt": false
     },
     {
