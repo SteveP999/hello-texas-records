@@ -28,7 +28,7 @@
       "workNo": "80441982",
       "regDate": "6/6/26",
       "iswc": "T3411968413",
-      "songview": "",
+      "songview": "Reconciled",
       "liveDate": "",
       "releaseId": "",
       "upc": "",
@@ -40,7 +40,11 @@
       "trackNumber": 8,
       "audio": "https://www.dropbox.com/scl/fi/q9psdn077iar1wqr9c7vh/daniel-kincaid-two-tickets-to-anywere-studio-mp3.mp3?rlkey=roqzl8qzizmvoypnb9pna9uu8&raw=1",
       "needsWav": false,
-      "streaming": {},
+      "streaming": {
+        "spotify": "",
+        "apple": "",
+        "youtubeMusic": ""
+      },
       "hasSrt": false
     },
     {
