@@ -5,7 +5,7 @@
       "artistId": "daniel-kincaid",
       "artist": "Daniel Kincaid",
       "title": "Two Tickets To Anywhere",
-      "album": "Running out of Reasons",
+      "album": "Running Out of Reasons",
       "genre": "Soft rock / adult contemporary",
       "releaseType": "single",
       "releaseDate": "2026-06-28",
@@ -28,7 +28,7 @@
       "workNo": "80441982",
       "regDate": "6/6/26",
       "iswc": "T3411968413",
-      "songview": "Reconciled",
+      "songview": "",
       "liveDate": "",
       "releaseId": "",
       "upc": "",
@@ -40,11 +40,7 @@
       "trackNumber": 8,
       "audio": "https://www.dropbox.com/scl/fi/q9psdn077iar1wqr9c7vh/daniel-kincaid-two-tickets-to-anywere-studio-mp3.mp3?rlkey=roqzl8qzizmvoypnb9pna9uu8&raw=1",
       "needsWav": false,
-      "streaming": {
-        "spotify": "",
-        "apple": "",
-        "youtubeMusic": ""
-      },
+      "streaming": {},
       "hasSrt": false
     },
     {
@@ -106,12 +102,12 @@
       "audioSrc": "https://www.dropbox.com/scl/fi/gw76ynyxtfrz0gfuf6ea3/rio-valencia-buenos-noches-mp3.mp3?rlkey=8aygdxdod8fpkiqinlyfk701h&raw=1",
       "youtubeUrl": "",
       "videos": [],
-      "featured": true,
+      "featured": false,
       "explicit": false,
       "includeOnRadio": true,
       "includeOnHomepage": true,
       "tags": [],
-      "isLatest": true,
+      "isLatest": false,
       "unique": "X",
       "radio": "R",
       "writer": "P",
@@ -163,7 +159,7 @@
       "workNo": "79736766",
       "regDate": "5/19/2026",
       "iswc": "T3408831589",
-      "songview": "Reconciled",
+      "songview": "",
       "liveDate": "",
       "releaseId": "",
       "upc": "",
@@ -175,11 +171,7 @@
       "trackNumber": 4,
       "audio": "https://www.dropbox.com/scl/fi/2ql4qup86bgc4u6eklmuu/daniel-kincaid-if-i-could-love-you-again-mp3.mp3?rlkey=p2fm0owphs9d677pdrsb5u5ba&raw=1",
       "needsWav": false,
-      "streaming": {
-        "spotify": "",
-        "apple": "",
-        "youtubeMusic": ""
-      },
+      "streaming": {},
       "hasSrt": false
     },
     {
@@ -205,7 +197,7 @@
       "isLatest": false,
       "unique": "V",
       "radio": "R",
-      "writer": "P",
+      "writer": "D",
       "trackTime": "3:23",
       "workNo": "79736766",
       "regDate": "5/19/2026",
@@ -222,11 +214,7 @@
       "trackNumber": 4,
       "audio": "https://www.dropbox.com/scl/fi/jmo6l2jfrqolpnl8gth2r/daniel-kincaid-if-i-could-love-you-again-acoustic-mp3.mp3?rlkey=bvidcpl1ng08kobp64r5fqqxg&raw=1",
       "needsWav": false,
-      "streaming": {
-        "spotify": "",
-        "apple": "",
-        "youtubeMusic": ""
-      },
+      "streaming": {},
       "hasSrt": false
     },
     {
@@ -234,7 +222,7 @@
       "artistId": "daniel-kincaid",
       "artist": "Daniel Kincaid",
       "title": "Still Falling For You",
-      "album": "Running out of Reasons",
+      "album": "Running Out of Reasons",
       "genre": "Soft rock / adult contemporary",
       "releaseType": "single",
       "releaseDate": "2026-06-28",
@@ -268,13 +256,9 @@
       ],
       "trackNumber": 7,
       "audio": "https://www.dropbox.com/scl/fi/311thg22xifv26fr5ig90/daniel-kincaid-still-falling-for-you-acoustic-mp3.mp3?rlkey=wigwtwksu5gaikiw6d7tpvb8q&raw=1",
-      "streaming": {
-        "spotify": "",
-        "apple": "",
-        "youtubeMusic": ""
-      },
-      "hasSrt": false,
-      "needsWav": false
+      "needsWav": false,
+      "streaming": {},
+      "hasSrt": false
     },
     {
       "id": "daniel-kincaid-still-falling-for-you-acoustic",
@@ -384,12 +368,12 @@
           "order": 1
         }
       ],
-      "featured": false,
+      "featured": true,
       "explicit": false,
       "includeOnRadio": true,
       "includeOnHomepage": true,
       "tags": [],
-      "isLatest": false,
+      "isLatest": true,
       "unique": "X",
       "radio": "R",
       "writer": "P",
@@ -1190,7 +1174,7 @@
         "Roster Photos/lucas-harlow-roster-photo.png",
         "htr-logo.png"
       ],
-      "latestTitle": "Right Where I Belong",
+      "latestTitle": "First Light",
       "tagline": "New age piano for late nights and long drives"
     },
     {
