@@ -136,7 +136,7 @@
       "artistId": "daniel-kincaid",
       "artist": "Daniel Kincaid",
       "title": "If I Could Love You Again",
-      "album": "Running out of Reasons",
+      "album": "Running Out of Reasons",
       "genre": "Soft rock / adult contemporary",
       "releaseType": "single",
       "releaseDate": "2026-06-28",
@@ -228,7 +228,7 @@
       "releaseDate": "2026-06-28",
       "coverImage": "https://raw.githubusercontent.com/SteveP999/Daniel-Kincaid/main/images/covers/daniel-kincaid-still-falling-for-you-cover.png",
       "albumCover": "https://raw.githubusercontent.com/SteveP999/Daniel-Kincaid/main/images/covers/daniel-kincaid-running-out-of-reasons-ALBUM-cover.png",
-      "audioFile": "https://www.dropbox.com/scl/fi/311thg22xifv26fr5ig90/daniel-kincaid-still-falling-for-you-acoustic-mp3.mp3?rlkey=wigwtwksu5gaikiw6d7tpvb8q&raw=1",
+      "audioFile": "https://www.dropbox.com/scl/fi/kkjsw6yz5pplf3tmx3yjk/daniel-kincaid-still-falling-for-you-studio-mp3.mp3?rlkey=k5ybq1kclxxv9kixabf96vmhy&raw=1",
       "audioSrc": "https://www.dropbox.com/scl/fi/311thg22xifv26fr5ig90/daniel-kincaid-still-falling-for-you-acoustic-mp3.mp3?rlkey=wigwtwksu5gaikiw6d7tpvb8q&raw=1",
       "youtubeUrl": "",
       "videos": [],
@@ -255,10 +255,7 @@
         "Borrowed Whispers"
       ],
       "trackNumber": 7,
-      "audio": "https://www.dropbox.com/scl/fi/311thg22xifv26fr5ig90/daniel-kincaid-still-falling-for-you-acoustic-mp3.mp3?rlkey=wigwtwksu5gaikiw6d7tpvb8q&raw=1",
-      "needsWav": false,
-      "streaming": {},
-      "hasSrt": false
+      "audio": "https://www.dropbox.com/scl/fi/kkjsw6yz5pplf3tmx3yjk/daniel-kincaid-still-falling-for-you-studio-mp3.mp3?rlkey=k5ybq1kclxxv9kixabf96vmhy&raw=1"
     },
     {
       "id": "daniel-kincaid-still-falling-for-you-acoustic",
