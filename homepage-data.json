@@ -37,12 +37,7 @@
       "regArtists": [
         "Borrowed Whispers"
       ],
-      "trackNumber": 9,
-      "audio": "https://www.dropbox.com/scl/fi/q9psdn077iar1wqr9c7vh/daniel-kincaid-two-tickets-to-anywere-studio-mp3.mp3?rlkey=roqzl8qzizmvoypnb9pna9uu8&raw=1",
-      "needsWav": false,
-      "streaming": {},
-      "hasSrt": false,
-      "albumOrder": 9
+      "trackNumber": 8
     },
     {
       "id": "quincy-cade-still-falling-for-you",
@@ -81,12 +76,7 @@
         "Borrowed Whispers"
       ],
       "trackNumber": 4,
-      "albumOrder": 4,
-      "audio": "https://www.dropbox.com/scl/fi/yw9611c8814o5zqo1xrpo/quincy-cade-still-falling-for-you-mp3.mp3?rlkey=1zvurbrqok6sjycvjycg0930f&raw=1",
-      "audioSrc": "https://www.dropbox.com/scl/fi/yw9611c8814o5zqo1xrpo/quincy-cade-still-falling-for-you-mp3.mp3?rlkey=1zvurbrqok6sjycvjycg0930f&raw=1",
-      "needsWav": false,
-      "streaming": {},
-      "hasSrt": false
+      "albumOrder": 4
     },
     {
       "id": "rio-valencia-buenos-noches",
@@ -126,11 +116,7 @@
         "Rio Valencia"
       ],
       "trackNumber": 1,
-      "albumOrder": 1,
-      "audio": "https://www.dropbox.com/scl/fi/gw76ynyxtfrz0gfuf6ea3/rio-valencia-buenos-noches-mp3.mp3?rlkey=8aygdxdod8fpkiqinlyfk701h&raw=1",
-      "needsWav": false,
-      "streaming": {},
-      "hasSrt": false
+      "albumOrder": 1
     },
     {
       "id": "daniel-kincaid-if-i-could-love-you-again",
@@ -169,12 +155,7 @@
       "regArtists": [
         "Borrowed Whispers"
       ],
-      "trackNumber": 5,
-      "audio": "https://www.dropbox.com/scl/fi/2ql4qup86bgc4u6eklmuu/daniel-kincaid-if-i-could-love-you-again-mp3.mp3?rlkey=p2fm0owphs9d677pdrsb5u5ba&raw=1",
-      "needsWav": false,
-      "streaming": {},
-      "hasSrt": false,
-      "albumOrder": 5
+      "trackNumber": 4
     },
     {
       "id": "daniel-kincaid-if-i-could-love-you-again-acoustic",
@@ -213,12 +194,7 @@
       "regArtists": [
         "Borrowed Whispers"
       ],
-      "trackNumber": 4,
-      "audio": "https://www.dropbox.com/scl/fi/jmo6l2jfrqolpnl8gth2r/daniel-kincaid-if-i-could-love-you-again-acoustic-mp3.mp3?rlkey=bvidcpl1ng08kobp64r5fqqxg&raw=1",
-      "needsWav": false,
-      "streaming": {},
-      "hasSrt": false,
-      "albumOrder": 4
+      "trackNumber": 4
     },
     {
       "id": "daniel-kincaid-still-falling-for-you",
@@ -232,7 +208,7 @@
       "coverImage": "https://raw.githubusercontent.com/SteveP999/Daniel-Kincaid/main/images/covers/daniel-kincaid-still-falling-for-you-cover.png",
       "albumCover": "https://raw.githubusercontent.com/SteveP999/Daniel-Kincaid/main/images/covers/daniel-kincaid-running-out-of-reasons-ALBUM-cover.png",
       "audioFile": "https://www.dropbox.com/scl/fi/kkjsw6yz5pplf3tmx3yjk/daniel-kincaid-still-falling-for-you-studio-mp3.mp3?rlkey=k5ybq1kclxxv9kixabf96vmhy&raw=1",
-      "audioSrc": "https://www.dropbox.com/scl/fi/kkjsw6yz5pplf3tmx3yjk/daniel-kincaid-still-falling-for-you-studio-mp3.mp3?rlkey=k5ybq1kclxxv9kixabf96vmhy&raw=1",
+      "audioSrc": "https://www.dropbox.com/scl/fi/311thg22xifv26fr5ig90/daniel-kincaid-still-falling-for-you-acoustic-mp3.mp3?rlkey=wigwtwksu5gaikiw6d7tpvb8q&raw=1",
       "youtubeUrl": "",
       "videos": [],
       "featured": false,
@@ -257,12 +233,8 @@
       "regArtists": [
         "Borrowed Whispers"
       ],
-      "trackNumber": 8,
-      "audio": "https://www.dropbox.com/scl/fi/kkjsw6yz5pplf3tmx3yjk/daniel-kincaid-still-falling-for-you-studio-mp3.mp3?rlkey=k5ybq1kclxxv9kixabf96vmhy&raw=1",
-      "needsWav": false,
-      "streaming": {},
-      "hasSrt": false,
-      "albumOrder": 8
+      "trackNumber": 7,
+      "audio": "https://www.dropbox.com/scl/fi/kkjsw6yz5pplf3tmx3yjk/daniel-kincaid-still-falling-for-you-studio-mp3.mp3?rlkey=k5ybq1kclxxv9kixabf96vmhy&raw=1"
     },
     {
       "id": "daniel-kincaid-still-falling-for-you-acoustic",
@@ -301,12 +273,7 @@
       "regArtists": [
         "Borrowed Whispers"
       ],
-      "trackNumber": 7,
-      "audio": "https://www.dropbox.com/scl/fi/311thg22xifv26fr5ig90/daniel-kincaid-still-falling-for-you-acoustic-mp3.mp3?rlkey=wigwtwksu5gaikiw6d7tpvb8q&raw=1",
-      "needsWav": false,
-      "streaming": {},
-      "hasSrt": false,
-      "albumOrder": 7
+      "trackNumber": 7
     },
     {
       "id": "september-skies-give-it-away",
@@ -346,11 +313,7 @@
         "September Skies"
       ],
       "trackNumber": 6,
-      "albumOrder": 6,
-      "audio": "https://www.dropbox.com/scl/fi/i6l30r2si2vgjsk7usyu5/september-skies-give-it-away.mp3?rlkey=0496b3kwnp5hiesyojgykkx0i&raw=1",
-      "needsWav": false,
-      "streaming": {},
-      "hasSrt": false
+      "albumOrder": 6
     },
     {
       "id": "sawyer-price-whats-left-of-me",
@@ -368,8 +331,8 @@
       "youtubeUrl": "https://youtu.be/MY6Pwp78E_0",
       "videos": [
         {
-          "youtube": "https://youtu.be/MY6Pwp78E_0",
           "title": "Official Video",
+          "youtube": "https://youtu.be/MY6Pwp78E_0",
           "order": 1
         }
       ],
@@ -400,11 +363,7 @@
         "Avery Ivey"
       ],
       "trackNumber": 9,
-      "albumOrder": 9,
-      "audio": "https://www.dropbox.com/scl/fi/v5v10vobdgnk57rnni7ta/sawyer-price-whats-left-of-me-MP3.mp3?rlkey=ozaaqg4er1ekt2ctbf0v6id9a&raw=1",
-      "needsWav": false,
-      "streaming": {},
-      "hasSrt": false
+      "albumOrder": 9
     },
     {
       "id": "taylor-martin-she-loved-horses",
@@ -444,11 +403,7 @@
         "Taylor Martin"
       ],
       "trackNumber": 2,
-      "albumOrder": 2,
-      "audio": "https://www.dropbox.com/scl/fi/3qx8dfahefmelw492p2yu/taylor-martin-she-loved-horses-mp3.mp3?rlkey=i41o1fmafvva2likbm9cmxhn0&raw=1",
-      "needsWav": false,
-      "streaming": {},
-      "hasSrt": false
+      "albumOrder": 2
     },
     {
       "id": "silent-oblivion-bubblegum",
@@ -488,11 +443,7 @@
         "Silent Oblivion"
       ],
       "trackNumber": 1,
-      "albumOrder": 1,
-      "audio": "https://www.dropbox.com/scl/fi/3lx7e5ochef1cyhhgcxb3/silent-oblivion-bubblegum-mp3.mp3?rlkey=xeat09g9mpdeqkqh7296kgtva&raw=1",
-      "needsWav": false,
-      "streaming": {},
-      "hasSrt": false
+      "albumOrder": 1
     },
     {
       "id": "september-skies-serena",
@@ -533,11 +484,7 @@
         "Silent Oblivion"
       ],
       "trackNumber": 15,
-      "albumOrder": 15,
-      "audio": "https://www.dropbox.com/scl/fi/704jbke40c9q3y3jwqn0l/september-skies-serena-mp3.mp3?rlkey=7sh3b38a6zc7r81s1f61ydrne&raw=1",
-      "needsWav": false,
-      "streaming": {},
-      "hasSrt": false
+      "albumOrder": 15
     }
   ],
   "featuredArtists": [
