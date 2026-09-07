@@ -1329,6 +1329,35 @@
         "htr-logo.png"
       ],
       "latestTitle": "10 Years"
+    },
+    {
+      "id": "cheap-silver",
+      "name": "Cheap Silver",
+      "githubRepo": "SteveP999/cheap-silver",
+      "siteUrl": "https://cheap-silver.hellotexasrecords.com",
+      "genre": "Rockabilly / Bakersfield Beat",
+      "tagline": "West Texas Grit with a Rockabilly Heart",
+      "status": "active",
+      "active": true,
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "latestTitle": "I'm a Fool",
+      "logo": "images/logos/cheap-silver-logo.png",
+      "heroImage": "Roster Photos/cheap-silver/cheap-silver-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "imageCandidates": [
+        "Roster Photos/cheap-silver/cheap-silver-roster-photo.png",
+        "Roster Photos/cheap-silver-roster-photo.png",
+        "htr-logo.png"
+      ]
     }
   ]
 }
