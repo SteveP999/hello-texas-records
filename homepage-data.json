@@ -88,50 +88,6 @@
       "hasSrt": false
     },
     {
-      "id": "rio-valencia-buenos-noches",
-      "artistId": "rio-valencia",
-      "artist": "Rio Valencia",
-      "title": "Buenos Noches",
-      "album": "Midnight Line",
-      "genre": "Latin pop / reggaeton fusion",
-      "releaseType": "single",
-      "releaseDate": "2026-06-28",
-      "coverImage": "https://raw.githubusercontent.com/SteveP999/Rio-Valencia/main/images/covers/rio-valencia-buenos-noches-cover.png",
-      "albumCover": "https://raw.githubusercontent.com/SteveP999/Rio-Valencia/main/images/covers/rio-valencia-midnight-line-ALBUM-cover.png",
-      "audioFile": "https://www.dropbox.com/scl/fi/gw76ynyxtfrz0gfuf6ea3/rio-valencia-buenos-noches-mp3.mp3?rlkey=8aygdxdod8fpkiqinlyfk701h&raw=1",
-      "audioSrc": "https://www.dropbox.com/scl/fi/gw76ynyxtfrz0gfuf6ea3/rio-valencia-buenos-noches-mp3.mp3?rlkey=8aygdxdod8fpkiqinlyfk701h&raw=1",
-      "youtubeUrl": "",
-      "videos": [],
-      "featured": true,
-      "explicit": false,
-      "includeOnRadio": true,
-      "includeOnHomepage": true,
-      "tags": [],
-      "isLatest": true,
-      "unique": "X",
-      "radio": "R",
-      "writer": "P",
-      "trackTime": "3:33",
-      "workNo": "80952872",
-      "regDate": "6/28/2026",
-      "iswc": "T3415477844",
-      "songview": "Reconciled",
-      "liveDate": "",
-      "releaseId": "",
-      "upc": "",
-      "isrc": "",
-      "regTitle": "BUENOS NOCHES",
-      "regArtists": [
-        "Rio Valencia"
-      ],
-      "trackNumber": 1,
-      "albumOrder": 1,
-      "audio": "https://www.dropbox.com/scl/fi/gw76ynyxtfrz0gfuf6ea3/rio-valencia-buenos-noches-mp3.mp3?rlkey=8aygdxdod8fpkiqinlyfk701h&raw=1",
-      "needsWav": false,
-      "streaming": {},
-      "hasSrt": false
-    },
-    {
       "id": "daniel-kincaid-if-i-could-love-you-again",
       "artistId": "daniel-kincaid",
       "artist": "Daniel Kincaid",
@@ -533,6 +489,56 @@
       "needsWav": false,
       "streaming": {},
       "hasSrt": false
+    },
+    {
+      "id": "sawyer-price-still-my-favorite-song",
+      "artistId": "sawyer-price",
+      "artist": "Sawyer Price",
+      "title": "Still My Favorite Song",
+      "album": "Unrushed",
+      "genre": "Texas country / Red Dirt",
+      "releaseType": "single",
+      "releaseDate": "2026-06-13",
+      "coverImage": "https://raw.githubusercontent.com/SteveP999/Sawyer-Price/main/images/covers/sawyer-price-still-my-favorite-song-cover.png",
+      "albumCover": "https://raw.githubusercontent.com/SteveP999/Sawyer-Price/main/images/covers/sawyer-price-unrushed-ALBUM-cover.png",
+      "audioFile": "https://www.dropbox.com/scl/fi/qg86vamj1aeogqmqt5jve/sawyer-price-still-my-favorite-song-mp3.mp3?rlkey=fbg8qdzq23x3vmqqomc3hdgww&raw=1",
+      "audioSrc": "https://www.dropbox.com/scl/fi/qg86vamj1aeogqmqt5jve/sawyer-price-still-my-favorite-song-mp3.mp3?rlkey=fbg8qdzq23x3vmqqomc3hdgww&raw=1",
+      "youtubeUrl": "https://youtu.be/Oc64NmV4Nko",
+      "videos": [
+        {
+          "youtube": "https://youtu.be/Oc64NmV4Nko",
+          "title": "Official Video",
+          "order": 1
+        }
+      ],
+      "featured": false,
+      "explicit": false,
+      "includeOnRadio": true,
+      "includeOnHomepage": true,
+      "tags": [],
+      "isLatest": false,
+      "unique": "X",
+      "radio": "R",
+      "writer": "P",
+      "trackTime": "4:09",
+      "workNo": "80654448",
+      "regDate": "6/14/2026",
+      "iswc": "T3414296525",
+      "songview": "Reconciled",
+      "liveDate": "",
+      "releaseId": "",
+      "upc": "",
+      "isrc": "",
+      "regTitle": "STILL MY FAVORITE SONG",
+      "regArtists": [
+        "Sawyer Price"
+      ],
+      "trackNumber": 8,
+      "albumOrder": 8,
+      "audio": "https://www.dropbox.com/scl/fi/qg86vamj1aeogqmqt5jve/sawyer-price-still-my-favorite-song-mp3.mp3?rlkey=fbg8qdzq23x3vmqqomc3hdgww&raw=1",
+      "needsWav": false,
+      "streaming": {},
+      "hasSrt": false
     }
   ],
   "featuredArtists": [
@@ -740,7 +746,7 @@
         "Roster Photos/rio-valencia-roster-photo.png",
         "htr-logo.png"
       ],
-      "latestTitle": "Fuego Lento",
+      "latestTitle": "Cerca De Mi",
       "tagline": "Latin fire with no boundaries"
     },
     {
