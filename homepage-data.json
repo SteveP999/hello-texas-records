@@ -37,7 +37,11 @@
       "regArtists": [
         "PETERS STEVEN SCOTT MR"
       ],
-      "trackNumber": 8
+      "trackNumber": 8,
+      "audio": "https://www.dropbox.com/scl/fi/q9psdn077iar1wqr9c7vh/daniel-kincaid-two-tickets-to-anywere-studio-mp3.mp3?rlkey=roqzl8qzizmvoypnb9pna9uu8&raw=1",
+      "needsWav": false,
+      "streaming": {},
+      "hasSrt": false
     },
     {
       "id": "quincy-cade-still-falling-for-you",
@@ -59,12 +63,12 @@
       "includeOnHomepage": true,
       "isLatest": true,
       "tags": [],
-      "unique": "X",
-      "radio": "R",
-      "writer": "D",
+      "unique": "R",
+      "radio": "V",
+      "writer": "P",
       "trackTime": "3:54",
       "workNo": "79432110",
-      "regDate": "05/17/2026",
+      "regDate": "5/17/2026",
       "iswc": "T3408868457",
       "songview": "Reconciled",
       "liveDate": "",
@@ -76,7 +80,12 @@
         "PETERS STEVEN SCOTT MR"
       ],
       "trackNumber": 4,
-      "albumOrder": 4
+      "albumOrder": 4,
+      "audio": "https://www.dropbox.com/scl/fi/yw9611c8814o5zqo1xrpo/quincy-cade-still-falling-for-you-mp3.mp3?rlkey=1zvurbrqok6sjycvjycg0930f&raw=1",
+      "audioSrc": "https://www.dropbox.com/scl/fi/yw9611c8814o5zqo1xrpo/quincy-cade-still-falling-for-you-mp3.mp3?rlkey=1zvurbrqok6sjycvjycg0930f&raw=1",
+      "needsWav": false,
+      "streaming": {},
+      "hasSrt": false
     },
     {
       "id": "rio-valencia-buenos-noches",
@@ -116,7 +125,11 @@
         "PETERS STEVEN SCOTT MR"
       ],
       "trackNumber": 1,
-      "albumOrder": 1
+      "albumOrder": 1,
+      "audio": "https://www.dropbox.com/scl/fi/gw76ynyxtfrz0gfuf6ea3/rio-valencia-buenos-noches-mp3.mp3?rlkey=8aygdxdod8fpkiqinlyfk701h&raw=1",
+      "needsWav": false,
+      "streaming": {},
+      "hasSrt": false
     },
     {
       "id": "daniel-kincaid-if-i-could-love-you-again",
@@ -139,23 +152,27 @@
       "includeOnHomepage": true,
       "tags": [],
       "isLatest": false,
-      "unique": "X",
-      "radio": "R",
+      "unique": "R",
+      "radio": "X",
       "writer": "P",
       "trackTime": "3:23",
       "workNo": "79736766",
-      "regDate": "05/19/2026",
+      "regDate": "5/19/2026",
       "iswc": "T3408831589",
       "songview": "Reconciled",
       "liveDate": "",
       "releaseId": "",
       "upc": "",
       "isrc": "",
-      "regTitle": "IF I COULD LOVE YOU AGAIN",
+      "regTitle": "TWO TICKETS TO ANYWHERE",
       "regArtists": [
         "PETERS STEVEN SCOTT MR"
       ],
-      "trackNumber": 4
+      "trackNumber": 4,
+      "audio": "https://www.dropbox.com/scl/fi/2ql4qup86bgc4u6eklmuu/daniel-kincaid-if-i-could-love-you-again-mp3.mp3?rlkey=p2fm0owphs9d677pdrsb5u5ba&raw=1",
+      "needsWav": false,
+      "streaming": {},
+      "hasSrt": false
     },
     {
       "id": "daniel-kincaid-if-i-could-love-you-again-acoustic",
@@ -178,23 +195,27 @@
       "includeOnHomepage": true,
       "tags": [],
       "isLatest": false,
-      "unique": "V",
-      "radio": "R",
-      "writer": "D",
+      "unique": "R",
+      "radio": "X",
+      "writer": "P",
       "trackTime": "3:23",
       "workNo": "79736766",
-      "regDate": "05/19/2026",
+      "regDate": "5/19/2026",
       "iswc": "T3408831589",
       "songview": "Reconciled",
       "liveDate": "",
       "releaseId": "",
       "upc": "",
       "isrc": "",
-      "regTitle": "IF I COULD LOVE YOU AGAIN",
+      "regTitle": "TWO TICKETS TO ANYWHERE",
       "regArtists": [
         "PETERS STEVEN SCOTT MR"
       ],
-      "trackNumber": 4
+      "trackNumber": 4,
+      "audio": "https://www.dropbox.com/scl/fi/jmo6l2jfrqolpnl8gth2r/daniel-kincaid-if-i-could-love-you-again-acoustic-mp3.mp3?rlkey=bvidcpl1ng08kobp64r5fqqxg&raw=1",
+      "needsWav": false,
+      "streaming": {},
+      "hasSrt": false
     },
     {
       "id": "daniel-kincaid-still-falling-for-you",
@@ -208,7 +229,7 @@
       "coverImage": "https://raw.githubusercontent.com/SteveP999/Daniel-Kincaid/main/images/covers/daniel-kincaid-still-falling-for-you-cover.png",
       "albumCover": "https://raw.githubusercontent.com/SteveP999/Daniel-Kincaid/main/images/covers/daniel-kincaid-running-out-of-reasons-ALBUM-cover.png",
       "audioFile": "https://www.dropbox.com/scl/fi/kkjsw6yz5pplf3tmx3yjk/daniel-kincaid-still-falling-for-you-studio-mp3.mp3?rlkey=k5ybq1kclxxv9kixabf96vmhy&raw=1",
-      "audioSrc": "https://www.dropbox.com/scl/fi/311thg22xifv26fr5ig90/daniel-kincaid-still-falling-for-you-acoustic-mp3.mp3?rlkey=wigwtwksu5gaikiw6d7tpvb8q&raw=1",
+      "audioSrc": "https://www.dropbox.com/scl/fi/kkjsw6yz5pplf3tmx3yjk/daniel-kincaid-still-falling-for-you-studio-mp3.mp3?rlkey=k5ybq1kclxxv9kixabf96vmhy&raw=1",
       "youtubeUrl": "",
       "videos": [],
       "featured": false,
@@ -217,12 +238,12 @@
       "includeOnHomepage": true,
       "tags": [],
       "isLatest": false,
-      "unique": "V",
-      "radio": "R",
-      "writer": "D",
+      "unique": "R",
+      "radio": "V",
+      "writer": "P",
       "trackTime": "3:24",
       "workNo": "79432110",
-      "regDate": "05/17/2026",
+      "regDate": "5/17/2026",
       "iswc": "T3408868457",
       "songview": "Reconciled",
       "liveDate": "",
@@ -234,7 +255,10 @@
         "PETERS STEVEN SCOTT MR"
       ],
       "trackNumber": 7,
-      "audio": "https://www.dropbox.com/scl/fi/kkjsw6yz5pplf3tmx3yjk/daniel-kincaid-still-falling-for-you-studio-mp3.mp3?rlkey=k5ybq1kclxxv9kixabf96vmhy&raw=1"
+      "audio": "https://www.dropbox.com/scl/fi/kkjsw6yz5pplf3tmx3yjk/daniel-kincaid-still-falling-for-you-studio-mp3.mp3?rlkey=k5ybq1kclxxv9kixabf96vmhy&raw=1",
+      "needsWav": false,
+      "streaming": {},
+      "hasSrt": false
     },
     {
       "id": "daniel-kincaid-still-falling-for-you-acoustic",
@@ -257,12 +281,12 @@
       "includeOnHomepage": true,
       "tags": [],
       "isLatest": true,
-      "unique": "V",
-      "radio": "R",
-      "writer": "D",
+      "unique": "R",
+      "radio": "V",
+      "writer": "P",
       "trackTime": "3:24",
       "workNo": "79432110",
-      "regDate": "05/17/2026",
+      "regDate": "5/17/2026",
       "iswc": "T3408868457",
       "songview": "Reconciled",
       "liveDate": "",
@@ -273,47 +297,11 @@
       "regArtists": [
         "PETERS STEVEN SCOTT MR"
       ],
-      "trackNumber": 7
-    },
-    {
-      "id": "september-skies-give-it-away",
-      "artistId": "september-skies",
-      "artist": "September Skies",
-      "title": "Give It Away",
-      "album": "One Move at a Time",
-      "genre": "Alternative Rock",
-      "releaseType": "single",
-      "releaseDate": "2026-06-26",
-      "coverImage": "https://raw.githubusercontent.com/SteveP999/september-skies/main/images/covers/september-skies-give-it-away-cover.png",
-      "albumCover": "https://raw.githubusercontent.com/SteveP999/september-skies/main/images/covers/september-skies-one-move-at-a-time-ALBUM-cover.png",
-      "audioFile": "https://www.dropbox.com/scl/fi/i6l30r2si2vgjsk7usyu5/september-skies-give-it-away.mp3?rlkey=0496b3kwnp5hiesyojgykkx0i&raw=1",
-      "audioSrc": "https://www.dropbox.com/scl/fi/i6l30r2si2vgjsk7usyu5/september-skies-give-it-away.mp3?rlkey=0496b3kwnp5hiesyojgykkx0i&raw=1",
-      "youtubeUrl": "",
-      "videos": [],
-      "featured": false,
-      "explicit": false,
-      "includeOnRadio": true,
-      "includeOnHomepage": true,
-      "tags": [],
-      "isLatest": false,
-      "unique": "X",
-      "radio": "R",
-      "writer": "B",
-      "trackTime": "4:14",
-      "workNo": "80952874",
-      "regDate": "06/28/2026",
-      "iswc": "T3415477822",
-      "songview": "Reconciled",
-      "liveDate": "8/9/26",
-      "releaseId": "4845648",
-      "upc": "7333591335545",
-      "isrc": "SE6132621483",
-      "regTitle": "GIVE IT AWAY",
-      "regArtists": [
-        "PETERS STEVEN SCOTT MR"
-      ],
-      "trackNumber": 6,
-      "albumOrder": 6
+      "trackNumber": 7,
+      "audio": "https://www.dropbox.com/scl/fi/311thg22xifv26fr5ig90/daniel-kincaid-still-falling-for-you-acoustic-mp3.mp3?rlkey=wigwtwksu5gaikiw6d7tpvb8q&raw=1",
+      "needsWav": false,
+      "streaming": {},
+      "hasSrt": false
     },
     {
       "id": "sawyer-price-whats-left-of-me",
@@ -331,8 +319,8 @@
       "youtubeUrl": "https://youtu.be/MY6Pwp78E_0",
       "videos": [
         {
-          "title": "Official Video",
           "youtube": "https://youtu.be/MY6Pwp78E_0",
+          "title": "Official Video",
           "order": 1
         }
       ],
@@ -359,7 +347,11 @@
         "PETERS STEVEN SCOTT MR"
       ],
       "trackNumber": 9,
-      "albumOrder": 9
+      "albumOrder": 9,
+      "audio": "https://www.dropbox.com/scl/fi/v5v10vobdgnk57rnni7ta/sawyer-price-whats-left-of-me-MP3.mp3?rlkey=ozaaqg4er1ekt2ctbf0v6id9a&raw=1",
+      "needsWav": false,
+      "streaming": {},
+      "hasSrt": false
     },
     {
       "id": "taylor-martin-she-loved-horses",
@@ -399,7 +391,11 @@
         "PETERS STEVEN SCOTT MR"
       ],
       "trackNumber": 2,
-      "albumOrder": 2
+      "albumOrder": 2,
+      "audio": "https://www.dropbox.com/scl/fi/3qx8dfahefmelw492p2yu/taylor-martin-she-loved-horses-mp3.mp3?rlkey=i41o1fmafvva2likbm9cmxhn0&raw=1",
+      "needsWav": false,
+      "streaming": {},
+      "hasSrt": false
     },
     {
       "id": "silent-oblivion-bubblegum",
@@ -439,23 +435,33 @@
         "PETERS STEVEN SCOTT MR"
       ],
       "trackNumber": 1,
-      "albumOrder": 1
+      "albumOrder": 1,
+      "audio": "https://www.dropbox.com/scl/fi/3lx7e5ochef1cyhhgcxb3/silent-oblivion-bubblegum-mp3.mp3?rlkey=xeat09g9mpdeqkqh7296kgtva&raw=1",
+      "needsWav": false,
+      "streaming": {},
+      "hasSrt": false
     },
     {
-      "id": "september-skies-serena",
-      "artistId": "september-skies",
-      "artist": "September Skies",
-      "title": "Serena",
-      "album": "One Move at a Time",
-      "genre": "Alternative Rock",
+      "id": "sawyer-price-still-my-favorite-song",
+      "artistId": "sawyer-price",
+      "artist": "Sawyer Price",
+      "title": "Still My Favorite Song",
+      "album": "Unrushed",
+      "genre": "Texas country / Red Dirt",
       "releaseType": "single",
       "releaseDate": "2026-06-13",
-      "coverImage": "https://raw.githubusercontent.com/SteveP999/september-skies/main/images/covers/september-skies-serena-cover.png",
-      "albumCover": "https://raw.githubusercontent.com/SteveP999/september-skies/main/images/covers/september-skies-one-move-at-a-time-ALBUM-cover.png",
-      "audioFile": "https://www.dropbox.com/scl/fi/704jbke40c9q3y3jwqn0l/september-skies-serena-mp3.mp3?rlkey=7sh3b38a6zc7r81s1f61ydrne&raw=1",
-      "audioSrc": "https://www.dropbox.com/scl/fi/704jbke40c9q3y3jwqn0l/september-skies-serena-mp3.mp3?rlkey=7sh3b38a6zc7r81s1f61ydrne&raw=1",
-      "youtubeUrl": "",
-      "videos": [],
+      "coverImage": "https://raw.githubusercontent.com/SteveP999/Sawyer-Price/main/images/covers/sawyer-price-still-my-favorite-song-cover.png",
+      "albumCover": "https://raw.githubusercontent.com/SteveP999/Sawyer-Price/main/images/covers/sawyer-price-unrushed-ALBUM-cover.png",
+      "audioFile": "https://www.dropbox.com/scl/fi/qg86vamj1aeogqmqt5jve/sawyer-price-still-my-favorite-song-mp3.mp3?rlkey=fbg8qdzq23x3vmqqomc3hdgww&raw=1",
+      "audioSrc": "https://www.dropbox.com/scl/fi/qg86vamj1aeogqmqt5jve/sawyer-price-still-my-favorite-song-mp3.mp3?rlkey=fbg8qdzq23x3vmqqomc3hdgww&raw=1",
+      "youtubeUrl": "https://youtu.be/Oc64NmV4Nko",
+      "videos": [
+        {
+          "youtube": "https://youtu.be/Oc64NmV4Nko",
+          "title": "Official Video",
+          "order": 1
+        }
+      ],
       "featured": false,
       "explicit": false,
       "includeOnRadio": true,
@@ -464,22 +470,66 @@
       "isLatest": false,
       "unique": "X",
       "radio": "R",
-      "writer": "B",
-      "trackTime": "4:11",
-      "workNo": "80604173",
-      "regDate": "06/12/2026",
-      "iswc": "T3411844963",
+      "writer": "P",
+      "trackTime": "4:09",
+      "workNo": "80654448",
+      "regDate": "06/14/2026",
+      "iswc": "T3414296525",
       "songview": "Reconciled",
-      "liveDate": "8/2/26",
-      "releaseId": "4845670",
-      "upc": "7333591335583",
-      "isrc": "SE6132621487",
-      "regTitle": "SERENA",
+      "liveDate": "",
+      "releaseId": "",
+      "upc": "",
+      "isrc": "",
+      "regTitle": "STILL MY FAVORITE SONG",
       "regArtists": [
         "PETERS STEVEN SCOTT MR"
       ],
-      "trackNumber": 15,
-      "albumOrder": 15
+      "trackNumber": 8,
+      "albumOrder": 8,
+      "audio": "https://www.dropbox.com/scl/fi/qg86vamj1aeogqmqt5jve/sawyer-price-still-my-favorite-song-mp3.mp3?rlkey=fbg8qdzq23x3vmqqomc3hdgww&raw=1",
+      "needsWav": false,
+      "streaming": {},
+      "hasSrt": false
+    },
+    {
+      "id": "borrowed-whispers-two-tickets-to-anywhere",
+      "artistId": "borrowed-whispers",
+      "artist": "Borrowed Whispers",
+      "title": "Two Tickets to Anywhere",
+      "album": "I Still Remember",
+      "genre": "Yacht Rock, Soft Rock",
+      "releaseType": "single",
+      "releaseDate": "2026-06-04",
+      "coverImage": "https://raw.githubusercontent.com/SteveP999/borrowed-whispers/main/images/covers/borrowed-whispers-two-tickets-to-anywhere-cover.png",
+      "albumCover": "https://raw.githubusercontent.com/SteveP999/borrowed-whispers/main/images/covers/borrowed-whispers-i-still-remember-ALBUM-cover.png",
+      "audioFile": "https://www.dropbox.com/scl/fi/jt4q6r584hpndky1sv025/borrowed-whispers-two-tickets-to-anywhere-mp3.mp3?rlkey=xlpr07uuh3boipz7yxhi26jfv&raw=1",
+      "audioSrc": "https://www.dropbox.com/scl/fi/jt4q6r584hpndky1sv025/borrowed-whispers-two-tickets-to-anywhere-mp3.mp3?rlkey=xlpr07uuh3boipz7yxhi26jfv&raw=1",
+      "youtubeUrl": "",
+      "videos": [],
+      "featured": true,
+      "explicit": false,
+      "includeOnRadio": true,
+      "includeOnHomepage": true,
+      "tags": [],
+      "isLatest": true,
+      "workNo": "80441982",
+      "iswc": "T3411968413",
+      "regDate": "06/06/2026",
+      "songview": "Reconciled",
+      "regTitle": "TWO TICKETS TO ANYWHERE",
+      "unique": "",
+      "radio": "",
+      "writer": "",
+      "trackTime": "",
+      "liveDate": "",
+      "releaseId": "",
+      "upc": "",
+      "isrc": "",
+      "regArtists": [],
+      "audio": "https://www.dropbox.com/scl/fi/jt4q6r584hpndky1sv025/borrowed-whispers-two-tickets-to-anywhere-mp3.mp3?rlkey=xlpr07uuh3boipz7yxhi26jfv&raw=1",
+      "needsWav": false,
+      "streaming": {},
+      "hasSrt": false
     }
   ],
   "featuredArtists": [
@@ -567,7 +617,7 @@
         "Roster Photos/september-skies-roster-photo.png",
         "htr-logo.png"
       ],
-      "latestTitle": "One Move at a Time",
+      "latestTitle": "Love Is the Way",
       "tagline": "Alternative rock that fills a stadium with one chord"
     },
     {
@@ -1270,7 +1320,7 @@
         "Roster Photos/quiet-damage-roster-photo.png",
         "htr-logo.png"
       ],
-      "latestTitle": "anxiety"
+      "latestTitle": "10 Years"
     },
     {
       "id": "cheap-silver",
@@ -1298,6 +1348,35 @@
       "imageCandidates": [
         "Roster Photos/cheap-silver/cheap-silver-roster-photo.png",
         "Roster Photos/cheap-silver-roster-photo.png",
+        "htr-logo.png"
+      ]
+    },
+    {
+      "id": "twyla-tate",
+      "name": "Twyla Tate",
+      "githubRepo": "SteveP999/twyla-tate",
+      "siteUrl": "https://twyla-tate.hellotexasrecords.com",
+      "genre": "Jazz/Soul",
+      "tagline": "Turning Yesterdays Songs into Timeless Nights",
+      "status": "active",
+      "active": true,
+      "includeOnLabelHome": true,
+      "includeOnRadio": false,
+      "latestTitle": "",
+      "logo": "images/logos/twyla-tate-logo.png",
+      "heroImage": "Roster Photos/twyla-tate/twyla-tate-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "imageCandidates": [
+        "Roster Photos/twyla-tate/twyla-tate-roster-photo.png",
+        "Roster Photos/twyla-tate-roster-photo.png",
         "htr-logo.png"
       ]
     }
