@@ -1379,6 +1379,35 @@
         "Roster Photos/twyla-tate-roster-photo.png",
         "htr-logo.png"
       ]
+    },
+    {
+      "id": "hill-country-line",
+      "name": "Hill Country Line",
+      "githubRepo": "SteveP999/hill-country-line",
+      "siteUrl": "https://hill-country-line.hellotexasrecords.com",
+      "genre": "Progressive Texas Bluegrass",
+      "tagline": "From the Heart of the Hills",
+      "status": "active",
+      "active": true,
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "latestTitle": "",
+      "logo": "images/logos/hill-country-line-logo.png",
+      "heroImage": "Roster Photos/hill-country-line/hill-country-line-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "imageCandidates": [
+        "Roster Photos/hill-country-line/hill-country-line-roster-photo.png",
+        "Roster Photos/hill-country-line-roster-photo.png",
+        "htr-logo.png"
+      ]
     }
   ]
 }
