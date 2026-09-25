@@ -59,6 +59,13 @@ body{background:var(--black);color:var(--text);font-family:'DM Sans',sans-serif;
 .option-audio{width:100%;padding:0 16px 12px;display:flex;align-items:center;gap:10px}
 .option-embed{width:100%;padding:0 16px 14px}
 .option-embed iframe{width:100%;height:180px;border:none;border-radius:6px;display:block}
+.option-image{width:100%;padding:0 16px 14px}
+.option-image img{width:100%;max-height:280px;object-fit:cover;border-radius:6px;display:block}
+.poll-purpose{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;margin-top:6px}
+.rank-hint{font-family:'Space Mono',monospace;font-size:.62rem;color:var(--muted);letter-spacing:.06em;padding:0 24px 10px}
+.option-num.rank-num{color:var(--border)}
+.option.ranked .option-num.rank-num{color:var(--gold)}
+.rank-reset{background:none;border:none;color:var(--muted);font-family:'Space Mono',monospace;font-size:.6rem;text-decoration:underline;cursor:pointer;letter-spacing:.06em}
 .playbtn{width:32px;height:32px;border-radius:50%;border:1px solid var(--gold);background:transparent;color:var(--gold);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
 .playbtn:hover,.playbtn.playing{background:var(--gold);color:var(--black)}
 .progwrap{flex:1;height:3px;background:var(--border);border-radius:2px;cursor:pointer}
@@ -162,7 +169,7 @@ const app=initializeApp({apiKey:"AIzaSyDCEQYAA3uSJhEbBpxDT1c6xw3OfPvV4yA",authDo
 const auth=getAuth(app);
 const db=getFirestore(app);
 
-let member=null,polls=[],myVotes={},selected={},curAudio=null;
+let member=null,polls=[],myVotes={},selected={},curAudio=null,rankSel={};
 const gid=id=>document.getElementById(id);
 const pico=()=>'<svg width="11" height="13" viewBox="0 0 12 14" fill="currentColor"><path d="M0 0l12 7-12 7z"/></svg>';
 const pauco=()=>'<svg width="11" height="13" viewBox="0 0 12 14" fill="currentColor"><rect x="0" y="0" width="4" height="14"/><rect x="8" y="0" width="4" height="14"/></svg>';
@@ -180,15 +187,29 @@ async function loadPolls(){
       // Count real voters: all keys except _counts and any flat "_counts.N" legacy keys
       const voterKeys=Object.keys(data).filter(k=>k!=='_counts'&&!k.startsWith('_counts.'));
       p.totalVotes=voterKeys.length;
-      // Rebuild counts directly from the uid→optionIdx entries so display is always accurate
-      const rebuilt={};
-      voterKeys.forEach(uid=>{
-        const idx=String(data[uid]);
-        rebuilt[idx]=(rebuilt[idx]||0)+1;
-      });
-      p.counts=rebuilt;
+      if(p.voteType==='rank'){
+        const sum={},cnt={},first={};
+        voterKeys.forEach(uid=>{
+          const order=Array.isArray(data[uid])?data[uid]:[];
+          order.forEach((oi,pos)=>{
+            const idx=String(oi);
+            sum[idx]=(sum[idx]||0)+(pos+1);
+            cnt[idx]=(cnt[idx]||0)+1;
+            if(pos===0)first[idx]=(first[idx]||0)+1;
+          });
+        });
+        p.rankStats={sum,cnt,first};
+      } else {
+        // Rebuild counts directly from the uid→optionIdx entries so display is always accurate
+        const rebuilt={};
+        voterKeys.forEach(uid=>{
+          const idx=String(data[uid]);
+          rebuilt[idx]=(rebuilt[idx]||0)+1;
+        });
+        p.counts=rebuilt;
+      }
     }
-    else{p.totalVotes=0;p.counts={};}
+    else{p.totalVotes=0;p.counts={};p.rankStats={sum:{},cnt:{},first:{}};}
   }
   return list;
 }
@@ -205,10 +226,13 @@ async function loadMyVotes(uid){
 
 async function castVote(pollId,optIdx,notes){
   if(!member)return;
-  // Step 1: record the user's choice
+  const isRank=Array.isArray(optIdx);
+  // Step 1: record the user's choice (a ranked order array, or a single option index)
   await setDoc(doc(db,'songPollVotes',pollId),{[member.uid]:optIdx},{merge:true});
-  // Step 2: increment _counts.N — updateDoc dot-notation correctly nests, setDoc merge does NOT
-  await updateDoc(doc(db,'songPollVotes',pollId),{[`_counts.${optIdx}`]:increment(1)});
+  if(!isRank){
+    // Step 2: increment _counts.N — updateDoc dot-notation correctly nests, setDoc merge does NOT
+    await updateDoc(doc(db,'songPollVotes',pollId),{[`_counts.${optIdx}`]:increment(1)});
+  }
   await updateDoc(doc(db,'users',member.uid),{songVotes:arrayUnion({pollId,optionIdx:optIdx,votedAt:new Date().toISOString(),notes:notes||''}),badges:arrayUnion('first-vote')}).catch(()=>{});
   myVotes[pollId]=optIdx;
 }
@@ -264,6 +288,10 @@ function render(){
 }
 
 function pollHTML(p){
+  return p.voteType==='rank' ? pollHTMLRank(p) : pollHTMLSingle(p);
+}
+
+function pollHTMLSingle(p){
   const voted=myVotes[p.id]!==undefined;
   const total=p.totalVotes||0;
   const counts=p.counts||{};
@@ -274,6 +302,7 @@ function pollHTML(p){
     <div class="poll-header">
       <div class="poll-song">${p.song}</div>
       <div class="poll-question">${p.question}</div>
+      ${p.purpose?`<div class="poll-purpose">${p.purpose}</div>`:''}
       <div class="poll-meta">
         <span class="poll-stat"><strong>${total}</strong> vote${total!==1?'s':''} cast</span>
         ${daysLeft!==null?`<span class="poll-deadline${daysLeft<=3?' closing':''}">${closed?'Closed':`${daysLeft}d remaining`}</span>`:''}
@@ -291,6 +320,7 @@ function pollHTML(p){
           ${voted||closed?'':`<div class="option-radio" id="radio-${p.id}-${i}"></div>`}
           ${isVoted?`<span style="font-family:'Space Mono',monospace;font-size:.65rem;color:var(--gold)">&#x2713; YOUR VOTE</span>`:''}
         </div>
+        ${o.imageUrl?`<div class="option-image"><img src="${o.imageUrl}" alt=""></div>`:''}
         ${o.sunoEmbed?`<div class="option-embed"><iframe src="${o.sunoEmbed}" frameborder="0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" onclick="event.stopPropagation()"></iframe></div>`:(o.audioUrl?`<div class="option-audio"><button class="playbtn" id="pb-${p.id}-${i}">${pico()}</button><div class="progwrap" id="bar-${p.id}-${i}"><div class="progfill" id="pf-${p.id}-${i}"></div></div><span class="ptime" id="pt-${p.id}-${i}">0:00</span></div>`:'')}
         <div class="bar-wrap${voted||closed?' show':''}" id="bw-${p.id}-${i}"><div class="bar-track"><div class="bar-fill" style="width:${pct}%"></div></div><div class="bar-label"><span>${o.label}</span><span>${vcount} vote${vcount!==1?'s':''} &bull; ${pct}%</span></div></div>
       </div>`;
@@ -303,6 +333,71 @@ function pollHTML(p){
     </div>
   </div>`;
 }
+
+function pollHTMLRank(p){
+  const voted=myVotes[p.id]!==undefined;
+  const myOrder=Array.isArray(myVotes[p.id])?myVotes[p.id]:[];
+  const curOrder=rankSel[p.id]||[];
+  const order=voted?myOrder:curOrder;
+  const total=p.totalVotes||0;
+  const stats=p.rankStats||{sum:{},cnt:{},first:{}};
+  const now=Date.now();
+  const closed=p.deadline&&new Date(p.deadline).getTime()<now;
+  const daysLeft=p.deadline?Math.ceil((new Date(p.deadline).getTime()-now)/(1000*60*60*24)):null;
+  const showResults=voted||closed||ADMIN_MODE;
+  let idxOrder=p.options.map((_,i)=>i);
+  if(showResults){
+    idxOrder=idxOrder.slice().sort((a,b)=>{
+      const av=stats.cnt[a]?stats.sum[a]/stats.cnt[a]:99;
+      const bv=stats.cnt[b]?stats.sum[b]/stats.cnt[b]:99;
+      return av-bv;
+    });
+  }
+  return `<div class="poll${voted?' voted':''}" id="poll-${p.id}">
+    <div class="poll-header">
+      <div class="poll-song">${p.song}</div>
+      <div class="poll-question">${p.question}</div>
+      ${p.purpose?`<div class="poll-purpose">${p.purpose}</div>`:''}
+      <div class="poll-meta">
+        <span class="poll-stat"><strong>${total}</strong> vote${total!==1?'s':''} cast</span>
+        ${daysLeft!==null?`<span class="poll-deadline${daysLeft<=3?' closing':''}">${closed?'Closed':`${daysLeft}d remaining`}</span>`:''}
+      </div>
+    </div>
+    ${voted||closed?'':`<div class="rank-hint">Tap each song below in your preferred order &mdash; 1st choice first. <button class="rank-reset" onclick="resetRank('${p.id}')">Reset</button></div>`}
+    <div class="options">${idxOrder.map(i=>{
+      const o=p.options[i];
+      const pos=order.indexOf(i);
+      const isRanked=pos!==-1;
+      const avg=stats.cnt[i]?(stats.sum[i]/stats.cnt[i]):null;
+      const firstCt=stats.first[i]||0;
+      const spanCount=Math.max(1,p.options.length-1);
+      const fillPct=avg!=null?Math.max(6,Math.round((1-(avg-1)/spanCount)*100)):0;
+      return `<div class="option${isRanked?' selected ranked':''}" id="opt-${p.id}-${i}" onclick="${voted||closed?'':`toggleRank('${p.id}',${i})`}">
+        <div class="option-inner">
+          <div class="option-num rank-num">${isRanked?(pos+1):(voted||closed?'&mdash;':String(i+1).padStart(2,'0'))}</div>
+          <div class="option-info"><div class="option-label">${o.label}</div>${o.artist?`<div class="option-artist" style="font-size:.72rem;color:var(--gold);letter-spacing:.05em;margin-top:2px">${o.artist}</div>`:''}${o.desc?`<div class="option-desc">${o.desc}</div>`:''}</div>
+        </div>
+        ${o.imageUrl?`<div class="option-image"><img src="${o.imageUrl}" alt=""></div>`:''}
+        ${o.sunoEmbed?`<div class="option-embed"><iframe src="${o.sunoEmbed}" frameborder="0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" onclick="event.stopPropagation()"></iframe></div>`:(o.audioUrl?`<div class="option-audio"><button class="playbtn" id="pb-${p.id}-${i}">${pico()}</button><div class="progwrap" id="bar-${p.id}-${i}"><div class="progfill" id="pf-${p.id}-${i}"></div></div><span class="ptime" id="pt-${p.id}-${i}">0:00</span></div>`:'')}
+        ${showResults?`<div class="bar-wrap show" id="bw-${p.id}-${i}"><div class="bar-track"><div class="bar-fill" style="width:${fillPct}%"></div></div><div class="bar-label"><span>${o.label}</span><span>${avg!=null?('avg rank '+avg.toFixed(1)):'no ranks yet'} &bull; ${firstCt} 1st-place</span></div></div>`:''}
+      </div>`;
+    }).join('')}</div>
+    <div class="poll-footer">
+      ${voted||closed
+        ?`<div class="voted-msg">${closed?'This poll is closed.':'&#x2713; Ranking submitted &mdash; thank you!'}</div>`
+        :`<div style="flex:1"><button class="vote-btn" id="vbtn-${p.id}" onclick="submitVote('${p.id}')" ${order.length===p.options.length?'':'disabled'}>Submit Ranking</button><div id="notes-wrap-${p.id}" style="margin-top:10px;display:${order.length?'block':'none'}"><textarea id="notes-${p.id}" class="ainput" style="width:100%;height:52px;resize:none;font-size:.82rem;padding:8px 10px;background:var(--black);border:1px solid var(--border);color:var(--text)" placeholder="Optional &mdash; tell us why you ranked it this way"></textarea></div></div>`}
+    </div>
+  </div>`;
+}
+
+window.toggleRank=function(pollId,idx){
+  if(!rankSel[pollId])rankSel[pollId]=[];
+  const arr=rankSel[pollId];
+  const pos=arr.indexOf(idx);
+  if(pos!==-1){arr.splice(pos,1);}else{arr.push(idx);}
+  render();
+};
+window.resetRank=function(pollId){rankSel[pollId]=[];render();};
 
 function wireAudio(p){
   p.options.forEach((o,i)=>{
@@ -336,6 +431,27 @@ window.selectOpt=function(pollId,idx){
 
 window.submitVote=async function(pollId){
   if(!member)return openModal('login');
+  const _poll=polls.find(p=>p.id===pollId);
+  if(_poll&&_poll.voteType==='rank'){
+    const order=rankSel[pollId]||[];
+    if(order.length!==_poll.options.length)return;
+    const notes=gid(`notes-${pollId}`)?.value?.trim()||'';
+    await castVote(pollId,order,notes);
+    const vs=await getDoc(doc(db,'songPollVotes',pollId));
+    if(vs.exists()){
+      const data=vs.data();
+      const voterKeys=Object.keys(data).filter(k=>k!=='_counts'&&!k.startsWith('_counts.'));
+      _poll.totalVotes=voterKeys.length;
+      const sum={},cnt={},first={};
+      voterKeys.forEach(uid=>{
+        const ord=Array.isArray(data[uid])?data[uid]:[];
+        ord.forEach((oi,pos)=>{const idx=String(oi);sum[idx]=(sum[idx]||0)+(pos+1);cnt[idx]=(cnt[idx]||0)+1;if(pos===0)first[idx]=(first[idx]||0)+1;});
+      });
+      _poll.rankStats={sum,cnt,first};
+    }
+    render();
+    return;
+  }
   if(selected[pollId]===undefined)return;
   const notes=gid(`notes-${pollId}`)?.value?.trim()||'';
   await castVote(pollId,selected[pollId],notes);
