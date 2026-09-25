@@ -57,6 +57,8 @@ body{background:var(--black);color:var(--text);font-family:'DM Sans',sans-serif;
 .option.selected .option-radio{border-color:var(--gold);background:var(--gold)}
 .option.selected .option-radio::after{content:'';width:8px;height:8px;border-radius:50%;background:var(--black)}
 .option-audio{width:100%;padding:0 16px 12px;display:flex;align-items:center;gap:10px}
+.option-embed{width:100%;padding:0 16px 14px}
+.option-embed iframe{width:100%;height:180px;border:none;border-radius:6px;display:block}
 .playbtn{width:32px;height:32px;border-radius:50%;border:1px solid var(--gold);background:transparent;color:var(--gold);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
 .playbtn:hover,.playbtn.playing{background:var(--gold);color:var(--black)}
 .progwrap{flex:1;height:3px;background:var(--border);border-radius:2px;cursor:pointer}
@@ -289,7 +291,7 @@ function pollHTML(p){
           ${voted||closed?'':`<div class="option-radio" id="radio-${p.id}-${i}"></div>`}
           ${isVoted?`<span style="font-family:'Space Mono',monospace;font-size:.65rem;color:var(--gold)">&#x2713; YOUR VOTE</span>`:''}
         </div>
-        ${o.audioUrl?`<div class="option-audio"><button class="playbtn" id="pb-${p.id}-${i}">${pico()}</button><div class="progwrap" id="bar-${p.id}-${i}"><div class="progfill" id="pf-${p.id}-${i}"></div></div><span class="ptime" id="pt-${p.id}-${i}">0:00</span></div>`:''}
+        ${o.sunoEmbed?`<div class="option-embed"><iframe src="${o.sunoEmbed}" frameborder="0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" onclick="event.stopPropagation()"></iframe></div>`:(o.audioUrl?`<div class="option-audio"><button class="playbtn" id="pb-${p.id}-${i}">${pico()}</button><div class="progwrap" id="bar-${p.id}-${i}"><div class="progfill" id="pf-${p.id}-${i}"></div></div><span class="ptime" id="pt-${p.id}-${i}">0:00</span></div>`:'')}
         <div class="bar-wrap${voted||closed?' show':''}" id="bw-${p.id}-${i}"><div class="bar-track"><div class="bar-fill" style="width:${pct}%"></div></div><div class="bar-label"><span>${o.label}</span><span>${vcount} vote${vcount!==1?'s':''} &bull; ${pct}%</span></div></div>
       </div>`;
     }).join('')}</div>
@@ -304,7 +306,7 @@ function pollHTML(p){
 
 function wireAudio(p){
   p.options.forEach((o,i)=>{
-    if(!o.audioUrl)return;
+    if(o.sunoEmbed||!o.audioUrl)return;
     const pb=gid(`pb-${p.id}-${i}`),pf=gid(`pf-${p.id}-${i}`),pt=gid(`pt-${p.id}-${i}`),bar=gid(`bar-${p.id}-${i}`);
     if(!pb)return;
     const audio=new Audio();audio.src=o.audioUrl;audio.removeAttribute('crossorigin');
