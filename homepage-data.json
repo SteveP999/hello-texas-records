@@ -740,6 +740,62 @@
       "tagline": "The reluctant voice that became our soundtrack"
     },
     {
+      "id": "twyla-tate",
+      "name": "Twyla Tate",
+      "githubRepo": "SteveP999/twyla-tate",
+      "siteUrl": "https://twyla-tate.hellotexasrecords.com",
+      "genre": "Jazz/Soul",
+      "tagline": "Turning Yesterdays Songs into Timeless Nights",
+      "status": "active",
+      "active": true,
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "latestTitle": "Wildflower",
+      "logo": "images/logos/twyla-tate-logo.png",
+      "heroImage": "Roster Photos/twyla-tate/twyla-tate-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "imageCandidates": [
+        "Roster Photos/twyla-tate/twyla-tate-roster-photo.png",
+        "Roster Photos/twyla-tate-roster-photo.png",
+        "htr-logo.png"
+      ]
+    },
+    {
+      "id": "brightons",
+      "name": "Brightons",
+      "repoFolder": "D:\\HTR\\repos\\artists\\brightons",
+      "repoPath": "D:\\brightons",
+      "githubRepo": "stevep999/brightons",
+      "siteUrl": "https://The-Brightons.hellotexasrecords.com",
+      "genre": "50s/60s Pop",
+      "status": "active",
+      "active": true,
+      "logo": "",
+      "heroImage": "Roster Photos/brightons/brightons-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "imageCandidates": [
+        "Roster Photos/brightons/brightons-roster-photo.png",
+        "Roster Photos/brightons-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Yesterday's Girl",
+      "tagline": "Four lads who learned from the greats"
+    },
+    {
       "id": "rio-valencia",
       "name": "Rio Valencia",
       "repoFolder": "D:\\HTR\\repos\\artists\\rio-valencia",
@@ -770,6 +826,66 @@
       "tagline": "Latin fire with no boundaries"
     },
     {
+      "id": "skyline-theory",
+      "name": "Skyline Theory",
+      "repoFolder": "D:\\HTR\\repos\\artists\\skyline-theory",
+      "githubRepo": "SteveP999/Skyline-Theory",
+      "siteUrl": "https://stevep999.github.io/Skyline-Theory/",
+      "genre": "EDM / progressive house",
+      "status": "active",
+      "logo": "skyline-theory-logo-text.png",
+      "heroImage": "Roster Photos/skyline-theory/skyline-theory-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/skyline-theory/skyline-theory-roster-photo.png",
+        "Roster Photos/skyline-theory-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Ghost in The Mirror",
+      "tagline": "EDM built for 2am and open roads"
+    },
+    {
+      "id": "hello-texas",
+      "name": "Hello Texas",
+      "repoFolder": "D:\\HTR\\repos\\artists\\hello-texas",
+      "githubRepo": "SteveP999/Hello-Texas",
+      "siteUrl": "https://stevep999.github.io/Hello-Texas/",
+      "genre": "Texas country / Southern rock",
+      "status": "active",
+      "logo": "hello-texas-logo.png",
+      "heroImage": "Roster Photos/hello-texas/hello-texas-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "latestTitle": "Modern Man Grind",
+      "heroLogoScale": 2.25,
+      "heroLogoMaxHeight": 560,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/hello-texas/hello-texas-roster-photo.png",
+        "Roster Photos/hello-texas-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "tagline": "Where country started and never stopped"
+    },
+    {
       "id": "bailey-wade",
       "name": "Bailey Wade",
       "githubRepo": "SteveP999/bailey-wade",
@@ -797,33 +913,6 @@
         "Roster Photos/bailey-wade-roster-photo.png",
         "htr-logo.png"
       ]
-    },
-    {
-      "id": "brightons",
-      "name": "Brightons",
-      "repoFolder": "D:\\HTR\\repos\\artists\\brightons",
-      "repoPath": "D:\\brightons",
-      "githubRepo": "stevep999/brightons",
-      "siteUrl": "https://The-Brightons.hellotexasrecords.com",
-      "genre": "50s/60s Pop",
-      "status": "active",
-      "active": true,
-      "logo": "",
-      "heroImage": "Roster Photos/brightons/brightons-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "imageCandidates": [
-        "Roster Photos/brightons/brightons-roster-photo.png",
-        "Roster Photos/brightons-roster-photo.png",
-        "htr-logo.png"
-      ],
-      "latestTitle": "Yesterday's Girl",
-      "tagline": "Four lads who learned from the greats"
     },
     {
       "id": "quincy-cade",
@@ -884,66 +973,6 @@
         "htr-logo.png"
       ],
       "tagline": "Raw. Honest. No filter."
-    },
-    {
-      "id": "hello-texas",
-      "name": "Hello Texas",
-      "repoFolder": "D:\\HTR\\repos\\artists\\hello-texas",
-      "githubRepo": "SteveP999/Hello-Texas",
-      "siteUrl": "https://stevep999.github.io/Hello-Texas/",
-      "genre": "Texas country / Southern rock",
-      "status": "active",
-      "logo": "hello-texas-logo.png",
-      "heroImage": "Roster Photos/hello-texas/hello-texas-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "latestTitle": "Modern Man Grind",
-      "heroLogoScale": 2.25,
-      "heroLogoMaxHeight": 560,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "active": true,
-      "imageCandidates": [
-        "Roster Photos/hello-texas/hello-texas-roster-photo.png",
-        "Roster Photos/hello-texas-roster-photo.png",
-        "htr-logo.png"
-      ],
-      "tagline": "Where country started and never stopped"
-    },
-    {
-      "id": "skyline-theory",
-      "name": "Skyline Theory",
-      "repoFolder": "D:\\HTR\\repos\\artists\\skyline-theory",
-      "githubRepo": "SteveP999/Skyline-Theory",
-      "siteUrl": "https://stevep999.github.io/Skyline-Theory/",
-      "genre": "EDM / progressive house",
-      "status": "active",
-      "logo": "skyline-theory-logo-text.png",
-      "heroImage": "Roster Photos/skyline-theory/skyline-theory-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "active": true,
-      "imageCandidates": [
-        "Roster Photos/skyline-theory/skyline-theory-roster-photo.png",
-        "Roster Photos/skyline-theory-roster-photo.png",
-        "htr-logo.png"
-      ],
-      "latestTitle": "Ghost in The Mirror",
-      "tagline": "EDM built for 2am and open roads"
     },
     {
       "id": "elliott-kessler",
@@ -1065,85 +1094,6 @@
       "tagline": "Rock that doesn't ask for permission"
     },
     {
-      "id": "night-shift",
-      "name": "Night Shift",
-      "repoFolder": "D:\\HTR\\repos\\artists\\night-shift",
-      "githubRepo": "SteveP999/Night-Shift",
-      "siteUrl": "https://stevep999.github.io/Night-Shift/",
-      "genre": "Disco-rock / party anthem pop",
-      "status": "active",
-      "logo": "night-shift-logo-transparent-background.png",
-      "heroImage": "Roster Photos/night-shift/night-shift-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "active": true,
-      "imageCandidates": [
-        "Roster Photos/night-shift/night-shift-roster-photo.png",
-        "Roster Photos/night-shift-roster-photo.png",
-        "htr-logo.png"
-      ],
-      "latestTitle": "Hearts Racing",
-      "tagline": "Disco never died — it just moved to Texas"
-    },
-    {
-      "id": "harlan-rhodes",
-      "name": "Harlan Rhodes",
-      "repoFolder": "D:\\HTR\\repos\\artists\\harlan-rhodes",
-      "githubRepo": "stevep999/harlan-rhodes",
-      "siteUrl": "https://harlan-rhodes.hellotexasrecords.com",
-      "genre": "Blues Rock / Blues Country",
-      "tagline": "Where country bleeds into blues and every scar sings.",
-      "status": "active",
-      "active": true,
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "latestTitle": "PAIN",
-      "heroImage": "Roster Photos/harlan-rhodes/harlan-rhodes-roster-photo.png",
-      "imageCandidates": [
-        "Roster Photos/harlan-rhodes/harlan-rhodes-roster-photo.png",
-        "Roster Photos/harlan-rhodes-roster-photo.png",
-        "htr-logo.png"
-      ]
-    },
-    {
-      "id": "lori-hayes",
-      "name": "Lori Hayes",
-      "githubRepo": "SteveP999/lori-hayes",
-      "siteUrl": "https://lori-hayes.hellotexasrecords.com",
-      "genre": "Heartland Roots Rock",
-      "tagline": "Live Life - And Live it simple",
-      "status": "active",
-      "active": true,
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "latestTitle": "Don't Need Permission",
-      "logo": "images/logos/lori-hayes-logo.png",
-      "heroImage": "Roster Photos/lori-hayes/lori-hayes-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "imageCandidates": [
-        "Roster Photos/lori-hayes/lori-hayes-roster-photo.png",
-        "Roster Photos/lori-hayes-roster-photo.png",
-        "htr-logo.png"
-      ]
-    },
-    {
       "id": "velvet-static",
       "name": "Velvet Static",
       "githubRepo": "SteveP999/velvet-static",
@@ -1171,37 +1121,6 @@
         "Roster Photos/velvet-static-roster-photo.png",
         "htr-logo.png"
       ]
-    },
-    {
-      "id": "lucas-harlow",
-      "name": "Lucas Harlow",
-      "repoFolder": "D:\\HTR\\repos\\artists\\lucas-harlow",
-      "githubRepo": "SteveP999/Lucas-Harlow",
-      "siteUrl": "https://stevep999.github.io/Lucas-Harlow/",
-      "genre": "New age piano / cinematic instrumental",
-      "status": "active",
-      "logo": "",
-      "heroImage": "Roster Photos/lucas-harlow/lucas-harlow-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "noVideoSection": true,
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "active": true,
-      "imageCandidates": [
-        "Roster Photos/lucas-harlow/lucas-harlow-roster-photo.png",
-        "Roster Photos/lucas-harlow-roster-photo.png",
-        "htr-logo.png"
-      ],
-      "latestTitle": "First Light",
-      "tagline": "New age piano for late nights and long drives"
     },
     {
       "id": "nightstrike",
@@ -1233,65 +1152,6 @@
       ],
       "latestTitle": "Crash and Burn",
       "tagline": "Bringing 1987 back whether you're ready or not"
-    },
-    {
-      "id": "pulse7",
-      "name": "PULSE7",
-      "repoFolder": "D:\\HTR\\repos\\artists\\pulse7",
-      "githubRepo": "SteveP999/PULSE7",
-      "siteUrl": "https://stevep999.github.io/PULSE7/",
-      "genre": "K-pop / dance-pop",
-      "status": "active",
-      "logo": "pulse7-logo.png",
-      "heroImage": "Roster Photos/pulse7/pulse7-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "active": true,
-      "imageCandidates": [
-        "Roster Photos/pulse7/pulse7-roster-photo.png",
-        "Roster Photos/pulse7-roster-photo.png",
-        "htr-logo.png"
-      ],
-      "latestTitle": "Two Nights",
-      "tagline": "Coming soon"
-    },
-    {
-      "id": "brent-alan",
-      "name": "Brent Alan",
-      "githubRepo": "SteveP999/brent-alan",
-      "siteUrl": "https://brent-alan.hellotexasrecords.com",
-      "genre": "Heartland Roots Rock",
-      "tagline": "Down to Earth Truths You Need to Hear",
-      "status": "active",
-      "active": true,
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "latestTitle": "Smoke",
-      "logo": "images/logos/brent-alan-logo.png",
-      "heroImage": "Roster Photos/brent-alan/brent-alan-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "imageCandidates": [
-        "Roster Photos/brent-alan/brent-alan-roster-photo.png",
-        "Roster Photos/brent-alan-roster-photo.png",
-        "htr-logo.png"
-      ]
     },
     {
       "id": "the-long-weekend",
@@ -1352,6 +1212,35 @@
       "latestTitle": "9 to 5"
     },
     {
+      "id": "lori-hayes",
+      "name": "Lori Hayes",
+      "githubRepo": "SteveP999/lori-hayes",
+      "siteUrl": "https://lori-hayes.hellotexasrecords.com",
+      "genre": "Heartland Roots Rock",
+      "tagline": "Live Life - And Live it simple",
+      "status": "active",
+      "active": true,
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "latestTitle": "Don't Need Permission",
+      "logo": "images/logos/lori-hayes-logo.png",
+      "heroImage": "Roster Photos/lori-hayes/lori-hayes-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "imageCandidates": [
+        "Roster Photos/lori-hayes/lori-hayes-roster-photo.png",
+        "Roster Photos/lori-hayes-roster-photo.png",
+        "htr-logo.png"
+      ]
+    },
+    {
       "id": "cheap-silver",
       "name": "Cheap Silver",
       "githubRepo": "SteveP999/cheap-silver",
@@ -1381,19 +1270,130 @@
       ]
     },
     {
-      "id": "twyla-tate",
-      "name": "Twyla Tate",
-      "githubRepo": "SteveP999/twyla-tate",
-      "siteUrl": "https://twyla-tate.hellotexasrecords.com",
-      "genre": "Jazz/Soul",
-      "tagline": "Turning Yesterdays Songs into Timeless Nights",
+      "id": "night-shift",
+      "name": "Night Shift",
+      "repoFolder": "D:\\HTR\\repos\\artists\\night-shift",
+      "githubRepo": "SteveP999/Night-Shift",
+      "siteUrl": "https://stevep999.github.io/Night-Shift/",
+      "genre": "Disco-rock / party anthem pop",
+      "status": "active",
+      "logo": "night-shift-logo-transparent-background.png",
+      "heroImage": "Roster Photos/night-shift/night-shift-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/night-shift/night-shift-roster-photo.png",
+        "Roster Photos/night-shift-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Hearts Racing",
+      "tagline": "Disco never died — it just moved to Texas"
+    },
+    {
+      "id": "harlan-rhodes",
+      "name": "Harlan Rhodes",
+      "repoFolder": "D:\\HTR\\repos\\artists\\harlan-rhodes",
+      "githubRepo": "stevep999/harlan-rhodes",
+      "siteUrl": "https://harlan-rhodes.hellotexasrecords.com",
+      "genre": "Blues Rock / Blues Country",
+      "tagline": "Where country bleeds into blues and every scar sings.",
       "status": "active",
       "active": true,
       "includeOnLabelHome": true,
       "includeOnRadio": true,
-      "latestTitle": "Wildflower",
-      "logo": "images/logos/twyla-tate-logo.png",
-      "heroImage": "Roster Photos/twyla-tate/twyla-tate-roster-photo.png",
+      "latestTitle": "PAIN",
+      "heroImage": "Roster Photos/harlan-rhodes/harlan-rhodes-roster-photo.png",
+      "imageCandidates": [
+        "Roster Photos/harlan-rhodes/harlan-rhodes-roster-photo.png",
+        "Roster Photos/harlan-rhodes-roster-photo.png",
+        "htr-logo.png"
+      ]
+    },
+    {
+      "id": "lucas-harlow",
+      "name": "Lucas Harlow",
+      "repoFolder": "D:\\HTR\\repos\\artists\\lucas-harlow",
+      "githubRepo": "SteveP999/Lucas-Harlow",
+      "siteUrl": "https://stevep999.github.io/Lucas-Harlow/",
+      "genre": "New age piano / cinematic instrumental",
+      "status": "active",
+      "logo": "",
+      "heroImage": "Roster Photos/lucas-harlow/lucas-harlow-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "noVideoSection": true,
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/lucas-harlow/lucas-harlow-roster-photo.png",
+        "Roster Photos/lucas-harlow-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "First Light",
+      "tagline": "New age piano for late nights and long drives"
+    },
+    {
+      "id": "pulse7",
+      "name": "PULSE7",
+      "repoFolder": "D:\\HTR\\repos\\artists\\pulse7",
+      "githubRepo": "SteveP999/PULSE7",
+      "siteUrl": "https://stevep999.github.io/PULSE7/",
+      "genre": "K-pop / dance-pop",
+      "status": "active",
+      "logo": "pulse7-logo.png",
+      "heroImage": "Roster Photos/pulse7/pulse7-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/pulse7/pulse7-roster-photo.png",
+        "Roster Photos/pulse7-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Two Nights",
+      "tagline": "Coming soon"
+    },
+    {
+      "id": "brent-alan",
+      "name": "Brent Alan",
+      "githubRepo": "SteveP999/brent-alan",
+      "siteUrl": "https://brent-alan.hellotexasrecords.com",
+      "genre": "Heartland Roots Rock",
+      "tagline": "Down to Earth Truths You Need to Hear",
+      "status": "active",
+      "active": true,
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "latestTitle": "Smoke",
+      "logo": "images/logos/brent-alan-logo.png",
+      "heroImage": "Roster Photos/brent-alan/brent-alan-roster-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -1404,8 +1404,8 @@
       "heroLogoOffsetY": 0,
       "heroLogoMobileScale": 1,
       "imageCandidates": [
-        "Roster Photos/twyla-tate/twyla-tate-roster-photo.png",
-        "Roster Photos/twyla-tate-roster-photo.png",
+        "Roster Photos/brent-alan/brent-alan-roster-photo.png",
+        "Roster Photos/brent-alan-roster-photo.png",
         "htr-logo.png"
       ]
     }
