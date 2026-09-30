@@ -544,7 +544,7 @@
       "active": true,
       "includeOnLabelHome": true,
       "includeOnRadio": true,
-      "latestTitle": "Somewhere In the Middle",
+      "latestTitle": "I Can't Take It Back",
       "logo": "images/logos/hill-country-line-logo.png",
       "heroImage": "Roster Photos/hill-country-line/hill-country-line-roster-photo.png",
       "dataFiles": {
@@ -780,7 +780,7 @@
       "active": true,
       "includeOnLabelHome": true,
       "includeOnRadio": true,
-      "latestTitle": "Half Drunk & Honest",
+      "latestTitle": "Well Enough",
       "logo": "images/logos/bailey-wade-logo.png",
       "heroImage": "Roster Photos/bailey-wade/bailey-wade-roster-photo.png",
       "dataFiles": {
@@ -1349,7 +1349,7 @@
         "Roster Photos/quiet-damage-roster-photo.png",
         "htr-logo.png"
       ],
-      "latestTitle": "anxiety"
+      "latestTitle": "9 to 5"
     },
     {
       "id": "cheap-silver",
