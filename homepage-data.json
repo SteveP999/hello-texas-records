@@ -1414,6 +1414,66 @@
       ]
     },
     {
+      "id": "taylor-martin",
+      "name": "Taylor Martin",
+      "repoFolder": "D:\\HTR\\repos\\artists\\taylor-martin",
+      "githubRepo": "SteveP999/Taylor-Martin",
+      "siteUrl": "https://stevep999.github.io/Taylor-Martin/",
+      "genre": "1970s soft pop / folk-rock",
+      "status": "active",
+      "logo": "taylor-martin-logo.png",
+      "heroImage": "Roster Photos/taylor-martin/taylor-martin-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/taylor-martin/taylor-martin-roster-photo.png",
+        "Roster Photos/taylor-martin-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "She Loved Horses",
+      "tagline": "Coming soon"
+    },
+    {
+      "id": "borrowed-whispers",
+      "name": "Borrowed Whispers",
+      "repoFolder": "D:\\HTR\\repos\\artists\\borrowed-whispers",
+      "githubRepo": "SteveP999/borrowed-whispers",
+      "siteUrl": "https://Borrowed-Whispers.hellotexasrecords.com",
+      "genre": "70s-80s Soft Rock, Soul",
+      "status": "active",
+      "logo": "images/logos/borrowed-whispers-logo.png",
+      "heroImage": "Roster Photos/borrowed-whispers/borrowed-whispers-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "latestTitle": "Still Falling For You",
+      "imageCandidates": [
+        "Roster Photos/borrowed-whispers/borrowed-whispers-roster-photo.png",
+        "Roster Photos/borrowed-whispers-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "active": true,
+      "tagline": "Two old friends and a decade of unfinished songs"
+    },
+    {
       "id": "darrell-clayborn",
       "name": "Darrell Clayborn",
       "githubRepo": "SteveP999/darrell-clayborn",
@@ -1424,7 +1484,7 @@
       "active": true,
       "includeOnLabelHome": true,
       "includeOnRadio": true,
-      "latestTitle": "",
+      "latestTitle": "What'd I Do?",
       "logo": "images/logos/darrell-clayborn-logo.png",
       "heroImage": "Roster Photos/darrell-clayborn/darrell-clayborn-roster-photo.png",
       "dataFiles": {
