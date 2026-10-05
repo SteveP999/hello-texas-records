@@ -517,7 +517,7 @@
       "regDate": "06/06/2026",
       "songview": "Reconciled",
       "regTitle": "TWO TICKETS TO ANYWHERE",
-      "unique": "REG",
+      "unique": "RET",
       "radio": "DEV",
       "writer": "",
       "trackTime": "",
@@ -528,7 +528,11 @@
       "regArtists": [],
       "audio": "https://www.dropbox.com/scl/fi/jt4q6r584hpndky1sv025/borrowed-whispers-two-tickets-to-anywhere-mp3.mp3?rlkey=xlpr07uuh3boipz7yxhi26jfv&raw=1",
       "needsWav": false,
-      "streaming": {},
+      "streaming": {
+        "spotify": "",
+        "apple": "",
+        "youtubeMusic": ""
+      },
       "hasSrt": false
     }
   ],
@@ -544,7 +548,7 @@
       "active": true,
       "includeOnLabelHome": true,
       "includeOnRadio": true,
-      "latestTitle": "I Can't Take It Back",
+      "latestTitle": "I'll See You There",
       "logo": "images/logos/hill-country-line-logo.png",
       "heroImage": "Roster Photos/hill-country-line/hill-country-line-roster-photo.png",
       "dataFiles": {
@@ -1406,6 +1410,35 @@
       "imageCandidates": [
         "Roster Photos/brent-alan/brent-alan-roster-photo.png",
         "Roster Photos/brent-alan-roster-photo.png",
+        "htr-logo.png"
+      ]
+    },
+    {
+      "id": "darrell-clayborn",
+      "name": "Darrell Clayborn",
+      "githubRepo": "SteveP999/darrell-clayborn",
+      "siteUrl": "https://darrell-clayborn.hellotexasrecords.com",
+      "genre": "80's Contemporary Country",
+      "tagline": "Songs for the Heartbroke and Hopeful",
+      "status": "active",
+      "active": true,
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "latestTitle": "",
+      "logo": "images/logos/darrell-clayborn-logo.png",
+      "heroImage": "Roster Photos/darrell-clayborn/darrell-clayborn-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "imageCandidates": [
+        "Roster Photos/darrell-clayborn/darrell-clayborn-roster-photo.png",
+        "Roster Photos/darrell-clayborn-roster-photo.png",
         "htr-logo.png"
       ]
     }
