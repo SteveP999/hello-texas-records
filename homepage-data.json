@@ -1501,6 +1501,35 @@
         "Roster Photos/darrell-clayborn-roster-photo.png",
         "htr-logo.png"
       ]
+    },
+    {
+      "id": "bender",
+      "name": "BENDER",
+      "githubRepo": "SteveP999/bender",
+      "siteUrl": "https://bender.hellotexasrecords.com",
+      "genre": "Hard Rock / Alt-Rock",
+      "tagline": "From the Ashes",
+      "status": "active",
+      "active": true,
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "latestTitle": "",
+      "logo": "images/logos/bender-logo.png",
+      "heroImage": "Roster Photos/bender/bender-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "imageCandidates": [
+        "Roster Photos/bender/bender-roster-photo.png",
+        "Roster Photos/bender-roster-photo.png",
+        "htr-logo.png"
+      ]
     }
   ]
 }
