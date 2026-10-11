@@ -377,7 +377,7 @@
       "unique": "REG",
       "radio": "DEV",
       "writer": "P",
-      "trackTime": "",
+      "trackTime": "3:24",
       "workNo": "79110314",
       "regDate": "05/05/2026",
       "iswc": "T3404572829",
@@ -394,7 +394,11 @@
       "albumOrder": 2,
       "audio": "https://www.dropbox.com/scl/fi/3qx8dfahefmelw492p2yu/taylor-martin-she-loved-horses-mp3.mp3?rlkey=i41o1fmafvva2likbm9cmxhn0&raw=1",
       "needsWav": false,
-      "streaming": {},
+      "streaming": {
+        "spotify": "",
+        "apple": "",
+        "youtubeMusic": ""
+      },
       "hasSrt": false
     },
     {
@@ -520,7 +524,7 @@
       "unique": "RET",
       "radio": "DEV",
       "writer": "",
-      "trackTime": "",
+      "trackTime": "3:33",
       "liveDate": "",
       "releaseId": "",
       "upc": "",
@@ -593,7 +597,7 @@
         "Roster Photos/avery-ivey-roster-photo.png",
         "htr-logo.png"
       ],
-      "latestTitle": "Back to Chapter One",
+      "latestTitle": "I Freeze",
       "tagline": "The voice that grew up in public"
     },
     {
@@ -876,7 +880,7 @@
       },
       "includeOnLabelHome": true,
       "includeOnRadio": true,
-      "latestTitle": "Modern Man Grind",
+      "latestTitle": "The Only Thing I Miss",
       "heroLogoScale": 2.25,
       "heroLogoMaxHeight": 560,
       "heroLogoOffsetY": 0,
