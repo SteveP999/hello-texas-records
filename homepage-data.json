@@ -523,7 +523,7 @@
       "regTitle": "TWO TICKETS TO ANYWHERE",
       "unique": "RET",
       "radio": "DEV",
-      "writer": "",
+      "writer": "P",
       "trackTime": "3:33",
       "liveDate": "",
       "releaseId": "",
@@ -537,7 +537,8 @@
         "apple": "",
         "youtubeMusic": ""
       },
-      "hasSrt": false
+      "hasSrt": false,
+      "trackNumber": 2
     }
   ],
   "featuredArtists": [
@@ -973,7 +974,7 @@
       "heroLogoMaxHeight": 420,
       "heroLogoOffsetY": 0,
       "heroLogoMobileScale": 1,
-      "latestTitle": "Just Move On",
+      "latestTitle": "Nothing Left in These Lungs",
       "active": true,
       "imageCandidates": [
         "Roster Photos/stephen-parsons/stephen-parsons-roster-photo.png",
