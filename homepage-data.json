@@ -316,10 +316,10 @@
       "albumCover": "https://raw.githubusercontent.com/SteveP999/Sawyer-Price/main/images/covers/sawyer-price-unrushed-ALBUM-cover.png",
       "audioFile": "https://www.dropbox.com/scl/fi/v5v10vobdgnk57rnni7ta/sawyer-price-whats-left-of-me-MP3.mp3?rlkey=ozaaqg4er1ekt2ctbf0v6id9a&raw=1",
       "audioSrc": "https://www.dropbox.com/scl/fi/v5v10vobdgnk57rnni7ta/sawyer-price-whats-left-of-me-MP3.mp3?rlkey=ozaaqg4er1ekt2ctbf0v6id9a&raw=1",
-      "youtubeUrl": "https://youtu.be/MY6Pwp78E_0",
+      "youtubeUrl": "https://youtu.be/MY6Pwp78E_0?si=xTyYaW1qPyGlO_h0",
       "videos": [
         {
-          "youtube": "https://youtu.be/MY6Pwp78E_0",
+          "youtube": "https://youtu.be/MY6Pwp78E_0?si=xTyYaW1qPyGlO_h0",
           "title": "Official Video",
           "order": 1
         }
@@ -343,14 +343,16 @@
       "upc": "",
       "isrc": "",
       "regTitle": "WHATS LEFT OF ME",
-      "regArtists": [
-        "PETERS STEVEN SCOTT MR"
-      ],
+      "regArtists": [],
       "trackNumber": 9,
       "albumOrder": 9,
       "audio": "https://www.dropbox.com/scl/fi/v5v10vobdgnk57rnni7ta/sawyer-price-whats-left-of-me-MP3.mp3?rlkey=ozaaqg4er1ekt2ctbf0v6id9a&raw=1",
       "needsWav": false,
-      "streaming": {},
+      "streaming": {
+        "spotify": "",
+        "apple": "",
+        "youtubeMusic": ""
+      },
       "hasSrt": false
     },
     {
@@ -458,10 +460,10 @@
       "albumCover": "https://raw.githubusercontent.com/SteveP999/Sawyer-Price/main/images/covers/sawyer-price-unrushed-ALBUM-cover.png",
       "audioFile": "https://www.dropbox.com/scl/fi/qg86vamj1aeogqmqt5jve/sawyer-price-still-my-favorite-song-mp3.mp3?rlkey=fbg8qdzq23x3vmqqomc3hdgww&raw=1",
       "audioSrc": "https://www.dropbox.com/scl/fi/qg86vamj1aeogqmqt5jve/sawyer-price-still-my-favorite-song-mp3.mp3?rlkey=fbg8qdzq23x3vmqqomc3hdgww&raw=1",
-      "youtubeUrl": "https://youtu.be/Oc64NmV4Nko",
+      "youtubeUrl": "https://youtu.be/Oc64NmV4Nko?si=JKTKrwoaP9PdCGr5",
       "videos": [
         {
-          "youtube": "https://youtu.be/Oc64NmV4Nko",
+          "youtube": "https://youtu.be/Oc64NmV4Nko?si=JKTKrwoaP9PdCGr5",
           "title": "Official Video",
           "order": 1
         }
@@ -492,7 +494,11 @@
       "albumOrder": 8,
       "audio": "https://www.dropbox.com/scl/fi/qg86vamj1aeogqmqt5jve/sawyer-price-still-my-favorite-song-mp3.mp3?rlkey=fbg8qdzq23x3vmqqomc3hdgww&raw=1",
       "needsWav": false,
-      "streaming": {},
+      "streaming": {
+        "spotify": "",
+        "apple": "",
+        "youtubeMusic": ""
+      },
       "hasSrt": false
     },
     {
@@ -543,19 +549,19 @@
   ],
   "featuredArtists": [
     {
-      "id": "hill-country-line",
-      "name": "Hill Country Line",
-      "githubRepo": "SteveP999/hill-country-line",
-      "siteUrl": "https://hill-country-line.hellotexasrecords.com",
-      "genre": "Progressive Texas Bluegrass",
-      "tagline": "From the Heart of the Hills",
+      "id": "twyla-tate",
+      "name": "Twyla Tate",
+      "githubRepo": "SteveP999/twyla-tate",
+      "siteUrl": "https://twyla-tate.hellotexasrecords.com",
+      "genre": "Jazz/Soul",
+      "tagline": "Turning Yesterdays Songs into Timeless Nights",
       "status": "active",
       "active": true,
       "includeOnLabelHome": true,
       "includeOnRadio": true,
-      "latestTitle": "I'll See You There",
-      "logo": "images/logos/hill-country-line-logo.png",
-      "heroImage": "Roster Photos/hill-country-line/hill-country-line-roster-photo.png",
+      "latestTitle": "Wildflower",
+      "logo": "images/logos/twyla-tate-logo.png",
+      "heroImage": "Roster Photos/twyla-tate/twyla-tate-roster-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -566,21 +572,21 @@
       "heroLogoOffsetY": 0,
       "heroLogoMobileScale": 1,
       "imageCandidates": [
-        "Roster Photos/hill-country-line/hill-country-line-roster-photo.png",
-        "Roster Photos/hill-country-line-roster-photo.png",
+        "Roster Photos/twyla-tate/twyla-tate-roster-photo.png",
+        "Roster Photos/twyla-tate-roster-photo.png",
         "htr-logo.png"
       ]
     },
     {
-      "id": "avery-ivey",
-      "name": "Avery Ivey",
-      "repoFolder": "D:\\HTR\\repos\\artists\\avery-ivey",
-      "githubRepo": "SteveP999/Avery-Ivey",
-      "siteUrl": "https://stevep999.github.io/Avery-Ivey/",
-      "genre": "Country / folk-pop / alt-rock",
+      "id": "lucas-harlow",
+      "name": "Lucas Harlow",
+      "repoFolder": "D:\\HTR\\repos\\artists\\lucas-harlow",
+      "githubRepo": "SteveP999/Lucas-Harlow",
+      "siteUrl": "https://stevep999.github.io/Lucas-Harlow/",
+      "genre": "New age piano / cinematic instrumental",
       "status": "active",
       "logo": "",
-      "heroImage": "Roster Photos/avery-ivey/avery-ivey-roster-photo.png",
+      "heroImage": "Roster Photos/lucas-harlow/lucas-harlow-roster-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -588,18 +594,19 @@
       },
       "includeOnLabelHome": true,
       "includeOnRadio": true,
+      "noVideoSection": true,
       "heroLogoScale": 1,
       "heroLogoMaxHeight": 420,
       "heroLogoOffsetY": 0,
       "heroLogoMobileScale": 1,
       "active": true,
       "imageCandidates": [
-        "Roster Photos/avery-ivey/avery-ivey-roster-photo.png",
-        "Roster Photos/avery-ivey-roster-photo.png",
+        "Roster Photos/lucas-harlow/lucas-harlow-roster-photo.png",
+        "Roster Photos/lucas-harlow-roster-photo.png",
         "htr-logo.png"
       ],
-      "latestTitle": "I Freeze",
-      "tagline": "The voice that grew up in public"
+      "latestTitle": "First Light",
+      "tagline": "New age piano for late nights and long drives"
     },
     {
       "id": "vincent-cole",
@@ -659,45 +666,15 @@
       "tagline": "Alternative rock that fills a stadium with one chord"
     },
     {
-      "id": "ivey-wilder",
-      "name": "Ivey Wilder",
-      "repoFolder": "D:\\HTR\\repos\\artists\\ivey-wilder",
-      "githubRepo": "SteveP999/Ivey-Wilder",
-      "siteUrl": "https://ivey-wilder.hellotexasrecords.com",
-      "genre": "Alt. Rock / Hard Rock",
-      "status": "active",
-      "logo": "images/logos/ivey-wilder-logo.png",
-      "heroImage": "Roster Photos/ivey-wilder/ivey-wilder-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "latestTitle": "If I Know Me",
-      "imageCandidates": [
-        "Roster Photos/ivey-wilder/ivey-wilder-roster-photo.png",
-        "Roster Photos/ivey-wilder-roster-photo.png",
-        "htr-logo.png"
-      ],
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "active": true,
-      "tagline": "Alt-rock edges on a country soul"
-    },
-    {
-      "id": "sawyer-price",
-      "name": "Sawyer Price",
-      "repoFolder": "D:\\HTR\\repos\\artists\\sawyer-price",
-      "githubRepo": "SteveP999/Sawyer-Price",
-      "siteUrl": "https://stevep999.github.io/Sawyer-Price/",
-      "genre": "Texas country / Red Dirt",
+      "id": "avery-ivey",
+      "name": "Avery Ivey",
+      "repoFolder": "D:\\HTR\\repos\\artists\\avery-ivey",
+      "githubRepo": "SteveP999/Avery-Ivey",
+      "siteUrl": "https://stevep999.github.io/Avery-Ivey/",
+      "genre": "Country / folk-pop / alt-rock",
       "status": "active",
       "logo": "",
-      "heroImage": "Roster Photos/sawyer-price/sawyer-price-roster-photo.png",
+      "heroImage": "Roster Photos/avery-ivey/avery-ivey-roster-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -711,128 +688,12 @@
       "heroLogoMobileScale": 1,
       "active": true,
       "imageCandidates": [
-        "Roster Photos/sawyer-price/sawyer-price-roster-photo.png",
-        "Roster Photos/sawyer-price-roster-photo.png",
+        "Roster Photos/avery-ivey/avery-ivey-roster-photo.png",
+        "Roster Photos/avery-ivey-roster-photo.png",
         "htr-logo.png"
       ],
-      "latestTitle": "Burnin' Gas",
-      "tagline": "Texas country, honest and unhurried"
-    },
-    {
-      "id": "daniel-kincaid",
-      "name": "Daniel Kincaid",
-      "repoFolder": "D:\\HTR\\repos\\artists\\daniel-kincaid",
-      "githubRepo": "SteveP999/Daniel-Kincaid",
-      "siteUrl": "https://stevep999.github.io/Daniel-Kincaid/",
-      "genre": "Soft rock / adult contemporary",
-      "status": "active",
-      "logo": "",
-      "heroImage": "Roster Photos/daniel-kincaid/daniel-kincaid-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "active": true,
-      "imageCandidates": [
-        "Roster Photos/daniel-kincaid/daniel-kincaid-roster-photo.png",
-        "Roster Photos/daniel-kincaid-roster-photo.png",
-        "htr-logo.png"
-      ],
-      "latestTitle": "Two Tickets To Anywhere",
-      "tagline": "The reluctant voice that became our soundtrack"
-    },
-    {
-      "id": "twyla-tate",
-      "name": "Twyla Tate",
-      "githubRepo": "SteveP999/twyla-tate",
-      "siteUrl": "https://twyla-tate.hellotexasrecords.com",
-      "genre": "Jazz/Soul",
-      "tagline": "Turning Yesterdays Songs into Timeless Nights",
-      "status": "active",
-      "active": true,
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "latestTitle": "Wildflower",
-      "logo": "images/logos/twyla-tate-logo.png",
-      "heroImage": "Roster Photos/twyla-tate/twyla-tate-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "imageCandidates": [
-        "Roster Photos/twyla-tate/twyla-tate-roster-photo.png",
-        "Roster Photos/twyla-tate-roster-photo.png",
-        "htr-logo.png"
-      ]
-    },
-    {
-      "id": "brightons",
-      "name": "Brightons",
-      "repoFolder": "D:\\HTR\\repos\\artists\\brightons",
-      "repoPath": "D:\\brightons",
-      "githubRepo": "stevep999/brightons",
-      "siteUrl": "https://The-Brightons.hellotexasrecords.com",
-      "genre": "50s/60s Pop",
-      "status": "active",
-      "active": true,
-      "logo": "",
-      "heroImage": "Roster Photos/brightons/brightons-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "imageCandidates": [
-        "Roster Photos/brightons/brightons-roster-photo.png",
-        "Roster Photos/brightons-roster-photo.png",
-        "htr-logo.png"
-      ],
-      "latestTitle": "Yesterday's Girl",
-      "tagline": "Four lads who learned from the greats"
-    },
-    {
-      "id": "rio-valencia",
-      "name": "Rio Valencia",
-      "repoFolder": "D:\\HTR\\repos\\artists\\rio-valencia",
-      "githubRepo": "SteveP999/Rio-Valencia",
-      "siteUrl": "https://stevep999.github.io/Rio-Valencia/",
-      "genre": "Latin pop / reggaeton fusion",
-      "status": "active",
-      "logo": "Rio Valencia Logo and Text.png",
-      "heroImage": "Roster Photos/rio-valencia/rio-valencia-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "active": true,
-      "imageCandidates": [
-        "Roster Photos/rio-valencia/rio-valencia-roster-photo.png",
-        "Roster Photos/rio-valencia-roster-photo.png",
-        "htr-logo.png"
-      ],
-      "latestTitle": "Fuego Lento",
-      "tagline": "Latin fire with no boundaries"
+      "latestTitle": "I Freeze",
+      "tagline": "The voice that grew up in public"
     },
     {
       "id": "skyline-theory",
@@ -865,6 +726,36 @@
       "tagline": "EDM built for 2am and open roads"
     },
     {
+      "id": "ivey-wilder",
+      "name": "Ivey Wilder",
+      "repoFolder": "D:\\HTR\\repos\\artists\\ivey-wilder",
+      "githubRepo": "SteveP999/Ivey-Wilder",
+      "siteUrl": "https://ivey-wilder.hellotexasrecords.com",
+      "genre": "Alt. Rock / Hard Rock",
+      "status": "active",
+      "logo": "images/logos/ivey-wilder-logo.png",
+      "heroImage": "Roster Photos/ivey-wilder/ivey-wilder-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "latestTitle": "If I Know Me",
+      "imageCandidates": [
+        "Roster Photos/ivey-wilder/ivey-wilder-roster-photo.png",
+        "Roster Photos/ivey-wilder-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "active": true,
+      "tagline": "Alt-rock edges on a country soul"
+    },
+    {
       "id": "hello-texas",
       "name": "Hello Texas",
       "repoFolder": "D:\\HTR\\repos\\artists\\hello-texas",
@@ -881,7 +772,7 @@
       },
       "includeOnLabelHome": true,
       "includeOnRadio": true,
-      "latestTitle": "The Only Thing I Miss",
+      "latestTitle": "To Ms. Jackson - With Love",
       "heroLogoScale": 2.25,
       "heroLogoMaxHeight": 560,
       "heroLogoOffsetY": 0,
@@ -895,19 +786,169 @@
       "tagline": "Where country started and never stopped"
     },
     {
-      "id": "bailey-wade",
-      "name": "Bailey Wade",
-      "githubRepo": "SteveP999/bailey-wade",
-      "siteUrl": "https://bailey-wade.hellotexasrecords.com",
-      "genre": "Contemporary Country",
-      "tagline": "All the country - all the smirk",
+      "id": "daniel-kincaid",
+      "name": "Daniel Kincaid",
+      "repoFolder": "D:\\HTR\\repos\\artists\\daniel-kincaid",
+      "githubRepo": "SteveP999/Daniel-Kincaid",
+      "siteUrl": "https://stevep999.github.io/Daniel-Kincaid/",
+      "genre": "Soft rock / adult contemporary",
+      "status": "active",
+      "logo": "",
+      "heroImage": "Roster Photos/daniel-kincaid/daniel-kincaid-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/daniel-kincaid/daniel-kincaid-roster-photo.png",
+        "Roster Photos/daniel-kincaid-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Two Tickets To Anywhere",
+      "tagline": "The reluctant voice that became our soundtrack"
+    },
+    {
+      "id": "stephen-parsons",
+      "name": "Stephen Parsons",
+      "repoFolder": "D:\\HTR\\repos\\artists\\stephen-parsons",
+      "githubRepo": "SteveP999/stephen-parsons",
+      "siteUrl": "https://stevep999.github.io/stephen-parsons/",
+      "genre": "Christian country / worship storyteller",
+      "status": "active",
+      "logo": "stephen-parsons-logo-transparent-oval.png",
+      "heroImage": "Roster Photos/stephen-parsons/stephen-parsons-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "latestTitle": "Cowboy Through and Through",
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/stephen-parsons/stephen-parsons-roster-photo.png",
+        "Roster Photos/stephen-parsons-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "tagline": "Raw. Honest. No filter."
+    },
+    {
+      "id": "parsons-cross",
+      "name": "Parsons Cross",
+      "repoFolder": "D:\\HTR\\repos\\artists\\parsons-cross",
+      "githubRepo": "SteveP999/Parsons-Cross",
+      "siteUrl": "https://stevep999.github.io/Parsons-Cross/",
+      "genre": "Contemporary Christian / worship",
+      "status": "active",
+      "logo": "PARSONS CROSS LOGO.png",
+      "heroImage": "Roster Photos/parsons-cross/parsons-cross-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/parsons-cross/parsons-cross-roster-photo.png",
+        "Roster Photos/parsons-cross-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "The Return",
+      "tagline": "Worship that doesn't ask permission"
+    },
+    {
+      "id": "rio-valencia",
+      "name": "Rio Valencia",
+      "repoFolder": "D:\\HTR\\repos\\artists\\rio-valencia",
+      "githubRepo": "SteveP999/Rio-Valencia",
+      "siteUrl": "https://stevep999.github.io/Rio-Valencia/",
+      "genre": "Latin pop / reggaeton fusion",
+      "status": "active",
+      "logo": "Rio Valencia Logo and Text.png",
+      "heroImage": "Roster Photos/rio-valencia/rio-valencia-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/rio-valencia/rio-valencia-roster-photo.png",
+        "Roster Photos/rio-valencia-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Fuego Lento",
+      "tagline": "Latin fire with no boundaries"
+    },
+    {
+      "id": "sawyer-price",
+      "name": "Sawyer Price",
+      "repoFolder": "D:\\HTR\\repos\\artists\\sawyer-price",
+      "githubRepo": "SteveP999/Sawyer-Price",
+      "siteUrl": "https://stevep999.github.io/Sawyer-Price/",
+      "genre": "Texas country / Red Dirt",
+      "status": "active",
+      "logo": "",
+      "heroImage": "Roster Photos/sawyer-price/sawyer-price-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/sawyer-price/sawyer-price-roster-photo.png",
+        "Roster Photos/sawyer-price-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Burnin' Gas",
+      "tagline": "Texas country, honest and unhurried"
+    },
+    {
+      "id": "hill-country-line",
+      "name": "Hill Country Line",
+      "githubRepo": "SteveP999/hill-country-line",
+      "siteUrl": "https://hill-country-line.hellotexasrecords.com",
+      "genre": "Progressive Texas Bluegrass",
+      "tagline": "From the Heart of the Hills",
       "status": "active",
       "active": true,
       "includeOnLabelHome": true,
       "includeOnRadio": true,
-      "latestTitle": "Well Enough",
-      "logo": "images/logos/bailey-wade-logo.png",
-      "heroImage": "Roster Photos/bailey-wade/bailey-wade-roster-photo.png",
+      "latestTitle": "I'll See You There",
+      "logo": "images/logos/hill-country-line-logo.png",
+      "heroImage": "Roster Photos/hill-country-line/hill-country-line-roster-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -918,8 +959,123 @@
       "heroLogoOffsetY": 0,
       "heroLogoMobileScale": 1,
       "imageCandidates": [
-        "Roster Photos/bailey-wade/bailey-wade-roster-photo.png",
-        "Roster Photos/bailey-wade-roster-photo.png",
+        "Roster Photos/hill-country-line/hill-country-line-roster-photo.png",
+        "Roster Photos/hill-country-line-roster-photo.png",
+        "htr-logo.png"
+      ]
+    },
+    {
+      "id": "brightons",
+      "name": "Brightons",
+      "repoFolder": "D:\\HTR\\repos\\artists\\brightons",
+      "repoPath": "D:\\brightons",
+      "githubRepo": "stevep999/brightons",
+      "siteUrl": "https://The-Brightons.hellotexasrecords.com",
+      "genre": "50s/60s Pop",
+      "status": "active",
+      "active": true,
+      "logo": "",
+      "heroImage": "Roster Photos/brightons/brightons-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "imageCandidates": [
+        "Roster Photos/brightons/brightons-roster-photo.png",
+        "Roster Photos/brightons-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Yesterday's Girl",
+      "tagline": "Four lads who learned from the greats"
+    },
+    {
+      "id": "the-long-weekend",
+      "name": "The Long Weekend",
+      "githubRepo": "SteveP999/the-long-weekend",
+      "siteUrl": "https://the-long-weekend.hellotexasrecords.com",
+      "genre": "1970s Soft Rock / Folk Rock",
+      "tagline": "some roads are worth getting lost on",
+      "status": "active",
+      "active": true,
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "latestTitle": "Anywhere But Here",
+      "logo": "images/logos/the-long-weekend-logo.png",
+      "heroImage": "Roster Photos/the-long-weekend/the-long-weekend-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "imageCandidates": [
+        "Roster Photos/the-long-weekend/the-long-weekend-roster-photo.png",
+        "Roster Photos/the-long-weekend-roster-photo.png",
+        "htr-logo.png"
+      ]
+    },
+    {
+      "id": "vanta",
+      "name": "Vanta",
+      "repoFolder": "D:\\HTR\\repos\\artists\\vanta",
+      "githubRepo": "SteveP999/vanta",
+      "siteUrl": "https://stevep999.github.io/vanta/",
+      "genre": "Funk rock / alternative rock",
+      "status": "active",
+      "logo": "vanta-logo.png",
+      "heroImage": "Roster Photos/vanta/vanta-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "active": true,
+      "imageCandidates": [
+        "Roster Photos/vanta/vanta-roster-photo.png",
+        "Roster Photos/vanta-roster-photo.png",
+        "htr-logo.png"
+      ],
+      "latestTitle": "Here Comes The Pain",
+      "tagline": "Rock that doesn't ask for permission"
+    },
+    {
+      "id": "elliott-kessler",
+      "name": "Elliott Kessler",
+      "githubRepo": "SteveP999/elliott-kessler",
+      "siteUrl": "https://elliott-kessler.hellotexasrecords.com",
+      "genre": "Emotional Alternative Pop",
+      "tagline": "The sound of Almost Letting Go",
+      "status": "active",
+      "active": true,
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "latestTitle": "We're All In this Together",
+      "logo": "images/logos/elliott-kessler-logo.png",
+      "heroImage": "Roster Photos/elliott-kessler/elliott-kessler-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "imageCandidates": [
+        "Roster Photos/elliott-kessler/elliott-kessler-roster-photo.png",
+        "Roster Photos/elliott-kessler-roster-photo.png",
         "htr-logo.png"
       ]
     },
@@ -954,95 +1110,6 @@
       ]
     },
     {
-      "id": "stephen-parsons",
-      "name": "Stephen Parsons",
-      "repoFolder": "D:\\HTR\\repos\\artists\\stephen-parsons",
-      "githubRepo": "SteveP999/stephen-parsons",
-      "siteUrl": "https://stevep999.github.io/stephen-parsons/",
-      "genre": "Christian country / worship storyteller",
-      "status": "active",
-      "logo": "stephen-parsons-logo-transparent-oval.png",
-      "heroImage": "Roster Photos/stephen-parsons/stephen-parsons-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "latestTitle": "Cowboy Through and Through",
-      "active": true,
-      "imageCandidates": [
-        "Roster Photos/stephen-parsons/stephen-parsons-roster-photo.png",
-        "Roster Photos/stephen-parsons-roster-photo.png",
-        "htr-logo.png"
-      ],
-      "tagline": "Raw. Honest. No filter."
-    },
-    {
-      "id": "elliott-kessler",
-      "name": "Elliott Kessler",
-      "githubRepo": "SteveP999/elliott-kessler",
-      "siteUrl": "https://elliott-kessler.hellotexasrecords.com",
-      "genre": "Emotional Alternative Pop",
-      "tagline": "The sound of Almost Letting Go",
-      "status": "active",
-      "active": true,
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "latestTitle": "We're All In this Together",
-      "logo": "images/logos/elliott-kessler-logo.png",
-      "heroImage": "Roster Photos/elliott-kessler/elliott-kessler-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "imageCandidates": [
-        "Roster Photos/elliott-kessler/elliott-kessler-roster-photo.png",
-        "Roster Photos/elliott-kessler-roster-photo.png",
-        "htr-logo.png"
-      ]
-    },
-    {
-      "id": "parsons-cross",
-      "name": "Parsons Cross",
-      "repoFolder": "D:\\HTR\\repos\\artists\\parsons-cross",
-      "githubRepo": "SteveP999/Parsons-Cross",
-      "siteUrl": "https://stevep999.github.io/Parsons-Cross/",
-      "genre": "Contemporary Christian / worship",
-      "status": "active",
-      "logo": "PARSONS CROSS LOGO.png",
-      "heroImage": "Roster Photos/parsons-cross/parsons-cross-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "active": true,
-      "imageCandidates": [
-        "Roster Photos/parsons-cross/parsons-cross-roster-photo.png",
-        "Roster Photos/parsons-cross-roster-photo.png",
-        "htr-logo.png"
-      ],
-      "latestTitle": "The Return",
-      "tagline": "Worship that doesn't ask permission"
-    },
-    {
       "id": "silent-oblivion",
       "name": "Silent Oblivion",
       "repoFolder": "D:\\HTR\\repos\\artists\\silent-oblivion",
@@ -1073,49 +1140,19 @@
       "tagline": "Alt-rock built for lift-off"
     },
     {
-      "id": "vanta",
-      "name": "Vanta",
-      "repoFolder": "D:\\HTR\\repos\\artists\\vanta",
-      "githubRepo": "SteveP999/vanta",
-      "siteUrl": "https://stevep999.github.io/vanta/",
-      "genre": "Funk rock / alternative rock",
-      "status": "active",
-      "logo": "vanta-logo.png",
-      "heroImage": "Roster Photos/vanta/vanta-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "active": true,
-      "imageCandidates": [
-        "Roster Photos/vanta/vanta-roster-photo.png",
-        "Roster Photos/vanta-roster-photo.png",
-        "htr-logo.png"
-      ],
-      "latestTitle": "A Man Like Me",
-      "tagline": "Rock that doesn't ask for permission"
-    },
-    {
-      "id": "velvet-static",
-      "name": "Velvet Static",
-      "githubRepo": "SteveP999/velvet-static",
-      "siteUrl": "https://velvet-static.hellotexasrecords.com",
-      "genre": "Synth-pop / Cold-wave / Dream Pop",
-      "tagline": "The internet made her famous.   But it never made her happy.",
+      "id": "bailey-wade",
+      "name": "Bailey Wade",
+      "githubRepo": "SteveP999/bailey-wade",
+      "siteUrl": "https://bailey-wade.hellotexasrecords.com",
+      "genre": "Contemporary Country",
+      "tagline": "All the country - all the smirk",
       "status": "active",
       "active": true,
       "includeOnLabelHome": true,
       "includeOnRadio": true,
-      "latestTitle": "Hit The Peak",
-      "logo": "images/logos/velvet-static-logo.png",
-      "heroImage": "Roster Photos/velvet-static/velvet-static-roster-photo.png",
+      "latestTitle": "Well Enough",
+      "logo": "images/logos/bailey-wade-logo.png",
+      "heroImage": "Roster Photos/bailey-wade/bailey-wade-roster-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -1126,8 +1163,8 @@
       "heroLogoOffsetY": 0,
       "heroLogoMobileScale": 1,
       "imageCandidates": [
-        "Roster Photos/velvet-static/velvet-static-roster-photo.png",
-        "Roster Photos/velvet-static-roster-photo.png",
+        "Roster Photos/bailey-wade/bailey-wade-roster-photo.png",
+        "Roster Photos/bailey-wade-roster-photo.png",
         "htr-logo.png"
       ]
     },
@@ -1159,37 +1196,8 @@
         "Roster Photos/nightstrike-roster-photo.png",
         "htr-logo.png"
       ],
-      "latestTitle": "Crash and Burn",
+      "latestTitle": "Don't Waste My Time",
       "tagline": "Bringing 1987 back whether you're ready or not"
-    },
-    {
-      "id": "the-long-weekend",
-      "name": "The Long Weekend",
-      "githubRepo": "SteveP999/the-long-weekend",
-      "siteUrl": "https://the-long-weekend.hellotexasrecords.com",
-      "genre": "1970s Soft Rock / Folk Rock",
-      "tagline": "some roads are worth getting lost on",
-      "status": "active",
-      "active": true,
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "latestTitle": "Anywhere But Here",
-      "logo": "images/logos/the-long-weekend-logo.png",
-      "heroImage": "Roster Photos/the-long-weekend/the-long-weekend-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "imageCandidates": [
-        "Roster Photos/the-long-weekend/the-long-weekend-roster-photo.png",
-        "Roster Photos/the-long-weekend-roster-photo.png",
-        "htr-logo.png"
-      ]
     },
     {
       "id": "quiet-damage",
@@ -1221,35 +1229,6 @@
       "latestTitle": "9 to 5"
     },
     {
-      "id": "lori-hayes",
-      "name": "Lori Hayes",
-      "githubRepo": "SteveP999/lori-hayes",
-      "siteUrl": "https://lori-hayes.hellotexasrecords.com",
-      "genre": "Heartland Roots Rock",
-      "tagline": "Live Life - And Live it simple",
-      "status": "active",
-      "active": true,
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "latestTitle": "Don't Need Permission",
-      "logo": "images/logos/lori-hayes-logo.png",
-      "heroImage": "Roster Photos/lori-hayes/lori-hayes-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "imageCandidates": [
-        "Roster Photos/lori-hayes/lori-hayes-roster-photo.png",
-        "Roster Photos/lori-hayes-roster-photo.png",
-        "htr-logo.png"
-      ]
-    },
-    {
       "id": "cheap-silver",
       "name": "Cheap Silver",
       "githubRepo": "SteveP999/cheap-silver",
@@ -1275,6 +1254,26 @@
       "imageCandidates": [
         "Roster Photos/cheap-silver/cheap-silver-roster-photo.png",
         "Roster Photos/cheap-silver-roster-photo.png",
+        "htr-logo.png"
+      ]
+    },
+    {
+      "id": "harlan-rhodes",
+      "name": "Harlan Rhodes",
+      "repoFolder": "D:\\HTR\\repos\\artists\\harlan-rhodes",
+      "githubRepo": "stevep999/harlan-rhodes",
+      "siteUrl": "https://harlan-rhodes.hellotexasrecords.com",
+      "genre": "Blues Rock / Blues Country",
+      "tagline": "Where country bleeds into blues and every scar sings.",
+      "status": "active",
+      "active": true,
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "latestTitle": "PAIN",
+      "heroImage": "Roster Photos/harlan-rhodes/harlan-rhodes-roster-photo.png",
+      "imageCandidates": [
+        "Roster Photos/harlan-rhodes/harlan-rhodes-roster-photo.png",
+        "Roster Photos/harlan-rhodes-roster-photo.png",
         "htr-logo.png"
       ]
     },
@@ -1309,55 +1308,33 @@
       "tagline": "Disco never died — it just moved to Texas"
     },
     {
-      "id": "harlan-rhodes",
-      "name": "Harlan Rhodes",
-      "repoFolder": "D:\\HTR\\repos\\artists\\harlan-rhodes",
-      "githubRepo": "stevep999/harlan-rhodes",
-      "siteUrl": "https://harlan-rhodes.hellotexasrecords.com",
-      "genre": "Blues Rock / Blues Country",
-      "tagline": "Where country bleeds into blues and every scar sings.",
+      "id": "lori-hayes",
+      "name": "Lori Hayes",
+      "githubRepo": "SteveP999/lori-hayes",
+      "siteUrl": "https://lori-hayes.hellotexasrecords.com",
+      "genre": "Heartland Roots Rock",
+      "tagline": "Live Life - And Live it simple",
       "status": "active",
       "active": true,
       "includeOnLabelHome": true,
       "includeOnRadio": true,
-      "latestTitle": "PAIN",
-      "heroImage": "Roster Photos/harlan-rhodes/harlan-rhodes-roster-photo.png",
-      "imageCandidates": [
-        "Roster Photos/harlan-rhodes/harlan-rhodes-roster-photo.png",
-        "Roster Photos/harlan-rhodes-roster-photo.png",
-        "htr-logo.png"
-      ]
-    },
-    {
-      "id": "lucas-harlow",
-      "name": "Lucas Harlow",
-      "repoFolder": "D:\\HTR\\repos\\artists\\lucas-harlow",
-      "githubRepo": "SteveP999/Lucas-Harlow",
-      "siteUrl": "https://stevep999.github.io/Lucas-Harlow/",
-      "genre": "New age piano / cinematic instrumental",
-      "status": "active",
-      "logo": "",
-      "heroImage": "Roster Photos/lucas-harlow/lucas-harlow-roster-photo.png",
+      "latestTitle": "Don't Need Permission",
+      "logo": "images/logos/lori-hayes-logo.png",
+      "heroImage": "Roster Photos/lori-hayes/lori-hayes-roster-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
         "latest": true
       },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "noVideoSection": true,
       "heroLogoScale": 1,
       "heroLogoMaxHeight": 420,
       "heroLogoOffsetY": 0,
       "heroLogoMobileScale": 1,
-      "active": true,
       "imageCandidates": [
-        "Roster Photos/lucas-harlow/lucas-harlow-roster-photo.png",
-        "Roster Photos/lucas-harlow-roster-photo.png",
+        "Roster Photos/lori-hayes/lori-hayes-roster-photo.png",
+        "Roster Photos/lori-hayes-roster-photo.png",
         "htr-logo.png"
-      ],
-      "latestTitle": "First Light",
-      "tagline": "New age piano for late nights and long drives"
+      ]
     },
     {
       "id": "pulse7",
@@ -1390,19 +1367,19 @@
       "tagline": "Coming soon"
     },
     {
-      "id": "brent-alan",
-      "name": "Brent Alan",
-      "githubRepo": "SteveP999/brent-alan",
-      "siteUrl": "https://brent-alan.hellotexasrecords.com",
-      "genre": "Heartland Roots Rock",
-      "tagline": "Down to Earth Truths You Need to Hear",
+      "id": "darrell-clayborn",
+      "name": "Darrell Clayborn",
+      "githubRepo": "SteveP999/darrell-clayborn",
+      "siteUrl": "https://darrell-clayborn.hellotexasrecords.com",
+      "genre": "80's Contemporary Country",
+      "tagline": "Songs for the Heartbroke and Hopeful",
       "status": "active",
       "active": true,
       "includeOnLabelHome": true,
       "includeOnRadio": true,
-      "latestTitle": "Smoke",
-      "logo": "images/logos/brent-alan-logo.png",
-      "heroImage": "Roster Photos/brent-alan/brent-alan-roster-photo.png",
+      "latestTitle": "What'd I Do?",
+      "logo": "images/logos/darrell-clayborn-logo.png",
+      "heroImage": "Roster Photos/darrell-clayborn/darrell-clayborn-roster-photo.png",
       "dataFiles": {
         "songs": true,
         "radio": true,
@@ -1413,8 +1390,8 @@
       "heroLogoOffsetY": 0,
       "heroLogoMobileScale": 1,
       "imageCandidates": [
-        "Roster Photos/brent-alan/brent-alan-roster-photo.png",
-        "Roster Photos/brent-alan-roster-photo.png",
+        "Roster Photos/darrell-clayborn/darrell-clayborn-roster-photo.png",
+        "Roster Photos/darrell-clayborn-roster-photo.png",
         "htr-logo.png"
       ]
     },
@@ -1449,6 +1426,64 @@
       "tagline": "Coming soon"
     },
     {
+      "id": "bender",
+      "name": "BENDER",
+      "githubRepo": "SteveP999/bender",
+      "siteUrl": "https://bender.hellotexasrecords.com",
+      "genre": "Hard Rock / Alt-Rock",
+      "tagline": "From the Ashes",
+      "status": "active",
+      "active": true,
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "latestTitle": "Nothing Left In These Lungs",
+      "logo": "images/logos/bender-logo.png",
+      "heroImage": "Roster Photos/bender/bender-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "imageCandidates": [
+        "Roster Photos/bender/bender-roster-photo.png",
+        "Roster Photos/bender-roster-photo.png",
+        "htr-logo.png"
+      ]
+    },
+    {
+      "id": "brent-alan",
+      "name": "Brent Alan",
+      "githubRepo": "SteveP999/brent-alan",
+      "siteUrl": "https://brent-alan.hellotexasrecords.com",
+      "genre": "Heartland Roots Rock",
+      "tagline": "Down to Earth Truths You Need to Hear",
+      "status": "active",
+      "active": true,
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "latestTitle": "Smoke",
+      "logo": "images/logos/brent-alan-logo.png",
+      "heroImage": "Roster Photos/brent-alan/brent-alan-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "imageCandidates": [
+        "Roster Photos/brent-alan/brent-alan-roster-photo.png",
+        "Roster Photos/brent-alan-roster-photo.png",
+        "htr-logo.png"
+      ]
+    },
+    {
       "id": "borrowed-whispers",
       "name": "Borrowed Whispers",
       "repoFolder": "D:\\HTR\\repos\\artists\\borrowed-whispers",
@@ -1477,64 +1512,6 @@
       "heroLogoMobileScale": 1,
       "active": true,
       "tagline": "Two old friends and a decade of unfinished songs"
-    },
-    {
-      "id": "darrell-clayborn",
-      "name": "Darrell Clayborn",
-      "githubRepo": "SteveP999/darrell-clayborn",
-      "siteUrl": "https://darrell-clayborn.hellotexasrecords.com",
-      "genre": "80's Contemporary Country",
-      "tagline": "Songs for the Heartbroke and Hopeful",
-      "status": "active",
-      "active": true,
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "latestTitle": "What'd I Do?",
-      "logo": "images/logos/darrell-clayborn-logo.png",
-      "heroImage": "Roster Photos/darrell-clayborn/darrell-clayborn-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "imageCandidates": [
-        "Roster Photos/darrell-clayborn/darrell-clayborn-roster-photo.png",
-        "Roster Photos/darrell-clayborn-roster-photo.png",
-        "htr-logo.png"
-      ]
-    },
-    {
-      "id": "bender",
-      "name": "BENDER",
-      "githubRepo": "SteveP999/bender",
-      "siteUrl": "https://bender.hellotexasrecords.com",
-      "genre": "Hard Rock / Alt-Rock",
-      "tagline": "From the Ashes",
-      "status": "active",
-      "active": true,
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "latestTitle": "Nothing Left In These Lungs",
-      "logo": "images/logos/bender-logo.png",
-      "heroImage": "Roster Photos/bender/bender-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "imageCandidates": [
-        "Roster Photos/bender/bender-roster-photo.png",
-        "Roster Photos/bender-roster-photo.png",
-        "htr-logo.png"
-      ]
     }
   ]
 }
