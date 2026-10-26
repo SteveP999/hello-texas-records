@@ -1482,36 +1482,6 @@
         "Roster Photos/brent-alan-roster-photo.png",
         "htr-logo.png"
       ]
-    },
-    {
-      "id": "borrowed-whispers",
-      "name": "Borrowed Whispers",
-      "repoFolder": "D:\\HTR\\repos\\artists\\borrowed-whispers",
-      "githubRepo": "SteveP999/borrowed-whispers",
-      "siteUrl": "https://Borrowed-Whispers.hellotexasrecords.com",
-      "genre": "70s-80s Soft Rock, Soul",
-      "status": "active",
-      "logo": "images/logos/borrowed-whispers-logo.png",
-      "heroImage": "Roster Photos/borrowed-whispers/borrowed-whispers-roster-photo.png",
-      "dataFiles": {
-        "songs": true,
-        "radio": true,
-        "latest": true
-      },
-      "includeOnLabelHome": true,
-      "includeOnRadio": true,
-      "latestTitle": "Still Falling For You",
-      "imageCandidates": [
-        "Roster Photos/borrowed-whispers/borrowed-whispers-roster-photo.png",
-        "Roster Photos/borrowed-whispers-roster-photo.png",
-        "htr-logo.png"
-      ],
-      "heroLogoScale": 1,
-      "heroLogoMaxHeight": 420,
-      "heroLogoOffsetY": 0,
-      "heroLogoMobileScale": 1,
-      "active": true,
-      "tagline": "Two old friends and a decade of unfinished songs"
     }
   ]
 }
