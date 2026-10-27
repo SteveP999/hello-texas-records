@@ -1,0 +1,909 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Steve Deck</title>
+<meta name="theme-color" content="#0d0e11">
+<meta name="robots" content="noindex,nofollow">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Deck">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="../icon-192.png">
+<link rel="apple-touch-icon" href="../icon-180.png">
+<style>
+:root{
+  --bg:#0d0e11; --panel:#17191e; --panel2:#20232a; --line:#2d313a;
+  --text:#eceef2; --muted:#8a909b; --accent:#f5b83d; --danger:#ff5f6d;
+  --cols:5; --gap:14px;
+  --key:clamp(60px, calc((100vw - 110px - (var(--cols) - 1) * var(--gap)) / var(--cols)), 118px);
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:"Segoe UI",system-ui,-apple-system,sans-serif}
+body{background:radial-gradient(ellipse at 50% -15%,#2b2e37 0%,var(--bg) 62%) fixed;display:flex;flex-direction:column;align-items:center;min-height:100vh;padding:18px 16px 40px}
+button{font-family:inherit}
+
+/* ---------- top bar ---------- */
+.top{width:100%;max-width:1100px;display:flex;align-items:center;gap:12px;margin-bottom:22px;flex-wrap:wrap}
+.brand{font-weight:800;letter-spacing:.2em;font-size:13px;text-transform:uppercase}
+.crumbs{flex:1;min-width:120px;display:flex;gap:2px;align-items:center;color:var(--muted);font-size:13px;overflow:hidden;white-space:nowrap}
+.crumbs button{background:none;border:0;color:var(--muted);cursor:pointer;font-size:13px;padding:3px 6px;border-radius:5px}
+.crumbs button:hover{color:var(--text);background:var(--panel2)}
+.crumbs .cur{color:var(--text);font-weight:600}
+.clock{font-variant-numeric:tabular-nums;color:var(--muted);font-size:13px}
+.tbtn{background:var(--panel2);border:1px solid var(--line);color:var(--text);padding:7px 13px;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600}
+.tbtn:hover{border-color:#454a55}
+.tbtn.on{background:var(--accent);color:#1a1300;border-color:var(--accent)}
+
+/* ---------- device ---------- */
+.device{position:relative;background:linear-gradient(#1c1e24,#111216);border-radius:28px;padding:26px 28px 30px;border:1px solid #262a31;
+  box-shadow:0 34px 70px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.06)}
+.device-title{text-align:center;font-weight:800;letter-spacing:.24em;font-size:11px;color:#9aa0aa;margin:-6px 0 18px;text-transform:uppercase}
+.grid{display:grid;grid-template-columns:repeat(var(--cols),var(--key));gap:var(--gap)}
+.banner{max-width:640px;text-align:center;font-size:12.5px;color:var(--accent);margin:16px auto 0;min-height:1em}
+.dots{display:flex;gap:7px;justify-content:center;margin-top:18px}
+.dots span{width:7px;height:7px;border-radius:50%;background:#353943}
+.dots span.on{background:var(--accent)}
+
+/* ---------- keys ---------- */
+.key{width:var(--key);height:var(--key);border-radius:16px;position:relative;cursor:pointer;border:0;padding:0;background:#08090b;color:#fff;
+  box-shadow:0 0 0 2px #040405,0 6px 0 #040405,0 9px 16px rgba(0,0,0,.65);transition:transform .07s,box-shadow .07s}
+.key .face{position:absolute;inset:5px;border-radius:12px;background:var(--g);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;overflow:hidden;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.28),inset 0 -12px 22px rgba(0,0,0,.25)}
+.key .face::after{content:"";position:absolute;inset:0;background:linear-gradient(158deg,rgba(255,255,255,.3),rgba(255,255,255,0) 46%);pointer-events:none}
+.key .ico{font-size:calc(var(--key) * .34);line-height:1;filter:drop-shadow(0 2px 3px rgba(0,0,0,.35))}
+.key img.ico{width:52%;height:52%;object-fit:contain}
+.key .lbl{font-size:max(9px, calc(var(--key) * .105));font-weight:700;text-align:center;padding:0 6px;line-height:1.15;text-shadow:0 1px 2px rgba(0,0,0,.7);max-height:2.35em;overflow:hidden;word-break:break-word}
+.key .badge{position:absolute;top:8px;right:9px;font-size:11px;opacity:.85;z-index:2;text-shadow:0 1px 2px rgba(0,0,0,.6)}
+.key:active,.key.pressed{transform:translateY(4px);box-shadow:0 0 0 2px #040405,0 2px 0 #040405,0 3px 6px rgba(0,0,0,.6)}
+.key.blank{cursor:default}
+.key.blank .face{background:#121419;box-shadow:inset 0 2px 9px rgba(0,0,0,.7)}
+.key.blank:active{transform:none;box-shadow:0 0 0 2px #040405,0 6px 0 #040405,0 9px 16px rgba(0,0,0,.65)}
+.key.unset .face>*:not(.badge){opacity:.55}
+.key.add .face{background:#121419;border:2px dashed #3d424c;color:var(--muted);box-shadow:none}
+.key.add .ico{font-size:calc(var(--key) * .3)}
+.editing .key.real{outline:2px dashed rgba(245,184,61,.45);outline-offset:3px}
+.key.drag-over{outline:2px solid var(--accent)!important;outline-offset:3px}
+.key.dragging{opacity:.35}
+
+/* ---------- modal ---------- */
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:flex-start;justify-content:center;padding:6vh 16px;z-index:50;overflow:auto}
+.scrim.show{display:flex}
+.modal{background:var(--panel);border:1px solid var(--line);border-radius:16px;width:100%;max-width:520px;padding:22px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.modal h2{margin:0 0 16px;font-size:17px}
+.row{display:flex;gap:14px;align-items:flex-start}
+.field{margin-bottom:14px;flex:1}
+.field label{display:block;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.field input[type=text],.field select,.field textarea,.field input[type=number]{width:100%;background:#0f1013;border:1px solid var(--line);color:var(--text);border-radius:8px;padding:9px 10px;font-size:14px;font-family:inherit}
+.field textarea{min-height:80px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent)}
+.hint{font-size:12px;color:var(--muted);margin-top:5px;line-height:1.4}
+.emojis{display:flex;flex-wrap:wrap;gap:4px;margin-top:7px}
+.emojis button{background:#0f1013;border:1px solid var(--line);border-radius:6px;font-size:17px;width:32px;height:32px;cursor:pointer;padding:0}
+.emojis button:hover{border-color:var(--accent)}
+.swatches{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.swatches button{width:28px;height:28px;border-radius:7px;border:2px solid transparent;cursor:pointer;padding:0}
+.swatches button.on{border-color:#fff}
+.swatches input[type=color]{width:34px;height:30px;border:0;background:none;padding:0;cursor:pointer}
+.preview{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:8px;padding-top:4px}
+.preview .key{--key:96px}
+.btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.btns .spacer{flex:1}
+.btn{background:var(--panel2);border:1px solid var(--line);color:var(--text);padding:9px 14px;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600}
+.btn:hover{border-color:#4a4f5a}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#1a1300}
+.btn.danger{color:var(--danger)}
+.note-area{width:100%;min-height:46vh;background:#0f1013;border:1px solid var(--line);color:var(--text);border-radius:10px;padding:14px;font-size:15px;line-height:1.5;font-family:inherit;resize:vertical}
+.note-area:focus{outline:none;border-color:var(--accent)}
+
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(20px);background:#25282f;border:1px solid var(--line);color:var(--text);padding:10px 16px;border-radius:10px;font-size:13.5px;opacity:0;transition:.2s;pointer-events:none;z-index:99;max-width:90vw}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+.sync{font-size:12.5px;color:var(--muted);background:none;border:1px solid var(--line);border-radius:999px;padding:5px 11px;cursor:pointer;white-space:nowrap}
+.sync.ok{color:#5ee6a1;border-color:#1f4d3a}
+.sync.warn{color:var(--accent);border-color:#5a4417}
+.sync.err{color:var(--danger);border-color:#5a2028}
+
+/* sign-in */
+.auth{position:fixed;inset:0;z-index:80;background:rgba(8,9,11,.92);display:none;align-items:center;justify-content:center;padding:16px}
+.auth.show{display:flex}
+.auth .modal{max-width:380px;text-align:center}
+.auth p{color:var(--muted);font-size:13.5px;line-height:1.5;margin:0 0 18px}
+.auth input{width:100%;background:#0f1013;border:1px solid var(--line);color:var(--text);border-radius:8px;padding:10px;font-size:15px;margin-bottom:8px;font-family:inherit}
+.auth input:focus{outline:none;border-color:var(--accent)}
+.auth .btn{width:100%;margin-bottom:8px;padding:11px}
+.auth .or{color:var(--muted);font-size:12px;margin:8px 0 10px}
+.auth .err{color:var(--danger);font-size:13px;min-height:1.2em;margin-top:4px}
+.auth .link{background:none;border:0;color:var(--muted);font-size:12.5px;cursor:pointer;text-decoration:underline;margin-top:6px}
+
+@media (max-width:560px){
+  .device{padding:16px 14px 20px;border-radius:20px}
+  :root{--gap:10px; --key:clamp(52px, calc((100vw - 64px - (var(--cols) - 1) * var(--gap)) / var(--cols)), 96px)}
+  .brand{display:none}
+  .clock{display:none}
+  .top{gap:8px;margin-bottom:14px}
+  .crumbs{order:5;flex-basis:100%}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="brand" id="brand">Steve Deck</div>
+  <nav class="crumbs" id="crumbs"></nav>
+  <span class="clock" id="clock"></span>
+  <button class="sync" id="syncBtn" title="Sync status">☁ …</button>
+  <button class="tbtn" id="editBtn" title="Ctrl+E">✎ Edit</button>
+  <button class="tbtn" id="setBtn">⚙ Settings</button>
+</header>
+
+<div class="device" id="device">
+  <div class="device-title" id="devTitle"></div>
+  <div class="grid" id="grid"></div>
+  <div class="dots" id="dots"></div>
+</div>
+<div class="banner" id="banner"></div>
+
+<!-- key editor -->
+<div class="scrim" id="edScrim">
+  <div class="modal">
+    <h2 id="edTitle">Edit key</h2>
+    <div class="row">
+      <div style="flex:1">
+        <div class="field"><label>Label</label><input type="text" id="edLabel" maxlength="40"></div>
+        <div class="field">
+          <label>Icon</label>
+          <div class="row" style="gap:8px;align-items:center">
+            <input type="text" id="edIcon" maxlength="8" style="width:70px;text-align:center;font-size:20px">
+            <button class="btn" id="edImgBtn">Upload image</button>
+            <button class="btn" id="edImgClear" style="display:none">Remove image</button>
+            <input type="file" id="edImgFile" accept="image/*" hidden>
+          </div>
+          <div class="emojis" id="edEmojis"></div>
+        </div>
+      </div>
+      <div class="preview"><div id="edPreview"></div><span class="hint">Preview</span></div>
+    </div>
+    <div class="field"><label>Color</label><div class="swatches" id="edSwatches"></div></div>
+    <div class="row">
+      <div class="field"><label>What it does</label>
+        <select id="edType">
+          <option value="folder">Folder — opens a new set of keys</option>
+          <option value="url">Open a website / web app</option>
+          <option value="file">Open a local file or folder</option>
+          <option value="note">Idea pad — a note that lives on the key</option>
+          <option value="copy">Copy text to clipboard</option>
+          <option value="multi">Open several links at once</option>
+        </select>
+      </div>
+      <div class="field"><label>Move to</label><select id="edMove"></select></div>
+    </div>
+    <div class="field" id="edValWrap"><label id="edValLabel">Value</label><textarea id="edValue" rows="2"></textarea><div class="hint" id="edValHint"></div></div>
+    <div class="btns" style="margin-top:-4px;margin-bottom:10px">
+      <button class="btn" id="edEarlier">◀ Move earlier</button>
+      <button class="btn" id="edLater">Move later ▶</button>
+    </div>
+    <div class="btns">
+      <button class="btn danger" id="edDelete">Delete</button>
+      <button class="btn" id="edDup">Duplicate</button>
+      <button class="btn" id="edOpen" style="display:none">Open folder →</button>
+      <span class="spacer"></span>
+      <button class="btn" id="edCancel">Cancel</button>
+      <button class="btn primary" id="edSave">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- note pad -->
+<div class="scrim" id="noteScrim">
+  <div class="modal" style="max-width:720px">
+    <h2 id="noteTitle">Ideas</h2>
+    <textarea class="note-area" id="noteText" placeholder="Dump it here. It saves as you type."></textarea>
+    <div class="btns"><span class="hint" id="noteStamp"></span><span class="spacer"></span><button class="btn primary" id="noteDone">Done</button></div>
+  </div>
+</div>
+
+<!-- settings -->
+<div class="scrim" id="setScrim">
+  <div class="modal">
+    <h2>Settings</h2>
+    <div class="field"><label>Deck name</label><input type="text" id="sTitle" maxlength="30"></div>
+    <div class="row">
+      <div class="field"><label>Columns</label><input type="number" id="sCols" min="3" max="8"></div>
+      <div class="field"><label>Rows</label><input type="number" id="sRows" min="2" max="6"></div>
+    </div>
+    <div class="field">
+      <label>Account</label>
+      <div class="hint" id="sAccount" style="margin:0 0 8px">Not signed in.</div>
+      <div class="btns" style="margin-top:0">
+        <button class="btn" id="sSignIn">Sign in</button>
+        <button class="btn" id="sSignOut">Sign out</button>
+      </div>
+    </div>
+    <div class="field">
+      <label>Backup</label>
+      <div class="btns" style="margin-top:0">
+        <button class="btn" id="sExport">Export deck (.json)</button>
+        <button class="btn" id="sImport">Import deck</button>
+        <input type="file" id="sImportFile" accept=".json,application/json" hidden>
+      </div>
+      <div class="hint">Signed in, every change syncs to all your devices. Export a backup once in a while anyway, because trusting one cloud with everything is how people end up with stories. Coming from the old local deck? Export there, Import here.</div>
+    </div>
+    <div class="field">
+      <label>Shortcuts</label>
+      <div class="hint">Right-click any key to edit it · Ctrl+E toggles edit mode · Backspace/Esc goes back · ← → flips pages</div>
+    </div>
+    <div class="btns">
+      <button class="btn danger" id="sReset">Reset to starter deck</button>
+      <span class="spacer"></span>
+      <button class="btn" id="sCancel">Cancel</button>
+      <button class="btn primary" id="sSave">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- sign-in -->
+<div class="auth" id="auth">
+  <div class="modal">
+    <h2>Steve Deck</h2>
+    <p>Sign in so your keys follow you to every computer and phone.</p>
+    <button class="btn primary" id="aGoogle">Sign in with Google</button>
+    <div class="or">or email</div>
+    <input type="email" id="aEmail" placeholder="Email" autocomplete="username">
+    <input type="password" id="aPass" placeholder="Password" autocomplete="current-password">
+    <button class="btn" id="aEmailIn">Sign in</button>
+    <button class="btn" id="aEmailNew">Create account</button>
+    <div class="err" id="aErr"></div>
+    <button class="link" id="aSkip">Skip — use this device only</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(() => {
+const STORE = 'steveDeck.v1';
+const G = {
+  gold:['#ffd25a','#d98e04'], orange:['#ffa04d','#e3530d'], red:['#ff6b6b','#b3173f'], pink:['#ff8fb1','#c42a7c'],
+  purple:['#b49cff','#6232d9'], blue:['#5fb4ff','#2a48d6'], teal:['#3fe0e0','#127a99'], green:['#5ee6a1','#0f8a5f'],
+  lime:['#c6f26b','#5c9e12'], brown:['#d29a62','#7a4720'], slate:['#6b7484','#2a2f39'], black:['#3a3d44','#0f1013']
+};
+const EMOJI = '🎙️ 🎵 🎸 📻 🎬 📷 🏈 🏀 🦅 🏗️ 📐 📊 🥃 ☕ 🚬 📝 💡 🪧 🥑 ⚖️ 🗣️ 📚 🔗 📁 🤖 🛠️ 💰 📅 🎯 ⭐ 🔥 🤘'.split(' ');
+
+const $ = id => document.getElementById(id);
+const uid = () => Math.random().toString(36).slice(2, 10);
+const clone = o => JSON.parse(JSON.stringify(o));
+
+/* ---------- starter deck ---------- */
+function k(label, icon, color, type, value, children){
+  const n = {id:uid(), label, icon, color, type, value:value||''};
+  if (type === 'folder') n.children = children || [];
+  return n;
+}
+const ideas = () => k('Ideas', '💡', 'slate', 'note', '');
+function seed(){
+  return {
+    settings:{title:'Steve Deck', cols:5, rows:3},
+    root:{id:'root', label:'Home', type:'folder', children:[
+      k('Hello Texas Records','🎙️','gold','folder','',[
+        k('HTR Studio','🎛️','gold','url','https://stevep999.github.io/htr-studio-app/'),
+        k('Control Center','🖥️','slate','file','D:\\HTR-Control-Center'),
+        k('Suno','🎵','purple','url','https://suno.com'),
+        k('Amuse','🚀','pink','url','https://www.amuse.io'),
+        k('YouTube Studio','▶️','red','url','https://studio.youtube.com'),
+        k('GitHub','🐙','black','url','https://github.com/SteveP999'),
+        k('Dropbox','📦','blue','url','https://www.dropbox.com/home'),
+        ideas()
+      ]),
+      k('Sports App','🏈','red','folder','',[
+        k('Sports Dashboard','📊','red','url',''),
+        k('ESPN CFB','🏈','slate','url','https://www.espn.com/college-football/'),
+        k('Eagles','🦅','green','url','https://www.philadelphiaeagles.com'),
+        ideas()
+      ]),
+      k('Riley-Scott','🏗️','orange','folder','',[
+        k('Bid Tab Analyzer','📊','orange','url',''),
+        k('Floor Plan Editor','📐','orange','url',''),
+        ideas()
+      ]),
+      k('Flavor Compass','🥃','brown','folder','',[ k('Open App','🥃','brown','url',''), ideas() ]),
+      k('Notepad App','📝','blue','folder','',[ k('Open App','📝','blue','url',''), ideas() ]),
+      k('Hardheadz','🤘','purple','folder','',[ ideas() ]),
+      k('Sign Company','🪧','teal','folder','',[ ideas() ]),
+      k('Keto Ledger','🥑','green','folder','',[ k('Open App','🥑','green','url',''), ideas() ]),
+      k('Vijae Speak','🗣️','pink','folder','',[ k('Open App','🗣️','pink','url',''), ideas() ]),
+      k('Claude','🤖','orange','url','https://claude.ai'),
+      k('Brain Dump','💡','lime','note','')
+    ]}
+  };
+}
+
+/* ---------- storage ---------- */
+function load(){
+  try { const s = localStorage.getItem(STORE); return s ? JSON.parse(s) : null; } catch(e){ return null; }
+}
+function save(){
+  state.updated = Date.now();
+  try { localStorage.setItem(STORE, JSON.stringify(state)); } catch(e){}
+  if (window.deckCloud && window.deckCloud.save) window.deckCloud.save(state);
+}
+
+let state = load() || seed();
+let path = [];      // folder ids from root down
+let page = 0;
+let editing = false;
+
+/* ---------- tree helpers ---------- */
+function find(id, node = state.root){
+  if (node.id === id) return node;
+  for (const c of node.children || []) { const r = find(id, c); if (r) return r; }
+  return null;
+}
+function parentOf(id, node = state.root){
+  for (const c of node.children || []) {
+    if (c.id === id) return node;
+    const r = parentOf(id, c); if (r) return r;
+  }
+  return null;
+}
+function current(){ return path.length ? find(path[path.length - 1]) : state.root; }
+function folders(node = state.root, depth = 0, out = [], skip = null){
+  if (node.id === skip) return out;
+  out.push({id:node.id, label:'\u00a0\u00a0'.repeat(depth) + (depth ? '› ' : '') + node.label});
+  for (const c of node.children || []) if (c.type === 'folder') folders(c, depth + 1, out, skip);
+  return out;
+}
+
+/* ---------- color ---------- */
+function shade(hex, pct){
+  let h = hex.replace('#',''); if (h.length === 3) h = h.split('').map(x => x + x).join('');
+  const n = parseInt(h, 16), f = 1 + pct / 100;
+  const c = v => Math.max(0, Math.min(255, Math.round(v * f)));
+  return '#' + [c(n >> 16), c((n >> 8) & 255), c(n & 255)].map(v => v.toString(16).padStart(2,'0')).join('');
+}
+function grad(color){
+  const p = G[color] || (/^#[0-9a-f]{3,6}$/i.test(color || '') ? [color, shade(color, -45)] : G.slate);
+  return `linear-gradient(145deg, ${p[0]}, ${p[1]})`;
+}
+
+/* ---------- key element ---------- */
+function isUnset(n){ return ['url','file','multi','copy'].includes(n.type) && !String(n.value || '').trim(); }
+function keyEl(n){
+  const b = document.createElement('button');
+  b.className = 'key';
+  const face = document.createElement('div');
+  face.className = 'face';
+  face.style.setProperty('--g', grad(n.color));
+  if (n.img) { const i = document.createElement('img'); i.className = 'ico'; i.src = n.img; i.alt = ''; face.appendChild(i); }
+  else if (n.icon) { const s = document.createElement('span'); s.className = 'ico'; s.textContent = n.icon; face.appendChild(s); }
+  if (n.label) { const l = document.createElement('div'); l.className = 'lbl'; l.textContent = n.label; face.appendChild(l); }
+  const badge = n.type === 'folder' ? '▸' : n.type === 'note' && n.value ? '✎' : isUnset(n) ? '•' : '';
+  if (badge) { const s = document.createElement('span'); s.className = 'badge'; s.textContent = badge; face.appendChild(s); }
+  b.appendChild(face);
+  if (isUnset(n)) b.classList.add('unset');
+  return b;
+}
+
+/* ---------- render ---------- */
+const phone = matchMedia('(max-width:560px)');
+phone.addEventListener('change', () => render());
+function layout(){
+  const {cols, rows} = state.settings;
+  if (!phone.matches || cols <= 4) return {cols, rows};
+  const c = 4;
+  return {cols:c, rows:Math.ceil(cols * rows / c)};
+}
+function render(){
+  const {title} = state.settings;
+  const {cols, rows} = layout();
+  document.documentElement.style.setProperty('--cols', cols);
+  $('brand').textContent = title;
+  document.title = title;
+  document.body.classList.toggle('editing', editing);
+  $('editBtn').classList.toggle('on', editing);
+  $('editBtn').textContent = editing ? '✓ Done' : '✎ Edit';
+  $('banner').textContent = editing ? 'Edit mode — click a key to change it, drag to rearrange, drop a key on Back to move it up a level.' : '';
+
+  // breadcrumbs
+  const cr = $('crumbs'); cr.innerHTML = '';
+  const trail = [state.root, ...path.map(id => find(id))];
+  trail.forEach((n, i) => {
+    if (i) { const s = document.createElement('span'); s.textContent = '›'; cr.appendChild(s); }
+    const b = document.createElement('button');
+    b.textContent = n.label;
+    if (i === trail.length - 1) b.className = 'cur';
+    b.onclick = () => { path = path.slice(0, i); page = 0; render(); };
+    cr.appendChild(b);
+  });
+  const f = current();
+  $('devTitle').textContent = path.length ? f.label : title;
+
+  // slots
+  const cap = cols * rows, inFolder = path.length > 0;
+  const items = f.children.slice();
+  if (editing) items.push({sys:'add'});
+  let per = cap - (inFolder ? 1 : 0);
+  const paged = items.length > per;
+  if (paged) per -= 2;
+  const pages = Math.max(1, Math.ceil(items.length / per));
+  page = Math.min(Math.max(0, page), pages - 1);
+
+  const slots = [];
+  if (inFolder) slots.push({sys:'back'});
+  slots.push(...items.slice(page * per, page * per + per));
+  while (slots.length < cap - (paged ? 2 : 0)) slots.push({sys:'blank'});
+  if (paged) slots.push({sys:'prev'}, {sys:'next'});
+
+  const grid = $('grid'); grid.innerHTML = '';
+  for (const s of slots) grid.appendChild(slotEl(s, pages));
+
+  const dots = $('dots'); dots.innerHTML = '';
+  if (pages > 1) for (let i = 0; i < pages; i++) { const d = document.createElement('span'); if (i === page) d.className = 'on'; dots.appendChild(d); }
+}
+
+function slotEl(s, pages){
+  let el;
+  if (s.sys === 'blank') {
+    el = keyEl({}); el.classList.add('blank'); el.tabIndex = -1;
+    el.addEventListener('dragover', e => { if (dragId) { e.preventDefault(); el.classList.add('drag-over'); } });
+    el.addEventListener('dragleave', () => el.classList.remove('drag-over'));
+    el.addEventListener('drop', e => { e.preventDefault(); moveWithin(dragId, null); });
+    return el;
+  }
+  if (s.sys === 'back') {
+    el = keyEl({icon:'⬅', label:'Back', color:'black'});
+    el.onclick = () => press(el, goBack);
+    el.addEventListener('dragover', e => { if (dragId) { e.preventDefault(); el.classList.add('drag-over'); } });
+    el.addEventListener('dragleave', () => el.classList.remove('drag-over'));
+    el.addEventListener('drop', e => { e.preventDefault(); moveUp(dragId); });
+    return el;
+  }
+  if (s.sys === 'prev' || s.sys === 'next') {
+    el = keyEl({icon: s.sys === 'prev' ? '◀' : '▶', label:`${page + 1} / ${pages}`, color:'black'});
+    el.onclick = () => press(el, () => { page = (page + (s.sys === 'prev' ? -1 : 1) + pages) % pages; render(); });
+    return el;
+  }
+  if (s.sys === 'add') {
+    el = keyEl({icon:'＋', label:'Add key'}); el.classList.add('add');
+    el.onclick = () => {
+      const n = k('New Key', '⭐', 'blue', 'url', '');
+      current().children.push(n); save(); render();
+      openEditor(n.id, true);
+    };
+    return el;
+  }
+  // real key
+  el = keyEl(s); el.classList.add('real'); el.dataset.id = s.id;
+  el.onclick = () => press(el, () => editing ? openEditor(s.id) : activate(s));
+  el.oncontextmenu = e => { e.preventDefault(); openEditor(s.id); };
+  if (editing) {
+    el.draggable = true;
+    el.addEventListener('dragstart', e => { dragId = s.id; el.classList.add('dragging'); e.dataTransfer.effectAllowed = 'move'; e.dataTransfer.setData('text/plain', s.id); });
+    el.addEventListener('dragend', () => { dragId = null; el.classList.remove('dragging'); });
+    el.addEventListener('dragover', e => { if (dragId && dragId !== s.id) { e.preventDefault(); el.classList.add('drag-over'); } });
+    el.addEventListener('dragleave', () => el.classList.remove('drag-over'));
+    el.addEventListener('drop', e => { e.preventDefault(); moveWithin(dragId, s.id); });
+  }
+  return el;
+}
+
+function press(el, fn){ el.classList.add('pressed'); setTimeout(() => el.classList.remove('pressed'), 110); fn(); }
+
+/* ---------- drag moves ---------- */
+let dragId = null;
+function moveWithin(id, targetId){
+  if (!id) return;
+  const kids = current().children;
+  const from = kids.findIndex(c => c.id === id);
+  if (from < 0) return;
+  const [n] = kids.splice(from, 1);
+  const to = targetId ? kids.findIndex(c => c.id === targetId) : kids.length;
+  kids.splice(to < 0 ? kids.length : (targetId && from <= to ? to + 1 : to), 0, n);
+  dragId = null; save(); render();
+}
+function moveUp(id){
+  if (!id || !path.length) return;
+  const here = current(), up = path.length > 1 ? find(path[path.length - 2]) : state.root;
+  const i = here.children.findIndex(c => c.id === id);
+  if (i < 0) return;
+  up.children.push(here.children.splice(i, 1)[0]);
+  dragId = null; save(); render(); toast(`Moved to ${up.label}`);
+}
+
+/* ---------- actions ---------- */
+function goBack(){ if (path.length) { path.pop(); page = 0; render(); } }
+
+function normalizeTarget(v){
+  v = v.trim();
+  if (/^[a-z]:[\\/]/i.test(v)) return 'file:///' + v.replace(/\\/g, '/');
+  if (/^\\\\/.test(v)) return 'file:' + v.replace(/\\/g, '/');
+  if (/^[a-z][a-z0-9+.-]*:/i.test(v)) return v;
+  return 'https://' + v;
+}
+function openTarget(v){
+  const u = normalizeTarget(v);
+  if (u.startsWith('file:') && location.protocol !== 'file:') {
+    toast('Browsers won\'t open folders on your PC from a website. Put that tool online (GitHub/Dropbox) and point this key at its link.');
+    return;
+  }
+  window.open(u, '_blank', 'noopener');
+}
+function activate(n){
+  switch (n.type) {
+    case 'folder': path.push(n.id); page = 0; render(); break;
+    case 'note': openNote(n.id); break;
+    case 'copy':
+      if (isUnset(n)) return needsSetup(n);
+      navigator.clipboard.writeText(n.value).then(() => toast('Copied.'), () => toast('Clipboard said no.'));
+      break;
+    case 'multi': {
+      if (isUnset(n)) return needsSetup(n);
+      const list = n.value.split('\n').map(x => x.trim()).filter(Boolean);
+      list.forEach(openTarget);
+      if (list.length > 1) toast(`Opened ${list.length} — if only one showed up, allow pop-ups for this page.`);
+      break;
+    }
+    default:
+      if (isUnset(n)) return needsSetup(n);
+      openTarget(n.value);
+  }
+}
+function needsSetup(n){ toast('This one isn\'t wired up yet. Tell it where to go.'); openEditor(n.id); }
+
+/* ---------- editor ---------- */
+let edId = null, edNew = false, draft = null;
+function openEditor(id, isNew = false){
+  const n = find(id); if (!n) return;
+  edId = id; edNew = isNew; draft = clone(n);
+  $('edTitle').textContent = isNew ? 'New key' : 'Edit key';
+  $('edLabel').value = draft.label || '';
+  $('edIcon').value = draft.icon || '';
+  $('edType').value = draft.type;
+  const mv = $('edMove'); mv.innerHTML = '';
+  const par = parentOf(id);
+  for (const f of folders(state.root, 0, [], id)) {
+    const o = document.createElement('option'); o.value = f.id; o.textContent = f.label;
+    if (par && f.id === par.id) o.selected = true;
+    mv.appendChild(o);
+  }
+  $('edValue').value = draft.type === 'folder' ? '' : (draft.value || '');
+  buildSwatches(); syncEditor();
+  $('edScrim').classList.add('show');
+  setTimeout(() => $('edLabel').focus(), 30);
+}
+function syncEditor(){
+  const t = draft.type;
+  const meta = {
+    folder:['', ''],
+    url:['Web address', 'e.g. https://stevep999.github.io/keto-ledger — Apps Script web app URLs work too.'],
+    file:['File or folder path', 'e.g. D:\\HTR-Control-Center\\index.html. Heads up: from the website, browsers refuse to open files on your PC (security thing, not a me thing). Online links work everywhere — use those when you can.'],
+    note:['Note', 'Ideas, to-dos, half-baked plans. Clicking the key opens this pad.'],
+    copy:['Text to copy', 'Handy for addresses, email templates, the tagline you keep retyping.'],
+    multi:['Links (one per line)', 'Opens them all at once. Your browser may ask permission for pop-ups the first time.']
+  }[t];
+  $('edValWrap').style.display = t === 'folder' ? 'none' : '';
+  $('edValLabel').textContent = meta[0];
+  $('edValHint').textContent = meta[1];
+  $('edValue').rows = t === 'note' || t === 'multi' ? 6 : 2;
+  $('edOpen').style.display = t === 'folder' && !edNew ? '' : 'none';
+  $('edImgClear').style.display = draft.img ? '' : 'none';
+  const p = $('edPreview'); p.innerHTML = ''; p.appendChild(keyEl(draft));
+  [...$('edSwatches').querySelectorAll('button')].forEach(b => b.classList.toggle('on', b.dataset.c === draft.color));
+}
+function buildSwatches(){
+  const w = $('edSwatches'); w.innerHTML = '';
+  for (const c of Object.keys(G)) {
+    const b = document.createElement('button'); b.dataset.c = c; b.title = c; b.style.background = grad(c);
+    b.onclick = () => { draft.color = c; syncEditor(); };
+    w.appendChild(b);
+  }
+  const pick = document.createElement('input'); pick.type = 'color'; pick.title = 'Custom color';
+  pick.value = /^#/.test(draft.color || '') ? draft.color : '#4a90e2';
+  pick.oninput = () => { draft.color = pick.value; syncEditor(); };
+  w.appendChild(pick);
+}
+$('edEmojis').append(...EMOJI.map(e => {
+  const b = document.createElement('button'); b.textContent = e; b.type = 'button';
+  b.onclick = () => { $('edIcon').value = e; draft.icon = e; delete draft.img; syncEditor(); };
+  return b;
+}));
+$('edLabel').oninput = e => { draft.label = e.target.value; syncEditor(); };
+$('edIcon').oninput = e => { draft.icon = e.target.value; syncEditor(); };
+$('edType').onchange = e => { draft.type = e.target.value; syncEditor(); };
+$('edImgBtn').onclick = () => $('edImgFile').click();
+$('edImgClear').onclick = () => { delete draft.img; syncEditor(); };
+$('edImgFile').onchange = e => {
+  const file = e.target.files[0]; e.target.value = '';
+  if (!file) return;
+  const r = new FileReader();
+  r.onload = () => {
+    const img = new Image();
+    img.onload = () => {
+      const S = 160, cv = document.createElement('canvas'); cv.width = cv.height = S;
+      const sc = Math.min(S / img.width, S / img.height), w = img.width * sc, h = img.height * sc;
+      cv.getContext('2d').drawImage(img, (S - w) / 2, (S - h) / 2, w, h);
+      draft.img = cv.toDataURL('image/png'); syncEditor();
+    };
+    img.src = r.result;
+  };
+  r.readAsDataURL(file);
+};
+function closeEditor(){ $('edScrim').classList.remove('show'); edId = null; draft = null; }
+$('edCancel').onclick = () => {
+  if (edNew) { const par = parentOf(edId); par.children = par.children.filter(c => c.id !== edId); save(); render(); }
+  closeEditor();
+};
+$('edSave').onclick = () => {
+  const n = find(edId); if (!n) return closeEditor();
+  draft.label = $('edLabel').value.trim() || 'Untitled';
+  draft.value = draft.type === 'folder' ? '' : $('edValue').value;
+  if (n.type === 'folder' && draft.type !== 'folder' && n.children.length) {
+    if (!confirm(`"${n.label}" has ${n.children.length} key(s) inside. Changing its type deletes them. Go ahead?`)) return;
+  }
+  if (draft.type === 'folder') draft.children = n.type === 'folder' ? n.children : [];
+  else delete draft.children;
+  Object.keys(n).forEach(key => delete n[key]);
+  Object.assign(n, draft);
+  const par = parentOf(n.id), target = $('edMove').value;
+  if (par && target && target !== par.id) {
+    par.children = par.children.filter(c => c.id !== n.id);
+    find(target).children.push(n);
+    toast(`Moved to ${find(target).label}`);
+  }
+  save(); closeEditor(); render();
+};
+$('edDelete').onclick = () => {
+  const n = find(edId); if (!n) return;
+  const extra = n.type === 'folder' && n.children.length ? ` and the ${n.children.length} key(s) inside it` : '';
+  if (!edNew && !confirm(`Delete "${n.label}"${extra}? No undo.`)) return;
+  const par = parentOf(edId); par.children = par.children.filter(c => c.id !== edId);
+  save(); closeEditor(); render();
+};
+$('edDup').onclick = () => {
+  const n = find(edId), par = parentOf(edId);
+  const reid = x => { x.id = uid(); (x.children || []).forEach(reid); return x; };
+  const copy = reid(clone(n)); copy.label += ' copy';
+  par.children.splice(par.children.indexOf(n) + 1, 0, copy);
+  save(); closeEditor(); render(); toast('Duplicated.');
+};
+function nudge(dir){
+  const par = parentOf(edId); if (!par) return;
+  const kids = par.children, i = kids.findIndex(c => c.id === edId), j = i + dir;
+  if (i < 0 || j < 0 || j >= kids.length) return toast(dir < 0 ? 'Already first.' : 'Already last.');
+  [kids[i], kids[j]] = [kids[j], kids[i]];
+  save(); render(); toast(`Position ${j + 1} of ${kids.length}`);
+}
+$('edEarlier').onclick = () => nudge(-1);
+$('edLater').onclick = () => nudge(1);
+$('edOpen').onclick = () => {
+  const id = edId; $('edSave').click();
+  const trail = []; let p = find(id);
+  while (p && p.id !== 'root') { trail.unshift(p.id); p = parentOf(p.id); }
+  path = trail; page = 0; render();
+};
+
+/* ---------- note pad ---------- */
+let noteId = null;
+function openNote(id){
+  const n = find(id); noteId = id;
+  $('noteTitle').textContent = n.label;
+  $('noteText').value = n.value || '';
+  $('noteStamp').textContent = n.edited ? 'Last edited ' + new Date(n.edited).toLocaleString() : '';
+  $('noteScrim').classList.add('show');
+  setTimeout(() => $('noteText').focus(), 30);
+}
+$('noteText').oninput = e => { const n = find(noteId); if (!n) return; n.value = e.target.value; n.edited = Date.now(); save(); };
+function closeNote(){ $('noteScrim').classList.remove('show'); noteId = null; render(); }
+$('noteDone').onclick = closeNote;
+
+/* ---------- settings ---------- */
+function openSettings(){
+  $('sTitle').value = state.settings.title;
+  $('sCols').value = state.settings.cols;
+  $('sRows').value = state.settings.rows;
+  $('setScrim').classList.add('show');
+}
+const clamp = (v, a, b) => Math.max(a, Math.min(b, parseInt(v, 10) || a));
+$('setBtn').onclick = openSettings;
+$('sCancel').onclick = () => $('setScrim').classList.remove('show');
+$('sSave').onclick = () => {
+  state.settings.title = $('sTitle').value.trim() || 'Steve Deck';
+  state.settings.cols = clamp($('sCols').value, 3, 8);
+  state.settings.rows = clamp($('sRows').value, 2, 6);
+  save(); $('setScrim').classList.remove('show'); render();
+};
+$('sExport').onclick = () => {
+  const blob = new Blob([JSON.stringify(state, null, 2)], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `steve-deck-backup-${new Date().toISOString().slice(0,10)}.json`;
+  a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+};
+$('sImport').onclick = () => $('sImportFile').click();
+$('sImportFile').onchange = e => {
+  const file = e.target.files[0]; e.target.value = '';
+  if (!file) return;
+  file.text().then(t => {
+    const d = JSON.parse(t);
+    if (!d.root || !Array.isArray(d.root.children)) throw new Error('bad');
+    if (!confirm('Replace your current deck with this backup?')) return;
+    state = d; state.settings = Object.assign({title:'Steve Deck', cols:5, rows:3}, d.settings);
+    path = []; page = 0; save(); $('setScrim').classList.remove('show'); render(); toast('Deck restored.');
+  }).catch(() => toast('That file isn\'t a deck backup.'));
+};
+$('sReset').onclick = () => {
+  if (!confirm('Wipe everything and go back to the starter deck? Export first if you care about any of it.')) return;
+  state = seed(); path = []; page = 0; save(); $('setScrim').classList.remove('show'); render();
+};
+
+/* ---------- misc ---------- */
+let tt;
+function toast(msg){ const t = $('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(tt); tt = setTimeout(() => t.classList.remove('show'), 3200); }
+function tick(){ $('clock').textContent = new Date().toLocaleString([], {weekday:'short', hour:'numeric', minute:'2-digit'}); }
+tick(); setInterval(tick, 20000);
+
+$('editBtn').onclick = () => { editing = !editing; render(); };
+document.querySelectorAll('.scrim').forEach(s => s.addEventListener('mousedown', e => {
+  if (e.target !== s) return;
+  if (s.id === 'edScrim') $('edCancel').click();
+  else if (s.id === 'noteScrim') closeNote();
+  else s.classList.remove('show');
+}));
+document.addEventListener('keydown', e => {
+  const open = document.querySelector('.scrim.show');
+  const typing = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
+  if (e.key === 'Escape') {
+    if (open) { open.id === 'edScrim' ? $('edCancel').click() : open.id === 'noteScrim' ? closeNote() : open.classList.remove('show'); }
+    else goBack();
+    return;
+  }
+  if (open || typing) return;
+  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'e') { e.preventDefault(); editing = !editing; render(); }
+  else if (e.key === 'Backspace') { e.preventDefault(); goBack(); }
+  else if (e.key === 'ArrowRight') { page++; render(); }
+  else if (e.key === 'ArrowLeft') { page = Math.max(0, page - 1); render(); }
+});
+
+/* ---------- bridge for the cloud layer ---------- */
+function valid(d){ return d && d.root && Array.isArray(d.root.children); }
+window.deckApp = {
+  getState: () => state,
+  busy: () => !!document.querySelector('.scrim.show') || editing && !!dragId,
+  replaceState(d){
+    if (!valid(d)) return false;
+    state = d;
+    state.settings = Object.assign({title:'Steve Deck', cols:5, rows:3}, d.settings);
+    try { localStorage.setItem(STORE, JSON.stringify(state)); } catch(e){}
+    path = path.filter(id => find(id));
+    render();
+    return true;
+  },
+  openSettings,
+  toast
+};
+setTimeout(() => { if (!window.deckCloud) { const b = $('syncBtn'); b.textContent = '☁ Offline'; b.className = 'sync err'; b.title = 'Couldn\'t reach Firebase — changes are saved on this device only.'; } }, 8000);
+$('syncBtn').onclick =() => window.deckCloud && window.deckCloud.signedIn() ? openSettings() : window.deckCloud ? window.deckCloud.showAuth() : openSettings();
+
+render();
+})();
+</script>
+
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+import { getAuth, onAuthStateChanged, signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
+import { getFirestore, doc, getDoc, setDoc, onSnapshot } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+
+const app = initializeApp({
+  apiKey: "AIzaSyDCEQYAA3uSJhEbBpxDT1c6xw3OfPvV4yA",
+  authDomain: "htr-fans.firebaseapp.com",
+  projectId: "htr-fans",
+  storageBucket: "htr-fans.firebasestorage.app",
+  messagingSenderId: "475143848447",
+  appId: "1:475143848447:web:288a666aa5a4556d6627ca"
+});
+const auth = getAuth(app), db = getFirestore(app);
+const D = window.deckApp, $ = id => document.getElementById(id);
+const SKIP = 'steveDeck.skipAuth', SYNCED = 'steveDeck.syncedUid';
+
+let user = null, ref = null, unsub = null, timer = null, lastPushed = 0, pending = null;
+
+function status(text, cls){ const b = $('syncBtn'); b.textContent = text; b.className = 'sync ' + (cls || ''); }
+function showAuth(){ $('aErr').textContent = ''; $('auth').classList.add('show'); }
+function hideAuth(){ $('auth').classList.remove('show'); }
+function errMsg(e){
+  const c = (e && e.code) || '';
+  if (c.includes('permission-denied')) return 'Firebase blocked the save — the Firestore rule for steveDeck isn\'t in place yet.';
+  if (c.includes('invalid-credential') || c.includes('wrong-password') || c.includes('user-not-found')) return 'Email or password is off.';
+  if (c.includes('email-already-in-use')) return 'That email already has an account — use Sign in.';
+  if (c.includes('weak-password')) return 'Password needs at least 6 characters.';
+  if (c.includes('popup')) return 'The sign-in popup got blocked or closed. Try again, or use email.';
+  if (c.includes('unauthorized-domain')) return 'This domain isn\'t on Firebase\'s authorized list yet.';
+  return (e && e.message) || 'Something went sideways.';
+}
+
+function push(state){
+  if (!ref) return;
+  const json = JSON.stringify(state);
+  if (json.length > 900000) { D.toast('Deck is getting huge (big key images). Cloud sync may stop — swap some images for emoji.'); }
+  lastPushed = state.updated || Date.now();
+  status('☁ Saving…', 'warn');
+  setDoc(ref, { data: json, updated: lastPushed, device: navigator.userAgent.slice(0, 120) })
+    .then(() => status('☁ Synced', 'ok'))
+    .catch(e => { status('☁ Not saved', 'err'); D.toast(errMsg(e)); });
+}
+
+window.deckCloud = {
+  signedIn: () => !!user,
+  showAuth,
+  save(state){
+    if (!ref) return;
+    status('☁ Saving…', 'warn');
+    clearTimeout(timer);
+    timer = setTimeout(() => push(state), 700);
+  }
+};
+
+function applyRemote(d){
+  if (D.busy()) { pending = d; return; }
+  pending = null;
+  if (D.replaceState(d)) status('☁ Synced', 'ok');
+}
+// apply anything that arrived while a dialog was open
+setInterval(() => { if (pending && !D.busy()) applyRemote(pending); }, 1000);
+
+onAuthStateChanged(auth, async u => {
+  user = u;
+  if (unsub) { unsub(); unsub = null; }
+  ref = null;
+  $('sAccount').textContent = u ? `Signed in as ${u.email || u.displayName || 'you'} — syncing everywhere.` : 'Not signed in. This device only.';
+  $('sSignIn').style.display = u ? 'none' : '';
+  $('sSignOut').style.display = u ? '' : 'none';
+  if (!u) {
+    status('☁ Sign in', 'warn');
+    let skipped = false; try { skipped = localStorage.getItem(SKIP) === '1'; } catch(e){}
+    if (!skipped) showAuth();
+    return;
+  }
+  hideAuth();
+  ref = doc(db, 'steveDeck', u.uid);
+  status('☁ Loading…', 'warn');
+  try {
+    const snap = await getDoc(ref);
+    const local = D.getState();
+    let synced = null; try { synced = localStorage.getItem(SYNCED); } catch(e){}
+    if (snap.exists()) {
+      const remote = JSON.parse(snap.data().data);
+      // A device that has never synced with this account always takes the cloud copy,
+      // so a fresh phone can't stomp the real deck with the starter one.
+      if (synced !== u.uid || (remote.updated || 0) >= (local.updated || 0)) D.replaceState(remote);
+      else push(local);           // this device has newer changes
+    } else {
+      push(local);                // first sign-in: cloud starts as this device's deck
+      D.toast('Deck uploaded. It\'ll follow you around now.');
+    }
+    try { localStorage.setItem(SYNCED, u.uid); } catch(e){}
+    status('☁ Synced', 'ok');
+  } catch(e) {
+    status('☁ Offline', 'err'); D.toast(errMsg(e));
+  }
+  unsub = onSnapshot(ref, s => {
+    if (!s.exists() || s.metadata.hasPendingWrites) return;
+    const v = s.data();
+    if ((v.updated || 0) <= lastPushed) return;          // our own echo
+    if ((v.updated || 0) <= (D.getState().updated || 0)) return;
+    try { applyRemote(JSON.parse(v.data)); } catch(e){}
+  }, e => { status('☁ Offline', 'err'); });
+});
+
+$('aGoogle').onclick = () => signInWithPopup(auth, new GoogleAuthProvider()).catch(e => $('aErr').textContent = errMsg(e));
+$('aEmailIn').onclick = () => signInWithEmailAndPassword(auth, $('aEmail').value.trim(), $('aPass').value).catch(e => $('aErr').textContent = errMsg(e));
+$('aEmailNew').onclick = () => createUserWithEmailAndPassword(auth, $('aEmail').value.trim(), $('aPass').value).catch(e => $('aErr').textContent = errMsg(e));
+$('aPass').onkeydown = e => { if (e.key === 'Enter') $('aEmailIn').click(); };
+$('aSkip').onclick = () => { try { localStorage.setItem(SKIP, '1'); } catch(e){} hideAuth(); };
+$('sSignIn').onclick = () => { document.getElementById('setScrim').classList.remove('show'); showAuth(); };
+$('sSignOut').onclick = () => { try { localStorage.removeItem(SKIP); } catch(e){} signOut(auth); document.getElementById('setScrim').classList.remove('show'); };
+</script>
+</body>
+</html>
