@@ -1465,6 +1465,35 @@
         "Roster Photos/brent-alan-roster-photo.png",
         "htr-logo.png"
       ]
+    },
+    {
+      "id": "riven-ashton",
+      "name": "Riven Ashton",
+      "githubRepo": "SteveP999/riven-ashton",
+      "siteUrl": "https://riven-ashton.hellotexasrecords.com",
+      "genre": "Southern Rap",
+      "tagline": "Texas Attitude",
+      "status": "active",
+      "active": true,
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "latestTitle": "Don't Test Me",
+      "logo": "images/logos/riven-ashton-logo.png",
+      "heroImage": "Roster Photos/riven-ashton/riven-ashton-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "imageCandidates": [
+        "Roster Photos/riven-ashton/riven-ashton-roster-photo.png",
+        "Roster Photos/riven-ashton-roster-photo.png",
+        "htr-logo.png"
+      ]
     }
   ]
 }
