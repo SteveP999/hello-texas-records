@@ -1477,7 +1477,7 @@
       "active": true,
       "includeOnLabelHome": true,
       "includeOnRadio": true,
-      "latestTitle": "Not My Problem",
+      "latestTitle": "Don't Test Me",
       "logo": "images/logos/riven-ashton-logo.png",
       "heroImage": "Roster Photos/riven-ashton/riven-ashton-roster-photo.png",
       "dataFiles": {
@@ -1492,6 +1492,35 @@
       "imageCandidates": [
         "Roster Photos/riven-ashton/riven-ashton-roster-photo.png",
         "Roster Photos/riven-ashton-roster-photo.png",
+        "htr-logo.png"
+      ]
+    },
+    {
+      "id": "hello-christmas",
+      "name": "Hello Christmas",
+      "githubRepo": "SteveP999/hello-christmas",
+      "siteUrl": "https://hello-christmas.hellotexasrecords.com",
+      "genre": "Christmas Music",
+      "tagline": "Merry Christmas From Hello Texas",
+      "status": "active",
+      "active": true,
+      "includeOnLabelHome": true,
+      "includeOnRadio": true,
+      "latestTitle": "",
+      "logo": "images/logos/hello-christmas-logo.png",
+      "heroImage": "Roster Photos/hello-christmas/hello-christmas-roster-photo.png",
+      "dataFiles": {
+        "songs": true,
+        "radio": true,
+        "latest": true
+      },
+      "heroLogoScale": 1,
+      "heroLogoMaxHeight": 420,
+      "heroLogoOffsetY": 0,
+      "heroLogoMobileScale": 1,
+      "imageCandidates": [
+        "Roster Photos/hello-christmas/hello-christmas-roster-photo.png",
+        "Roster Photos/hello-christmas-roster-photo.png",
         "htr-logo.png"
       ]
     }
