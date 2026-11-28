@@ -1,0 +1,114 @@
+// Hello, Christmas listening room · Hello Texas Records
+// Release rules: one day per midnight America/Chicago from Dec 1, 2026. Guests get today and
+// earlier; signed-in HTR Insiders get every day and every bonus. The unlisted Christmas video
+// IDs live in Firestore (hcVideos/{d01..d25,e04..e20}), never in this file — the server decides
+// who may read them.
+const FIREBASE_CONFIG={apiKey:"AIzaSyDCEQYAA3uSJhEbBpxDT1c6xw3OfPvV4yA",authDomain:"htr-fans.firebaseapp.com",projectId:"htr-fans",storageBucket:"htr-fans.firebasestorage.app",messagingSenderId:"475143848447",appId:"1:475143848447:web:288a666aa5a4556d6627ca"};
+const SDK='https://www.gstatic.com/firebasejs/10.12.0/';
+const RETURN_PATH='/hello-christmas/';
+const portalLink=mode=>'/htr-fan-portal.html?mode='+mode+'&return='+encodeURIComponent(RETURN_PATH);
+function nowForRoom(){
+  // ?asof=2026-12-07 previews a date, but only on a local test server.
+  const q=new URLSearchParams(location.search).get('asof');
+  if(q&&/^\d{4}-\d{2}-\d{2}$/.test(q)&&/^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname))return new Date(q+'T12:00:00-06:00');
+  return new Date();
+}
+function chicagoDate(d){const p=Object.fromEntries(new Intl.DateTimeFormat('en-US',{timeZone:'America/Chicago',year:'numeric',month:'numeric',day:'numeric'}).formatToParts(d).map(x=>[x.type,x.value]));return{y:+p.year,m:+p.month,d:+p.day}}
+function releaseDay(){const {y,m,d}=chicagoDate(nowForRoom());if(y<2026||(y===2026&&m<12))return 0;if(y===2026&&m===12)return Math.min(d,25);return 25}
+function afterChristmas(){const {y,m,d}=chicagoDate(nowForRoom());return y>2026||(y===2026&&m===12&&d>25)}
+const pad=n=>String(n).padStart(2,'0');
+function videoKey(i){return i>25?'e'+pad(eggs[i-26].day):'d'+pad(i)}
+let fb=null,videosReady=false;
+const songs=[
+['Night Shift','Disco Snowman','No Rules Tonight'],['Sawyer Price','A Texas Holiday','Still My Favorite Song'],['Vincent Cole','I’ll See You in December','Last Call for Beautiful'],['PULSE7','Snow Globe','Two Nights'],['Quincy Cade','Santa’s Got Soul','Even My Tears'],['Bailey Wade','Single Bells','Stay Gone'],['Vanta','Batteries Not Included','Too Loud'],['The Long Weekend','Christmas Eve With You','A Little More of You'],['Rio Valencia','Santa, Tengo un Problema','Buenos Noches'],['Twyla Tate','Leave a Little Christmas for Me','Burning Bridges'],['Harlan Rhodes','Blitzen’s Got the Blues','Pain'],['Elliott Kessler','Still Just a Kid','Promises I Broke'],['Darrell Clayborn','Twelve Nights of Heartbreak','What’d I Do?'],['Skyline Theory','Everybody’s Here','Stay in the Sound'],['NightStrike','The Naughty List','Crash and Burn'],['Western Fires','Another Perfect Christmas','Cassette Hearts'],['Riven Ashton','Santa, Don’t Start With Me','Not My Problem'],['Ivey Wilder','No Silent Night','People Pleaser (Rest In Peace)'],['Quiet Damage','Broken Toys','Nothing Personal'],['Brent Alan','Pass It On','Smoke'],['Lori Hayes','What to Give','Don’t Cost Nothin’'],['Taylor Martin','A Little Peace to Take Along','She Loved Horses'],['Hello Texas','It Ain’t Christmas Till…','Same Damn Band'],['Hill Country Line','Heavenly Peace','I Was A Song'],['HTR Collective','Hello Christmas','']];
+
+const eggs=[
+{day:4,artist:'The Brightons',title:'Paper and Bows',bonus:'Yesterday’s Girl',icon:'🎁',label:'sloppily wrapped package',x:61,y:77},
+{day:8,artist:'Honey Belles',title:'Candy Cane Hearts',bonus:'Sugar in My Coffee',icon:'💝',label:'candy cane heart',x:45,y:44},
+{day:12,artist:'Daniel Kincaid',title:'This Time Next Christmas',bonus:'I Was a Song?',icon:'🟢',label:'Christmas wreath',x:96,y:14},
+{day:16,artist:'Cheap Silver',title:'All I Got Was Trouble',bonus:'I’m a Fool',icon:'🌿',label:'mistletoe',x:64,y:7},
+{day:20,artist:'Avery Ivey',title:'My Favorite Kind of Christmas',bonus:'Wildflower',icon:'☕☕',label:'two cups of coffee',x:88,y:73}];
+const bonusVideoIds={'PULSE7':'1vS9V5XWL34','Ivey Wilder':'mDsZ8pSADSE','Lori Hayes':'ngkxU-BjJIM','Sawyer Price':'Oc64NmV4Nko','Harlan Rhodes':'mlcc5b50KJ8','Vincent Cole':'ZFJsBPMDdR0','Night Shift':'8lA1sOPqRCw','The Brightons':'smE2f1v082g','Avery Ivey':'Q9NzKjGDa5E','Hello Texas':'UGzt6yG8ohE','Hill Country Line':'1_WL4ipRdsI','Vanta':'nQY5aimo9pU','Bailey Wade':'nZepmSyCRDY'};
+const artistLogos={'Night Shift':'logos/night-shift-supplied.webp','Sawyer Price':'logos/sawyer-price.webp','Vincent Cole':'logos/vincent-cole.webp','The Brightons':'logos/brightons.webp','Quincy Cade':'logos/quincy-qc-custom.webp','Vanta':'logos/vanta-logo-trim.webp','Daniel Kincaid':'logos/daniel-kincaid-logo.webp','PULSE7':'logos/pulse7-logo-trim.webp','Twyla Tate':'logos/twyla-tate-logo.webp','Harlan Rhodes':'logos/harlan-rhodes-logo-trim.webp','Darrell Clayborn':'logos/darrell-clayborn-logo.webp','NightStrike':'logos/nightstrike-logo-trim.webp','Skyline Theory':'logos/skyline-theory-logo-trim.webp','Bailey Wade':'logos/bailey-wade-logo.webp','Ivey Wilder':'logos/ivey-two-line.webp','Quiet Damage':'logos/quiet-damage-clear.webp','Riven Ashton':'logos/riven-ashton-logo.webp','Hello Texas':'logos/hello-texas-large.webp','Avery Ivey':'logos/avery-ivey-logo.webp','Rio Valencia':'logos/rio-rv.webp','The Long Weekend':'logos/long-weekend-supplied.webp','Elliott Kessler':'logos/elliott-ek.webp','Lori Hayes':'logos/lori-supplied.webp','Taylor Martin':'logos/taylor-supplied.webp','Hill Country Line':'logos/hill-country-supplied.webp','Western Fires':'logos/western-fires-wf.webp','Brent Alan':'logos/brent-alan-custom.webp'};
+const outlinedArtists=new Set(['Night Shift','Vanta','PULSE7','Skyline Theory','Harlan Rhodes','NightStrike','Ivey Wilder']);
+let today=releaseDay(), member=null, maxDay=today, current=Math.max(1,today), selected=current, activeVideoId=null, opened=new Set(), videos={};const $=s=>document.querySelector(s),wrap=$('#ornaments'),overlay=$('#overlay'),dialog=$('#dialog');
+function initials(s){return s.split(/\s+/).filter(x=>!['The','and','&'].includes(x)).map(x=>x[0]).join('').slice(0,3).toUpperCase()}
+const pts=[[56,68],[64,68],[72,68],[80,68],[88,68],[58,58],[65,58],[72,58],[79,58],[86,58],[60,48],[66,48],[72,48],[78,48],[84,48],[63,38],[69,38],[75,38],[81,38],[66,28],[72,28],[78,28],[68,18],[76,18]];
+function render(){wrap.innerHTML='';for(let i=1;i<=25;i++){const b=document.createElement('button');b.className='ornament '+(i===25?'star ':'')+(i<current?'done ':'')+(i===current?'current ':'');const p=i===25?[73.5,3.5]:pts[i-1];b.style.left=p[0]+'%';b.style.top=p[1]+'%';b.style.setProperty('--scene-x',p[0]);const revealed=i<current||opened.has(i);const logo=artistLogos[songs[i-1][0]];if(i<=24){b.classList.add('artist-ornament','artist-'+i);const outlined=true;if(outlined)b.classList.add('outline-logo');if(songs[i-1][0]==='Rio Valencia')b.classList.add('rio-round');const paths=['M50 17 C18 17 5 32 8 49 C11 64 35 74 50 96 C65 74 89 64 92 49 C95 32 82 17 50 17 Z','M50 17 C26 17 10 31 10 54 C10 77 27 93 50 93 C73 93 90 77 90 54 C90 31 74 17 50 17 Z','M50 17 C38 24 20 27 19 41 C5 48 7 63 22 70 C20 80 35 81 39 88 C43 98 57 98 61 88 C65 81 80 80 78 70 C93 63 95 48 81 41 C80 27 62 24 50 17 Z','M50 17 C30 20 10 31 10 51 C10 69 30 79 50 96 C70 79 90 69 90 51 C90 31 70 20 50 17 Z','M50 17 C35 30 17 42 17 59 C17 76 35 83 50 96 C65 83 83 76 83 59 C83 42 65 30 50 17 Z','M50 17 C25 20 9 33 12 52 C15 73 37 80 50 96 C63 80 85 73 88 52 C91 33 75 20 50 17 Z','M50 17 C34 22 14 30 13 49 C12 68 32 78 50 96 C68 78 88 68 87 49 C86 30 66 22 50 17 Z','M50 17 C28 17 12 34 12 55 C12 77 28 92 50 92 C72 92 88 77 88 55 C88 34 72 17 50 17 Z','M50 17 C35 26 15 32 15 48 C15 67 35 78 50 96 C65 78 85 67 85 48 C85 32 65 26 50 17 Z','M50 17 C38 22 20 23 19 39 C8 47 10 64 23 71 C24 85 40 86 50 96 C60 86 76 85 77 71 C90 64 92 47 81 39 C80 23 62 22 50 17 Z'];const colors=[['#ba77d3','#562665'],['#85c8bf','#215956'],['#e37b6d','#7e2634'],['#fff09a','#d4a023'],['#9fb4e6','#223b70'],['#ffe99d','#bb7b25'],['#aabbd6','#202f48'],['#704e4b','#271925'],['#384467','#11152d'],['#e5afd3','#5a214f']];const face=document.createElement('span');face.className='ornament-face';face.innerHTML=`<svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><defs><radialGradient id="shine-${i}" cx="30%" cy="25%" r="80%"><stop stop-color="${colors[(i-1)%colors.length][0]}"/><stop offset="1" stop-color="${colors[(i-1)%colors.length][1]}"/></radialGradient></defs><path d="${songs[i-1][0]==='Rio Valencia'?paths[1]:paths[(i-1)%paths.length]}" fill="url(#shine-${i})" stroke="#e8ca82" stroke-width="2.5"/><path d="M41 17 L43 10 L57 10 L59 17 Z" fill="#d7b568" stroke="#ffe5a0" stroke-width="2"/><circle cx="50" cy="6" r="4" fill="none" stroke="#e8ca82" stroke-width="2"/></svg>`;b.append(face);b.classList.add(i>current?'artist-upcoming':i===current?'artist-today':'artist-revealed');if(outlined){if(logo){const img=document.createElement('img');img.src=(!revealed && songs[i-1][0]!=='Night Shift')?'logos/sil-'+songs[i-1][0].toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')+'.webp':logo;img.alt='';b.append(img)}else{const monogram=document.createElement('span');monogram.className='outline-monogram';monogram.textContent=initials(songs[i-1][0]);b.append(monogram)}if(!revealed){b.classList.add('logo-unlit');const number=document.createElement('span');number.className='outline-number';number.textContent=i;b.append(number)}else b.classList.add('logo-lit')}else if(i<current&&logo){const img=document.createElement('img');img.src=logo;img.alt='';b.append(img)}else if(i<current){const monogram=document.createElement('span');monogram.className='ornament-monogram';monogram.textContent=initials(songs[i-1][0]);b.append(monogram)}else{const number=document.createElement('span');number.className='ornament-number';number.textContent=i;b.append(number)}if(i<current)b.title=songs[i-1][0]}else{if(opened.has(25)){const img=document.createElement('img');img.src='logos/htr-logo.webp';img.alt='';img.className='star-logo';b.append(img)}else{b.textContent='25'}}b.setAttribute('aria-label',i===25?'Christmas Day finale':`December ${i}${revealed?' · '+songs[i-1][0]:''}`);if(i>maxDay){b.classList.add('locked');b.setAttribute('aria-disabled','true')}b.onclick=()=>i>maxDay?invite('day',i):show(i);wrap.append(b)}renderEggs();$('#daylabel').textContent='December '+current;$('#prev').disabled=current===1;$('#next').disabled=current>=Math.max(1,maxDay);$('#prev').disabled=current===1||maxDay<1;updateGift(false);}
+function stopVideo(){const frame=$('#video');frame.src='about:blank';frame.hidden=true;$('#cover').hidden=false;$('#play').hidden=false}
+function show(i){$('#idle-screen').hidden=true;$('#song-menu').hidden=true;$('#welcome').hidden=false;$('#songs-toggle').setAttribute('aria-expanded','false');stopVideo();$('#details').hidden=false;selected=i;opened.add(i);render();updateGift(true);let [a,t]=i>25?[eggs[i-26].artist,eggs[i-26].title]:songs[i-1];const id=videos[videoKey(i)]||null;activeVideoId=id;const thumb=$('#thumbnail');thumb.hidden=!id;$('#fallback').hidden=!!id;thumb.alt=a+' — '+t+' video thumbnail';thumb.onerror=()=>{if(!thumb.dataset.retried){thumb.dataset.retried='1';thumb.src='https://i.ytimg.com/vi/'+id+'/hqdefault.jpg'}else{thumb.hidden=true;$('#fallback').hidden=false}};thumb.dataset.retried='';thumb.src=id?'https://i.ytimg.com/vi/'+id+'/maxresdefault.jpg':'';$('#coverartist').textContent=a;$('#covertitle').textContent=t;$('#artist').textContent=a;$('#detailday').textContent=i>25?'Christmas surprise · Meet the artist':'December '+i+' · '+(i===25?'The Christmas Day finale':'Meet the artist');$('#description').textContent=i===25?'The artists of Hello Texas Records come together for the grand finale of Hello, Christmas.':'Discover “'+t+'” from '+a+', part of the Hello Texas Records Christmas collection.';$('#playnotice').textContent='';overlay.hidden=false;$('#close').focus()}
+function modal(html){$('#dialogbody').innerHTML=html;dialog.showModal()}
+$('#prev').onclick=()=>{if(current>1){current--;stopVideo();overlay.hidden=true;$('#idle-screen').hidden=false;$('#song-menu').hidden=true;$('#welcome').hidden=false;$('#songs-toggle').setAttribute('aria-expanded','false');render()}};$('#next').onclick=()=>{if(current<maxDay){current++;stopVideo();overlay.hidden=true;$('#idle-screen').hidden=false;$('#song-menu').hidden=true;$('#welcome').hidden=false;$('#songs-toggle').setAttribute('aria-expanded','false');render()}};$('#close').onclick=()=>{stopVideo();overlay.hidden=true;$('#idle-screen').hidden=false};function selection(){return selected>25?eggs[selected-26]:{artist:songs[selected-1][0],bonus:songs[selected-1][2]}}
+function updateGift(glow){const data=selection(),gift=$('#gift');gift.setAttribute('aria-label',data.bonus?'Bonus song: '+data.bonus+' by '+data.artist:'No bonus song selected for '+data.artist);gift.querySelector('.gift-hint').textContent=data.bonus?'Bonus: '+data.bonus+' · '+data.artist:'No bonus song selected';const mobile=$('#mobile-gift');mobile.textContent=data.bonus?'Unwrap '+data.artist+'’s bonus':'Explore the bonus gift';mobile.setAttribute('aria-label',gift.getAttribute('aria-label'));gift.classList.remove('gift-glowing');mobile.classList.remove('gift-glowing')}
+function openGift(){if(!member){invite('bonus');return}const {artist,bonus}=selection();const id=bonusVideoIds[artist];modal(`<div class="eyebrow">An artist bonus</div><h2>More from ${artist}</h2>${bonus?`<p><strong>${bonus}</strong></p>${id?'<button class="primary watchbonus">Watch bonus video</button>':'<p class="notice">This bonus video is coming soon.</p>'}`:'<p class="notice">A bonus song has not been selected.</p>'}<button class="ghost closeaction">Back to the room</button>`);dialog.querySelector('.closeaction').onclick=()=>dialog.close();if(id)dialog.querySelector('.watchbonus').onclick=()=>{dialog.close();showBonus(artist,bonus,id)};$('#gift').classList.remove('gift-glowing')}
+function showBonus(artist,title,id){show(selected);activeVideoId=id;$('#detailday').textContent='Bonus song · '+artist;$('#artist').textContent=artist;$('#description').textContent='Enjoy “'+title+'” from '+artist+'.';$('#coverartist').textContent=artist;$('#covertitle').textContent=title;const thumb=$('#thumbnail');thumb.hidden=false;$('#fallback').hidden=true;thumb.alt=artist+' — '+title+' video thumbnail';thumb.dataset.retried='';thumb.onerror=()=>{if(!thumb.dataset.retried){thumb.dataset.retried='1';thumb.src='https://i.ytimg.com/vi/'+id+'/hqdefault.jpg'}else{thumb.hidden=true;$('#fallback').hidden=false}};thumb.src='https://i.ytimg.com/vi/'+id+'/maxresdefault.jpg';$('#playnotice').textContent='';}
+function renderEggs(){const layer=$('#easter-eggs');layer.innerHTML='';const positions=[[57.5,80,8],[64,82,8],[70.5,80.5,8],[77,82,8],[83.5,80.5,8]];eggs.forEach((egg,index)=>{if(egg.day>maxDay)return;const [x,y,w]=positions[index];const object=document.createElement('button');object.className='tree-present';object.style.left=x+'%';object.style.top=y+'%';object.style.width=w+'%';object.style.setProperty('--scene-x',x);object.style.setProperty('--scene-w',w);object.setAttribute('aria-label',egg.artist+' · '+egg.title);object.title=egg.artist+' · '+egg.title;const img=document.createElement('img');img.src='presents/present-'+egg.day+'.webp';img.alt='';object.append(img);object.onclick=()=>show(26+index);layer.append(object)})}
+$('#gift').onclick=()=>openGift();$('#mobile-gift').onclick=()=>{openGift();$('#mobile-gift').classList.remove('gift-glowing')};$('#mobile-close-menu').onclick=()=>$('#songs-toggle').click();$('#insider').onclick=()=>member?accountModal():invite('header');$('#about').onclick=()=>aboutModal();$('#play').onclick=()=>{const id=activeVideoId;if(!id){$('#playnotice').textContent=videosReady?'This one’s still warming up. Try again in a minute.':'Hang on, still finding the remote.';return}$('#cover').hidden=true;const frame=$('#video');frame.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&playsinline=1&rel=0';frame.hidden=false;$('#play').hidden=true;$('#details').hidden=true;$('#playnotice').textContent='If playback does not start, press play on the video.'};$('.closemodal').onclick=()=>dialog.close();render();updateBanner();startAuth();
+
+document.querySelectorAll('.tip button').forEach(button=>button.onclick=()=>{const p=button.nextElementSibling;p.hidden=!p.hidden;button.setAttribute('aria-expanded',String(!p.hidden))});
+
+$('#songs-toggle').onclick=()=>{const menu=$('#song-menu');const opening=menu.hidden;stopVideo();overlay.hidden=true;$('#idle-screen').hidden=false;menu.hidden=!opening;$('#welcome').hidden=opening;$('#songs-toggle').setAttribute('aria-expanded',String(opening));if(opening){const list=$('#song-list');list.innerHTML='';const available=songs.map((song,index)=>({song,day:index+1})).filter(({day})=>day<=25&&(day<current||opened.has(day)));$('#song-empty').hidden=available.length>0;for(const {song,day} of available){const button=document.createElement('button');button.textContent=`December ${day} · ${song[0]} — ${song[1]}`;button.onclick=()=>show(day);list.append(button)}const label=document.createElement('p');label.textContent='Gift songs available so far';list.append(label);eggs.forEach((egg,index)=>{if(egg.day>maxDay)return;const button=document.createElement('button');button.textContent=`December ${egg.day} surprise · ${egg.artist} — ${egg.title}`;button.onclick=()=>show(26+index);list.append(button)});$('#song-empty').hidden=available.length>0}};
+
+// ---------- HTR Insider (existing htr-fans Firebase login) ----------
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+async function startAuth(){
+  try{
+    const [A,U,F]=await Promise.all([import(SDK+'firebase-app.js'),import(SDK+'firebase-auth.js'),import(SDK+'firebase-firestore.js')]);
+    const app=A.initializeApp(FIREBASE_CONFIG);
+    fb={auth:U.getAuth(app),db:F.getFirestore(app),U,F};
+    U.onAuthStateChanged(fb.auth,async user=>{
+      member=user?{uid:user.uid,name:await firstName(user)}:null;
+      maxDay=member?25:today;
+      if(!member&&current>Math.max(1,maxDay)){current=Math.max(1,maxDay);selected=current;stopVideo();overlay.hidden=true;$('#idle-screen').hidden=false}
+      render();updateBanner();loadVideos();
+    });
+  }catch(e){console.warn('HTR Insider login unavailable',e);videosReady=true;updateBanner()}
+}
+async function firstName(user){
+  try{const s=await fb.F.getDoc(fb.F.doc(fb.db,'users',user.uid));if(s.exists()&&s.data().firstName)return s.data().firstName}catch(e){}
+  return (user.displayName||user.email||'Insider').split(/[\s@]/)[0];
+}
+async function loadVideos(){
+  if(!fb)return;
+  const keys=[];for(let i=1;i<=maxDay;i++)keys.push('d'+pad(i));eggs.forEach(e=>{if(e.day<=maxDay)keys.push('e'+pad(e.day))});
+  await Promise.all(keys.filter(k=>!(k in videos)).map(async k=>{
+    try{const s=await fb.F.getDoc(fb.F.doc(fb.db,'hcVideos',k));if(s.exists()&&s.data().videoId)videos[k]=s.data().videoId}catch(e){/* not released yet for this visitor */}
+  }));
+  videosReady=true;
+  if(!overlay.hidden&&!activeVideoId&&$('#video').hidden)show(selected);
+}
+
+// ---------- Invitations and account ----------
+function invite(reason,day){
+  const join=portalLink('join'),signin=portalLink('signin');
+  const copy={
+    bonus:['Insiders only','That one’s wrapped for Insiders.','Every artist left a little something extra under the tree. HTR Insider is free (we checked twice), and it unlocks every bonus song plus all 25 days, right now. No waiting up for midnight.'],
+    header:['HTR Insider','Skip the line to Christmas.','HTR Insider is free. Sign in and the whole tree lights up: all 25 days, every bonus, every present. Sign out and it goes back to one door a day, which is honestly more festive, but your call.'],
+    day:['Not yet',`December ${day} isn’t open yet.`,`It lights up at midnight, Central time, on December ${day}. Or sign in to HTR Insider (free) and open it now. We won’t tell anybody.`]
+  }[reason];
+  modal(`<div class="eyebrow">${copy[0]}</div><h2>${copy[1]}</h2><p>${copy[2]}</p><div class="actions"><a class="primary" href="${join}">Join free</a><a class="ghost" href="${signin}">Sign in</a></div><button class="ghost closeaction">Back to the room</button>`);
+  dialog.querySelector('.closeaction').onclick=()=>dialog.close();
+}
+function accountModal(){
+  modal(`<div class="eyebrow">HTR Insider</div><h2>You’re in, ${esc(member.name)}.</h2><p>The whole tree’s unlocked. Go ahead and peek. Some of these artists put more into the bonus song than the single, and frankly we’re not mad about it.</p><div class="actions"><button class="primary closeaction">Back to the room</button><button class="ghost signout">Sign out</button></div>`);
+  dialog.querySelector('.closeaction').onclick=()=>dialog.close();
+  dialog.querySelector('.signout').onclick=async()=>{dialog.close();await fb.U.signOut(fb.auth)};
+}
+function aboutModal(){
+  modal(`<div class="eyebrow">Hello Texas Records</div><h2>Pull up a chair.</h2><p>Hello, Christmas is twenty-five new Christmas songs from the HTR roster, one a day, December 1 through Christmas. Every midnight (Central time, because that’s where the coffee is) another ornament lights up. Tap it, meet the artist, press play.</p><p>Anybody can come in and hang out. Today’s song and every one before it are open to everyone. HTR Insiders (also free, we’re not monsters) get the whole tree right now, plus a little something extra from each artist.</p><p>Keep an eye under the tree. Things show up.</p><button class="ghost closeaction">Back to the room</button>`);
+  dialog.querySelector('.closeaction').onclick=()=>dialog.close();
+}
+function updateBanner(){
+  const t=$('#banner-text'),j=`<a href="${portalLink('join')}">join free</a>`,s=`<a href="${portalLink('signin')}">sign in</a>`;
+  $('#insider').textContent=member?'✦ '+member.name:'HTR Insider ✦';
+  if(member)t.innerHTML=`Signed in as ${esc(member.name)}. The whole tree’s yours.`;
+  else if(today<1)t.innerHTML=`Doors open December 1. Insiders get in early: ${s} or ${j}.`;
+  else if(afterChristmas())t.innerHTML=`All 25 doors are open. Merry Christmas, you made it. Bonus songs are for Insiders: ${s} or ${j}.`;
+  else t.innerHTML=`A new door opens every midnight, Central time. Insiders get the whole tree now: ${s} or ${j}.`;
+  const closed=!member&&today<1;
+  $('#tv-title').textContent=closed?'Doors open December 1':'Come on in. Stay awhile.';
+  $('#tv-sub').textContent=closed?'The first ornament lights up at midnight, Central time.':'Explore the tree for a new song and artist each day.';
+  const mi=$('.mobile-intro div');
+  mi.querySelector('strong').textContent=closed?'Doors open December 1':'Come on in. Stay awhile.';
+  mi.querySelector('span').textContent=closed?'The first ornament lights up at midnight, Central time.':'Tap an ornament to discover a song and artist.';
+}
