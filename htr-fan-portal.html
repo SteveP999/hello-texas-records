@@ -1145,6 +1145,13 @@ function fmtDate(ts){ if(!ts) return 'Early Member'; const d=ts.toDate?ts.toDate
 
 
 
+// Return-to-page support, e.g. htr-fan-portal.html?mode=signin&return=/hello-christmas/
+// Only same-site paths are accepted, so this can't bounce anyone to another website.
+const RETURN_TO=(()=>{const r=new URLSearchParams(location.search).get('return');return r&&/^\/(?!\/)[A-Za-z0-9_\-\/.]*$/.test(r)?r:null})();
+const AUTH_MODE=new URLSearchParams(location.search).get('mode');
+let authActionInFlight=false, authModeShown=false;
+function goBackIfAsked(){ if(RETURN_TO){ location.replace(RETURN_TO); return true; } return false; }
+
 window.doRegister = async function() {
 
   const first=document.getElementById('r-first').value.trim();
@@ -1163,13 +1170,15 @@ window.doRegister = async function() {
 
   try {
 
+    authActionInFlight=true;
+
     const cred=await createUserWithEmailAndPassword(auth,email,pw);
 
     await createUserProfile(cred.user,first,last);
 
-    closeModal('auth-modal');
+    closeModal('auth-modal'); goBackIfAsked();
 
-  } catch(e){ setMsg('r-msg',friendlyError(e.code),'err'); }
+  } catch(e){ authActionInFlight=false; setMsg('r-msg',friendlyError(e.code),'err'); }
 
 }
 
@@ -1183,9 +1192,9 @@ window.doLogin = async function() {
 
   if(!email||!pw) return setMsg('l-msg','Email and password required.','err');
 
-  try { await signInWithEmailAndPassword(auth,email,pw); closeModal('auth-modal'); }
+  try { authActionInFlight=true; await signInWithEmailAndPassword(auth,email,pw); closeModal('auth-modal'); goBackIfAsked(); }
 
-  catch(e){ setMsg('l-msg',friendlyError(e.code),'err'); }
+  catch(e){ authActionInFlight=false; setMsg('l-msg',friendlyError(e.code),'err'); }
 
 }
 
@@ -1194,6 +1203,8 @@ window.doLogin = async function() {
 window.doGoogleSignIn = async function() {
 
   try {
+
+    authActionInFlight=true;
 
     const result=await signInWithPopup(auth,googleProvider);
 
@@ -1209,9 +1220,9 @@ window.doGoogleSignIn = async function() {
 
     }
 
-    closeModal('auth-modal');
+    closeModal('auth-modal'); goBackIfAsked();
 
-  } catch(e){ console.error(e); }
+  } catch(e){ authActionInFlight=false; console.error(e); }
 
 }
 
@@ -1276,6 +1287,10 @@ function friendlyError(code){
 
 
 onAuthStateChanged(auth, async (user) => {
+
+  if(user && RETURN_TO && !authActionInFlight){ location.replace(RETURN_TO); return; }
+
+  if(!user && AUTH_MODE && !authModeShown){ authModeShown=true; openAuthModal(AUTH_MODE==='join'?'register':'login'); }
 
   currentUser=user;
 
